@@ -19,15 +19,15 @@ public partial class App : Application
         switch (RequestedTheme)
         {
             case AppTheme.Unspecified or AppTheme.Dark:
-                CloseEyeSVG = "close_eye_dark";
-                OpenEyeSVG = "open_eye_dark";
-                CloseSVG = "close_dark";
+                CloseEyeSVG = "close_eye_dark.svg";
+                OpenEyeSVG = "open_eye_dark.svg";
+                CloseSVG = "close_dark.svg";
 
                 break;
             default:
-                CloseEyeSVG = "close_eye_light";
-                OpenEyeSVG = "open_eye_light";
-                CloseSVG = "close_light";
+                CloseEyeSVG = "close_eye_light.svg";
+                OpenEyeSVG = "open_eye_light.svg";
+                CloseSVG = "close_light.svg";
                 break;
         }
         MainPage = new AppShell();

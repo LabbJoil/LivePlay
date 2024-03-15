@@ -1,7 +1,7 @@
 ﻿
 using LivePlay.Models.ViewModels;
 
-namespace LivePlay;
+namespace LivePlay.Pages;
 
 public partial class MainPage : ContentPage
 {

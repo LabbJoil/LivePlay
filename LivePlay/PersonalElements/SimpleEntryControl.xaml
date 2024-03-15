@@ -14,7 +14,7 @@
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
             <Label x:Name="LabelPlaceholderMini" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" ZIndex="1" FontSize="13" BackgroundColor="Transparent" TextColor="LightGray"
@@ -31,7 +31,7 @@
             </Entry>
             
             <Frame Grid.Column="2" Grid.RowSpan="2" BackgroundColor="Transparent" BorderColor="Transparent" HeightRequest="30" WidthRequest="30" CornerRadius="30" Padding="0" Margin="5" HorizontalOptions="End">
-                <ImageButton x:Name="ActionButton" BackgroundColor="Transparent"/>
+                <ImageButton x:Name="ActionButton" BackgroundColor="Transparent" Clicked="ClearEntry"/>
             </Frame>
         </Grid>
     </Frame>

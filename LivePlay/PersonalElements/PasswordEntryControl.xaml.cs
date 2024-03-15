@@ -4,10 +4,22 @@ namespace LivePlay.PersonalElements;
 
 public partial class PasswordEntryControl : ContentView
 {
-    public PasswordEntryControl()
-        => InitializeComponent();
-
     private bool IsPasswordTurn = true;
+    public string CloseEyeSVG;
+    public string OpenEyeSVG;
+
+    public PasswordEntryControl()
+    {
+        InitializeComponent();
+        if (Application.Current is App app)     // TODO maybe: переделать под отдельный класс
+        {
+            CloseEyeSVG = app.CloseEyeSVG;
+            OpenEyeSVG = app.OpenEyeSVG;
+            ActionButton.Source = CloseEyeSVG;
+        }
+        else
+            throw new Exception("App not found");
+    }
 
     public static readonly BindableProperty TextProperty = BindableProperty.Create(
        propertyName: nameof(Text),
@@ -67,6 +79,6 @@ public partial class PasswordEntryControl : ContentView
     {
         PasswordEntry.IsPassword = !IsPasswordTurn;
         IsPasswordTurn = !IsPasswordTurn;
-        ActionButton.Source = IsPasswordTurn ? "open_eye.svg" : "close_eye.svg";
+        ActionButton.Source = IsPasswordTurn ? CloseEyeSVG : OpenEyeSVG;
     }
 }

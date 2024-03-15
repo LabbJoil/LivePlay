@@ -2,8 +2,15 @@ namespace LivePlay.PersonalElements;
 
 public partial class SimpleEntryControl : ContentView
 {
-	public SimpleEntryControl()
-        => InitializeComponent();
+    public SimpleEntryControl()
+    {
+        InitializeComponent();
+        if (Application.Current is App app)
+            ActionButton.Source = app.CloseSVG;
+        else
+            throw new Exception("App not found");
+
+    }
 
     public static readonly BindableProperty TextProperty = BindableProperty.Create(
        propertyName: nameof(Text),
@@ -57,5 +64,10 @@ public partial class SimpleEntryControl : ContentView
             LabelPlaceholderMini.IsVisible = false;
             LabelPlaceholderBase.IsVisible = true;
         }
+    }
+
+    private void ClearEntry(object sender, EventArgs e)
+    {
+        SimpleEntry.Text = string.Empty;
     }
 }
