@@ -1,3 +1,4 @@
+using LivePlay.Models.ViewModels;
 using System.Formats.Tar;
 
 namespace LivePlay.PersonalElements;
@@ -11,14 +12,9 @@ public partial class PasswordEntryControl : ContentView
     public PasswordEntryControl()
     {
         InitializeComponent();
-        if (Application.Current is App app)     // TODO maybe: переделать под отдельный класс
-        {
-            CloseEyeSVG = app.CloseEyeSVG;
-            OpenEyeSVG = app.OpenEyeSVG;
+            CloseEyeSVG = SettingsModel.CloseEyeSVG;
+            OpenEyeSVG = SettingsModel.OpenEyeSVG;
             ActionButton.Source = CloseEyeSVG;
-        }
-        else
-            throw new Exception("App not found");
     }
 
     public static readonly BindableProperty TextProperty = BindableProperty.Create(
@@ -35,12 +31,12 @@ public partial class PasswordEntryControl : ContentView
         defaultValue: null,
         defaultBindingMode: BindingMode.OneWay);
 
-    public static readonly BindableProperty NewBackgroundColorProperty = BindableProperty.Create(
-        propertyName: nameof(NewBackgroundColor),
-        returnType: typeof(Color),
-        declaringType: typeof(SimpleEntryControl),
-        defaultValue: Color.FromRgba(0, 0, 0, 0),
-        defaultBindingMode: BindingMode.OneWay);
+    //public static readonly BindableProperty NewBackgroundColorProperty = BindableProperty.Create(
+    //    propertyName: nameof(NewBackgroundColor),
+    //    returnType: typeof(Color),
+    //    declaringType: typeof(SimpleEntryControl),
+    //    defaultValue: Color.FromRgba(0, 0, 0, 0),
+    //    defaultBindingMode: BindingMode.OneWay);
 
     public string Text
     {
@@ -54,11 +50,11 @@ public partial class PasswordEntryControl : ContentView
         set { SetValue(PlaceholderProperty, value); }
     }
 
-    public Color NewBackgroundColor
-    {
-        get => (Color)GetValue(NewBackgroundColorProperty);
-        set { SetValue(NewBackgroundColorProperty, value); }
-    }
+    //public Color NewBackgroundColor
+    //{
+    //    get => (Color)GetValue(NewBackgroundColorProperty);
+    //    set { SetValue(NewBackgroundColorProperty, value); }
+    //}
 
     private void PasswordEntry_Focused(object sender, FocusEventArgs e)
     {

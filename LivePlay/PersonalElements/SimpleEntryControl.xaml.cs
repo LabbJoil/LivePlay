@@ -1,3 +1,5 @@
+using LivePlay.Models.ViewModels;
+
 namespace LivePlay.PersonalElements;
 
 public partial class SimpleEntryControl : ContentView
@@ -5,11 +7,7 @@ public partial class SimpleEntryControl : ContentView
     public SimpleEntryControl()
     {
         InitializeComponent();
-        if (Application.Current is App app)
-            ActionButton.Source = app.CloseSVG;
-        else
-            throw new Exception("App not found");
-
+        ActionButton.Source = SettingsModel.CloseSVG;
     }
 
     public static readonly BindableProperty TextProperty = BindableProperty.Create(
@@ -26,12 +24,12 @@ public partial class SimpleEntryControl : ContentView
         defaultValue: null,
         defaultBindingMode: BindingMode.OneWay);
 
-    public static readonly BindableProperty NewBackgroundColorProperty = BindableProperty.Create(
-        propertyName: nameof(NewBackgroundColor),
-        returnType: typeof(Color),
-        declaringType: typeof(SimpleEntryControl),
-        defaultValue: Color.FromRgba(0, 0, 0, 0),
-        defaultBindingMode: BindingMode.OneWay);
+    //public static readonly BindableProperty NewBackgroundColorProperty = BindableProperty.Create(
+    //    propertyName: nameof(NewBackgroundColor),
+    //    returnType: typeof(Color),
+    //    declaringType: typeof(SimpleEntryControl),
+    //    defaultValue: Color.FromRgba(0, 0, 0, 0),
+    //    defaultBindingMode: BindingMode.OneWay);
 
     public string Text
     {
@@ -45,11 +43,11 @@ public partial class SimpleEntryControl : ContentView
         set { SetValue(PlaceholderProperty, value); }
     }
 
-    public Color NewBackgroundColor
-    {
-        get => (Color)GetValue(NewBackgroundColorProperty);
-        set { SetValue(NewBackgroundColorProperty, value); }
-    }
+    //public Color NewBackgroundColor
+    //{
+    //    get => (Color)GetValue(NewBackgroundColorProperty);
+    //    set { SetValue(NewBackgroundColorProperty, value); }
+    //}
 
     private void SimpleEntry_Focused(object sender, FocusEventArgs e)
     {

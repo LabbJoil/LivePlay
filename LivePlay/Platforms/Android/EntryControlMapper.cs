@@ -5,10 +5,10 @@ using Microsoft.Maui.Handlers;
 
 namespace LivePlay.Platforms;
 
-public static class SimpleEntryControlMapper
+public static class EntryControlMapper
 {
     public static void Map(IElementHandler handler, IElement view) {
-        if (view is Entry entry)
+        if (view is Entry)
         {
             var casted = (EntryHandler)handler;
             var gd = new GradientDrawable();
