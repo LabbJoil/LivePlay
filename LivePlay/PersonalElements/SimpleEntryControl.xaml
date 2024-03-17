@@ -12,7 +12,8 @@
                 Opacity="0.41" />
         </Border.Shadow>
 
-        <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource EntryBackgroundDark}, Light={StaticResource EntryBackgroundLight}}" BorderColor="Transparent" Padding="0" CornerRadius="20" >
+        <Frame BorderColor="Transparent" Padding="0" CornerRadius="20" 
+               BackgroundColor="{AppThemeBinding Dark={StaticResource EntryBackgroundDark}, Light={StaticResource EntryBackgroundLight}}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="5"/>
