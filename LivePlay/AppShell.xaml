@@ -3,22 +3,30 @@
     x:Class="LivePlay.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:enterPage="clr-namespace:LivePlay.Pages"
-    Shell.FlyoutBehavior="Flyout"
+    xmlns:pages="clr-namespace:LivePlay.Pages"
+    Shell.TabBarIsVisible="False"
+    Shell.FlyoutBehavior="Disabled"
     Title="LivePlay">
     <!-- TODO: сделать загрузочный экран  вместо enterPage-->
-    <Shell.Resources>
+    
+    <!--<Shell.Resources>
         <ResourceDictionary>
             <Color x:Key="FlyoutBackgroundColor">LightBlue</Color>
-            <!-- Цвет, который хотите установить для Flyout -->
+            --><!-- Цвет, который хотите установить для Flyout -->
             <!--<Style TargetType="FlyoutItem">
                 <Setter Property=""  Value="{StaticResource FlyoutBackgroundColor}" />
-            </Style>-->
+            </Style>--><!--
         </ResourceDictionary>
-    </Shell.Resources>
+    </Shell.Resources>-->
     
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate enterPage:MainPage}"
-        Route="MainPage" />
+        ContentTemplate="{DataTemplate pages:EnterPage}"
+        FlyoutItemIsVisible="False"
+        Route="EnterPage" />
+
+    <FlyoutItem Route="HomePage" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Tape" ContentTemplate="{DataTemplate pages:TapePage}"/>
+        <ShellContent Title="Settings" ContentTemplate="{DataTemplate pages:SettingsPage}"/>
+    </FlyoutItem>
+
 </Shell>

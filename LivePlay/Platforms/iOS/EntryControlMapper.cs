@@ -5,16 +5,15 @@ using Microsoft.Maui.Handlers;
 using Microsoft.Maui.Platform;
 using UIKit;
 
-namespace LivePlay.Platforms.Android;
+namespace LivePlay.Platforms;
 
-class SimpleEntryControlMapper
+class EntryControlMapper
 {
     public static void Map(IElementHandler handler, IElement view) {
-        if (view is Entry entry)
+        if (view is Entry)
         {
             var casted = (EntryHandler)handler;
            // var viewData = entry;
-
             var backgroundLayer = new CALayer
             {
                 BackgroundColor = UIColor.Clear.CGColor

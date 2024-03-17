@@ -1,4 +1,5 @@
 ﻿
+using LivePlay.Pages;
 using LivePlay.PersonalElements;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls;
@@ -19,6 +20,8 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
+        builder.Services.AddSingleton<TapePage>();
+
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
@@ -26,10 +29,10 @@ public static class MauiProgram
         Microsoft.Maui.Handlers.ElementHandler.ElementMapper.AppendToMapping("Classic", (handler, view) =>
         {
             if (view is Entry) {
-#if __ANDROID__
-                Platforms.SimpleEntryControlMapper.Map(handler, view);
+#if __ANDROID__ || __IOS__
+                Platforms.EntryControlMapper.Map(handler, view);
 #endif
-                }
+            }
         });
 
         return builder.Build();

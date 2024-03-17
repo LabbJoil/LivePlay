@@ -3,11 +3,11 @@ using LivePlay.Models.ViewModels;
 
 namespace LivePlay.Pages;
 
-public partial class MainPage : ContentPage
+public partial class EnterPage : ContentPage
 {
     LoginViewModel Loggin = new();
 
-    public MainPage()
+    public EnterPage()
     {
         InitializeComponent();
         BindingContext = Loggin;

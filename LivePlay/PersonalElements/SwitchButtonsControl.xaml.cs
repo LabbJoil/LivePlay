@@ -1,4 +1,4 @@
-namespace Live_and_play.PersonalElements;
+namespace LivePlay.PersonalElements;
 
 public partial class SwitchButtonsControl : ContentView
 {

@@ -8,10 +8,16 @@
 
     <Color x:Key="Default">Transparent</Color>
     
-    <Color x:Key="EnterBackgroundDark">#0D1B2A</Color>
-    <Color x:Key="EnterBackgroundLight">#FFF</Color>
+    <Color x:Key="Page1BackgroundDark">#0D1B2A</Color>
+    <Color x:Key="Page1BackgroundLight">#FFF</Color>
+    
     <Color x:Key="EntryBackgroundDark">#415A77</Color>
-    <Color x:Key="EntryBackgroundLight">#774151</Color>
+    <Color x:Key="EntryBackgroundLight">#DEDEDE</Color>
+    <Color x:Key="EntryBanerTextDark">LightGray</Color>
+    <Color x:Key="EntryBanerTextLight">#505050</Color>
+    <Color x:Key="EntryTextDark">White</Color>
+    <Color x:Key="EntryTextLight">#0D1B2A</Color>
+
     <Color x:Key="ButtonBackgroundDark">#778DA9</Color>
     <Color x:Key="ButtonBackgroundLight">#54759B</Color>
     <Color x:Key="ButtonClickBackgroundDark">#415A77</Color>
