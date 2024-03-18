@@ -1,5 +1,6 @@
 ﻿
 using LivePlay.Models.ViewModels;
+using Microsoft.Maui.Controls;
 
 namespace LivePlay.Pages;
 
@@ -13,19 +14,21 @@ public partial class EnterPage : ContentPage
         BindingContext = Loggin;
     }
 
-    //private void OnShowPasswordToggled(object sender, ToggledEventArgs e)
-    //{
-    //    IsPasswordEntry = !e.Value;
-    //}
-
     private async void OnLoginButtonClicked(object sender, EventArgs e)
     {
         await DisplayAlert("Login", $"Вы вошли как: {Loggin.UserName} - {Loggin.Password}", "ok");
     }
 
-    //private void HidePassword(object sender, EventArgs e)
-    //{
-    //    PasswordEntry.IsPassword = !IsPasswordEntry;
-    //    IsPasswordEntry = !IsPasswordEntry;
-    //}
+    private void LogIn(object sender, EventArgs e)
+    {
+        AnimateEnterFrame(0, 100);
+    }
+
+    private void SignUp(object sender, EventArgs e)
+    {
+        AnimateEnterFrame(200, 100);
+    }
+
+    private async void AnimateEnterFrame(double xAnimate, uint timeDo)
+        => await AnimatedFrame.TranslateTo(xAnimate, 0, timeDo, Easing.Linear);
 }

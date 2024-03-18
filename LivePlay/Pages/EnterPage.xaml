@@ -16,13 +16,27 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <pe:SwitchButtonsControl Grid.Row="1" TextButton1="KK" TextButton2="LL" ClickButton2="OnLoginButtonClicked"/>
+        <pe:SwitchButtonsControl Grid.Row="1" TextButton1="KK" TextButton2="LL" ClickButton1="LogIn" ClickButton2="SignUp"/>
 
-        <StackLayout Grid.Row="3" Orientation="Vertical" >
-            <pe:SimpleEntryControl Placeholder="Login" Margin="0,10,0,0"/>
-            <pe:PasswordEntryControl Placeholder="Password" Margin="0,20,0,0"/>
-        </StackLayout>
+        <Frame x:Name="AnimatedFrame" Grid.Row="3" WidthRequest="1000" BackgroundColor="Transparent" BorderColor="Transparent">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
 
+                <StackLayout Grid.Column="0" Orientation="Vertical" >
+                    <pe:SimpleEntryControl Placeholder="Login" Margin="0,10,0,0"/>
+                    <pe:PasswordEntryControl Placeholder="Password" Margin="0,20,0,0"/>
+                </StackLayout>
+
+                <StackLayout Grid.Column="1" Orientation="Vertical" >
+                    <pe:SimpleEntryControl Placeholder="E-mail" Margin="0,30,0,0"/>
+                </StackLayout>
+            </Grid>
+        </Frame>
+        
         <Button Grid.Row="5" Text="Login" Clicked="OnLoginButtonClicked" Margin="60,0"/>
     </Grid>
 

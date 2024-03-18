@@ -42,16 +42,16 @@ public partial class SwitchButtonsControl : ContentView
     private int T = 0;
     private void Button1_Clicked(object sender, EventArgs e)
     {
-        AnimateRectangle(0);
+        AnimateFrame(0);
         ClickButton1?.Invoke(this, e);
     }
 
     private void Button2_Clicked(object sender, EventArgs e)
     {
-        AnimateRectangle(MainGrid.Width / 2);
+        AnimateFrame(MainGrid.Width / 2);
         ClickButton2?.Invoke(this, e);
     }
 
-    private async void AnimateRectangle(double xAnimate)
+    private async void AnimateFrame(double xAnimate)
         => await AnimatedFrame.TranslateTo(xAnimate, 0, 500, Easing.Linear);
 }
