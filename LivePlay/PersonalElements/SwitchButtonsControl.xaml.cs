@@ -53,5 +53,5 @@ public partial class SwitchButtonsControl : ContentView
     }
 
     private async void AnimateFrame(double xAnimate)
-        => await AnimatedFrame.TranslateTo(xAnimate, 0, 500, Easing.Linear);
+        => await AnimatedFrame.TranslateTo(xAnimate, 0, 250, Easing.Linear);
 }
