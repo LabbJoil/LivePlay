@@ -17,17 +17,37 @@
 
         <pe:SwitchButtonsControl Grid.Row="1" TextButton1="Log in" TextButton2="Sign up" ClickButton1="LogIn" ClickButton2="SignUp" Margin="40,0,40,0"/>
 
-        <Frame x:Name="AnimatedFrame" Grid.Row="3" Padding="0" BackgroundColor="Transparent" BorderColor="Black">
-            <Grid BackgroundColor="Black" WidthRequest="40" HeightRequest="40">
+        <Border Stroke="Transparent" Grid.Row="3" Margin="30,0">
+            <Border x:Name="AnimatedFrame" Stroke="Transparent" WidthRequest="650" >
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout WidthRequest="300" Orientation="Vertical" Margin="10,10">
+                        <pe:SimpleEntryControl Placeholder="Login" Padding="10,10"/>
+                        <pe:PasswordEntryControl Placeholder="Password" Padding="10,10"/>
+                    </StackLayout>
+
+                    <StackLayout WidthRequest="300" Orientation="Vertical" Margin="20,10">
+                        <pe:SimpleEntryControl Placeholder="E-mail"/>
+                    </StackLayout>
+                </StackLayout>
+            </Border>
+        </Border>
+        
+        <!--<Frame x:Name="AnimatedFrame" Grid.Row="3" Padding="0" BackgroundColor="Transparent" BorderColor="Black" Margin="30,0">
+            <Grid >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"/>
                     <ColumnDefinition Width="20"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80"/>
+                    <RowDefinition Height="80"/>
                 </Grid.RowDefinitions>
+                <Button Grid.Row="0" ZIndex="1" Background="Transparent"
+                    Text="HH"
+                    TextColor="{AppThemeBinding Dark={StaticResource SwitchButtonsTextDark}, Light={StaticResource SwitchButtonsTextLight}}"/>
 
-                <StackLayout Grid.Column="0" Orientation="Vertical">
+                <pe:SimpleEntryControl Placeholder="Login" ZIndex="1" Grid.Row="1"/>
+                <StackLayout Orientation="Vertical">
                     <pe:SimpleEntryControl Placeholder="Login" Margin="0,10,0,0"/>
                     <pe:PasswordEntryControl Placeholder="Password" Margin="0,20,0,0"/>
                 </StackLayout>
@@ -36,7 +56,7 @@
                     <pe:SimpleEntryControl Placeholder="E-mail" Margin="0,30,0,0"/>
                 </StackLayout>
             </Grid>
-        </Frame>
+        </Frame>-->
         
         <Button Grid.Row="5" Text="Login" Clicked="OnLoginButtonClicked" Margin="100,0"/>
     </Grid>

@@ -26,7 +26,7 @@ public partial class EnterPage : ContentPage
 
     private void SignUp(object sender, EventArgs e)
     {
-        AnimateEnterFrame(200, 100);
+        AnimateEnterFrame(300, 100);
     }
 
     private async void AnimateEnterFrame(double xAnimate, uint timeDo)
