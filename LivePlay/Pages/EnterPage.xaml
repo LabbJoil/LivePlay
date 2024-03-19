@@ -17,7 +17,21 @@
 
         <pe:SwitchButtonsControl Grid.Row="1" TextButton1="Log in" TextButton2="Sign up" ClickButton1="LogIn" ClickButton2="SignUp" Margin="40,0,40,0"/>
 
-        <Border Stroke="Transparent" Grid.Row="3" Margin="30,0">
+        <Grid Grid.Row="3" Margin="50,10">
+            <StackLayout x:Name="LoginStackLayout" WidthRequest="300" Orientation="Vertical" >
+                <pe:SimpleEntryControl Placeholder="Login" Padding="10,10"/>
+                <pe:PasswordEntryControl Placeholder="Password" Padding="10,10"/>
+            </StackLayout>
+
+            <StackLayout x:Name="EmailStackLayout" WidthRequest="300" Orientation="Vertical" IsVisible="False">
+                <pe:SimpleEntryControl Placeholder="E-mail"/>
+            </StackLayout>
+        </Grid>
+        
+
+
+
+        <!--<Border Stroke="Transparent" Grid.Row="3" Margin="30,0">
             <Border x:Name="AnimatedFrame" Stroke="Transparent" WidthRequest="650" >
                 <StackLayout Orientation="Horizontal">
                     <StackLayout WidthRequest="300" Orientation="Vertical" Margin="10,10">
@@ -30,7 +44,7 @@
                     </StackLayout>
                 </StackLayout>
             </Border>
-        </Border>
+        </Border>-->
         
         <!--<Frame x:Name="AnimatedFrame" Grid.Row="3" Padding="0" BackgroundColor="Transparent" BorderColor="Black" Margin="30,0">
             <Grid >

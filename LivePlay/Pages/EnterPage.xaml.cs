@@ -7,11 +7,13 @@ namespace LivePlay.Pages;
 public partial class EnterPage : ContentPage
 {
     LoginViewModel Loggin = new();
+    StackLayout NowStackLayout;
 
     public EnterPage()
     {
         InitializeComponent();
         BindingContext = Loggin;
+        NowStackLayout = LoginStackLayout;
     }
 
     private async void OnLoginButtonClicked(object sender, EventArgs e)
@@ -21,14 +23,29 @@ public partial class EnterPage : ContentPage
 
     private void LogIn(object sender, EventArgs e)
     {
-        AnimateEnterFrame(0, 100);
+        if (NowStackLayout != LoginStackLayout)
+        {
+            LoginStackLayout.TranslationX = -300;
+            AnimateEnterFrame(LoginStackLayout, 0, 250);
+            AnimateEnterFrame(NowStackLayout, 300, 250);
+            NowStackLayout = LoginStackLayout;
+        }
     }
 
     private void SignUp(object sender, EventArgs e)
     {
-        AnimateEnterFrame(300, 100);
+        if (NowStackLayout != EmailStackLayout)
+        {
+            EmailStackLayout.TranslationX = 300;
+            AnimateEnterFrame(NowStackLayout, -300, 100);
+            AnimateEnterFrame(EmailStackLayout, 0, 250);
+            NowStackLayout = EmailStackLayout;
+        }
     }
 
-    private async void AnimateEnterFrame(double xAnimate, uint timeDo)
-        => await AnimatedFrame.TranslateTo(xAnimate, 0, timeDo, Easing.Linear);
+    private async void AnimateEnterFrame(StackLayout stackLayout, double xAnimate, uint timeDo)
+    {
+        await stackLayout.TranslateTo(xAnimate, 0, timeDo, Easing.Linear);
+        stackLayout.IsVisible = !stackLayout.IsVisible;
+    }
 }
