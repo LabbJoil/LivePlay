@@ -1,13 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using LivePlay.Pages;
 
 namespace LivePlay.Models.ViewModels;
 
-internal class LoginViewModel
+public partial class LoginViewModel : ObservableObject
 {
-    public string? UserName { get; set; }
-    public string? Password { get; set; }
+    [ObservableProperty]
+    private string? _userName;
+
+    [ObservableProperty]
+    private string? _password;
+
+    [RelayCommand]
+    private async Task Tap()
+    {
+        await Shell.Current.GoToAsync(nameof(TapePage));
+    }
 }

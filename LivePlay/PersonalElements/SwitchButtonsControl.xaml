@@ -21,10 +21,10 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Button Clicked="Button1_Clicked" Grid.Column="0" ZIndex="1" Background="Transparent"
-                        Text="{Binding Source={x:Reference this},Path=TextButton1}"
+                <Button x:Name="Button1" Clicked="Button1_Clicked" Grid.Column="0" ZIndex="1" Background="Transparent" FontAttributes="Bold"
+                        Text="{Binding Source={x:Reference this},Path=TextButton1}" IsEnabled="false"
                         TextColor="{AppThemeBinding Dark={StaticResource SwitchButtonsTextDark}, Light={StaticResource SwitchButtonsTextLight}}"/>
-                <Button Clicked="Button2_Clicked" Grid.Column="1" ZIndex="1" Background="Transparent"
+                <Button x:Name="Button2" Clicked="Button2_Clicked" Grid.Column="1" ZIndex="1" Background="Transparent" FontAttributes="Bold"
                         Text="{Binding Source={x:Reference this},Path=TextButton2}"
                         TextColor="{AppThemeBinding Dark={StaticResource SwitchButtonsTextDark}, Light={StaticResource SwitchButtonsTextLight}}"/>
                 <Frame x:Name="AnimatedFrame" BorderColor="Transparent" Padding="0" CornerRadius="25" Margin="2" Grid.Column="0"

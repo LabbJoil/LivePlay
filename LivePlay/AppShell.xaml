@@ -4,9 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:LivePlay.Pages"
-    Shell.TabBarIsVisible="False"
-    Shell.FlyoutBehavior="Disabled"
-    Title="LivePlay">
+    Shell.TabBarIsVisible="False" FlyoutBackground="White">
     <!-- TODO: сделать загрузочный экран  вместо enterPage-->
     
     <!--<Shell.Resources>
@@ -18,13 +16,52 @@
             </Style>--><!--
         </ResourceDictionary>
     </Shell.Resources>-->
-    
+
+    <Shell.FlyoutHeader>
+        <Grid Margin="0,100,0,0"/>
+    </Shell.FlyoutHeader>
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                </Grid.RowDefinitions>
+                <Border x:Name="SelectedElem" Stroke="Transparent" HorizontalOptions="Fill">
+                    <Border.Shadow>
+                        <Shadow
+                            Brush="Gray"
+                            Radius="20"
+                            Opacity="1" />
+                    </Border.Shadow>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" x:Name="Text"
+                               Text="{Binding Title}"  
+                               TextColor="Black"  
+                               FontSize="Body"  
+                               Padding="7,0,7,0"  
+                               VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                               VerticalOptions="Center" HorizontalOptions="Center">
+                        </Label>
+                        <Rectangle Grid.Column="1" x:Name="Line" BackgroundColor="#415A77" RadiusX="30" RadiusY="30"
+                               HorizontalOptions="Center" WidthRequest="5" Margin="0,5,20,5"/>
+                    </Grid>
+                </Border>
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
     <ShellContent
         ContentTemplate="{DataTemplate pages:EnterPage}"
         FlyoutItemIsVisible="False"
+        Shell.FlyoutBehavior="Disabled"
         Route="EnterPage" />
 
-    <FlyoutItem Route="HomePage" FlyoutDisplayOptions="AsMultipleItems">
+    <FlyoutItem Route="TapePage" FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Tape" ContentTemplate="{DataTemplate pages:TapePage}"/>
         <ShellContent Title="Settings" ContentTemplate="{DataTemplate pages:SettingsPage}"/>
     </FlyoutItem>

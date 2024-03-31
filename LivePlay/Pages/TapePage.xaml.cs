@@ -6,4 +6,9 @@ public partial class TapePage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void GoBack(object sender, EventArgs e)
+    {
+		//Navigation.PopModalAsync();
+    }
 }

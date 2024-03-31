@@ -1,9 +1,7 @@
 ﻿
+using LivePlay.Models.ViewModels;
 using LivePlay.Pages;
-using LivePlay.PersonalElements;
 using Microsoft.Extensions.Logging;
-using Microsoft.Maui.Controls;
-using System.Diagnostics.Metrics;
 
 namespace LivePlay;
 
@@ -21,6 +19,7 @@ public static class MauiProgram
             });
 
         builder.Services.AddSingleton<TapePage>();
+        builder.Services.AddSingleton<LoginViewModel>();
 
 #if DEBUG
         builder.Logging.AddDebug();

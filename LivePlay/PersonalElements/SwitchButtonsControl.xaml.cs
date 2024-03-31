@@ -5,8 +5,9 @@ namespace LivePlay.PersonalElements;
 
 public partial class SwitchButtonsControl : ContentView
 {
-    public event EventHandler? ClickButton1;
-    public event EventHandler? ClickButton2;
+    public delegate Task ClickBT(object sender, EventArgs e);
+    public event ClickBT? ClickButton1;
+    public event ClickBT? ClickButton2;
 
     public static readonly BindableProperty TextButton1Property = BindableProperty.Create(
        propertyName: nameof(TextButton1),
@@ -39,19 +40,22 @@ public partial class SwitchButtonsControl : ContentView
 		InitializeComponent();
 	}
 
-    private int T = 0;
-    private void Button1_Clicked(object sender, EventArgs e)
+    private async void Button1_Clicked(object sender, EventArgs e)
     {
-        AnimateFrame(0);
-        ClickButton1?.Invoke(this, e);
+        Button1.IsEnabled = false;
+        await Task.WhenAll(AnimateFrame(0),
+            ClickButton2?.Invoke(this, e) ?? Task.CompletedTask);
+        Button2.IsEnabled = true;
     }
 
-    private void Button2_Clicked(object sender, EventArgs e)
+    private async void Button2_Clicked(object sender, EventArgs e)
     {
-        AnimateFrame(MainGrid.Width / 2);
-        ClickButton2?.Invoke(this, e);
+        Button2.IsEnabled = false;
+        await Task.WhenAll(AnimateFrame(MainGrid.Width / 2),
+            ClickButton1?.Invoke(this, e) ?? Task.CompletedTask);
+        Button1.IsEnabled = true;
     }
 
-    private async void AnimateFrame(double xAnimate)
+    private async Task AnimateFrame(double xAnimate)
         => await AnimatedFrame.TranslateTo(xAnimate, 0, 250, Easing.Linear);
 }
