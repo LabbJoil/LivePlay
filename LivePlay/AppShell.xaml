@@ -4,18 +4,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:LivePlay.Pages"
-    Shell.TabBarIsVisible="False" FlyoutBackground="White">
-    <!-- TODO: сделать загрузочный экран  вместо enterPage-->
-    
-    <!--<Shell.Resources>
-        <ResourceDictionary>
-            <Color x:Key="FlyoutBackgroundColor">LightBlue</Color>
-            --><!-- Цвет, который хотите установить для Flyout -->
-            <!--<Style TargetType="FlyoutItem">
-                <Setter Property=""  Value="{StaticResource FlyoutBackgroundColor}" />
-            </Style>--><!--
-        </ResourceDictionary>
-    </Shell.Resources>-->
+    Shell.TabBarIsVisible="False"
+    FlyoutBackground="White">
 
     <Shell.FlyoutHeader>
         <Grid Margin="0,100,0,0"/>
@@ -23,35 +13,32 @@
 
     <Shell.ItemTemplate>
         <DataTemplate>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60" />
-                </Grid.RowDefinitions>
-                <Border x:Name="SelectedElem" Stroke="Transparent" HorizontalOptions="Fill">
-                    <Border.Shadow>
-                        <Shadow
-                            Brush="Gray"
-                            Radius="20"
-                            Opacity="1" />
-                    </Border.Shadow>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" x:Name="Text"
-                               Text="{Binding Title}"  
-                               TextColor="Black"  
-                               FontSize="Body"  
-                               Padding="7,0,7,0"  
-                               VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
-                               VerticalOptions="Center" HorizontalOptions="Center">
-                        </Label>
-                        <Rectangle Grid.Column="1" x:Name="Line" BackgroundColor="#415A77" RadiusX="30" RadiusY="30"
-                               HorizontalOptions="Center" WidthRequest="5" Margin="0,5,20,5"/>
-                    </Grid>
-                </Border>
-            </Grid>
+            <ScrollView VerticalOptions="Start">
+                <Grid x:Name="FlyoutGrid" Loaded="FlyoutGrid_Loaded" AutomationId="{Binding AutomationId}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Label Grid.Column="0" ZIndex="1"
+                        Text="{Binding Title}"
+                        TextColor="Black"
+                        FontSize="16"
+                        VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                        VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Rectangle x:Name="Line" Grid.Column="1" ZIndex="1"
+                               WidthRequest="7" RadiusX="30" RadiusY="30" BackgroundColor="#415A77" HorizontalOptions="Center" Margin="0,5,20,5"/>
+                    <Rectangle x:Name="BackGroud" Grid.ColumnSpan="2" ZIndex="0"
+                               BackgroundColor="Gray" HorizontalOptions="Fill" VerticalOptions="Fill" Opacity="0.2"/>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </Grid.GestureRecognizers>
+                    
+                </Grid>
+            </ScrollView>
         </DataTemplate>
     </Shell.ItemTemplate>
 
@@ -62,8 +49,8 @@
         Route="EnterPage" />
 
     <FlyoutItem Route="TapePage" FlyoutDisplayOptions="AsMultipleItems">
-        <ShellContent Title="Tape" ContentTemplate="{DataTemplate pages:TapePage}"/>
-        <ShellContent Title="Settings" ContentTemplate="{DataTemplate pages:SettingsPage}"/>
+        <ShellContent Title="Лента" AutomationId="0" ContentTemplate="{DataTemplate pages:TapePage}"/>
+        <ShellContent Title="Настройки" AutomationId="1" ContentTemplate="{DataTemplate pages:SettingsPage}"/>
     </FlyoutItem>
 
 </Shell>
