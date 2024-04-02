@@ -1,7 +1,7 @@
 ﻿
-using LivePlay.Models.ViewModels;
+using LivePlayMAUI.Models.ViewModels;
 
-namespace LivePlay.Services;
+namespace LivePlayMAUI.Services;
 
 internal static class Settings
 {

@@ -1,7 +1,7 @@
-using LivePlay.Models.ViewModels;
+using LivePlayMAUI.Models.ViewModels;
 using System.Formats.Tar;
 
-namespace LivePlay.PersonalElements;
+namespace LivePlayMAUI.PersonalElements;
 
 public partial class PasswordEntryControl : ContentView
 {

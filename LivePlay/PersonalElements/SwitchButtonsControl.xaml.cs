@@ -1,7 +1,7 @@
 using Microsoft.Maui;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace LivePlay.PersonalElements;
+namespace LivePlayMAUI.PersonalElements;
 
 public partial class SwitchButtonsControl : ContentView
 {

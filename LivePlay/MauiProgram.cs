@@ -1,9 +1,9 @@
 ﻿
-using LivePlay.Models.ViewModels;
-using LivePlay.Pages;
+using LivePlayMAUI.Models.ViewModels;
+using LivePlayMAUI.Pages;
 using Microsoft.Extensions.Logging;
 
-namespace LivePlay;
+namespace LivePlayMAUI;
 
 public static class MauiProgram
 {

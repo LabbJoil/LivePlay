@@ -1,9 +1,9 @@
 ﻿
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using LivePlay.Pages;
+using LivePlayMAUI.Pages;
 
-namespace LivePlay.Models.ViewModels;
+namespace LivePlayMAUI.Models.ViewModels;
 
 public partial class LoginViewModel : ObservableObject
 {

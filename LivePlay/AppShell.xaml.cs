@@ -1,8 +1,8 @@
 ﻿
-using LivePlay.Pages;
+using LivePlayMAUI.Pages;
 using Microsoft.Maui.Controls.Shapes;
 
-namespace LivePlay;
+namespace LivePlayMAUI;
 
 public partial class AppShell : Shell
 {

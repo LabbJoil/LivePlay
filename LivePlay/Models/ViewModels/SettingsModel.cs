@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LivePlay.Models.ViewModels;
+namespace LivePlayMAUI.Models.ViewModels;
 
 internal static class SettingsModel
 {

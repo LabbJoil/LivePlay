@@ -1,6 +1,6 @@
-using LivePlay.Models.ViewModels;
+using LivePlayMAUI.Models.ViewModels;
 
-namespace LivePlay.PersonalElements;
+namespace LivePlayMAUI.PersonalElements;
 
 public partial class SimpleEntryControl : ContentView
 {

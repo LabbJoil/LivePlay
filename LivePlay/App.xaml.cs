@@ -2,11 +2,11 @@
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Platform;
-using LivePlay.PersonalElements;
+using LivePlayMAUI.PersonalElements;
 using Microsoft.Maui.ApplicationModel;
-using LivePlay.Services;
+using LivePlayMAUI.Services;
 
-namespace LivePlay;
+namespace LivePlayMAUI;
 
 public partial class App : Application
 {

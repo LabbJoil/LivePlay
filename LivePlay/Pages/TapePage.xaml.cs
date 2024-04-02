@@ -1,4 +1,4 @@
-namespace LivePlay.Pages;
+namespace LivePlayMAUI.Pages;
 
 public partial class TapePage : ContentPage
 {

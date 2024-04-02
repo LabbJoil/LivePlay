@@ -1,9 +1,9 @@
 ﻿
-using LivePlay.Models.Enum;
-using LivePlay.Models.ViewModels;
-using LivePlay.Services;
+using LivePlayMAUI.Models.Enum;
+using LivePlayMAUI.Models.ViewModels;
+using LivePlayMAUI.Services;
 
-namespace LivePlay.Pages;
+namespace LivePlayMAUI.Pages;
 
 public partial class EnterPage : ContentPage
 {

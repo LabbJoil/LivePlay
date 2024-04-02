@@ -1,7 +1,7 @@
 ﻿
-using LivePlay.Models.Enum;
+using LivePlayMAUI.Models.Enum;
 
-namespace LivePlay.Services;
+namespace LivePlayMAUI.Services;
 
 internal class ActionTimer(DirectionAction directionTimer, Action<object?>? periodAction = null, Action? endAction = null)
 {

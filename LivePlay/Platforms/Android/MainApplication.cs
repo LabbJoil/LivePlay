@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace LivePlay
+namespace LivePlayMAUI
 {
     [Application]
     public class MainApplication : MauiApplication

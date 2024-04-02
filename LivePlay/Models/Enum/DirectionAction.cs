@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LivePlay.Models.Enum;
+namespace LivePlayMAUI.Models.Enum;
 
 internal enum DirectionAction
 {

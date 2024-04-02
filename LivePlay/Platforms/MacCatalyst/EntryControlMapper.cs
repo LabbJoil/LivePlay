@@ -5,7 +5,7 @@ using Microsoft.Maui.Handlers;
 using Microsoft.Maui.Platform;
 using UIKit;
 
-namespace LivePlay.Platforms;
+namespace LivePlayMAUI.Platforms;
 
 class EntryControlMapper
 {
