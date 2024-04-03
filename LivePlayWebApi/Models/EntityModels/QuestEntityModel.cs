@@ -1,4 +1,5 @@
 ﻿
+using LivePlayWebApi.Models.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -14,7 +15,10 @@ public class QuestEntityModel
     [Required]
     public string? Description { get; set; }
     [Required]
-    public 
+    public TypeQuest Type { get; set; }
+    public string? Tip { get; set; }
+    [Required]
+    public int Bonus { get; set; }
     [Required]
     public DateTime? CreatedDate { get; set; }
 }
