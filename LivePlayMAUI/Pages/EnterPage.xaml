@@ -5,7 +5,7 @@
              xmlns:pe="clr-namespace:LivePlayMAUI.PersonalElements"
              Shell.NavBarIsVisible="False">
 
-    <Grid BackgroundColor="{AppThemeBinding Dark={StaticResource Page1BackgroundDark}, Light={StaticResource Page1BackgroundLight}}">
+    <Grid x:Name="MainGrid" BackgroundColor="{AppThemeBinding Dark={StaticResource Page1BackgroundDark}, Light={StaticResource Page1BackgroundLight}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
             <RowDefinition Height="62"/>

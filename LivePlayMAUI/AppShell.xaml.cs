@@ -1,4 +1,5 @@
 ﻿
+using LivePlayMAUI.Models.ViewModels;
 using LivePlayMAUI.Pages;
 using Microsoft.Maui.Controls.Shapes;
 
@@ -25,13 +26,17 @@ public partial class AppShell : Shell
         }
     }
 
-    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
     {
         if (sender is Grid grid)
         {
             if (LastGrid != null) SetViewElement(LastGrid, false);
             SetViewElement(grid, true);
             LastGrid = grid;
+            var item = FlyoutItemsNow.Items.ToArray().First(i => i.Items[0].AutomationId == grid.AutomationId);
+            await GoToAsync($"//{item.Route}");
+
+            Current.FlyoutIsPresented = false;
         }
     }
 

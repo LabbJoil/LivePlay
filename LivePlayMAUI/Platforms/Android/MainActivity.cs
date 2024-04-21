@@ -16,9 +16,9 @@ namespace LivePlayMAUI
             base.OnCreate(savedInstanceState);
         }
 
-        public void ChangeBarsColor(string colorName)
+        public void ChangeBarsColor(Color color)
         {
-            Android.Graphics.Color barsColor = ((SolidColorBrush)(SettingsModel.ColorResourceDictionary?[colorName] as Color ?? Color.FromArgb("#415A77"))).Color.ToAndroid();
+            Android.Graphics.Color barsColor = ((SolidColorBrush)color).Color.ToAndroid();
             Window!.SetStatusBarColor(barsColor);
             Window.SetNavigationBarColor(barsColor);
         }

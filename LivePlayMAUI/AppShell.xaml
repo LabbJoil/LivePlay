@@ -22,13 +22,16 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="30"/>
                     </Grid.ColumnDefinitions>
-                    
+
                     <Label Grid.Column="0" ZIndex="1"
-                        Text="{Binding Title}"
-                        TextColor="Black"
-                        FontSize="16"
-                        VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
-                        VerticalOptions="Center" HorizontalOptions="Center"/>
+                           Text="{Binding Title}"
+                           TextColor="Black"
+                           FontSize="16"
+                           VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                           VerticalOptions="Center" HorizontalOptions="Center"/>
+                    
+
+                    <Label IsVisible="False" IsEnabled="False" Text="{Binding ContentTemplate}"/>
                     <Rectangle x:Name="Line" Grid.Column="1" ZIndex="1"
                                WidthRequest="7" RadiusX="30" RadiusY="30" BackgroundColor="#415A77" HorizontalOptions="Center" Margin="0,5,20,5"/>
                     <Rectangle x:Name="BackGroud" Grid.ColumnSpan="2" ZIndex="0"
@@ -36,7 +39,6 @@
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                     </Grid.GestureRecognizers>
-                    
                 </Grid>
             </ScrollView>
         </DataTemplate>
@@ -48,7 +50,7 @@
         Shell.FlyoutBehavior="Disabled"
         Route="EnterPage" />
 
-    <FlyoutItem Route="TapePage" FlyoutDisplayOptions="AsMultipleItems">
+    <FlyoutItem x:Name="FlyoutItemsNow" Route="TapePage" FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Лента" AutomationId="0" ContentTemplate="{DataTemplate pages:TapePage}"/>
         <ShellContent Title="Настройки" AutomationId="1" ContentTemplate="{DataTemplate pages:SettingsPage}"/>
     </FlyoutItem>
