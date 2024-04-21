@@ -15,6 +15,8 @@ public class QuestEntityModel
     [Required]
     public string? Description { get; set; }
     [Required]
+    public byte[]? Image { get; set; }
+    [Required]
     public TypeQuest Type { get; set; }
     public string? Tip { get; set; }
     [Required]
