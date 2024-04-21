@@ -14,18 +14,18 @@ internal class SettingsModel
     public static string CloseSVG { get; private set; } = "close_dark.svg";
     public static AppTheme AppTheme { get; private set; }
 
-    private static ResourceDictionary? _ColorsResourceDictionary;
+    private static ResourceDictionary? ColorsRD;
     public static ResourceDictionary? ColorResourceDictionary
     {
-        get => _ColorsResourceDictionary;
-        set => _ColorsResourceDictionary ??= value;
+        get => ColorsRD;
+        set => ColorsRD ??= value;
     }
 
-    private static Action<string>? ChangeColorStatusBarsAction;
+    private static Action<string>? ChangeColorSB;
     public static Action<string>? ChangeColorStatusBars
     {
-        get => ChangeColorStatusBarsAction;
-        set => ChangeColorStatusBarsAction ??= value;
+        get => ChangeColorSB;
+        set => ChangeColorSB ??= value;
     }
 
     public static void SetSettings(AppTheme them)
