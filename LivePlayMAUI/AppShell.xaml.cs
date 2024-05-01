@@ -1,6 +1,7 @@
 ﻿
 using LivePlayMAUI.Models.ViewModels;
 using LivePlayMAUI.Pages;
+using LivePlayMAUI.Services;
 using Microsoft.Maui.Controls.Shapes;
 
 namespace LivePlayMAUI;
@@ -13,6 +14,7 @@ public partial class AppShell : Shell
     {
         InitializeComponent();
         Routing.RegisterRoute(nameof(TapePage), typeof(TapePage));
+        Settings.ChangeCountCoins = ChangeCountCoins;
     }
 
     private void FlyoutGrid_Loaded(object sender, EventArgs e)
@@ -35,9 +37,13 @@ public partial class AppShell : Shell
             LastGrid = grid;
             var item = FlyoutItemsNow.Items.ToArray().First(i => i.Items[0].AutomationId == grid.AutomationId);
             await GoToAsync($"//{item.Route}");
-
             Current.FlyoutIsPresented = false;
         }
+    }
+
+    private void ChangeCountCoins(string newCountCoins)
+    {
+        CoinLabel.Text = newCountCoins;
     }
 
     private static void SetViewElement(Grid grid, bool isVisible)

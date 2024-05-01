@@ -1,5 +1,7 @@
-using LivePlayMAUI.Models.ViewModels;
+
 using System.Collections.ObjectModel;
+using LivePlayMAUI.Models.Enum;
+using LivePlayMAUI.Services;
 
 namespace LivePlayMAUI.Pages;
 
@@ -9,7 +11,7 @@ public partial class TapePage : ContentPage
 	{
 		InitializeComponent();
         BindingContext = new MainViewModel();
-        SettingsModel.ChangeColorStatusBars?.Invoke(MainScrollView.BackgroundColor);
+        Settings.ChangeColorStatusBars?.Invoke(MainScrollView.BackgroundColor, StatusBarColor.BarWhite, null);
     }
 
     private void GoBack(object sender, EventArgs e)
@@ -32,8 +34,8 @@ public class MainViewModel
     {
         Images = new ObservableCollection<ImageItem>
         {
-            new ImageItem { ImageUrl = "your_image_url_1", Caption = "Caption 1" },
-            new ImageItem { ImageUrl = "your_image_url_2", Caption = "Caption 2" },
+            new ImageItem { ImageUrl = @"C:\Users\levt1\Pictures\Screenshots\Screenshot 2023-12-11 012631.png", Caption = "Caption 1" },
+            new ImageItem { ImageUrl = @"C:\Users\levt1\Pictures\Screenshots\Screenshot 2024-02-20 234438.png", Caption = "Caption 2" },
             // Добавьте другие элементы
         };
     }

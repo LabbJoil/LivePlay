@@ -1,4 +1,5 @@
 ﻿
+using CommunityToolkit.Maui;
 using LivePlayMAUI.Models.ViewModels;
 using LivePlayMAUI.Pages;
 using Microsoft.Extensions.Logging;
@@ -12,14 +13,15 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
+            .UseMauiCommunityToolkit()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
-        builder.Services.AddSingleton<TapePage>();
         builder.Services.AddSingleton<LoginViewModel>();
+        builder.Services.AddSingleton<TapePage>();
 
 #if DEBUG
         builder.Logging.AddDebug();

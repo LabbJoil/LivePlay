@@ -17,7 +17,7 @@ public partial class EnterPage : ContentPage
         InitializeComponent();
         BindingContext = Loggin;
         NowStackLayout = LoginStackLayout;
-        SettingsModel.ChangeColorStatusBars?.Invoke(MainGrid.BackgroundColor);
+        Settings.ChangeColorStatusBars?.Invoke(MainGrid.BackgroundColor, StatusBarColor.BarWhite, null);
     }
 
     private async void OnLoginButtonClicked(object sender, EventArgs e)

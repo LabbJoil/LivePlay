@@ -5,7 +5,23 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:LivePlayMAUI.Pages"
     Shell.TabBarIsVisible="False"
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
     FlyoutBackground="White">
+
+    <Shell.TitleView>
+        <StackLayout VerticalOptions="Fill" Orientation="Horizontal">
+            <Border HorizontalOptions="EndAndExpand" Margin="15,8" Stroke="#DEDEDE" StrokeThickness="2">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="30" />
+                </Border.StrokeShape>
+                <StackLayout Orientation="Horizontal">
+                    <Label x:Name="CoinLabel" Text="123" VerticalOptions="Center" HorizontalOptions="Start" TextColor="Black" FontSize="16" FontAttributes="Bold" Margin="10,0"/>
+                    <ImageButton Source="coin_dark.svg" Margin="5,2" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+            </Border>
+        </StackLayout>
+    </Shell.TitleView>
 
     <Shell.FlyoutHeader>
         <Grid Margin="0,100,0,0"/>
@@ -30,7 +46,6 @@
                            VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
                            VerticalOptions="Center" HorizontalOptions="Center"/>
                     
-
                     <Label IsVisible="False" IsEnabled="False" Text="{Binding ContentTemplate}"/>
                     <Rectangle x:Name="Line" Grid.Column="1" ZIndex="1"
                                WidthRequest="7" RadiusX="30" RadiusY="30" BackgroundColor="#415A77" HorizontalOptions="Center" Margin="0,5,20,5"/>
@@ -47,7 +62,6 @@
     <ShellContent
         ContentTemplate="{DataTemplate pages:EnterPage}"
         FlyoutItemIsVisible="False"
-        Shell.FlyoutBehavior="Disabled"
         Route="EnterPage" />
 
     <FlyoutItem x:Name="FlyoutItemsNow" Route="TapePage" FlyoutDisplayOptions="AsMultipleItems">

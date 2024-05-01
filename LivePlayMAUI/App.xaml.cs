@@ -15,7 +15,7 @@ public partial class App : Application
     {
         InitializeComponent();
         MainPage = new AppShell();
-        SettingsModel.ColorResourceDictionary = Colors;
+        //SettingsModel.ColorResourceDictionary = Colors;
         UserAppTheme = Settings.LoadSettings();
     }
 }

@@ -3,20 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LivePlayMAUI.Pages.TapePage"
              Title="TapePage">
+
     <ScrollView x:Name="MainScrollView" BackgroundColor="{AppThemeBinding Dark={StaticResource PageMainBackgroundDark}, Light={StaticResource PageMainBackgroundLight}}">
         <CollectionView ItemsSource="{Binding Images}">
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout Orientation="Vertical" />
-            </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout>
-                        <Image Source="{Binding ImageUrl}" HeightRequest="200" Aspect="AspectFill"/>
-                        <Label Text="{Binding Caption}" />
-                    </StackLayout>
+                    <Border BackgroundColor="#415A77" Margin="18" Stroke="Transparent">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20" />
+                        </Border.StrokeShape>
+                        <StackLayout>
+                            <Image Source="{Binding ImageUrl}" HeightRequest="200" HorizontalOptions="Center" Margin="27,19"/>
+                            <Label Text="{Binding Caption}" HorizontalOptions="Start" Margin="20,10"/>
+                        </StackLayout>
+                    </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
     </ScrollView>
+    
 </ContentPage>
