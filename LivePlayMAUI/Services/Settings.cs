@@ -10,6 +10,9 @@ internal static class Settings
     private static Action<Color, StatusBarColor, Color?>? ChangeColorStatusBarsAction;
     private static Action<string>? ChangeCountCoinsAction;
 
+    public static PermissionStatus PermissionStorageRead { get; private set; }
+    public static PermissionStatus PermissionStorageWrite { get; private set; }
+
     public static Action<Color, StatusBarColor, Color?>? ChangeColorStatusBars
     {
         get => ChangeColorStatusBarsAction;
@@ -27,5 +30,44 @@ internal static class Settings
         AppTheme them = AppTheme.Dark; // TODO: загрузка из JSON
         SettingsModel.SetSettings(them);
         return them;
+    }
+
+    //public static bool CheckPermissions()
+    //{
+    //    if (PermissionStorageRead != PermissionStatus.Granted)  // add PermissionStorageWrite
+    //    {
+    //        PermissionStorageRead = GetPermission().Result;
+    //    }
+    //}
+
+    public static async Task<bool> GetPermission()
+    {
+        PermissionStatus nowStatus = await Permissions.CheckStatusAsync<Permissions.StorageRead>();
+        PermissionStatus changeStatus;
+        switch (nowStatus)
+        {
+            case PermissionStatus.Granted:
+                return true;
+            case PermissionStatus.Disabled:
+                return false;
+
+            case PermissionStatus.Denied:
+            case PermissionStatus.Unknown:
+            case PermissionStatus.Limited:
+            case PermissionStatus.Restricted:
+                changeStatus = await Permissions.RequestAsync<Permissions.StorageRead>();
+                break;
+            default:
+                changeStatus = PermissionStatus.Unknown;
+                break;
+        }
+
+        switch (changeStatus)
+        {
+            case PermissionStatus.Granted:
+                return true;
+            default:
+                return false;
+        }
     }
 }

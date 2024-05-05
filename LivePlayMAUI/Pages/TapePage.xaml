@@ -4,22 +4,40 @@
              x:Class="LivePlayMAUI.Pages.TapePage"
              Title="TapePage">
 
-    <ScrollView x:Name="MainScrollView" BackgroundColor="{AppThemeBinding Dark={StaticResource PageMainBackgroundDark}, Light={StaticResource PageMainBackgroundLight}}">
-        <CollectionView ItemsSource="{Binding Images}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
+    <ListView x:Name="MainScrollView" BackgroundColor="{AppThemeBinding Dark={StaticResource PageMainBackgroundDark}, Light={StaticResource PageMainBackgroundLight}}"
+                  ItemsSource="{Binding TapeItems}" ItemTapped="ListView_ItemTapped" IsPullToRefreshEnabled="True" RowHeight="300" SeparatorColor="Transparent"
+                  IsRefreshing="{Binding IsRefreshing}" RefreshCommand="{Binding RefreshCommand}" >
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
                     <Border BackgroundColor="#415A77" Margin="18" Stroke="Transparent">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="20" />
                         </Border.StrokeShape>
-                        <StackLayout>
-                            <Image Source="{Binding ImageUrl}" HeightRequest="200" HorizontalOptions="Center" Margin="27,19"/>
-                            <Label Text="{Binding Caption}" HorizontalOptions="Start" Margin="20,10"/>
-                        </StackLayout>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="9"/>
+                                <RowDefinition Height="150"/>
+                                <RowDefinition Height="10"/>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="18"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="27"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="27"/>
+                            </Grid.ColumnDefinitions>
+                            <Frame Grid.Column="1" Grid.Row="1" CornerRadius="10" Background="Transparent" BorderColor="Transparent" Padding="0">
+                                <Image Source="{Binding ImageView}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill" />
+                            </Frame>
+                            <Label Grid.Column="1" Grid.Row="3" Text="{Binding TitleView}" FontSize="19" HorizontalOptions="Start" />
+                            <Label Grid.Column="1" Grid.Row="4" Text="{Binding DescriptionView}" FontSize="15" HorizontalOptions="Start" />
+                        </Grid>
                     </Border>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </ScrollView>
-    
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
 </ContentPage>

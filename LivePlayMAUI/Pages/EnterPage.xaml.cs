@@ -1,4 +1,5 @@
 ﻿
+using CommunityToolkit.Maui.Storage;
 using LivePlayMAUI.Models.Enum;
 using LivePlayMAUI.Models.ViewModels;
 using LivePlayMAUI.Services;
@@ -11,17 +12,21 @@ public partial class EnterPage : ContentPage
     StackLayout NowStackLayout;
     ActionTimer? SendCodeTimer;
 
-
     public EnterPage()
     {
         InitializeComponent();
         BindingContext = Loggin;
         NowStackLayout = LoginStackLayout;
-        Settings.ChangeColorStatusBars?.Invoke(MainGrid.BackgroundColor, StatusBarColor.BarWhite, null);
+        Settings.ChangeColorStatusBars?.Invoke(MainGrid.BackgroundColor, StatusBarColor.BarReplay, null);
     }
 
     private async void OnLoginButtonClicked(object sender, EventArgs e)
     {
+        //var folderResult = await FolderPicker.PickAsync("DCIM");
+
+        bool havePermissions = await Settings.GetPermission();
+        if (!havePermissions)
+            return;
         await Shell.Current.GoToAsync($"//{nameof(TapePage)}");
         //await DisplayAlert("Login", $"Вы вошли как: {Loggin.UserName} - {Loggin.Password}", "ok");
     }
@@ -44,9 +49,11 @@ public partial class EnterPage : ContentPage
 
     private async void EmailCheckButtonClicked(object sender, EventArgs e)
     {
-        SendCodeTimer?.Stop();
-        SendCodeTimer = new(DirectionAction.Down, PrintTimer, EndTimer);
-        SendCodeTimer.Start(5, 1000);
+        if (SendCodeTimer == null)
+        {
+            SendCodeTimer = new(DirectionAction.Down, PrintTimer, EndTimer);
+            SendCodeTimer.Start(5, 1000);
+        }
         await ChangeStackLayout(CodeStackLayout, DirectionAction.Left);
     }
 
@@ -63,16 +70,20 @@ public partial class EnterPage : ContentPage
 
     private void SendCodeAgainButtonClicked(object sender, EventArgs e)
     {
-        SendCodeButton.IsEnabled = false;
         SendCodeTimer?.Stop();
+        SendCodeButton.IsEnabled = false;
         SendCodeTimer = new(DirectionAction.Down, PrintTimer, EndTimer);
         SendCodeTimer.Start(65, 1000);
     }
 
     private void PrintTimer(object? obj)
     {
-        if(obj is int seconds)
-            TimerLabel.Text = $"{seconds / 60}:{seconds % 60}";
+        if(obj is int fullSeconds)
+        {
+            var minutes = fullSeconds / 60;
+            var seconds = fullSeconds % 60;
+            TimerLabel.Text = string.Format("{0:d2}:{1:d2}", minutes, seconds);
+        }
     }
 
     private void EndTimer()
@@ -92,6 +103,4 @@ public partial class EnterPage : ContentPage
         NowStackLayout.IsVisible = false;
         NowStackLayout = stackLayoutIn;
     }
-
-    
 }

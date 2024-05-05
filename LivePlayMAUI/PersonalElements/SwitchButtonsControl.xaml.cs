@@ -1,5 +1,3 @@
-using Microsoft.Maui;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace LivePlayMAUI.PersonalElements;
 
@@ -20,7 +18,7 @@ public partial class SwitchButtonsControl : ContentView
         propertyName: nameof(TextButton2),
         returnType: typeof(string),
         declaringType: typeof(SimpleEntryControl),
-        defaultValue: "Button 1",
+        defaultValue: "Button 2",
         defaultBindingMode: BindingMode.OneWay);
 
     public string TextButton1
@@ -38,24 +36,30 @@ public partial class SwitchButtonsControl : ContentView
     public SwitchButtonsControl()
 	{
 		InitializeComponent();
-	}
+    }
+
+    private void Loaded_Page(object sender, EventArgs e)
+    {
+        ButtonFrame1.IsEnabled = false;
+    }
 
     private async void Button1_Clicked(object sender, EventArgs e)
     {
-        Button1.IsEnabled = false;
+        ButtonFrame1.IsEnabled = false;
         await Task.WhenAll(AnimateFrame(0),
             ClickButton2?.Invoke(this, e) ?? Task.CompletedTask);
-        Button2.IsEnabled = true;
+        ButtonFrame2.IsEnabled = true;
     }
 
     private async void Button2_Clicked(object sender, EventArgs e)
     {
-        Button2.IsEnabled = false;
+        ButtonFrame2.IsEnabled = false;
         await Task.WhenAll(AnimateFrame(MainGrid.Width / 2),
             ClickButton1?.Invoke(this, e) ?? Task.CompletedTask);
-        Button1.IsEnabled = true;
+        ButtonFrame1.IsEnabled = true;
     }
 
     private async Task AnimateFrame(double xAnimate)
         => await AnimatedFrame.TranslateTo(xAnimate, 0, 250, Easing.Linear);
+
 }

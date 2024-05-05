@@ -31,7 +31,7 @@
 
             <StackLayout x:Name="CodeStackLayout" WidthRequest="300" Orientation="Vertical" IsVisible="False">
                 <pe:SimpleEntryControl Placeholder="Код подтверждения" Margin="20"/>
-                <Label x:Name="TimerLabel" TextColor="Black" Text="0:0" Margin="10" VerticalOptions="Center"/>
+                <Label x:Name="TimerLabel" Text="00:00" Margin="10" VerticalOptions="Center"/>
                 <Button x:Name="CodeCheckButton" Text="Далее" Clicked="CodeCheckButtonClicked" Margin="50,30"/>
                 <Button x:Name="SendCodeButton" Text="Отправить сообщение ещё раз" Clicked="SendCodeAgainButtonClicked" IsEnabled="False" Margin="10,30" Style="{StaticResource SecondButton}"/>
             </StackLayout>

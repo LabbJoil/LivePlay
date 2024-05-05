@@ -7,7 +7,7 @@ public partial class SimpleEntryControl : ContentView
     public SimpleEntryControl()
     {
         InitializeComponent();
-        ActionButton.Source = SettingsModel.CloseSVG;
+        //ActionButton.Source = SettingsModel.CloseSVG;
     }
 
     public static readonly BindableProperty TextProperty = BindableProperty.Create(

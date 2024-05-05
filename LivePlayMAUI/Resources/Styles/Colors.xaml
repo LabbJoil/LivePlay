@@ -22,13 +22,9 @@
 
     <Color x:Key="ButtonBackgroundDark">#778DA9</Color>
     <Color x:Key="ButtonBackgroundLight">#54759B</Color>
-    <Color x:Key="ButtonClickBackgroundDark">#415A77</Color>
-    <Color x:Key="ButtonClickBackgroundLight">#3E5571</Color>
 
-    <Color x:Key="Button2BackgroundDark">Gray</Color>
-    <Color x:Key="Button2BackgroundLight">LightGray</Color>
-    <Color x:Key="Button2ClickBackgroundDark">#404040</Color>
-    <Color x:Key="Button2ClickBackgroundLight">Gray</Color>
+    <Color x:Key="Button2BackgroundDark">#512BD4</Color>
+    <Color x:Key="Button2BackgroundLight">#512BD4</Color>
 
     <Color x:Key="SwitchButtonsBackgroundDark">#415A77</Color>
     <Color x:Key="SwitchButtonsBackgroundLight">#DEDEDE</Color>
