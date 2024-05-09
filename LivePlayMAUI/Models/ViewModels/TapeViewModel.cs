@@ -40,7 +40,7 @@ internal partial class TapeViewModel : ObservableObject
             new()
             {
                 ImageView = $@"/storage/emulated/0/DCIM/Camera/20230414_212808.jpg",
-                TitleView = "Хуй пососи",
+                TitleView = "huiyuyuи",
                 DescriptionView = "fnwejkfnerbiuerbvierbviurbve"
             },
             new()
@@ -52,7 +52,7 @@ internal partial class TapeViewModel : ObservableObject
             new()
             {
                 ImageView = $@"/storage/emulated/0/DCIM/Camera/20230414_212808.jpg",
-                TitleView = "Хуй пососи",
+                TitleView = "jhhfyf",
                 DescriptionView = "fnwejkfnerbiuerbvierbviurbve"
             },
         ];

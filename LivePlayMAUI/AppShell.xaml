@@ -45,7 +45,7 @@
                            FontSize="16"
                            VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
                            VerticalOptions="Center" HorizontalOptions="Center"/>
-                    
+
                     <Label IsVisible="False" IsEnabled="False" Text="{Binding ContentTemplate}"/>
                     <Rectangle x:Name="Line" Grid.Column="1" ZIndex="1"
                                WidthRequest="7" RadiusX="30" RadiusY="30" BackgroundColor="#415A77" HorizontalOptions="Center" Margin="0,5,20,5"/>

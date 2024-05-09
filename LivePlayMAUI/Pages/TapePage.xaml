@@ -4,9 +4,8 @@
              x:Class="LivePlayMAUI.Pages.TapePage"
              Title="TapePage">
 
-    <ListView x:Name="MainScrollView" BackgroundColor="{AppThemeBinding Dark={StaticResource PageMainBackgroundDark}, Light={StaticResource PageMainBackgroundLight}}"
-                  ItemsSource="{Binding TapeItems}" ItemTapped="ListView_ItemTapped" IsPullToRefreshEnabled="True" RowHeight="300" SeparatorColor="Transparent"
-                  IsRefreshing="{Binding IsRefreshing}" RefreshCommand="{Binding RefreshCommand}" >
+    <ListView x:Name="MainScrollView" ItemTapped="ListView_ItemTapped" Style="{StaticResource TapeListView}"
+              IsRefreshing="{Binding IsRefreshing}" RefreshCommand="{Binding RefreshCommand}"  ItemsSource="{Binding TapeItems}">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
@@ -16,12 +15,11 @@
                         </Border.StrokeShape>
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="9"/>
+                                <RowDefinition Height="20"/>
                                 <RowDefinition Height="150"/>
                                 <RowDefinition Height="10"/>
-                                <RowDefinition Height="40"/>
-                                <RowDefinition Height="40"/>
-                                <RowDefinition Height="18"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="27"/>

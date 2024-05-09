@@ -11,6 +11,10 @@ public class QuestItem
     private string? Title;
     private string? Image;
     private string? Description;
+    private string? TotalDescription;
+    private DateTime? FinalDate;
+    private int Reward;
+
 
     public string? TitleView 
     { 
