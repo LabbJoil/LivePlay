@@ -11,6 +11,10 @@ public class QuestEntityModel
     [Key, Required]
     public int Id { get; set; }
     [Required]
+    public string? TitleView { get; set; }
+    [Required]
+    public string? DescriptionView {  get; set; }
+    [Required]
     public string? Title { get; set; }
     [Required]
     public string? Description { get; set; }
@@ -18,9 +22,8 @@ public class QuestEntityModel
     public byte[]? Image { get; set; }
     [Required]
     public TypeQuest Type { get; set; }
-    public string? Tip { get; set; }
     [Required]
-    public int Bonus { get; set; }
+    public int Reward { get; set; }
     [Required]
     public DateTime? CreatedDate { get; set; }
 }

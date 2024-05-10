@@ -4,21 +4,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LivePlayWebApi.Models.EntityModels;
 
-[Table("Feedback")]
-public class FeedbackEntityModel
+[Table("News")]
+public class NewsEntityModel
 {
     [Key, Required]
     public int Id { get; set; }
     [Required]
-    public int UserId { get; set; }
+    public string? Name { get; set; }
     [Required]
-    public string? Title { get; set; }
-    [Required]
-    public string? Text { get; set; }
+    public string? Description { get; set; }
     [Required]
     public byte[]? Image { get; set; }
     [Required]
-    public byte Rate { get; set; }
-    [Required]
-    private DateTime? CreateDate { get; set; }
+    private DateTime? FinalDate { get; set; }
 }
