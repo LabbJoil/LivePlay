@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LivePlayWebApi.Models.EntityModels;
 
-[Table("DoneQuest")]
-public class DoneQuestEntityModel
+[Table("QuestUser")]
+public class QuestUserEntityModel
 {
     [Key, Required]
     public int Id { get; set; }
@@ -13,4 +13,6 @@ public class DoneQuestEntityModel
     public int UserId { get; set; }
     [Required]
     public int QuestId { get; set; }
+    [Required]
+    public DateTime? GetDate { get; set; }
 }

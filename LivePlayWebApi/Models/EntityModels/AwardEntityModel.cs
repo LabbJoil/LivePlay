@@ -5,23 +5,21 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LivePlayWebApi.Models.EntityModels;
 
-[Table("Quest")]
-public class QuestEntityModel
+[Table("Award")]
+public class AwardEntityModel
 {
     [Key, Required]
     public int Id { get; set; }
     [Required]
-    public string? Title { get; set; }
+    public required string Title { get; set; }
     [Required]
-    public string? DescriptionMini {  get; set; }
-    [Required]
-    public string? DescriptionFull { get; set; }
+    public required string Description { get; set; }
     [Required]
     public byte[]? Image { get; set; }
     [Required]
-    public TypeQuest Type { get; set; }
+    public int Cost { get; set; }
     [Required]
-    public int Reward { get; set; }
+    public required string Coupon { get; set; }
     [Required]
     public DateTime? CreatedDate { get; set; }
     [Required]
