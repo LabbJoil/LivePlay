@@ -4,7 +4,7 @@ using LivePlayMAUI.Models.ViewModels;
 
 namespace LivePlayMAUI.Services;
 
-internal static class Settings
+internal static class AppSettings
 {
 
     private static Action<Color, StatusBarColor, Color?>? ChangeColorStatusBarsAction;
@@ -69,5 +69,11 @@ internal static class Settings
             default:
                 return false;
         }
+    }
+
+    public static void OpacityAnimation(IAnimatable owner, VisualElement visualElement, double startAnimation, double endAnimation, uint rate, uint lengthAnimation)
+    {
+        var animationBackground = new Animation(v => visualElement.Opacity = v, startAnimation, endAnimation);
+        animationBackground.Commit(owner, nameof(owner) + "AnimationOpacity", rate, lengthAnimation);
     }
 }

@@ -21,8 +21,12 @@ public static class MauiProgram
             });
 
         builder.Services.AddTransient<LoginViewModel>();
-        builder.Services.AddTransient<TapeViewModel>();
-        builder.Services.AddTransient<TapePage>();
+
+        builder.Services.AddTransient<NewsTapePage>();
+        builder.Services.AddTransient<NewsTapeViewModel>();
+
+        builder.Services.AddTransient<QuestTapePage>();
+        builder.Services.AddTransient<QuestTapeViewModel>();
 
 #if DEBUG
         builder.Logging.AddDebug();

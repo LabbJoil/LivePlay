@@ -7,13 +7,13 @@ using MauiPopup;
 
 namespace LivePlayMAUI.Pages;
 
-public partial class TapePage : ContentPage
+public partial class QuestTapePage : ContentPage
 {
-    public TapePage()
+    public QuestTapePage()
 	{
 		InitializeComponent();
-        BindingContext = new TapeViewModel();
-        Settings.ChangeColorStatusBars?.Invoke(MainScrollView.BackgroundColor, StatusBarColor.BarWhite, null);
+        BindingContext = new QuestTapeViewModel();
+        AppSettings.ChangeColorStatusBars?.Invoke(MainGrid.BackgroundColor, StatusBarColor.BarWhite, null);
     }
 
     private void GoBack(object sender, EventArgs e)

@@ -13,8 +13,9 @@ public partial class AppShell : Shell
     public AppShell()
     {
         InitializeComponent();
-        Routing.RegisterRoute(nameof(TapePage), typeof(TapePage));
-        Settings.ChangeCountCoins = ChangeCountCoins;
+        //Routing.RegisterRoute(nameof(QuestTapePage), typeof(QuestTapePage));
+        //Routing.RegisterRoute(nameof(NewsTapePage), typeof(NewsTapePage));
+        AppSettings.ChangeCountCoins = ChangeCountCoins;
     }
 
     private void FlyoutGrid_Loaded(object sender, EventArgs e)

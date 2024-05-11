@@ -16,6 +16,6 @@ public partial class LoginViewModel : ObservableObject
     [RelayCommand]
     private async Task Tap()
     {
-        await Shell.Current.GoToAsync(nameof(TapePage));
+        await Shell.Current.GoToAsync(nameof(QuestTapePage));
     }
 }

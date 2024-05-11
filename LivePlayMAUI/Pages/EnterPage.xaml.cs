@@ -17,17 +17,17 @@ public partial class EnterPage : ContentPage
         InitializeComponent();
         BindingContext = Loggin;
         NowStackLayout = LoginStackLayout;
-        Settings.ChangeColorStatusBars?.Invoke(MainGrid.BackgroundColor, StatusBarColor.BarReplay, null);
+        AppSettings.ChangeColorStatusBars?.Invoke(MainGrid.BackgroundColor, StatusBarColor.BarReplay, null);
     }
 
     private async void OnLoginButtonClicked(object sender, EventArgs e)
     {
         //var folderResult = await FolderPicker.PickAsync("DCIM");
 
-        bool havePermissions = await Settings.GetPermission();
+        bool havePermissions = await AppSettings.GetPermission();
         if (!havePermissions)
             return;
-        await Shell.Current.GoToAsync($"//{nameof(TapePage)}");
+        await Shell.Current.GoToAsync($"//{nameof(NewsTapePage)}");
         //await DisplayAlert("Login", $"Вы вошли как: {Loggin.UserName} - {Loggin.Password}", "ok");
     }
 

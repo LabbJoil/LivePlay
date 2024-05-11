@@ -13,7 +13,7 @@ using System.Windows.Input;
 
 namespace LivePlayMAUI.Models.ViewModels;
 
-internal partial class TapeViewModel : ObservableObject
+internal partial class QuestTapeViewModel : ObservableObject
 {
     public ObservableCollection<QuestItem> TapeItems { get; set; }
 
@@ -26,7 +26,7 @@ internal partial class TapeViewModel : ObservableObject
         IsRefreshing = false;
     }
 
-    public TapeViewModel()
+    public QuestTapeViewModel()
     {
 
         // запрос к серверу

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivePlayMAUI.Pages.QuestTapePage"
+             Title="TapePage">
+
+    <Grid x:Name="MainGrid" BackgroundColor="{AppThemeBinding Dark={StaticResource PageMainBackgroundDark}, Light={StaticResource PageMainBackgroundLight}}">
+        <CollectionView ItemsSource="{Binding TapeItems}" ItemsLayout="HorizontalGrid, 2">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Border BackgroundColor="#415A77" Margin="15" Stroke="Transparent">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="20" />
+                            </Border.StrokeShape>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20"/>
+                                    <RowDefinition Height="150"/>
+                                    <RowDefinition Height="15"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="5"/>
+                                    <RowDefinition Height="25"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="27"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="27"/>
+                                </Grid.ColumnDefinitions>
+                                <Frame Grid.ColumnSpan="3" Grid.RowSpan="2" CornerRadius="0" Background="Transparent" BorderColor="Transparent" Padding="0">
+                                    <Image Source="{Binding ImageView}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill" />
+                                </Frame>
+                                <!--<Frame Grid.Column="0" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" CornerRadius="30" ZIndex="1" 
+                                       Background="Black" BorderColor="Transparent" Padding="0" Opacity="0.73">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label x:Name="CoinLabel" Text="123" VerticalOptions="Center" HorizontalOptions="Start" TextColor="Black" FontSize="16" FontAttributes="Bold" Margin="10,0"/>
+                                        <Image Source="coin_dark.svg" Margin="5,2" HorizontalOptions="EndAndExpand"/>
+                                    </StackLayout>
+                                </Frame>-->
+                                <Label Grid.Column="1" Grid.Row="3" Text="{Binding TitleView}" FontSize="19" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                <Label Grid.Column="1" Grid.Row="5" Text="{Binding DescriptionView}" FontSize="15" HorizontalOptions="Start" VerticalOptions="Center" />
+                            </Grid>
+                        </Border>
+                    </ViewCell>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+</ContentPage>

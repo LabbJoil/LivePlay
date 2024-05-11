@@ -45,9 +45,10 @@
     </Style>
 
     <Style x:Key="TapeListView" TargetType="ListView">
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource PageMainBackgroundDark}, Light={StaticResource PageMainBackgroundLight}}"/>
+        <!--<Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource PageMainBackgroundDark}, Light={StaticResource PageMainBackgroundLight}}"/>-->
+        <Setter Property="BackgroundColor" Value="Transparent"/>
         <Setter Property="IsPullToRefreshEnabled" Value="True"/>
-        <Setter Property="RowHeight" Value="280"/>
+        <Setter Property="RowHeight" Value="290"/>
         <Setter Property="SeparatorColor" Value="Transparent"/>
         <Setter Property="SelectionMode" Value="None"/>
         <Setter Property="VisualStateManager.VisualStateGroups">

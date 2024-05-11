@@ -15,7 +15,7 @@ namespace LivePlayMAUI
     {
         protected override void OnCreate(Bundle? savedInstanceState)
         {
-            Settings.ChangeColorStatusBars = ChangeBarsColor;
+            AppSettings.ChangeColorStatusBars = ChangeBarsColor;
             base.OnCreate(savedInstanceState);
         }
 

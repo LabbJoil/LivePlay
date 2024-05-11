@@ -6,17 +6,14 @@ using System.Threading.Tasks;
 
 namespace LivePlayMAUI.Models.Domain;
 
-public class QuestItem
+public class NewsItem
 {
     private string? Title;
     private string? Description;
     private string? Image;
-    private string? TotalDescription;
-    private DateTime? FinalDate;
-    private int Reward;
 
-    public string? TitleView 
-    { 
+    public string? TitleView
+    {
         get => Title;   // тут
         set => Title ??= value;
     }
