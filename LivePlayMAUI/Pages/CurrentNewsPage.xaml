@@ -8,7 +8,7 @@
              ForegroundColor="Transparent" BackgroundColor="Transparent"
              Title="PopupPage">
 
-    <Border BackgroundColor="#415A77" Margin="20" Stroke="Transparent">
+    <Border BackgroundColor="#415A77" Margin="20" Stroke="Transparent" >
         <Border.StrokeShape>
             <RoundRectangle CornerRadius="20" />
         </Border.StrokeShape>

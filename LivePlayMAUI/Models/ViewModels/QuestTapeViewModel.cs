@@ -1,7 +1,10 @@
 ﻿using CommunityToolkit.Maui.Storage;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using LivePlayMAUI.Interfaces;
 using LivePlayMAUI.Models.Domain;
+using LivePlayMAUI.Pages;
+using MauiPopup;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,7 +16,7 @@ using System.Windows.Input;
 
 namespace LivePlayMAUI.Models.ViewModels;
 
-internal partial class QuestTapeViewModel : ObservableObject
+internal partial class QuestTapeViewModel : ObservableObject, ITapeViewModel
 {
     public ObservableCollection<QuestItem> TapeItems { get; set; }
 
@@ -26,9 +29,15 @@ internal partial class QuestTapeViewModel : ObservableObject
         IsRefreshing = false;
     }
 
+    [RelayCommand]
+    public void GoToTapeItem(object item)
+    {
+        var questItem = item as QuestItem;
+        PopupAction.DisplayPopup(new CurrentQuestPage(questItem ?? new()));
+    }
+
     public QuestTapeViewModel()
     {
-
         // запрос к серверу
         TapeItems = [
             new()

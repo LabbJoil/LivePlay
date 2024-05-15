@@ -3,23 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LivePlayMAUI.Pages.QuestTapePage"
              Title="TapePage" 
-             Appearing="ContentPage_Appearing" Disappearing="ContentPage_Disappearing">
+             Appearing="ContentPage_Appearing" Disappearing="ContentPage_Disappearing"
+             x:Name="TapePage">
 
     <Grid x:Name="MainGrid" BackgroundColor="{AppThemeBinding Dark={StaticResource PageMainBackgroundDark}, Light={StaticResource PageMainBackgroundLight}}">
-        <Rectangle x:Name="ShadowRectangle" Fill="Black" ZIndex="1" Opacity="0"/>
+        <Rectangle x:Name="ShadowRectangle" Fill="Black" ZIndex="1" Opacity="0" StrokeThickness="0"/>
 
-        <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">
-            <CollectionView ItemsSource="{Binding TapeItems}" item>
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical" Span="2"/>
-                </CollectionView.ItemsLayout>
+        <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}" Margin="10,10">
+            <CollectionView ItemsSource="{Binding TapeItems}" SelectionChanged="CollectionView_SelectionChanged" Style="{StaticResource TapeCollectionView}" >
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Border BackgroundColor="#415A77" Margin="10" Stroke="Transparent">
+                        <Border x:Name="PageView" BackgroundColor="#415A77" Stroke="Transparent">
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="20" />
                             </Border.StrokeShape>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding BindingContext.GoToTapeItemCommand, Source={x:Reference TapePage}}"
+                                    CommandParameter="{Binding .}"
+                                    NumberOfTapsRequired="1"/>
+                            </Border.GestureRecognizers>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="20"/>

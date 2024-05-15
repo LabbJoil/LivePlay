@@ -17,7 +17,7 @@
                 </Border.StrokeShape>
                 <StackLayout Orientation="Horizontal">
                     <Label x:Name="CoinLabel" Text="123" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" FontSize="16" FontAttributes="Bold" Margin="10,0"/>
-                    <Image x:Name="CoinLabels" Source="coin_dark.svg" FlexLayout.Grow="1" Aspect="Fill" Margin="0,5,10,5" SizeChanged="CoinLabels_SizeChanged" />
+                    <Image x:Name="CoinLabels" Source="coin_dark.svg" FlexLayout.Grow="1" Aspect="Fill" Margin="0,5,10,5" WidthRequest="{Binding Source={RelativeSource Self}, Path=Height}" />
                 </StackLayout>
             </Border>
         </StackLayout>

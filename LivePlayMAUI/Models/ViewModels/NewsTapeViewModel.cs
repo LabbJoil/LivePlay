@@ -1,7 +1,10 @@
 ﻿using CommunityToolkit.Maui.Storage;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using LivePlayMAUI.Interfaces;
 using LivePlayMAUI.Models.Domain;
+using LivePlayMAUI.Pages;
+using MauiPopup;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,7 +16,7 @@ using System.Windows.Input;
 
 namespace LivePlayMAUI.Models.ViewModels;
 
-internal partial class NewsTapeViewModel : ObservableObject
+internal partial class NewsTapeViewModel : ObservableObject, ITapeViewModel
 {
     public ObservableCollection<NewsItem> TapeItems { get; set; }
 
@@ -24,6 +27,13 @@ internal partial class NewsTapeViewModel : ObservableObject
     public void Refresh()
     {
         IsRefreshing = false;
+    }
+
+    [RelayCommand]
+    public void GoToTapeItem(object item)
+    {
+        var newsItem = item as NewsItem;
+        PopupAction.DisplayPopup(new CurrentNewsPage(newsItem ?? new()));
     }
 
     public NewsTapeViewModel()

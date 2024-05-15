@@ -5,7 +5,7 @@
              x:Class="LivePlayMAUI.Pages.CurrentQuestPage"
              IsCloseOnBackgroundClick="True"
              Margin="10,10,10,60"
-             ForegroundColor="Transparent"
+             ForegroundColor="Transparent" BackgroundColor="Transparent"
              Title="PopupPage">
 
     <Border BackgroundColor="#415A77" Margin="18" Stroke="Transparent">
