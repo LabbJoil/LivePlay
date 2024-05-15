@@ -55,4 +55,9 @@ public partial class AppShell : Shell
                 rec.IsVisible = isVisible;
         }
     }
+
+    private void CoinLabels_SizeChanged(object sender, EventArgs e)
+    {
+        CoinLabels.WidthRequest = CoinLabels.Height;
+    }
 }

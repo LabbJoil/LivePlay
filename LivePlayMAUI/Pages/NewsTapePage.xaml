@@ -2,10 +2,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LivePlayMAUI.Pages.NewsTapePage"
-             Title="NewsPage" Disappearing="ContentPage_Disappearing" Appearing="ContentPage_Appearing">
+             Title="NewsPage"
+    Disappearing="ContentPage_Disappearing" Appearing="ContentPage_Appearing">
 
     <Grid x:Name="MainGrid" BackgroundColor="{AppThemeBinding Dark={StaticResource PageMainBackgroundDark}, Light={StaticResource PageMainBackgroundLight}}">
-        <Rectangle x:Name="ShadowRectangle" Fill="Black" ZIndex="1" Opacity="0"/>
+        <!--<Rectangle x:Name="ShadowRectangle" Fill="Black" ZIndex="1" Opacity="0"/>-->
         <ListView x:Name="MainListView" ItemTapped="ListView_ItemTapped" Style="{StaticResource TapeListView}" ZIndex="0"
                   IsRefreshing="{Binding IsRefreshing}" RefreshCommand="{Binding RefreshCommand}" ItemsSource="{Binding TapeItems}">
             <ListView.ItemTemplate>

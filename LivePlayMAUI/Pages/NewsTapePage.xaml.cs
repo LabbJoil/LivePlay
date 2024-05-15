@@ -24,13 +24,11 @@ public partial class NewsTapePage : ContentPage
 
     private void ContentPage_Disappearing(object sender, EventArgs e)
     {
-        AppSettings.OpacityAnimation(this, ShadowRectangle, 0, 0.5, 20, 500);
-        AppSettings.ChangeColorStatusBars?.Invoke(((SolidColorBrush)ShadowRectangle.Fill).Color, StatusBarColor.BarWhite, null);
+        AppSettings.ChangeColorStatusBars?.Invoke(MainGrid.BackgroundColor, StatusBarColor.BarWhite, null);
     }
 
     private void ContentPage_Appearing(object sender, EventArgs e)
     {
-        AppSettings.OpacityAnimation(this, ShadowRectangle, 0.5, 0, 20, 500);
         AppSettings.ChangeColorStatusBars?.Invoke(MainGrid.BackgroundColor, StatusBarColor.BarWhite, null);
     }
 }

@@ -13,11 +13,11 @@
         <StackLayout VerticalOptions="Fill" Orientation="Horizontal">
             <Border HorizontalOptions="EndAndExpand" Margin="15,8" Stroke="#DEDEDE" StrokeThickness="2">
                 <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="30" />
+                    <RoundRectangle CornerRadius="30"/>
                 </Border.StrokeShape>
                 <StackLayout Orientation="Horizontal">
-                    <Label x:Name="CoinLabel" Text="123" VerticalOptions="Center" HorizontalOptions="Start" TextColor="Black" FontSize="16" FontAttributes="Bold" Margin="10,0"/>
-                    <Image Source="coin_dark.svg" Margin="5,2"  HorizontalOptions="EndAndExpand"/>
+                    <Label x:Name="CoinLabel" Text="123" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" FontSize="16" FontAttributes="Bold" Margin="10,0"/>
+                    <Image x:Name="CoinLabels" Source="coin_dark.svg" FlexLayout.Grow="1" Aspect="Fill" Margin="0,5,10,5" SizeChanged="CoinLabels_SizeChanged" />
                 </StackLayout>
             </Border>
         </StackLayout>

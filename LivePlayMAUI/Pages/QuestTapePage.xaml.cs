@@ -13,18 +13,23 @@ public partial class QuestTapePage : ContentPage
 	{
 		InitializeComponent();
         BindingContext = new QuestTapeViewModel();
+    }
+
+    private void ContentPage_Appearing(object sender, EventArgs e)
+    {
+        AppSettings.OpacityAnimation(this, ShadowRectangle, 20, 500, 0);
         AppSettings.ChangeColorStatusBars?.Invoke(MainGrid.BackgroundColor, StatusBarColor.BarWhite, null);
     }
 
-    private void GoBack(object sender, EventArgs e)
+    private void ContentPage_Disappearing(object sender, EventArgs e)
     {
-		//Navigation.PopModalAsync();
+        AppSettings.OpacityAnimation(this, ShadowRectangle, 20, 500, 0.5);
+        AppSettings.ChangeColorStatusBars?.Invoke(((SolidColorBrush)ShadowRectangle.Fill).Color, StatusBarColor.BarWhite, null);
     }
 
     private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
     {
         var index = e.Item as QuestItem;
         PopupAction.DisplayPopup(new CurrentQuestPage(index ?? new()));
-        //Navigation.PushAsync(new CurrentQuestPage(index ?? new()));
     }
 }

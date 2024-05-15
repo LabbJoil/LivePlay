@@ -71,9 +71,9 @@ internal static class AppSettings
         }
     }
 
-    public static void OpacityAnimation(IAnimatable owner, VisualElement visualElement, double startAnimation, double endAnimation, uint rate, uint lengthAnimation)
+    public static void OpacityAnimation(IAnimatable owner, VisualElement visualElement, uint rate, uint lengthAnimation, double endOpacity, double? startOpacity = null)
     {
-        var animationBackground = new Animation(v => visualElement.Opacity = v, startAnimation, endAnimation);
+        var animationBackground = new Animation(v => visualElement.Opacity = v, startOpacity ?? visualElement.Opacity, endOpacity);
         animationBackground.Commit(owner, nameof(owner) + "AnimationOpacity", rate, lengthAnimation);
     }
 }
