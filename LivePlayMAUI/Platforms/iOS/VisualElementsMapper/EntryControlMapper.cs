@@ -1,11 +1,9 @@
 ﻿
 using CoreAnimation;
-using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
 using Microsoft.Maui.Handlers;
-using Microsoft.Maui.Platform;
 using UIKit;
 
-namespace LivePlayMAUI.Platforms;
+namespace LivePlayMAUI.Platforms.VisualElementsMapper;
 
 class EntryControlMapper
 {

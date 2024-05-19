@@ -1,44 +1,29 @@
-﻿using CommunityToolkit.Maui.Storage;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿
 using CommunityToolkit.Mvvm.Input;
-using LivePlayMAUI.Interfaces;
+using LivePlayMAUI.Abstracts;
 using LivePlayMAUI.Models.Domain;
 using LivePlayMAUI.Pages;
-using MauiPopup;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Input;
+using LivePlayMAUI.Services;
 
 namespace LivePlayMAUI.Models.ViewModels;
 
-internal partial class NewsTapeViewModel : ObservableObject, ITapeViewModel
+public partial class NewsTapePageViewModel : MainTapeViewModel
 {
     public ObservableCollection<NewsItem> TapeItems { get; set; }
 
-    [ObservableProperty]
-    public bool _isRefreshing;
-
     [RelayCommand]
-    public void Refresh()
+    public async override Task GoToTapeItem(object item)
     {
-        IsRefreshing = false;
+        if (item is Tuple<object, ContentPage> tuple && tuple.Item1 is NewsItem newsItem && tuple.Item2 is ContentPage contentPage)
+        {
+            var currentPageViewModel = new CurrentNewsPageViewModel(_appSettings, newsItem ?? new NewsItem());
+            await contentPage.Navigation.PushAsync(new CurrentNewsPage(currentPageViewModel));
+        }
     }
 
-    [RelayCommand]
-    public void GoToTapeItem(object item)
+    public NewsTapePageViewModel(AppSettings appSettings) : base(appSettings)
     {
-        var newsItem = item as NewsItem;
-        PopupAction.DisplayPopup(new CurrentNewsPage(newsItem ?? new()));
-    }
-
-    public NewsTapeViewModel()
-    {
-
         // запрос к серверу
         TapeItems = [
             new()

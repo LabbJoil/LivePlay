@@ -70,8 +70,8 @@
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.21" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.21" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.40" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.40" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="Plugin.Maui.Popup" Version="1.0.5" />
 		<PackageReference Include="System.ObjectModel" Version="4.3.0" />
@@ -83,6 +83,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Interfaces\IStoragePermissions.cs">
+	    <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
+	  </Compile>
 	  <Compile Update="Pages\CurrentNewsPage.xaml.cs">
 	    <DependentUpon>CurrentNewsPage.xaml</DependentUpon>
 	  </Compile>
@@ -101,7 +104,7 @@
 	  <Compile Update="PersonalElements\PasswordEntryControl.xaml.cs">
 	    <DependentUpon>PasswordEntryControl.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Platforms\iOS\EntryControlMapper.cs">
+	  <Compile Update="Platforms\iOS\VisualElementsMapper\EntryControlMapper.cs">
 	    <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
 	  </Compile>
 	</ItemGroup>

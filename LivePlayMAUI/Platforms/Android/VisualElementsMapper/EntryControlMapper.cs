@@ -3,11 +3,12 @@ using Android.Graphics.Drawables;
 using Microsoft.Maui.Controls.Platform;
 using Microsoft.Maui.Handlers;
 
-namespace LivePlayMAUI.Platforms;
+namespace LivePlayMAUI.Platforms.VisualElementsMapper;
 
 public static class EntryControlMapper
 {
-    public static void Map(IElementHandler handler, IElement view) {
+    public static void Map(IElementHandler handler, IElement view)
+    {
         if (view is Entry)
         {
             var casted = (EntryHandler)handler;

@@ -19,7 +19,7 @@
                             <Border.GestureRecognizers>
                                 <TapGestureRecognizer
                                     Command="{Binding BindingContext.GoToTapeItemCommand, Source={x:Reference TapePage}}"
-                                    CommandParameter="{Binding .}"
+                                    CommandParameter="{Binding ., ConverterParameter={x:Reference TapePage}, Converter={StaticResource TupleConverter}}"
                                     NumberOfTapsRequired="1"/>
                             </Border.GestureRecognizers>
                             <Grid>

@@ -1,7 +1,7 @@
 ﻿
 namespace LivePlayMAUI.Models.Enum;
 
-internal enum DirectionAction
+public enum DirectionAction
 {
     Up,
     Down,

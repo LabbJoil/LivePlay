@@ -3,7 +3,7 @@ using LivePlayMAUI.Models.Enum;
 
 namespace LivePlayMAUI.Services;
 
-internal class ActionTimer(DirectionAction directionTimer, Action<object?>? periodAction = null, Action? endAction = null)
+public class ActionTimer(DirectionAction directionTimer, Action<object?>? periodAction = null, Action? endAction = null)
 {
     private Thread? TimerThread;
     private Timer? SendCodeTimer;

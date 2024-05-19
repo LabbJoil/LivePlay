@@ -1,4 +1,4 @@
-﻿
+﻿ 
 using CommunityToolkit.Maui.Storage;
 using LivePlayMAUI.Models.Enum;
 using LivePlayMAUI.Models.ViewModels;
@@ -8,27 +8,35 @@ namespace LivePlayMAUI.Pages;
 
 public partial class EnterPage : ContentPage
 {
-    LoginViewModel Loggin = new();
-    StackLayout NowStackLayout;
-    ActionTimer? SendCodeTimer;
+    private StackLayout NowStackLayout;
+    private ActionTimer? SendCodeTimer;
+    private readonly EnterPageViewModel EnterPageVM;
 
-    public EnterPage()
+    public EnterPage(EnterPageViewModel enterPage)
     {
         InitializeComponent();
-        BindingContext = Loggin;
+        BindingContext = enterPage;
+        EnterPageVM = enterPage;
         NowStackLayout = LoginStackLayout;
-        AppSettings.ChangeColorStatusBars?.Invoke(MainGrid.BackgroundColor, StatusBarColor.BarReplay, null);
+    }
+
+    private void ContentPage_Appearing(object sender, EventArgs e)
+    {
+        EnterPageVM.ChangeColorBars(this, StatusBarColor.BarReplay);
     }
 
     private async void OnLoginButtonClicked(object sender, EventArgs e)
     {
-        //var folderResult = await FolderPicker.PickAsync("DCIM");
-
-        bool havePermissions = await AppSettings.GetPermission();
+    RequestPermissions:
+        bool havePermissions = await EnterPageVM._appSettings.GetPermission();
         if (!havePermissions)
-            return;
+        {
+            if (await DisplayAlert("Нет доступа к хранилищу", $"Предоставьте, пожалуйста, доступ к хранилищу", "ok", "no"))
+                goto RequestPermissions;
+            else
+                return;
+        }
         await Shell.Current.GoToAsync($"//{nameof(NewsTapePage)}");
-        //await DisplayAlert("Login", $"Вы вошли как: {Loggin.UserName} - {Loggin.Password}", "ok");
     }
 
     private async Task LogInButtonClicked(object sender, EventArgs e)
@@ -64,8 +72,6 @@ public partial class EnterPage : ContentPage
             SendCodeTimer?.Stop();
         else
             DisplayAlert("Code", "Код неправильный", "ok");
-        //ChangeStackLayout(CodeStackLayout, DirectionAction.Left);
-
     }
 
     private void SendCodeAgainButtonClicked(object sender, EventArgs e)

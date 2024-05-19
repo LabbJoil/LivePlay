@@ -8,19 +8,22 @@ namespace LivePlayMAUI.Pages;
 
 public partial class NewsTapePage : ContentPage
 {
-	public NewsTapePage()
+    private readonly NewsTapePageViewModel NewsTapeVM;
+
+    public NewsTapePage(NewsTapePageViewModel newsTapeViewModel)
 	{
 		InitializeComponent();
-        BindingContext = new NewsTapeViewModel();
+        BindingContext = newsTapeViewModel;
+        NewsTapeVM = newsTapeViewModel;
     }
 
     private void ContentPage_Disappearing(object sender, EventArgs e)
     {
-        AppSettings.ChangeColorStatusBars?.Invoke(MainGrid.BackgroundColor, StatusBarColor.BarWhite, null);
+        NewsTapeVM.ChangeColorBars(MainGrid, StatusBarColor.BarWhite);
     }
 
     private void ContentPage_Appearing(object sender, EventArgs e)
     {
-        AppSettings.ChangeColorStatusBars?.Invoke(MainGrid.BackgroundColor, StatusBarColor.BarWhite, null);
+        NewsTapeVM.ChangeColorBars(MainGrid, StatusBarColor.BarWhite);
     }
 }

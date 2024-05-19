@@ -9,22 +9,22 @@ namespace LivePlayMAUI.Pages;
 
 public partial class QuestTapePage : ContentPage
 {
-    public QuestTapePage()
+    public QuestTapePage(AppSettings appSettings)
 	{
 		InitializeComponent();
-        BindingContext = new QuestTapeViewModel();
+        BindingContext = new QuestTapePageViewModel(appSettings);
     }
 
     private void ContentPage_Appearing(object sender, EventArgs e)
     {
-        AppSettings.ChangeColorStatusBars?.Invoke(MainGrid.BackgroundColor, StatusBarColor.BarWhite, null);
+        //AppSettings.ChangeColorStatusBars?.Invoke(MainGrid.BackgroundColor, StatusBarColor.BarWhite, null);
         AppSettings.OpacityAnimation(this, ShadowRectangle, 20, 500, 0);
     }
 
     private void ContentPage_Disappearing(object sender, EventArgs e)
     {
         var mgc = MainGrid.BackgroundColor;
-        AppSettings.ChangeColorStatusBars?.Invoke(new Color(mgc.Red, mgc.Green, mgc.Blue, (float)0.5), StatusBarColor.BarWhite, null);
+        //AppSettings.ChangeColorStatusBars?.Invoke(new Color(mgc.Red, mgc.Green, mgc.Blue, (float)0.5), StatusBarColor.BarWhite, null);
         AppSettings.OpacityAnimation(this, ShadowRectangle, 20, 500, 0.5);
     }
 

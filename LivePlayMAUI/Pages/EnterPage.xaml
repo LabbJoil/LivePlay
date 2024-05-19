@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LivePlayMAUI.Pages.EnterPage"
              xmlns:pe="clr-namespace:LivePlayMAUI.PersonalElements"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False" Appearing="ContentPage_Appearing"
+             BackgroundColor="{AppThemeBinding Dark={StaticResource Page1BackgroundDark}, Light={StaticResource Page1BackgroundLight}}">
 
-    <Grid x:Name="MainGrid" BackgroundColor="{AppThemeBinding Dark={StaticResource Page1BackgroundDark}, Light={StaticResource Page1BackgroundLight}}">
+    <Grid x:Name="MainGrid" >
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
             <RowDefinition Height="62"/>

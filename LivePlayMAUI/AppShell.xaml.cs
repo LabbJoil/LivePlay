@@ -10,12 +10,12 @@ public partial class AppShell : Shell
 {
     private Grid? LastGrid;
 
-    public AppShell()
+    public AppShell(AppSettings appSettings)
     {
         InitializeComponent();
         //Routing.RegisterRoute(nameof(QuestTapePage), typeof(QuestTapePage));
         //Routing.RegisterRoute(nameof(NewsTapePage), typeof(NewsTapePage));
-        AppSettings.ChangeCountCoins = ChangeCountCoins;
+        appSettings.ChangeCountCoins = ChangeCountCoins;
     }
 
     private void FlyoutGrid_Loaded(object sender, EventArgs e)

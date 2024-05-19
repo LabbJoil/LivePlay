@@ -1,49 +1,37 @@
 ﻿
 using LivePlayMAUI.Models.Enum;
 using LivePlayMAUI.Models.ViewModels;
-using Microsoft.Maui.Controls.Shapes;
 
 namespace LivePlayMAUI.Services;
 
-internal static class AppSettings
+public class AppSettings(Interfaces.IStoragePermissions storagePermissions)
 {
+    private readonly Interfaces.IStoragePermissions _storagePermissions = storagePermissions;
 
-    private static Action<Color, StatusBarColor, Color?>? ChangeColorStatusBarsAction;
-    private static Action<string>? ChangeCountCoinsAction;
+    private Action<Color, StatusBarColor, Color?>? ChangeColorStatusBarsAction;
+    private Action<string>? ChangeCountCoinsAction;
 
-    public static PermissionStatus PermissionStorageRead { get; private set; }
-    public static PermissionStatus PermissionStorageWrite { get; private set; }
-
-    public static Action<Color, StatusBarColor, Color?>? ChangeColorStatusBars
+    public Action<Color, StatusBarColor, Color?>? ChangeColorStatusBars
     {
         get => ChangeColorStatusBarsAction;
         set => ChangeColorStatusBarsAction ??= value;
     }
 
-    public static Action<string>? ChangeCountCoins
+    public Action<string>? ChangeCountCoins
     {
         get => ChangeCountCoinsAction;
         set => ChangeCountCoinsAction ??= value;
     }
 
-    public static AppTheme LoadSettings()
+    public AppTheme LoadSettings()
     {
         AppTheme them = AppTheme.Dark; // TODO: загрузка из JSON
-        SettingsModel.SetSettings(them);
         return them;
     }
 
-    //public static bool CheckPermissions()
-    //{
-    //    if (PermissionStorageRead != PermissionStatus.Granted)  // add PermissionStorageWrite
-    //    {
-    //        PermissionStorageRead = GetPermission().Result;
-    //    }
-    //}
-
-    public static async Task<bool> GetPermission()
+    public async Task<bool> GetPermission()
     {
-        PermissionStatus nowStatus = await Permissions.CheckStatusAsync<Permissions.StorageRead>();
+        PermissionStatus nowStatus = await _storagePermissions.CheckStatusAsync();
         PermissionStatus changeStatus;
         switch (nowStatus)
         {
@@ -56,20 +44,23 @@ internal static class AppSettings
             case PermissionStatus.Unknown:
             case PermissionStatus.Limited:
             case PermissionStatus.Restricted:
-                changeStatus = await Permissions.RequestAsync<Permissions.StorageRead>();
+                //changeStatus = await Permissions.RequestAsync<StoragePermissions>();
+#if __ANDROID__
+                changeStatus = await _storagePermissions.RequestAsync();
+#else
+                changeStatus = nowStatus;
+#endif
                 break;
             default:
                 changeStatus = PermissionStatus.Unknown;
                 break;
         }
 
-        switch (changeStatus)
+        return changeStatus switch
         {
-            case PermissionStatus.Granted:
-                return true;
-            default:
-                return false;
-        }
+            PermissionStatus.Granted => true,
+            _ => false,
+        };
     }
 
     public static void OpacityAnimation(IAnimatable owner, VisualElement visualElement, uint rate, uint lengthAnimation, double endOpacity, double? startOpacity = null)

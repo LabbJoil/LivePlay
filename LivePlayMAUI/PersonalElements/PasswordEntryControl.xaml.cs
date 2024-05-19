@@ -5,16 +5,10 @@ namespace LivePlayMAUI.PersonalElements;
 
 public partial class PasswordEntryControl : ContentView
 {
-    private bool IsPasswordTurn = true;
-    public string CloseEyeSVG;
-    public string OpenEyeSVG;
 
     public PasswordEntryControl()
     {
         InitializeComponent();
-            CloseEyeSVG = SettingsModel.CloseEyeSVG;
-            OpenEyeSVG = SettingsModel.OpenEyeSVG;
-            ActionButton.Source = CloseEyeSVG;
     }
 
     public static readonly BindableProperty TextProperty = BindableProperty.Create(
@@ -71,10 +65,16 @@ public partial class PasswordEntryControl : ContentView
         }
     }
 
-    private void HideShowPassword(object sender, EventArgs e)
+    private void ShowPassword(object sender, EventArgs e)
+        => TogglePasswordVisibility(true);
+
+    private void HidePassword(object sender, EventArgs e)
+        => TogglePasswordVisibility(false);
+
+    private void TogglePasswordVisibility(bool showPassword)
     {
-        PasswordEntry.IsPassword = !IsPasswordTurn;
-        IsPasswordTurn = !IsPasswordTurn;
-        ActionButton.Source = IsPasswordTurn ? CloseEyeSVG : OpenEyeSVG;
+        PasswordEntry.IsPassword = showPassword;
+        ShowPasswordButton.IsVisible = ShowPasswordButton.IsEnabled = !showPassword;
+        HidePasswordButton.IsVisible = HidePasswordButton.IsEnabled = showPassword;
     }
 }

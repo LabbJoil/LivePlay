@@ -11,11 +11,10 @@ namespace LivePlayMAUI;
 
 public partial class App : Application
 {
-    public App()
+    public App(AppSettings appSettings)
     {
         InitializeComponent();
-        MainPage = new AppShell();
-        //SettingsModel.ColorResourceDictionary = Colors;
-        UserAppTheme = AppSettings.LoadSettings();
+        MainPage = new AppShell(appSettings);
+        UserAppTheme = appSettings.LoadSettings();
     }
 }

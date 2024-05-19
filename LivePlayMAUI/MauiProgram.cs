@@ -1,7 +1,9 @@
 ﻿
 using CommunityToolkit.Maui;
 using LivePlayMAUI.Models.ViewModels;
+using LivePlayMAUI.Models.Enum;
 using LivePlayMAUI.Pages;
+using LivePlayMAUI.Services;
 using Microsoft.Extensions.Logging;
 
 namespace LivePlayMAUI;
@@ -20,13 +22,23 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
-        builder.Services.AddTransient<LoginViewModel>();
 
-        builder.Services.AddTransient<NewsTapePage>();
-        builder.Services.AddTransient<NewsTapeViewModel>();
+        builder.Services.AddSingleton<AppSettings>();
 
         builder.Services.AddTransient<QuestTapePage>();
-        builder.Services.AddTransient<QuestTapeViewModel>();
+        builder.Services.AddTransient<NewsTapePage>();
+        builder.Services.AddTransient<CurrentQuestPage>();
+        builder.Services.AddTransient<CurrentNewsPage>();
+        builder.Services.AddTransient<EnterPage>();
+
+        builder.Services.AddTransient<QuestTapePageViewModel>();
+        builder.Services.AddTransient<NewsTapePageViewModel>();
+        builder.Services.AddTransient<CurrentNewsPageViewModel>();
+        builder.Services.AddTransient<EnterPageViewModel>();
+
+#if __ANDROID__
+        builder.Services.AddSingleton<Interfaces.IStoragePermissions, Platforms.PlatformPermitions.StoragePermissions>();
+#endif
 
 #if DEBUG
         builder.Logging.AddDebug();
@@ -36,7 +48,7 @@ public static class MauiProgram
         {
             if (view is Entry) {
 #if __ANDROID__ || __IOS__
-                Platforms.EntryControlMapper.Map(handler, view);
+                Platforms.VisualElementsMapper.EntryControlMapper.Map(handler, view);
 #endif
             }
         });

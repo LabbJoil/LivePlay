@@ -5,13 +5,6 @@
              x:Class="LivePlayMAUI.PersonalElements.SwitchButtonsControl" Loaded="Loaded_Page">
 
     <Border Stroke="Transparent" >
-        <Border.Shadow>
-            <Shadow 
-                Brush="#0D1B2A"
-                Radius="20"
-                Opacity="0.41" />
-        </Border.Shadow>
-
         <Frame BorderColor="Transparent" Padding="0" CornerRadius="30"
                BackgroundColor="{AppThemeBinding Dark={StaticResource EntryBackgroundDark}, Light={StaticResource EntryBackgroundLight}}">
 

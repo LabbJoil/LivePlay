@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui.Storage;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using LivePlayMAUI.Abstracts;
 using LivePlayMAUI.Interfaces;
 using LivePlayMAUI.Models.Domain;
 using LivePlayMAUI.Pages;
@@ -13,30 +14,22 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using LivePlayMAUI.Services;
 
 namespace LivePlayMAUI.Models.ViewModels;
 
-internal partial class QuestTapeViewModel : ObservableObject, ITapeViewModel
+internal partial class QuestTapePageViewModel : MainTapeViewModel
 {
     public ObservableCollection<QuestItem> TapeItems { get; set; }
 
-    [ObservableProperty]
-    public bool _isRefreshing;
-
     [RelayCommand]
-    public void Refresh()
-    {
-        IsRefreshing = false;
-    }
-
-    [RelayCommand]
-    public void GoToTapeItem(object item)
+    public async override Task GoToTapeItem(object item)
     {
         var questItem = item as QuestItem;
-        PopupAction.DisplayPopup(new CurrentQuestPage(questItem ?? new()));
+        await PopupAction.DisplayPopup(new CurrentQuestPage(questItem ?? new()));
     }
 
-    public QuestTapeViewModel()
+    public QuestTapePageViewModel(AppSettings appSettings) : base(appSettings)
     {
         // запрос к серверу
         TapeItems = [
