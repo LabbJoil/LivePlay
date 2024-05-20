@@ -1,19 +1,30 @@
 
+using LivePlayWebApi.Interfaces;
+using LivePlayWebApi.Services;
 using LivePlayWebApi.Services.Entities;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+var services = builder.Services;
+var configuration = builder.Configuration;
 
-builder.Services.AddDbContext<ContextDB>(options =>
+services.AddControllers();
+services.AddEndpointsApiExplorer();
+services.AddAuthorization();
+services.AddSwaggerGen();
+
+services.Configure<JwtOptions>(configuration.GetSection(nameof(JwtOptions)));
+
+services.AddDbContext<ContextDB>(options =>
 {
-    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-    options.UseNpgsql(connectionString);
+    options.UseNpgsql(configuration.GetConnectionString(nameof(ContextDB)));
 });
-//builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+services.AddScoped<UserService>();
+
+services.AddScoped<IJwtProvider, JwtProvider>();
 
 var app = builder.Build();
 
@@ -23,7 +34,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseAuthorization();
+app.UseHttpsRedirection();
 app.MapControllers();
 app.Run();

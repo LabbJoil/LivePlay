@@ -1,5 +1,7 @@
 ﻿
+using LivePlayWebApi.Models.CoreModels;
 using LivePlayWebApi.Models.Enums;
+using LivePlayWebApi.Services;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -9,7 +11,7 @@ namespace LivePlayWebApi.Models.EntityModels;
 public class UserEntityModel
 {
     [Key, Required]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     [Required]
     public string? PasswordHash { get; set; }
     [Required]
@@ -21,4 +23,13 @@ public class UserEntityModel
     public UserRole Role { get; set; }
     [Required]
     public DateTime? JoinDate { get; set; }
+
+    public static UserEntityModel Create(string email, string password)
+        =>
+        new()
+        {
+            Id = Guid.NewGuid(),
+            PasswordHash = PasswordHasher.HashPassword(password),
+            Email = email,
+        };
 }

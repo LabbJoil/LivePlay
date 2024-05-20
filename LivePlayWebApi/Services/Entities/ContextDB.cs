@@ -1,5 +1,6 @@
 ﻿
 using LivePlayWebApi.Models.EntityModels;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace LivePlayWebApi.Services.Entities;
@@ -7,6 +8,8 @@ namespace LivePlayWebApi.Services.Entities;
 public class ContextDB(DbContextOptions<ContextDB> options) : DbContext(options)
 {
     public DbSet<UserEntityModel> Users { get; set; }
+    //public DbSet<RoleEntityModel> Roles { get; set; }
+    //public DbSet<PermissionEntityModel> Permissions { get; set; }
     public DbSet<QuestEntityModel> Quests { get; set; }
     public DbSet<HotelEntityModel> Hotels { get; set; }
     public DbSet<HotelQuestEntityModel> HotelsQuests { get; set; }
