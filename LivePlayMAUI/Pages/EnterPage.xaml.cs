@@ -1,12 +1,7 @@
 ﻿
-using CommunityToolkit.Maui.Alerts;
-using CommunityToolkit.Maui.Storage;
 using LivePlayMAUI.Models.Enum;
 using LivePlayMAUI.Models.ViewModels;
 using LivePlayMAUI.Services;
-using System.Text;
-using System.Threading;
-using static Microsoft.Maui.ApplicationModel.Permissions;
 
 namespace LivePlayMAUI.Pages;
 
