@@ -44,7 +44,6 @@ public class AppSettings(Interfaces.IStoragePermissions storagePermissions)
             case PermissionStatus.Unknown:
             case PermissionStatus.Limited:
             case PermissionStatus.Restricted:
-                //changeStatus = await Permissions.RequestAsync<StoragePermissions>();
 #if __ANDROID__
                 changeStatus = await _storagePermissions.RequestAsync();
 #else
