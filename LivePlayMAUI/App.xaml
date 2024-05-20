@@ -11,6 +11,7 @@
                 <ResourceDictionary x:Name="Styles" Source="Resources/Styles/Styles.xaml" />
                 <ResourceDictionary>
                     <converters:TupleConverter x:Key="TupleConverter" />
+                    <converters:HeightConverter x:Key="HeightConverter" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

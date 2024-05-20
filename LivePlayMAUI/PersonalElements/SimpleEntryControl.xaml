@@ -14,7 +14,7 @@
 
         <Frame BorderColor="Transparent" Padding="0" CornerRadius="20" 
                BackgroundColor="{AppThemeBinding Dark={StaticResource EntryBackgroundDark}, Light={StaticResource EntryBackgroundLight}}">
-            <Grid>
+            <Grid x:Name="MainGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="5"/>
                     <RowDefinition Height="*"/>
@@ -41,11 +41,11 @@
                        Focused="SimpleEntry_Focused" Unfocused="SimpleEntry_Unfocused">
                 </Entry>
 
-                <Frame Grid.Column="1" Grid.RowSpan="2" BackgroundColor="Transparent" BorderColor="Transparent"
-                       HeightRequest="30" WidthRequest="30" CornerRadius="30" Padding="0" Margin="10,0,15,0" HorizontalOptions="End">
-                    <ImageButton x:Name="ActionButton" BackgroundColor="Transparent" Clicked="ClearEntry"
-                                 Source="{AppThemeBinding Dark=close_dark.svg, Light=close_light.svg}"/>
-                </Frame>
+                <ImageButton x:Name="ActionButton" Grid.Column="1" Grid.RowSpan="2" Padding="0" Aspect="AspectFit"
+                             BackgroundColor="Transparent" BorderColor="Transparent" CornerRadius="5" Margin="0,0,10,0" HorizontalOptions="End"
+                             Clicked="ClearEntry" HeightRequest="{Binding Path=Height, Source={x:Reference MainGrid}, Converter={StaticResource HeightConverter}}"
+                             Source="{AppThemeBinding Dark=close_dark.svg, Light=close_light.svg}"/>
+                
             </Grid>
         </Frame>
     </Border>
