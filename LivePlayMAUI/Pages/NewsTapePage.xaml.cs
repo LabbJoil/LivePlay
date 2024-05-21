@@ -19,11 +19,11 @@ public partial class NewsTapePage : ContentPage
 
     private void ContentPage_Disappearing(object sender, EventArgs e)
     {
-        NewsTapeVM.ChangeColorBars(MainGrid, StatusBarColor.BarWhite);
+        NewsTapeVM.ChangeColorBars(MainGrid.BackgroundColor, StatusBarColor.BarWhite);
     }
 
     private void ContentPage_Appearing(object sender, EventArgs e)
     {
-        NewsTapeVM.ChangeColorBars(MainGrid, StatusBarColor.BarWhite);
+        NewsTapeVM.ChangeColorBars(MainGrid.BackgroundColor, StatusBarColor.BarWhite);
     }
 }

@@ -63,8 +63,11 @@
 	  <None Remove="Resources\Images\close_light.svg" />
 	  <None Remove="Resources\Images\coin_dark.svg" />
 	  <None Remove="Resources\Images\coin_light.svg" />
+	  <None Remove="Resources\Images\done_quests_light.svg" />
+	  <None Remove="Resources\Images\in_process_light.svg" />
 	  <None Remove="Resources\Images\open_eye_dark.svg" />
 	  <None Remove="Resources\Images\open_eye_light.svg" />
+	  <None Remove="Resources\Images\star_light.svg" />
 	</ItemGroup>
 
 	<ItemGroup>

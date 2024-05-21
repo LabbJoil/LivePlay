@@ -18,9 +18,10 @@ using LivePlayMAUI.Services;
 
 namespace LivePlayMAUI.Models.ViewModels;
 
-internal partial class QuestTapePageViewModel : MainTapeViewModel
+public partial class QuestTapePageViewModel : MainTapeViewModel
 {
     public ObservableCollection<QuestItem> TapeItems { get; set; }
+    public ObservableCollection<FilterItem> FilterItems { get; }
 
     [RelayCommand]
     public async override Task GoToTapeItem(object item)
@@ -31,6 +32,17 @@ internal partial class QuestTapePageViewModel : MainTapeViewModel
 
     public QuestTapePageViewModel(AppSettings appSettings) : base(appSettings)
     {
+        FilterItems = [
+            new FilterItem {
+                FilterIcon = "star_light.svg",
+                TextFilter = "Все"
+            },
+            new FilterItem {
+                FilterIcon = "in_process_light.svg",
+                TextFilter = "В процессе"
+            }
+        ];
+            
         // запрос к серверу
         TapeItems = [
             new()

@@ -21,7 +21,7 @@ public partial class EnterPage : ContentPage
 
     private void ContentPage_Appearing(object sender, EventArgs e)
     {
-        EnterPageVM.ChangeColorBars(this, StatusBarColor.BarReplay);
+        EnterPageVM.ChangeColorBars(BackgroundColor, StatusBarColor.BarReplay);
     }
 
     private async void OnLoginButtonClicked(object sender, EventArgs e)

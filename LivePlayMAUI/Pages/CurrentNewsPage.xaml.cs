@@ -12,6 +12,6 @@ public partial class CurrentNewsPage : ContentPage
     {
 		InitializeComponent();
 		BindingContext = curentNewsPageViewModel;
-        curentNewsPageViewModel.ChangeColorBars(this, StatusBarColor.BarReplay, null);
+        curentNewsPageViewModel.ChangeColorBars(BackgroundColor, StatusBarColor.BarReplay, null);
     }
 }

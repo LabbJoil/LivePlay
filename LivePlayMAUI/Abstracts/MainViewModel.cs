@@ -23,8 +23,8 @@ public partial class MainViewModel(AppSettings appSettings) : ObservableObject
         IsRefreshing = false;
     }
 
-    public virtual void ChangeColorBars(VisualElement vElement, StatusBarColor statusBarColor, Color? secondColor = null)
+    public virtual void ChangeColorBars(Color color, StatusBarColor statusBarColor, Color? secondColor = null)
     {
-        _appSettings.ChangeColorStatusBars?.Invoke(vElement.BackgroundColor, statusBarColor, secondColor);
+        _appSettings.ChangeColorStatusBars?.Invoke(color, statusBarColor, secondColor);
     }
 }
