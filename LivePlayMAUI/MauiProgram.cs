@@ -1,10 +1,12 @@
 ﻿
 using CommunityToolkit.Maui;
+using LivePlayMAUI.Models.Options;
 using LivePlayMAUI.Models.ViewModels;
-using LivePlayMAUI.Models.Enum;
 using LivePlayMAUI.Pages;
 using LivePlayMAUI.Services;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using System.Reflection;
 
 namespace LivePlayMAUI;
 
@@ -20,24 +22,31 @@ public static class MauiProgram
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-            });
+            })
+            .AddAppSettings();
 
+        var configuration = builder.Configuration;
+        var services = builder.Services;
 
-        builder.Services.AddSingleton<AppSettings>();
+        var y = configuration.GetSection(nameof(QuestFilterOptions));
 
-        builder.Services.AddTransient<QuestTapePage>();
-        builder.Services.AddTransient<NewsTapePage>();
-        builder.Services.AddTransient<CurrentQuestPage>();
-        builder.Services.AddTransient<CurrentNewsPage>();
-        builder.Services.AddTransient<EnterPage>();
+        services.Configure<QuestFilterOptions>(configuration.GetSection(nameof(QuestFilterOptions)));
 
-        builder.Services.AddTransient<QuestTapePageViewModel>();
-        builder.Services.AddTransient<NewsTapePageViewModel>();
-        builder.Services.AddTransient<CurrentNewsPageViewModel>();
-        builder.Services.AddTransient<EnterPageViewModel>();
+        services.AddSingleton<AppSettings>();
+
+        services.AddTransient<QuestTapePage>();
+        services.AddTransient<NewsTapePage>();
+        services.AddTransient<CurrentQuestPage>();
+        services.AddTransient<CurrentNewsPage>();
+        services.AddTransient<EnterPage>();
+
+        services.AddTransient<QuestTapePageViewModel>();
+        services.AddTransient<NewsTapePageViewModel>();
+        services.AddTransient<CurrentNewsPageViewModel>();
+        services.AddTransient<EnterPageViewModel>();
 
 #if __ANDROID__
-        builder.Services.AddSingleton<Interfaces.IStoragePermissions, Platforms.PlatformPermitions.StoragePermissions>();
+        services.AddSingleton<Interfaces.IStoragePermissions, Platforms.PlatformPermitions.StoragePermissions>();
 #endif
 
 #if DEBUG
@@ -54,5 +63,15 @@ public static class MauiProgram
         });
 
         return builder.Build();
+    }
+
+    private static void AddAppSettings(this MauiAppBuilder builder)
+    {
+        using Stream? stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("LivePlayMAUI.appsettings.json");
+        if (stream != null)
+        {
+            IConfigurationRoot config = new ConfigurationBuilder().AddJsonStream(stream).Build();
+            builder.Configuration.AddConfiguration(config);
+        }
     }
 }

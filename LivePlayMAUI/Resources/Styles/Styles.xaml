@@ -74,12 +74,11 @@
     </Style>
 
     <Style x:Key="FilterCollectionView" TargetType="CollectionView">
-        <Setter Property="BackgroundColor" Value="#415A77"/>
+        <Setter Property="BackgroundColor" Value="Transparent"/>
         <Setter Property="HorizontalOptions" Value="Center"/>
         <Setter Property="SelectionMode" Value="None"/>
         <Setter Property="ItemsLayout">
-            <GridItemsLayout Orientation="Horizontal" Span="1" 
-                         VerticalItemSpacing="10" HorizontalItemSpacing="10"/>
+            <GridItemsLayout Orientation="Horizontal"/>
         </Setter>
     </Style>
 

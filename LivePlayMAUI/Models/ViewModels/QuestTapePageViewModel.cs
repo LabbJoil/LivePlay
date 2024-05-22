@@ -15,6 +15,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using LivePlayMAUI.Services;
+using Microsoft.Extensions.Options;
+using LivePlayMAUI.Models.Options;
 
 namespace LivePlayMAUI.Models.ViewModels;
 
@@ -30,19 +32,10 @@ public partial class QuestTapePageViewModel : MainTapeViewModel
         await PopupAction.DisplayPopup(new CurrentQuestPage(questItem ?? new()));
     }
 
-    public QuestTapePageViewModel(AppSettings appSettings) : base(appSettings)
+    public QuestTapePageViewModel(AppSettings appSettings, IOptions<QuestFilterOptions> questFilterOptions) : base(appSettings)
     {
-        FilterItems = [
-            new FilterItem {
-                FilterIcon = "star_light.svg",
-                TextFilter = "Все"
-            },
-            new FilterItem {
-                FilterIcon = "in_process_light.svg",
-                TextFilter = "В процессе"
-            }
-        ];
-            
+        FilterItems = new ObservableCollection<FilterItem>(questFilterOptions.Value.QuestFilterItems);
+
         // запрос к серверу
         TapeItems = [
             new()

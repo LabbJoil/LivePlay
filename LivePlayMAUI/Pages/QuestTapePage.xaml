@@ -15,21 +15,23 @@
         
             <Rectangle x:Name="ShadowRectangle" Fill="Black" ZIndex="1" Opacity="0" StrokeThickness="0" Grid.RowSpan="2"/>
 
-            <CollectionView Style="{StaticResource FilterCollectionView}" ItemsSource="{Binding FilterItems}" Grid.Row="0" Margin="0,10,0,5">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Border BackgroundColor="Transparent" Stroke="White" Margin="0,5" Padding="5,0">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="20" />
-                            </Border.StrokeShape>
-                            <StackLayout Orientation="Horizontal">
-                                <Image Source="{Binding FilterIcon}" Margin="2"/>
-                                <Label Text="{Binding TextFilter}" VerticalOptions="Center" Margin="2"/>
-                            </StackLayout>
-                        </Border>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+            <Border BackgroundColor="#415A77" Margin="0,10,0,5" Grid.Row="0" StrokeThickness="0">
+                <CollectionView Style="{StaticResource FilterCollectionView}" ItemsSource="{Binding FilterItems}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BackgroundColor="Transparent" Stroke="White" Margin="8,5" Padding="7,0" StrokeThickness="2">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="20" />
+                                </Border.StrokeShape>
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="{Binding FilterIcon}" Margin="2"/>
+                                    <Label Text="{Binding TextFilter}" VerticalOptions="Center" Margin="2" FontSize="16" FontAttributes="Bold"/>
+                                </StackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Border>
 
             <CollectionView ItemsSource="{Binding TapeItems}"  Style="{StaticResource TapeCollectionView}" Grid.Row="1" Margin="10,5">
                 <CollectionView.ItemTemplate>

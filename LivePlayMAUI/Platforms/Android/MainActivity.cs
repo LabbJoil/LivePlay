@@ -3,9 +3,7 @@ using Android.Content.PM;
 using Android.OS;
 using CommunityToolkit.Maui.Core;
 using LivePlayMAUI.Models.Enum;
-using LivePlayMAUI.Models.ViewModels;
 using LivePlayMAUI.Services;
-using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using System.Diagnostics.CodeAnalysis;
 
