@@ -1,5 +1,4 @@
-﻿
-namespace LivePlayWebApi.Models.Enums;
+﻿namespace LivePlayWebApi.Enums;
 
 public enum TypeQuest
 {

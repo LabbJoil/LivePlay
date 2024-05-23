@@ -1,12 +1,11 @@
 ﻿
-using LivePlayWebApi.Models.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LivePlayWebApi.Models.EntityModels;
 
-[Table("Award")]
-public class AwardEntityModel
+[Table("Coupon")]
+public class CouponEntityModel
 {
     [Key, Required]
     public int Id { get; set; }
@@ -21,7 +20,8 @@ public class AwardEntityModel
     [Required]
     public required string Coupon { get; set; }
     [Required]
-    public DateTime? CreatedDate { get; set; }
+    public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
     [Required]
     public DateTime? FinalDate { get; set; }
+    public ICollection<UserEntityModel> Users { get; set; } = [];
 }

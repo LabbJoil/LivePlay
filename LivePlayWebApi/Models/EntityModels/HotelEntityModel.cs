@@ -14,4 +14,5 @@ public class HotelEntityModel
     [Required]
     public string? Address { get; set; }
     public string? PhoneNumber { get; set; }
+    public ICollection<QuestEntityModel> Quest { get; set; } = [];
 }

@@ -10,7 +10,8 @@ public class FeedbackEntityModel
     [Key, Required]
     public int Id { get; set; }
     [Required]
-    public int UserId { get; set; }
+    public Guid? UserId { get; set; }
+    public UserEntityModel? Users { get; set; }
     [Required]
     public string? Title { get; set; }
     [Required]
@@ -20,5 +21,5 @@ public class FeedbackEntityModel
     [Required]
     public byte Rate { get; set; }
     [Required]
-    private DateTime? CreateDate { get; set; }
+    public DateTime CreateDate { get; set; } = DateTime.UtcNow;
 }

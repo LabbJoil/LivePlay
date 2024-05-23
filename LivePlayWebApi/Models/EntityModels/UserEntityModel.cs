@@ -1,6 +1,6 @@
 ﻿
+using LivePlayWebApi.Enums;
 using LivePlayWebApi.Models.CoreModels;
-using LivePlayWebApi.Models.Enums;
 using LivePlayWebApi.Services;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,23 +13,27 @@ public class UserEntityModel
     [Key, Required]
     public Guid Id { get; set; }
     [Required]
-    public string? PasswordHash { get; set; }
+    public required string PasswordHash { get; set; }
     [Required]
-    public string? Email { get; set; }
+    public required string Email { get; set; }
     [Required]
-    public string? FirstName { get; set; }
-    public string? LastName { get; set; }
+    public required string FirstName { get; set; }
+    public string LastName { get; set; } = string.Empty;
     [Required]
-    public UserRole Role { get; set; }
-    [Required]
-    public DateTime? JoinDate { get; set; }
+    public DateTime JoinDate { get; set; } = DateTime.UtcNow;
 
-    public static UserEntityModel Create(string email, string password)
+    public ICollection<RoleEntityModel> Roles { get; set; } = [];
+    public ICollection<CouponEntityModel> Coupons { get; set; } = [];
+    public ICollection<QuestEntityModel> Quests { get; set; } = [];
+    public ICollection<FeedbackEntityModel> Feedbacks { get; set; } = [];
+
+    public static UserEntityModel Create(string email, string password, string firstName)
         =>
         new()
         {
             Id = Guid.NewGuid(),
             PasswordHash = PasswordHasher.HashPassword(password),
             Email = email,
+            FirstName = firstName
         };
 }

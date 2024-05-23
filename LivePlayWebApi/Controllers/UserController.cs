@@ -1,7 +1,6 @@
 ﻿using LivePlayWebApi.Contracts;
 using LivePlayWebApi.Models.CoreModels;
 using LivePlayWebApi.Services;
-using LivePlayWebApi.Services.Entities;
 using Microsoft.AspNetCore.Authentication.OAuth;
 using Microsoft.AspNetCore.Mvc;
 using Npgsql.Replication.PgOutput.Messages;
@@ -15,9 +14,11 @@ namespace LivePlayWebApi.Controllers
 {
     [Route("[controller]/")]
     [ApiController]
-    public class UserController(UserService userService) : ControllerBase
+    public class UserController(UserService userService, Microsoft.Extensions.Options.IOptions<RolePermissionOptions> authorizationOptions) : ControllerBase
     {
         private readonly UserService UserDBHelper = userService;
+
+        private readonly RolePermissionOptions authorization = authorizationOptions.Value;
 
 
         [HttpPost("/login")]
@@ -25,7 +26,7 @@ namespace LivePlayWebApi.Controllers
         {
             try
             {
-                var token = await UserDBHelper.Register(userModel.Email, userModel.Password);
+                var token = await UserDBHelper.Register(userModel.Email, userModel.Password, userModel.FirstName);
                 //Logger.LogInformation("|{date}|\t|User (id - {idUser})|\t|The user has successfully signup", DateTime.Now, authorizeUser.Id);
                 return Ok(token);
             }

@@ -1,6 +1,4 @@
-﻿
-using LivePlayWebApi.Models.Enums;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens;
 using System.Security.Claims;
@@ -11,6 +9,7 @@ using System.Text;
 using LivePlayWebApi.Models.CoreModels;
 using LivePlayWebApi.Interfaces;
 using LivePlayWebApi.Models.EntityModels;
+using LivePlayWebApi.Enums;
 
 namespace LivePlayWebApi.Services;
 
@@ -47,13 +46,13 @@ public class JwtProvider(IOptions<JwtOptions> options) : IJwtProvider
         return claims;
     }
 
-    public (int, UserRole) GetUserIdRole(ClaimsPrincipal claimsPrincipal)
+    public (int, Role) GetUserIdRole(ClaimsPrincipal claimsPrincipal)
     {
         var sidClaim = claimsPrincipal.FindFirst(ClaimTypes.Sid);
         var roleClaim = claimsPrincipal.FindFirst(ClaimTypes.Role);
         if (sidClaim == null || !int.TryParse(sidClaim.Value, out int id))
             throw new Exception("ID user not transferred");
-        if (roleClaim == null || !Enum.TryParse(roleClaim.Value, out UserRole role))
+        if (roleClaim == null || !Enum.TryParse(roleClaim.Value, out Role role))
             throw new Exception("Role user not transferred");
         return (id, role);
     }

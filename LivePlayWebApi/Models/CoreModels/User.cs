@@ -1,4 +1,4 @@
-﻿using LivePlayWebApi.Models.Enums;
+﻿using LivePlayWebApi.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace LivePlayWebApi.Models.CoreModels;
@@ -9,6 +9,6 @@ public class User
     public string? Email { get; set; }
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
-    public UserRole Role { get; set; }
+    public Role Role { get; set; }
     public DateTime? JoinDate { get; set; }
 }
