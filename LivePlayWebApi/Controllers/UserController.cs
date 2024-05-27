@@ -1,8 +1,14 @@
 ﻿using LivePlayWebApi.Contracts;
+using LivePlayWebApi.Enums;
+using LivePlayWebApi.Interfaces;
 using LivePlayWebApi.Models.CoreModels;
-using LivePlayWebApi.Services;
+using LivePlayWebApi.Services.Auth;
+using LivePlayWebApi.Services.ConfigurationOptions;
+using LivePlayWebApi.Services.Repositories;
 using Microsoft.AspNetCore.Authentication.OAuth;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 using Npgsql.Replication.PgOutput.Messages;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -14,21 +20,19 @@ namespace LivePlayWebApi.Controllers
 {
     [Route("[controller]/")]
     [ApiController]
-    public class UserController(UserService userService, Microsoft.Extensions.Options.IOptions<RolePermissionOptions> authorizationOptions) : ControllerBase
+    public class UserController(UserService userService, IJwtProvider jwtProvider) : ControllerBase
     {
         private readonly UserService UserDBHelper = userService;
-
-        private readonly RolePermissionOptions authorization = authorizationOptions.Value;
-
+        private readonly IJwtProvider _jwtProvider = jwtProvider;
 
         [HttpPost("/login")]
         public async Task<IActionResult> LoginUser([FromBody] LoginUserRequest userModel)
         {
             try
             {
-                var token = await UserDBHelper.Register(userModel.Email, userModel.Password, userModel.FirstName);
-                //Logger.LogInformation("|{date}|\t|User (id - {idUser})|\t|The user has successfully signup", DateTime.Now, authorizeUser.Id);
-                return Ok(token);
+                var token = await UserDBHelper.RegisterUser(userModel.Email, userModel.Password, userModel.FirstName);
+                HttpContext.Response.Cookies.Append("tok-cookies", token);
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -36,10 +40,32 @@ namespace LivePlayWebApi.Controllers
             }
         }
 
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpPost("/loginAdmin")]
+        public async Task<IActionResult> LoginAdmin([FromBody] LoginUserRequest userModel)
         {
-            return "value";
+            try
+            {
+                var token = await UserDBHelper.RegisterAdmin(userModel.Email, userModel.Password, userModel.FirstName);
+                HttpContext.Response.Cookies.Append("tok-cookies", token);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+        [HttpGet("U")]
+        [Authorize(Policy = nameof(Politic.OnlyRead))]
+        public IActionResult Get()
+        {
+            return Ok("valueUser");
+        }
+
+        [HttpGet("A"), Authorize(Policy = nameof(Politic.Edit))]
+        public IActionResult GetAdmin()
+        {
+            return Ok("valueAdmin");
         }
 
         [HttpPost]
@@ -52,9 +78,16 @@ namespace LivePlayWebApi.Controllers
         {
         }
 
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{id}"), Authorize]
+        public async Task<IActionResult> Delete(int id)
         {
+            var userId = _jwtProvider.GetUserId(HttpContext.User);
+
+            var userPermissions = await UserDBHelper.GetUserPermissions(userId);
+            Permission[] needPoliticPermissions = [Permission.Read];
+            if (needPoliticPermissions.All(userPermissions.Contains))
+                return Ok("ok");
+            return Ok("KKK");
         }
     }
 }

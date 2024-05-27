@@ -1,8 +1,7 @@
-﻿
-using LivePlayWebApi.Enums;
+﻿using LivePlayWebApi.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace LivePlayWebApi.Services;
+namespace LivePlayWebApi.Services.ConfigurationOptions;
 
 public class RolePermissionOptions
 {
@@ -11,9 +10,6 @@ public class RolePermissionOptions
 
 public class RolePermissions
 {
-    [Required]
     public string Role { get; set; } = string.Empty;
-
-    [Required]
     public string[] Permissions { get; set; } = [];
 }

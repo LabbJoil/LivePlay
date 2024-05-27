@@ -8,5 +8,5 @@ public interface IJwtProvider
 {
     public string GenerateNewToken(Claim[] claims);
     public Claim[] SetUser(UserEntityModel user);
-    public TokenValidationParameters GetJwtOptions();
+    public Guid GetUserId(ClaimsPrincipal claimsPrincipal);
 }

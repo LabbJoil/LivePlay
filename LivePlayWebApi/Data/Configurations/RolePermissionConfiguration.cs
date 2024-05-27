@@ -1,6 +1,6 @@
 ﻿using LivePlayWebApi.Enums;
 using LivePlayWebApi.Models.EntityModels;
-using LivePlayWebApi.Services;
+using LivePlayWebApi.Services.ConfigurationOptions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.Extensions.Options;

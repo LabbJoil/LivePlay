@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace LivePlayWebApi.Migrations
 {
-    [DbContext(typeof(ContextDB))]
+    [DbContext(typeof(LivePlayDbContext))]
     [Migration("20240523152151_LivePlayDb")]
     partial class LivePlayDb
     {

@@ -1,36 +1,42 @@
 
 using LivePlayWebApi.Interfaces;
-using LivePlayWebApi.Services;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.CookiePolicy;
 using LivePlayWebApi.Data;
+using LivePlayWebApi.Services.Repositories;
+using LivePlayWebApi.Services.ConfigurationOptions;
+using LivePlayWebApi.Services.Authorization;
+using LivePlayWebApi.Services.MidllWare;
+using LivePlayWebApi.Services.Auth;
+using LivePlayWebApi.Extentions;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var configuration = builder.Configuration;
 
-services.AddControllers();
-services.AddEndpointsApiExplorer();
-services.AddAuthorization();
-services.AddSwaggerGen();
-
-var t = configuration.GetSection(nameof(RolePermissionOptions));
+services.AddDbContext<LivePlayDbContext>(options =>
+{
+    options.UseNpgsql(configuration.GetConnectionString(nameof(LivePlayDbContext)));
+});
 
 services.Configure<RolePermissionOptions>(configuration.GetSection(nameof(RolePermissionOptions)));
 services.Configure<JwtOptions>(configuration.GetSection(nameof(JwtOptions)));
 
-services.AddDbContext<ContextDB>(options =>
-{
-    options.UseNpgsql(configuration.GetConnectionString(nameof(ContextDB)));
-});
+services.AddControllers();
+services.AddSwaggerGen();
 
 services.AddScoped<UserService>();
+services.AddSingleton<IJwtProvider, JwtProvider>();
 
-services.AddScoped<IJwtProvider, JwtProvider>();
+services.AddApiAuthentication(configuration);
+services.AddApiPolitics();
 
 var app = builder.Build();
+
+//app.UseMiddleware<ExceptionMiddlewareHandler>();
 
 if (app.Environment.IsDevelopment())
 {

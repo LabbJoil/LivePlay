@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace LivePlayWebApi.Migrations
 {
-    [DbContext(typeof(ContextDB))]
+    [DbContext(typeof(LivePlayDbContext))]
     partial class ContextDBModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

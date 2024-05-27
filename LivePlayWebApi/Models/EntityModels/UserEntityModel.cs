@@ -26,14 +26,4 @@ public class UserEntityModel
     public ICollection<CouponEntityModel> Coupons { get; set; } = [];
     public ICollection<QuestEntityModel> Quests { get; set; } = [];
     public ICollection<FeedbackEntityModel> Feedbacks { get; set; } = [];
-
-    public static UserEntityModel Create(string email, string password, string firstName)
-        =>
-        new()
-        {
-            Id = Guid.NewGuid(),
-            PasswordHash = PasswordHasher.HashPassword(password),
-            Email = email,
-            FirstName = firstName
-        };
 }

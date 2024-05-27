@@ -1,13 +1,13 @@
 ﻿using LivePlayWebApi.Data.Configurations;
 using LivePlayWebApi.Models.EntityModels;
-using LivePlayWebApi.Services;
+using LivePlayWebApi.Services.ConfigurationOptions;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
 namespace LivePlayWebApi.Data;
 
-public class ContextDB(DbContextOptions<ContextDB> options, IOptions<RolePermissionOptions> rolePermissionOptions) : DbContext(options)
+public class LivePlayDbContext(DbContextOptions<LivePlayDbContext> options, IOptions<RolePermissionOptions> rolePermissionOptions) : DbContext(options)
 {
     public DbSet<UserEntityModel> Users { get; set; }
     public DbSet<RoleEntityModel> Roles { get; set; }
@@ -20,7 +20,7 @@ public class ContextDB(DbContextOptions<ContextDB> options, IOptions<RolePermiss
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ContextDB).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(LivePlayDbContext).Assembly);
         modelBuilder.ApplyConfiguration(new RolePermissionConfiguration(rolePermissionOptions.Value));
     }
 
