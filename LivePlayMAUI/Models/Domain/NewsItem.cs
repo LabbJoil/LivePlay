@@ -6,27 +6,9 @@ using System.Threading.Tasks;
 
 namespace LivePlayMAUI.Models.Domain;
 
-public class NewsItem
+public class NewsItem()
 {
-    private string? Title;
-    private string? Description;
-    private string? Image;
-
-    public string? TitleView
-    {
-        get => Title;   // тут
-        set => Title ??= value;
-    }
-
-    public string? DescriptionView
-    {
-        get => Description; // обрезать размер до опр. символа
-        set => Description ??= value;
-    }
-
-    public string? ImageView
-    {
-        get => Image;
-        set => Image ??= value;
-    }
+    public required string Title { get; set; }
+    public required string Description { get; set; }
+    public required string Image { get; set; }
 }

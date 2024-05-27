@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<mauiPopup:BasePopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mauiPopup="clr-namespace:MauiPopup.Views;assembly=MauiPopup"
-             x:Class="LivePlayMAUI.Pages.CurrentNewsPage"
+             x:Class="LivePlayMAUI.Pages.NotStartedQuestPage"
+             IsCloseOnBackgroundClick="True"
+             Margin="10,10,10,60"
+             ForegroundColor="Transparent" BackgroundColor="Transparent"
              Title="PopupPage">
 
-    <Border BackgroundColor="#415A77" Stroke="Transparent" >
+    <Border BackgroundColor="#415A77" Margin="18" Stroke="Transparent">
         <Border.StrokeShape>
             <RoundRectangle CornerRadius="20" />
         </Border.StrokeShape>
@@ -31,17 +34,17 @@
             </Grid.ColumnDefinitions>
             
             <Frame Grid.Column="1" Grid.Row="1" CornerRadius="10" Background="Transparent" BorderColor="Transparent" Padding="0">
-                <Image Source="{Binding CurrentNewsItem.ImageView}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill" />
+                <Image Source="{Binding Image}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill" />
             </Frame>
+            
+            <Label Grid.Column="1" Grid.Row="3" Text="{Binding Title}" FontSize="19" HorizontalOptions="Center" />
+            <Label Grid.Column="1" Grid.Row="4" Text="{Binding Description}" FontSize="15" HorizontalOptions="Center" />
 
-            <Label Grid.Column="1" Grid.Row="3" Text="{Binding CurrentNewsItem.TitleView}" FontSize="19" HorizontalOptions="Center" />
-            <Label Grid.Column="1" Grid.Row="4" Text="{Binding CurrentNewsItem.DescriptionView}" FontSize="15" HorizontalOptions="Center" />
-
-            <Label Grid.Column="1" Grid.Row="6" Text="{Binding CurrentNewsItem.TitleView}" FontSize="13" HorizontalOptions="Center" />
-            <Label Grid.Column="1" Grid.Row="8" Text="{Binding CurrentNewsItem.DescriptionView}" FontSize="13" HorizontalOptions="Center" />
+            <Label Grid.Column="1" Grid.Row="6" Text="{Binding Title}" FontSize="13" HorizontalOptions="Center" />
+            <Label Grid.Column="1" Grid.Row="8" Text="{Binding Description}" FontSize="13" HorizontalOptions="Center" />
 
             <Button Grid.Column="1" Grid.Row="10" Text="Участовать" Margin="5,0" Style="{StaticResource BasicButton}"/>
         </Grid>
     </Border>
 
-</ContentPage>
+</mauiPopup:BasePopupPage>

@@ -10,7 +10,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace LivePlayMAUI.Abstracts;
 
-public partial class MainViewModel(AppSettings appSettings) : ObservableObject
+public partial class BaseViewModel(AppSettings appSettings) : ObservableObject
 {
     public AppSettings _appSettings = appSettings;
 

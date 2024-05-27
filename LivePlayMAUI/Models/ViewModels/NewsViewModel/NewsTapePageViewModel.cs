@@ -17,7 +17,7 @@ public partial class NewsTapePageViewModel : MainTapeViewModel
     {
         if (item is Tuple<object, ContentPage> tuple && tuple.Item1 is NewsItem newsItem && tuple.Item2 is ContentPage contentPage)
         {
-            var currentPageViewModel = new CurrentNewsPageViewModel(_appSettings, newsItem ?? new NewsItem());
+            var currentPageViewModel = new CurrentNewsPageViewModel(_appSettings, newsItem ?? throw new Exception());   // description error
             await contentPage.Navigation.PushAsync(new CurrentNewsPage(currentPageViewModel));
         }
     }
@@ -28,27 +28,27 @@ public partial class NewsTapePageViewModel : MainTapeViewModel
         TapeItems = [
             new()
             {
-                ImageView = $@"/storage/emulated/0/DCIM/Camera/Рисунок1.png",
-                TitleView = "БЕБЕ",
-                DescriptionView = "fnwejkfnerbiuerbvierbviurbve"
+                Image = $@"/storage/emulated/0/DCIM/Camera/Рисунок1.png",
+                Title = "БЕБЕ",
+                Description = "fnwejkfnerbiuerbvierbviurbve"
             },
             new()
             {
-                ImageView = $@"/storage/emulated/0/DCIM/Camera/20230414_212808.jpg",
-                TitleView = "huiyuyuи",
-                DescriptionView = "fnwejkfnerbiuerbvierbviurbve"
+                Image = $@"/storage/emulated/0/DCIM/Camera/20230414_212808.jpg",
+                Title = "huiyuyuи",
+                Description = "fnwejkfnerbiuerbvierbviurbve"
             },
             new()
             {
-                ImageView = $@"/storage/emulated/0/DCIM/Camera/Рисунок1.png",
-                TitleView = "БЕБЕ",
-                DescriptionView = "fnwejkfnerbiuerbvierbviurbve"
+                Image = $@"/storage/emulated/0/DCIM/Camera/Рисунок1.png",
+                Title = "БЕБЕ",
+                Description = "fnwejkfnerbiuerbvierbviurbve"
             },
             new()
             {
-                ImageView = $@"/storage/emulated/0/DCIM/Camera/20230414_212808.jpg",
-                TitleView = "jhhfyf",
-                DescriptionView = "fnwejkfnerbiuerbvierbviurbve"
+                Image = $@"/storage/emulated/0/DCIM/Camera/20230414_212808.jpg",
+                Title = "jhhfyf",
+                Description = "fnwejkfnerbiuerbvierbviurbve"
             },
         ];
     }

@@ -2,6 +2,7 @@
 using CommunityToolkit.Maui;
 using LivePlayMAUI.Models.Options;
 using LivePlayMAUI.Models.ViewModels;
+using LivePlayMAUI.Models.ViewModels.AccountViewModel;
 using LivePlayMAUI.Pages;
 using LivePlayMAUI.Services;
 using Microsoft.Extensions.Configuration;
@@ -36,7 +37,7 @@ public static class MauiProgram
 
         services.AddTransient<QuestTapePage>();
         services.AddTransient<NewsTapePage>();
-        services.AddTransient<CurrentQuestPage>();
+        services.AddTransient<NotStartedQuestPage>();
         services.AddTransient<CurrentNewsPage>();
         services.AddTransient<EnterPage>();
 

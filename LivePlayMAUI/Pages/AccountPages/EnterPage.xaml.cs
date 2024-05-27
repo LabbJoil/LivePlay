@@ -1,6 +1,6 @@
 ﻿
 using LivePlayMAUI.Models.Enum;
-using LivePlayMAUI.Models.ViewModels;
+using LivePlayMAUI.Models.ViewModels.AccountViewModel;
 using LivePlayMAUI.Services;
 
 namespace LivePlayMAUI.Pages;
