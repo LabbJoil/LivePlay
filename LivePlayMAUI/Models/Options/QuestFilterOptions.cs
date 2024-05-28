@@ -5,5 +5,5 @@ namespace LivePlayMAUI.Models.Options;
 
 public class QuestFilterOptions
 {
-    public FilterItem[] QuestFilterItems { get; set; } = [];
+    public ChosePanelItem[] QuestFilterItems { get; set; } = [];
 }

@@ -4,6 +4,7 @@ using LivePlayMAUI.Abstracts;
 using LivePlayMAUI.Models.Domain;
 using LivePlayMAUI.Models.Enum;
 using LivePlayMAUI.Models.Options;
+using LivePlayMAUI.Models.ViewModels.QuestViewModels;
 using LivePlayMAUI.Pages;
 using LivePlayMAUI.Services;
 using MauiPopup;
@@ -17,11 +18,12 @@ namespace LivePlayMAUI.Models.ViewModels;
 public partial class QuestTapePageViewModel : MainTapeViewModel
 {
     public ObservableCollection<QuestItem> TapeItems { get; set; }
-    public ObservableCollection<FilterItem> FilterItems { get; }
+
+    public ObservableCollection<ChosePanelItem> QuestFilterItems { get; set; }
 
     public QuestTapePageViewModel(AppSettings appSettings, IOptions<QuestFilterOptions> questFilterOptions) : base(appSettings)
     {
-        FilterItems = new ObservableCollection<FilterItem>(questFilterOptions.Value.QuestFilterItems);
+        QuestFilterItems = new ObservableCollection<ChosePanelItem>(questFilterOptions.Value.QuestFilterItems);
 
         // запрос к серверу
         TapeItems = [
@@ -62,18 +64,21 @@ public partial class QuestTapePageViewModel : MainTapeViewModel
 
     public async Task GoToInProcessQuestPage(ContentPage contentPage, QuestItem questItem)
     {
-        var inProgressPhotoPVM = new BaseQuestPageViewModel(_appSettings, questItem ?? throw new Exception("Не удалось загрузить страницу"));
+        BaseQuestPageViewModel inProgressPhotoPVM; 
         switch (questItem.Type)
         {
             case TypeQuest.Question:
+                inProgressPhotoPVM = new BaseQuestPageViewModel(_appSettings, questItem ?? throw new Exception("Не удалось загрузить страницу"));
                 await contentPage.Navigation.PushAsync(new InProgressQuizQuestPage(inProgressPhotoPVM));
                 break;
 
             case TypeQuest.Puzzle:
-                await contentPage.Navigation.PushAsync(new InProgressQRQuestPage(inProgressPhotoPVM));
+                inProgressPhotoPVM = new InProgressPhotoPageViewModel(_appSettings, questItem ?? throw new Exception("Не удалось загрузить страницу"));
+                await contentPage.Navigation.PushAsync(new InProgressQRQuestPage((InProgressPhotoPageViewModel)inProgressPhotoPVM));
                 break;
 
             case TypeQuest.Search:
+                inProgressPhotoPVM = new BaseQuestPageViewModel(_appSettings, questItem ?? throw new Exception("Не удалось загрузить страницу"));
                 await contentPage.Navigation.PushAsync(new InProgressPhotoQuestPage(inProgressPhotoPVM));
                 break;
         }

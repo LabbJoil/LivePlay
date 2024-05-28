@@ -1,6 +1,9 @@
 ﻿
+using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Storage;
 using LivePlayMAUI.Models.Enum;
 using LivePlayMAUI.Models.ViewModels;
+using System.Text;
 
 namespace LivePlayMAUI.Services;
 
@@ -66,5 +69,32 @@ public class AppSettings(Interfaces.IStoragePermissions storagePermissions)
     {
         var animationBackground = new Animation(v => visualElement.Opacity = v, startOpacity ?? visualElement.Opacity, endOpacity);
         animationBackground.Commit(owner, nameof(owner) + "AnimationOpacity", rate, lengthAnimation);
+    }
+
+    public static async Task GetSelectItemsStorage()
+    {
+        var fileSaveResult = await FilePicker.Default.PickMultipleAsync();
+        if (fileSaveResult != null)
+        {
+            await Toast.Make($"File is get").Show();
+        }
+        else
+        {
+            await Toast.Make($"File is not get").Show();
+        }
+    }
+
+    public static async void SaveFile(string nameFile, byte[] writeBytes)
+    {
+        using var stream = new MemoryStream(writeBytes);
+        var fileSaveResult = await FileSaver.Default.SaveAsync(nameFile, stream);
+        if (fileSaveResult.IsSuccessful)
+        {
+            await Toast.Make($"File is saved: {fileSaveResult.FilePath.Split('0')[1]}").Show();
+        }
+        else
+        {
+            await Toast.Make($"File is not saved, {fileSaveResult.Exception.Message}").Show();
+        }
     }
 }
