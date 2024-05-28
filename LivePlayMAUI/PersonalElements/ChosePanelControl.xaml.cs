@@ -8,14 +8,14 @@ public partial class ChoicePanelControl : ContentPage
 {
     public static readonly BindableProperty PanelItemsProperty = BindableProperty.Create(
        propertyName: nameof(PanelItems),
-       returnType: typeof(ObservableCollection<ChosePanelItem>),
+       returnType: typeof(ObservableCollection<ChoicePanelItem>),
        declaringType: typeof(ChoicePanelControl),
        defaultValue: null,
        defaultBindingMode: BindingMode.TwoWay);
 
-    public ObservableCollection<ChosePanelItem>? PanelItems
+    public ObservableCollection<ChoicePanelItem>? PanelItems
     {
-        get => (ObservableCollection<ChosePanelItem>)GetValue(PanelItemsProperty);
+        get => (ObservableCollection<ChoicePanelItem>)GetValue(PanelItemsProperty);
         set { SetValue(PanelItemsProperty, value); }
     }
 

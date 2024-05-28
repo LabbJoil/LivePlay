@@ -19,11 +19,11 @@ public partial class QuestTapePageViewModel : MainTapeViewModel
 {
     public ObservableCollection<QuestItem> TapeItems { get; set; }
 
-    public ObservableCollection<ChosePanelItem> QuestFilterItems { get; set; }
+    public ObservableCollection<ChoicePanelItem> QuestFilterItems { get; set; }
 
     public QuestTapePageViewModel(AppSettings appSettings, IOptions<QuestFilterOptions> questFilterOptions) : base(appSettings)
     {
-        QuestFilterItems = new ObservableCollection<ChosePanelItem>(questFilterOptions.Value.QuestFilterItems);
+        QuestFilterItems = new ObservableCollection<ChoicePanelItem>(questFilterOptions.Value.QuestFilterItems);
 
         // запрос к серверу
         TapeItems = [
