@@ -17,12 +17,12 @@ public partial class NewsTapePageViewModel : MainTapeViewModel
     {
         if (item is Tuple<object, ContentPage> tuple && tuple.Item1 is NewsItem newsItem && tuple.Item2 is ContentPage contentPage)
         {
-            var currentPageViewModel = new CurrentNewsPageViewModel(_appSettings, newsItem ?? throw new Exception());   // description error
+            var currentPageViewModel = new CurrentNewsPageViewModel(AppSettings, newsItem ?? throw new Exception());   // description error
             await contentPage.Navigation.PushAsync(new CurrentNewsPage(currentPageViewModel));
         }
     }
 
-    public NewsTapePageViewModel(AppSettings appSettings) : base(appSettings)
+    public NewsTapePageViewModel(OverApplicationSettings appSettings) : base(appSettings)
     {
         // запрос к серверу
         TapeItems = [

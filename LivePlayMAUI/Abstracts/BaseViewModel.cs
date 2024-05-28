@@ -10,9 +10,9 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace LivePlayMAUI.Abstracts;
 
-public partial class BaseViewModel(AppSettings appSettings) : ObservableObject
+public partial class BaseViewModel(OverApplicationSettings appSettings) : ObservableObject
 {
-    public AppSettings _appSettings = appSettings;
+    public OverApplicationSettings AppSettings = appSettings;
 
     [ObservableProperty]
     public bool _isRefreshing;
@@ -25,6 +25,6 @@ public partial class BaseViewModel(AppSettings appSettings) : ObservableObject
 
     public virtual void ChangeColorBars(Color color, StatusBarColor statusBarColor, Color? secondColor = null)
     {
-        _appSettings.ChangeColorStatusBars?.Invoke(color, statusBarColor, secondColor);
+        AppSettings.ChangeColorStatusBars?.Invoke(color, statusBarColor, secondColor);
     }
 }

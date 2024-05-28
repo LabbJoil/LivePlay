@@ -33,7 +33,7 @@ public static class MauiProgram
 
         services.Configure<QuestFilterOptions>(configuration.GetSection(nameof(QuestFilterOptions)));
 
-        services.AddSingleton<AppSettings>();
+        services.AddSingleton<OverApplicationSettings>();
 
         services.AddTransient<QuestTapePage>();
         services.AddTransient<NewsTapePage>();

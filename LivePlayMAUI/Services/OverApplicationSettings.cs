@@ -3,11 +3,12 @@ using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Storage;
 using LivePlayMAUI.Models.Enum;
 using LivePlayMAUI.Models.ViewModels;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace LivePlayMAUI.Services;
 
-public class AppSettings(Interfaces.IStoragePermissions storagePermissions)
+public class OverApplicationSettings(Interfaces.IStoragePermissions storagePermissions)
 {
     private readonly Interfaces.IStoragePermissions _storagePermissions = storagePermissions;
 
@@ -71,7 +72,7 @@ public class AppSettings(Interfaces.IStoragePermissions storagePermissions)
         animationBackground.Commit(owner, nameof(owner) + "AnimationOpacity", rate, lengthAnimation);
     }
 
-    public static async Task GetSelectItemsStorage()
+    public async Task GetSelectItemsStorage()
     {
         var fileSaveResult = await FilePicker.Default.PickMultipleAsync();
         if (fileSaveResult != null)
@@ -84,9 +85,12 @@ public class AppSettings(Interfaces.IStoragePermissions storagePermissions)
         }
     }
 
-    public static async void SaveFile(string nameFile, byte[] writeBytes)
+    [SuppressMessage("Interoperability", "CA1416:Availability")]
+    public async void SaveFile(string nameFile, byte[] writeBytes)
     {
         using var stream = new MemoryStream(writeBytes);
+
+#if IOS14_0_OR_GREATER || __ANDROID__
         var fileSaveResult = await FileSaver.Default.SaveAsync(nameFile, stream);
         if (fileSaveResult.IsSuccessful)
         {
@@ -96,5 +100,6 @@ public class AppSettings(Interfaces.IStoragePermissions storagePermissions)
         {
             await Toast.Make($"File is not saved, {fileSaveResult.Exception.Message}").Show();
         }
+#endif
     }
 }

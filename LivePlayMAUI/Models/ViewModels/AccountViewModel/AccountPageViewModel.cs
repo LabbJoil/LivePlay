@@ -25,7 +25,7 @@ public partial class AccountPageViewModel : MainTapeViewModel
         }
     }
 
-    public AccountPageViewModel(AppSettings appSettings) : base(appSettings)
+    public AccountPageViewModel(OverApplicationSettings appSettings) : base(appSettings)
     {
         // запрос к серверу
     }

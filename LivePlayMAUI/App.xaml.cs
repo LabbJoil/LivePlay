@@ -12,7 +12,7 @@ namespace LivePlayMAUI;
 
 public partial class App : Application
 {
-    public App(AppSettings appSettings)
+    public App(OverApplicationSettings appSettings)
     {
         InitializeComponent();
         MainPage = new AppShell(appSettings);

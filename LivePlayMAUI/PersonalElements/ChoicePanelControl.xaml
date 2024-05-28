@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LivePlayMAUI.PersonalElements.ChoicePanelControl"
-             Title="ChoicePanelControl">
+             x:Name="this">
     
-    <Border BackgroundColor="#415A77" Margin="0,10,0,5" Grid.Row="0" StrokeThickness="0">
-        <CollectionView Style="{StaticResource ChoseCollectionView}" ItemsSource="{Binding Items}">
+    <Border BackgroundColor="#415A77" StrokeThickness="0">
+        <CollectionView Style="{StaticResource ChoiceCollectionView}" ItemsSource="{Binding Source={x:Reference this},Path=PanelItems}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Border BackgroundColor="Transparent" Stroke="White" Margin="8,5" Padding="7,0" StrokeThickness="2">
@@ -14,7 +14,7 @@
                         </Border.StrokeShape>
                         <StackLayout Orientation="Horizontal">
                             <Image Source="{Binding Icon}" Margin="2"/>
-                            <Label Text="{Binding Filter}" VerticalOptions="Center" Margin="2" FontSize="16" FontAttributes="Bold"/>
+                            <Label Text="{Binding Text}" VerticalOptions="Center" Margin="2" FontSize="16" FontAttributes="Bold"/>
                         </StackLayout>
                     </Border>
                 </DataTemplate>
@@ -22,4 +22,4 @@
         </CollectionView>
     </Border>
     
-</ContentPage>
+</ContentView>

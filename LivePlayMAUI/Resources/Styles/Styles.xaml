@@ -73,7 +73,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="FilterCollectionView" TargetType="CollectionView">
+    <Style x:Key="ChoiceCollectionView" TargetType="CollectionView">
         <Setter Property="BackgroundColor" Value="Transparent"/>
         <Setter Property="HorizontalOptions" Value="Center"/>
         <Setter Property="SelectionMode" Value="None"/>

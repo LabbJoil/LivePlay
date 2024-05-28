@@ -10,7 +10,7 @@ public partial class AppShell : Shell
 {
     private Grid? LastGrid;
 
-    public AppShell(AppSettings appSettings)
+    public AppShell(OverApplicationSettings appSettings)
     {
         InitializeComponent();
         //Routing.RegisterRoute(nameof(QuestTapePage), typeof(QuestTapePage));

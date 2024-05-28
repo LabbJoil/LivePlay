@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 
 namespace LivePlayMAUI.Abstracts;
 
-public abstract partial class MainTapeViewModel(AppSettings appSettings) : BaseViewModel(appSettings)
+public abstract partial class MainTapeViewModel(OverApplicationSettings appSettings) : BaseViewModel(appSettings)
 {
     //public ObservableCollection<object> TapeItems { get; protected set; } = [];
 

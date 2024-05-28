@@ -7,7 +7,7 @@ public class HeightConverter : IValueConverter
 {
     public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        if (value is double doubleValue && parameter is string strParameter && double.TryParse(strParameter, out double divide))
+        if (value is double doubleValue && parameter is string strParameter && double.TryParse(strParameter, CultureInfo.InvariantCulture, out double divide))
             return doubleValue / divide;
         return null;
     }

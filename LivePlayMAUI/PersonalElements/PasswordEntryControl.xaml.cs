@@ -5,7 +5,6 @@ namespace LivePlayMAUI.PersonalElements;
 
 public partial class PasswordEntryControl : ContentView
 {
-
     public PasswordEntryControl()
     {
         InitializeComponent();

@@ -129,6 +129,9 @@
 	  <Compile Update="Pages\QuestPages\QuestTapePage.xaml.cs">
 	    <DependentUpon>QuestTapePage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="PersonalElements\ChoicePanelControl.xaml.cs">
+	    <DependentUpon>ChoicePanelControl.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="PersonalElements\PasswordEntryControl.xaml.cs">
 	    <DependentUpon>PasswordEntryControl.xaml</DependentUpon>
 	  </Compile>
@@ -171,7 +174,7 @@
 	  <MauiXaml Update="Pages\QuestPages\QuestTapePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="PersonalElements\ChosePanelControl.xaml">
+	  <MauiXaml Update="PersonalElements\ChoicePanelControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="PersonalElements\PasswordEntryControl.xaml">
