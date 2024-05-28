@@ -19,7 +19,7 @@ public partial class QuestTapePageViewModel : MainTapeViewModel
 {
     public ObservableCollection<QuestItem> TapeItems { get; set; }
 
-    public ObservableCollection<ChoicePanelItem> QuestFilterItems { get; set; }
+    public IReadOnlyList<ChoicePanelItem> QuestFilterItems { get; set; }
 
     public QuestTapePageViewModel(OverApplicationSettings appSettings, IOptions<QuestFilterOptions> questFilterOptions) : base(appSettings)
     {

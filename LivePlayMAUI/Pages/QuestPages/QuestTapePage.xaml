@@ -17,12 +17,12 @@
 
             <Rectangle x:Name="ShadowRectangle" Fill="Black" ZIndex="1" Opacity="0" StrokeThickness="0" Grid.RowSpan="2"/>
 
-            <!--<pe:ChoicePanelControl x:Name="FilterPanel" Margin="0,10,0,5" Grid.Row="0" PanelItems="{Binding QuestFilterItems}"/>-->
+            <pe:ChoicePanelControl x:Name="FilterPanel" Margin="0,10,0,5" Grid.Row="0" PanelItems="{Binding QuestFilterItems}"/>
 
             <CollectionView ItemsSource="{Binding TapeItems}" Style="{StaticResource TapeCollectionView}" Grid.Row="1" Margin="10,5">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Border x:Name="PageView" BackgroundColor="#415A77" Stroke="Transparent">
+                        <Border x:Name="PageView" BackgroundColor="#415A77" Stroke="Transparent" ZIndex="1">
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="20" />
                             </Border.StrokeShape>
@@ -47,16 +47,16 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="27"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame Grid.ColumnSpan="3" Grid.RowSpan="2" CornerRadius="0" Background="Transparent" BorderColor="Transparent" Padding="0">
+                                <Frame x:Name="CostFrame" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ZIndex="1" CornerRadius="30"
+                                       Background="Black" BorderColor="Transparent" Padding="0" Opacity="0.73" Margin="10,10,0,0">
+                                    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                        <Label x:Name="CoinLabel" Text="123" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="White" FontSize="16" FontAttributes="Bold" Margin="5,0"/>
+                                        <Image Source="coin_dark.svg" Margin="5,2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill" HeightRequest="{Binding Path=Height, Source={x:Reference CostFrame}}"/>
+                                    </StackLayout>
+                                </Frame>
+                                <Frame Grid.ColumnSpan="3" Grid.RowSpan="2" CornerRadius="0" Background="Transparent" BorderColor="Transparent" Padding="0" ZIndex="0">
                                     <Image Source="{Binding Image}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill" />
                                 </Frame>
-                                <!--<Frame Grid.Column="0" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" CornerRadius="30" ZIndex="1" 
-                               Background="Black" BorderColor="Transparent" Padding="0" Opacity="0.73">
-                            <StackLayout Orientation="Horizontal">
-                                <Label x:Name="CoinLabel" Text="123" VerticalOptions="Center" HorizontalOptions="Start" TextColor="Black" FontSize="16" FontAttributes="Bold" Margin="10,0"/>
-                                <Image Source="coin_dark.svg" Margin="5,2" HorizontalOptions="EndAndExpand"/>
-                            </StackLayout>
-                        </Frame>-->
                                 <Label Grid.Column="1" Grid.Row="3" Text="{Binding Title}" FontSize="19" HorizontalOptions="Start" VerticalOptions="Center"/>
                                 <Label Grid.Column="1" Grid.Row="5" Text="{Binding Description}" FontSize="15" HorizontalOptions="Start" VerticalOptions="Center" />
                             </Grid>
