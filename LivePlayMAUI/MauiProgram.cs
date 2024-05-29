@@ -40,6 +40,7 @@ public static class MauiProgram
         services.AddTransient<NotStartedQuestPage>();
         services.AddTransient<CurrentNewsPage>();
         services.AddTransient<EnterPage>();
+        services.AddTransient<LoadingPage>();
 
         services.AddTransient<QuestTapePageViewModel>();
         services.AddTransient<NewsTapePageViewModel>();

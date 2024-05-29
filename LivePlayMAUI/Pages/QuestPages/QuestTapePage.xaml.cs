@@ -13,15 +13,15 @@ public partial class QuestTapePage : ContentPage
     public QuestTapePage(QuestTapePageViewModel questTapePageViewModel)
     {
         InitializeComponent();
-        //FilterPanel.PanelItems = questTapePageViewModel.QuestFilterItems;
         BindingContext = questTapePageViewModel;
         QuestTapePageVM = questTapePageViewModel;
     }
 
-    private void ContentPage_Appearing(object sender, EventArgs e)
+    private async void ContentPage_Appearing(object sender, EventArgs e)
     {
         QuestTapePageVM.ChangeColorBars(MainGrid.BackgroundColor, StatusBarColor.BarWhite, null);
         OverApplicationSettings.OpacityAnimation(this, ShadowRectangle, 20, 500, 0);
+        //await QuestTapePageVM.GetQuestItems();
     }
 
     private void ContentPage_Disappearing(object sender, EventArgs e)

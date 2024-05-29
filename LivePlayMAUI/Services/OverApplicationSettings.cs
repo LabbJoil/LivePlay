@@ -85,7 +85,6 @@ public class OverApplicationSettings(Interfaces.IStoragePermissions storagePermi
         }
     }
 
-    [SuppressMessage("Interoperability", "CA1416:Availability")]
     public async void SaveFile(string nameFile, byte[] writeBytes)
     {
         using var stream = new MemoryStream(writeBytes);

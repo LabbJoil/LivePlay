@@ -63,11 +63,16 @@
         FlyoutItemIsVisible="False"
         Route="EnterPage" 
         ContentTemplate="{DataTemplate pages:EnterPage}"/>
+    
+    <ShellContent
+        FlyoutItemIsVisible="False"
+        Route="LoadingPage" 
+        ContentTemplate="{DataTemplate pages:LoadingPage}"/>
 
     <FlyoutItem x:Name="FlyoutItemsNow" FlyoutDisplayOptions="AsMultipleItems">
-        <ShellContent Title="Новости" AutomationId="0" Route="NewsTapePage"  ContentTemplate="{DataTemplate pages:NewsTapePage}"/>
-        <ShellContent Title="Квесты" AutomationId="1" ContentTemplate="{DataTemplate pages:QuestTapePage}"/>
-        <ShellContent Title="Настройки" AutomationId="2" ContentTemplate="{DataTemplate pages:SettingsPage}"/>
+        <ShellContent Title="Новости" AutomationId="0" Route="NewsTapePage" ContentTemplate="{DataTemplate pages:NewsTapePage}"/>
+        <ShellContent Title="Квесты" AutomationId="1" Route="QuestTapePage" ContentTemplate="{DataTemplate pages:QuestTapePage}"/>
+        <ShellContent Title="Настройки" AutomationId="2" Route="SettingsPage" ContentTemplate="{DataTemplate pages:SettingsPage}"/>
     </FlyoutItem>
 
 </Shell>

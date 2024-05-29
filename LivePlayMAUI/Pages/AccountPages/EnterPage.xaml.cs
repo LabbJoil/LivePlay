@@ -35,22 +35,6 @@ public partial class EnterPage : ContentPage
             else
                 return;
         }
-
-        //---
-
-        //using var stream = new MemoryStream(Encoding.Default.GetBytes("Hello from the Community Toolkit!"));
-        //var fileSaveResult = await FileSaver.Default.SaveAsync("LOL.txt", stream);
-        //if (fileSaveResult.IsSuccessful)
-        //{
-        //    await Toast.Make($"File is saved: {fileSaveResult.FilePath.Split('0')[1]}").Show();
-        //}
-        //else
-        //{
-        //    await Toast.Make($"File is not saved, {fileSaveResult.Exception.Message}").Show();
-        //}
-
-        //---
-
         await Shell.Current.GoToAsync($"//{nameof(NewsTapePage)}");
     }
 

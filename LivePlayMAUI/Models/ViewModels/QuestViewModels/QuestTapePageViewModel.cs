@@ -1,4 +1,5 @@
 ﻿
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LivePlayMAUI.Abstracts;
 using LivePlayMAUI.Models.Domain;
@@ -17,15 +18,22 @@ namespace LivePlayMAUI.Models.ViewModels;
 
 public partial class QuestTapePageViewModel : MainTapeViewModel
 {
-    public ObservableCollection<QuestItem> TapeItems { get; set; }
+    [ObservableProperty]
+    public ObservableCollection<QuestItem> _tapeItems;
 
-    public IReadOnlyList<ChoicePanelItem> QuestFilterItems { get; set; }
+    public IReadOnlyList<ChoicePanelItem> QuestFilterItems { get; set; } = [
+        new ChoicePanelItem { Icon = "star_light.svg", Text="Все" },
+        new ChoicePanelItem { Icon = "in_process_light.svg", Text="В процессе" },
+        new ChoicePanelItem { Icon = "done_quests_light.svg", Text="Выполненные" }
+        ];
 
-    public QuestTapePageViewModel(OverApplicationSettings appSettings, IOptions<QuestFilterOptions> questFilterOptions) : base(appSettings)
+    public QuestTapePageViewModel(OverApplicationSettings appSettings) : base(appSettings)
     {
-        QuestFilterItems = new ObservableCollection<ChoicePanelItem>(questFilterOptions.Value.QuestFilterItems);
+        GetQuestItems();
+    }
 
-        // запрос к серверу
+    public async Task GetQuestItems()
+    {
         TapeItems = [
             new("БЕБЕ", "fnwejkfnerbiuerbvierbviurbve", $@"/storage/emulated/0/DCIM/Camera/Рисунок1.png", QuestStatus.NotStarted, TypeQuest.Question),
             new("huiyuyuи", "fnwejkfnerbiuerbvierbviurbve", $@"/storage/emulated/0/DCIM/Camera/20230414_212808.jpg", QuestStatus.InProgress, TypeQuest.Search),
@@ -37,16 +45,13 @@ public partial class QuestTapePageViewModel : MainTapeViewModel
     [RelayCommand]
     public async override Task GoToTapeItem(object item)
     {
-        //var questItem = item as QuestItem;
-        //await PopupAction.DisplayPopup(new CurrentQuestPage(questItem ?? new()));
-
         if (item is Tuple<object, ContentPage> tuple && tuple.Item1 is QuestItem questItem && tuple.Item2 is ContentPage contentPage)
         {
             switch (questItem.Status)
             {
                 case QuestStatus.NotStarted:
                     var notStartedQuestPVM = new BaseQuestPageViewModel(AppSettings, questItem ?? throw new Exception("Не удалось загрузить страницу")); // refact error
-                    await contentPage.Navigation.PushAsync(new NotStartedQuestPage(notStartedQuestPVM));
+                    await PopupAction.DisplayPopup(new NotStartedQuestPage(notStartedQuestPVM));
                     break;
 
                 case QuestStatus.InProgress:
@@ -58,7 +63,6 @@ public partial class QuestTapePageViewModel : MainTapeViewModel
                     //await contentPage.Navigation.PushAsync(new CurrentQuestPage(currentPageViewModel));
                     break;
             }
-
         }
     }
 

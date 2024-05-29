@@ -16,10 +16,9 @@
             </Grid.RowDefinitions>
 
             <Rectangle x:Name="ShadowRectangle" Fill="Black" ZIndex="1" Opacity="0" StrokeThickness="0" Grid.RowSpan="2"/>
-
             <pe:ChoicePanelControl x:Name="FilterPanel" Margin="0,10,0,5" Grid.Row="0" PanelItems="{Binding QuestFilterItems}"/>
 
-            <CollectionView ItemsSource="{Binding TapeItems}" Style="{StaticResource TapeCollectionView}" Grid.Row="1" Margin="10,5">
+            <CollectionView ItemsSource="{Binding TapeItems}" Style="{StaticResource TapeCollectionView}" Grid.Row="1" Margin="10,5" >
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border x:Name="PageView" BackgroundColor="#415A77" Stroke="Transparent" ZIndex="1">
@@ -47,16 +46,21 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="27"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame x:Name="CostFrame" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ZIndex="1" CornerRadius="30"
-                                       Background="Black" BorderColor="Transparent" Padding="0" Opacity="0.73" Margin="10,10,0,0">
-                                    <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                                        <Label x:Name="CoinLabel" Text="123" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="White" FontSize="16" FontAttributes="Bold" Margin="5,0"/>
-                                        <Image Source="coin_dark.svg" Margin="5,2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill" HeightRequest="{Binding Path=Height, Source={x:Reference CostFrame}}"/>
-                                    </StackLayout>
-                                </Frame>
-                                <Frame Grid.ColumnSpan="3" Grid.RowSpan="2" CornerRadius="0" Background="Transparent" BorderColor="Transparent" Padding="0" ZIndex="0">
-                                    <Image Source="{Binding Image}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill" />
-                                </Frame>
+                                <!--<Frame  x:Name="CostFrame" Grid.RowSpan="2" Grid.ColumnSpan="2" ZIndex="1" CornerRadius="30" HorizontalOptions="Start" VerticalOptions="Start"
+                                       BorderColor="Transparent" Padding="0" Margin="5,5,0,0" BackgroundColor="Transparent" Opacity="1">
+                                    <Grid>
+                                        <Rectangle Fill="Black" ZIndex="0" Opacity="0.73" StrokeThickness="0" />
+                                        <HorizontalStackLayout ZIndex="1">
+                                            <Label x:Name="CoinLabel" Grid.Column="0" Text="123" TextColor="White" FontSize="16" FontAttributes="Bold" Margin="10,5" />
+                                            <Image Grid.Column="1" Source="coin_dark.svg" Margin="0,5" VerticalOptions="Start"/>
+                                        </HorizontalStackLayout>
+                                    </Grid>
+                                </Frame>-->
+                                <!--<Frame Grid.ColumnSpan="3" Grid.RowSpan="2" CornerRadius="0" Background="Transparent" BorderColor="Transparent" Padding="0" ZIndex="0">
+                                    <Image Source="{Binding Image}" VerticalOptions="Fill" HorizontalOptions="Fill" Aspect="AspectFit" />
+                                </Frame>-->
+
+                                <Image Grid.ColumnSpan="3" Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding ImagePath}"/>
                                 <Label Grid.Column="1" Grid.Row="3" Text="{Binding Title}" FontSize="19" HorizontalOptions="Start" VerticalOptions="Center"/>
                                 <Label Grid.Column="1" Grid.Row="5" Text="{Binding Description}" FontSize="15" HorizontalOptions="Start" VerticalOptions="Center" />
                             </Grid>
