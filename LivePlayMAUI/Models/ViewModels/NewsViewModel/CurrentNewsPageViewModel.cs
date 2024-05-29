@@ -6,7 +6,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace LivePlayMAUI.Models.ViewModels;
 
-public partial class CurrentNewsPageViewModel(OverApplicationSettings appSettings, NewsItem newsItem) : BaseViewModel(appSettings)
+public partial class CurrentNewsPageViewModel(DeviceDesignSettings designSettings, NewsItem newsItem) : BaseViewModel(designSettings)
 {
     [ObservableProperty]
     public NewsItem _currentNewsItem = newsItem;

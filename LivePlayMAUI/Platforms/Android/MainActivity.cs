@@ -14,7 +14,7 @@ public class MainActivity : MauiAppCompatActivity
 {
     protected override void OnCreate(Bundle? savedInstanceState)
     {
-        if (IPlatformApplication.Current?.Services.GetService<OverApplicationSettings>() is OverApplicationSettings appSettings)
+        if (IPlatformApplication.Current?.Services.GetService<DeviceDesignSettings>() is DeviceDesignSettings appSettings)
             appSettings.ChangeColorStatusBars = ChangeBarsColor;
         base.OnCreate(savedInstanceState);
     }

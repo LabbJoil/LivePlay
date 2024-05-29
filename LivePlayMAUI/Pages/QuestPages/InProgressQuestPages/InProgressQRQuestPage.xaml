@@ -4,7 +4,7 @@
              x:Class="LivePlayMAUI.Pages.InProgressQRQuestPage"
              Title="QRQuestPage" BackgroundColor="{AppThemeBinding Dark={StaticResource PageMainBackgroundDark}, Light={StaticResource PageMainBackgroundLight}}">
     
-    <Frame BackgroundColor="{StaticResource EntryBackgroundDark}" CornerRadius="20" Margin="18,28" BorderColor="Transparent">
+    <!--<Frame BackgroundColor="{StaticResource EntryBackgroundDark}" CornerRadius="20" Margin="18,28" BorderColor="Transparent">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -37,7 +37,7 @@
 
             <Button Grid.Row="4" Text="Отправить" Margin="0,20"/>
         </Grid>
-    </Frame>
+    </Frame>-->
     
 </ContentPage>
     

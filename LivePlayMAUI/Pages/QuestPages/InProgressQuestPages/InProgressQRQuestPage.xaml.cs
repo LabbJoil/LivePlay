@@ -6,7 +6,7 @@ namespace LivePlayMAUI.Pages;
 
 public partial class InProgressQRQuestPage : ContentPage
 {
-	public InProgressQRQuestPage(InProgressPhotoPageViewModel inProgressPhotoPVM)
+	public InProgressQRQuestPage(BaseQuestPageViewModel inProgressPhotoPVM)
 	{
 		InitializeComponent();
         BindingContext = inProgressPhotoPVM;

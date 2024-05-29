@@ -9,15 +9,17 @@ namespace LivePlayMAUI;
 public partial class AppShell : Shell
 {
     private Grid? LastGrid;
-    private readonly OverApplicationSettings AppSettings;
+    private readonly DeviceDesignSettings DesignSettings;
+    private readonly NavigateThrowLoading NavigateThrow;
 
-    public AppShell(OverApplicationSettings appSettings)
+    public AppShell(DeviceDesignSettings designSettings, NavigateThrowLoading navigateThrowLoading)
     {
         InitializeComponent();
-        AppSettings = appSettings;
+        DesignSettings = designSettings;
+        NavigateThrow = navigateThrowLoading;
         //Routing.RegisterRoute(nameof(NewsTapePage), typeof(NewsTapePage));
         //Routing.RegisterRoute(nameof(EnterPage), typeof(EnterPage));
-        appSettings.ChangeCountCoins = ChangeCountCoins;
+        designSettings.ChangeCountCoins = ChangeCountCoins;
     }
 
     private void FlyoutGrid_Loaded(object sender, EventArgs e)
@@ -40,7 +42,7 @@ public partial class AppShell : Shell
             LastGrid = grid;
             var item = FlyoutItemsNow.Items.ToArray().First(i => i.Items[0].AutomationId == grid.AutomationId);
             //await GoToAsync($"//{item.Route}");
-            await AppSettings.GoToRootPage(item.Route);
+            await NavigateThrow.GoToRootPage(item.Route);
             Current.FlyoutIsPresented = false;
         }
     }

@@ -3,10 +3,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LivePlayMAUI.Pages.InProgressQuizQuestPage"
              Title="QuizQuestPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    
+    <Frame BackgroundColor="{StaticResource EntryBackgroundDark}" CornerRadius="20" Margin="18,28" BorderColor="Transparent">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0" Orientation="Vertical" Margin="10,5">
+                <Label Text="OOOOOO" HorizontalOptions="Center"/>
+                <Label Text="OOOOOO" HorizontalOptions="StartAndExpand"/>
+            </StackLayout>
+
+            <Label Grid.Row="1" Text="OOOOOO" HorizontalOptions="StartAndExpand"/>
+
+            <Grid x:Name="ImageButtonGrid" Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ImageButton Grid.Column="0" CornerRadius="15" BorderColor="AliceBlue" Source="photo_add.svg"
+                         HeightRequest="{Binding Path=Width, Source={x:Reference ImageButtonGrid}, ConverterParameter=3, Converter={StaticResource HeightConverter}}"
+                         Command="{Binding ChooseFilesCommand}"/>
+
+                <Label Grid.Column="1" ZIndex="1" Text="+2" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"
+                   FontSize="{Binding Path=Width, Source={x:Reference ImageButtonGrid}, ConverterParameter=7, Converter={StaticResource HeightConverter}}"/>
+                <ImageButton Grid.Column="1" CornerRadius="15" BorderColor="AliceBlue"/>
+            </Grid>
+
+            <Button Grid.Row="4" Text="Отправить" Margin="0,20"/>
+        </Grid>
+    </Frame>
+    
 </ContentPage>

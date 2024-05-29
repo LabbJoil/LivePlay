@@ -1,11 +1,12 @@
 
 using LivePlayMAUI.Models.ViewModels;
+using LivePlayMAUI.Models.ViewModels.QuestViewModels;
 
 namespace LivePlayMAUI.Pages;
 
 public partial class InProgressPhotoQuestPage : ContentPage
 {
-	public InProgressPhotoQuestPage(BaseQuestPageViewModel inProgressPhotoPVM)
+	public InProgressPhotoQuestPage(InProgressPhotoPageViewModel inProgressPhotoPVM)
 	{
 		InitializeComponent();
         BindingContext = inProgressPhotoPVM;

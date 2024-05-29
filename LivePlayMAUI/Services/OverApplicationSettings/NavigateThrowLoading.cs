@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace LivePlayMAUI.Services;
 
-public static class NavigateThrowLoading
+public class NavigateThrowLoading
 {
-    public static async Task GoToRootPage(this OverApplicationSettings appSettings, string nextPageRote)
+    public async Task GoToRootPage(string nextPageRote)
     {
         Dictionary<string, object> navigationParameter = new()
         {

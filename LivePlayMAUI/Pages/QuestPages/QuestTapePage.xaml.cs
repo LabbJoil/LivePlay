@@ -17,17 +17,17 @@ public partial class QuestTapePage : ContentPage
         QuestTapePageVM = questTapePageViewModel;
     }
 
-    private async void ContentPage_Appearing(object sender, EventArgs e)
+    private void ContentPage_Appearing(object sender, EventArgs e)
     {
         QuestTapePageVM.ChangeColorBars(MainGrid.BackgroundColor, StatusBarColor.BarWhite, null);
-        OverApplicationSettings.OpacityAnimation(this, ShadowRectangle, 20, 500, 0);
-        //await QuestTapePageVM.GetQuestItems();
+        DeviceDesignSettings.OpacityAnimation(this, ShadowRectangle, 20, 500, 0);
+        //await QuestTapePageVM.GetQuestItems();    //получение новых данных
     }
 
     private void ContentPage_Disappearing(object sender, EventArgs e)
     {
         var mgc = MainGrid.BackgroundColor;
         QuestTapePageVM.ChangeColorBars(new Color(mgc.Red, mgc.Green, mgc.Blue, (float)0.5), StatusBarColor.BarWhite, null);
-        OverApplicationSettings.OpacityAnimation(this, ShadowRectangle, 20, 500, 0.5);
+        DeviceDesignSettings.OpacityAnimation(this, ShadowRectangle, 20, 500, 0.5);
     }
 }

@@ -12,10 +12,10 @@ namespace LivePlayMAUI;
 
 public partial class App : Application
 {
-    public App(OverApplicationSettings appSettings)
+    public App(DeviceDesignSettings designSettings, NavigateThrowLoading navigateThrowLoading)
     {
         InitializeComponent();
-        MainPage = new AppShell(appSettings);
-        UserAppTheme = appSettings.LoadSettings();
+        MainPage = new AppShell(designSettings, navigateThrowLoading);
+        UserAppTheme = designSettings.LoadSettings();
     }
 }

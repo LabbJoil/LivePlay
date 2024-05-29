@@ -27,7 +27,7 @@ public partial class EnterPage : ContentPage
     private async void OnLoginButtonClicked(object sender, EventArgs e)
     {
     RequestPermissions:
-        bool havePermissions = await EnterPageVM.AppSettings.GetPermission();
+        bool havePermissions = await EnterPageVM.Permissions.GetPermission();
         if (!havePermissions)
         {
             if (await DisplayAlert("Нет доступа к хранилищу", $"Предоставьте, пожалуйста, доступ к хранилищу", "ok", "no"))

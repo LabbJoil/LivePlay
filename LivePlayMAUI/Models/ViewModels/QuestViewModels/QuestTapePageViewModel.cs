@@ -20,6 +20,7 @@ public partial class QuestTapePageViewModel : MainTapeViewModel
 {
     [ObservableProperty]
     public ObservableCollection<QuestItem> _tapeItems;
+    public DeviceStorage _deviceStorage;
 
     public IReadOnlyList<ChoicePanelItem> QuestFilterItems { get; set; } = [
         new ChoicePanelItem { Icon = "star_light.svg", Text="Все" },
@@ -27,8 +28,9 @@ public partial class QuestTapePageViewModel : MainTapeViewModel
         new ChoicePanelItem { Icon = "done_quests_light.svg", Text="Выполненные" }
         ];
 
-    public QuestTapePageViewModel(OverApplicationSettings appSettings) : base(appSettings)
+    public QuestTapePageViewModel(DeviceDesignSettings designSettings, DeviceStorage deviceStorage) : base(designSettings)
     {
+        _deviceStorage = deviceStorage; //заменить, переход строго через goto
         GetQuestItems();
     }
 
@@ -50,7 +52,7 @@ public partial class QuestTapePageViewModel : MainTapeViewModel
             switch (questItem.Status)
             {
                 case QuestStatus.NotStarted:
-                    var notStartedQuestPVM = new BaseQuestPageViewModel(AppSettings, questItem ?? throw new Exception("Не удалось загрузить страницу")); // refact error
+                    var notStartedQuestPVM = new BaseQuestPageViewModel(DesignSettings, questItem ?? throw new Exception("Не удалось загрузить страницу")); // refact error
                     await PopupAction.DisplayPopup(new NotStartedQuestPage(notStartedQuestPVM));
                     break;
 
@@ -68,21 +70,20 @@ public partial class QuestTapePageViewModel : MainTapeViewModel
 
     public async Task GoToInProcessQuestPage(ContentPage contentPage, QuestItem questItem)
     {
-        BaseQuestPageViewModel inProgressPhotoPVM; 
         switch (questItem.Type)
         {
             case TypeQuest.Question:
-                inProgressPhotoPVM = new BaseQuestPageViewModel(AppSettings, questItem ?? throw new Exception("Не удалось загрузить страницу"));
-                await contentPage.Navigation.PushAsync(new InProgressQuizQuestPage(inProgressPhotoPVM));
+                var inProgressQuizPVM = new BaseQuestPageViewModel(DesignSettings, questItem ?? throw new Exception("Не удалось загрузить страницу"));
+                await contentPage.Navigation.PushAsync(new InProgressQuizQuestPage(inProgressQuizPVM));
                 break;
 
             case TypeQuest.Puzzle:
-                inProgressPhotoPVM = new InProgressPhotoPageViewModel(AppSettings, questItem ?? throw new Exception("Не удалось загрузить страницу"));
-                await contentPage.Navigation.PushAsync(new InProgressQRQuestPage((InProgressPhotoPageViewModel)inProgressPhotoPVM));
+                var inProgressQRPVM = new BaseQuestPageViewModel(DesignSettings, questItem ?? throw new Exception("Не удалось загрузить страницу"));
+                await contentPage.Navigation.PushAsync(new InProgressQRQuestPage(inProgressQRPVM));
                 break;
 
             case TypeQuest.Search:
-                inProgressPhotoPVM = new BaseQuestPageViewModel(AppSettings, questItem ?? throw new Exception("Не удалось загрузить страницу"));
+                var inProgressPhotoPVM = new InProgressPhotoPageViewModel(DesignSettings, _deviceStorage, questItem ?? throw new Exception("Не удалось загрузить страницу"));
                 await contentPage.Navigation.PushAsync(new InProgressPhotoQuestPage(inProgressPhotoPVM));
                 break;
         }

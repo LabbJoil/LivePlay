@@ -10,11 +10,13 @@ using System.Threading.Tasks;
 
 namespace LivePlayMAUI.Models.ViewModels.QuestViewModels;
 
-public partial class InProgressPhotoPageViewModel(OverApplicationSettings appSettings, QuestItem questItem) : BaseQuestPageViewModel(appSettings, questItem)
+public partial class InProgressPhotoPageViewModel(DeviceDesignSettings designSettings, DeviceStorage deviceStorage, QuestItem questItem) : BaseQuestPageViewModel(designSettings, questItem)
 {
+    private readonly DeviceStorage Storage = deviceStorage;
+
     [RelayCommand]
     public async Task ChooseFiles()
     {
-        await AppSettings.GetSelectItemsStorage();
+        await Storage.GetSelectItemsStorage();
     }
 }

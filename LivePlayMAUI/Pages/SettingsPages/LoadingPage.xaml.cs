@@ -17,20 +17,18 @@ public partial class LoadingPage : ContentPage
         StartAnimation(rect2);
         StartAnimation(rect3);
         StartAnimation(rect4);
+
     }
 
-    private void ContentPage_Loaded(object sender, EventArgs e)
+    private async void ContentPage_Loaded(object sender, EventArgs e)
     {
-
+        await Shell.Current.GoToAsync($"//{LoadPageRoute}");
     }
 
     private async void StartAnimation(Border rectangle)
     {
-        Random Rand = new();
-
         while (true)
         {
-            Animation animationTranslation;
             int direction = Rand.Next(0, 2);
             int offset = Rand.Next(100, 300);
 
