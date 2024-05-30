@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivePlay.MAUI.Pages.EnterPage"
+             xmlns:pe="clr-namespace:LivePlay.MAUI.PersonalElements"
+             Shell.NavBarIsVisible="False">
+
+    <Grid BackgroundColor="{AppThemeBinding Dark={StaticResource Page1BackgroundDark}, Light={StaticResource Page1BackgroundLight}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="62"/>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <pe:SwitchButtonsControl Grid.Row="1" TextButton1="Log in" TextButton2="Sign up" ClickButton1="SignUpButtonClicked" ClickButton2="LogInButtonClicked" Margin="40,0,40,0"/>
+
+        <Grid x:Name="EnterGrid" Grid.Row="3" Margin="50,10">
+            <StackLayout x:Name="LoginStackLayout" WidthRequest="300" Orientation="Vertical" >
+                <pe:SimpleEntryControl Placeholder="Логин" Text="{Binding UserName}" Margin="10,10"/>
+                <pe:PasswordEntryControl Placeholder="Пароль" Margin="10,10"/>
+                <Button Text="Войти" Clicked="OnLoginButtonClicked" Margin="50,30"/>
+            </StackLayout>
+
+            <StackLayout x:Name="EmailStackLayout" WidthRequest="300" Orientation="Vertical" IsVisible="False">
+                <pe:SimpleEntryControl Placeholder="E-mail" Margin="10,10"/>
+                <Button Text="Далее" Clicked="EmailCheckButtonClicked" Margin="50,30"/>
+            </StackLayout>
+
+            <StackLayout x:Name="CodeStackLayout" WidthRequest="300" Orientation="Vertical" IsVisible="False">
+                <pe:SimpleEntryControl Placeholder="Код подтверждения" Margin="20"/>
+                <Label x:Name="TimerLabel" TextColor="Black" Text="0:0" Margin="10" VerticalOptions="Center"/>
+                <Button x:Name="CodeCheckButton" Text="Далее" Clicked="CodeCheckButtonClicked" Margin="50,30"/>
+                <Button x:Name="SendCodeButton" Text="Отправить сообщение ещё раз" Clicked="SendCodeAgainButtonClicked" IsEnabled="False" Margin="10,30" Style="{StaticResource SecondButton}"/>
+            </StackLayout>
+        </Grid>
+        
+
+
+
+        <!--<Border Stroke="Transparent" Grid.Row="3" Margin="30,0">
+            <Border x:Name="AnimatedFrame" Stroke="Transparent" WidthRequest="650" >
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout WidthRequest="300" Orientation="Vertical" Margin="10,10">
+                        <pe:SimpleEntryControl Placeholder="Login" Padding="10,10"/>
+                        <pe:PasswordEntryControl Placeholder="Password" Padding="10,10"/>
+                    </StackLayout>
+
+                    <StackLayout WidthRequest="300" Orientation="Vertical" Margin="20,10">
+                        <pe:SimpleEntryControl Placeholder="E-mail"/>
+                    </StackLayout>
+                </StackLayout>
+            </Border>
+        </Border>-->
+        
+        <!--<Frame x:Name="AnimatedFrame" Grid.Row="3" Padding="0" BackgroundColor="Transparent" BorderColor="Black" Margin="30,0">
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="80"/>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" ZIndex="1" Background="Transparent"
+                    Text="HH"
+                    TextColor="{AppThemeBinding Dark={StaticResource SwitchButtonsTextDark}, Light={StaticResource SwitchButtonsTextLight}}"/>
+
+                <pe:SimpleEntryControl Placeholder="Login" ZIndex="1" Grid.Row="1"/>
+                <StackLayout Orientation="Vertical">
+                    <pe:SimpleEntryControl Placeholder="Login" Margin="0,10,0,0"/>
+                    <pe:PasswordEntryControl Placeholder="Password" Margin="0,20,0,0"/>
+                </StackLayout>
+
+                <StackLayout Grid.Column="1" Orientation="Vertical" >
+                    <pe:SimpleEntryControl Placeholder="E-mail" Margin="0,30,0,0"/>
+                </StackLayout>
+            </Grid>
+        </Frame>-->
+        
+    </Grid>
+
+</ContentPage>
