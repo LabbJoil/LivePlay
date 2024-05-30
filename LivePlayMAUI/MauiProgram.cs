@@ -1,8 +1,10 @@
 ﻿
 using CommunityToolkit.Maui;
+using LivePlayMAUI.MauiProgramExtentions;
 using LivePlayMAUI.Models.Options;
 using LivePlayMAUI.Models.ViewModels;
-using LivePlayMAUI.Models.ViewModels.AccountViewModel;
+using LivePlayMAUI.Models.ViewModels.AccountViewModels;
+using LivePlayMAUI.Models.ViewModels.NewsViewModels;
 using LivePlayMAUI.Pages;
 using LivePlayMAUI.Services;
 using Microsoft.Extensions.Configuration;
@@ -29,26 +31,13 @@ public static class MauiProgram
         var configuration = builder.Configuration;
         var services = builder.Services;
 
-        var y = configuration.GetSection(nameof(QuestFilterOptions));
+        services.RegistOverApplicationSettingsServises();
+        services.RegistAccountServises();
+        services.RegistQuestServises();
+        services.RegistNewsServises();
 
         services.Configure<QuestFilterOptions>(configuration.GetSection(nameof(QuestFilterOptions)));
 
-        services.AddSingleton<DeviceDesignSettings>();
-        services.AddSingleton<DevicePermissions>();
-        services.AddSingleton<DeviceStorage>();
-        services.AddSingleton<NavigateThrowLoading>();
-
-        services.AddTransient<QuestTapePage>();
-        services.AddTransient<NewsTapePage>();
-        services.AddTransient<NotStartedQuestPage>();
-        services.AddTransient<CurrentNewsPage>();
-        services.AddTransient<EnterPage>();
-        services.AddTransient<LoadingPage>();
-
-        services.AddTransient<QuestTapePageViewModel>();
-        services.AddTransient<NewsTapePageViewModel>();
-        services.AddTransient<CurrentNewsPageViewModel>();
-        services.AddTransient<EnterPageViewModel>();
 
 #if __ANDROID__
         services.AddSingleton<Interfaces.IStoragePermissions, Platforms.PlatformPermitions.StoragePermissions>();

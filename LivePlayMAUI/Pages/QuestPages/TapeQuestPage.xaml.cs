@@ -1,16 +1,14 @@
 
-using LivePlayMAUI.Models.Domain;
-using LivePlayMAUI.Models.Enum;
+using LivePlayMAUI.Enum;
 using LivePlayMAUI.Models.ViewModels;
 using LivePlayMAUI.Services;
-using MauiPopup;
 
 namespace LivePlayMAUI.Pages;
 
-public partial class QuestTapePage : ContentPage
+public partial class TapeQuestPage : ContentPage
 {
-    private readonly QuestTapePageViewModel QuestTapePageVM;
-    public QuestTapePage(QuestTapePageViewModel questTapePageViewModel)
+    private readonly TapeQuestViewModel QuestTapePageVM;
+    public TapeQuestPage(TapeQuestViewModel questTapePageViewModel)
     {
         InitializeComponent();
         BindingContext = questTapePageViewModel;

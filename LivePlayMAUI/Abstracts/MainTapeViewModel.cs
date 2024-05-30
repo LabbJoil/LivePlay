@@ -1,9 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using LivePlayMAUI.Interfaces;
+﻿
 using LivePlayMAUI.Services;
-using LivePlayMAUI.Models.Enum;
-using System.Collections.ObjectModel;
 
 namespace LivePlayMAUI.Abstracts;
 

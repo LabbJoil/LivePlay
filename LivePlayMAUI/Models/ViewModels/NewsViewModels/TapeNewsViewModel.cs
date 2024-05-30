@@ -6,9 +6,9 @@ using LivePlayMAUI.Pages;
 using System.Collections.ObjectModel;
 using LivePlayMAUI.Services;
 
-namespace LivePlayMAUI.Models.ViewModels;
+namespace LivePlayMAUI.Models.ViewModels.NewsViewModels;
 
-public partial class NewsTapePageViewModel : MainTapeViewModel
+public partial class TapeNewsViewModel : MainTapeViewModel
 {
     public ObservableCollection<NewsItem> TapeItems { get; set; }
 
@@ -17,12 +17,11 @@ public partial class NewsTapePageViewModel : MainTapeViewModel
     {
         if (item is Tuple<object, ContentPage> tuple && tuple.Item1 is NewsItem newsItem && tuple.Item2 is ContentPage contentPage)
         {
-            var currentPageViewModel = new CurrentNewsPageViewModel(DesignSettings, newsItem ?? throw new Exception());   // description error
-            await contentPage.Navigation.PushAsync(new CurrentNewsPage(currentPageViewModel));
+            await Shell.Current.GoToAsync($"{nameof(CurrentNewsPage)}", new ShellNavigationQueryParameters { { $"{nameof(NewsItem)}Property", newsItem } });
         }
     }
 
-    public NewsTapePageViewModel(DeviceDesignSettings designSettings) : base(designSettings)
+    public TapeNewsViewModel(DeviceDesignSettings designSettings) : base(designSettings)
     {
         // запрос к серверу
         TapeItems = [

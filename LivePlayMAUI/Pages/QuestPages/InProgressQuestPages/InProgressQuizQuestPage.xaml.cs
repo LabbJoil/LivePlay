@@ -1,13 +1,22 @@
 
+using LivePlayMAUI.Models.Domain;
 using LivePlayMAUI.Models.ViewModels;
 
 namespace LivePlayMAUI.Pages;
 
+[QueryProperty(nameof(QuestItemProperty), nameof(QuestItemProperty))]
 public partial class InProgressQuizQuestPage : ContentPage
 {
-	public InProgressQuizQuestPage(BaseQuestPageViewModel inProgressPhotoPVM)
+    public QuestItem QuestItemProperty
+    {
+        set => BaseQuestVM.CurrentQuestItem = value;
+    }
+    private readonly BaseQuestViewModel BaseQuestVM;
+
+    public InProgressQuizQuestPage(BaseQuestViewModel inProgressPhotoVM)
 	{
 		InitializeComponent();
-        BindingContext = inProgressPhotoPVM;
+        BindingContext = inProgressPhotoVM;
+        BaseQuestVM = inProgressPhotoVM;
     }
 }

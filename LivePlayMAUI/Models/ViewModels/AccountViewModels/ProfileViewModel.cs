@@ -9,9 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LivePlayMAUI.Models.ViewModels;
+namespace LivePlayMAUI.Models.ViewModels.AccountViewModels;
 
-public partial class AccountPageViewModel : MainTapeViewModel
+public partial class ProfileViewModel : MainTapeViewModel
 {
     public ObservableCollection<CouponItem> CouponItems { get; set; }
 
@@ -25,7 +25,7 @@ public partial class AccountPageViewModel : MainTapeViewModel
         }
     }
 
-    public AccountPageViewModel(DeviceDesignSettings designSettings) : base(designSettings)
+    public ProfileViewModel(DeviceDesignSettings designSettings) : base(designSettings)
     {
         // запрос к серверу
     }

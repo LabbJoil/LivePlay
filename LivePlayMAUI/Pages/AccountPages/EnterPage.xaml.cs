@@ -1,6 +1,6 @@
 ﻿
-using LivePlayMAUI.Models.Enum;
-using LivePlayMAUI.Models.ViewModels.AccountViewModel;
+using LivePlayMAUI.Enum;
+using LivePlayMAUI.Models.ViewModels.AccountViewModels;
 using LivePlayMAUI.Services;
 
 namespace LivePlayMAUI.Pages;
@@ -9,9 +9,9 @@ public partial class EnterPage : ContentPage
 {
     private StackLayout NowStackLayout;
     private ActionTimer? SendCodeTimer;
-    private readonly EnterPageViewModel EnterPageVM;
+    private readonly EnterViewModel EnterPageVM;
 
-    public EnterPage(EnterPageViewModel enterPage)
+    public EnterPage(EnterViewModel enterPage)
     {
         InitializeComponent();
         BindingContext = enterPage;
@@ -35,7 +35,7 @@ public partial class EnterPage : ContentPage
             else
                 return;
         }
-        await Shell.Current.GoToAsync($"//{nameof(NewsTapePage)}");
+        await Shell.Current.GoToAsync($"//{nameof(TapeNewsPage)}");
     }
 
     private async Task LogInButtonClicked(object sender, EventArgs e)

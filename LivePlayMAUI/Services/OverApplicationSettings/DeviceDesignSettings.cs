@@ -1,7 +1,7 @@
 ﻿
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Storage;
-using LivePlayMAUI.Models.Enum;
+using LivePlayMAUI.Enum;
 using LivePlayMAUI.Models.ViewModels;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;

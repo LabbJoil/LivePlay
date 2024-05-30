@@ -1,5 +1,5 @@
 ﻿
-using LivePlayMAUI.Models.Enum;
+using LivePlayMAUI.Enum;
 
 namespace LivePlayMAUI.Services;
 

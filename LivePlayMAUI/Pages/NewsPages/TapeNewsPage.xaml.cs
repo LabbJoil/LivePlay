@@ -1,16 +1,14 @@
 
-using LivePlayMAUI.Models.Domain;
-using LivePlayMAUI.Models.Enum;
-using LivePlayMAUI.Models.ViewModels;
-using LivePlayMAUI.Services;
+using LivePlayMAUI.Enum;
+using LivePlayMAUI.Models.ViewModels.NewsViewModels;
 
 namespace LivePlayMAUI.Pages;
 
-public partial class NewsTapePage : ContentPage
+public partial class TapeNewsPage : ContentPage
 {
-    private readonly NewsTapePageViewModel NewsTapeVM;
+    private readonly TapeNewsViewModel NewsTapeVM;
 
-    public NewsTapePage(NewsTapePageViewModel newsTapeViewModel)
+    public TapeNewsPage(TapeNewsViewModel newsTapeViewModel)
 	{
 		InitializeComponent();
         BindingContext = newsTapeViewModel;

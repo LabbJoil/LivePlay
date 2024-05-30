@@ -118,8 +118,8 @@
 	  <Compile Update="Pages\AccountPages\EnterPage.xaml.cs">
 	    <DependentUpon>EnterPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\NewsPages\NewsTapePage.xaml.cs">
-	    <DependentUpon>NewsTapePage.xaml</DependentUpon>
+	  <Compile Update="Pages\NewsPages\TapeNewsPage.xaml.cs">
+	    <DependentUpon>TapeNewsPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\QuestPages\NotStartedQuestPages\NotStartedQuestPage.xaml.cs">
 	    <DependentUpon>NotStartedQuestPage.xaml</DependentUpon>
@@ -127,8 +127,8 @@
 	  <Compile Update="Pages\SettingsPages\SettingsPage.xaml.cs">
 	    <DependentUpon>SettingsPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\QuestPages\QuestTapePage.xaml.cs">
-	    <DependentUpon>QuestTapePage.xaml</DependentUpon>
+	  <Compile Update="Pages\QuestPages\TapeQuestPage.xaml.cs">
+	    <DependentUpon>TapeQuestPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="PersonalElements\ChoicePanelControl.xaml.cs">
 	    <DependentUpon>ChoicePanelControl.xaml</DependentUpon>
@@ -166,13 +166,13 @@
 	  <MauiXaml Update="Pages\SettingsPages\LoadingPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\NewsPages\NewsTapePage.xaml">
+	  <MauiXaml Update="Pages\NewsPages\TapeNewsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\SettingsPages\SettingsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\QuestPages\QuestTapePage.xaml">
+	  <MauiXaml Update="Pages\QuestPages\TapeQuestPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="PersonalElements\ChoicePanelControl.xaml">

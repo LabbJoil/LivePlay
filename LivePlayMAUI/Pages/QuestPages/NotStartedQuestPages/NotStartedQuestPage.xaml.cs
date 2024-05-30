@@ -1,17 +1,25 @@
+
 using LivePlayMAUI.Models.Domain;
-using LivePlayMAUI.Models.Enum;
 using LivePlayMAUI.Models.ViewModels;
-using LivePlayMAUI.Services;
 using MauiPopup.Views;
 
 namespace LivePlayMAUI.Pages;
 
+
+[QueryProperty(nameof(QuestItemProperty), nameof(QuestItemProperty))]
 public partial class NotStartedQuestPage : BasePopupPage
 {
-	public NotStartedQuestPage(BaseQuestPageViewModel notStartedQuestPVM)
+    public QuestItem QuestItemProperty
+    {
+        set => BaseQuestVM.CurrentQuestItem = value;
+    }
+    private readonly BaseQuestViewModel BaseQuestVM;
+
+    public NotStartedQuestPage(BaseQuestViewModel baseQuestVM)
 	{
 		InitializeComponent();
-		BindingContext = notStartedQuestPVM;
+		BindingContext = baseQuestVM;
+        BaseQuestVM = baseQuestVM;
         //Settings.ChangeColorStatusBars?.Invoke(MainScrollView.BackgroundColor, StatusBarColor.BarWhite, null);
     }
 }

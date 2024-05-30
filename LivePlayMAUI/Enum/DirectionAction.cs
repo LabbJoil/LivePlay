@@ -1,5 +1,4 @@
-﻿
-namespace LivePlayMAUI.Models.Enum;
+﻿namespace LivePlayMAUI.Enum;
 
 public enum DirectionAction
 {

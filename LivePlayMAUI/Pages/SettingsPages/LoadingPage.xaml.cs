@@ -1,6 +1,4 @@
 
-using static Android.Provider.Telephony.Mms;
-
 namespace LivePlayMAUI.Pages;
 
 [QueryProperty(nameof(LoadPageRoute), "LoadPageRoute")]

@@ -1,17 +1,28 @@
+
+using LivePlayMAUI.Enum;
 using LivePlayMAUI.Models.Domain;
-using LivePlayMAUI.Models.Enum;
-using LivePlayMAUI.Services;
-using MauiPopup.Views;
-using LivePlayMAUI.Models.ViewModels;
+using LivePlayMAUI.Models.ViewModels.NewsViewModels;
 
 namespace LivePlayMAUI.Pages;
 
+[QueryProperty(nameof(NewsItemProperty), nameof(NewsItemProperty))]
 public partial class CurrentNewsPage : ContentPage
 {
-	public CurrentNewsPage(CurrentNewsPageViewModel curentNewsPageViewModel)
+    public NewsItem NewsItemProperty
+    {
+        set => CurentNewsPageVM.CurrentNewsItem = value;
+    }
+    private readonly CurrentNewsViewModel CurentNewsPageVM;
+
+    public CurrentNewsPage(CurrentNewsViewModel curentNewsPageVM)
     {
 		InitializeComponent();
-		BindingContext = curentNewsPageViewModel;
-        curentNewsPageViewModel.ChangeColorBars(BackgroundColor, StatusBarColor.BarReplay, null);
+		BindingContext = curentNewsPageVM;
+        CurentNewsPageVM = curentNewsPageVM;
+    }
+
+    private void ContentPage_Appearing(object sender, EventArgs e)
+    {
+        CurentNewsPageVM.ChangeColorBars(BackgroundColor, StatusBarColor.BarReplay, null);
     }
 }

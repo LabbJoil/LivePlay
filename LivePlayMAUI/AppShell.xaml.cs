@@ -17,9 +17,13 @@ public partial class AppShell : Shell
         InitializeComponent();
         DesignSettings = designSettings;
         NavigateThrow = navigateThrowLoading;
-        //Routing.RegisterRoute(nameof(NewsTapePage), typeof(NewsTapePage));
-        //Routing.RegisterRoute(nameof(EnterPage), typeof(EnterPage));
         designSettings.ChangeCountCoins = ChangeCountCoins;
+
+        Routing.RegisterRoute(nameof(InProgressPhotoQuestPage), typeof(InProgressPhotoQuestPage));
+        Routing.RegisterRoute(nameof(InProgressQRQuestPage), typeof(InProgressQRQuestPage));
+        Routing.RegisterRoute(nameof(InProgressQuizQuestPage), typeof(InProgressQuizQuestPage));
+        Routing.RegisterRoute(nameof(NotStartedQuestPage), typeof(NotStartedQuestPage));
+        Routing.RegisterRoute(nameof(CurrentNewsPage), typeof(CurrentNewsPage));
     }
 
     private void FlyoutGrid_Loaded(object sender, EventArgs e)

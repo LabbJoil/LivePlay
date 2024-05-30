@@ -1,14 +1,22 @@
 
+using LivePlayMAUI.Models.Domain;
 using LivePlayMAUI.Models.ViewModels;
 using LivePlayMAUI.Models.ViewModels.QuestViewModels;
 
 namespace LivePlayMAUI.Pages;
 
+[QueryProperty(nameof(QuestItemProperty), nameof(QuestItemProperty))]
 public partial class InProgressPhotoQuestPage : ContentPage
 {
-	public InProgressPhotoQuestPage(InProgressPhotoPageViewModel inProgressPhotoPVM)
+    public QuestItem QuestItemProperty {
+        set => InProgressPhotoVM.CurrentQuestItem = value;
+    }
+    private readonly InProgressPhotoQuestViewModel InProgressPhotoVM;
+
+    public InProgressPhotoQuestPage(InProgressPhotoQuestViewModel inProgressPhotoVM)
 	{
 		InitializeComponent();
-        BindingContext = inProgressPhotoPVM;
+        BindingContext = inProgressPhotoVM;
+        InProgressPhotoVM = inProgressPhotoVM;
     }
 }
