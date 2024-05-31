@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34408.163
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlayMAUI", "LivePlayMAUI\LivePlayMAUI.csproj", "{F48543D3-BAFC-4C9A-8A45-39FF4C1F7256}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.MAUI", "FrontPlatform\LivePlay.MAUI\LivePlay.MAUI.csproj", "{F48543D3-BAFC-4C9A-8A45-39FF4C1F7256}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontPlatform", "FrontPlatform", "{06694F64-2D49-47E6-BD1E-4D8CA129C779}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +22,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F48543D3-BAFC-4C9A-8A45-39FF4C1F7256} = {06694F64-2D49-47E6-BD1E-4D8CA129C779}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {02877613-9098-4C1C-BD36-E4F8642157BD}
