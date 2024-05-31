@@ -10,10 +10,9 @@ namespace LivePlayApplication.Controllers
 {
     [Route("[controller]/")]
     [ApiController]
-    public class UserController(UserRepository userService, IJwtProvider jwtProvider) : ControllerBase
+    public class UserController(UserRepository userService) : ControllerBase
     {
         private readonly UserRepository UserDBHelper = userService;
-        private readonly IJwtProvider _jwtProvider = jwtProvider;
 
         [HttpPost("/login")]
         public async Task<IActionResult> LoginUser([FromBody] LoginUserRequest userModel)
@@ -66,18 +65,6 @@ namespace LivePlayApplication.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
-        }
-
-        [HttpDelete("{id}"), Authorize]
-        public async Task<IActionResult> Delete(int id)
-        {
-            var userId = _jwtProvider.GetUserId(HttpContext.User);
-
-            var userPermissions = await UserDBHelper.GetUserPermissions(userId);
-            Permission[] needPoliticPermissions = [Permission.Read];
-            if (needPoliticPermissions.All(userPermissions.Contains))
-                return Ok("ok");
-            return Ok("KKK");
         }
     }
 }
