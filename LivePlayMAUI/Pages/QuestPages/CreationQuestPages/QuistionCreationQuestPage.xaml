@@ -25,7 +25,7 @@
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
 
-        <Label Text="Добавте вопрос с ответами" HorizontalOptions="Center" Margin="0,20,0,0"/>
+        <Label Text="Добавьте вопрос с ответами" HorizontalOptions="Center" Margin="0,20,0,0"/>
 
         <Label Text="Вопрос" HorizontalOptions="Center" FontSize="16" Grid.Row="1"/>
 
