@@ -13,23 +13,23 @@ public partial class PasswordEntryControl : ContentView
     public static readonly BindableProperty TextProperty = BindableProperty.Create(
        propertyName: nameof(Text),
        returnType: typeof(string),
-       declaringType: typeof(SimpleEntryControl),
+       declaringType: typeof(PasswordEntryControl),
        defaultValue: null,
        defaultBindingMode: BindingMode.TwoWay);
 
     public static readonly BindableProperty PlaceholderProperty = BindableProperty.Create(
         propertyName: nameof(Placeholder),
         returnType: typeof(string),
-        declaringType: typeof(SimpleEntryControl),
+        declaringType: typeof(PasswordEntryControl),
         defaultValue: null,
         defaultBindingMode: BindingMode.OneWay);
 
-    //public static readonly BindableProperty NewBackgroundColorProperty = BindableProperty.Create(
-    //    propertyName: nameof(NewBackgroundColor),
-    //    returnType: typeof(Color),
-    //    declaringType: typeof(SimpleEntryControl),
-    //    defaultValue: Color.FromRgba(0, 0, 0, 0),
-    //    defaultBindingMode: BindingMode.OneWay);
+    public static readonly BindableProperty IsPasswordProperty = BindableProperty.Create(
+        propertyName: nameof(IsPassword),
+        returnType: typeof(bool),
+        declaringType: typeof(PasswordEntryControl),
+        defaultValue: true,
+        defaultBindingMode: BindingMode.OneWay);
 
     public string Text
     {
@@ -41,6 +41,12 @@ public partial class PasswordEntryControl : ContentView
     {
         get => (string)GetValue(PlaceholderProperty);
         set { SetValue(PlaceholderProperty, value); }
+    }
+
+    public bool IsPassword
+    {
+        get => (bool)GetValue(IsPasswordProperty);
+        set { SetValue(IsPasswordProperty, value); }
     }
 
     //public Color NewBackgroundColor
@@ -72,7 +78,7 @@ public partial class PasswordEntryControl : ContentView
 
     private void TogglePasswordVisibility(bool showPassword)
     {
-        PasswordEntry.IsPassword = showPassword;
+        IsPassword = showPassword;
         ShowPasswordButton.IsVisible = ShowPasswordButton.IsEnabled = !showPassword;
         HidePasswordButton.IsVisible = HidePasswordButton.IsEnabled = showPassword;
     }

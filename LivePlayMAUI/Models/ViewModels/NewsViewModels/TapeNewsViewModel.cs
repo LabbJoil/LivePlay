@@ -5,6 +5,8 @@ using LivePlayMAUI.Models.Domain;
 using LivePlayMAUI.Pages;
 using System.Collections.ObjectModel;
 using LivePlayMAUI.Services;
+using System.Text.Json;
+using System.Reflection;
 
 namespace LivePlayMAUI.Models.ViewModels.NewsViewModels;
 
@@ -23,32 +25,21 @@ public partial class TapeNewsViewModel : MainTapeViewModel
 
     public TapeNewsViewModel(DeviceDesignSettings designSettings) : base(designSettings)
     {
-        // запрос к серверу
+        string cookiesPath = Environment.GetFolderPath(Environment.SpecialFolder.Cookies);
+        string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
+        string filePath = Path.Combine(appDataPath, "Рисунок1.txt");
+
+
+        //File.WriteAllBytes(filePath, File.ReadAllBytes($@"/storage/emulated/0/Рисунок1.png"));
+
         TapeItems = [
             new()
             {
-                Image = $@"/storage/emulated/0/DCIM/Camera/Рисунок1.png",
-                Title = "БЕБЕ",
-                Description = "fnwejkfnerbiuerbvierbviurbve"
-            },
-            new()
-            {
-                Image = $@"/storage/emulated/0/DCIM/Camera/20230414_212808.jpg",
-                Title = "huiyuyuи",
-                Description = "fnwejkfnerbiuerbvierbviurbve"
-            },
-            new()
-            {
-                Image = $@"/storage/emulated/0/DCIM/Camera/Рисунок1.png",
-                Title = "БЕБЕ",
-                Description = "fnwejkfnerbiuerbvierbviurbve"
-            },
-            new()
-            {
-                Image = $@"/storage/emulated/0/DCIM/Camera/20230414_212808.jpg",
-                Title = "jhhfyf",
-                Description = "fnwejkfnerbiuerbvierbviurbve"
-            },
+                Image = $@"/storage/emulated/0/Рисунок1.png",
+                Title = "Новые события",
+                Description = "В наших отелях новые конкурсы!"
+            }
         ];
     }
 }

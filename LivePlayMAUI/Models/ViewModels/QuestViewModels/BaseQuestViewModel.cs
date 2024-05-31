@@ -9,5 +9,5 @@ namespace LivePlayMAUI.Models.ViewModels;
 public partial class BaseQuestViewModel(DeviceDesignSettings designSettings) : BaseViewModel(designSettings)
 {
     [ObservableProperty]
-    public QuestItem _currentQuestItem = new();
+    public QuestionQuestModel _currentQuestItem = new();
 }

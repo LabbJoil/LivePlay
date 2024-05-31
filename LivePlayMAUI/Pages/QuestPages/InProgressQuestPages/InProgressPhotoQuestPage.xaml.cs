@@ -5,12 +5,12 @@ using LivePlayMAUI.Models.ViewModels.QuestViewModels;
 
 namespace LivePlayMAUI.Pages;
 
-[QueryProperty(nameof(QuestItemProperty), nameof(QuestItemProperty))]
+//[QueryProperty(nameof(QuestItemProperty), nameof(QuestItemProperty))]
 public partial class InProgressPhotoQuestPage : ContentPage
 {
-    public QuestItem QuestItemProperty {
-        set => InProgressPhotoVM.CurrentQuestItem = value;
-    }
+    //public QuestItem QuestItemProperty {
+    //    set => InProgressPhotoVM.CurrentQuestItem = value;
+    //}
     private readonly InProgressPhotoQuestViewModel InProgressPhotoVM;
 
     public InProgressPhotoQuestPage(InProgressPhotoQuestViewModel inProgressPhotoVM)

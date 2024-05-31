@@ -20,6 +20,7 @@ public partial class LoadingPage : ContentPage
 
     private async void ContentPage_Loaded(object sender, EventArgs e)
     {
+        await Task.Delay(Rand.Next(100, 300) * 10);
         await Shell.Current.GoToAsync($"//{LoadPageRoute}");
     }
 

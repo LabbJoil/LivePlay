@@ -65,6 +65,10 @@
 	  <None Remove="Resources\Images\coin_dark.svg" />
 	  <None Remove="Resources\Images\coin_light.svg" />
 	  <None Remove="Resources\Images\done_quests_light.svg" />
+	  <None Remove="Resources\Images\DownNavigationPanel\add_quest.svg" />
+	  <None Remove="Resources\Images\DownNavigationPanel\arrow_forward.svg" />
+	  <None Remove="Resources\Images\DownNavigationPanel\base_page.svg" />
+	  <None Remove="Resources\Images\DownNavigationPanel\logout.svg" />
 	  <None Remove="Resources\Images\in_process_light.svg" />
 	  <None Remove="Resources\Images\open_eye_dark.svg" />
 	  <None Remove="Resources\Images\open_eye_light.svg" />
@@ -94,6 +98,13 @@
 	<ItemGroup>
 	  <Folder Include="Models\ApiModels\" />
 	  <Folder Include="Services\Background\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\DownNavigationPanel\add_quest.svg" />
+	  <MauiImage Include="Resources\Images\DownNavigationPanel\arrow_forward.svg" />
+	  <MauiImage Include="Resources\Images\DownNavigationPanel\base_page.svg" />
+	  <MauiImage Include="Resources\Images\DownNavigationPanel\logout.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -146,6 +157,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\AccountPages\ProfilePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\QuestPages\CreationQuestPages\MainCreationQuestPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\QuestPages\CreationQuestPages\QuistionCreationQuestPage.xaml">

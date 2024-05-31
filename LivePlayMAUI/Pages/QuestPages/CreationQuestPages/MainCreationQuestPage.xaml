@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivePlayMAUI.Pages.QuestPages.CreationQuestPages.MainCreationQuestPage"
+             Title="MainCreationQuestPage">
+    <Grid Margin="60,0">
+        <Grid.RowDefinitions >
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+
+        <Label Text="Создание квеста" HorizontalOptions="Center" Margin="0,20,0,0" FontSize="25"/>
+
+        <Label Text="Название" HorizontalOptions="Start" FontSize="16" Grid.Row="1"/>
+        <Frame Padding="0" HorizontalOptions="Start" WidthRequest="250" Grid.Row="2">
+            <Entry x:Name="Title" TextColor="Black"/>
+        </Frame>
+
+        <Label Text="Подзаголовок" HorizontalOptions="Start" FontSize="16" Grid.Row="4"/>
+        <Frame Grid.Row="5" HorizontalOptions="Start" Padding="0" WidthRequest="250">
+            <Entry x:Name="DescriptionMini" TextColor="Black"/>
+        </Frame>
+
+        <Label Text="Описание" HorizontalOptions="Start" FontSize="16" Grid.Row="7"/>
+        <Frame Grid.Row="8" Padding="0" HorizontalOptions="Start" WidthRequest="250">
+            <Editor x:Name="Description" TextColor="Black"/>
+        </Frame>
+
+        <Label Text="Срок выполнения" HorizontalOptions="Start" FontSize="16" Grid.Row="10"/>
+        <Frame Grid.Row="11" Padding="0" HorizontalOptions="Start" WidthRequest="100">
+            <DatePicker x:Name="DateQuest" MinimumDate="{Binding MinDate}" Date="{Binding MinDate}" HeightRequest="40" Background="White" TextColor="Black"/>
+        </Frame>
+
+        <Label Text="Награда" HorizontalOptions="Start" FontSize="16" Grid.Row="13"/>
+        <Frame Grid.Row="14" Padding="0" HorizontalOptions="Start" WidthRequest="100">
+            <Entry x:Name="Award" TextColor="Black"/>
+        </Frame>
+
+        <Label Text="Тип квеста" HorizontalOptions="Start" FontSize="16" Grid.Row="16"/>
+        <Frame Grid.Row="17" Padding="0" HorizontalOptions="Start" WidthRequest="100">
+            <Picker x:Name="PickerQuest" Title="Выберете" Background="White" TextColor="Black" TitleColor="Black">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>QR-Code</x:String>
+                        <x:String>Опрос</x:String>
+                        <x:String>Фото</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+        </Frame>
+
+        <ImageButton Grid.Row="18" Margin="210,0,0,20" Source="arrow_forward.svg" Background="White" Aspect="AspectFit" CornerRadius="30" Clicked="ImageButton_Clicked"/>
+
+    </Grid>
+</ContentPage>

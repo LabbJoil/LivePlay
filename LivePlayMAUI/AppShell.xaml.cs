@@ -3,6 +3,7 @@ using LivePlayMAUI.Models.ViewModels;
 using LivePlayMAUI.Pages;
 using LivePlayMAUI.Services;
 using Microsoft.Maui.Controls.Shapes;
+using LivePlayMAUI.Pages.QuestPages.CreationQuestPages;
 
 namespace LivePlayMAUI;
 
@@ -25,7 +26,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(InProgressQuizQuestPage), typeof(InProgressQuizQuestPage));
         Routing.RegisterRoute(nameof(NotStartedQuestPage), typeof(NotStartedQuestPage));
         Routing.RegisterRoute(nameof(CurrentNewsPage), typeof(CurrentNewsPage));
-
+        Routing.RegisterRoute(nameof(QuestionCreationQuestPage), typeof(QuestionCreationQuestPage));
 
     }
 
@@ -65,5 +66,11 @@ public partial class AppShell : Shell
             if (elem is Rectangle rec)
                 rec.IsVisible = isVisible;
         }
+    }
+
+    private async void LogOut_Clicked(object sender, EventArgs e)
+    {
+        if(await DisplayAlert("Выход", $"Вы точно хотите выйти", "ok", "no"))
+            await NavigateThrow.GoToRootPage($"//{nameof(EnterPage)}");
     }
 }

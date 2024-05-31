@@ -19,6 +19,21 @@ public class  DeviceStorage
         }
     }
 
+    public async Task<string> GetOneItemStorage()
+    {
+        var fileSaveResult = await FilePicker.Default.PickAsync();
+        if (fileSaveResult != null)
+        {
+            await Toast.Make($"File is get").Show();
+            return fileSaveResult.FullPath;
+        }
+        else
+        {
+            await Toast.Make($"File is not get").Show();
+            return "";
+        }
+    }
+
     public async void SaveFile(string nameFile, byte[] writeBytes)
     {
         using var stream = new MemoryStream(writeBytes);
@@ -35,4 +50,13 @@ public class  DeviceStorage
         }
 #endif
     }
+
+
+    //Preferences.Set("MyModel", JsonSerializer.Serialize(model));
+
+    //    string json = Preferences.Get("MyModel", null);
+    //    if (json != null)
+    //    {
+    //        return JsonSerializer.Deserialize<MyModel>(json);
+    //    }
 }

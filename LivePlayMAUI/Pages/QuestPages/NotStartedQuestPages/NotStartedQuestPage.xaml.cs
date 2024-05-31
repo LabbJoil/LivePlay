@@ -6,10 +6,10 @@ using MauiPopup.Views;
 namespace LivePlayMAUI.Pages;
 
 
-[QueryProperty(nameof(QuestItemProperty), nameof(QuestItemProperty))]
+[QueryProperty(nameof(QuestionQuestModelProperty), nameof(QuestionQuestModelProperty))]
 public partial class NotStartedQuestPage : BasePopupPage
 {
-    public QuestItem QuestItemProperty
+    public QuestionQuestModel QuestionQuestModelProperty
     {
         set => BaseQuestVM.CurrentQuestItem = value;
     }
@@ -21,5 +21,10 @@ public partial class NotStartedQuestPage : BasePopupPage
 		BindingContext = baseQuestVM;
         BaseQuestVM = baseQuestVM;
         //Settings.ChangeColorStatusBars?.Invoke(MainScrollView.BackgroundColor, StatusBarColor.BarWhite, null);
+    }
+
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+
     }
 }

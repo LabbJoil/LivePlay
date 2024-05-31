@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LivePlayMAUI.Pages.EnterPage"
              xmlns:pe="clr-namespace:LivePlayMAUI.PersonalElements"
-             Appearing="ContentPage_Appearing"
+             Appearing="ContentPage_Appearing" Disappearing="ContentPage_Disappearing"
              BackgroundColor="{AppThemeBinding Dark={StaticResource Page1BackgroundDark}, Light={StaticResource Page1BackgroundLight}}">
 
     <Grid x:Name="MainGrid" >
@@ -20,9 +20,9 @@
 
         <Grid x:Name="EnterGrid" Grid.Row="3" Margin="50,10">
             <StackLayout x:Name="LoginStackLayout" WidthRequest="300" Orientation="Vertical" >
-                <pe:SimpleEntryControl Placeholder="Логин" Text="{Binding UserName}" Margin="10,10"/>
-                <pe:PasswordEntryControl Placeholder="Пароль" Margin="10,10"/>
-                <Button Text="Войти" Clicked="OnLoginButtonClicked" Margin="50,30"/>
+                <pe:SimpleEntryControl x:Name="LoginEmail" Placeholder="Логин" Text="{Binding Email}" Margin="10,10"/>
+                <pe:PasswordEntryControl x:Name="LoginPassword" Placeholder="Пароль" Text="{Binding Password}" Margin="10,10"/>
+                <Button Text="Войти" Command="{Binding LoginUserCommand}" Margin="50,30"/>
             </StackLayout>
 
             <StackLayout x:Name="EmailStackLayout" WidthRequest="300" Orientation="Vertical" IsVisible="False">

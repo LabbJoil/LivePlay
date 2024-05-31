@@ -25,22 +25,11 @@ public partial class EnterPage : ContentPage
         EnterPageVM.ChangeColorBars(BackgroundColor, StatusBarColor.BarReplay);
     }
 
-    private async void OnLoginButtonClicked(object sender, EventArgs e)
+    private void ContentPage_Disappearing(object sender, EventArgs e)
     {
-    RequestPermissions:
-        bool havePermissions = await EnterPageVM.Permissions.GetPermission();
-        if (!havePermissions)
-        {
-            if (await DisplayAlert("Нет доступа к хранилищу", $"Предоставьте, пожалуйста, доступ к хранилищу", "ok", "no"))
-                goto RequestPermissions;
-            else
-                return;
-        }
-        Random rand = new Random();
-        if (rand.Next(0, 1) == 0)
-            await Shell.Current.GoToAsync($"//{nameof(EmptyPage)}");
-        else
-            await Shell.Current.GoToAsync($"//{nameof(EmptyPage)}");
+        LoginPassword.Text = string.Empty;
+        LoginEmail.Text = string.Empty;
+        LoginPassword.IsPassword = false;
     }
 
     private async Task LogInButtonClicked(object sender, EventArgs e)

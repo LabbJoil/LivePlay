@@ -34,16 +34,16 @@
             </Grid.ColumnDefinitions>
             
             <Frame Grid.Column="1" Grid.Row="1" CornerRadius="10" Background="Transparent" BorderColor="Transparent" Padding="0">
-                <Image Source="{Binding Image}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill" />
+                <Image Source="{Binding CurrentQuestItem.Image}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill" />
             </Frame>
-            
-            <Label Grid.Column="1" Grid.Row="3" Text="{Binding Title}" FontSize="19" HorizontalOptions="Center" />
-            <Label Grid.Column="1" Grid.Row="4" Text="{Binding Description}" FontSize="15" HorizontalOptions="Center" />
 
-            <Label Grid.Column="1" Grid.Row="6" Text="{Binding Title}" FontSize="13" HorizontalOptions="Center" />
-            <Label Grid.Column="1" Grid.Row="8" Text="{Binding Description}" FontSize="13" HorizontalOptions="Center" />
+            <Label Grid.Column="1" Grid.Row="3" Text="{Binding CurrentQuestItem.NowItem.Title}" FontSize="19" HorizontalOptions="Center" />
+            <Label Grid.Column="1" Grid.Row="4" Text="{Binding CurrentQuestItem.NowItem.Description}" FontSize="15" HorizontalOptions="Center" />
 
-            <Button Grid.Column="1" Grid.Row="10" Text="Участовать" Margin="5,0" Style="{StaticResource BasicButton}"/>
+            <Label Grid.Column="1" Grid.Row="6" Text="{Binding CurrentQuestItem.NowItem.Title}" FontSize="13" HorizontalOptions="Center" />
+            <Label Grid.Column="1" Grid.Row="8" Text="{Binding CurrentQuestItem.NowItem.Description}" FontSize="13" HorizontalOptions="Center" />
+
+            <Button Grid.Column="1" Grid.Row="10" Text="Участовать" Margin="5,0" Style="{StaticResource CurrentQuestItem.BasicButton}" Clicked="Button_Clicked"/>
         </Grid>
     </Border>
 

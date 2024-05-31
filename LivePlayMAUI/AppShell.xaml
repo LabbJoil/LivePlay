@@ -30,6 +30,11 @@
         <Grid Margin="0,100,0,0"/>
     </Shell.FlyoutHeader>
 
+    <Shell.FlyoutFooter>
+        <ImageButton Background="Red" CornerRadius="5" Aspect="AspectFit"
+                Clicked="LogOut_Clicked" Source="logout.svg"/>
+    </Shell.FlyoutFooter>
+
     <Shell.ItemTemplate>
         <DataTemplate>
             <ScrollView VerticalOptions="Start">
@@ -81,15 +86,15 @@
         ContentTemplate="{DataTemplate pagess:EmptyPage}"/>-->
 
     <TabBar>
-        <ShellContent Title="Cats"
+        <ShellContent Icon="add_quest.svg"
                       Route="EmptyPage"
                       Shell.NavBarIsVisible="False"
                       Shell.TabBarIsVisible="True"
                      ContentTemplate="{DataTemplate pagess:EmptyPage}" />
-        <ShellContent Title="Создать квест"
+        <ShellContent Icon="base_page.svg"
                       Shell.NavBarIsVisible="False"
                       Shell.TabBarIsVisible="True"
-                     ContentTemplate="{DataTemplate pagesss:QuestionCreationQuestPage}" />
+                     ContentTemplate="{DataTemplate pagesss:MainCreationQuestPage}" />
     </TabBar>
 
     <FlyoutItem x:Name="FlyoutItemsNow" FlyoutDisplayOptions="AsMultipleItems">

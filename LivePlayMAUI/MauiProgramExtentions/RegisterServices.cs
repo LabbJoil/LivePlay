@@ -1,9 +1,11 @@
 ﻿
+using LivePlayMAUI.Models.Domain;
 using LivePlayMAUI.Models.ViewModels;
 using LivePlayMAUI.Models.ViewModels.AccountViewModels;
 using LivePlayMAUI.Models.ViewModels.NewsViewModels;
 using LivePlayMAUI.Models.ViewModels.QuestViewModels;
 using LivePlayMAUI.Pages;
+using LivePlayMAUI.Pages.QuestPages.CreationQuestPages;
 using LivePlayMAUI.Services;
 
 namespace LivePlayMAUI.MauiProgramExtentions;
@@ -17,6 +19,10 @@ public static class RegisterServices
         services.AddTransient<InProgressPhotoQuestPage>();
         services.AddTransient<InProgressQRQuestPage>();
         services.AddTransient<InProgressQuizQuestPage>();
+
+        services.AddTransient<MainCreationQuestPage>();
+        services.AddTransient<QuestionCreationQuestPage>();
+        services.AddTransient<QuestionQuestModel>();
 
         services.AddTransient<TapeQuestViewModel>();
         services.AddTransient<BaseQuestViewModel>();
