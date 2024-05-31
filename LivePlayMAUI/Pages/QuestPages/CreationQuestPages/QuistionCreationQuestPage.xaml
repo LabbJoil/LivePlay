@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivePlayMAUI.Pages.QuestPages.CreationQuestPages.QuestionCreationQuestPage"
+             xmlns:pe="clr-namespace:LivePlayMAUI.PersonalElements"
+             Title="QuestionCreationQuestPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+
+        <HorizontalStackLayout Grid.Row="1">
+            <Label Text="Вопрос"/>
+            <Label Text="Правильный ответ" Margin="30,0,0,0"/>
+        </HorizontalStackLayout>
+        <Entry x:Name="Question" Grid.Row="2" Margin="10,0,0,100"/>
+
+        <HorizontalStackLayout Grid.Row="4">
+            <Label Text="Ответ 1"/>
+            <CheckBox x:Name="CheckBox1" CheckedChanged="CheckBox1_CheckedChanged" Margin="30,0,0,0"/>
+        </HorizontalStackLayout>
+        <Entry x:Name="Answer1" Grid.Row="5" Margin="10,0,100,0"/>
+
+
+        <HorizontalStackLayout Grid.Row="6">
+            <Label Text="Ответ 2"/>
+            <CheckBox x:Name="CheckBox2" CheckedChanged="CheckBox1_CheckedChanged" Margin="30,0,0,0"/>
+        </HorizontalStackLayout>
+        <Entry x:Name="Answer2" Grid.Row="7" Margin="10,0,100,0"/>
+
+        <HorizontalStackLayout Grid.Row="8">
+            <Label Text="Ответ 3"/>
+            <CheckBox x:Name="CheckBox3" CheckedChanged="CheckBox1_CheckedChanged" Margin="30,0,0,0"/>
+        </HorizontalStackLayout>
+        <Entry x:Name="Answer3" Grid.Row="9" Margin="10,0,100,0"/>
+
+        <HorizontalStackLayout Grid.Row="10">
+            <Label Text="Ответ 4"/>
+            <CheckBox x:Name="CheckBox4" CheckedChanged="CheckBox1_CheckedChanged" Margin="30,0,0,0"/>
+        </HorizontalStackLayout>
+        <Entry x:Name="Answer4" Grid.Row="11" Margin="10,0,100,0"/>
+
+    </Grid>
+</ContentPage>

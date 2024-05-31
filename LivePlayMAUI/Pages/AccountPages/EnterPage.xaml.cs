@@ -1,6 +1,7 @@
 ﻿
 using LivePlayMAUI.Enum;
 using LivePlayMAUI.Models.ViewModels.AccountViewModels;
+using LivePlayMAUI.Pages.AccountPages;
 using LivePlayMAUI.Services;
 
 namespace LivePlayMAUI.Pages;
@@ -35,7 +36,11 @@ public partial class EnterPage : ContentPage
             else
                 return;
         }
-        await Shell.Current.GoToAsync($"//{nameof(TapeNewsPage)}");
+        Random rand = new Random();
+        if (rand.Next(0, 1) == 0)
+            await Shell.Current.GoToAsync($"//{nameof(EmptyPage)}");
+        else
+            await Shell.Current.GoToAsync($"//{nameof(EmptyPage)}");
     }
 
     private async Task LogInButtonClicked(object sender, EventArgs e)

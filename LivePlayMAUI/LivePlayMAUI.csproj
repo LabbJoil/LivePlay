@@ -142,7 +142,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Pages\AccountPages\EmptyPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\AccountPages\ProfilePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\QuestPages\CreationQuestPages\QuistionCreationQuestPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\QuestPages\InProgressQuestPages\InProgressQRQuestPage.xaml">
@@ -187,6 +193,12 @@
 	  <MauiXaml Update="PersonalElements\SwitchButtonsControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Pages\QuestPages\CreationQuestPages\QuistionCreationQuestPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
 	</ItemGroup>
 
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionLivePlayMAUIHideInfoBar="True" /></VisualStudio></ProjectExtensions>

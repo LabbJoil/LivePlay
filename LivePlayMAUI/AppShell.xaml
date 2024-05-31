@@ -4,7 +4,10 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:LivePlayMAUI.Pages"
-    Shell.TabBarIsVisible="False"
+    xmlns:pagess="clr-namespace:LivePlayMAUI.Pages.AccountPages"
+    xmlns:pagesss="clr-namespace:LivePlayMAUI.Pages.QuestPages.CreationQuestPages"
+    Shell.TabBarBackgroundColor="White"
+    Shell.TabBarForegroundColor="Black"
     Shell.BackgroundColor="White"
     Shell.ForegroundColor="Black"
     FlyoutBackground="White">
@@ -60,19 +63,51 @@
     </Shell.ItemTemplate>
 
     <ShellContent
-        FlyoutItemIsVisible="False"
+        Shell.NavBarIsVisible="False"
+        Shell.TabBarIsVisible="False"
         Route="EnterPage" 
         ContentTemplate="{DataTemplate pages:EnterPage}"/>
-    
+
     <ShellContent
-        FlyoutItemIsVisible="False"
+        Shell.NavBarIsVisible="False"
+        Shell.TabBarIsVisible="False"
         Route="LoadingPage" 
         ContentTemplate="{DataTemplate pages:LoadingPage}"/>
 
+    <!--<ShellContent
+        Shell.NavBarIsVisible="False"
+        Shell.TabBarIsVisible="True"
+        Route="EmptyPage" 
+        ContentTemplate="{DataTemplate pagess:EmptyPage}"/>-->
+
+    <TabBar>
+        <ShellContent Title="Cats"
+                      Route="EmptyPage"
+                      Shell.NavBarIsVisible="False"
+                      Shell.TabBarIsVisible="True"
+                     ContentTemplate="{DataTemplate pagess:EmptyPage}" />
+        <ShellContent Title="Создать квест"
+                      Shell.NavBarIsVisible="False"
+                      Shell.TabBarIsVisible="True"
+                     ContentTemplate="{DataTemplate pagesss:QuestionCreationQuestPage}" />
+    </TabBar>
+
     <FlyoutItem x:Name="FlyoutItemsNow" FlyoutDisplayOptions="AsMultipleItems">
-        <ShellContent Title="Новости" AutomationId="0" Route="TapeNewsPage" ContentTemplate="{DataTemplate pages:TapeNewsPage}"/>
-        <ShellContent Title="Квесты" AutomationId="1" Route="QuestTapePage" ContentTemplate="{DataTemplate pages:TapeQuestPage}"/>
-        <ShellContent Title="Настройки" AutomationId="2" Route="SettingsPage" ContentTemplate="{DataTemplate pages:SettingsPage}"/>
+        <ShellContent Title="Новости"
+                      AutomationId="0"
+                      Route="TapeNewsPage"
+                      ContentTemplate="{DataTemplate pages:TapeNewsPage}"
+                      Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
+        <ShellContent Title="Квесты"
+                      AutomationId="1"
+                      Route="TapeQuestPage"
+                      ContentTemplate="{DataTemplate pages:TapeQuestPage}"
+                      Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
+        <ShellContent Title="Настройки" 
+                      AutomationId="2" 
+                      Route="SettingsPage" 
+                      ContentTemplate="{DataTemplate pages:SettingsPage}"
+                      Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
     </FlyoutItem>
 
 </Shell>

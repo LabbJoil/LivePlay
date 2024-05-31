@@ -12,6 +12,7 @@ public partial class AppShell : Shell
     private readonly DeviceDesignSettings DesignSettings;
     private readonly NavigateThrowLoading NavigateThrow;
 
+
     public AppShell(DeviceDesignSettings designSettings, NavigateThrowLoading navigateThrowLoading)
     {
         InitializeComponent();
@@ -24,6 +25,8 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(InProgressQuizQuestPage), typeof(InProgressQuizQuestPage));
         Routing.RegisterRoute(nameof(NotStartedQuestPage), typeof(NotStartedQuestPage));
         Routing.RegisterRoute(nameof(CurrentNewsPage), typeof(CurrentNewsPage));
+
+
     }
 
     private void FlyoutGrid_Loaded(object sender, EventArgs e)
@@ -45,7 +48,6 @@ public partial class AppShell : Shell
             SetViewElement(grid, true);
             LastGrid = grid;
             var item = FlyoutItemsNow.Items.ToArray().First(i => i.Items[0].AutomationId == grid.AutomationId);
-            //await GoToAsync($"//{item.Route}");
             await NavigateThrow.GoToRootPage(item.Route);
             Current.FlyoutIsPresented = false;
         }

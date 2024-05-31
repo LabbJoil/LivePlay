@@ -36,4 +36,9 @@ public class DeviceDesignSettings
         var animationBackground = new Animation(v => visualElement.Opacity = v, startOpacity ?? visualElement.Opacity, endOpacity);
         animationBackground.Commit(owner, nameof(owner) + "AnimationOpacity", rate, lengthAnimation);
     }
+
+    public void SetShellDesign()
+    {
+        //Shell.TabBarIsVisibleProperty = false;
+    }
 }

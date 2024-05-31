@@ -6,6 +6,7 @@ using LivePlayMAUI.Models.ViewModels;
 using LivePlayMAUI.Models.ViewModels.AccountViewModels;
 using LivePlayMAUI.Models.ViewModels.NewsViewModels;
 using LivePlayMAUI.Pages;
+using LivePlayMAUI.PersonalElements;
 using LivePlayMAUI.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
