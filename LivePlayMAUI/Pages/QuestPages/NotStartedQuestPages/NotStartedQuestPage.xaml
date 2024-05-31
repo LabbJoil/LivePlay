@@ -20,7 +20,7 @@
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="30"/>
-                <RowDefinition Height="25"/>
+                <RowDefinition Height="80"/>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="33"/>
@@ -34,16 +34,24 @@
             </Grid.ColumnDefinitions>
             
             <Frame Grid.Column="1" Grid.Row="1" CornerRadius="10" Background="Transparent" BorderColor="Transparent" Padding="0">
-                <Image Source="{Binding CurrentQuestItem.Image}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill" />
+                <Image Source="{Binding CurrentQuestItem.ImagePath}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill" />
             </Frame>
 
             <Label Grid.Column="1" Grid.Row="3" Text="{Binding CurrentQuestItem.NowItem.Title}" FontSize="19" HorizontalOptions="Center" />
             <Label Grid.Column="1" Grid.Row="4" Text="{Binding CurrentQuestItem.NowItem.Description}" FontSize="15" HorizontalOptions="Center" />
 
-            <Label Grid.Column="1" Grid.Row="6" Text="{Binding CurrentQuestItem.NowItem.Title}" FontSize="13" HorizontalOptions="Center" />
-            <Label Grid.Column="1" Grid.Row="8" Text="{Binding CurrentQuestItem.NowItem.Description}" FontSize="13" HorizontalOptions="Center" />
+            <Editor Grid.Column="1" Grid.Row="6" Text="{Binding CurrentQuestItem.NowItem.TotalDescription}" FontSize="13" HorizontalOptions="Center" />
+            <HorizontalStackLayout Grid.Column="1" Grid.Row="8">
+                <Label Text="Награда: " HorizontalOptions="Center"/>
+                <Label Text="{Binding CurrentQuestItem.NowItem.Reward}" FontSize="13"  />
+            </HorizontalStackLayout>
 
-            <Button Grid.Column="1" Grid.Row="10" Text="Участовать" Margin="5,0" Style="{StaticResource CurrentQuestItem.BasicButton}" Clicked="Button_Clicked"/>
+            <HorizontalStackLayout Grid.Column="1" Grid.Row="9">
+                <Label Text="Срок окончания: " HorizontalOptions="Center"/>
+                <Label Text="{Binding CurrentQuestItem.NowItem.FinalDate}" FontSize="13"  />
+            </HorizontalStackLayout>
+
+            <Button Grid.Column="1" Grid.Row="10" Text="Участовать" Margin="20,0,0,0" Style="{StaticResource CurrentQuestItem.BasicButton}" Clicked="Button_Clicked"/>
         </Grid>
     </Border>
 

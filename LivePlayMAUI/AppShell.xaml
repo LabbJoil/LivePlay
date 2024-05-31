@@ -91,10 +91,16 @@
                       Shell.NavBarIsVisible="False"
                       Shell.TabBarIsVisible="True"
                      ContentTemplate="{DataTemplate pagess:EmptyPage}" />
+        
         <ShellContent Icon="base_page.svg"
                       Shell.NavBarIsVisible="False"
                       Shell.TabBarIsVisible="True"
                      ContentTemplate="{DataTemplate pagesss:MainCreationQuestPage}" />
+
+        <ShellContent Icon="logout.svg"
+              Shell.NavBarIsVisible="False"
+              Shell.TabBarIsVisible="True"
+             ContentTemplate="{DataTemplate pages:EnterPage}" />
     </TabBar>
 
     <FlyoutItem x:Name="FlyoutItemsNow" FlyoutDisplayOptions="AsMultipleItems">

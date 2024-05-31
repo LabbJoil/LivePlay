@@ -6,7 +6,7 @@ using MauiPopup.Views;
 namespace LivePlayMAUI.Pages;
 
 
-[QueryProperty(nameof(QuestionQuestModelProperty), nameof(QuestionQuestModelProperty))]
+//[QueryProperty(nameof(QuestionQuestModelProperty), nameof(QuestionQuestModelProperty))]
 public partial class NotStartedQuestPage : BasePopupPage
 {
     public QuestionQuestModel QuestionQuestModelProperty
@@ -15,16 +15,18 @@ public partial class NotStartedQuestPage : BasePopupPage
     }
     private readonly BaseQuestViewModel BaseQuestVM;
 
-    public NotStartedQuestPage(BaseQuestViewModel baseQuestVM)
+    public NotStartedQuestPage(BaseQuestViewModel baseQuestVM, QuestionQuestModel questionQuestModel)
 	{
 		InitializeComponent();
 		BindingContext = baseQuestVM;
         BaseQuestVM = baseQuestVM;
+        baseQuestVM.CurrentQuestItem = questionQuestModel;
         //Settings.ChangeColorStatusBars?.Invoke(MainScrollView.BackgroundColor, StatusBarColor.BarWhite, null);
     }
 
-    private void Button_Clicked(object sender, EventArgs e)
+    private async void Button_Clicked(object sender, EventArgs e)
     {
-
+        var shellParameters = new ShellNavigationQueryParameters { { $"{nameof(QuestionQuestModel)}Property", BaseQuestVM.CurrentQuestItem } };
+        await Shell.Current.GoToAsync($"{nameof(InProgressQuizQuestPage)}", shellParameters);
     }
 }

@@ -35,35 +35,45 @@
 
         <Label Text="Подзаголовок" HorizontalOptions="Start" FontSize="16" Grid.Row="4"/>
         <Frame Grid.Row="5" HorizontalOptions="Start" Padding="0" WidthRequest="250">
-            <Entry x:Name="DescriptionMini" TextColor="Black"/>
+            <VerticalStackLayout>
+                <Entry x:Name="DescriptionMini" TextColor="Black"/>
+            </VerticalStackLayout>
         </Frame>
 
         <Label Text="Описание" HorizontalOptions="Start" FontSize="16" Grid.Row="7"/>
         <Frame Grid.Row="8" Padding="0" HorizontalOptions="Start" WidthRequest="250">
-            <Editor x:Name="Description" TextColor="Black"/>
+            <VerticalStackLayout>
+                <Editor x:Name="Description" TextColor="Black"/>
+            </VerticalStackLayout>
         </Frame>
 
         <Label Text="Срок выполнения" HorizontalOptions="Start" FontSize="16" Grid.Row="10"/>
         <Frame Grid.Row="11" Padding="0" HorizontalOptions="Start" WidthRequest="100">
-            <DatePicker x:Name="DateQuest" MinimumDate="{Binding MinDate}" Date="{Binding MinDate}" HeightRequest="40" Background="White" TextColor="Black"/>
+            <VerticalStackLayout>
+                <DatePicker x:Name="DateQuest" MinimumDate="{Binding MinDate}" Date="{Binding MinDate}" HeightRequest="40" Background="White" TextColor="Black"/>
+            </VerticalStackLayout>
         </Frame>
 
         <Label Text="Награда" HorizontalOptions="Start" FontSize="16" Grid.Row="13"/>
         <Frame Grid.Row="14" Padding="0" HorizontalOptions="Start" WidthRequest="100">
-            <Entry x:Name="Award" TextColor="Black"/>
+            <VerticalStackLayout>
+                <Entry x:Name="Award" TextColor="Black"/>
+            </VerticalStackLayout>
         </Frame>
 
         <Label Text="Тип квеста" HorizontalOptions="Start" FontSize="16" Grid.Row="16"/>
         <Frame Grid.Row="17" Padding="0" HorizontalOptions="Start" WidthRequest="100">
-            <Picker x:Name="PickerQuest" Title="Выберете" Background="White" TextColor="Black" TitleColor="Black">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>QR-Code</x:String>
-                        <x:String>Опрос</x:String>
-                        <x:String>Фото</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
+            <StackLayout>
+                <Picker x:Name="PickerQuest" Title="Выберете" Background="White" TextColor="Black" TitleColor="Black">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>QR-Code</x:String>
+                            <x:String>Опрос</x:String>
+                            <x:String>Фото</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
         </Frame>
 
         <ImageButton Grid.Row="18" Margin="210,0,0,20" Source="arrow_forward.svg" Background="White" Aspect="AspectFit" CornerRadius="30" Clicked="ImageButton_Clicked"/>
