@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="SendGrid" Version="9.29.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\LivePlay.Coree\LivePlay.Core.csproj" />
     <ProjectReference Include="..\LivePlay.Core\LivePlay.Core.csproj" />
     <ProjectReference Include="..\LivePlay.Persistence\LivePlay.Persistence.csproj" />
