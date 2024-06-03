@@ -17,7 +17,8 @@ public partial class NotStartedQuestPage : BasePopupPage
 
     public NotStartedQuestPage(BaseQuestViewModel baseQuestVM, QuestionQuestModel questionQuestModel)
 	{
-		InitializeComponent();
+        Shell.Current.DisplayAlert("111", "111", "ok");
+        InitializeComponent();
 		BindingContext = baseQuestVM;
         BaseQuestVM = baseQuestVM;
         baseQuestVM.CurrentQuestItem = questionQuestModel;

@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Android.Views;
 using CommunityToolkit.Maui.Core;
 using LivePlayMAUI.Enum;
 using LivePlayMAUI.Services;
@@ -17,6 +18,7 @@ public class MainActivity : MauiAppCompatActivity
         if (IPlatformApplication.Current?.Services.GetService<DeviceDesignSettings>() is DeviceDesignSettings appSettings)
             appSettings.ChangeColorStatusBars = ChangeBarsColor;
         base.OnCreate(savedInstanceState);
+        Window?.SetSoftInputMode(SoftInput.AdjustResize);
     }
 
     [SuppressMessage("Interoperability", "CA1416:Availability")]

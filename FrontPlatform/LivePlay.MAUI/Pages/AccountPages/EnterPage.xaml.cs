@@ -1,7 +1,6 @@
 ﻿
 using LivePlayMAUI.Enum;
 using LivePlayMAUI.Models.ViewModels.AccountViewModels;
-using LivePlayMAUI.Pages.AccountPages;
 using LivePlayMAUI.Services;
 
 namespace LivePlayMAUI.Pages;
@@ -31,6 +30,8 @@ public partial class EnterPage : ContentPage
         LoginEmail.Text = string.Empty;
         LoginPassword.IsPassword = false;
     }
+
+    // -- next edit --
 
     private async Task LogInButtonClicked(object sender, EventArgs e)
     {

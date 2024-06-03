@@ -1,10 +1,11 @@
 ﻿
 using Android.OS;
 using System.Diagnostics.CodeAnalysis;
+using LivePlayMAUI.Interfaces;
 
 namespace LivePlayMAUI.Platforms.PlatformPermitions;
 
-public class StoragePermissions : Permissions.BasePlatformPermission, Interfaces.IStoragePermissions
+public class StoragePermissions : Permissions.BasePlatformPermission, IStoragePermissions
 {
     [SuppressMessage("Interoperability", "CA1416:Availability")]
     public override (string androidPermission, bool isRuntime)[] RequiredPermissions

@@ -1,3 +1,4 @@
+using CommunityToolkit.Maui.Core.Platform;
 using LivePlayMAUI.Models.ViewModels;
 using System.Formats.Tar;
 
@@ -48,12 +49,6 @@ public partial class PasswordEntryControl : ContentView
         get => (bool)GetValue(IsPasswordProperty);
         set { SetValue(IsPasswordProperty, value); }
     }
-
-    //public Color NewBackgroundColor
-    //{
-    //    get => (Color)GetValue(NewBackgroundColorProperty);
-    //    set { SetValue(NewBackgroundColorProperty, value); }
-    //}
 
     private void PasswordEntry_Focused(object sender, FocusEventArgs e)
     {

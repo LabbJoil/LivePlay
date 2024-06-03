@@ -51,7 +51,7 @@
                 <Label Text="{Binding CurrentQuestItem.NowItem.FinalDate}" FontSize="13"  />
             </HorizontalStackLayout>
 
-            <Button Grid.Column="1" Grid.Row="10" Text="Участовать" Margin="20,0,0,0" Style="{StaticResource CurrentQuestItem.BasicButton}" Clicked="Button_Clicked"/>
+            <Button Grid.Column="1" Grid.Row="10" Text="Участовать" Margin="20,0,0,0" Style="{StaticResource BasicButton}" Clicked="Button_Clicked"/>
         </Grid>
     </Border>
 
