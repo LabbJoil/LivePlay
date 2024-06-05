@@ -11,19 +11,14 @@ using System.Threading.Tasks;
 
 namespace LivePlayMAUI.Models.ViewModels.AccountViewModels;
 
-public partial class ProfileViewModel : MainTapeViewModel
+public partial class ProfileViewModel : BaseViewModel
 {
     public ObservableCollection<CouponItem> CouponItems { get; set; }
 
-    [RelayCommand]
-    public async override Task GoToTapeItem(object item)
-    {
-        if (item is Tuple<object, ContentPage> tuple && tuple.Item1 is CouponItem couponItem && tuple.Item2 is ContentPage contentPage)
-        {
-            //var currentPageViewModel = new CurrentNewsPageViewModel(_appSettings, couponItem ?? new CouponItem());
-            //await contentPage.Navigation.PushAsync(new CurrentNewsPage(currentPageViewModel));
-        }
-    }
+    public IReadOnlyList<ChoicePanelItem> ProfileItems { get; set; } = [
+        new ChoicePanelItem { Icon = "profile_light.svg", Text="Информация" },
+        new ChoicePanelItem { Icon = "coupons_light.svg", Text="Мои купоны" }
+        ];
 
     public ProfileViewModel(DeviceDesignSettings designSettings) : base(designSettings)
     {

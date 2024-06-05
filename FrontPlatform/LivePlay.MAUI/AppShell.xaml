@@ -104,10 +104,10 @@
     </TabBar>
 
     <FlyoutItem x:Name="FlyoutItemsNow" FlyoutDisplayOptions="AsMultipleItems">
-        <ShellContent Title="Новости"
+        <ShellContent Title="Главная страница"
                       AutomationId="0"
-                      Route="TapeNewsPage"
-                      ContentTemplate="{DataTemplate pages:TapeNewsPage}"
+                      Route="MainPage"
+                      ContentTemplate="{DataTemplate pages:MainPage}"
                       Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
         <ShellContent Title="Квесты"
                       AutomationId="1"
@@ -118,6 +118,11 @@
                       AutomationId="2" 
                       Route="SettingsPage" 
                       ContentTemplate="{DataTemplate pages:SettingsPage}"
+                      Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
+        <ShellContent Title="Профиль" 
+                      AutomationId="3" 
+                      Route="ProfilePage" 
+                      ContentTemplate="{DataTemplate pages:ProfilePage}"
                       Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
     </FlyoutItem>
 

@@ -58,22 +58,13 @@
 
 	<ItemGroup>
 	  <None Remove="appsettings.json" />
-	  <None Remove="Resources\Images\close_dark.svg" />
-	  <None Remove="Resources\Images\close_eye_dark.svg" />
-	  <None Remove="Resources\Images\close_eye_light.svg" />
-	  <None Remove="Resources\Images\close_light.svg" />
-	  <None Remove="Resources\Images\coin_dark.svg" />
-	  <None Remove="Resources\Images\coin_light.svg" />
-	  <None Remove="Resources\Images\done_quests_light.svg" />
+	  <None Remove="Resources\Images\coupons_light.svg" />
 	  <None Remove="Resources\Images\DownNavigationPanel\add_quest.svg" />
 	  <None Remove="Resources\Images\DownNavigationPanel\arrow_forward.svg" />
 	  <None Remove="Resources\Images\DownNavigationPanel\base_page.svg" />
 	  <None Remove="Resources\Images\DownNavigationPanel\logout.svg" />
-	  <None Remove="Resources\Images\in_process_light.svg" />
-	  <None Remove="Resources\Images\open_eye_dark.svg" />
-	  <None Remove="Resources\Images\open_eye_light.svg" />
-	  <None Remove="Resources\Images\photo_add.svg" />
-	  <None Remove="Resources\Images\star_light.svg" />
+	  <None Remove="Resources\Images\ImageButtons\show_qr.svg" />
+	  <None Remove="Resources\Images\profile_light.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -101,10 +92,25 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiImage Include="Resources\Images\ChoicePanel\coupons_light.svg" />
+	  <MauiImage Include="Resources\Images\ChoicePanel\done_quests_light.svg" />
+	  <MauiImage Include="Resources\Images\ChoicePanel\in_process_light.svg" />
+	  <MauiImage Include="Resources\Images\ChoicePanel\profile_light.svg" />
+	  <MauiImage Include="Resources\Images\ChoicePanel\star_light.svg" />
+	  <MauiImage Include="Resources\Images\Coin\coin_dark.svg" />
+	  <MauiImage Include="Resources\Images\Coin\coin_light.svg" />
 	  <MauiImage Include="Resources\Images\DownNavigationPanel\add_quest.svg" />
 	  <MauiImage Include="Resources\Images\DownNavigationPanel\arrow_forward.svg" />
 	  <MauiImage Include="Resources\Images\DownNavigationPanel\base_page.svg" />
 	  <MauiImage Include="Resources\Images\DownNavigationPanel\logout.svg" />
+	  <MauiImage Include="Resources\Images\EntryPageIcons\close_dark.svg" />
+	  <MauiImage Include="Resources\Images\EntryPageIcons\close_eye_dark.svg" />
+	  <MauiImage Include="Resources\Images\EntryPageIcons\close_eye_light.svg" />
+	  <MauiImage Include="Resources\Images\EntryPageIcons\close_light.svg" />
+	  <MauiImage Include="Resources\Images\EntryPageIcons\open_eye_dark.svg" />
+	  <MauiImage Include="Resources\Images\EntryPageIcons\open_eye_light.svg" />
+	  <MauiImage Include="Resources\Images\ImageButtons\show_qr.svg" />
+	  <MauiImage Include="Resources\Images\ImageButtons\photo_add.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -129,8 +135,8 @@
 	  <Compile Update="Pages\AccountPages\EnterPage.xaml.cs">
 	    <DependentUpon>EnterPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\NewsPages\TapeNewsPage.xaml.cs">
-	    <DependentUpon>TapeNewsPage.xaml</DependentUpon>
+	  <Compile Update="Pages\NewsPages\MainPage.xaml.cs">
+	    <DependentUpon>MainPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\QuestPages\NotStartedQuestPages\NotStartedQuestPage.xaml.cs">
 	    <DependentUpon>NotStartedQuestPage.xaml</DependentUpon>
@@ -146,6 +152,9 @@
 	  </Compile>
 	  <Compile Update="PersonalElements\PasswordEntryControl.xaml.cs">
 	    <DependentUpon>PasswordEntryControl.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="PersonalElements\TapeQuestItemControl.xaml.cs">
+	    <DependentUpon>TapeQuestItemControl.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Platforms\iOS\VisualElementsMapper\EntryControlMapper.cs">
 	    <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
@@ -186,7 +195,7 @@
 	  <MauiXaml Update="Pages\SettingsPages\LoadingPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\NewsPages\TapeNewsPage.xaml">
+	  <MauiXaml Update="Pages\NewsPages\MainPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\SettingsPages\SettingsPage.xaml">
@@ -205,6 +214,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="PersonalElements\SwitchButtonsControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PersonalElements\TapeQuestItemControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

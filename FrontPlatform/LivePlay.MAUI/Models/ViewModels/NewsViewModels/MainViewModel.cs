@@ -10,7 +10,7 @@ using System.Reflection;
 
 namespace LivePlayMAUI.Models.ViewModels.NewsViewModels;
 
-public partial class TapeNewsViewModel : MainTapeViewModel
+public partial class MainViewModel : MainTapeViewModel
 {
     public ObservableCollection<NewsItem> TapeItems { get; set; }
 
@@ -23,7 +23,7 @@ public partial class TapeNewsViewModel : MainTapeViewModel
         }
     }
 
-    public TapeNewsViewModel(DeviceDesignSettings designSettings) : base(designSettings)
+    public MainViewModel(DeviceDesignSettings designSettings) : base(designSettings)
     {
         string cookiesPath = Environment.GetFolderPath(Environment.SpecialFolder.Cookies);
         string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
@@ -34,6 +34,18 @@ public partial class TapeNewsViewModel : MainTapeViewModel
         //File.WriteAllBytes(filePath, File.ReadAllBytes($@"/storage/emulated/0/Рисунок1.png"));
 
         TapeItems = [
+            new()
+            {
+                Image = $@"/storage/emulated/0/Рисунок1.png",
+                Title = "Новые события",
+                Description = "В наших отелях новые конкурсы!"
+            },
+            new()
+            {
+                Image = $@"/storage/emulated/0/Рисунок1.png",
+                Title = "Новые события",
+                Description = "В наших отелях новые конкурсы!"
+            },
             new()
             {
                 Image = $@"/storage/emulated/0/Рисунок1.png",

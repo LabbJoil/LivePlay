@@ -14,14 +14,15 @@ namespace LivePlayMAUI.Models.ViewModels;
 
 public partial class TapeQuestViewModel : MainTapeViewModel
 {
-    [ObservableProperty]
-    public ObservableCollection<QuestionQuestModel> _tapeItems;
     public DeviceStorage _deviceStorage;
+
+    [ObservableProperty]
+    public IReadOnlyList<QuestionQuestModel> _tapeItems;
 
     public IReadOnlyList<ChoicePanelItem> QuestFilterItems { get; set; } = [
         new ChoicePanelItem { Icon = "star_light.svg", Text="Все" },
         new ChoicePanelItem { Icon = "in_process_light.svg", Text="В процессе" },
-        new ChoicePanelItem { Icon = "done_quests_light.svg", Text="Выполненные" }
+        new ChoicePanelItem { Icon = "done_quests_light.svg", Text="Выполнены" }
         ];
 
     public TapeQuestViewModel(DeviceDesignSettings designSettings, DeviceStorage deviceStorage) : base(designSettings)
@@ -46,7 +47,7 @@ public partial class TapeQuestViewModel : MainTapeViewModel
     [RelayCommand]
     public async override Task GoToTapeItem(object item)
     {
-        if (item is Tuple<object, ContentPage> tuple && tuple.Item1 is QuestionQuestModel questItem && tuple.Item2 is ContentPage contentPage)
+        if (item is Tuple<object, ContentView> tuple && tuple.Item1 is QuestionQuestModel questItem && tuple.Item2 is ContentView contentPage)
         {
             var shellParameters = new ShellNavigationQueryParameters { { $"{nameof(QuestionQuestModel)}Property", questItem } };
             switch (questItem.NowItem.Status)

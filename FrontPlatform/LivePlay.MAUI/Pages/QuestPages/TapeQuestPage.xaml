@@ -21,50 +21,7 @@
             <CollectionView ItemsSource="{Binding TapeItems}" Style="{StaticResource TapeCollectionView}" Grid.Row="1" Margin="10,5" >
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Border x:Name="PageView" BackgroundColor="#415A77" Stroke="Transparent" ZIndex="1">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="20" />
-                            </Border.StrokeShape>
-                            <Border.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    Command="{Binding BindingContext.GoToTapeItemCommand, Source={x:Reference TapePage}}"
-                                    CommandParameter="{Binding ., ConverterParameter={x:Reference TapePage}, Converter={StaticResource TupleConverter}}"
-                                    NumberOfTapsRequired="1"/>
-                            </Border.GestureRecognizers>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="20"/>
-                                    <RowDefinition Height="150"/>
-                                    <RowDefinition Height="15"/>
-                                    <RowDefinition Height="25"/>
-                                    <RowDefinition Height="5"/>
-                                    <RowDefinition Height="25"/>
-                                    <RowDefinition Height="5"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="27"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="27"/>
-                                </Grid.ColumnDefinitions>
-                                <!--<Frame  x:Name="CostFrame" Grid.RowSpan="2" Grid.ColumnSpan="2" ZIndex="1" CornerRadius="30" HorizontalOptions="Start" VerticalOptions="Start"
-                                       BorderColor="Transparent" Padding="0" Margin="5,5,0,0" BackgroundColor="Transparent" Opacity="1">
-                                    <Grid>
-                                        <Rectangle Fill="Black" ZIndex="0" Opacity="0.73" StrokeThickness="0" />
-                                        <HorizontalStackLayout ZIndex="1">
-                                            <Label x:Name="CoinLabel" Grid.Column="0" Text="123" TextColor="White" FontSize="16" FontAttributes="Bold" Margin="10,5" />
-                                            <Image Grid.Column="1" Source="coin_dark.svg" Margin="0,5" VerticalOptions="Start"/>
-                                        </HorizontalStackLayout>
-                                    </Grid>
-                                </Frame>-->
-                                <!--<Frame Grid.ColumnSpan="3" Grid.RowSpan="2" CornerRadius="0" Background="Transparent" BorderColor="Transparent" Padding="0" ZIndex="0">
-                                    <Image Source="{Binding Image}" VerticalOptions="Fill" HorizontalOptions="Fill" Aspect="AspectFit" />
-                                </Frame>-->
-
-                                <Image Grid.ColumnSpan="3" Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding ImagePath}"/>
-                                <Label Grid.Column="1" Grid.Row="3" Text="{Binding NowItem.Title}" FontSize="19" HorizontalOptions="Start" VerticalOptions="Center"/>
-                                <Label Grid.Column="1" Grid.Row="5" Text="{Binding NowItem.Description}" FontSize="15" HorizontalOptions="Start" VerticalOptions="Center" />
-                            </Grid>
-                        </Border>
+                        <pe:TapeQuestItemControl TapeItem="{Binding .}" CommandTap="{Binding BindingContext.GoToTapeItemCommand, Source={x:Reference TapePage}}" ZIndex="1"/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

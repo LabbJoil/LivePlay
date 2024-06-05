@@ -32,13 +32,13 @@ public partial class EnterViewModel(NavigateThrowLoading navigateThrowLoading, D
                 return;
         }
 
-        //await NavigateLoading.GoToRootPage($"//{nameof(TapeNewsPage)}");
+        await NavigateLoading.GoToRootPage($"//{nameof(MainPage)}");
 
-        if (Email == "tre@gmail.com")
-            await NavigateLoading.GoToRootPage($"//{nameof(EmptyPage)}");
-        else if (Email == "lio@gmail.com")
-            await NavigateLoading.GoToRootPage($"//{nameof(TapeNewsPage)}");
-        else
-            await Shell.Current.DisplayAlert("Нет доступа", $"Неправильный логин или пароль", "ok");
+        //if (Email == "tre@gmail.com")
+        //    await NavigateLoading.GoToRootPage($"//{nameof(EmptyPage)}");
+        //else if (Email == "lio@gmail.com")
+        //    await NavigateLoading.GoToRootPage($"//{nameof(TapeNewsPage)}");
+        //else
+        //    await Shell.Current.DisplayAlert("Нет доступа", $"Неправильный логин или пароль", "ok");
     }
 }

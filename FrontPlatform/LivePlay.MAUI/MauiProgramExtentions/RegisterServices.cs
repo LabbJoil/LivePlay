@@ -6,6 +6,7 @@ using LivePlayMAUI.Models.ViewModels.NewsViewModels;
 using LivePlayMAUI.Models.ViewModels.QuestViewModels;
 using LivePlayMAUI.Pages;
 using LivePlayMAUI.Pages.QuestPages.CreationQuestPages;
+using LivePlayMAUI.PersonalElements;
 using LivePlayMAUI.Services;
 
 namespace LivePlayMAUI.MauiProgramExtentions;
@@ -33,16 +34,18 @@ public static class RegisterServices
     {
         services.AddTransient<EnterPage>();
         services.AddTransient<LoadingPage>();
+        services.AddTransient<ProfilePage>();
 
         services.AddTransient<EnterViewModel>();
+        services.AddTransient<ProfileViewModel>();
     }
 
     public static void RegistNewsServises(this IServiceCollection services)
     {
-        services.AddTransient<TapeNewsPage>();
+        services.AddTransient<MainPage>();
         services.AddTransient<CurrentNewsPage>();
 
-        services.AddTransient<TapeNewsViewModel>();
+        services.AddTransient<MainViewModel>();
         services.AddTransient<CurrentNewsViewModel>();
     }
 

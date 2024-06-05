@@ -4,20 +4,23 @@
              x:Class="LivePlayMAUI.PersonalElements.ChoicePanelControl"
              x:Name="this">
 
-    <CollectionView Style="{StaticResource ChoiceCollectionView}" ItemsSource="{Binding Source={x:Reference this},Path=PanelItems}" BackgroundColor="#415A77">
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <Border BackgroundColor="Transparent" Stroke="White" Margin="4,5" Padding="7,0" StrokeThickness="2">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="20" />
-                    </Border.StrokeShape>
-                    <StackLayout Orientation="Horizontal">
-                        <Image Source="{Binding Icon}" Margin="2"/>
-                        <Label Text="{Binding Text}" VerticalOptions="Center" Margin="2" FontSize="16" FontAttributes="Bold"/>
-                    </StackLayout>
-                </Border>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+    <Grid>
+        <Rectangle BackgroundColor="#415A77" VerticalOptions="Fill" HorizontalOptions="Fill"/>
+        <CollectionView Style="{StaticResource ChoiceCollectionView}" ItemsSource="{Binding Source={x:Reference this},Path=PanelItems}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border BackgroundColor="Transparent" Stroke="White" Margin="4,5" Padding="7,0" StrokeThickness="2">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20" />
+                        </Border.StrokeShape>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{Binding Icon}" Margin="2"/>
+                            <Label Text="{Binding Text}" VerticalOptions="Center" Margin="2" FontSize="16" FontAttributes="Bold"/>
+                        </StackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
 
 </ContentView>
