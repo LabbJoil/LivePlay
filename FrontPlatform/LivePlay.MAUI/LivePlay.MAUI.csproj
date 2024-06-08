@@ -58,11 +58,17 @@
 
 	<ItemGroup>
 	  <None Remove="appsettings.json" />
+	  <None Remove="Resources\Fonts\Raleway-Regular.ttf" />
+	  <None Remove="Resources\Fonts\Raleway-Semibold.ttf" />
 	  <None Remove="Resources\Images\coupons_light.svg" />
-	  <None Remove="Resources\Images\DownNavigationPanel\add_quest.svg" />
-	  <None Remove="Resources\Images\DownNavigationPanel\arrow_forward.svg" />
-	  <None Remove="Resources\Images\DownNavigationPanel\base_page.svg" />
-	  <None Remove="Resources\Images\DownNavigationPanel\logout.svg" />
+	  <None Remove="Resources\Images\ImageButtons\choose_item_admin.svg" />
+	  <None Remove="Resources\Images\TabBarPanel\add_quest.svg" />
+	  <None Remove="Resources\Images\TabBarPanel\arrow_forward.svg" />
+	  <None Remove="Resources\Images\TabBarPanel\base_page.svg" />
+	  <None Remove="Resources\Images\TabBarPanel\logout.svg" />
+	  <None Remove="Resources\Images\TabBarPanel\statistics.svg" />
+	  <None Remove="Resources\Images\ImageButtons\edit_email.svg" />
+	  <None Remove="Resources\Images\ImageButtons\mark_name_surname.svg" />
 	  <None Remove="Resources\Images\ImageButtons\show_qr.svg" />
 	  <None Remove="Resources\Images\profile_light.svg" />
 	</ItemGroup>
@@ -74,8 +80,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.0" />
-		<PackageReference Include="CommunityToolkit.Maui.Core" Version="9.0.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.1" />
+		<PackageReference Include="CommunityToolkit.Maui.Core" Version="9.0.1" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
@@ -84,6 +90,7 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="Plugin.Maui.Popup" Version="1.0.5" />
 		<PackageReference Include="System.ObjectModel" Version="4.3.0" />
+		<PackageReference Include="The49.Maui.BottomSheet" Version="8.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -99,16 +106,20 @@
 	  <MauiImage Include="Resources\Images\ChoicePanel\star_light.svg" />
 	  <MauiImage Include="Resources\Images\Coin\coin_dark.svg" />
 	  <MauiImage Include="Resources\Images\Coin\coin_light.svg" />
-	  <MauiImage Include="Resources\Images\DownNavigationPanel\add_quest.svg" />
-	  <MauiImage Include="Resources\Images\DownNavigationPanel\arrow_forward.svg" />
-	  <MauiImage Include="Resources\Images\DownNavigationPanel\base_page.svg" />
-	  <MauiImage Include="Resources\Images\DownNavigationPanel\logout.svg" />
+	  <MauiImage Include="Resources\Images\ImageButtons\choose_item_admin.svg" />
+	  <MauiImage Include="Resources\Images\TabBarPanel\add_quest.svg" />
+	  <MauiImage Include="Resources\Images\TabBarPanel\statistics.svg" />
+	  <MauiImage Include="Resources\Images\TabBarPanel\arrow_forward.svg" />
+	  <MauiImage Include="Resources\Images\TabBarPanel\base_page.svg" />
+	  <MauiImage Include="Resources\Images\TabBarPanel\logout.svg" />
 	  <MauiImage Include="Resources\Images\EntryPageIcons\close_dark.svg" />
 	  <MauiImage Include="Resources\Images\EntryPageIcons\close_eye_dark.svg" />
 	  <MauiImage Include="Resources\Images\EntryPageIcons\close_eye_light.svg" />
 	  <MauiImage Include="Resources\Images\EntryPageIcons\close_light.svg" />
 	  <MauiImage Include="Resources\Images\EntryPageIcons\open_eye_dark.svg" />
 	  <MauiImage Include="Resources\Images\EntryPageIcons\open_eye_light.svg" />
+	  <MauiImage Include="Resources\Images\ImageButtons\edit_email.svg" />
+	  <MauiImage Include="Resources\Images\ImageButtons\mark_name_surname.svg" />
 	  <MauiImage Include="Resources\Images\ImageButtons\show_qr.svg" />
 	  <MauiImage Include="Resources\Images\ImageButtons\photo_add.svg" />
 	</ItemGroup>
@@ -119,6 +130,9 @@
 	  </Compile>
 	  <Compile Update="Pages\AccountPages\ProfilePage.xaml.cs">
 	    <DependentUpon>ProfilePage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\AdminPages\FeedbackPage.xaml.cs">
+	    <DependentUpon>FeedbackPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\QuestPages\InProgressQuestPages\InProgressQRQuestPage.xaml.cs">
 	    <DependentUpon>InProgressQRQuestPage.xaml</DependentUpon>
@@ -141,6 +155,9 @@
 	  <Compile Update="Pages\QuestPages\NotStartedQuestPages\NotStartedQuestPage.xaml.cs">
 	    <DependentUpon>NotStartedQuestPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\ReviewPages\ReviewPage.xaml.cs">
+	    <DependentUpon>ReviewPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\SettingsPages\SettingsPage.xaml.cs">
 	    <DependentUpon>SettingsPage.xaml</DependentUpon>
 	  </Compile>
@@ -162,7 +179,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Pages\AccountPages\EmptyPage.xaml">
+	  <MauiXaml Update="Pages\AdminPages\FeedbackPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\AccountPages\HistoryOperationsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\AccountPages\ProfilePage.xaml">
@@ -187,6 +207,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\QuestPages\NotStartedQuestPages\NotStartedQuestPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\ReviewPages\ReviewPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\SettingsPages\ViewPhotoPage.xaml">

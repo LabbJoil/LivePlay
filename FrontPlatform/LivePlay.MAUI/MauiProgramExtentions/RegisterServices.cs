@@ -4,8 +4,11 @@ using LivePlayMAUI.Models.ViewModels;
 using LivePlayMAUI.Models.ViewModels.AccountViewModels;
 using LivePlayMAUI.Models.ViewModels.NewsViewModels;
 using LivePlayMAUI.Models.ViewModels.QuestViewModels;
+using LivePlayMAUI.Models.ViewModels.ReviewViewModels;
 using LivePlayMAUI.Pages;
+using LivePlayMAUI.Pages.AdminPages;
 using LivePlayMAUI.Pages.QuestPages.CreationQuestPages;
+using LivePlayMAUI.Pages.ReviewPages;
 using LivePlayMAUI.PersonalElements;
 using LivePlayMAUI.Services;
 
@@ -38,6 +41,12 @@ public static class RegisterServices
 
         services.AddTransient<EnterViewModel>();
         services.AddTransient<ProfileViewModel>();
+
+        services.AddTransient<ReviewPage>(); //отдельный сервис
+        services.AddTransient<ReviewViewModel>();
+
+        services.AddTransient<FeedbackPage>();
+        services.AddTransient<FeedbackViewModel>();
     }
 
     public static void RegistNewsServises(this IServiceCollection services)

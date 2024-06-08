@@ -4,6 +4,7 @@ using LivePlayMAUI.Pages;
 using LivePlayMAUI.Services;
 using Microsoft.Maui.Controls.Shapes;
 using LivePlayMAUI.Pages.QuestPages.CreationQuestPages;
+using LivePlayMAUI.Pages.AccountPages;
 
 namespace LivePlayMAUI;
 
@@ -72,5 +73,12 @@ public partial class AppShell : Shell
     {
         if(await DisplayAlert("Выход", $"Вы точно хотите выйти", "ok", "no"))
             await NavigateThrow.GoToRootPage($"//{nameof(EnterPage)}");
+    }
+
+    private void TapGestureRecognizer_Tapped_1(object sender, TappedEventArgs e)
+    {
+        var page = new HistoryOperationsPage();
+        page.HasHandle = true;
+        page.ShowAsync(Window);
     }
 }

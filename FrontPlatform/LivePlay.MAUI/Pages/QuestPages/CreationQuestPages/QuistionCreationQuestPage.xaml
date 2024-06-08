@@ -29,9 +29,9 @@
 
         <Label Text="Вопрос" HorizontalOptions="Center" FontSize="16" Grid.Row="1"/>
 
-        <Frame Grid.Row="2" Padding="0">
+        <Border Grid.Row="2" Padding="0">
             <Editor x:Name="Question" TextColor="Black"/>
-        </Frame>
+        </Border>
 
         <HorizontalStackLayout Grid.Row="4">
             <Label Text="Ответ"/>
@@ -39,30 +39,30 @@
         </HorizontalStackLayout>
 
         <HorizontalStackLayout Grid.Row="5">
-            <Frame Padding="0" WidthRequest="200">
+            <Border Padding="0" WidthRequest="200">
                 <Entry x:Name="Answer1" TextColor="Black"/>
-            </Frame>
+            </Border>
             <CheckBox x:Name="CheckBox1" CheckedChanged="CheckBox1_CheckedChanged" Margin="30,0,0,0"/>
         </HorizontalStackLayout>
 
         <HorizontalStackLayout Grid.Row="7">
-            <Frame Padding="0" WidthRequest="200">
+            <Border Padding="0" WidthRequest="200">
                 <Entry x:Name="Answer2" TextColor="Black"/>
-            </Frame>
+            </Border>
             <CheckBox x:Name="CheckBox2" CheckedChanged="CheckBox1_CheckedChanged" Margin="30,0,0,0"/>
         </HorizontalStackLayout>
 
         <HorizontalStackLayout Grid.Row="9">
-            <Frame Padding="0" WidthRequest="200">
+            <Border Padding="0" WidthRequest="200">
                 <Entry x:Name="Answer3" TextColor="Black"/>
-            </Frame>
+            </Border>
             <CheckBox x:Name="CheckBox3" CheckedChanged="CheckBox1_CheckedChanged" Margin="30,0,0,0"/>
         </HorizontalStackLayout>
 
         <HorizontalStackLayout Grid.Row="11">
-            <Frame Padding="0" WidthRequest="200">
+            <Border Padding="0" WidthRequest="200">
                 <Entry x:Name="Answer4" TextColor="Black"/>
-            </Frame>
+            </Border>
             <CheckBox x:Name="CheckBox4" CheckedChanged="CheckBox1_CheckedChanged" Margin="30,0,0,0"/>
         </HorizontalStackLayout>
 

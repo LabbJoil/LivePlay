@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using LivePlayMAUI.Abstracts;
 using LivePlayMAUI.Pages;
 using LivePlayMAUI.Pages.AccountPages;
+using LivePlayMAUI.Pages.AdminPages;
 using LivePlayMAUI.Pages.QuestPages.CreationQuestPages;
 using LivePlayMAUI.Services;
 
@@ -32,7 +33,7 @@ public partial class EnterViewModel(NavigateThrowLoading navigateThrowLoading, D
                 return;
         }
 
-        await NavigateLoading.GoToRootPage($"//{nameof(MainPage)}");
+        await NavigateLoading.GoToRootPage($"//{nameof(FeedbackPage)}");
 
         //if (Email == "tre@gmail.com")
         //    await NavigateLoading.GoToRootPage($"//{nameof(EmptyPage)}");

@@ -6,11 +6,15 @@
     xmlns:pages="clr-namespace:LivePlayMAUI.Pages"
     xmlns:pagess="clr-namespace:LivePlayMAUI.Pages.AccountPages"
     xmlns:pagesss="clr-namespace:LivePlayMAUI.Pages.QuestPages.CreationQuestPages"
+    xmlns:pagesrev="clr-namespace:LivePlayMAUI.Pages.ReviewPages"
+    xmlns:pagesadmin="clr-namespace:LivePlayMAUI.Pages.AdminPages"
     Shell.TabBarBackgroundColor="White"
     Shell.TabBarForegroundColor="Black"
     Shell.BackgroundColor="White"
     Shell.ForegroundColor="Black"
-    FlyoutBackground="White">
+    FlyoutBackground="White"
+    Shell.TabBarUnselectedColor="#527395"
+    Shell.TabBarTitleColor="#25394D">
 
     <Shell.TitleView>
         <StackLayout VerticalOptions="Fill" Orientation="Horizontal">
@@ -18,6 +22,11 @@
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="30"/>
                 </Border.StrokeShape>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer
+                        NumberOfTapsRequired="1"
+                        Tapped="TapGestureRecognizer_Tapped_1"/>
+                </Border.GestureRecognizers>
                 <StackLayout Orientation="Horizontal">
                     <Label x:Name="CoinLabel" Text="123" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" FontSize="16" FontAttributes="Bold" Margin="10,0"/>
                     <Image x:Name="CoinLabels" Source="coin_dark.svg" FlexLayout.Grow="1" Aspect="Fill" Margin="0,5,10,5" WidthRequest="{Binding Source={RelativeSource Self}, Path=Height}" />
@@ -86,21 +95,36 @@
         ContentTemplate="{DataTemplate pagess:EmptyPage}"/>-->
 
     <TabBar>
-        <ShellContent Icon="add_quest.svg"
-                      Route="EmptyPage"
-                      Shell.NavBarIsVisible="False"
-                      Shell.TabBarIsVisible="True"
-                     ContentTemplate="{DataTemplate pagess:EmptyPage}" />
-        
         <ShellContent Icon="base_page.svg"
+                      Route="FeedbackPage"
                       Shell.NavBarIsVisible="False"
                       Shell.TabBarIsVisible="True"
+                      Title="Отзывы"
+                     ContentTemplate="{DataTemplate pagesadmin:FeedbackPage}" />
+
+        <ShellContent Icon="add_quest.svg"
+                      Shell.NavBarIsVisible="False"
+                      Shell.TabBarIsVisible="True"
+                      Title="Квесты"
                      ContentTemplate="{DataTemplate pagesss:MainCreationQuestPage}" />
 
         <ShellContent Icon="logout.svg"
-              Shell.NavBarIsVisible="False"
-              Shell.TabBarIsVisible="True"
-             ContentTemplate="{DataTemplate pages:EnterPage}" />
+                      Shell.NavBarIsVisible="False"
+                      Shell.TabBarIsVisible="True"
+                      Title="Награды"
+                     ContentTemplate="{DataTemplate pages:EnterPage}" />
+
+        <ShellContent Icon="profile_light.svg"
+                      Shell.NavBarIsVisible="False"
+                      Shell.TabBarIsVisible="True"
+                      Title="Профиль"
+                     ContentTemplate="{DataTemplate pages:EnterPage}" />
+
+        <ShellContent Icon="statistics.svg"
+                      Shell.NavBarIsVisible="False"
+                      Shell.TabBarIsVisible="True"
+                      Title="Статистика"
+                     ContentTemplate="{DataTemplate pages:EnterPage}" />
     </TabBar>
 
     <FlyoutItem x:Name="FlyoutItemsNow" FlyoutDisplayOptions="AsMultipleItems">
@@ -123,6 +147,11 @@
                       AutomationId="3" 
                       Route="ProfilePage" 
                       ContentTemplate="{DataTemplate pages:ProfilePage}"
+                      Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
+        <ShellContent Title="Оставить отзыв" 
+                      AutomationId="4" 
+                      Route="ReviewPage" 
+                      ContentTemplate="{DataTemplate pagesrev:ReviewPage}"
                       Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
     </FlyoutItem>
 

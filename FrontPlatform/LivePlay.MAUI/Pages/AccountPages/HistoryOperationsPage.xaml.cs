@@ -1,8 +1,8 @@
 namespace LivePlayMAUI.Pages.AccountPages;
 
-public partial class EmptyPage : ContentPage
+public partial class HistoryOperationsPage
 {
-	public EmptyPage()
+	public HistoryOperationsPage()
 	{
 		InitializeComponent();
 	}

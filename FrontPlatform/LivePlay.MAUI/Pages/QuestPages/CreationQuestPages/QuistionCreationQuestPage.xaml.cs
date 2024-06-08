@@ -1,5 +1,6 @@
 using LivePlayMAUI.Models.Domain;
 using LivePlayMAUI.Pages.AccountPages;
+using LivePlayMAUI.Pages.AdminPages;
 using LivePlayMAUI.Services;
 using Microsoft.Maui.Controls;
 using System.Reflection;
@@ -63,7 +64,7 @@ public partial class QuestionCreationQuestPage : ContentPage
         };
         Preferences.Set(nameof(QuestionQuestModel), JsonSerializer.Serialize(hehe));
         await Shell.Current.DisplayAlert("Создан", "Квест успешно создан", "ok");
-        await Shell.Current.GoToAsync($"//{nameof(EmptyPage)}");
+        await Shell.Current.GoToAsync($"//{nameof(FeedbackPage)}");
     }
 
     private async void ImageButton_Clicked(object sender, EventArgs e)
