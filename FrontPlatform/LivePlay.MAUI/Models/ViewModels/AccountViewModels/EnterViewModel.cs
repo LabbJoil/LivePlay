@@ -5,6 +5,7 @@ using LivePlayMAUI.Pages;
 using LivePlayMAUI.Pages.AccountPages;
 using LivePlayMAUI.Pages.AdminPages;
 using LivePlayMAUI.Pages.QuestPages.CreationQuestPages;
+using LivePlayMAUI.Pages.Reward;
 using LivePlayMAUI.Services;
 
 namespace LivePlayMAUI.Models.ViewModels.AccountViewModels;
@@ -33,7 +34,9 @@ public partial class EnterViewModel(NavigateThrowLoading navigateThrowLoading, D
                 return;
         }
 
-        await NavigateLoading.GoToRootPage($"//{nameof(FeedbackPage)}");
+        
+
+        //await NavigateLoading.GoToRootPage($"//{nameof(CouponInfoPage)}");
 
         //if (Email == "tre@gmail.com")
         //    await NavigateLoading.GoToRootPage($"//{nameof(EmptyPage)}");

@@ -39,7 +39,7 @@ public static class MauiProgram
         services.RegistQuestServises();
         services.RegistNewsServises();
 
-        services.Configure<QuestFilterOptions>(configuration.GetSection(nameof(QuestFilterOptions)));
+        //services.Configure<QuestFilterOptions>(configuration.GetSection(nameof(QuestFilterOptions))); // конфигурация пока что не нужна
 
 
 #if __ANDROID__

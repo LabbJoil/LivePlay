@@ -9,6 +9,7 @@ using LivePlayMAUI.Pages;
 using LivePlayMAUI.Pages.AdminPages;
 using LivePlayMAUI.Pages.QuestPages.CreationQuestPages;
 using LivePlayMAUI.Pages.ReviewPages;
+using LivePlayMAUI.Pages.Reward;
 using LivePlayMAUI.PersonalElements;
 using LivePlayMAUI.Services;
 
@@ -47,6 +48,8 @@ public static class RegisterServices
 
         services.AddTransient<FeedbackPage>();
         services.AddTransient<FeedbackViewModel>();
+
+        services.AddTransient<CouponInfoPage>();
     }
 
     public static void RegistNewsServises(this IServiceCollection services)

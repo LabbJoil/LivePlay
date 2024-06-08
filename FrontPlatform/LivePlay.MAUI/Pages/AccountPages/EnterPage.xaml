@@ -23,7 +23,7 @@
                 <StackLayout x:Name="LoginStackLayout" WidthRequest="300" Orientation="Vertical" >
                     <pe:SimpleEntryControl x:Name="LoginEmail" Placeholder="Логин" Text="{Binding Email}" Margin="10,10"/>
                     <pe:PasswordEntryControl x:Name="LoginPassword" Placeholder="Пароль" Text="{Binding Password}" Margin="10,10" />
-                    <Button Text="Войти" Command="{Binding LoginUserCommand}" Margin="50,30"/>
+                    <Button Text="Войти" Clicked="Button_Clicked" Margin="50,30"/>
                 </StackLayout>
 
                 <StackLayout x:Name="EmailStackLayout" WidthRequest="300" Orientation="Vertical" IsVisible="False">

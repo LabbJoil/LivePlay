@@ -77,8 +77,6 @@ public partial class AppShell : Shell
 
     private void TapGestureRecognizer_Tapped_1(object sender, TappedEventArgs e)
     {
-        var page = new HistoryOperationsPage();
-        page.HasHandle = true;
-        page.ShowAsync(Window);
+       
     }
 }

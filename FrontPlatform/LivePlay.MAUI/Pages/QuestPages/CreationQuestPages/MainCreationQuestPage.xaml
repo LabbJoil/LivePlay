@@ -57,7 +57,7 @@
         <Label Text="Награда" HorizontalOptions="Start" FontSize="16" Grid.Row="13"/>
         <Border Grid.Row="14" Padding="0" HorizontalOptions="Start" WidthRequest="100">
             <VerticalStackLayout>
-                <Entry x:Name="Award" TextColor="Black"/>
+                <Entry x:Name="Price" TextColor="Black"/>
             </VerticalStackLayout>
         </Border>
 

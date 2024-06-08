@@ -18,5 +18,5 @@ public class QuestItem()
     public TypeQuest Type { get; set; }
 
     public DateTime FinalDate { get; set; } = DateTime.Now;
-    public int Reward { get; set; }
+    public int Price { get; set; }
 }

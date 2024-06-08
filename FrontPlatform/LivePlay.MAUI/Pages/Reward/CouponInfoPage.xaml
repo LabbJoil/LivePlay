@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<mauiPopup:BasePopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<bottomsheet:BottomSheet xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:mauiPopup="clr-namespace:MauiPopup.Views;assembly=MauiPopup"
-             x:Class="LivePlayMAUI.Pages.NotStartedQuestPage"
-             IsCloseOnBackgroundClick="True"
-             Margin="10,10,10,60"
-             ForegroundColor="Transparent" BackgroundColor="Transparent"
-             Title="PopupPage">
+             xmlns:bottomsheet="https://schemas.the49.com/dotnet/2023/maui"
+             x:Class="LivePlayMAUI.Pages.Reward.CouponInfoPage"
+             Background="LightGray" Padding="16,32" CornerRadius="15">
+    
+    <bottomsheet:BottomSheet.Detents>
+        <bottomsheet:FullscreenDetent/>
+    </bottomsheet:BottomSheet.Detents>
 
     <Border BackgroundColor="#415A77" Margin="18" Stroke="Transparent">
         <Border.StrokeShape>
@@ -32,8 +33,8 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="27"/>
             </Grid.ColumnDefinitions>
-            
-            <Frame Grid.Column="1" Grid.Row="1" CornerRadius="10" Background="Transparent" BorderColor="Transparent" Padding="0">
+
+            <!--<Frame Grid.Column="1" Grid.Row="1" CornerRadius="10" Background="Transparent" BorderColor="Transparent" Padding="0">
                 <Image Source="{Binding CurrentQuestItem.ImagePath}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill" />
             </Frame>
 
@@ -49,10 +50,10 @@
             <HorizontalStackLayout Grid.Column="1" Grid.Row="9">
                 <Label Text="Срок окончания: " HorizontalOptions="Center"/>
                 <Label Text="{Binding CurrentQuestItem.NowItem.FinalDate}" FontSize="13"  />
-            </HorizontalStackLayout>
+            </HorizontalStackLayout>-->
 
-            <Button Grid.Column="1" Grid.Row="10" Text="Участовать" Margin="20,0,0,0" Style="{StaticResource BasicButton}" Clicked="Button_Clicked"/>
+            <Button Grid.Column="1" Grid.Row="10" Text="Участовать" Margin="20,0,0,0" Style="{StaticResource BasicButton}" />
         </Grid>
     </Border>
 
-</mauiPopup:BasePopupPage>
+</bottomsheet:BottomSheet>

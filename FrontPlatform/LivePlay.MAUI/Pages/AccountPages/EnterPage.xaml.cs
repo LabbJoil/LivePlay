@@ -1,6 +1,7 @@
 ﻿
 using LivePlayMAUI.Enum;
 using LivePlayMAUI.Models.ViewModels.AccountViewModels;
+using LivePlayMAUI.Pages.Reward;
 using LivePlayMAUI.Services;
 
 namespace LivePlayMAUI.Pages;
@@ -102,5 +103,14 @@ public partial class EnterPage : ContentPage
         await Task.WhenAll(animation1, animation2);
         NowStackLayout.IsVisible = false;
         NowStackLayout = stackLayoutIn;
+    }
+
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+        var page = new CouponInfoPage
+        {
+            HasHandle = true
+        };
+        page.ShowAsync(Window);
     }
 }
