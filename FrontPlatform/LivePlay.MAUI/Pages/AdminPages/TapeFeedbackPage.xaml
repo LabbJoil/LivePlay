@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LivePlayMAUI.Pages.AdminPages.FeedbackPage"
-             Title="EmptyPage">
+             x:Class="LivePlayMAUI.Pages.AdminPages.TapeFeedbackPage"
+             Title="EmptyPage"
+             x:Name="this">
 
     <RefreshView>
         <Grid BackgroundColor="#26507B">
@@ -25,6 +26,12 @@
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="20"/>
                             </Border.StrokeShape>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding BindingContext.GoToTapeItemCommand, Source={x:Reference this}}"
+                                    CommandParameter="{Binding .,ConverterParameter={x:Reference this},Converter={StaticResource TupleConverter}}"
+                                    NumberOfTapsRequired="1"/>
+                            </Border.GestureRecognizers>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="40"/>
@@ -35,8 +42,8 @@
                                     <ColumnDefinition Width="40"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Text="{Binding NameUser}" TextColor="#0D1B2A" FontSize="19" FontAttributes="Bold" Margin="0,1" VerticalOptions="End" FontFamily="Raleway"/>
-                                <Label Grid.Row="1" Text="{Binding CreationDateText}" TextColor="#6C6C6C" FontSize="16" FontAttributes="Bold" VerticalOptions="Start"/>
+                                <Label Text="{Binding NameUser}" TextColor="#0D1B2A" FontSize="19" Margin="0,1" VerticalOptions="End" FontFamily="RalewayBold"/>
+                                <Label Grid.Row="1" Text="{Binding CreationDateText}" TextColor="#6C6C6C" FontSize="16" VerticalOptions="Start" FontFamily="Roboto" FontAttributes="Bold"/>
                                 <ImageButton Source="choose_item_admin.svg" Grid.Column="1" Grid.RowSpan="2" VerticalOptions="Center" BackgroundColor="Transparent" 
              HorizontalOptions="Center" WidthRequest="24" HeightRequest="24"/>
                             </Grid>

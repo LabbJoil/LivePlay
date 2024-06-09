@@ -4,9 +4,12 @@
              xmlns:bottomsheet="https://schemas.the49.com/dotnet/2023/maui"
              x:Class="LivePlayMAUI.Pages.Reward.CouponInfoPage"
              Background="LightGray" Padding="16,32" CornerRadius="15">
-    
+
     <bottomsheet:BottomSheet.Detents>
-        <bottomsheet:FullscreenDetent/>
+        <bottomsheet:DetentsCollection>
+            <bottomsheet:RatioDetent Ratio=".99" />
+            <bottomsheet:RatioDetent Ratio=".85" />
+        </bottomsheet:DetentsCollection>
     </bottomsheet:BottomSheet.Detents>
 
     <Border BackgroundColor="#415A77" Margin="18" Stroke="Transparent">

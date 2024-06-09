@@ -107,10 +107,10 @@ public partial class EnterPage : ContentPage
 
     private void Button_Clicked(object sender, EventArgs e)
     {
-        var page = new CouponInfoPage
-        {
-            HasHandle = true
-        };
-        page.ShowAsync(Window);
+        //var page = new CouponInfoPage
+        //{
+        //    HasHandle = true
+        //};
+        //page.ShowAsync(Window);
     }
 }

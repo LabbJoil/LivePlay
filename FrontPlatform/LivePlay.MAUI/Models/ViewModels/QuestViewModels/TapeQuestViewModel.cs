@@ -47,7 +47,7 @@ public partial class TapeQuestViewModel : MainTapeViewModel
     [RelayCommand]
     public async override Task GoToTapeItem(object item)
     {
-        if (item is Tuple<object, ContentView> tuple && tuple.Item1 is QuestionQuestModel questItem && tuple.Item2 is ContentView contentPage)
+        if (item is Tuple<object, object> tuple && tuple.Item1 is QuestionQuestModel questItem && tuple.Item2 is ContentView contentPage)
         {
             var shellParameters = new ShellNavigationQueryParameters { { $"{nameof(QuestionQuestModel)}Property", questItem } };
             switch (questItem.NowItem.Status)

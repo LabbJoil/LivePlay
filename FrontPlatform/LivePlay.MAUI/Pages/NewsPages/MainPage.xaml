@@ -4,7 +4,7 @@
              x:Class="LivePlayMAUI.Pages.MainPage"
              Title="MainPage"
              Disappearing="ContentPage_Disappearing" Appearing="ContentPage_Appearing"
-             x:Name="MainP">
+             x:Name="this">
 
     <RefreshView>
         <ScrollView>
@@ -24,8 +24,8 @@
                                     </Border.StrokeShape>
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer
-                                Command="{Binding BindingContext.GoToTapeItemCommand, Source={x:Reference MainP}}"
-                                CommandParameter="{Binding ., ConverterParameter={x:Reference MainP}, Converter={StaticResource TupleConverter}}"
+                                Command="{Binding BindingContext.GoToTapeItemCommand, Source={x:Reference this}}"
+                                CommandParameter="{Binding ., ConverterParameter={x:Reference this}, Converter={StaticResource TupleConverter}}"
                                 NumberOfTapsRequired="1"/>
                                     </Border.GestureRecognizers>
                                     <Grid>

@@ -7,8 +7,8 @@ public class TupleConverter : IValueConverter
 {
     public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        if (value is object tapeItem && parameter is ContentView page)
-            return new Tuple<object, ContentView>(tapeItem, page);
+        if (value is object tapeItem && parameter is object page)
+            return new Tuple<object, object>(tapeItem, page);
         return null;
     }
 

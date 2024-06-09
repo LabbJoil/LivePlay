@@ -24,8 +24,8 @@
                 </Border.StrokeShape>
                 <Border.GestureRecognizers>
                     <TapGestureRecognizer
-                        NumberOfTapsRequired="1"
-                        Tapped="TapGestureRecognizer_Tapped_1"/>
+                        Tapped="TapGestureRecognizer_Tapped_1"
+                        NumberOfTapsRequired="1"/>
                 </Border.GestureRecognizers>
                 <StackLayout Orientation="Horizontal">
                     <Label x:Name="CoinLabel" Text="123" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" FontSize="16" FontAttributes="Bold" Margin="10,0"/>
@@ -96,17 +96,17 @@
 
     <TabBar>
         <ShellContent Icon="base_page.svg"
-                      Route="FeedbackPage"
+                      Route="TapeFeedbackPage"
                       Shell.NavBarIsVisible="False"
                       Shell.TabBarIsVisible="True"
                       Title="Отзывы"
-                     ContentTemplate="{DataTemplate pagesadmin:FeedbackPage}" />
+                     ContentTemplate="{DataTemplate pagesadmin:TapeFeedbackPage}" />
 
         <ShellContent Icon="add_quest.svg"
                       Shell.NavBarIsVisible="False"
                       Shell.TabBarIsVisible="True"
                       Title="Квесты"
-                     ContentTemplate="{DataTemplate pagesss:MainCreationQuestPage}" />
+                     ContentTemplate="{DataTemplate pagesadmin:ManageQuestPage}" />
 
         <ShellContent Icon="logout.svg"
                       Shell.NavBarIsVisible="False"

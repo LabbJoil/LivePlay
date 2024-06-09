@@ -9,11 +9,11 @@ namespace LivePlayMAUI.Pages;
 //[QueryProperty(nameof(QuestionQuestModelProperty), nameof(QuestionQuestModelProperty))]
 public partial class NotStartedQuestPage : BasePopupPage
 {
+    private readonly BaseQuestViewModel BaseQuestVM;
     public QuestionQuestModel QuestionQuestModelProperty
     {
         set => BaseQuestVM.CurrentQuestItem = value;
     }
-    private readonly BaseQuestViewModel BaseQuestVM;
 
     public NotStartedQuestPage(BaseQuestViewModel baseQuestVM, QuestionQuestModel questionQuestModel)
 	{

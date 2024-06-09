@@ -64,7 +64,7 @@ public partial class QuestionCreationQuestPage : ContentPage
         };
         Preferences.Set(nameof(QuestionQuestModel), JsonSerializer.Serialize(hehe));
         await Shell.Current.DisplayAlert("Создан", "Квест успешно создан", "ok");
-        await Shell.Current.GoToAsync($"//{nameof(FeedbackPage)}");
+        await Shell.Current.GoToAsync($"//{nameof(TapeFeedbackPage)}");
     }
 
     private async void ImageButton_Clicked(object sender, EventArgs e)

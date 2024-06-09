@@ -5,6 +5,7 @@ using LivePlayMAUI.Services;
 using Microsoft.Maui.Controls.Shapes;
 using LivePlayMAUI.Pages.QuestPages.CreationQuestPages;
 using LivePlayMAUI.Pages.AccountPages;
+using LivePlayMAUI.Pages.AdminPages;
 
 namespace LivePlayMAUI;
 
@@ -28,6 +29,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(NotStartedQuestPage), typeof(NotStartedQuestPage));
         Routing.RegisterRoute(nameof(CurrentNewsPage), typeof(CurrentNewsPage));
         Routing.RegisterRoute(nameof(QuestionCreationQuestPage), typeof(QuestionCreationQuestPage));
+        Routing.RegisterRoute(nameof(CurrentFeedbackPage), typeof(CurrentFeedbackPage)); //возможно открывается по другому
 
     }
 

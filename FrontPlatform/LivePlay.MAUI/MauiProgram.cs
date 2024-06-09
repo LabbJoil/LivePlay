@@ -27,17 +27,15 @@ public static class MauiProgram
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("Raleway-Regular.ttf", "RalewayRegular");
-                fonts.AddFont("Raleway-Semibold.ttf", "RalewaySemibold");
+                fonts.AddFont("Raleway-Bold.ttf", "RalewayBold");
             })
             .AddAppSettings();
 
         var configuration = builder.Configuration;
         var services = builder.Services;
 
-        services.RegistOverApplicationSettingsServises();
-        services.RegistAccountServises();
-        services.RegistQuestServises();
-        services.RegistNewsServises();
+        services.RegistOverApplicationSettingsServices();
+        services.RegistAccountServices();
 
         //services.Configure<QuestFilterOptions>(configuration.GetSection(nameof(QuestFilterOptions))); // конфигурация пока что не нужна
 

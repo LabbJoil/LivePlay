@@ -21,7 +21,7 @@ public partial class MainCreationQuestPage : ContentPage
             Description = DescriptionMini.Text,
             TotalDescription = Description.Text,
             FinalDate = DateQuest.Date,
-            Price = int.Parse(Price.Text),
+            Price = int.Parse(Price.SelectedItem.ToString()),
             Type = TypeQuest.Search
         };
 

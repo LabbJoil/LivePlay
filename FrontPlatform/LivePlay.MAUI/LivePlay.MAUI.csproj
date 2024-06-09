@@ -58,10 +58,13 @@
 
 	<ItemGroup>
 	  <None Remove="appsettings.json" />
+	  <None Remove="Resources\Fonts\Raleway-Bold.ttf" />
 	  <None Remove="Resources\Fonts\Raleway-Regular.ttf" />
 	  <None Remove="Resources\Fonts\Raleway-Semibold.ttf" />
 	  <None Remove="Resources\Images\coupons_light.svg" />
 	  <None Remove="Resources\Images\ImageButtons\choose_item_admin.svg" />
+	  <None Remove="Resources\Images\ImageButtons\delete_item_admin.svg" />
+	  <None Remove="Resources\Images\ImageButtons\photo_add_dark.svg" />
 	  <None Remove="Resources\Images\TabBarPanel\add_quest.svg" />
 	  <None Remove="Resources\Images\TabBarPanel\arrow_forward.svg" />
 	  <None Remove="Resources\Images\TabBarPanel\base_page.svg" />
@@ -106,7 +109,9 @@
 	  <MauiImage Include="Resources\Images\ChoicePanel\star_light.svg" />
 	  <MauiImage Include="Resources\Images\Coin\coin_dark.svg" />
 	  <MauiImage Include="Resources\Images\Coin\coin_light.svg" />
+	  <MauiImage Include="Resources\Images\ImageButtons\delete_item_admin.svg" />
 	  <MauiImage Include="Resources\Images\ImageButtons\choose_item_admin.svg" />
+	  <MauiImage Include="Resources\Images\ImageButtons\photo_add_dark.svg" />
 	  <MauiImage Include="Resources\Images\TabBarPanel\add_quest.svg" />
 	  <MauiImage Include="Resources\Images\TabBarPanel\statistics.svg" />
 	  <MauiImage Include="Resources\Images\TabBarPanel\arrow_forward.svg" />
@@ -121,7 +126,7 @@
 	  <MauiImage Include="Resources\Images\ImageButtons\edit_email.svg" />
 	  <MauiImage Include="Resources\Images\ImageButtons\mark_name_surname.svg" />
 	  <MauiImage Include="Resources\Images\ImageButtons\show_qr.svg" />
-	  <MauiImage Include="Resources\Images\ImageButtons\photo_add.svg" />
+	  <MauiImage Include="Resources\Images\ImageButtons\photo_add_light.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -131,8 +136,14 @@
 	  <Compile Update="Pages\AccountPages\ProfilePage.xaml.cs">
 	    <DependentUpon>ProfilePage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\AdminPages\FeedbackPage.xaml.cs">
-	    <DependentUpon>FeedbackPage.xaml</DependentUpon>
+	  <Compile Update="Pages\AdminPages\ManageQuestPage.xaml.cs">
+	    <DependentUpon>ManageQuestPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\AdminPages\TapeFeedbackPage.xaml.cs">
+	    <DependentUpon>TapeFeedbackPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\AdminPages\CurrentFeedbackPage.xaml.cs">
+	    <DependentUpon>CurrentFeedbackPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\QuestPages\InProgressQuestPages\InProgressQRQuestPage.xaml.cs">
 	    <DependentUpon>InProgressQRQuestPage.xaml</DependentUpon>
@@ -179,7 +190,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Pages\AdminPages\FeedbackPage.xaml">
+	  <MauiXaml Update="Pages\AdminPages\ManageQuestPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\AdminPages\TapeFeedbackPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\AdminPages\CurrentFeedbackPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\AccountPages\HistoryOperationsPage.xaml">

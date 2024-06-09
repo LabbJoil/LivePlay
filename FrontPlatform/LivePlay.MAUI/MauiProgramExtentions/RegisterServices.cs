@@ -17,24 +17,7 @@ namespace LivePlayMAUI.MauiProgramExtentions;
 
 public static class RegisterServices
 {
-    public static void RegistQuestServises(this IServiceCollection services)
-    {
-        services.AddTransient<TapeQuestPage>();
-        services.AddTransient<NotStartedQuestPage>();
-        services.AddTransient<InProgressPhotoQuestPage>();
-        services.AddTransient<InProgressQRQuestPage>();
-        services.AddTransient<InProgressQuizQuestPage>();
-
-        services.AddTransient<MainCreationQuestPage>();
-        services.AddTransient<QuestionCreationQuestPage>();
-        services.AddTransient<QuestionQuestModel>();
-
-        services.AddTransient<TapeQuestViewModel>();
-        services.AddTransient<BaseQuestViewModel>();
-        services.AddTransient<InProgressPhotoQuestViewModel>();
-    }
-
-    public static void RegistAccountServises(this IServiceCollection services)
+    public static void RegistAccountServices(this IServiceCollection services)
     {
         services.AddTransient<EnterPage>();
         services.AddTransient<LoadingPage>();
@@ -43,25 +26,43 @@ public static class RegisterServices
         services.AddTransient<EnterViewModel>();
         services.AddTransient<ProfileViewModel>();
 
-        services.AddTransient<ReviewPage>(); //отдельный сервис
-        services.AddTransient<ReviewViewModel>();
-
-        services.AddTransient<FeedbackPage>();
-        services.AddTransient<FeedbackViewModel>();
-
-        services.AddTransient<CouponInfoPage>();
+        services.RegistAdminServices();
+        services.RegistUserServices();
     }
 
-    public static void RegistNewsServises(this IServiceCollection services)
+    private static void RegistAdminServices(this IServiceCollection services)
+    {
+        services.AddTransient<TapeFeedbackPage>();
+        services.AddTransient<CurrentFeedbackPage>();
+        services.AddTransient<MainCreationQuestPage>();
+        services.AddTransient<QuestionCreationQuestPage>();
+        services.AddTransient<ManageQuestPage>();
+
+        services.AddTransient<TapeFeedbackViewModel>();
+        services.AddTransient<QuestionQuestModel>();
+    }
+
+    private static void RegistUserServices(this IServiceCollection services)
     {
         services.AddTransient<MainPage>();
         services.AddTransient<CurrentNewsPage>();
+        services.AddTransient<ReviewPage>(); 
+        services.AddTransient<CouponInfoPage>();
+        services.AddTransient<TapeQuestPage>();
+        services.AddTransient<NotStartedQuestPage>();
+        services.AddTransient<InProgressPhotoQuestPage>();
+        services.AddTransient<InProgressQRQuestPage>();
+        services.AddTransient<InProgressQuizQuestPage>();
 
         services.AddTransient<MainViewModel>();
         services.AddTransient<CurrentNewsViewModel>();
+        services.AddTransient<ReviewViewModel>();
+        services.AddTransient<TapeQuestViewModel>();
+        services.AddTransient<BaseQuestViewModel>();
+        services.AddTransient<InProgressPhotoQuestViewModel>();
     }
 
-    public static void RegistOverApplicationSettingsServises(this IServiceCollection services)
+    public static void RegistOverApplicationSettingsServices(this IServiceCollection services)
     {
         services.AddSingleton<DeviceDesignSettings>();
         services.AddSingleton<DevicePermissions>();
