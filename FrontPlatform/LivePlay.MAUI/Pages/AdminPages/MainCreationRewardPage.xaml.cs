@@ -1,13 +1,13 @@
 using LivePlayMAUI.Enum;
 using LivePlayMAUI.Models.Domain;
 
-namespace LivePlayMAUI.Pages.QuestPages.CreationQuestPages;
+namespace LivePlayMAUI.Pages.AdminPages;
 
-public partial class MainCreationQuestPage : ContentPage
+public partial class MainCreationRewardPage : ContentPage
 {
     public DateTime MinDate { get; set; } = DateTime.UtcNow.AddDays(1);
 
-    public MainCreationQuestPage()
+    public MainCreationRewardPage()
 	{
 		InitializeComponent();
 		BindingContext = this;
@@ -26,7 +26,5 @@ public partial class MainCreationQuestPage : ContentPage
         //};
 
         //var shellParameters = new ShellNavigationQueryParameters { { $"QuestItemProperty", newQuestItem } };
-
-        await Shell.Current.GoToAsync($"{nameof(CreativeQuestCreationQuestPage)}"/*, shellParameters*/);
     }
 }

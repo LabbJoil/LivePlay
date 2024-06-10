@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivePlayMAUI.Pages.AdminPages.ManageRewardPage"
+             Title="ManageQuestPage"
+             x:Name="this">
+
+    <RefreshView>
+        <Grid BackgroundColor="#26507B">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="95"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="90"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" Stroke="#DEDEDE" StrokeThickness="2" Padding="13,7" >
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20"/>
+                </Border.StrokeShape>
+                <Label Text="Управление наградами" FontSize="19" FontAttributes="Bold"/>
+            </Border>
+
+            <Border BackgroundColor="White" Stroke="Transparent" Padding="18,0,0,0" HeightRequest="76" Grid.Row="1" Margin="18,5" VerticalOptions="Start">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,40">
+                    <Label Text="Скидка на номер 10%" TextColor="#0D1B2A" FontSize="19" VerticalOptions="Center" FontAttributes="Bold"/>
+                    <ImageButton Source="delete_item_admin.svg" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="26" 
+                                 HeightRequest="26" BackgroundColor="Transparent"/>
+                </Grid>
+            </Border>
+
+            <Button Grid.Row="2" BackgroundColor="Transparent" BorderColor="White" BorderWidth="4" CornerRadius="20" FontAttributes="Bold" FontSize="40" 
+                    HorizontalOptions="Center" VerticalOptions="Center" Text="+" WidthRequest="235" Margin="20" Padding="0" Clicked="Button_Clicked"/>
+        </Grid>
+    </RefreshView>
+    
+</ContentPage>

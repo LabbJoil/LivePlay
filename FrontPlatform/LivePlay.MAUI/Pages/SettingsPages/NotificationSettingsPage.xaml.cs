@@ -5,10 +5,10 @@ using LivePlayMAUI.Services;
 
 namespace LivePlayMAUI.Pages;
 
-public partial class SettingsPage : ContentPage
+public partial class NotificationSettingsPage : ContentPage
 {
     private readonly SettingsViewModel SettingsVM;
-    public SettingsPage(SettingsViewModel settingsViewModel)
+    public NotificationSettingsPage(SettingsViewModel settingsViewModel)
     {
         InitializeComponent();
         BindingContext = settingsViewModel;

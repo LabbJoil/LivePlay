@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LivePlayMAUI.Pages.InProgressQuizQuestPage"
-             Title="QuizQuestPage">
+             Title="QuizQuestPage" BackgroundColor="#778DA9">
 
     <Border BackgroundColor="#415A77" Margin="18" Stroke="Transparent">
         <Border.StrokeShape>

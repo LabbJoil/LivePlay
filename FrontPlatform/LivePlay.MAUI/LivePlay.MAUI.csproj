@@ -61,10 +61,14 @@
 	  <None Remove="Resources\Fonts\Raleway-Bold.ttf" />
 	  <None Remove="Resources\Fonts\Raleway-Regular.ttf" />
 	  <None Remove="Resources\Fonts\Raleway-Semibold.ttf" />
+	  <None Remove="Resources\Images\ChoicePanel\notifications.svg" />
+	  <None Remove="Resources\Images\ChoicePanel\settings.svg" />
 	  <None Remove="Resources\Images\coupons_light.svg" />
 	  <None Remove="Resources\Images\ImageButtons\choose_item_admin.svg" />
+	  <None Remove="Resources\Images\ImageButtons\choose_item_admin_dark.svg" />
 	  <None Remove="Resources\Images\ImageButtons\delete_item_admin.svg" />
 	  <None Remove="Resources\Images\ImageButtons\photo_add_dark.svg" />
+	  <None Remove="Resources\Images\TabBarPanel\add_award.svg" />
 	  <None Remove="Resources\Images\TabBarPanel\add_quest.svg" />
 	  <None Remove="Resources\Images\TabBarPanel\arrow_forward.svg" />
 	  <None Remove="Resources\Images\TabBarPanel\base_page.svg" />
@@ -102,6 +106,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiImage Include="Resources\Images\ChoicePanel\notifications.svg" />
+	  <MauiImage Include="Resources\Images\ChoicePanel\settings.svg" />
 	  <MauiImage Include="Resources\Images\ChoicePanel\coupons_light.svg" />
 	  <MauiImage Include="Resources\Images\ChoicePanel\done_quests_light.svg" />
 	  <MauiImage Include="Resources\Images\ChoicePanel\in_process_light.svg" />
@@ -109,10 +115,12 @@
 	  <MauiImage Include="Resources\Images\ChoicePanel\star_light.svg" />
 	  <MauiImage Include="Resources\Images\Coin\coin_dark.svg" />
 	  <MauiImage Include="Resources\Images\Coin\coin_light.svg" />
+	  <MauiImage Include="Resources\Images\ImageButtons\choose_item_admin_dark.svg" />
 	  <MauiImage Include="Resources\Images\ImageButtons\delete_item_admin.svg" />
 	  <MauiImage Include="Resources\Images\ImageButtons\choose_item_admin.svg" />
 	  <MauiImage Include="Resources\Images\ImageButtons\photo_add_dark.svg" />
 	  <MauiImage Include="Resources\Images\TabBarPanel\add_quest.svg" />
+	  <MauiImage Include="Resources\Images\TabBarPanel\add_award.svg" />
 	  <MauiImage Include="Resources\Images\TabBarPanel\statistics.svg" />
 	  <MauiImage Include="Resources\Images\TabBarPanel\arrow_forward.svg" />
 	  <MauiImage Include="Resources\Images\TabBarPanel\base_page.svg" />
@@ -126,24 +134,48 @@
 	  <MauiImage Include="Resources\Images\ImageButtons\edit_email.svg" />
 	  <MauiImage Include="Resources\Images\ImageButtons\mark_name_surname.svg" />
 	  <MauiImage Include="Resources\Images\ImageButtons\show_qr.svg" />
-	  <MauiImage Include="Resources\Images\ImageButtons\photo_add_light.svg" />
+	  <MauiImage Include="Resources\Images\ImageButtons\photo_add.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Compile Update="Interfaces\IStoragePermissions.cs">
 	    <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
 	  </Compile>
+	  <Compile Update="Pages\AccountPages\MyCouponsPage.xaml.cs">
+	    <DependentUpon>MyCouponsPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\AccountPages\ProfilePage.xaml.cs">
 	    <DependentUpon>ProfilePage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\AdminPages\GettingStatisticsPage.xaml.cs">
+	    <DependentUpon>GettingStatisticsPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\AdminPages\MainCreationRewardPage.xaml.cs">
+	    <DependentUpon>MainCreationRewardPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\AdminPages\ManageRewardPage.xaml.cs">
+	    <DependentUpon>ManageRewardPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\AdminPages\ManageQuestPage.xaml.cs">
 	    <DependentUpon>ManageQuestPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\AdminPages\AdminProfilePage.xaml.cs">
+	    <DependentUpon>AdminProfilePage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\AdminPages\TapeFeedbackPage.xaml.cs">
 	    <DependentUpon>TapeFeedbackPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\AdminPages\CurrentFeedbackPage.xaml.cs">
 	    <DependentUpon>CurrentFeedbackPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\QuestPages\CreationQuestPages\CreativeQuestCreationQuestPage.xaml.cs">
+	    <DependentUpon>CreativeQuestCreationQuestPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\QuestPages\CreationQuestPages\QRcodeCreationQuestPage.xaml.cs">
+	    <DependentUpon>QRcodeCreationQuestPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\QuestPages\CreationQuestPages\QuestionCreationQuestPage.xaml.cs">
+	    <DependentUpon>QuestionCreationQuestPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\QuestPages\InProgressQuestPages\InProgressQRQuestPage.xaml.cs">
 	    <DependentUpon>InProgressQRQuestPage.xaml</DependentUpon>
@@ -169,6 +201,9 @@
 	  <Compile Update="Pages\ReviewPages\ReviewPage.xaml.cs">
 	    <DependentUpon>ReviewPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\SettingsPages\NotificationSettingsPage.xaml.cs">
+	    <DependentUpon>NotificationSettingsPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\SettingsPages\SettingsPage.xaml.cs">
 	    <DependentUpon>SettingsPage.xaml</DependentUpon>
 	  </Compile>
@@ -190,7 +225,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Pages\AccountPages\MyCouponsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\AdminPages\GettingStatisticsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\AdminPages\MainCreationRewardPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\AdminPages\ManageRewardPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\AdminPages\ManageQuestPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\AdminPages\AdminProfilePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\AdminPages\TapeFeedbackPage.xaml">
@@ -208,7 +258,13 @@
 	  <MauiXaml Update="Pages\QuestPages\CreationQuestPages\MainCreationQuestPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\QuestPages\CreationQuestPages\QuistionCreationQuestPage.xaml">
+	  <MauiXaml Update="Pages\QuestPages\CreationQuestPages\CreativeQuestCreationQuestPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\QuestPages\CreationQuestPages\QRcodeCreationQuestPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\QuestPages\CreationQuestPages\QuestionCreationQuestPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\QuestPages\InProgressQuestPages\InProgressQRQuestPage.xaml">
@@ -230,6 +286,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Reward\CouponInfoPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\SettingsPages\NotificationSettingsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\SettingsPages\ViewPhotoPage.xaml">

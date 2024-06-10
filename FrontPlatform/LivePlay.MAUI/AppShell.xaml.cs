@@ -30,6 +30,8 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(CurrentNewsPage), typeof(CurrentNewsPage));
         Routing.RegisterRoute(nameof(QuestionCreationQuestPage), typeof(QuestionCreationQuestPage));
         Routing.RegisterRoute(nameof(CurrentFeedbackPage), typeof(CurrentFeedbackPage)); //возможно открывается по другому
+        Routing.RegisterRoute(nameof(QRcodeCreationQuestPage), typeof(QRcodeCreationQuestPage)); //возможно открывается по другому
+        Routing.RegisterRoute(nameof(CreativeQuestCreationQuestPage), typeof(CreativeQuestCreationQuestPage)); //возможно открывается по другому
 
     }
 

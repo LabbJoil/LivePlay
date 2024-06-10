@@ -108,23 +108,23 @@
                       Title="Квесты"
                      ContentTemplate="{DataTemplate pagesadmin:ManageQuestPage}" />
 
-        <ShellContent Icon="logout.svg"
+        <ShellContent Icon="add_award.svg"
                       Shell.NavBarIsVisible="False"
                       Shell.TabBarIsVisible="True"
                       Title="Награды"
-                     ContentTemplate="{DataTemplate pages:EnterPage}" />
+                     ContentTemplate="{DataTemplate pagesadmin:ManageRewardPage}" />
 
         <ShellContent Icon="profile_light.svg"
                       Shell.NavBarIsVisible="False"
                       Shell.TabBarIsVisible="True"
                       Title="Профиль"
-                     ContentTemplate="{DataTemplate pages:EnterPage}" />
+                     ContentTemplate="{DataTemplate pagesadmin:AdminProfilePage}" />
 
         <ShellContent Icon="statistics.svg"
                       Shell.NavBarIsVisible="False"
                       Shell.TabBarIsVisible="True"
                       Title="Статистика"
-                     ContentTemplate="{DataTemplate pages:EnterPage}" />
+                     ContentTemplate="{DataTemplate pagesadmin:GettingStatisticsPage}" />
     </TabBar>
 
     <FlyoutItem x:Name="FlyoutItemsNow" FlyoutDisplayOptions="AsMultipleItems">
@@ -140,13 +140,13 @@
                       Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
         <ShellContent Title="Настройки" 
                       AutomationId="2" 
-                      Route="SettingsPage" 
-                      ContentTemplate="{DataTemplate pages:SettingsPage}"
+                      Route="NotificationSettingsPage" 
+                      ContentTemplate="{DataTemplate pages:NotificationSettingsPage}"
                       Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
         <ShellContent Title="Профиль" 
                       AutomationId="3" 
-                      Route="ProfilePage" 
-                      ContentTemplate="{DataTemplate pages:ProfilePage}"
+                      Route="MyCouponsPage" 
+                      ContentTemplate="{DataTemplate pages:MyCouponsPage}"
                       Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
         <ShellContent Title="Оставить отзыв" 
                       AutomationId="4" 

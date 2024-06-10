@@ -5,6 +5,7 @@ using LivePlayMAUI.Models.ViewModels.AccountViewModels;
 using LivePlayMAUI.Models.ViewModels.NewsViewModels;
 using LivePlayMAUI.Models.ViewModels.QuestViewModels;
 using LivePlayMAUI.Models.ViewModels.ReviewViewModels;
+using LivePlayMAUI.Models.ViewModels.SettingsViewModels;
 using LivePlayMAUI.Pages;
 using LivePlayMAUI.Pages.AdminPages;
 using LivePlayMAUI.Pages.QuestPages.CreationQuestPages;
@@ -22,9 +23,13 @@ public static class RegisterServices
         services.AddTransient<EnterPage>();
         services.AddTransient<LoadingPage>();
         services.AddTransient<ProfilePage>();
+        services.AddTransient<MyCouponsPage>();
+        services.AddTransient<SettingsPage>();
+        services.AddTransient<NotificationSettingsPage>();
 
         services.AddTransient<EnterViewModel>();
         services.AddTransient<ProfileViewModel>();
+        services.AddTransient<SettingsViewModel>();
 
         services.RegistAdminServices();
         services.RegistUserServices();
@@ -36,7 +41,12 @@ public static class RegisterServices
         services.AddTransient<CurrentFeedbackPage>();
         services.AddTransient<MainCreationQuestPage>();
         services.AddTransient<QuestionCreationQuestPage>();
+        services.AddTransient<QRcodeCreationQuestPage>();
+        services.AddTransient<CreativeQuestCreationQuestPage>();
         services.AddTransient<ManageQuestPage>();
+        services.AddTransient<ManageRewardPage>();
+        services.AddTransient<MainCreationRewardPage>();
+        services.AddTransient<AdminProfilePage>();
 
         services.AddTransient<TapeFeedbackViewModel>();
         services.AddTransient<QuestionQuestModel>();
@@ -53,6 +63,7 @@ public static class RegisterServices
         services.AddTransient<InProgressPhotoQuestPage>();
         services.AddTransient<InProgressQRQuestPage>();
         services.AddTransient<InProgressQuizQuestPage>();
+        services.AddTransient<GettingStatisticsPage>();
 
         services.AddTransient<MainViewModel>();
         services.AddTransient<CurrentNewsViewModel>();

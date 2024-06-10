@@ -36,7 +36,7 @@ public partial class EnterViewModel(NavigateThrowLoading navigateThrowLoading, D
 
         
 
-        await NavigateLoading.GoToRootPage($"//{nameof(TapeFeedbackPage)}");
+        await NavigateLoading.GoToRootPage($"//{nameof(MainPage)}");
 
         //if (Email == "tre@gmail.com")
         //    await NavigateLoading.GoToRootPage($"//{nameof(EmptyPage)}");

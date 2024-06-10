@@ -69,7 +69,7 @@ public partial class QuestionCreationQuestPage : ContentPage
 
     private async void ImageButton_Clicked(object sender, EventArgs e)
     {
-        ImageChosePath = await DeviceStorage.GetOneItemStorage();
-        GetImage.Source = ImageChosePath;
+        //ImageChosePath = await DeviceStorage.GetOneItemStorage();
+        //GetImage.Source = ImageChosePath;
     }
 }

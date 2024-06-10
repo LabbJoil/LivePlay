@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivePlayMAUI.Pages.QuestPages.CreationQuestPages.QRcodeCreationQuestPage"
+             xmlns:pe="clr-namespace:LivePlayMAUI.PersonalElements"
+             Title="QRcodeCreationQuestPage"
+             Shell.NavBarIsVisible="False">
+    
+    <Grid BackgroundColor="#26507B" Padding="40,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64"/>
+            <RowDefinition Height="102"/>
+            <RowDefinition Height="268"/>
+            <RowDefinition Height="83"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="190"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" VerticalOptions="End" HorizontalOptions="Center" Stroke="#DEDEDE" StrokeThickness="2" Padding="13,7" >
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20"/>
+            </Border.StrokeShape>
+            <Label Text="Создание квеста" FontSize="19" FontAttributes="Bold"/>
+        </Border>
+
+        <Label Text="Сгенерируйте новый QR-код:" FontSize="20" Grid.Row="1" FontAttributes="Bold" VerticalOptions="End" HorizontalOptions="Center"/>
+
+        <GraphicsView Grid.Row="2" VerticalOptions="End" BackgroundColor="White" WidthRequest="240" HeightRequest="240"/>
+
+        <Button Grid.Row="3" Text="Сгенерировать" FontAttributes="Bold" FontSize="19" WidthRequest="240" HeightRequest="40" Padding="0" BackgroundColor="#0D1B2A" VerticalOptions="End"/>
+
+        <Button Grid.Row="4" Text="Сохранить QR-код" FontAttributes="Bold" FontSize="19" WidthRequest="240" HeightRequest="40" Padding="0" BackgroundColor="#0D1B2A" VerticalOptions="End"/>
+
+        <Button Grid.Row="5" Text="Готово" FontAttributes="Bold" FontSize="19" WidthRequest="200" HeightRequest="40" Padding="0" BackgroundColor="#143150"/>
+        
+    </Grid>
+</ContentPage>
