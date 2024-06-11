@@ -68,6 +68,7 @@
 	  <None Remove="Resources\Images\ImageButtons\choose_item_admin_dark.svg" />
 	  <None Remove="Resources\Images\ImageButtons\delete_item_admin.svg" />
 	  <None Remove="Resources\Images\ImageButtons\photo_add_dark.svg" />
+	  <None Remove="Resources\Images\Reward\lock.svg" />
 	  <None Remove="Resources\Images\TabBarPanel\add_award.svg" />
 	  <None Remove="Resources\Images\TabBarPanel\add_quest.svg" />
 	  <None Remove="Resources\Images\TabBarPanel\arrow_forward.svg" />
@@ -119,6 +120,7 @@
 	  <MauiImage Include="Resources\Images\ImageButtons\delete_item_admin.svg" />
 	  <MauiImage Include="Resources\Images\ImageButtons\choose_item_admin.svg" />
 	  <MauiImage Include="Resources\Images\ImageButtons\photo_add_dark.svg" />
+	  <MauiImage Include="Resources\Images\Reward\lock.svg" />
 	  <MauiImage Include="Resources\Images\TabBarPanel\add_quest.svg" />
 	  <MauiImage Include="Resources\Images\TabBarPanel\add_award.svg" />
 	  <MauiImage Include="Resources\Images\TabBarPanel\statistics.svg" />
@@ -200,6 +202,9 @@
 	  </Compile>
 	  <Compile Update="Pages\ReviewPages\ReviewPage.xaml.cs">
 	    <DependentUpon>ReviewPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\Reward\MainRewardPage.xaml.cs">
+	    <DependentUpon>MainRewardPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\SettingsPages\NotificationSettingsPage.xaml.cs">
 	    <DependentUpon>NotificationSettingsPage.xaml</DependentUpon>
@@ -286,6 +291,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Reward\CouponInfoPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Reward\MainRewardPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\SettingsPages\NotificationSettingsPage.xaml">

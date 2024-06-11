@@ -8,6 +8,7 @@
     xmlns:pagesss="clr-namespace:LivePlayMAUI.Pages.QuestPages.CreationQuestPages"
     xmlns:pagesrev="clr-namespace:LivePlayMAUI.Pages.ReviewPages"
     xmlns:pagesadmin="clr-namespace:LivePlayMAUI.Pages.AdminPages"
+    xmlns:pagesreward="clr-namespace:LivePlayMAUI.Pages.Reward"
     Shell.TabBarBackgroundColor="White"
     Shell.TabBarForegroundColor="Black"
     Shell.BackgroundColor="White"
@@ -135,21 +136,26 @@
                       Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
         <ShellContent Title="Квесты"
                       AutomationId="1"
-                      Route="TapeQuestPage"
-                      ContentTemplate="{DataTemplate pages:TapeQuestPage}"
+                      Route="InProgressQuizQuestPage"
+                      ContentTemplate="{DataTemplate pages:InProgressQuizQuestPage}"
+                      Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
+        <ShellContent Title="Награды"
+                      AutomationId="2"
+                      Route="MainRewardPage"
+                      ContentTemplate="{DataTemplate pagesreward:MainRewardPage}"
                       Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
         <ShellContent Title="Настройки" 
-                      AutomationId="2" 
+                      AutomationId="3" 
                       Route="NotificationSettingsPage" 
                       ContentTemplate="{DataTemplate pages:NotificationSettingsPage}"
                       Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
         <ShellContent Title="Профиль" 
-                      AutomationId="3" 
+                      AutomationId="4" 
                       Route="MyCouponsPage" 
                       ContentTemplate="{DataTemplate pages:MyCouponsPage}"
                       Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
         <ShellContent Title="Оставить отзыв" 
-                      AutomationId="4" 
+                      AutomationId="5" 
                       Route="ReviewPage" 
                       ContentTemplate="{DataTemplate pagesrev:ReviewPage}"
                       Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
