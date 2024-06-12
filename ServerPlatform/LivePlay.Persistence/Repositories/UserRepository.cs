@@ -15,7 +15,6 @@ public class UserRepository(LivePlayDbContext dbContext, IJwtProvider jwtProvide
     {
         if (DbContext.Users.FirstOrDefault(u => u.Email == email) != null)
             throw new Exception($"Пользователь с email - {email} уже существует");
-        //throw new ExceptionHelper(new LoggingHelper(TypeMessage.Problem, DangerLevel.Wanted, $"User with Email ({email}) already exists"));
 
         var role = await DbContext.Roles.FirstOrDefaultAsync(r => r.Id == (int)Role.User) ??
             throw new Exception("Not found role");
@@ -58,21 +57,5 @@ public class UserRepository(LivePlayDbContext dbContext, IJwtProvider jwtProvide
 
         var userClaims = JwtProvider.SetUserId(userEntity.Id.ToString());
         return JwtProvider.GenerateNewToken(userClaims);
-    }
-
-    public async Task<HashSet<Permission>> GetUserPermissions(Guid userId)
-    {
-        var roles = await DbContext.Users
-            .AsNoTracking()
-            .Include(u => u.Roles)
-            .ThenInclude(r => r.Permissions)
-            .Where(u => u.Id == userId).Select(u => u.Roles)
-            .ToArrayAsync();
-
-        return roles
-            .SelectMany(r => r)
-            .SelectMany(r => r.Permissions)
-            .Select(p => (Permission)p.Id)
-            .ToHashSet();
     }
 }

@@ -7,6 +7,8 @@ using LivePlay.Persistence;
 using LivePlayApplication.Extentions;
 using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.EntityFrameworkCore;
+using LivePlay.Infrastructure.Other;
+using LivePlay.WebApi.ProgramExtentions;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -17,17 +19,18 @@ services.AddDbContext<LivePlayDbContext>(options =>
     options.UseNpgsql(configuration.GetConnectionString(nameof(LivePlayDbContext)));
 });
 
-services.Configure<RolePermissionOptions>(configuration.GetSection(nameof(RolePermissionOptions)));
-services.Configure<JwtOptions>(configuration.GetSection(nameof(JwtOptions)));
+builder.GetConfigurations();
 
-services.AddControllers();
-services.AddSwaggerGen();
-
-services.AddScoped<UserRepository>();
-services.AddSingleton<IJwtProvider, JwtProvider>();
+services.RegistryAppServices();
+services.RegistryRepositories();
+services.RegistryInfrastructure();
+services.RegistryBackgrounds();
 
 services.AddApiAuthentication(configuration);
 services.AddApiPolitics();
+
+services.AddControllers();
+services.AddSwaggerGen();
 
 var app = builder.Build();
 
