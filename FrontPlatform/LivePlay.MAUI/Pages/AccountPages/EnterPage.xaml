@@ -32,8 +32,50 @@
                 </StackLayout>
 
                 <StackLayout x:Name="CodeStackLayout" WidthRequest="300" Orientation="Vertical" IsVisible="False">
-                    <pe:SimpleEntryControl Placeholder="Код подтверждения" Margin="20"/>
-                    <Label x:Name="TimerLabel" Text="00:00" Margin="10" VerticalOptions="Center"/>
+
+                    <Grid ColumnDefinitions="*,*">
+                        <Label Text="Введите код:" FontSize="16"/>
+                        <Label x:Name="TimerLabel" Grid.Column="1" Text="00:00" Margin="10" VerticalOptions="Start" HorizontalOptions="End"/>
+                    </Grid>
+
+                    <Grid HeightRequest="84" ColumnDefinitions="*,*,*,*" ColumnSpacing="9" WidthRequest="240">
+                        <Border Grid.ColumnSpan="4" Stroke="Transparent">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Tapped="TapGestureRecognizer_Tapped"
+                                    NumberOfTapsRequired="1"/>
+                            </Border.GestureRecognizers>
+                        </Border>
+                        <Entry x:Name="EmailCode" Keyboard="Numeric" HeightRequest="0.1" BackgroundColor="Red"/>
+
+                        <Border BackgroundColor="#415A77" Stroke="Transparent">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="20"/>
+                            </Border.StrokeShape>
+                            <Label Text="0" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+
+                        <Border Grid.Column="1" BackgroundColor="#415A77" Stroke="Transparent">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="20"/>
+                            </Border.StrokeShape>
+                            <Label Text="5" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+
+                        <Border Grid.Column="2" BackgroundColor="#415A77" Stroke="Transparent">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="20"/>
+                            </Border.StrokeShape>
+                            <Label Text="8" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+
+                        <Border Grid.Column="3" BackgroundColor="#415A77" Stroke="Transparent">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="20"/>
+                            </Border.StrokeShape>
+                            <Label Text="3" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Border>
+                    </Grid>
                     <Button x:Name="CodeCheckButton" Text="Далее" Clicked="CodeCheckButtonClicked" Margin="50,30"/>
                     <Button x:Name="SendCodeButton" Text="Отправить сообщение ещё раз" Clicked="SendCodeAgainButtonClicked" IsEnabled="False" Margin="10,30" Style="{StaticResource SecondButton}"/>
                 </StackLayout>

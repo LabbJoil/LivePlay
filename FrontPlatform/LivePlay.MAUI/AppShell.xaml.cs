@@ -54,14 +54,14 @@ public partial class AppShell : Shell
             SetViewElement(grid, true);
             LastGrid = grid;
             var item = FlyoutItemsNow.Items.ToArray().First(i => i.Items[0].AutomationId == grid.AutomationId);
-            await NavigateThrow.GoToRootPage(item.Route);
+            await GoToAsync($"//{item.Route}");
             Current.FlyoutIsPresented = false;
         }
     }
 
     private void ChangeCountCoins(string newCountCoins)
     {
-        CoinLabel.Text = newCountCoins;
+        //CoinLabel.Text = newCountCoins;
     }
 
     private static void SetViewElement(Grid grid, bool isVisible)

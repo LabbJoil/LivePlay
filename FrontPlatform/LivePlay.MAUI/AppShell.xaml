@@ -136,8 +136,8 @@
                       Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
         <ShellContent Title="Квесты"
                       AutomationId="1"
-                      Route="InProgressQuizQuestPage"
-                      ContentTemplate="{DataTemplate pages:InProgressQuizQuestPage}"
+                      Route="TapeQuestPage"
+                      ContentTemplate="{DataTemplate pages:TapeQuestPage}"
                       Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
         <ShellContent Title="Награды"
                       AutomationId="2"

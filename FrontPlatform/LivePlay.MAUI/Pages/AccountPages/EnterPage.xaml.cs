@@ -113,4 +113,10 @@ public partial class EnterPage : ContentPage
         //};
         //page.ShowAsync(Window);
     }
+
+    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+        var i = EmailCode.Focus();
+
+    }
 }
