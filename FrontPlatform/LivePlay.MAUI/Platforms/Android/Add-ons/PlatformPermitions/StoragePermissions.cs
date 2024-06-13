@@ -1,9 +1,9 @@
 ﻿
 using Android.OS;
 using System.Diagnostics.CodeAnalysis;
-using LivePlayMAUI.Interfaces;
+using LivePlay.Front.MAUI.Interfaces;
 
-namespace LivePlayMAUI.Platforms.PlatformPermitions;
+namespace LivePlay.Front.MAUI.Platforms.PlatformPermitions;
 
 public class StoragePermissions : Permissions.BasePlatformPermission, IStoragePermissions
 {

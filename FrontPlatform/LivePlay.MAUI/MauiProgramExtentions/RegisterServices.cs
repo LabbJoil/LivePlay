@@ -1,20 +1,24 @@
 ﻿
-using LivePlayMAUI.Models.Domain;
-using LivePlayMAUI.Models.ViewModels;
-using LivePlayMAUI.Models.ViewModels.AccountViewModels;
-using LivePlayMAUI.Models.ViewModels.NewsViewModels;
-using LivePlayMAUI.Models.ViewModels.QuestViewModels;
-using LivePlayMAUI.Models.ViewModels.ReviewViewModels;
-using LivePlayMAUI.Models.ViewModels.SettingsViewModels;
-using LivePlayMAUI.Pages;
-using LivePlayMAUI.Pages.AdminPages;
-using LivePlayMAUI.Pages.QuestPages.CreationQuestPages;
-using LivePlayMAUI.Pages.ReviewPages;
-using LivePlayMAUI.Pages.Reward;
-using LivePlayMAUI.PersonalElements;
-using LivePlayMAUI.Services;
+using LivePlay.Front.Core.Models.Domain;
+using LivePlay.Front.MAUI.Models.ViewModels;
+using LivePlay.Front.MAUI.Models.ViewModels.AccountViewModels;
+using LivePlay.Front.MAUI.Models.ViewModels.NewsViewModels;
+using LivePlay.Front.MAUI.Models.ViewModels.QuestViewModels;
+using LivePlay.Front.MAUI.OverApplicationSettings;
+using LivePlay.Front.MAUI.Pages;
+using LivePlay.Front.MAUI.Pages.AdminPages;
+using LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages;
+using LivePlay.Front.MAUI.Pages.ReviewPages;
+using LivePlay.Front.MAUI.Pages.Reward;
+using LivePlay.Front.MAUI.PersonalElements;
+using LivePlay.Front.MAUI.Services;
+using LivePlay.Front.MAUI.ViewModels.AccountViewModels;
+using LivePlay.Front.MAUI.ViewModels.NewsViewModels;
+using LivePlay.Front.MAUI.ViewModels.QuestViewModels;
+using LivePlay.Front.MAUI.ViewModels.ReviewViewModels;
+using LivePlay.Front.MAUI.ViewModels.SettingsViewModels;
 
-namespace LivePlayMAUI.MauiProgramExtentions;
+namespace LivePlay.Front.MAUI.MauiProgramExtentions;
 
 public static class RegisterServices
 {

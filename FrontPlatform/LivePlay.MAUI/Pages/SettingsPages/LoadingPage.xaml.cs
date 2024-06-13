@@ -1,5 +1,5 @@
 
-namespace LivePlayMAUI.Pages;
+namespace LivePlay.Front.MAUI.Pages;
 
 [QueryProperty(nameof(LoadPageRoute), "LoadPageRoute")]
 public partial class LoadingPage : ContentPage

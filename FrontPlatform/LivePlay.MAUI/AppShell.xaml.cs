@@ -1,13 +1,12 @@
 ﻿
-using LivePlayMAUI.Models.ViewModels;
-using LivePlayMAUI.Pages;
-using LivePlayMAUI.Services;
+using LivePlay.Front.MAUI.OverApplicationSettings;
+using LivePlay.Front.MAUI.Pages;
+using LivePlay.Front.MAUI.Pages.AdminPages;
+using LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages;
+using LivePlay.Front.MAUI.Services;
 using Microsoft.Maui.Controls.Shapes;
-using LivePlayMAUI.Pages.QuestPages.CreationQuestPages;
-using LivePlayMAUI.Pages.AccountPages;
-using LivePlayMAUI.Pages.AdminPages;
 
-namespace LivePlayMAUI;
+namespace LivePlay.Front.MAUI;
 
 public partial class AppShell : Shell
 {

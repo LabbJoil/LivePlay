@@ -1,9 +1,9 @@
 
-using LivePlayMAUI.Enum;
-using LivePlayMAUI.Models.ViewModels.ReviewViewModels;
-using LivePlayMAUI.Services;
+using LivePlay.Front.MAUI.Enum;
+using LivePlay.Front.MAUI.Services;
+using LivePlay.Front.MAUI.ViewModels.ReviewViewModels;
 
-namespace LivePlayMAUI.Pages.ReviewPages;
+namespace LivePlay.Front.MAUI.Pages.ReviewPages;
 
 public partial class ReviewPage : ContentPage
 {

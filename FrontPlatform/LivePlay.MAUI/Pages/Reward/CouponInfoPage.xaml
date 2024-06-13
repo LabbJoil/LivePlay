@@ -2,7 +2,7 @@
 <bottomsheet:BottomSheet xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:bottomsheet="https://schemas.the49.com/dotnet/2023/maui"
-             x:Class="LivePlayMAUI.Pages.Reward.CouponInfoPage"
+             x:Class="LivePlay.Front.MAUI.Pages.Reward.CouponInfoPage"
              Background="LightGray" Padding="16,32" CornerRadius="15">
 
     <bottomsheet:BottomSheet.Detents>

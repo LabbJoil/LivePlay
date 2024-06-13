@@ -1,9 +1,8 @@
+using LivePlay.Front.MAUI.Enum;
+using LivePlay.Front.MAUI.Services;
+using LivePlay.Front.MAUI.ViewModels.SettingsViewModels;
 
-using LivePlayMAUI.Models.ViewModels.SettingsViewModels;
-using LivePlayMAUI.Enum;
-using LivePlayMAUI.Services;
-
-namespace LivePlayMAUI.Pages;
+namespace LivePlay.Front.MAUI.Pages;
 
 public partial class NotificationSettingsPage : ContentPage
 {

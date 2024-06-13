@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell
-    x:Class="LivePlayMAUI.AppShell"
+    x:Class="LivePlay.Front.MAUI.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pages="clr-namespace:LivePlayMAUI.Pages"
-    xmlns:pagess="clr-namespace:LivePlayMAUI.Pages.AccountPages"
-    xmlns:pagesss="clr-namespace:LivePlayMAUI.Pages.QuestPages.CreationQuestPages"
-    xmlns:pagesrev="clr-namespace:LivePlayMAUI.Pages.ReviewPages"
-    xmlns:pagesadmin="clr-namespace:LivePlayMAUI.Pages.AdminPages"
-    xmlns:pagesreward="clr-namespace:LivePlayMAUI.Pages.Reward"
+    xmlns:pages="clr-namespace:LivePlay.Front.MAUI.Pages"
+    xmlns:pagess="clr-namespace:LivePlay.Front.MAUI.Pages.AccountPages"
+    xmlns:pagesss="clr-namespace:LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages"
+    xmlns:pagesrev="clr-namespace:LivePlay.Front.MAUI.Pages.ReviewPages"
+    xmlns:pagesadmin="clr-namespace:LivePlay.Front.MAUI.Pages.AdminPages"
+    xmlns:pagesreward="clr-namespace:LivePlay.Front.MAUI.Pages.Reward"
     Shell.TabBarBackgroundColor="White"
     Shell.TabBarForegroundColor="Black"
     Shell.BackgroundColor="White"
@@ -39,11 +39,6 @@
     <Shell.FlyoutHeader>
         <Grid Margin="0,100,0,0"/>
     </Shell.FlyoutHeader>
-
-    <Shell.FlyoutFooter>
-        <ImageButton Background="Red" CornerRadius="5" Aspect="AspectFit"
-                Clicked="LogOut_Clicked" Source="logout.svg"/>
-    </Shell.FlyoutFooter>
 
     <Shell.ItemTemplate>
         <DataTemplate>

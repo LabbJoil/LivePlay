@@ -1,9 +1,9 @@
 
-using LivePlayMAUI.Enum;
-using LivePlayMAUI.Models.ViewModels;
-using LivePlayMAUI.Services;
+using LivePlay.Front.MAUI.Enum;
+using LivePlay.Front.MAUI.Models.ViewModels;
+using LivePlay.Front.MAUI.Services;
 
-namespace LivePlayMAUI.Pages;
+namespace LivePlay.Front.MAUI.Pages;
 
 public partial class TapeQuestPage : ContentPage
 {

@@ -1,7 +1,8 @@
-using LivePlayMAUI.Enum;
-using LivePlayMAUI.Models.Domain;
 
-namespace LivePlayMAUI.Pages.AdminPages;
+using LivePlay.Front.Core.Enums;
+using LivePlay.Front.Core.Models.Domain;
+
+namespace LivePlay.Front.MAUI.Pages.AdminPages;
 
 public partial class GettingStatisticsPage : ContentPage
 {

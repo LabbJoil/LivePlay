@@ -1,8 +1,8 @@
 using CommunityToolkit.Maui.Core.Platform;
-using LivePlayMAUI.Models.ViewModels;
+using LivePlay.Front.MAUI.Models.ViewModels;
 using System.Formats.Tar;
 
-namespace LivePlayMAUI.PersonalElements;
+namespace LivePlay.Front.MAUI.PersonalElements;
 
 public partial class PasswordEntryControl : ContentView
 {

@@ -1,7 +1,8 @@
-using LivePlayMAUI.Models.Domain;
-using LivePlayMAUI.Models.ViewModels;
 
-namespace LivePlayMAUI.Pages.AdminPages;
+using LivePlay.Front.MAUI.Models.Domain;
+using LivePlay.Front.MAUI.Models.ViewModels;
+
+namespace LivePlay.Front.MAUI.Pages.AdminPages;
 
 public partial class TapeFeedbackPage : ContentPage
 {

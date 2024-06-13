@@ -1,8 +1,8 @@
 
-using LivePlayMAUI.Enum;
-using LivePlayMAUI.Models.ViewModels.NewsViewModels;
+using LivePlay.Front.MAUI.Enum;
+using LivePlay.Front.MAUI.Models.ViewModels.NewsViewModels;
 
-namespace LivePlayMAUI.Pages.Reward;
+namespace LivePlay.Front.MAUI.Pages.Reward;
 
 public partial class MainRewardPage : ContentPage
 {

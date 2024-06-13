@@ -3,12 +3,12 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Views;
 using CommunityToolkit.Maui.Core;
-using LivePlayMAUI.Enum;
-using LivePlayMAUI.Services;
+using LivePlay.Front.MAUI.Enum;
+using LivePlay.Front.MAUI.Services;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using System.Diagnostics.CodeAnalysis;
 
-namespace LivePlayMAUI;
+namespace LivePlay.Front.MAUI;
 
 [Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize | ConfigChanges.Density)]
 public class MainActivity : MauiAppCompatActivity

@@ -1,4 +1,4 @@
-namespace LivePlayMAUI.Pages.QuestPages;
+namespace LivePlay.Front.MAUI.Pages.QuestPages;
 
 public partial class ViewPhotoPage : ContentPage
 {

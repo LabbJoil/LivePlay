@@ -1,10 +1,10 @@
 ﻿
-using LivePlayMAUI.Enum;
-using LivePlayMAUI.Models.ViewModels.AccountViewModels;
-using LivePlayMAUI.Pages.Reward;
-using LivePlayMAUI.Services;
+using LivePlay.Front.Core.Enums;
+using LivePlay.Front.MAUI.Models.ViewModels.AccountViewModels;
+using LivePlay.Front.MAUI.Pages.Reward;
+using LivePlay.Front.MAUI.Services;
 
-namespace LivePlayMAUI.Pages;
+namespace LivePlay.Front.MAUI.Pages;
 
 public partial class EnterPage : ContentPage
 {

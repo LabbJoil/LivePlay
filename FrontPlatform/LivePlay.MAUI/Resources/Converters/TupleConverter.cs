@@ -1,7 +1,7 @@
 ﻿
 using System.Globalization;
 
-namespace LivePlayMAUI.Resources.Converters;
+namespace LivePlay.Front.MAUI.Resources.Converters;
 
 public class TupleConverter : IValueConverter
 {

@@ -1,9 +1,9 @@
 
-using LivePlayMAUI.Enum;
-using LivePlayMAUI.Models.ViewModels.AccountViewModels;
-using LivePlayMAUI.Services;
+using LivePlay.Front.Core.Enums;
+using LivePlay.Front.MAUI.Models.ViewModels.AccountViewModels;
+using LivePlay.Front.MAUI.Services;
 
-namespace LivePlayMAUI.Pages.AdminPages;
+namespace LivePlay.Front.MAUI.Pages.AdminPages;
 
 public partial class AdminProfilePage : ContentPage
 {

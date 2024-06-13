@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LivePlayMAUI.Pages.EnterPage"
-             xmlns:pe="clr-namespace:LivePlayMAUI.PersonalElements"
+             x:Class="LivePlay.Front.MAUI.Pages.EnterPage"
+             xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
              Appearing="ContentPage_Appearing" Disappearing="ContentPage_Disappearing"
              BackgroundColor="{AppThemeBinding Dark={StaticResource Page1BackgroundDark}, Light={StaticResource Page1BackgroundLight}}">
 
@@ -17,18 +17,18 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <pe:SwitchButtonsControl Grid.Row="1" TextButton1="Log in" TextButton2="Sign up" ClickButton1="SignUpButtonClicked" ClickButton2="LogInButtonClicked" Margin="40,0,40,0"/>
+            <pe:SwitchButtonsControl Grid.Row="1" TextButton1="Вход" TextButton2="Регистрация" ClickButton1="SignUpButtonClicked" ClickButton2="LogInButtonClicked" Margin="40,0,40,0"/>
 
             <Grid x:Name="EnterGrid" Grid.Row="3" Margin="50,10">
-                <StackLayout x:Name="LoginStackLayout" WidthRequest="300" Orientation="Vertical" >
-                    <pe:SimpleEntryControl x:Name="LoginEmail" Placeholder="Логин" Text="{Binding Email}" Margin="10,10"/>
-                    <pe:PasswordEntryControl x:Name="LoginPassword" Placeholder="Пароль" Text="{Binding Password}" Margin="10,10" />
-                    <Button Text="Войти" Command="{Binding LoginUserCommand}" Margin="50,30"/>
+                <StackLayout x:Name="LoginStackLayout" WidthRequest="300" Orientation="Vertical" Spacing="10">
+                    <pe:SimpleEntryControl x:Name="LoginEmail" Placeholder="Логин" Text="{Binding Email}" Margin="10,0"/>
+                    <pe:PasswordEntryControl x:Name="LoginPassword" Placeholder="Пароль" Text="{Binding Password}" Margin="10,0" />
+                    <Button Text="Войти" Command="{Binding LoginUserCommand}" Margin="50,30" HeightRequest="50"/>
                 </StackLayout>
 
                 <StackLayout x:Name="EmailStackLayout" WidthRequest="300" Orientation="Vertical" IsVisible="False">
                     <pe:SimpleEntryControl Placeholder="E-mail" Margin="10,10"/>
-                    <Button Text="Далее" Clicked="EmailCheckButtonClicked" Margin="50,30"/>
+                    <Button Text="Далее" Clicked="EmailCheckButtonClicked" Margin="50,30" HeightRequest="50"/>
                 </StackLayout>
 
                 <StackLayout x:Name="CodeStackLayout" WidthRequest="300" Orientation="Vertical" IsVisible="False">
@@ -76,8 +76,9 @@
                             <Label Text="3" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
                         </Border>
                     </Grid>
-                    <Button x:Name="CodeCheckButton" Text="Далее" Clicked="CodeCheckButtonClicked" Margin="50,30"/>
-                    <Button x:Name="SendCodeButton" Text="Отправить сообщение ещё раз" Clicked="SendCodeAgainButtonClicked" IsEnabled="False" Margin="10,30" Style="{StaticResource SecondButton}"/>
+                    <Button x:Name="CodeCheckButton" Text="Далее" Clicked="CodeCheckButtonClicked" Margin="50,25,50,40" HeightRequest="50" WidthRequest="230"/>
+                    <Button x:Name="SendCodeButton" Text="Отправить код ещё раз" Clicked="SendCodeAgainButtonClicked" IsEnabled="False" Margin="10,0" 
+                            Style="{StaticResource SecondButton}" WidthRequest="230" Padding="0" HeightRequest="50"/>
                 </StackLayout>
             </Grid>
         </Grid>

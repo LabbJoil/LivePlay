@@ -11,8 +11,8 @@
     </Style>
 
     <Style x:Key="SecondButton" TargetType="Button">
-        <Setter Property="TextColor" Value="Black" />
-        <Setter Property="Background" Value="{AppThemeBinding Light={StaticResource Button2BackgroundLight}, Dark={StaticResource Button2BackgroundDark}}" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="Background" Value="{AppThemeBinding Default={StaticResource Button2Background}}" />
     </Style>
 
     <Style x:Key="SwitchButtonLabel" TargetType="Label">

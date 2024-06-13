@@ -1,4 +1,5 @@
-namespace LivePlayMAUI.Pages.AccountPages;
+
+namespace LivePlay.Front.MAUI.Pages.AccountPages;
 
 public partial class HistoryOperationsPage
 {
