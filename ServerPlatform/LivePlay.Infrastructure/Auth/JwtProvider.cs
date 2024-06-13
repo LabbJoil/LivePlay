@@ -1,12 +1,12 @@
 ﻿
-using LivePlay.Application.Interfaces;
+using LivePlay.Server.Application.Interfaces;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace LivePlay.Infrastructure.Authorization;
+namespace LivePlay.Server.Infrastructure.Authorization;
 
 public class JwtProvider(IOptions<JwtOptions> options) : IJwtProvider
 {

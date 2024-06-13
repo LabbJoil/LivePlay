@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+namespace LivePlay.Server.Application.Services;
 
-namespace LivePlay.Application.Services;
-
-public class UserServicee
+public class UserService
 {
 
     public void GetUser()

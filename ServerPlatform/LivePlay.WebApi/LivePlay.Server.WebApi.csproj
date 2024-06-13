@@ -16,10 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LivePlay.Application\LivePlay.Application.csproj" />
-    <ProjectReference Include="..\LivePlay.Core\LivePlay.Core.csproj" />
-    <ProjectReference Include="..\LivePlay.Infrastructure\LivePlay.Infrastructure.csproj" />
-    <ProjectReference Include="..\LivePlay.Persistence\LivePlay.Persistence.csproj" />
+    <ProjectReference Include="..\LivePlay.Application\LivePlay.Server.Application.csproj" />
+    <ProjectReference Include="..\LivePlay.Core\LivePlay.Server.Core.csproj" />
+    <ProjectReference Include="..\LivePlay.Infrastructure\LivePlay.Server.Infrastructure.csproj" />
+    <ProjectReference Include="..\LivePlay.Persistence\LivePlay.Server.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

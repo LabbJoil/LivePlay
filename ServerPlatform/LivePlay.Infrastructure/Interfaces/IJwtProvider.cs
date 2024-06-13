@@ -1,7 +1,7 @@
 ﻿
 using System.Security.Claims;
 
-namespace LivePlay.Application.Interfaces;
+namespace LivePlay.Server.Application.Interfaces;
 
 public interface IJwtProvider
 {

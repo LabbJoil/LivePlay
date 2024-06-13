@@ -1,13 +1,13 @@
 ﻿
-using LivePlay.Application.Services.Auth;
-using LivePlay.Core.Enums;
-using LivePlay.Infrastructure;
-using LivePlay.Infrastructure.Authorization;
-using LivePlayApplication.Services.Middlewares;
+using LivePlay.Server.Application.Services.Auth;
+using LivePlay.Server.Core.Enums;
+using LivePlay.Server.Infrastructure;
+using LivePlay.Server.Infrastructure.Authorization;
+using LivePlay.Server.WebApi.Services.Middlewares;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 
-namespace LivePlayApplication.Extentions;
+namespace LivePlay.Server.WebApi.Extentions;
 
 public static class AuthExtention
 {

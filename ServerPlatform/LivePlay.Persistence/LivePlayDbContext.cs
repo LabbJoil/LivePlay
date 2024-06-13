@@ -1,10 +1,10 @@
 ﻿
-using LivePlay.Persistence.Configurations;
-using LivePlay.Persistence.EntityModels.Base;
+using LivePlay.Server.Persistence.Configurations;
+using LivePlay.Server.Persistence.EntityModels.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
-namespace LivePlay.Persistence;
+namespace LivePlay.Server.Persistence;
 
 public class LivePlayDbContext(DbContextOptions<LivePlayDbContext> options, IOptions<RolePermissionOptions> rolePermissionOptions) : DbContext(options)
 {

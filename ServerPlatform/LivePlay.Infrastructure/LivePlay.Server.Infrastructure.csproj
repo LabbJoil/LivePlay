@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LivePlay.Core\LivePlay.Core.csproj" />
+    <ProjectReference Include="..\LivePlay.Core\LivePlay.Server.Core.csproj" />
   </ItemGroup>
 
 </Project>

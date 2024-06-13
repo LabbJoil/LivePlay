@@ -15,9 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LivePlay.Coree\LivePlay.Core.csproj" />
-    <ProjectReference Include="..\LivePlay.Core\LivePlay.Core.csproj" />
-    <ProjectReference Include="..\LivePlay.Persistence\LivePlay.Persistence.csproj" />
+    <ProjectReference Include="..\LivePlay.Core\LivePlay.Server.Core.csproj" />
+    <ProjectReference Include="..\LivePlay.Persistence\LivePlay.Server.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

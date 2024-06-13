@@ -1,10 +1,10 @@
 ﻿
-using LivePlay.Application.Interfaces;
-using LivePlay.Core.Enums;
-using LivePlay.Persistence.EntityModels.Base;
+using LivePlay.Server.Application.Interfaces;
+using LivePlay.Server.Core.Enums;
+using LivePlay.Server.Persistence.EntityModels.Base;
 using Microsoft.EntityFrameworkCore;
 
-namespace LivePlay.Persistence.Repositories;
+namespace LivePlay.Server.Persistence.Repositories;
 
 public class UserRepository(LivePlayDbContext dbContext, IJwtProvider jwtProvider)
 {

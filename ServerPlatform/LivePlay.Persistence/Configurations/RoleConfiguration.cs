@@ -1,11 +1,11 @@
 ﻿
-using LivePlay.Core.Enums;
-using LivePlay.Persistence.EntityModels.Base;
-using LivePlay.Persistence.EntityModels.ManyMany;
+using LivePlay.Server.Core.Enums;
+using LivePlay.Server.Persistence.EntityModels.Base;
+using LivePlay.Server.Persistence.EntityModels.ManyMany;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace LivePlay.Persistence.Configurations;
+namespace LivePlay.Server.Persistence.Configurations;
 
 public class RoleConfiguration : IEntityTypeConfiguration<RoleEntityModel>
 {

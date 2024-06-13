@@ -1,5 +1,5 @@
 ﻿
-namespace LivePlay.Core.Enums;
+namespace LivePlay.Server.Core.Enums;
 
 public enum Role
 {

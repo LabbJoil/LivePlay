@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Mail;
 
-namespace LivePlay.Infrastructure.Other;
+namespace LivePlay.Server.Infrastructure.Other;
 
 public class EmailProvider
 {

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace LivePlay.Persistence.EntityModels.Base;
+namespace LivePlay.Server.Persistence.EntityModels.Base;
 
 [Table("User")]
 public class UserEntityModel

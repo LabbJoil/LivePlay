@@ -1,12 +1,12 @@
 ﻿
-using LivePlay.Application.Interfaces;
-using LivePlay.Core.Enums;
-using LivePlay.Persistence.Repositories;
-using LivePlayApplication.Contracts;
+using LivePlay.Server.Application.Interfaces;
+using LivePlay.Server.Core.Enums;
+using LivePlay.Server.Persistence.Repositories;
+using LivePlay.Server.WebApi.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LivePlayApplication.Controllers
+namespace LivePlay.Server.WebApi.Controllers
 {
     [Route("[controller]/")]
     [ApiController]

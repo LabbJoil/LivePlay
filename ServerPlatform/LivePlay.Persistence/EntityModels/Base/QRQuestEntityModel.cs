@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 
-namespace LivePlay.Persistence.EntityModels.Base;
+namespace LivePlay.Server.Persistence.EntityModels.Base;
 
 [Table("QRQuest")]
 public class QRQuestEntityModel

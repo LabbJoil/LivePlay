@@ -1,4 +1,4 @@
-﻿namespace LivePlayApplication.Services.MidllWare;
+﻿namespace LivePlay.Server.WebApi.Services.MidllWare;
 
 public class ExceptionMiddlewareHandler(RequestDelegate next, ILogger<ExceptionMiddlewareHandler> logger)
 {

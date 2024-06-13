@@ -1,7 +1,7 @@
-﻿using LivePlay.Infrastructure;
-using LivePlay.Persistence;
+﻿using LivePlay.Server.Infrastructure;
+using LivePlay.Server.Persistence;
 
-namespace LivePlay.WebApi.ProgramExtentions;
+namespace LivePlay.Server.WebApi.ProgramExtentions;
 
 public static class ConfigurationRegistor
 {

@@ -1,7 +1,7 @@
 ﻿
-using LivePlay.Core.Enums;
+using LivePlay.Server.Core.Enums;
 
-namespace LivePlay.Core.Models;
+namespace LivePlay.Server.Core.Models;
 
 public class User
 {

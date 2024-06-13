@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LivePlay.WebApi.Controllers
+namespace LivePlay.Server.WebApi.Controllers
 {
     public class FeedbackController : Controller
     {

@@ -1,8 +1,8 @@
 ﻿
 using Microsoft.AspNetCore.Authorization;
-using LivePlay.Core.Enums;
+using LivePlay.Server.Core.Enums;
 
-namespace LivePlay.Application.Services.Auth;
+namespace LivePlay.Server.Application.Services.Auth;
 
 public class PermissionProvider(Politic needPolitic) : IAuthorizationRequirement
 {

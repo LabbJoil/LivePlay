@@ -1,19 +1,23 @@
 ﻿
-using LivePlay.Application.Background;
-using LivePlay.Application.Interfaces;
-using LivePlay.Infrastructure;
-using LivePlay.Infrastructure.Authorization;
-using LivePlay.Infrastructure.Other;
-using LivePlay.Persistence;
-using LivePlay.Persistence.Repositories;
+using LivePlay.Server.Application.Background;
+using LivePlay.Server.Application.Interfaces;
+using LivePlay.Server.Application.Services;
+using LivePlay.Server.Infrastructure.Authorization;
+using LivePlay.Server.Infrastructure.Other;
+using LivePlay.Server.Persistence.Repositories;
 
-namespace LivePlay.WebApi.ProgramExtentions;
+namespace LivePlay.Server.WebApi.ProgramExtentions;
 
 internal static class ServiceRegistor
 {
     public static void RegistryAppServices(this IServiceCollection services)
     {
-
+        services.AddScoped<UserService>();
+        services.AddScoped<QuestService>();
+        services.AddScoped<FeedbackService>();
+        services.AddScoped<NewsService>();
+        services.AddScoped<HotelService>();
+        services.AddScoped<CouponService>();
     }
 
     public static void RegistryRepositories(this IServiceCollection services)

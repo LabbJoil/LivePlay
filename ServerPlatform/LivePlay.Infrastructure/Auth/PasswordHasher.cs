@@ -1,7 +1,7 @@
 ﻿
 using System.Security.Cryptography;
 
-namespace LivePlay.Infrastructure.Services;
+namespace LivePlay.Server.Infrastructure.Services;
 
 public static class PasswordHasher
 {

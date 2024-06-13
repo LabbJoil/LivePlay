@@ -1,9 +1,9 @@
 ﻿
-using LivePlay.Core.Models;
-using LivePlay.Infrastructure.Other;
+using LivePlay.Server.Core.Models;
+using LivePlay.Server.Infrastructure.Other;
 using Microsoft.Extensions.Hosting;
 
-namespace LivePlay.Application.Background;
+namespace LivePlay.Server.Application.Background;
 
 public class RegistryUserBackground(EmailProvider emailProvider) : BackgroundService
 {

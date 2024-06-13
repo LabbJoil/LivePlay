@@ -1,4 +1,4 @@
-﻿using LivePlay.Core.Enums;
+﻿using LivePlay.Server.Core.Enums;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LivePlay.Persistence.Repositories;
+namespace LivePlay.Server.Persistence.Repositories;
 
 public class PermissionRepository(LivePlayDbContext dbContext)
 {

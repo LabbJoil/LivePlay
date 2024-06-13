@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace LivePlay.Persistence.EntityModels.ManyMany;
+namespace LivePlay.Server.Persistence.EntityModels.ManyMany;
 
 [Table("UserQuest")]
 public class UserQuestEntityModel

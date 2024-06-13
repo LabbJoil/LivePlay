@@ -1,14 +1,14 @@
 
-using LivePlay.Application.Interfaces;
-using LivePlay.Persistence.Repositories;
-using LivePlay.Infrastructure.Authorization;
-using LivePlay.Infrastructure;
-using LivePlay.Persistence;
-using LivePlayApplication.Extentions;
+using LivePlay.Server.Application.Interfaces;
+using LivePlay.Server.Persistence.Repositories;
+using LivePlay.Server.Infrastructure.Authorization;
+using LivePlay.Server.Infrastructure;
+using LivePlay.Server.Persistence;
+using LivePlay.Server.WebApi.Extentions;
 using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.EntityFrameworkCore;
-using LivePlay.Infrastructure.Other;
-using LivePlay.WebApi.ProgramExtentions;
+using LivePlay.Server.Infrastructure.Other;
+using LivePlay.Server.WebApi.ProgramExtentions;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;

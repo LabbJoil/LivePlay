@@ -20,8 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LivePlay.Core\LivePlay.Core.csproj" />
-    <ProjectReference Include="..\LivePlay.Infrastructure\LivePlay.Infrastructure.csproj" />
+    <ProjectReference Include="..\LivePlay.Core\LivePlay.Server.Core.csproj" />
+    <ProjectReference Include="..\LivePlay.Infrastructure\LivePlay.Server.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
