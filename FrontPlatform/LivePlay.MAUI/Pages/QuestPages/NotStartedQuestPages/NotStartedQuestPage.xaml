@@ -2,7 +2,7 @@
 <mauiPopup:BasePopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mauiPopup="clr-namespace:MauiPopup.Views;assembly=MauiPopup"
-             x:Class="LivePlayMAUI.Pages.NotStartedQuestPage"
+             x:Class="LivePlay.Front.MAUI.Pages.NotStartedQuestPage"
              IsCloseOnBackgroundClick="True"
              Margin="10,10,10,60"
              ForegroundColor="Transparent" BackgroundColor="Transparent"

@@ -1,8 +1,9 @@
+
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 using System;
 
-namespace Live_and_play
+namespace LivePlay.Front.MAUI
 {
     internal class Program : MauiApplication
     {

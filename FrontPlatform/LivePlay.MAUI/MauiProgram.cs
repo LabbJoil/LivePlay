@@ -1,12 +1,12 @@
 ﻿
 using CommunityToolkit.Maui;
-using LivePlayMAUI.MauiProgramExtentions;
+using LivePlay.Front.MAUI.MauiProgramExtentions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Reflection;
 using The49.Maui.BottomSheet;
 
-namespace LivePlayMAUI;
+namespace LivePlay.Front.MAUI;
 
 public static class MauiProgram
 {

@@ -1,9 +1,9 @@
 
 using CommunityToolkit.Maui.Core.Views;
-using LivePlayMAUI.Models.Domain;
-using LivePlayMAUI.Models.ViewModels;
+using LivePlay.Front.MAUI.Models.Domain;
+using LivePlay.Front.MAUI.ViewModels.QuestViewModels;
 
-namespace LivePlayMAUI.Pages;
+namespace LivePlay.Front.MAUI.Pages;
 
 [QueryProperty(nameof(QuestionQuestModelProperty), nameof(QuestionQuestModelProperty))]
 public partial class InProgressQuizQuestPage : ContentPage

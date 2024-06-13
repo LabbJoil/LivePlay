@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace LivePlayMAUI
+namespace LivePlay.Front.MAUI
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate

@@ -3,7 +3,7 @@ using Android.Graphics.Drawables;
 using Microsoft.Maui.Controls.Platform;
 using Microsoft.Maui.Handlers;
 
-namespace LivePlayMAUI.Platforms.VisualElementsMapper;
+namespace LivePlay.Front.MAUI.Platforms.VisualElementsMapper;
 
 public static class EntryControlMapper
 {

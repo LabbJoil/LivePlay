@@ -1,7 +1,8 @@
-using LivePlayMAUI.Enum;
-using LivePlayMAUI.Models.Domain;
 
-namespace LivePlayMAUI.Pages.QuestPages.CreationQuestPages;
+using LivePlay.Front.MAUI.Enum;
+using LivePlay.Front.MAUI.Models.Domain;
+
+namespace LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages;
 
 public partial class MainCreationQuestPage : ContentPage
 {

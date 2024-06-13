@@ -1,9 +1,10 @@
+
 using CommunityToolkit.Mvvm.Input;
-using LivePlayMAUI.Models.Domain;
+using LivePlay.Front.MAUI.Models.Domain;
 using System.Windows.Input;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace LivePlayMAUI.PersonalElements;
+namespace LivePlay.Front.MAUI.PersonalElements;
 
 public partial class TapeQuestItemControl : ContentView
 {

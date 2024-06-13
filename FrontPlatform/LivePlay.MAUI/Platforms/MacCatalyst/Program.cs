@@ -1,7 +1,7 @@
-﻿using ObjCRuntime;
+﻿
 using UIKit;
 
-namespace LivePlayMAUI
+namespace LivePlay.Front.MAUI
 {
     public class Program
     {

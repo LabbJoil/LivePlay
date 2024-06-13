@@ -1,5 +1,5 @@
 
-namespace LivePlayMAUI.PersonalElements;
+namespace LivePlay.Front.MAUI.PersonalElements;
 
 public partial class SwitchButtonsControl : ContentView
 {

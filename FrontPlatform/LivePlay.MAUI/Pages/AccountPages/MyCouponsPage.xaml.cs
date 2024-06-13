@@ -1,9 +1,9 @@
 
-using LivePlayMAUI.Enum;
-using LivePlayMAUI.Models.ViewModels.AccountViewModels;
-using LivePlayMAUI.Services;
+using LivePlay.Front.MAUI.Enum;
+using LivePlay.Front.MAUI.Services;
+using LivePlay.Front.MAUI.ViewModels.AccountViewModels;
 
-namespace LivePlayMAUI.Pages;
+namespace LivePlay.Front.MAUI.Pages;
 
 public partial class MyCouponsPage : ContentPage
 {

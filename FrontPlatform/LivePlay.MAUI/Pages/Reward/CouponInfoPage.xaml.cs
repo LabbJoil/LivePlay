@@ -1,5 +1,5 @@
 
-namespace LivePlayMAUI.Pages.Reward;
+namespace LivePlay.Front.MAUI.Pages.Reward;
 
 public partial class CouponInfoPage
 {

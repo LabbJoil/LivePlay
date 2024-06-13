@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LivePlayMAUI.Pages.MyCouponsPage"
+             x:Class="LivePlay.Front.MAUI.Pages.MyCouponsPage"
              Title="MyCouponsPage"
              Appearing="ContentPage_Appearing" Disappearing="ContentPage_Disappearing"
-             xmlns:pe="clr-namespace:LivePlayMAUI.PersonalElements"
-             xmlns:cp="clr-namespace:LivePlayMAUI.Models.Domain"
+             xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
+             xmlns:cp="clr-namespace:LivePlay.Front.MAUI.Models.Domain"
              x:Name="this">
 
     <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">

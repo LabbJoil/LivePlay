@@ -1,16 +1,10 @@
 ﻿
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.Platform;
-using LivePlayMAUI.PersonalElements;
-using Microsoft.Maui.ApplicationModel;
-using LivePlayMAUI.Services;
-using LivePlayMAUI.Models.ViewModels;
-using Microsoft.Extensions.Configuration;
+using LivePlay.Front.MAUI.OverApplicationSettings;
+using LivePlay.Front.MAUI.Services;
 
-namespace LivePlayMAUI;
+namespace LivePlay.Front.MAUI;
 
-public partial class App : Application
+public partial class App : Microsoft.Maui.Controls.Application
 {
     public App(DeviceDesignSettings designSettings, NavigateThrowLoading navigateThrowLoading)
     {

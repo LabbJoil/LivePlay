@@ -1,7 +1,8 @@
-using LivePlayMAUI.Models.Domain;
+
+using LivePlay.Front.MAUI.Models.Domain;
 using System.Collections.ObjectModel;
 
-namespace LivePlayMAUI.PersonalElements;
+namespace LivePlay.Front.MAUI.PersonalElements;
 
 public partial class ChoicePanelControl : ContentView
 {

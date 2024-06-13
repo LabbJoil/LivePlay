@@ -1,9 +1,9 @@
 
-using LivePlayMAUI.Models.Domain;
-using LivePlayMAUI.Models.ViewModels;
-using LivePlayMAUI.Models.ViewModels.QuestViewModels;
+using LivePlay.Front.MAUI.Models.Domain;
+using LivePlay.Front.MAUI.Models.ViewModels;
+using LivePlay.Front.MAUI.Models.ViewModels.QuestViewModels;
 
-namespace LivePlayMAUI.Pages;
+namespace LivePlay.Front.MAUI.Pages;
 
 //[QueryProperty(nameof(QuestItemProperty), nameof(QuestItemProperty))]
 public partial class InProgressPhotoQuestPage : ContentPage
