@@ -5,8 +5,8 @@ namespace LivePlay.Front.MAUI.Pages;
 
 public partial class SettingsPage : ContentPage
 {
-    private readonly SettingsViewModel SettingsVM;
-    public SettingsPage(SettingsViewModel settingsViewModel)
+    private readonly SettingsPageViewModel SettingsVM;
+    public SettingsPage(SettingsPageViewModel settingsViewModel)
     {
         InitializeComponent();
         BindingContext = settingsViewModel;

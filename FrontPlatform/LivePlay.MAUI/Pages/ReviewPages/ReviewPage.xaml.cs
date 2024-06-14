@@ -7,9 +7,9 @@ namespace LivePlay.Front.MAUI.Pages.ReviewPages;
 
 public partial class ReviewPage : ContentPage
 {
-	private readonly ReviewViewModel ReviewVM;
+	private readonly ReviewPageViewModel ReviewVM;
 
-    public ReviewPage(ReviewViewModel reviewViewModel)
+    public ReviewPage(ReviewPageViewModel reviewViewModel)
 	{
 		InitializeComponent();
         BindingContext = reviewViewModel;

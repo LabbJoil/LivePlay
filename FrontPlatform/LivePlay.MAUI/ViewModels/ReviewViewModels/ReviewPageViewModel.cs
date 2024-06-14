@@ -4,9 +4,9 @@ using LivePlay.Front.Application.DeviceSettings;
 
 namespace LivePlay.Front.MAUI.ViewModels.ReviewViewModels;
 
-public partial class ReviewViewModel : BaseViewModel
+public partial class ReviewPageViewModel : BaseViewModel
 {
-    public ReviewViewModel(AppDesign designSettings) : base(designSettings)
+    public ReviewPageViewModel(AppDesign designSettings) : base(designSettings)
     {
         // запрос к серверу
     }

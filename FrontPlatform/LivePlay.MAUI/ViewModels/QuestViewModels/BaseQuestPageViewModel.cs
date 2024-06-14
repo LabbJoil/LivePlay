@@ -6,7 +6,7 @@ using LivePlay.Front.Core.Models;
 
 namespace LivePlay.Front.MAUI.ViewModels.QuestViewModels;
 
-public partial class BaseQuestViewModel(AppDesign designSettings) : BaseViewModel(designSettings)
+public partial class BaseQuestPageViewModel(AppDesign designSettings) : BaseViewModel(designSettings)
 {
     [ObservableProperty]
     public QuestionQuestModel _currentQuestItem = new();

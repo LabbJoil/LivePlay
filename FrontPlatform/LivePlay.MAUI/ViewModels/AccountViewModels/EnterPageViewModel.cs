@@ -9,7 +9,7 @@ using LivePlay.Front.MAUI.Pages;
 
 namespace LivePlay.Front.MAUI.Models.ViewModels.AccountViewModels;
 
-public partial class EnterViewModel(NavigateThrowLoading navigateThrowLoading, AppDesign designSettings, AppPermissions permissions) : BaseViewModel(designSettings)
+public partial class EnterPageViewModel(NavigateThrowLoading navigateThrowLoading, AppDesign designSettings, AppPermissions permissions) : BaseViewModel(designSettings)
 {
     public AppPermissions Permissions { get; } = permissions;
     public NavigateThrowLoading NavigateLoading { get; } = navigateThrowLoading;

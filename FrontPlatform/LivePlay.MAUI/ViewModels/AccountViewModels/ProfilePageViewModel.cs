@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 
 namespace LivePlay.Front.MAUI.ViewModels.AccountViewModels;
 
-public partial class ProfileViewModel : BaseViewModel
+public partial class ProfilePageViewModel : BaseViewModel
 {
     public ObservableCollection<CouponItem> CouponItems { get; set; }
 
@@ -15,7 +15,7 @@ public partial class ProfileViewModel : BaseViewModel
         new ChoicePanelItem { Icon = "coupons_light.svg", Text="Мои купоны" }
         ];
 
-    public ProfileViewModel(AppDesign designSettings) : base(designSettings)
+    public ProfilePageViewModel(AppDesign designSettings) : base(designSettings)
     {
         // запрос к серверу
     }

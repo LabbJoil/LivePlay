@@ -5,8 +5,8 @@ namespace LivePlay.Front.MAUI.Pages;
 
 public partial class MyCouponsPage : ContentPage
 {
-	private readonly ProfileViewModel ProfileVM;
-    public MyCouponsPage(ProfileViewModel profileViewModel)
+	private readonly ProfilePageViewModel ProfileVM;
+    public MyCouponsPage(ProfilePageViewModel profileViewModel)
 	{
 		InitializeComponent();
         BindingContext = profileViewModel;

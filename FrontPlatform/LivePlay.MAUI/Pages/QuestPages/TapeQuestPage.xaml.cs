@@ -7,8 +7,8 @@ namespace LivePlay.Front.MAUI.Pages;
 
 public partial class TapeQuestPage : ContentPage
 {
-    private readonly TapeQuestViewModel QuestTapePageVM;
-    public TapeQuestPage(TapeQuestViewModel questTapePageViewModel)
+    private readonly TapeQuestPageViewModel QuestTapePageVM;
+    public TapeQuestPage(TapeQuestPageViewModel questTapePageViewModel)
     {
         InitializeComponent();
         BindingContext = questTapePageViewModel;

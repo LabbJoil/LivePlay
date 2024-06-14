@@ -12,7 +12,7 @@ using System.Text.Json;
 
 namespace LivePlay.Front.MAUI.Models.ViewModels;
 
-public partial class TapeQuestViewModel : MainTapeViewModel
+public partial class TapeQuestPageViewModel : MainTapeViewModel
 {
     public AppStorage _deviceStorage;
 
@@ -25,7 +25,7 @@ public partial class TapeQuestViewModel : MainTapeViewModel
         new ChoicePanelItem { Icon = "done_quests_light.svg", Text="Выполнены" }
         ];
 
-    public TapeQuestViewModel(AppDesign designSettings, AppStorage deviceStorage) : base(designSettings)
+    public TapeQuestPageViewModel(AppDesign designSettings, AppStorage deviceStorage) : base(designSettings)
     {
         _deviceStorage = deviceStorage; //заменить, переход строго через goto
         GetQuestItems();
@@ -53,7 +53,7 @@ public partial class TapeQuestViewModel : MainTapeViewModel
             switch (questItem.NowItem.Status)
             {
                 case QuestStatus.NotStarted:
-                    var notStartedQuestVM = new BaseQuestViewModel(DesignSettings); // refact error
+                    var notStartedQuestVM = new BaseQuestPageViewModel(DesignSettings); // refact error
                     await Shell.Current.DisplayAlert("111", "111", "ok");
                     await PopupAction.DisplayPopup(new NotStartedQuestPage(notStartedQuestVM, questItem));
                     //await Shell.Current.GoToAsync($"{nameof(NotStartedQuestPage)}", shellParameters);

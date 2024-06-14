@@ -31,9 +31,9 @@ public static class RegisterServices
         services.AddTransient<SettingsPage>();
         services.AddTransient<NotificationSettingsPage>();
 
-        services.AddTransient<EnterViewModel>();
-        services.AddTransient<ProfileViewModel>();
-        services.AddTransient<SettingsViewModel>();
+        services.AddTransient<EnterPageViewModel>();
+        services.AddTransient<ProfilePageViewModel>();
+        services.AddTransient<SettingsPageViewModel>();
 
         services.RegistAdminServices();
         services.RegistUserServices();
@@ -52,7 +52,7 @@ public static class RegisterServices
         services.AddTransient<MainCreationRewardPage>();
         services.AddTransient<AdminProfilePage>();
 
-        services.AddTransient<TapeFeedbackViewModel>();
+        services.AddTransient<TapeFeedbackPageViewModel>();
         services.AddTransient<QuestionQuestModel>();
     }
 
@@ -70,11 +70,11 @@ public static class RegisterServices
         services.AddTransient<GettingStatisticsPage>();
 
         services.AddTransient<MainPageViewModel>();
-        services.AddTransient<CurrentNewsViewModel>();
-        services.AddTransient<ReviewViewModel>();
-        services.AddTransient<TapeQuestViewModel>();
-        services.AddTransient<BaseQuestViewModel>();
-        services.AddTransient<InProgressPhotoQuestViewModel>();
+        services.AddTransient<CurrentNewsPageViewModel>();
+        services.AddTransient<ReviewPageViewModel>();
+        services.AddTransient<TapeQuestPageViewModel>();
+        services.AddTransient<BaseQuestPageViewModel>();
+        services.AddTransient<InProgressPhotoQuestPageViewModel>();
     }
 
     public static void RegistOverApplicationSettingsServices(this IServiceCollection services)

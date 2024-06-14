@@ -5,7 +5,7 @@ namespace LivePlay.Front.MAUI.Pages.AdminPages;
 
 public partial class TapeFeedbackPage : ContentPage
 {
-	public TapeFeedbackPage(TapeFeedbackViewModel tapeFeedbackViewModel)
+	public TapeFeedbackPage(TapeFeedbackPageViewModel tapeFeedbackViewModel)
 	{
 		InitializeComponent();
 		BindingContext = tapeFeedbackViewModel;

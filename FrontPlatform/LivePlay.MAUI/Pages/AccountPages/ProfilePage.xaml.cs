@@ -7,8 +7,8 @@ namespace LivePlay.Front.MAUI.Pages;
 
 public partial class ProfilePage : ContentPage
 {
-	private readonly ProfileViewModel ProfileVM;
-    public ProfilePage(ProfileViewModel profileViewModel)
+	private readonly ProfilePageViewModel ProfileVM;
+    public ProfilePage(ProfilePageViewModel profileViewModel)
 	{
 		InitializeComponent();
         BindingContext = profileViewModel;

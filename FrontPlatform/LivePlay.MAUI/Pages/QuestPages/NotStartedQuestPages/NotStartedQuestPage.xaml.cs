@@ -9,13 +9,13 @@ namespace LivePlay.Front.MAUI.Pages;
 //[QueryProperty(nameof(QuestionQuestModelProperty), nameof(QuestionQuestModelProperty))]
 public partial class NotStartedQuestPage : BasePopupPage
 {
-    private readonly BaseQuestViewModel BaseQuestVM;
+    private readonly BaseQuestPageViewModel BaseQuestVM;
     public QuestionQuestModel QuestionQuestModelProperty
     {
         set => BaseQuestVM.CurrentQuestItem = value;
     }
 
-    public NotStartedQuestPage(BaseQuestViewModel baseQuestVM, QuestionQuestModel questionQuestModel)
+    public NotStartedQuestPage(BaseQuestPageViewModel baseQuestVM, QuestionQuestModel questionQuestModel)
 	{
         Shell.Current.DisplayAlert("111", "111", "ok");
         InitializeComponent();

@@ -9,14 +9,14 @@ using LivePlay.Front.MAUI.Pages.AdminPages;
 
 namespace LivePlay.Front.MAUI.Models.ViewModels;
 
-public partial class TapeFeedbackViewModel : MainTapeViewModel
+public partial class TapeFeedbackPageViewModel : MainTapeViewModel
 {
     public AppStorage _deviceStorage;
 
     [ObservableProperty]
     public IReadOnlyList<FeedbackContactInfoModel> _tapeItems;
 
-    public TapeFeedbackViewModel(AppDesign designSettings, AppStorage deviceStorage) : base(designSettings)
+    public TapeFeedbackPageViewModel(AppDesign designSettings, AppStorage deviceStorage) : base(designSettings)
     {
         _deviceStorage = deviceStorage; //заменить, переход строго через goto
         GetFeedbackItems();

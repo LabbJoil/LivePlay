@@ -12,9 +12,9 @@ public partial class CurrentNewsPage : ContentPage
     {
         set => CurentNewsVM.CurrentNewsItem = value;
     }
-    private readonly CurrentNewsViewModel CurentNewsVM;
+    private readonly CurrentNewsPageViewModel CurentNewsVM;
 
-    public CurrentNewsPage(CurrentNewsViewModel curentNewsPageVM)
+    public CurrentNewsPage(CurrentNewsPageViewModel curentNewsPageVM)
     {
 		InitializeComponent();
 		BindingContext = curentNewsPageVM;

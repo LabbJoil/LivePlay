@@ -11,9 +11,9 @@ public partial class InProgressQuizQuestPage : ContentPage
     {
         set => BaseQuestVM.CurrentQuestItem = value;
     }
-    private readonly BaseQuestViewModel BaseQuestVM;
+    private readonly BaseQuestPageViewModel BaseQuestVM;
 
-    public InProgressQuizQuestPage(BaseQuestViewModel inProgressPhotoVM)
+    public InProgressQuizQuestPage(BaseQuestPageViewModel inProgressPhotoVM)
 	{
 		InitializeComponent();
         BindingContext = inProgressPhotoVM;

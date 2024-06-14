@@ -9,9 +9,9 @@ public partial class EnterPage : ContentPage
 {
     private StackLayout NowStackLayout;
     private ActionTimer? SendCodeTimer;
-    private readonly EnterViewModel EnterPageVM;
+    private readonly EnterPageViewModel EnterPageVM;
 
-    public EnterPage(EnterViewModel enterPage)
+    public EnterPage(EnterPageViewModel enterPage)
     {
         InitializeComponent();
         BindingContext = enterPage;
