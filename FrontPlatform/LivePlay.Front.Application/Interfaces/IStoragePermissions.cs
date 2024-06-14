@@ -1,5 +1,5 @@
 ﻿
-namespace LivePlay.Front.MAUI.Interfaces;
+namespace LivePlay.Front.Application.Interfaces;
 
 public interface IStoragePermissions
 {

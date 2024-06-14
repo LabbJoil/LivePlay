@@ -2,26 +2,21 @@
 using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using LivePlay.Front.MAUI.Abstracts;
-using LivePlay.Front.MAUI.Enum;
-using LivePlay.Front.MAUI.Models.Domain;
-using LivePlay.Front.MAUI.Pages;
+using LivePlay.Front.Application.Abstracts;
+using LivePlay.Front.Application.DeviceSettings;
+using LivePlay.Front.Core.Models;
 using LivePlay.Front.MAUI.Pages.AdminPages;
-using LivePlay.Front.MAUI.Services;
-using MauiPopup;
-using System.Collections.ObjectModel;
-using System.Text.Json;
 
 namespace LivePlay.Front.MAUI.Models.ViewModels;
 
 public partial class TapeFeedbackViewModel : MainTapeViewModel
 {
-    public DeviceStorage _deviceStorage;
+    public AppStorage _deviceStorage;
 
     [ObservableProperty]
     public IReadOnlyList<FeedbackContactInfoModel> _tapeItems;
 
-    public TapeFeedbackViewModel(DeviceDesignSettings designSettings, DeviceStorage deviceStorage) : base(designSettings)
+    public TapeFeedbackViewModel(AppDesign designSettings, AppStorage deviceStorage) : base(designSettings)
     {
         _deviceStorage = deviceStorage; //заменить, переход строго через goto
         GetFeedbackItems();

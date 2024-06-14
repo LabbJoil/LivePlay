@@ -1,9 +1,9 @@
 ﻿
-using LivePlay.Front.MAUI.Interfaces;
+using LivePlay.Front.Application.Interfaces;
 
-namespace LivePlay.Front.MAUI.Services;
+namespace LivePlay.Front.Application.Services;
 
-public class DevicePermissions (IStoragePermissions storagePermissions)
+public class AppPermissions (IStoragePermissions storagePermissions)
 {
     private readonly IStoragePermissions StoragePermissions = storagePermissions;
 

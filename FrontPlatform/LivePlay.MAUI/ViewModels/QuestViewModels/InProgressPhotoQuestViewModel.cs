@@ -1,13 +1,13 @@
 ﻿
 using CommunityToolkit.Mvvm.Input;
-using LivePlay.Front.MAUI.Services;
+using LivePlay.Front.Application.DeviceSettings;
 using LivePlay.Front.MAUI.ViewModels.QuestViewModels;
 
 namespace LivePlay.Front.MAUI.Models.ViewModels.QuestViewModels;
 
-public partial class InProgressPhotoQuestViewModel(DeviceDesignSettings designSettings, DeviceStorage deviceStorage) : BaseQuestViewModel(designSettings)
+public partial class InProgressPhotoQuestViewModel(AppDesign designSettings, AppStorage deviceStorage) : BaseQuestViewModel(designSettings)
 {
-    private readonly DeviceStorage Storage = deviceStorage;
+    private readonly AppStorage Storage = deviceStorage;
 
     [RelayCommand]
     public async Task ChooseFiles()

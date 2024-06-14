@@ -1,6 +1,6 @@
 
-using LivePlay.Front.MAUI.Enum;
-using LivePlay.Front.MAUI.Services;
+using LivePlay.Front.Application.DeviceSettings;
+using LivePlay.Front.Core.Enums;
 using LivePlay.Front.MAUI.ViewModels.ReviewViewModels;
 
 namespace LivePlay.Front.MAUI.Pages.ReviewPages;
@@ -19,7 +19,7 @@ public partial class ReviewPage : ContentPage
     private void ContentPage_Appearing(object sender, EventArgs e)
     {
         ReviewVM.ChangeColorBars(MainGrid.BackgroundColor, StatusBarColor.BarWhite, null);
-        DeviceDesignSettings.OpacityAnimation(this, ShadowRectangle, 20, 500, 0);
+        AppDesign.OpacityAnimation(this, ShadowRectangle, 20, 500, 0);
         //await QuestTapePageVM.GetQuestItems();    //получение новых данных
     }
 
@@ -27,6 +27,6 @@ public partial class ReviewPage : ContentPage
     {
         var mgc = MainGrid.BackgroundColor;
         ReviewVM.ChangeColorBars(new Color(mgc.Red, mgc.Green, mgc.Blue, (float)0.5), StatusBarColor.BarWhite, null);
-        DeviceDesignSettings.OpacityAnimation(this, ShadowRectangle, 20, 500, 0.5);
+        AppDesign.OpacityAnimation(this, ShadowRectangle, 20, 500, 0.5);
     }
 }

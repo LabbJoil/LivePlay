@@ -1,7 +1,4 @@
 
-using LivePlay.Front.MAUI.Enum;
-using LivePlay.Front.MAUI.Models.ViewModels.NewsViewModels;
-
 namespace LivePlay.Front.MAUI.Pages.Reward;
 
 public partial class MainRewardPage : ContentPage

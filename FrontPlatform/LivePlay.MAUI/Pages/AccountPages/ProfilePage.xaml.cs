@@ -1,6 +1,6 @@
 
+using LivePlay.Front.Application.DeviceSettings;
 using LivePlay.Front.Core.Enums;
-using LivePlay.Front.MAUI.Services;
 using LivePlay.Front.MAUI.ViewModels.AccountViewModels;
 
 namespace LivePlay.Front.MAUI.Pages;
@@ -18,7 +18,7 @@ public partial class ProfilePage : ContentPage
     private void ContentPage_Appearing(object sender, EventArgs e)
     {
         ProfileVM.ChangeColorBars(MainGrid.BackgroundColor, StatusBarColor.BarWhite, null);
-        DeviceDesignSettings.OpacityAnimation(this, ShadowRectangle, 20, 500, 0);
+        AppDesign.OpacityAnimation(this, ShadowRectangle, 20, 500, 0);
         //await QuestTapePageVM.GetQuestItems();    //получение новых данных
     }
 
@@ -26,6 +26,6 @@ public partial class ProfilePage : ContentPage
     {
         var mgc = MainGrid.BackgroundColor;
         ProfileVM.ChangeColorBars(new Color(mgc.Red, mgc.Green, mgc.Blue, (float)0.5), StatusBarColor.BarWhite, null);
-        DeviceDesignSettings.OpacityAnimation(this, ShadowRectangle, 20, 500, 0.5);
+        AppDesign.OpacityAnimation(this, ShadowRectangle, 20, 500, 0.5);
     }
 }

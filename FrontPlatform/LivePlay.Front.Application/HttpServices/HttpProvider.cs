@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿
+using LivePlay.Front.Application.Models.ResponseModel;
+using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
-using System.Net;
-using LivePlay.Front.Application.Models.ResponseModel;
 
-namespace LivePlay.Front.MAUI.Services.HttpServices;
+namespace LivePlay.Front.Application.HttpServices;
 
 internal class HttpProvider
 {

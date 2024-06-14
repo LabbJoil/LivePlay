@@ -1,9 +1,9 @@
 ﻿
+using LivePlay.Front.Application.DeviceSettings;
 using LivePlay.Front.MAUI.OverApplicationSettings;
 using LivePlay.Front.MAUI.Pages;
 using LivePlay.Front.MAUI.Pages.AdminPages;
 using LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages;
-using LivePlay.Front.MAUI.Services;
 using Microsoft.Maui.Controls.Shapes;
 
 namespace LivePlay.Front.MAUI;
@@ -11,11 +11,11 @@ namespace LivePlay.Front.MAUI;
 public partial class AppShell : Shell
 {
     private Grid? LastGrid;
-    private readonly DeviceDesignSettings DesignSettings;
+    private readonly AppDesign DesignSettings;
     private readonly NavigateThrowLoading NavigateThrow;
 
 
-    public AppShell(DeviceDesignSettings designSettings, NavigateThrowLoading navigateThrowLoading)
+    public AppShell(AppDesign designSettings, NavigateThrowLoading navigateThrowLoading)
     {
         InitializeComponent();
         DesignSettings = designSettings;

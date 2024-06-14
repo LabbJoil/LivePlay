@@ -1,12 +1,12 @@
 ﻿
-using LivePlay.Front.Core.Models.Domain;
-using LivePlay.Front.MAUI.Abstracts;
-using LivePlay.Front.MAUI.Services;
+using LivePlay.Front.Core.Models;
+using LivePlay.Front.Application.Abstracts;
 using CommunityToolkit.Mvvm.ComponentModel;
+using LivePlay.Front.Application.DeviceSettings;
 
 namespace LivePlay.Front.MAUI.ViewModels.NewsViewModels;
 
-public partial class CurrentNewsViewModel(DeviceDesignSettings designSettings) : BaseViewModel(designSettings)
+public partial class CurrentNewsViewModel(AppDesign designSettings) : BaseViewModel(designSettings)
 {
     [ObservableProperty]
     public NewsItem _currentNewsItem = new();

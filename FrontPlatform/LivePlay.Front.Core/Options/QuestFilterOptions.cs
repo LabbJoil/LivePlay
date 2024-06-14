@@ -1,7 +1,7 @@
 ﻿
-using LivePlay.Front.Application.Models.Domain;
+using LivePlay.Front.Core.Models;
 
-namespace LivePlay.Front.Application.Models.Options;
+namespace LivePlay.Front.Core.Options;
 
 public class QuestFilterOptions
 {

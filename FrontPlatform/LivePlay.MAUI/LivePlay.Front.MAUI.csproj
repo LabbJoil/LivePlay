@@ -140,9 +140,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Interfaces\IStoragePermissions.cs">
-	    <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
-	  </Compile>
 	  <Compile Update="Pages\AccountPages\MyCouponsPage.xaml.cs">
 	    <DependentUpon>MyCouponsPage.xaml</DependentUpon>
 	  </Compile>

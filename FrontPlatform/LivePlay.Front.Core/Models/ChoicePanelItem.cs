@@ -1,5 +1,5 @@
 ﻿
-namespace LivePlay.Front.Core.Models.Domain;
+namespace LivePlay.Front.Core.Models;
 
 public class ChoicePanelItem
 {

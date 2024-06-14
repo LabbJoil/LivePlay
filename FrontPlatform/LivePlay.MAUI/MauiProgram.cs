@@ -1,5 +1,6 @@
 ﻿
 using CommunityToolkit.Maui;
+using LivePlay.Front.Application.Interfaces;
 using LivePlay.Front.MAUI.MauiProgramExtentions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -34,7 +35,7 @@ public static class MauiProgram
 
 
 #if __ANDROID__
-        services.AddSingleton<Interfaces.IStoragePermissions, Platforms.PlatformPermitions.StoragePermissions>();
+        services.AddSingleton<IStoragePermissions, Platforms.PlatformPermitions.StoragePermissions>();
 #endif
 
 #if DEBUG

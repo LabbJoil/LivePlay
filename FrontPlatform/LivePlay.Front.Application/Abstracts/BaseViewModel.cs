@@ -1,18 +1,14 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LivePlay.Front.MAUI.Services;
+﻿
+using CommunityToolkit.Mvvm.ComponentModel;
+using LivePlay.Front.Application.DeviceSettings;
 using CommunityToolkit.Mvvm.Input;
 using LivePlay.Front.Core.Enums;
 
-namespace LivePlay.Front.MAUI.Abstracts;
+namespace LivePlay.Front.Application.Abstracts;
 
-public partial class BaseViewModel(DeviceDesignSettings designSettings) : ObservableObject
+public partial class BaseViewModel(AppDesign designSettings) : ObservableObject
 {
-    public DeviceDesignSettings DesignSettings = designSettings;
+    public AppDesign DesignSettings = designSettings;
 
     [ObservableProperty]
     public bool _isRefreshing;

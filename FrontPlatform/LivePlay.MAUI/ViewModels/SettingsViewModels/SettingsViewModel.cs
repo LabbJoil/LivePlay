@@ -1,14 +1,7 @@
 ﻿
-using CommunityToolkit.Mvvm.Input;
-using LivePlay.Front.MAUI.Abstracts;
-using LivePlay.Front.MAUI.Models.Domain;
-using LivePlay.Front.MAUI.Services;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using LivePlay.Front.Application.Abstracts;
+using LivePlay.Front.Application.DeviceSettings;
+using LivePlay.Front.Core.Models;
 
 namespace LivePlay.Front.MAUI.ViewModels.SettingsViewModels;
 
@@ -19,7 +12,7 @@ public partial class SettingsViewModel : BaseViewModel
         new ChoicePanelItem { Icon = "notifications.svg", Text="Уведомления" }
         ];
 
-    public SettingsViewModel(DeviceDesignSettings designSettings) : base(designSettings)
+    public SettingsViewModel(AppDesign designSettings) : base(designSettings)
     {
         // запрос к серверу
     }

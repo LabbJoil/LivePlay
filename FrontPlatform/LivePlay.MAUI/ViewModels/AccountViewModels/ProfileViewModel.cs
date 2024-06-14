@@ -1,14 +1,8 @@
 ﻿
-using CommunityToolkit.Mvvm.Input;
-using LivePlay.Front.MAUI.Abstracts;
-using LivePlay.Front.MAUI.Models.Domain;
-using LivePlay.Front.MAUI.Services;
-using System;
-using System.Collections.Generic;
+using LivePlay.Front.Application.Abstracts;
+using LivePlay.Front.Application.DeviceSettings;
+using LivePlay.Front.Core.Models;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LivePlay.Front.MAUI.ViewModels.AccountViewModels;
 
@@ -21,7 +15,7 @@ public partial class ProfileViewModel : BaseViewModel
         new ChoicePanelItem { Icon = "coupons_light.svg", Text="Мои купоны" }
         ];
 
-    public ProfileViewModel(DeviceDesignSettings designSettings) : base(designSettings)
+    public ProfileViewModel(AppDesign designSettings) : base(designSettings)
     {
         // запрос к серверу
     }

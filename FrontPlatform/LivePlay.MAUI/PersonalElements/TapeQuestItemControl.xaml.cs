@@ -1,8 +1,6 @@
 
-using CommunityToolkit.Mvvm.Input;
-using LivePlay.Front.MAUI.Models.Domain;
+using LivePlay.Front.Core.Models;
 using System.Windows.Input;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace LivePlay.Front.MAUI.PersonalElements;
 

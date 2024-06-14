@@ -1,6 +1,5 @@
 
-using LivePlay.Front.MAUI.Models.Domain;
-using System.Collections.ObjectModel;
+using LivePlay.Front.Core.Models;
 
 namespace LivePlay.Front.MAUI.PersonalElements;
 

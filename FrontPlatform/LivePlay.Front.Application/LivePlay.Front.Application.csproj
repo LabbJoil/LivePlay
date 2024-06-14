@@ -11,11 +11,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\RequestModels\" />
+    <Folder Include="Contracts\RequestModels\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Maui" Version="9.0.1" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Interfaces\IStoragePermissions.cs">
+      <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
+    </Compile>
   </ItemGroup>
 
 </Project>

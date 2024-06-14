@@ -1,9 +1,9 @@
 ﻿
 using LivePlay.Front.Core.Enums;
 
-namespace LivePlay.Front.MAUI.Services;
+namespace LivePlay.Front.Application.DeviceSettings;
 
-public class DeviceDesignSettings
+public class AppDesign
 {
     private Action<Color, StatusBarColor, Color?>? ChangeColorStatusBarsAction;
     private Action<string>? ChangeCountCoinsAction;

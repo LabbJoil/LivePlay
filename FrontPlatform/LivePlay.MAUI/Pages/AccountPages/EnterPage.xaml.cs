@@ -1,8 +1,7 @@
 ﻿
 using LivePlay.Front.Core.Enums;
+using LivePlay.Front.Core.Services;
 using LivePlay.Front.MAUI.Models.ViewModels.AccountViewModels;
-using LivePlay.Front.MAUI.Pages.Reward;
-using LivePlay.Front.MAUI.Services;
 
 namespace LivePlay.Front.MAUI.Pages;
 

@@ -1,7 +1,7 @@
 ﻿
-using LivePlay.Front.MAUI.Enum;
+using LivePlay.Front.Core.Enums;
 
-namespace LivePlay.Front.MAUI.Services;
+namespace LivePlay.Front.Core.Services;
 
 public class ActionTimer(DirectionAction directionTimer, Action<object?>? periodAction = null, Action? endAction = null)
 {

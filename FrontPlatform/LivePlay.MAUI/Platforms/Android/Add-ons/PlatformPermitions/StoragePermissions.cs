@@ -1,7 +1,7 @@
 ﻿
 using Android.OS;
 using System.Diagnostics.CodeAnalysis;
-using LivePlay.Front.MAUI.Interfaces;
+using LivePlay.Front.Application.Interfaces;
 
 namespace LivePlay.Front.MAUI.Platforms.PlatformPermitions;
 

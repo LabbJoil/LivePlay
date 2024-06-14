@@ -1,5 +1,5 @@
 
-using LivePlay.Front.MAUI.Models.Domain;
+using LivePlay.Front.Core.Models;
 using LivePlay.Front.MAUI.ViewModels.QuestViewModels;
 using MauiPopup.Views;
 

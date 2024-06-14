@@ -1,5 +1,7 @@
 ﻿
-using LivePlay.Front.Core.Models.Domain;
+using LivePlay.Front.Application.DeviceSettings;
+using LivePlay.Front.Application.Services;
+using LivePlay.Front.Core.Models;
 using LivePlay.Front.MAUI.Models.ViewModels;
 using LivePlay.Front.MAUI.Models.ViewModels.AccountViewModels;
 using LivePlay.Front.MAUI.Models.ViewModels.NewsViewModels;
@@ -10,8 +12,6 @@ using LivePlay.Front.MAUI.Pages.AdminPages;
 using LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages;
 using LivePlay.Front.MAUI.Pages.ReviewPages;
 using LivePlay.Front.MAUI.Pages.Reward;
-using LivePlay.Front.MAUI.PersonalElements;
-using LivePlay.Front.MAUI.Services;
 using LivePlay.Front.MAUI.ViewModels.AccountViewModels;
 using LivePlay.Front.MAUI.ViewModels.NewsViewModels;
 using LivePlay.Front.MAUI.ViewModels.QuestViewModels;
@@ -69,7 +69,7 @@ public static class RegisterServices
         services.AddTransient<InProgressQuizQuestPage>();
         services.AddTransient<GettingStatisticsPage>();
 
-        services.AddTransient<MainViewModel>();
+        services.AddTransient<MainPageViewModel>();
         services.AddTransient<CurrentNewsViewModel>();
         services.AddTransient<ReviewViewModel>();
         services.AddTransient<TapeQuestViewModel>();
@@ -79,9 +79,9 @@ public static class RegisterServices
 
     public static void RegistOverApplicationSettingsServices(this IServiceCollection services)
     {
-        services.AddSingleton<DeviceDesignSettings>();
-        services.AddSingleton<DevicePermissions>();
-        services.AddSingleton<DeviceStorage>();
+        services.AddSingleton<AppDesign>();
+        services.AddSingleton<AppPermissions>();
+        services.AddSingleton<AppStorage>();
         services.AddSingleton<NavigateThrowLoading>();
     }
 }

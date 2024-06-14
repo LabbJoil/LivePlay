@@ -1,7 +1,6 @@
 
 using CommunityToolkit.Maui.Views;
-using LivePlay.Front.MAUI.Models.Domain;
-using LivePlay.Front.MAUI.Models.ViewModels;
+using LivePlay.Front.Core.Models;
 
 namespace LivePlay.Front.MAUI.Pages.AdminPages;
 

@@ -1,14 +1,14 @@
 
-using LivePlay.Front.MAUI.Enum;
+using LivePlay.Front.Core.Enums;
 using LivePlay.Front.MAUI.Models.ViewModels.NewsViewModels;
 
 namespace LivePlay.Front.MAUI.Pages;
 
 public partial class MainPage : ContentPage
 {
-    private readonly MainViewModel MainVM;
+    private readonly MainPageViewModel MainVM;
 
-    public MainPage(MainViewModel mainViewModel)
+    public MainPage(MainPageViewModel mainViewModel)
 	{
 		InitializeComponent();
         BindingContext = mainViewModel;

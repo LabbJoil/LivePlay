@@ -1,6 +1,5 @@
 
-using CommunityToolkit.Maui.Core.Views;
-using LivePlay.Front.MAUI.Models.Domain;
+using LivePlay.Front.Core.Models;
 using LivePlay.Front.MAUI.ViewModels.QuestViewModels;
 
 namespace LivePlay.Front.MAUI.Pages;

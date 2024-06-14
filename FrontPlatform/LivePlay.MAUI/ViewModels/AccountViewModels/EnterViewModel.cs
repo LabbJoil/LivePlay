@@ -1,20 +1,17 @@
 ﻿
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using LivePlay.Front.MAUI.Abstracts;
+using LivePlay.Front.Application.Abstracts;
+using LivePlay.Front.Application.DeviceSettings;
+using LivePlay.Front.Application.Services;
 using LivePlay.Front.MAUI.OverApplicationSettings;
 using LivePlay.Front.MAUI.Pages;
-using LivePlay.Front.MAUI.Pages.AccountPages;
-using LivePlay.Front.MAUI.Pages.AdminPages;
-using LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages;
-using LivePlay.Front.MAUI.Pages.Reward;
-using LivePlay.Front.MAUI.Services;
 
 namespace LivePlay.Front.MAUI.Models.ViewModels.AccountViewModels;
 
-public partial class EnterViewModel(NavigateThrowLoading navigateThrowLoading, DeviceDesignSettings designSettings, DevicePermissions permissions) : BaseViewModel(designSettings)
+public partial class EnterViewModel(NavigateThrowLoading navigateThrowLoading, AppDesign designSettings, AppPermissions permissions) : BaseViewModel(designSettings)
 {
-    public DevicePermissions Permissions { get; } = permissions;
+    public AppPermissions Permissions { get; } = permissions;
     public NavigateThrowLoading NavigateLoading { get; } = navigateThrowLoading;
 
     [ObservableProperty]

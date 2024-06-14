@@ -1,16 +1,14 @@
 ﻿
 using CommunityToolkit.Mvvm.Input;
-using LivePlay.Front.MAUI.Abstracts;
-using LivePlay.Front.MAUI.Models.Domain;
+using LivePlay.Front.Application.Abstracts;
+using LivePlay.Front.Application.DeviceSettings;
+using LivePlay.Front.Core.Models;
 using LivePlay.Front.MAUI.Pages;
 using System.Collections.ObjectModel;
-using LivePlay.Front.MAUI.Services;
-using System.Text.Json;
-using System.Reflection;
 
 namespace LivePlay.Front.MAUI.Models.ViewModels.NewsViewModels;
 
-public partial class MainViewModel : MainTapeViewModel
+public partial class MainPageViewModel : MainTapeViewModel
 {
     public ObservableCollection<NewsItem> TapeItems { get; set; }
 
@@ -23,7 +21,7 @@ public partial class MainViewModel : MainTapeViewModel
         }
     }
 
-    public MainViewModel(DeviceDesignSettings designSettings) : base(designSettings)
+    public MainPageViewModel(AppDesign designSettings) : base(designSettings)
     {
         string cookiesPath = Environment.GetFolderPath(Environment.SpecialFolder.Cookies);
         string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);

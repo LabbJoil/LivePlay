@@ -1,8 +1,4 @@
 
-using LivePlay.Front.MAUI.Models.Domain;
-using LivePlay.Front.MAUI.Models.ViewModels;
-using LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages;
-
 namespace LivePlay.Front.MAUI.Pages.AdminPages;
 
 public partial class ManageRewardPage : ContentPage

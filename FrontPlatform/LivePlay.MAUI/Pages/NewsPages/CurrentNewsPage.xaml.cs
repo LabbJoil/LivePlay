@@ -1,6 +1,6 @@
 
 using LivePlay.Front.Core.Enums;
-using LivePlay.Front.Core.Models.Domain;
+using LivePlay.Front.Core.Models;
 using LivePlay.Front.MAUI.ViewModels.NewsViewModels;
 
 namespace LivePlay.Front.MAUI.Pages;

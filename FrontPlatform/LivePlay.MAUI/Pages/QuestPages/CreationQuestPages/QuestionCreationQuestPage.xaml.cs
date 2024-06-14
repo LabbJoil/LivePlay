@@ -1,10 +1,7 @@
 
-using LivePlay.Front.MAUI.Models.Domain;
-using LivePlay.Front.MAUI.Pages.AccountPages;
+using LivePlay.Front.Application.DeviceSettings;
+using LivePlay.Front.Core.Models;
 using LivePlay.Front.MAUI.Pages.AdminPages;
-using LivePlay.Front.MAUI.Services;
-using Microsoft.Maui.Controls;
-using System.Reflection;
 using System.Text.Json;
 
 namespace LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages;
@@ -13,12 +10,12 @@ namespace LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages;
 public partial class QuestionCreationQuestPage : ContentPage
 {
     private List<CheckBox> checkBoxes { get; }
-    private DeviceStorage DeviceStorage { get; }
+    private AppStorage DeviceStorage { get; }
     public QuestItem QuestItemProperty { get; set; }
 
     private string ImageChosePath = string.Empty;
 
-    public QuestionCreationQuestPage(DeviceStorage deviceStorage)
+    public QuestionCreationQuestPage(AppStorage deviceStorage)
 	{
         InitializeComponent();
         checkBoxes = [CheckBox1, CheckBox2, CheckBox3, CheckBox4];

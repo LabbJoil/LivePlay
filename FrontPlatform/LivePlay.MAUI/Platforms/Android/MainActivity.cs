@@ -1,10 +1,11 @@
-﻿using Android.App;
+﻿
+using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Views;
 using CommunityToolkit.Maui.Core;
-using LivePlay.Front.MAUI.Enum;
-using LivePlay.Front.MAUI.Services;
+using LivePlay.Front.Application.DeviceSettings;
+using LivePlay.Front.Core.Enums;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using System.Diagnostics.CodeAnalysis;
 
@@ -15,7 +16,7 @@ public class MainActivity : MauiAppCompatActivity
 {
     protected override void OnCreate(Bundle? savedInstanceState)
     {
-        if (IPlatformApplication.Current?.Services.GetService<DeviceDesignSettings>() is DeviceDesignSettings appSettings)
+        if (IPlatformApplication.Current?.Services.GetService<AppDesign>() is AppDesign appSettings)
             appSettings.ChangeColorStatusBars = ChangeBarsColor;
         base.OnCreate(savedInstanceState);
         Window?.SetSoftInputMode(SoftInput.AdjustResize);

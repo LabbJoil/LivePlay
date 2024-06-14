@@ -1,7 +1,7 @@
 ﻿
 using LivePlay.Front.Core.Enums;
 
-namespace LivePlay.Front.Core.Models.Domain;
+namespace LivePlay.Front.Core.Models;
 
 public class QuestItem()
 {

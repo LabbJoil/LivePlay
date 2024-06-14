@@ -1,7 +1,4 @@
 
-using LivePlay.Front.MAUI.Enum;
-using LivePlay.Front.MAUI.Models.Domain;
-
 namespace LivePlay.Front.MAUI.Pages.AdminPages;
 
 public partial class MainCreationRewardPage : ContentPage

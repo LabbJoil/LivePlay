@@ -1,12 +1,12 @@
 ﻿
 using CommunityToolkit.Mvvm.ComponentModel;
-using LivePlay.Front.MAUI.Abstracts;
-using LivePlay.Front.MAUI.Models.Domain;
-using LivePlay.Front.MAUI.Services;
+using LivePlay.Front.Application.DeviceSettings;
+using LivePlay.Front.Application.Abstracts;
+using LivePlay.Front.Core.Models;
 
 namespace LivePlay.Front.MAUI.ViewModels.QuestViewModels;
 
-public partial class BaseQuestViewModel(DeviceDesignSettings designSettings) : BaseViewModel(designSettings)
+public partial class BaseQuestViewModel(AppDesign designSettings) : BaseViewModel(designSettings)
 {
     [ObservableProperty]
     public QuestionQuestModel _currentQuestItem = new();

@@ -1,6 +1,4 @@
 
-using LivePlay.Front.MAUI.Models.Domain;
-using LivePlay.Front.MAUI.Models.ViewModels;
 using LivePlay.Front.MAUI.Models.ViewModels.QuestViewModels;
 
 namespace LivePlay.Front.MAUI.Pages;
