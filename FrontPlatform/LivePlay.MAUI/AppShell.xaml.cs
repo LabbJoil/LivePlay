@@ -1,6 +1,5 @@
 ﻿
 using LivePlay.Front.Application.DeviceSettings;
-using LivePlay.Front.MAUI.OverApplicationSettings;
 using LivePlay.Front.MAUI.Pages;
 using LivePlay.Front.MAUI.Pages.AdminPages;
 using LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages;
@@ -12,14 +11,12 @@ public partial class AppShell : Shell
 {
     private Grid? LastGrid;
     private readonly AppDesign DesignSettings;
-    private readonly NavigateThrowLoading NavigateThrow;
 
 
-    public AppShell(AppDesign designSettings, NavigateThrowLoading navigateThrowLoading)
+    public AppShell(AppDesign designSettings)
     {
         InitializeComponent();
         DesignSettings = designSettings;
-        NavigateThrow = navigateThrowLoading;
         designSettings.ChangeCountCoins = ChangeCountCoins;
 
         Routing.RegisterRoute(nameof(InProgressPhotoQuestPage), typeof(InProgressPhotoQuestPage));
@@ -28,9 +25,10 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(NotStartedQuestPage), typeof(NotStartedQuestPage));
         Routing.RegisterRoute(nameof(CurrentNewsPage), typeof(CurrentNewsPage));
         Routing.RegisterRoute(nameof(QuestionCreationQuestPage), typeof(QuestionCreationQuestPage));
-        Routing.RegisterRoute(nameof(CurrentFeedbackPage), typeof(CurrentFeedbackPage)); //возможно открывается по другому
+        Routing.RegisterRoute(nameof(CurrentFeedbackPage), typeof(CurrentFeedbackPage)); //возможно открывается по другому  popup ...
         Routing.RegisterRoute(nameof(QRcodeCreationQuestPage), typeof(QRcodeCreationQuestPage)); //возможно открывается по другому
         Routing.RegisterRoute(nameof(CreativeQuestCreationQuestPage), typeof(CreativeQuestCreationQuestPage)); //возможно открывается по другому
+        Routing.RegisterRoute(nameof(LoadingPage), typeof(LoadingPage));
 
     }
 
@@ -72,11 +70,11 @@ public partial class AppShell : Shell
         }
     }
 
-    private async void LogOut_Clicked(object sender, EventArgs e)
-    {
-        if(await DisplayAlert("Выход", $"Вы точно хотите выйти", "ok", "no"))
-            await NavigateThrow.GoToRootPage($"//{nameof(EnterPage)}");
-    }
+    //private async void LogOut_Clicked(object sender, EventArgs e)
+    //{
+    //    if(await DisplayAlert("Выход", $"Вы точно хотите выйти", "ok", "no"))
+    //        await NavigateThrow.GoToRootPage($"//{nameof(EnterPage)}");
+    //}
 
     private void TapGestureRecognizer_Tapped_1(object sender, TappedEventArgs e)
     {

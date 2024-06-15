@@ -5,7 +5,7 @@
              Title="TapePage" 
              Appearing="ContentPage_Appearing" Disappearing="ContentPage_Disappearing"
              xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
-             xmlns:cp="clr-namespace:LivePlay.Front.MAUI.Models.Domain"
+             xmlns:cp="clr-namespace:LivePlay.Front.Core.Models;assembly=LivePlay.Front.Core"
              x:Name="TapePage">
 
     <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">

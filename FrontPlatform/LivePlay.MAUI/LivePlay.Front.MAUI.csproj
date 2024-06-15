@@ -137,6 +137,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\LivePlay.Front.Application\LivePlay.Front.Application.csproj" />
 	  <ProjectReference Include="..\LivePlay.Front.Core\LivePlay.Front.Core.csproj" />
+	  <ProjectReference Include="..\LivePlay.Front.Infrastructure\LivePlay.Front.Infrastructure.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

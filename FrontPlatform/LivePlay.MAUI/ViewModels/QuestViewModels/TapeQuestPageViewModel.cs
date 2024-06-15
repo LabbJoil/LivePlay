@@ -54,7 +54,6 @@ public partial class TapeQuestPageViewModel : MainTapeViewModel
             {
                 case QuestStatus.NotStarted:
                     var notStartedQuestVM = new BaseQuestPageViewModel(DesignSettings); // refact error
-                    await Shell.Current.DisplayAlert("111", "111", "ok");
                     await PopupAction.DisplayPopup(new NotStartedQuestPage(notStartedQuestVM, questItem));
                     //await Shell.Current.GoToAsync($"{nameof(NotStartedQuestPage)}", shellParameters);
                     break;

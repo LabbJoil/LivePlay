@@ -1,15 +1,14 @@
 ﻿
-using LivePlay.Front.MAUI.OverApplicationSettings;
 using LivePlay.Front.Application.DeviceSettings;
 
 namespace LivePlay.Front.MAUI;
 
 public partial class App : Microsoft.Maui.Controls.Application
 {
-    public App(AppDesign designSettings, NavigateThrowLoading navigateThrowLoading)
+    public App(AppDesign designSettings)
     {
         InitializeComponent();
-        MainPage = new AppShell(designSettings, navigateThrowLoading);
+        MainPage = new AppShell(designSettings);
         UserAppTheme = designSettings.LoadSettings();
     }
 }

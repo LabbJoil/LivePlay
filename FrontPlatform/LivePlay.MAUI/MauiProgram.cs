@@ -2,9 +2,7 @@
 using CommunityToolkit.Maui;
 using LivePlay.Front.Application.Interfaces;
 using LivePlay.Front.MAUI.MauiProgramExtentions;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using System.Reflection;
 using The49.Maui.BottomSheet;
 
 namespace LivePlay.Front.MAUI;
@@ -23,20 +21,15 @@ public static class MauiProgram
                 fonts.AddFont("Raleway-Regular.ttf", "RalewayRegular");
                 fonts.AddFont("Raleway-Bold.ttf", "RalewayBold");
             })
-            .AddAppSettings();
+            .AddAppConfigurations();
 
-        var configuration = builder.Configuration;
+        builder.RegisterConfiguration();
+
         var services = builder.Services;
 
-        services.RegistOverApplicationSettingsServices();
-        services.RegistAccountServices();
-
-        //services.Configure<QuestFilterOptions>(configuration.GetSection(nameof(QuestFilterOptions))); // конфигурация пока что не нужна
-
-
-#if __ANDROID__
-        services.AddSingleton<IStoragePermissions, Platforms.PlatformPermitions.StoragePermissions>();
-#endif
+        services.RegisterDeviceSettingsServices();
+        services.RegisterAccountServices();
+        services.RegisterHttpServices();
 
 #if DEBUG
         builder.Logging.AddDebug();
@@ -52,15 +45,5 @@ public static class MauiProgram
         });
 
         return builder.Build();
-    }
-
-    private static void AddAppSettings(this MauiAppBuilder builder)
-    {
-        using Stream? stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("LivePlayMAUI.appsettings.json");
-        if (stream != null)
-        {
-            IConfigurationRoot config = new ConfigurationBuilder().AddJsonStream(stream).Build();
-            builder.Configuration.AddConfiguration(config);
-        }
     }
 }

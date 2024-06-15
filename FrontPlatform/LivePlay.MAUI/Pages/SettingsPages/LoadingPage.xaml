@@ -2,9 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LivePlay.Front.MAUI.Pages.LoadingPage"
-             Title="LoadingPage" Loaded="ContentPage_Loaded" BackgroundColor="White">
-    
-    <Grid x:Name="MainGrid">
+             Title="LoadingPage" Loaded="ContentPage_Loaded" BackgroundColor="Transparent"
+             Shell.PresentationMode="Modal">
+
+    <Grid x:Name="MainGrid" BackgroundColor="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -17,6 +18,8 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+
+        <Rectangle Grid.ColumnSpan="4" Grid.RowSpan="4" Opacity="0.5" BackgroundColor="White"/>
 
         <Border x:Name="rect1"
                StrokeShape="RoundRectangle 10"

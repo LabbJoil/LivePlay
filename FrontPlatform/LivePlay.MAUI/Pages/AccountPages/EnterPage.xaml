@@ -4,7 +4,8 @@
              x:Class="LivePlay.Front.MAUI.Pages.EnterPage"
              xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
              Appearing="ContentPage_Appearing" Disappearing="ContentPage_Disappearing"
-             BackgroundColor="{AppThemeBinding Dark={StaticResource Page1BackgroundDark}, Light={StaticResource Page1BackgroundLight}}">
+             BackgroundColor="{AppThemeBinding Dark={StaticResource Page1BackgroundDark}, Light={StaticResource Page1BackgroundLight}}"
+             x:Name="this">
 
     <ScrollView x:Name="MainScrollView" VerticalScrollBarVisibility="Never">
         <Grid x:Name="MainGrid" >
@@ -27,8 +28,10 @@
                 </StackLayout>
 
                 <StackLayout x:Name="EmailStackLayout" WidthRequest="300" Orientation="Vertical" IsVisible="False">
-                    <pe:SimpleEntryControl Placeholder="E-mail" Margin="10,10"/>
-                    <Button Text="Далее" Clicked="EmailCheckButtonClicked" Margin="50,30" HeightRequest="50"/>
+                    <pe:SimpleEntryControl Placeholder="E-mail" Text="{Binding Email}" Margin="10,10"/>
+                    <Button Text="Далее" Margin="50,30" HeightRequest="50"
+                            Command="{Binding VerifyEmailCommand}"
+                            CommandParameter="{Binding Source={x:Reference this}}"/>
                 </StackLayout>
 
                 <StackLayout x:Name="CodeStackLayout" WidthRequest="300" Orientation="Vertical" IsVisible="False">
@@ -38,44 +41,46 @@
                         <Label x:Name="TimerLabel" Grid.Column="1" Text="00:00" Margin="10" VerticalOptions="Start" HorizontalOptions="End"/>
                     </Grid>
 
-                    <Grid HeightRequest="84" ColumnDefinitions="*,*,*,*" ColumnSpacing="9" WidthRequest="240">
-                        <Border Grid.ColumnSpan="4" Stroke="Transparent">
-                            <Border.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    Tapped="TapGestureRecognizer_Tapped"
-                                    NumberOfTapsRequired="1"/>
-                            </Border.GestureRecognizers>
-                        </Border>
-                        <Entry x:Name="EmailCode" Keyboard="Numeric" HeightRequest="0.1" BackgroundColor="Red"/>
+                    <Border Stroke="Transparent" Padding="15">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="TapGestureRecognizer_Tapped"
+                                NumberOfTapsRequired="1"/>
+                        </Border.GestureRecognizers>
 
-                        <Border BackgroundColor="#415A77" Stroke="Transparent">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="20"/>
-                            </Border.StrokeShape>
-                            <Label Text="0" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
-                        </Border>
+                        <Grid HeightRequest="84" ColumnDefinitions="*,*,*,*" ColumnSpacing="9" WidthRequest="240">
+                            <Entry x:Name="EmailCode" Keyboard="Numeric" HeightRequest="0.1" BackgroundColor="Red" TextChanged="EmailCode_TextChanged"/>
 
-                        <Border Grid.Column="1" BackgroundColor="#415A77" Stroke="Transparent">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="20"/>
-                            </Border.StrokeShape>
-                            <Label Text="5" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
-                        </Border>
+                            <Border BackgroundColor="#415A77" Stroke="Transparent">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="20"/>
+                                </Border.StrokeShape>
+                                <Label x:Name="OneEmailCodeDigit" Text="0" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
 
-                        <Border Grid.Column="2" BackgroundColor="#415A77" Stroke="Transparent">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="20"/>
-                            </Border.StrokeShape>
-                            <Label Text="8" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
-                        </Border>
+                            <Border Grid.Column="1" BackgroundColor="#415A77" Stroke="Transparent">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="20"/>
+                                </Border.StrokeShape>
+                                <Label x:Name="TwoEmailCodeDigit" Text="5" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
 
-                        <Border Grid.Column="3" BackgroundColor="#415A77" Stroke="Transparent">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="20"/>
-                            </Border.StrokeShape>
-                            <Label Text="3" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
-                        </Border>
-                    </Grid>
+                            <Border Grid.Column="2" BackgroundColor="#415A77" Stroke="Transparent">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="20"/>
+                                </Border.StrokeShape>
+                                <Label x:Name="ThreeEmailCodeDigit" Text="8" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+
+                            <Border Grid.Column="3" BackgroundColor="#415A77" Stroke="Transparent">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="20"/>
+                                </Border.StrokeShape>
+                                <Label x:Name="FourEmailCodeDigit" Text="3" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+                    
                     <Button x:Name="CodeCheckButton" Text="Далее" Clicked="CodeCheckButtonClicked" Margin="50,25,50,40" HeightRequest="50" WidthRequest="230"/>
                     <Button x:Name="SendCodeButton" Text="Отправить код ещё раз" Clicked="SendCodeAgainButtonClicked" IsEnabled="False" Margin="10,0" 
                             Style="{StaticResource SecondButton}" WidthRequest="230" Padding="0" HeightRequest="50"/>

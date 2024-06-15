@@ -26,9 +26,9 @@
                                     </Border.StrokeShape>
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer
-                                Command="{Binding BindingContext.GoToTapeItemCommand, Source={x:Reference this}}"
-                                CommandParameter="{Binding ., ConverterParameter={x:Reference this}, Converter={StaticResource TupleConverter}}"
-                                NumberOfTapsRequired="1"/>
+                                            Command="{Binding BindingContext.GoToTapeItemCommand, Source={x:Reference this}}"
+                                            CommandParameter="{Binding ., ConverterParameter={x:Reference this}, Converter={StaticResource TupleConverter}}"
+                                            NumberOfTapsRequired="1"/>
                                     </Border.GestureRecognizers>
                                     <Grid>
                                         <Grid.RowDefinitions>

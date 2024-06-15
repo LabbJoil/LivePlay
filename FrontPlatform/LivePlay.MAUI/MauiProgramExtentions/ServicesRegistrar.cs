@@ -1,17 +1,19 @@
 ﻿
 using LivePlay.Front.Application.DeviceSettings;
+using LivePlay.Front.Application.HttpServices;
+using LivePlay.Front.Application.Interfaces;
 using LivePlay.Front.Application.Services;
 using LivePlay.Front.Core.Models;
 using LivePlay.Front.MAUI.Models.ViewModels;
 using LivePlay.Front.MAUI.Models.ViewModels.AccountViewModels;
 using LivePlay.Front.MAUI.Models.ViewModels.NewsViewModels;
 using LivePlay.Front.MAUI.Models.ViewModels.QuestViewModels;
-using LivePlay.Front.MAUI.OverApplicationSettings;
 using LivePlay.Front.MAUI.Pages;
 using LivePlay.Front.MAUI.Pages.AdminPages;
 using LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages;
 using LivePlay.Front.MAUI.Pages.ReviewPages;
 using LivePlay.Front.MAUI.Pages.Reward;
+using LivePlay.Front.MAUI.Services.HttpServices;
 using LivePlay.Front.MAUI.ViewModels.AccountViewModels;
 using LivePlay.Front.MAUI.ViewModels.NewsViewModels;
 using LivePlay.Front.MAUI.ViewModels.QuestViewModels;
@@ -20,9 +22,9 @@ using LivePlay.Front.MAUI.ViewModels.SettingsViewModels;
 
 namespace LivePlay.Front.MAUI.MauiProgramExtentions;
 
-public static class RegisterServices
+public static class ServicesRegistrar
 {
-    public static void RegistAccountServices(this IServiceCollection services)
+    public static void RegisterAccountServices(this IServiceCollection services)
     {
         services.AddTransient<EnterPage>();
         services.AddTransient<LoadingPage>();
@@ -35,11 +37,11 @@ public static class RegisterServices
         services.AddTransient<ProfilePageViewModel>();
         services.AddTransient<SettingsPageViewModel>();
 
-        services.RegistAdminServices();
-        services.RegistUserServices();
+        services.RegisterAdminServices();
+        services.RegisterUserServices();
     }
 
-    private static void RegistAdminServices(this IServiceCollection services)
+    private static void RegisterAdminServices(this IServiceCollection services)
     {
         services.AddTransient<TapeFeedbackPage>();
         services.AddTransient<CurrentFeedbackPage>();
@@ -56,7 +58,7 @@ public static class RegisterServices
         services.AddTransient<QuestionQuestModel>();
     }
 
-    private static void RegistUserServices(this IServiceCollection services)
+    private static void RegisterUserServices(this IServiceCollection services)
     {
         services.AddTransient<MainPage>();
         services.AddTransient<CurrentNewsPage>();
@@ -77,11 +79,21 @@ public static class RegisterServices
         services.AddTransient<InProgressPhotoQuestPageViewModel>();
     }
 
-    public static void RegistOverApplicationSettingsServices(this IServiceCollection services)
+    public static void RegisterDeviceSettingsServices(this IServiceCollection services)
     {
         services.AddSingleton<AppDesign>();
         services.AddSingleton<AppPermissions>();
         services.AddSingleton<AppStorage>();
-        services.AddSingleton<NavigateThrowLoading>();
+
+#if __ANDROID__
+        services.AddSingleton<IStoragePermissions, Platforms.PlatformPermitions.StoragePermissions>();
+#endif
+    }
+
+    public static void RegisterHttpServices(this IServiceCollection services)
+    {
+        services.AddSingleton<UserHttpService>();
+        services.AddSingleton<QuestHttpService>();
+        services.AddSingleton<IHttpProvider, HttpProvider>();
     }
 }
