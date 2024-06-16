@@ -13,7 +13,7 @@ public partial class CurrentFeedbackPage : Popup
 		InitializeComponent();
 	}
 
-    private void Button_Clicked(object sender, EventArgs e)
+    private void ClosePopup(object sender, EventArgs e)
     {
         Close();
     }

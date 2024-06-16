@@ -1,4 +1,7 @@
 
+using LivePlay.Front.Core.Enums;
+using LivePlay.Front.Core.Models;
+
 namespace LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages;
 
 public partial class MainCreationQuestPage : ContentPage
@@ -13,18 +16,18 @@ public partial class MainCreationQuestPage : ContentPage
 
     private async void ImageButton_Clicked(object sender, EventArgs e)
     {
-        //var newQuestItem = new QuestItem
-        //{
-        //    Title = Title.Text,
-        //    Description = DescriptionMini.Text,
-        //    TotalDescription = Description.Text,
-        //    FinalDate = DateQuest.Date,
-        //    Price = int.Parse(Price.SelectedItem.ToString()),
-        //    Type = TypeQuest.Search
-        //};
+        var newQuestItem = new QuestItem
+        {
+            Title = Title.Text,
+            Description = DescriptionMini.Text,
+            TotalDescription = Description.Text,
+            FinalDate = DateQuest.Date,
+            Price = int.Parse(Price.SelectedItem.ToString()),
+            Type = (TypeQuest)PickerQuest.SelectedIndex
+        };
 
-        //var shellParameters = new ShellNavigationQueryParameters { { $"QuestItemProperty", newQuestItem } };
+        var shellParameters = new ShellNavigationQueryParameters { { $"QuestItemProperty", newQuestItem } };
 
-        await Shell.Current.GoToAsync($"{nameof(QuestionCreationQuestPage)}"/*, shellParameters*/);
+        await Shell.Current.GoToAsync($"{nameof(QuestionCreationQuestPage)}", shellParameters);
     }
 }

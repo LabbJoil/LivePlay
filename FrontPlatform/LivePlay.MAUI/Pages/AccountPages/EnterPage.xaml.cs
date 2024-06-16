@@ -48,17 +48,13 @@ public partial class EnterPage : ContentPage
             await ChangeStackLayout(EmailStackLayout, DirectionAction.Left);
     }
 
-    //private async void EmailCheckButtonClicked(object sender, EventArgs e)
-    //{
-    //    if (SendCodeTimer == null)
-    //    {
-    //        SendCodeTimer = new(DirectionAction.Down, PrintTimer, EndTimer);
-    //        SendCodeTimer.Start(5, 1000);
-    //    }
-    //    await ChangeStackLayout(CodeStackLayout, DirectionAction.Left);
-    //}
+    public async Task<(Action<object?>, Action)> VerifyEmailFrontProcess()
+    {
+        await ChangeStackLayout(CodeStackLayout, DirectionAction.Left);
+        return (PrintTimer, EndTimer);
+    }
 
-    private void CodeCheckButtonClicked(object sender, EventArgs e)
+    private void CheckCodeEmailFrontProcess(object sender, EventArgs e)
     {
         //Random rand = new ();
         //if (rand.Next(0, 2) == 1)
@@ -75,17 +71,18 @@ public partial class EnterPage : ContentPage
         //SendCodeTimer.Start(65, 0);
     }
 
-    public void PrintTimer(object? obj)
+    private void PrintTimer(object? obj)
     {
-        if(obj is int fullSeconds)
+        if(obj is int fullMilliseconds)
         {
+            var fullSeconds = fullMilliseconds / 1000;
             var minutes = fullSeconds / 60;
             var seconds = fullSeconds % 60;
             TimerLabel.Text = string.Format("{0:d2}:{1:d2}", minutes, seconds);
         }
     }
 
-    public void EndTimer()
+    private void EndTimer()
     {
         SendCodeButton.IsEnabled = true;
         TimerLabel.Text = "00:00";
@@ -108,10 +105,28 @@ public partial class EnterPage : ContentPage
 
     private void EmailCode_TextChanged(object sender, TextChangedEventArgs e)
     {
-        if (CountSymbolsEmailCode < 4)
+        if (sender is Entry entry)
         {
-            EmailCodeLabelDigits[CountSymbolsEmailCode].Text = e.NewTextValue;
-            CountSymbolsEmailCode++;
+            string nextValue = e.NewTextValue ?? "";
+            string oldValue = e.OldTextValue ?? "";
+
+            if (nextValue.Length < oldValue.Length)
+            {
+                if (oldValue.Length < 5 && oldValue.Last() != '.' && oldValue.Last() != '-')
+                {
+                    CountSymbolsEmailCode--;
+                    EmailCodeLabelDigits[CountSymbolsEmailCode].Text = "";
+                }
+                return;
+            }
+
+            if (CountSymbolsEmailCode < 4 && nextValue.Last() != '.' && nextValue.Last() != '-')
+            {
+                EmailCodeLabelDigits[CountSymbolsEmailCode].Text = nextValue[CountSymbolsEmailCode].ToString();
+                CountSymbolsEmailCode++;
+            }
+            else
+                entry.Text = oldValue;
         }
     }
 }

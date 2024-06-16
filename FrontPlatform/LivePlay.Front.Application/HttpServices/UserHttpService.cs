@@ -16,4 +16,11 @@ public class UserHttpService(IHttpProvider httpProvider) : IHttpServise
         var response = await HttpProvider.Get<uint>(BaseRoute+route, (nameof(email), email));
         return response;
     }
+
+    public async Task<BaseResponse<object>> VerifyCodeEmail(string code)
+    {
+        const string route = "/verifycodeemail";
+        var response = await HttpProvider.Get<object>(BaseRoute + route, (nameof(code), code));
+        return response;
+    }
 }

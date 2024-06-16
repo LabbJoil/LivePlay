@@ -15,14 +15,14 @@ public partial class PasswordEntryControl : ContentView
        propertyName: nameof(Text),
        returnType: typeof(string),
        declaringType: typeof(PasswordEntryControl),
-       defaultValue: null,
+       defaultValue: "",
        defaultBindingMode: BindingMode.TwoWay);
 
     public static readonly BindableProperty PlaceholderProperty = BindableProperty.Create(
         propertyName: nameof(Placeholder),
         returnType: typeof(string),
         declaringType: typeof(PasswordEntryControl),
-        defaultValue: null,
+        defaultValue: "",
         defaultBindingMode: BindingMode.OneWay);
 
     public static readonly BindableProperty IsPasswordProperty = BindableProperty.Create(

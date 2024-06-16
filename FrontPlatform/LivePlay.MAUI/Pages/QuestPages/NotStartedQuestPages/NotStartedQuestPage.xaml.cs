@@ -1,33 +1,35 @@
 
 using LivePlay.Front.Core.Models;
 using LivePlay.Front.MAUI.ViewModels.QuestViewModels;
-using MauiPopup.Views;
 
 namespace LivePlay.Front.MAUI.Pages;
 
-
-//[QueryProperty(nameof(QuestionQuestModelProperty), nameof(QuestionQuestModelProperty))]
-public partial class NotStartedQuestPage : BasePopupPage
+[QueryProperty(nameof(QuestionQuestModelProperty), nameof(QuestionQuestModelProperty))]
+public partial class NotStartedQuestPage : ContentPage
 {
-    private readonly BaseQuestPageViewModel BaseQuestVM;
+    private readonly BaseQuestPageViewModel BaseQuestPVM;
     public QuestionQuestModel QuestionQuestModelProperty
     {
-        set => BaseQuestVM.CurrentQuestItem = value;
+        set => BaseQuestPVM.CurrentQuestItem = value;
     }
 
-    public NotStartedQuestPage(BaseQuestPageViewModel baseQuestVM, QuestionQuestModel questionQuestModel)
+    public NotStartedQuestPage(BaseQuestPageViewModel baseQuestPVM)
 	{
-        Shell.Current.DisplayAlert("111", "111", "ok");
         InitializeComponent();
-		BindingContext = baseQuestVM;
-        BaseQuestVM = baseQuestVM;
-        baseQuestVM.CurrentQuestItem = questionQuestModel;
+		BindingContext = baseQuestPVM;
+        BaseQuestPVM = baseQuestPVM;
+        //baseQuestPVM.CurrentQuestItem = questionQuestModel;
         //Settings.ChangeColorStatusBars?.Invoke(MainScrollView.BackgroundColor, StatusBarColor.BarWhite, null);
+    }
+
+    private async void ClosePopup(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync($"..");
     }
 
     private async void Button_Clicked(object sender, EventArgs e)
     {
-        var shellParameters = new ShellNavigationQueryParameters { { $"{nameof(QuestionQuestModel)}Property", BaseQuestVM.CurrentQuestItem } };
+        var shellParameters = new ShellNavigationQueryParameters { { $"{nameof(QuestionQuestModel)}Property", BaseQuestPVM.CurrentQuestItem } };
         await Shell.Current.GoToAsync($"{nameof(InProgressQuizQuestPage)}", shellParameters);
     }
 }

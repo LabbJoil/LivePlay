@@ -22,16 +22,18 @@
 
             <Grid x:Name="EnterGrid" Grid.Row="3" Margin="50,10">
                 <StackLayout x:Name="LoginStackLayout" WidthRequest="300" Orientation="Vertical" Spacing="10">
-                    <pe:SimpleEntryControl x:Name="LoginEmail" Placeholder="Логин" Text="{Binding Email}" Margin="10,0"/>
-                    <pe:PasswordEntryControl x:Name="LoginPassword" Placeholder="Пароль" Text="{Binding Password}" Margin="10,0" />
-                    <Button Text="Войти" Command="{Binding LoginUserCommand}" Margin="50,30" HeightRequest="50"/>
+                    <pe:SimpleEntryControl x:Name="LoginEmail" Placeholder="Логин" Margin="10,0"/>
+                    <pe:PasswordEntryControl x:Name="LoginPassword" Placeholder="Пароль" Margin="10,0" />
+                    <Button Text="Войти" Margin="50,30" HeightRequest="50"
+                            Command="{Binding LoginUserCommand}"
+                            CommandParameter="{Binding Source={x:Reference this}}"/>
                 </StackLayout>
 
                 <StackLayout x:Name="EmailStackLayout" WidthRequest="300" Orientation="Vertical" IsVisible="False">
-                    <pe:SimpleEntryControl Placeholder="E-mail" Text="{Binding Email}" Margin="10,10"/>
+                    <pe:SimpleEntryControl x:Name="VerifyEmail" Placeholder="E-mail" Margin="10,10"/>
                     <Button Text="Далее" Margin="50,30" HeightRequest="50"
                             Command="{Binding VerifyEmailCommand}"
-                            CommandParameter="{Binding Source={x:Reference this}}"/>
+                            CommandParameter="{Binding Source={x:Reference VerifyEmail}, Path=Text, ConverterParameter={x:Reference this}, Converter={StaticResource TupleConverter}}"/>
                 </StackLayout>
 
                 <StackLayout x:Name="CodeStackLayout" WidthRequest="300" Orientation="Vertical" IsVisible="False">
@@ -55,33 +57,36 @@
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="20"/>
                                 </Border.StrokeShape>
-                                <Label x:Name="OneEmailCodeDigit" Text="0" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label x:Name="OneEmailCodeDigit" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
                             </Border>
 
                             <Border Grid.Column="1" BackgroundColor="#415A77" Stroke="Transparent">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="20"/>
                                 </Border.StrokeShape>
-                                <Label x:Name="TwoEmailCodeDigit" Text="5" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label x:Name="TwoEmailCodeDigit" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
                             </Border>
 
                             <Border Grid.Column="2" BackgroundColor="#415A77" Stroke="Transparent">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="20"/>
                                 </Border.StrokeShape>
-                                <Label x:Name="ThreeEmailCodeDigit" Text="8" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label x:Name="ThreeEmailCodeDigit" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
                             </Border>
 
                             <Border Grid.Column="3" BackgroundColor="#415A77" Stroke="Transparent">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="20"/>
                                 </Border.StrokeShape>
-                                <Label x:Name="FourEmailCodeDigit" Text="3" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label x:Name="FourEmailCodeDigit" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
                             </Border>
                         </Grid>
                     </Border>
                     
-                    <Button x:Name="CodeCheckButton" Text="Далее" Clicked="CodeCheckButtonClicked" Margin="50,25,50,40" HeightRequest="50" WidthRequest="230"/>
+                    <Button x:Name="CodeCheckButton" Text="Далее" Margin="50,25,50,40" HeightRequest="50" WidthRequest="230"
+                             Command="{Binding CheckCodeEmailCommand}"
+                            CommandParameter="{Binding Source={x:Reference EmailCode}, Path=Text}"/>
+                    
                     <Button x:Name="SendCodeButton" Text="Отправить код ещё раз" Clicked="SendCodeAgainButtonClicked" IsEnabled="False" Margin="10,0" 
                             Style="{StaticResource SecondButton}" WidthRequest="230" Padding="0" HeightRequest="50"/>
                 </StackLayout>

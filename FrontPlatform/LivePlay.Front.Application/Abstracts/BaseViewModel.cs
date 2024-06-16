@@ -42,7 +42,7 @@ public partial class BaseViewModel(AppDesign designSettings) : ObservableObject
         StopLoadingTokenSourse.Cancel();
     }
 
-    protected async Task<T?> ResponseProcessing<T>(BaseResponse<T> response)
+    protected static async Task<T?> ResponseProcessing<T>(BaseResponse<T> response)
     {
         if (response.IsSuccess && response.Data is T goodResponse)
             return goodResponse;
@@ -60,6 +60,6 @@ public partial class BaseViewModel(AppDesign designSettings) : ObservableObject
             { "StopingAnimationSource", StopLoadingTokenSourse },
         };
 
-        Shell.Current.GoToAsync("/LoadingPage", navigationParameter);
+        Shell.Current.GoToAsync("/LoadingPage", navigationParameter);   // INFO: Возможно стоит перенести в MAUI
     }
 }

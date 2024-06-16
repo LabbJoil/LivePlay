@@ -78,18 +78,6 @@
         Route="EnterPage" 
         ContentTemplate="{DataTemplate pages:EnterPage}"/>
 
-    <ShellContent
-        Shell.NavBarIsVisible="False"
-        Shell.TabBarIsVisible="False"
-        Route="LoadingPage" 
-        ContentTemplate="{DataTemplate pages:LoadingPage}"/>
-
-    <!--<ShellContent
-        Shell.NavBarIsVisible="False"
-        Shell.TabBarIsVisible="True"
-        Route="EmptyPage" 
-        ContentTemplate="{DataTemplate pagess:EmptyPage}"/>-->
-
     <TabBar>
         <ShellContent Icon="base_page.svg"
                       Route="TapeFeedbackPage"

@@ -6,7 +6,7 @@
              Appearing="ContentPage_Appearing" Disappearing="ContentPage_Disappearing"
              xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
              xmlns:cp="clr-namespace:LivePlay.Front.Core.Models;assembly=LivePlay.Front.Core"
-             x:Name="TapePage">
+             x:Name="this">
 
     <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">
         <Grid x:Name="MainGrid" BackgroundColor="{AppThemeBinding Dark={StaticResource PageMainBackgroundDark}, Light={StaticResource PageMainBackgroundLight}}">
@@ -21,7 +21,7 @@
             <CollectionView ItemsSource="{Binding TapeItems}" Style="{StaticResource TapeCollectionView}" Grid.Row="1" Margin="10,5" >
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <pe:TapeQuestItemControl TapeItem="{Binding .}" CommandTap="{Binding BindingContext.GoToTapeItemCommand, Source={x:Reference TapePage}}" ZIndex="1"/>
+                        <pe:TapeQuestItemControl TapeItem="{Binding .}" CommandTap="{Binding BindingContext.GoToTapeItemCommand, Source={x:Reference this}}" ZIndex="1"/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

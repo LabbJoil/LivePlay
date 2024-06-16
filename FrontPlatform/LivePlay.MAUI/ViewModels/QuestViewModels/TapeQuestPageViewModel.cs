@@ -33,7 +33,7 @@ public partial class TapeQuestPageViewModel : MainTapeViewModel
 
     public async Task GetQuestItems()
     {
-        string? json = Preferences.Get($"{nameof(QuestionQuestModel)}", null);
+        string? json = Preferences.Get(nameof(QuestionQuestModel), null);
         QuestionQuestModel nowModel;
         if (json != null)
         {
@@ -54,8 +54,8 @@ public partial class TapeQuestPageViewModel : MainTapeViewModel
             {
                 case QuestStatus.NotStarted:
                     var notStartedQuestVM = new BaseQuestPageViewModel(DesignSettings); // refact error
-                    await PopupAction.DisplayPopup(new NotStartedQuestPage(notStartedQuestVM, questItem));
-                    //await Shell.Current.GoToAsync($"{nameof(NotStartedQuestPage)}", shellParameters);
+                    await Shell.Current.GoToAsync($"/{nameof(NotStartedQuestPage)}", shellParameters);
+                    //await PopupAction.DisplayPopup(new NotStartedQuestPage(notStartedQuestVM, questItem));
                     break;
 
                 case QuestStatus.InProgress:
