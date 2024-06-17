@@ -1,30 +1,20 @@
 
-using LivePlay.Server.Application.Interfaces;
-using LivePlay.Server.Persistence.Repositories;
-using LivePlay.Server.Infrastructure.Authorization;
-using LivePlay.Server.Infrastructure;
-using LivePlay.Server.Persistence;
 using LivePlay.Server.WebApi.Extentions;
-using Microsoft.AspNetCore.CookiePolicy;
-using Microsoft.EntityFrameworkCore;
-using LivePlay.Server.Infrastructure.Other;
+using LivePlay.Server.WebApi.Middlewares;
 using LivePlay.Server.WebApi.ProgramExtentions;
+using Microsoft.AspNetCore.CookiePolicy;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var configuration = builder.Configuration;
 
-services.AddDbContext<LivePlayDbContext>(options =>
-{
-    options.UseNpgsql(configuration.GetConnectionString(nameof(LivePlayDbContext)));
-});
+builder.RegisterDb();
+builder.RegisterConfigurations();
 
-builder.GetConfigurations();
-
-services.RegistryAppServices();
-services.RegistryRepositories();
-services.RegistryInfrastructure();
-services.RegistryBackgrounds();
+services.RegisterAppServices();
+services.RegisterRepositories();
+services.RegisterInfrastructure();
+services.RegisterBackgrounds();
 
 services.AddApiAuthentication(configuration);
 services.AddApiPolitics();
@@ -34,7 +24,7 @@ services.AddSwaggerGen();
 
 var app = builder.Build();
 
-//app.UseMiddleware<ExceptionMiddlewareHandler>();
+app.UseMiddleware<ExceptionMiddlewareHandler>();
 
 if (app.Environment.IsDevelopment())
 {

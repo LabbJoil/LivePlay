@@ -17,12 +17,12 @@ namespace LivePlay.Server.Persistence.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.6")
+                .HasAnnotation("ProductVersion", "1.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.Base.CouponEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.Base.CouponEntityModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -61,7 +61,30 @@ namespace LivePlay.Server.Persistence.Migrations
                     b.ToTable("Coupon");
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.Base.FeedbackEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.Base.CreativeQuestEntityModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<byte[]>("PictureInfo")
+                        .IsRequired()
+                        .HasColumnType("bytea");
+
+                    b.Property<int>("QuestId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestId")
+                        .IsUnique();
+
+                    b.ToTable("CreativeQuest");
+                });
+
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.Base.FeedbackEntityModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -93,7 +116,7 @@ namespace LivePlay.Server.Persistence.Migrations
                     b.ToTable("Feedback");
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.Base.HotelEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.Base.HotelEntityModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -117,7 +140,7 @@ namespace LivePlay.Server.Persistence.Migrations
                     b.ToTable("Hotel");
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.Base.NewsEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.Base.NewsEntityModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -142,7 +165,7 @@ namespace LivePlay.Server.Persistence.Migrations
                     b.ToTable("News");
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.Base.PermissionEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.Base.PermissionEntityModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -181,7 +204,7 @@ namespace LivePlay.Server.Persistence.Migrations
                         });
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.Base.QRQuestEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.Base.QRQuestEntityModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -189,8 +212,9 @@ namespace LivePlay.Server.Persistence.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("QRInfo")
-                        .HasColumnType("integer");
+                    b.Property<byte[]>("QRInfo")
+                        .IsRequired()
+                        .HasColumnType("bytea");
 
                     b.Property<int>("QuestId")
                         .HasColumnType("integer");
@@ -203,7 +227,7 @@ namespace LivePlay.Server.Persistence.Migrations
                     b.ToTable("QRQuest");
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.Base.QuestEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.Base.QuestEntityModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -245,7 +269,7 @@ namespace LivePlay.Server.Persistence.Migrations
                     b.ToTable("Quest");
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.Base.QuestionQuestEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.Base.QuestionQuestEntityModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -284,7 +308,7 @@ namespace LivePlay.Server.Persistence.Migrations
                     b.ToTable("QuestionQuest");
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.Base.RoleEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.Base.RoleEntityModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -313,7 +337,7 @@ namespace LivePlay.Server.Persistence.Migrations
                         });
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.Base.UserEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.Base.UserEntityModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -347,7 +371,7 @@ namespace LivePlay.Server.Persistence.Migrations
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.ManyMany.HotelQuestEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.ManyMany.HotelQuestEntityModel", b =>
                 {
                     b.Property<int>("HotelId")
                         .HasColumnType("integer");
@@ -362,7 +386,7 @@ namespace LivePlay.Server.Persistence.Migrations
                     b.ToTable("HotelQuest");
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.ManyMany.RolePermissionEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.ManyMany.RolePermissionEntityModel", b =>
                 {
                     b.Property<int>("RoleId")
                         .HasColumnType("integer");
@@ -404,7 +428,7 @@ namespace LivePlay.Server.Persistence.Migrations
                         });
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.ManyMany.UserCouponEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.ManyMany.UserCouponEntityModel", b =>
                 {
                     b.Property<int>("CouponId")
                         .HasColumnType("integer");
@@ -422,7 +446,7 @@ namespace LivePlay.Server.Persistence.Migrations
                     b.ToTable("UserCoupon");
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.ManyMany.UserQuestEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.ManyMany.UserQuestEntityModel", b =>
                 {
                     b.Property<int>("QuestId")
                         .HasColumnType("integer");
@@ -440,7 +464,7 @@ namespace LivePlay.Server.Persistence.Migrations
                     b.ToTable("UserQuest");
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.ManyMany.UserRoleEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.ManyMany.UserRoleEntityModel", b =>
                 {
                     b.Property<int>("RoleId")
                         .HasColumnType("integer");
@@ -455,9 +479,20 @@ namespace LivePlay.Server.Persistence.Migrations
                     b.ToTable("UserRole");
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.Base.FeedbackEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.Base.CreativeQuestEntityModel", b =>
                 {
-                    b.HasOne("LivePlay.Persistence.EntityModels.Base.UserEntityModel", "User")
+                    b.HasOne("LivePlay.Server.Persistence.EntityModels.Base.QuestEntityModel", "Quest")
+                        .WithOne("CreativeQuest")
+                        .HasForeignKey("LivePlay.Server.Persistence.EntityModels.Base.CreativeQuestEntityModel", "QuestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Quest");
+                });
+
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.Base.FeedbackEntityModel", b =>
+                {
+                    b.HasOne("LivePlay.Server.Persistence.EntityModels.Base.UserEntityModel", "User")
                         .WithMany("Feedbacks")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -466,117 +501,120 @@ namespace LivePlay.Server.Persistence.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.Base.QRQuestEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.Base.QRQuestEntityModel", b =>
                 {
-                    b.HasOne("LivePlay.Persistence.EntityModels.Base.QuestEntityModel", "Quest")
+                    b.HasOne("LivePlay.Server.Persistence.EntityModels.Base.QuestEntityModel", "Quest")
                         .WithOne("QRQuest")
-                        .HasForeignKey("LivePlay.Persistence.EntityModels.Base.QRQuestEntityModel", "QuestId")
+                        .HasForeignKey("LivePlay.Server.Persistence.EntityModels.Base.QRQuestEntityModel", "QuestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Quest");
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.Base.QuestionQuestEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.Base.QuestionQuestEntityModel", b =>
                 {
-                    b.HasOne("LivePlay.Persistence.EntityModels.Base.QuestEntityModel", "Quest")
+                    b.HasOne("LivePlay.Server.Persistence.EntityModels.Base.QuestEntityModel", "Quest")
                         .WithOne("QuestionQuest")
-                        .HasForeignKey("LivePlay.Persistence.EntityModels.Base.QuestionQuestEntityModel", "QuestId")
+                        .HasForeignKey("LivePlay.Server.Persistence.EntityModels.Base.QuestionQuestEntityModel", "QuestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Quest");
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.Base.UserEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.Base.UserEntityModel", b =>
                 {
-                    b.HasOne("LivePlay.Persistence.EntityModels.Base.HotelEntityModel", null)
+                    b.HasOne("LivePlay.Server.Persistence.EntityModels.Base.HotelEntityModel", null)
                         .WithMany("Users")
                         .HasForeignKey("HotelEntityModelId");
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.ManyMany.HotelQuestEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.ManyMany.HotelQuestEntityModel", b =>
                 {
-                    b.HasOne("LivePlay.Persistence.EntityModels.Base.HotelEntityModel", null)
+                    b.HasOne("LivePlay.Server.Persistence.EntityModels.Base.HotelEntityModel", null)
                         .WithMany()
                         .HasForeignKey("HotelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("LivePlay.Persistence.EntityModels.Base.QuestEntityModel", null)
+                    b.HasOne("LivePlay.Server.Persistence.EntityModels.Base.QuestEntityModel", null)
                         .WithMany()
                         .HasForeignKey("QuestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.ManyMany.RolePermissionEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.ManyMany.RolePermissionEntityModel", b =>
                 {
-                    b.HasOne("LivePlay.Persistence.EntityModels.Base.PermissionEntityModel", null)
+                    b.HasOne("LivePlay.Server.Persistence.EntityModels.Base.PermissionEntityModel", null)
                         .WithMany()
                         .HasForeignKey("PermissionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("LivePlay.Persistence.EntityModels.Base.RoleEntityModel", null)
+                    b.HasOne("LivePlay.Server.Persistence.EntityModels.Base.RoleEntityModel", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.ManyMany.UserCouponEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.ManyMany.UserCouponEntityModel", b =>
                 {
-                    b.HasOne("LivePlay.Persistence.EntityModels.Base.CouponEntityModel", null)
+                    b.HasOne("LivePlay.Server.Persistence.EntityModels.Base.CouponEntityModel", null)
                         .WithMany()
                         .HasForeignKey("CouponId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("LivePlay.Persistence.EntityModels.Base.UserEntityModel", null)
+                    b.HasOne("LivePlay.Server.Persistence.EntityModels.Base.UserEntityModel", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.ManyMany.UserQuestEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.ManyMany.UserQuestEntityModel", b =>
                 {
-                    b.HasOne("LivePlay.Persistence.EntityModels.Base.QuestEntityModel", null)
+                    b.HasOne("LivePlay.Server.Persistence.EntityModels.Base.QuestEntityModel", null)
                         .WithMany()
                         .HasForeignKey("QuestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("LivePlay.Persistence.EntityModels.Base.UserEntityModel", null)
+                    b.HasOne("LivePlay.Server.Persistence.EntityModels.Base.UserEntityModel", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.ManyMany.UserRoleEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.ManyMany.UserRoleEntityModel", b =>
                 {
-                    b.HasOne("LivePlay.Persistence.EntityModels.Base.RoleEntityModel", null)
+                    b.HasOne("LivePlay.Server.Persistence.EntityModels.Base.RoleEntityModel", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("LivePlay.Persistence.EntityModels.Base.UserEntityModel", null)
+                    b.HasOne("LivePlay.Server.Persistence.EntityModels.Base.UserEntityModel", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.Base.HotelEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.Base.HotelEntityModel", b =>
                 {
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.Base.QuestEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.Base.QuestEntityModel", b =>
                 {
+                    b.Navigation("CreativeQuest")
+                        .IsRequired();
+
                     b.Navigation("QRQuest")
                         .IsRequired();
 
@@ -584,7 +622,7 @@ namespace LivePlay.Server.Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("LivePlay.Persistence.EntityModels.Base.UserEntityModel", b =>
+            modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.Base.UserEntityModel", b =>
                 {
                     b.Navigation("Feedbacks");
                 });

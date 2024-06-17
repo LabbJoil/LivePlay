@@ -1,29 +1,38 @@
 ﻿
+using LivePlay.Server.Application.CustomExceptions;
+using LivePlay.Server.Application.Facade;
+using LivePlay.Server.Application.Interfaces;
 using LivePlay.Server.Core.Models;
-using LivePlay.Server.Infrastructure.Other;
+using LivePlay.Server.Infrastructure.Providers;
 using Microsoft.Extensions.Hosting;
 
-namespace LivePlay.Server.Application.Background;
+namespace LivePlay.Server.Infrastructure.Background;
 
-public class RegistryUserBackground(EmailProvider emailProvider) : BackgroundService
+public class RegistrarUserBackground(EmailProvider emailProvider, RegistrarUserFacade backgroundServiceFacade) : BackgroundService, IRegistryUserBackground
 {
-    private readonly EmailProvider _emailProvider = emailProvider;
+    private readonly EmailProvider EmailProvider = emailProvider;
+    private readonly RegistrarUserFacade BackFacade = backgroundServiceFacade;
     private readonly Dictionary<uint, RegistrationUserModel> NewRegistrationUsers = [];
 
     protected async override Task ExecuteAsync(CancellationToken stoppingToken)
     {
         const int maxTimeSaveEmailValidation = 20;
+        const int millisecondsDelay = 1500;
+
+        BackFacade.CheckCodeRegistrationUser = CheckCodeRegistrationUser;
+        BackFacade.AddNewRegistrationUser = AddNewRegistrationUser;
+
         while (!stoppingToken.IsCancellationRequested)
         {
             foreach (var rum in NewRegistrationUsers)
                 if (rum.Value.StartValidation.AddMinutes(maxTimeSaveEmailValidation) < DateTime.Now)
                     NewRegistrationUsers.Remove(rum.Key);
             
-            await Task.Delay(1500, stoppingToken);
+            await Task.Delay(millisecondsDelay, stoppingToken);
         }
     }
 
-    public bool CheckCodeRegistrationUser(uint numberRegistration, int[] checkCode)
+    private bool CheckCodeRegistrationUser(uint numberRegistration, string checkCode)
     {
         if (NewRegistrationUsers.TryGetValue(numberRegistration, out RegistrationUserModel? registrationUser) && registrationUser != null)
         {
@@ -33,15 +42,15 @@ public class RegistryUserBackground(EmailProvider emailProvider) : BackgroundSer
                 return true;
             }
         }
-        throw new Exception("Время верификации email истекло");
+        throw new RequestException("Время верификации email истекло", $"Номер регистрации - {numberRegistration}, код проверки - {checkCode}");
     }
 
 
-    public uint AddNewRegistrationUser(User newUser)
+    private uint AddNewRegistrationUser(User newUser)
     {
         var numberRegistration = GetNumberRegistration();
-        int[] code = GenerateNewCode();
-        _emailProvider.SendEmail(newUser.Email ?? throw new Exception("Email is not provided"), code);
+        string code = GenerateNewCode();
+        EmailProvider.SendCodeEmail(newUser.Email ?? throw new Exception("Email is not provided"), code);
 
         var registrationUser = new RegistrationUserModel {
             RegistrationUser = newUser,
@@ -68,21 +77,21 @@ public class RegistryUserBackground(EmailProvider emailProvider) : BackgroundSer
         throw new Exception("Something wrong. All numberRegistration busy, but it is uint.");
     }
 
-    private static int[] GenerateNewCode()
+    private static string GenerateNewCode()
     {
         const int codeMasLength = 4;
         var rand = new Random();
-        var newCodeMas = new int[codeMasLength];
+        var newCode = "";
 
         for (int i = 0; i < codeMasLength; i++)
-            newCodeMas[i] = rand.Next(0, 10);
-        return newCodeMas;
+            newCode += rand.Next(0, 10);
+        return newCode;
     }
 
     private class RegistrationUserModel
     {
         public required User RegistrationUser { get; set; }
-        public required int[] EmailCode { get; set; }
+        public required string EmailCode { get; set; }
         public DateTime StartValidation { get; } = DateTime.Now;
         public bool IsApproveEmailCode { get; set; } = false;
     }

@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LivePlay.Server.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class LivePlayDb : Migration
+    public partial class LivePlayDb_0 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -132,6 +132,26 @@ namespace LivePlay.Server.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CreativeQuest",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    QuestId = table.Column<int>(type: "integer", nullable: false),
+                    PictureInfo = table.Column<byte[]>(type: "bytea", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CreativeQuest", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CreativeQuest_Quest_QuestId",
+                        column: x => x.QuestId,
+                        principalTable: "Quest",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "HotelQuest",
                 columns: table => new
                 {
@@ -162,7 +182,7 @@ namespace LivePlay.Server.Persistence.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     QuestId = table.Column<int>(type: "integer", nullable: false),
-                    QRInfo = table.Column<int>(type: "integer", nullable: false)
+                    QRInfo = table.Column<byte[]>(type: "bytea", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -353,6 +373,12 @@ namespace LivePlay.Server.Persistence.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_CreativeQuest_QuestId",
+                table: "CreativeQuest",
+                column: "QuestId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Feedback_UserId",
                 table: "Feedback",
                 column: "UserId");
@@ -403,6 +429,9 @@ namespace LivePlay.Server.Persistence.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "CreativeQuest");
+
             migrationBuilder.DropTable(
                 name: "Feedback");
 

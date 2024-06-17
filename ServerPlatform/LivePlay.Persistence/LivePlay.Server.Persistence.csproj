@@ -21,7 +21,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LivePlay.Core\LivePlay.Server.Core.csproj" />
-    <ProjectReference Include="..\LivePlay.Infrastructure\LivePlay.Server.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

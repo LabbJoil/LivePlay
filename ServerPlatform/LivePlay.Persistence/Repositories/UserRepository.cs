@@ -1,17 +1,15 @@
 ﻿
-using LivePlay.Server.Application.Interfaces;
 using LivePlay.Server.Core.Enums;
 using LivePlay.Server.Persistence.EntityModels.Base;
 using Microsoft.EntityFrameworkCore;
 
 namespace LivePlay.Server.Persistence.Repositories;
 
-public class UserRepository(LivePlayDbContext dbContext, IJwtProvider jwtProvider)
+public class UserRepository(LivePlayDbContext dbContext)
 {
     private readonly LivePlayDbContext DbContext = dbContext;
-    private readonly IJwtProvider JwtProvider = jwtProvider;
 
-    public async Task<string> RegisterUser(string email, string password, string firstName)
+    public async Task<UserEntityModel> RegisterUser(string email, string password, string firstName)
     {
         if (DbContext.Users.FirstOrDefault(u => u.Email == email) != null)
             throw new Exception($"Пользователь с email - {email} уже существует");
@@ -30,12 +28,12 @@ public class UserRepository(LivePlayDbContext dbContext, IJwtProvider jwtProvide
         DbContext.Users.Add(userEntity);
         await DbContext.SaveChangesAsync();
         userEntity.PasswordHash = "";
-
-        var userClaims = JwtProvider.SetUserId(userEntity.Id.ToString());
-        return JwtProvider.GenerateNewToken(userClaims);
+        return userEntity;
+        //var userClaims = JwtProvider.SetUserId(userEntity.Id.ToString());
+        //return JwtProvider.GenerateNewToken(userClaims);
     }
 
-    public async Task<string> RegisterAdmin(string email, string password, string firstName)
+    public async Task<UserEntityModel> RegisterAdmin(string email, string password, string firstName)
     {
         if (DbContext.Users.FirstOrDefault(u => u.Email == email) != null)
             throw new Exception($"Пользователь с email - {email} уже существует");
@@ -55,7 +53,8 @@ public class UserRepository(LivePlayDbContext dbContext, IJwtProvider jwtProvide
         await DbContext.SaveChangesAsync();
         userEntity.PasswordHash = "";
 
-        var userClaims = JwtProvider.SetUserId(userEntity.Id.ToString());
-        return JwtProvider.GenerateNewToken(userClaims);
+        return userEntity;
+        //var userClaims = JwtProvider.SetUserId(userEntity.Id.ToString());
+        //return JwtProvider.GenerateNewToken(userClaims);
     }
 }

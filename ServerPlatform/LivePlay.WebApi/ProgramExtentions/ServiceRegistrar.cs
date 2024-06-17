@@ -1,16 +1,16 @@
 ﻿
-using LivePlay.Server.Application.Background;
+using LivePlay.Server.Infrastructure.Background;
 using LivePlay.Server.Application.Interfaces;
 using LivePlay.Server.Application.Services;
-using LivePlay.Server.Infrastructure.Authorization;
-using LivePlay.Server.Infrastructure.Other;
+using LivePlay.Server.Infrastructure.Providers;
 using LivePlay.Server.Persistence.Repositories;
+using LivePlay.Server.Application.Facade;
 
 namespace LivePlay.Server.WebApi.ProgramExtentions;
 
-internal static class ServiceRegistor
+internal static class ServiceRegistrar
 {
-    public static void RegistryAppServices(this IServiceCollection services)
+    public static void RegisterAppServices(this IServiceCollection services)
     {
         services.AddScoped<UserService>();
         services.AddScoped<QuestService>();
@@ -18,20 +18,22 @@ internal static class ServiceRegistor
         services.AddScoped<NewsService>();
         services.AddScoped<HotelService>();
         services.AddScoped<CouponService>();
+
+        services.AddSingleton<RegistrarUserFacade>();
     }
 
-    public static void RegistryRepositories(this IServiceCollection services)
+    public static void RegisterRepositories(this IServiceCollection services)
     {
         services.AddScoped<UserRepository>();
         services.AddScoped<PermissionRepository>();
     }
 
-    public static void RegistryBackgrounds(this IServiceCollection services)
+    public static void RegisterBackgrounds(this IServiceCollection services)
     {
-        services.AddHostedService<RegistryUserBackground>();
+        services.AddHostedService<RegistrarUserBackground>();
     }
 
-    public static void RegistryInfrastructure(this IServiceCollection services)
+    public static void RegisterInfrastructure(this IServiceCollection services)
     {
         services.AddSingleton<IJwtProvider, JwtProvider>();
         services.AddSingleton<EmailProvider>();

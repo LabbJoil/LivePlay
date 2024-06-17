@@ -29,6 +29,7 @@ public class QuestEntityModel
 
     public required QuestionQuestEntityModel QuestionQuest { get; set; }
     public required QRQuestEntityModel QRQuest { get; set; }
+    public required CreativeQuestEntityModel CreativeQuest { get; set; }
 
     public ICollection<UserEntityModel> Users { get; set; } = [];
     public ICollection<HotelEntityModel> Hotels { get; set; } = [];

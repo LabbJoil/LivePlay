@@ -6,24 +6,24 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace LivePlay.Server.Infrastructure.Authorization;
+namespace LivePlay.Server.Infrastructure.Providers;
 
 public class JwtProvider(IOptions<JwtOptions> options) : IJwtProvider
 {
-    private readonly JwtOptions _jwtOptions = options.Value;
+    private JwtOptions JwtOptions { get; } = options.Value;
 
-    public  static SymmetricSecurityKey GetSigningCredentials(string secretKey)
+    public static SymmetricSecurityKey GetSigningCredentials(string secretKey)
         => new(Encoding.UTF8.GetBytes(secretKey));
 
     public string GenerateNewToken(Claim[] claims)
     {
-        var signingCredentials = new SigningCredentials(GetSigningCredentials(_jwtOptions.SecretKey), SecurityAlgorithms.HmacSha384);
+        var signingCredentials = new SigningCredentials(GetSigningCredentials(JwtOptions.SecretKey), SecurityAlgorithms.HmacSha384);
 
         var newToken = new JwtSecurityToken(
-            issuer: _jwtOptions.ISSUER,
-            audience: _jwtOptions.AUDIENCE,
+            issuer: JwtOptions.ISSUER,
+            audience: JwtOptions.AUDIENCE,
             claims: claims ?? throw new Exception("Claim has not been transferred"),
-            expires: DateTime.UtcNow.Add(TimeSpan.FromHours(_jwtOptions.ExpitersHours)),
+            expires: DateTime.UtcNow.Add(TimeSpan.FromHours(JwtOptions.ExpitersHours)),
             signingCredentials: signingCredentials);
 
         return new JwtSecurityTokenHandler().WriteToken(newToken);

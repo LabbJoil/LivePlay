@@ -1,10 +1,10 @@
 ﻿
 using LivePlay.Server.Application.Interfaces;
-using LivePlay.Server.Application.Services.Auth;
+using LivePlay.Server.Infrastructure.Providers;
 using LivePlay.Server.Persistence.Repositories;
 using Microsoft.AspNetCore.Authorization;
 
-namespace LivePlay.Server.WebApi.Services.Middlewares;
+namespace LivePlay.Server.WebApi.Middlewares;
 public class PermissionAuthHandler(IServiceScopeFactory serviceScopeFactory, IJwtProvider jwtProvider) : AuthorizationHandler<PermissionProvider>
 {
     private readonly IServiceScopeFactory _serviceScopeFactory = serviceScopeFactory;

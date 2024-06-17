@@ -1,9 +1,8 @@
 ﻿
-using LivePlay.Server.Application.Services.Auth;
 using LivePlay.Server.Core.Enums;
 using LivePlay.Server.Infrastructure;
-using LivePlay.Server.Infrastructure.Authorization;
-using LivePlay.Server.WebApi.Services.Middlewares;
+using LivePlay.Server.Infrastructure.Providers;
+using LivePlay.Server.WebApi.Middlewares;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 
@@ -36,13 +35,10 @@ public static class AuthExtention
 
     public static void AddApiPolitics(this IServiceCollection services)
     {
-        services.AddAuthorization(options =>
-        {
-            options.AddPolicy(nameof(Politic.OnlyRead), policy =>
-                 policy.AddRequirements(new PermissionProvider(Politic.OnlyRead)));
-
-            options.AddPolicy(nameof(Politic.Edit), policy =>
+        services.AddAuthorizationBuilder()
+            .AddPolicy(nameof(Politic.OnlyRead), policy =>
+                 policy.AddRequirements(new PermissionProvider(Politic.OnlyRead)))
+            .AddPolicy(nameof(Politic.Edit), policy =>
                  policy.AddRequirements(new PermissionProvider(Politic.Edit)));
-        });
     }
 }

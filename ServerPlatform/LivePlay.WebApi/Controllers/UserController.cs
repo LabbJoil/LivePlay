@@ -1,5 +1,6 @@
 ﻿
 using LivePlay.Server.Application.Interfaces;
+using LivePlay.Server.Application.Services;
 using LivePlay.Server.Core.Enums;
 using LivePlay.Server.Persistence.Repositories;
 using LivePlay.Server.WebApi.Contracts;
@@ -10,17 +11,17 @@ namespace LivePlay.Server.WebApi.Controllers
 {
     [Route("[controller]/")]
     [ApiController]
-    public class UserController(UserRepository userService) : ControllerBase
+    public class UserController(UserService userService) : ControllerBase
     {
-        private readonly UserRepository UserDBHelper = userService;
+        private readonly UserService UserService = userService;
 
         [HttpPost("/login")]
         public async Task<IActionResult> LoginUser([FromBody] LoginUserRequest userModel)
         {
             try
             {
-                var token = await UserDBHelper.RegisterUser(userModel.Email, userModel.Password, userModel.FirstName);
-                HttpContext.Response.Cookies.Append("tok-cookies", token);
+                //var token = await UserDBHelper.RegisterUser(userModel.Email, userModel.Password, userModel.FirstName);
+                //HttpContext.Response.Cookies.Append("tok-cookies", token);
                 return Ok();
             }
             catch (Exception ex)
@@ -29,42 +30,19 @@ namespace LivePlay.Server.WebApi.Controllers
             }
         }
 
-        [HttpPost("/loginAdmin")]
-        public async Task<IActionResult> LoginAdmin([FromBody] LoginUserRequest userModel)
+        [HttpGet("/verifyemail/{email}")]
+        public IActionResult Get(string email)
         {
-            try
-            {
-                var token = await UserDBHelper.RegisterAdmin(userModel.Email, userModel.Password, userModel.FirstName);
-                HttpContext.Response.Cookies.Append("tok-cookies", token);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex);
-            }
+            var numberRegistration = UserService.VerifyEmail(email);
+            return Ok(numberRegistration);
         }
 
-        [HttpGet("U")]
-        [Authorize(Policy = nameof(Politic.OnlyRead))]
-        public IActionResult Get()
+        [HttpGet("/verifyemailcode/{numberRegistration}/{code}"), Authorize(Policy = nameof(Politic.Edit))]
+        public IActionResult GetAdmin(uint numberRegistration, string code)
         {
-            return Ok("valueUser");
-        }
-
-        [HttpGet("A"), Authorize(Policy = nameof(Politic.Edit))]
-        public IActionResult GetAdmin()
-        {
-            return Ok("valueAdmin");
-        }
-
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
+            if (UserService.VerifyCodeEmail(numberRegistration, code))
+                return NoContent();
+            return BadRequest();
         }
     }
 }
