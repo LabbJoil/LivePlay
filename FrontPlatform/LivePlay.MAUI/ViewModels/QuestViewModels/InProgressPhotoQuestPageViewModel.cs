@@ -1,6 +1,6 @@
 ﻿
 using CommunityToolkit.Mvvm.Input;
-using LivePlay.Front.Application.DeviceSettings;
+using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.MAUI.ViewModels.QuestViewModels;
 
 namespace LivePlay.Front.MAUI.Models.ViewModels.QuestViewModels;

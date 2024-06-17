@@ -1,5 +1,5 @@
 
-using LivePlay.Front.Application.DeviceSettings;
+using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.Core.Enums;
 using LivePlay.Front.MAUI.Models.ViewModels;
 

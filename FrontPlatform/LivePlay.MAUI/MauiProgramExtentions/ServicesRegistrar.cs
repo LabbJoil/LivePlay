@@ -1,9 +1,9 @@
 ﻿
-using LivePlay.Front.Application.DeviceSettings;
+using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.Application.HttpServices;
 using LivePlay.Front.Application.Interfaces;
 using LivePlay.Front.Application.Mapping;
-using LivePlay.Front.Application.Services;
+using LivePlay.Front.MAUI.Services;
 using LivePlay.Front.Core.Models;
 using LivePlay.Front.MAUI.Models.ViewModels;
 using LivePlay.Front.MAUI.Models.ViewModels.AccountViewModels;

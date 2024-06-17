@@ -4,6 +4,8 @@ using LivePlay.Front.Application.Interfaces;
 using LivePlay.Front.MAUI.MauiProgramExtentions;
 using Microsoft.Extensions.Logging;
 using The49.Maui.BottomSheet;
+using Camera.MAUI;
+using ZXing.Net.Maui.Controls;
 
 namespace LivePlay.Front.MAUI;
 
@@ -15,12 +17,14 @@ public static class MauiProgram
         builder
             .UseMauiApp<App>()
             .UseBottomSheet()
+            .UseMauiCameraView()
             .UseMauiCommunityToolkit()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("Raleway-Regular.ttf", "RalewayRegular");
                 fonts.AddFont("Raleway-Bold.ttf", "RalewayBold");
             })
+            .UseBarcodeReader()
             .AddAppConfigurations();
 
         builder.RegisterConfiguration();

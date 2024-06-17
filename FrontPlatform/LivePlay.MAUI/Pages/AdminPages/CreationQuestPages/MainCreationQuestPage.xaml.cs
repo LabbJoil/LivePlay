@@ -28,6 +28,6 @@ public partial class MainCreationQuestPage : ContentPage
 
         var shellParameters = new ShellNavigationQueryParameters { { $"QuestItemProperty", newQuestItem } };
 
-        await Shell.Current.GoToAsync($"{nameof(QuestionCreationQuestPage)}", shellParameters);
+        await Shell.Current.GoToAsync($"{nameof(QRcodeCreationQuestPage)}", shellParameters);
     }
 }

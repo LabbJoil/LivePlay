@@ -2,10 +2,10 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LivePlay.Front.Application;
-using LivePlay.Front.Application.Abstracts;
-using LivePlay.Front.Application.DeviceSettings;
+using LivePlay.Front.MAUI.Abstracts;
+using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.Application.Models.ResponseModel;
-using LivePlay.Front.Application.Services;
+using LivePlay.Front.MAUI.Services;
 using LivePlay.Front.Core.Enums;
 using LivePlay.Front.Core.Models;
 using LivePlay.Front.MAUI.Pages;
@@ -40,7 +40,7 @@ public partial class EnterPageViewModel(AppDesign designSettings, AppPermissions
 
         
 
-        await Shell.Current.GoToAsync($"//{nameof(TapeFeedbackPage)}");
+        await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
 
         //if (Email == "tre@gmail.com")
         //    await NavigateLoading.GoToRootPage($"//{nameof(TapeFeedbackPage)}");

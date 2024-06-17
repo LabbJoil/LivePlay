@@ -1,4 +1,4 @@
-using LivePlay.Front.Application.DeviceSettings;
+using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.Core.Models;
 using LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages;
 using Microsoft.Maui.Controls;

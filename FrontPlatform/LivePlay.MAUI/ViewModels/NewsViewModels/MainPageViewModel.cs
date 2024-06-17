@@ -1,7 +1,7 @@
 ﻿
 using CommunityToolkit.Mvvm.Input;
-using LivePlay.Front.Application.Abstracts;
-using LivePlay.Front.Application.DeviceSettings;
+using LivePlay.Front.MAUI.Abstracts;
+using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.Core.Models;
 using LivePlay.Front.MAUI.Pages;
 using System.Collections.ObjectModel;

@@ -1,6 +1,6 @@
 ﻿
-using LivePlay.Front.Application.Abstracts;
-using LivePlay.Front.Application.DeviceSettings;
+using LivePlay.Front.MAUI.Abstracts;
+using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.Core.Models;
 using System.Collections.ObjectModel;
 

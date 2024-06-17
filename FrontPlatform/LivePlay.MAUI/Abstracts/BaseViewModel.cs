@@ -1,12 +1,13 @@
 ﻿
 using CommunityToolkit.Mvvm.ComponentModel;
-using LivePlay.Front.Application.DeviceSettings;
+using LivePlay.Front.MAUI.DeviceSettings;
 using CommunityToolkit.Mvvm.Input;
 using LivePlay.Front.Core.Enums;
 using LivePlay.Front.Application.Models.ResponseModel;
 using LivePlay.Front.Application.Contracts.ResponseModel;
+using LivePlay.Front.Application;
 
-namespace LivePlay.Front.Application.Abstracts;
+namespace LivePlay.Front.MAUI.Abstracts;
 
 public partial class BaseViewModel(AppDesign designSettings) : ObservableObject
 {

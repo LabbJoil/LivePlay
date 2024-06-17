@@ -1,5 +1,5 @@
 
-using LivePlay.Front.Application.DeviceSettings;
+using LivePlay.Front.MAUI.DeviceSettings;
 
 namespace LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages;
 

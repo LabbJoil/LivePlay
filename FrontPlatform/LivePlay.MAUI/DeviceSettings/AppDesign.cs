@@ -1,7 +1,7 @@
 ﻿
 using LivePlay.Front.Core.Enums;
 
-namespace LivePlay.Front.Application.DeviceSettings;
+namespace LivePlay.Front.MAUI.DeviceSettings;
 
 public class AppDesign
 {

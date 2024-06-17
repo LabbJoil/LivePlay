@@ -3,7 +3,7 @@ using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Storage;
 using System.Text.Json;
 
-namespace LivePlay.Front.Application.DeviceSettings;
+namespace LivePlay.Front.MAUI.DeviceSettings;
 
 public class  AppStorage
 {

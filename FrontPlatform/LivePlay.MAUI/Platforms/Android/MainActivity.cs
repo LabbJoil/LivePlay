@@ -4,7 +4,7 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Views;
 using CommunityToolkit.Maui.Core;
-using LivePlay.Front.Application.DeviceSettings;
+using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.Core.Enums;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using System.Diagnostics.CodeAnalysis;

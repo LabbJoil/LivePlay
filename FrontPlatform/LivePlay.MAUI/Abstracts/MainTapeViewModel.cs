@@ -1,7 +1,7 @@
 ﻿
-using LivePlay.Front.Application.DeviceSettings;
+using LivePlay.Front.MAUI.DeviceSettings;
 
-namespace LivePlay.Front.Application.Abstracts;
+namespace LivePlay.Front.MAUI.Abstracts;
 
 public abstract partial class MainTapeViewModel(AppDesign designSettings) : BaseViewModel(designSettings)
 {

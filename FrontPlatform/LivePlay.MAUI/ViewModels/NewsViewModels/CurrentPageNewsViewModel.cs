@@ -1,8 +1,8 @@
 ﻿
 using LivePlay.Front.Core.Models;
-using LivePlay.Front.Application.Abstracts;
+using LivePlay.Front.MAUI.Abstracts;
 using CommunityToolkit.Mvvm.ComponentModel;
-using LivePlay.Front.Application.DeviceSettings;
+using LivePlay.Front.MAUI.DeviceSettings;
 
 namespace LivePlay.Front.MAUI.ViewModels.NewsViewModels;
 

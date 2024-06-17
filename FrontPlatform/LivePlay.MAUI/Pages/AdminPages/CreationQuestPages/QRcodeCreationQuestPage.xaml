@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages.QRcodeCreationQuestPage"
              xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
+             xmlns:qrcode="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
              Title="QRcodeCreationQuestPage"
              Shell.NavBarIsVisible="False">
     
@@ -25,9 +26,13 @@
 
         <Label Text="Сгенерируйте новый QR-код:" FontSize="20" Grid.Row="1" FontAttributes="Bold" VerticalOptions="End" HorizontalOptions="Center"/>
 
-        <GraphicsView Grid.Row="2" VerticalOptions="End" BackgroundColor="White" WidthRequest="240" HeightRequest="240"/>
+        <qrcode:BarcodeImage Grid.Row="2" x:Name="barcodeImage"
+                 WidthRequest="200" HeightRequest="200" 
+                 BarcodeWidth="200" BarcodeHeight="200" BarcodeMargin="1"
+                 BarcodeBackground="White"
+                 BarcodeFormat="QR_CODE" Barcode="eweweqweweq"/>
 
-        <Button Grid.Row="3" Text="Сгенерировать" FontAttributes="Bold" FontSize="19" WidthRequest="240" HeightRequest="40" Padding="0" BackgroundColor="#0D1B2A" VerticalOptions="End"/>
+        <Button Grid.Row="3" Text="Сгенерировать" FontAttributes="Bold" FontSize="19" WidthRequest="240" HeightRequest="40" Padding="0" BackgroundColor="#0D1B2A" VerticalOptions="End" Clicked="Button_Clicked"/>
 
         <Button Grid.Row="4" Text="Сохранить QR-код" FontAttributes="Bold" FontSize="19" WidthRequest="240" HeightRequest="40" Padding="0" BackgroundColor="#0D1B2A" VerticalOptions="End"/>
 
