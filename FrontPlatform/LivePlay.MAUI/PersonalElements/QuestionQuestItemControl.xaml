@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages.QuestionCreationQuestPage"
-             xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
-             Title="QuestionCreationQuestPage"
-             Shell.NavBarIsVisible="False">
+             x:Class="LivePlay.Front.MAUI.PersonalElements.QuestionQuestItemControl"
+             x:Name="this">
 
-    <Grid BackgroundColor="#26507B" Padding="40,0">
+    <Grid x:Name="MainGrid" BackgroundColor="#26507B" Padding="40,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="64"/>
             <RowDefinition Height="40"/>
@@ -32,7 +30,7 @@
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="9"/>
             </Border.StrokeShape>
-            <Editor x:Name="Question" TextColor="Black" HeightRequest="80"/>
+            <Editor x:Name="Question" Text="{Binding Path=NowQuestionQuest.Question, Source={x:Reference this}}" TextColor="Black" HeightRequest="80"/>
         </Border>
 
         <Grid Grid.Row="3" VerticalOptions="End" ColumnDefinitions="*,*">
@@ -56,7 +54,7 @@
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="9"/>
                 </Border.StrokeShape>
-                <Entry x:Name="Answer1" TextColor="Black" HeightRequest="35"/>
+                <Entry x:Name="Answer1" Text="{Binding Path=NowQuestionQuest.Answer1, Source={x:Reference this}}" TextColor="Black" HeightRequest="35"/>
             </Border>
             <CheckBox Grid.Row="0" Grid.Column="1" x:Name="CheckBox1" CheckedChanged="CheckBox1_CheckedChanged" VerticalOptions="End" HeightRequest="35"/>
 
@@ -64,7 +62,7 @@
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="9"/>
                 </Border.StrokeShape>
-                <Entry x:Name="Answer2" TextColor="Black" HeightRequest="35"/>
+                <Entry x:Name="Answer2" Text="{Binding Path=NowQuestionQuest.Answer2, Source={x:Reference this}}" TextColor="Black" HeightRequest="35"/>
             </Border>
             <CheckBox Grid.Row="1" Grid.Column="1" x:Name="CheckBox2" CheckedChanged="CheckBox1_CheckedChanged" VerticalOptions="End" HeightRequest="35"/>
 
@@ -72,7 +70,7 @@
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="9"/>
                 </Border.StrokeShape>
-                <Entry x:Name="Answer3" TextColor="Black" HeightRequest="35"/>
+                <Entry x:Name="Answer3" Text="{Binding Path=NowQuestionQuest.Answer3, Source={x:Reference this}}" TextColor="Black" HeightRequest="35"/>
             </Border>
             <CheckBox Grid.Row="2" Grid.Column="1" x:Name="CheckBox3" CheckedChanged="CheckBox1_CheckedChanged" VerticalOptions="End" HeightRequest="35"/>
 
@@ -80,13 +78,13 @@
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="9"/>
                 </Border.StrokeShape>
-                <Entry x:Name="Answer4" TextColor="Black" HeightRequest="35"/>
+                <Entry x:Name="Answer4" Text="{Binding Path=NowQuestionQuest.Answer4, Source={x:Reference this}}" TextColor="Black" HeightRequest="35"/>
             </Border>
             <CheckBox Grid.Row="3" Grid.Column="1" x:Name="CheckBox4" CheckedChanged="CheckBox1_CheckedChanged" VerticalOptions="End" HeightRequest="35"/>
         </Grid>
 
         <Label Text="Прикрепите фото к вопросу:" HorizontalOptions="Start" FontSize="17" Grid.Row="5" FontAttributes="Bold" VerticalOptions="End"/>
-        <ImageButton Grid.Row="6" Source="photo_add_dark.svg" WidthRequest="95" HeightRequest="95" VerticalOptions="End" HorizontalOptions="Start"/>
+        <ImageButton Grid.Row="6" Source="photo_add_dark.svg" WidthRequest="95" HeightRequest="95" VerticalOptions="End" HorizontalOptions="Start" Clicked="ImageButton_Clicked"/>
 
         <Grid Grid.Row="7" Padding="15,0">
             <Grid.ColumnDefinitions>
@@ -98,18 +96,19 @@
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="50"/>
                 </Border.StrokeShape>
-                <ImageButton Source="arrow_forward.svg" Background="#0D1B2A" Aspect="AspectFit" HeightRequest="35" WidthRequest="35" Rotation="180"/>
+                <ImageButton Source="arrow_forward.svg" Background="#0D1B2A" Aspect="AspectFit" HeightRequest="35" WidthRequest="35" Rotation="180" Clicked="PreviousItem"/>
             </Border>
-            
+
             <Border Grid.Column="1" BackgroundColor="#0D1B2A" HorizontalOptions="End" VerticalOptions="End" HeightRequest="55" WidthRequest="55" Stroke="Transparent">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="50"/>
                 </Border.StrokeShape>
-                <ImageButton Source="arrow_forward.svg" Background="#0D1B2A" Aspect="AspectFit"  Clicked="ImageButton_Clicked" HeightRequest="35" WidthRequest="35"/>
+                <ImageButton Source="arrow_forward.svg" Background="#0D1B2A" Aspect="AspectFit" HeightRequest="35" WidthRequest="35" Clicked="ForwardItem"/>
             </Border>
         </Grid>
 
-        <Button Grid.Row="8" Text="Готово" Clicked="Button_Clicked" FontAttributes="Bold" FontSize="19" WidthRequest="160" HeightRequest="40" Padding="0" BackgroundColor="#143150"/>
-        
+        <Button Grid.Row="8" Text="Готово" FontAttributes="Bold" FontSize="19" WidthRequest="160" HeightRequest="40" Padding="0" BackgroundColor="#143150"/>
+
     </Grid>
-</ContentPage>
+
+</ContentView>

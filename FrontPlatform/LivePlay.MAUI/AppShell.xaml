@@ -44,6 +44,9 @@
         <DataTemplate>
             <ScrollView VerticalOptions="Start">
                 <Grid x:Name="FlyoutGrid" Loaded="FlyoutGrid_Loaded" AutomationId="{Binding AutomationId}">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </Grid.GestureRecognizers>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="60" />
                     </Grid.RowDefinitions>
@@ -64,9 +67,6 @@
                                WidthRequest="7" RadiusX="30" RadiusY="30" BackgroundColor="#415A77" HorizontalOptions="Center" Margin="0,5,20,5"/>
                     <Rectangle x:Name="BackGroud" Grid.ColumnSpan="2" ZIndex="0"
                                BackgroundColor="Gray" HorizontalOptions="Fill" VerticalOptions="Fill" Opacity="0.2"/>
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                    </Grid.GestureRecognizers>
                 </Grid>
             </ScrollView>
         </DataTemplate>

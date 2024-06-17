@@ -7,7 +7,6 @@ using LivePlay.Front.Core.Enums;
 using LivePlay.Front.Core.Models;
 using LivePlay.Front.MAUI.Pages;
 using LivePlay.Front.MAUI.ViewModels.QuestViewModels;
-using MauiPopup;
 using System.Text.Json;
 
 namespace LivePlay.Front.MAUI.Models.ViewModels;
@@ -55,7 +54,6 @@ public partial class TapeQuestPageViewModel : MainTapeViewModel
                 case QuestStatus.NotStarted:
                     var notStartedQuestVM = new BaseQuestPageViewModel(DesignSettings); // refact error
                     await Shell.Current.GoToAsync($"/{nameof(NotStartedQuestPage)}", shellParameters);
-                    //await PopupAction.DisplayPopup(new NotStartedQuestPage(notStartedQuestVM, questItem));
                     break;
 
                 case QuestStatus.InProgress:

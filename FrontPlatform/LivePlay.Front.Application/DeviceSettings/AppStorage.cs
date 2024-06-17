@@ -7,7 +7,7 @@ namespace LivePlay.Front.Application.DeviceSettings;
 
 public class  AppStorage
 {
-    public async Task GetSelectItemsStorage()
+    public static async Task GetSelectItemsStorage()
     {
         var fileSaveResult = await FilePicker.Default.PickMultipleAsync();
         if (fileSaveResult != null)
@@ -20,7 +20,7 @@ public class  AppStorage
         }
     }
 
-    public async Task<string> GetOneItemStorage()
+    public static async Task<string> GetOneItemStorage()
     {
         var fileSaveResult = await FilePicker.Default.PickAsync();
         if (fileSaveResult != null)
@@ -35,11 +35,10 @@ public class  AppStorage
         }
     }
 
-    public async void SaveFile(string nameFile, byte[] writeBytes)
+    public static async void SaveFile(string nameFile, byte[] writeBytes)
     {
         using var stream = new MemoryStream(writeBytes);
 
-#if IOS14_0_OR_GREATER || __ANDROID__
         var fileSaveResult = await FileSaver.Default.SaveAsync(nameFile, stream);
         if (fileSaveResult.IsSuccessful)
         {
@@ -49,7 +48,6 @@ public class  AppStorage
         {
             await Toast.Make($"File is not saved, {fileSaveResult.Exception.Message}").Show();
         }
-#endif
     }
 
     public void GetHttpParams()

@@ -5,7 +5,6 @@
              Title="AccountPage"
              Appearing="ContentPage_Appearing" Disappearing="ContentPage_Disappearing"
              xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
-             xmlns:cp="clr-namespace:LivePlay.Front.MAUI.Models.Domain"
              x:Name="AccountPage">
 
     <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">
@@ -43,7 +42,9 @@
                 <Button Text="+" CornerRadius="100" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White" WidthRequest="97" HeightRequest="97" FontSize="40" 
                         TextColor="Black" Grid.Column="1"/>
 
-                <Border BackgroundColor="White" Stroke="Transparent" Padding="0" Grid.Column="1" Grid.Row="1">
+                <pe:NameEntryControl Grid.Column="1" Grid.Row="1" BackgroundColor="White"/>
+
+                <!--<Border BackgroundColor="White" Stroke="Transparent" Padding="0" Grid.Column="1" Grid.Row="1">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="15"/>
                     </Border.StrokeShape>
@@ -64,7 +65,7 @@
                         <ImageButton Source="mark_name_surname.svg" Grid.Column="1" Grid.RowSpan="3" VerticalOptions="Center" BackgroundColor="Transparent" 
                                      HorizontalOptions="Center" WidthRequest="26" HeightRequest="26"/>
                     </Grid>
-                </Border>
+                </Border>-->
 
                 <Border Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HeightRequest="40" BackgroundColor="White" Stroke="Transparent" Padding="0">
                     <Border.StrokeShape>

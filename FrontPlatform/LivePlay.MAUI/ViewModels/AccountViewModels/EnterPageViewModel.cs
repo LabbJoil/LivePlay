@@ -20,13 +20,10 @@ public partial class EnterPageViewModel(AppDesign designSettings, AppPermissions
     private UserHttpService UserService { get; set; } = userHttpService;
     private ActionTimer? SendCodeTimer;
 
-    //[ObservableProperty]
-    //public string _email = string.Empty;
-
-    //[ObservableProperty]
-    //public string _password = string.Empty;
-
     private uint NumberRegistratrtion = 0;
+
+    [ObservableProperty]
+    public User _enterUser = new();
 
     [RelayCommand]
     public async Task LoginUser()
@@ -43,48 +40,47 @@ public partial class EnterPageViewModel(AppDesign designSettings, AppPermissions
 
         
 
-        await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+        await Shell.Current.GoToAsync($"//{nameof(TapeFeedbackPage)}");
 
         //if (Email == "tre@gmail.com")
         //    await NavigateLoading.GoToRootPage($"//{nameof(TapeFeedbackPage)}");
         //else if (Email == "lio@gmail.com")
-        //    await NavigateLoading.GoToRootPage($"//{nameof(TapeNewsPage)}");
+        //    await NavigateLoading.GoToRootPage($"//{nameof(MainPage)}");
         //else
         //    await Shell.Current.DisplayAlert("Нет доступа", $"Неправильный логин или пароль", "ok");
     }
 
     [RelayCommand]
-    public async Task VerifyEmail(object obj)
+    public async Task VerifyEmail(EnterPage enterPage)
     {
-        if (obj is Tuple<object, object> tuple && tuple.Item1 is string email && tuple.Item2 is EnterPage enterPage)
-        {
-            StartLoading();
-            var response = await UserService.VerifyEmail(email);
-            StopLoading();
+        StartLoading();
+        var response = await UserService.VerifyEmail(EnterUser.Email);
+        StopLoading();
 
-            NumberRegistratrtion = await ResponseProcessing(response);
-            if (NumberRegistratrtion == 0)
-                return;
+        (var ok, NumberRegistratrtion) = await ResponseProcessing(response);
+        if (!ok)
+            return;
 
-            var timerActions = await enterPage.VerifyEmailFrontProcess();
-
-            SendCodeTimer = new(DirectionAction.Down, timerActions.Item1, timerActions.Item2);
-            SendCodeTimer.Start(5000, 0);
-        }
+        var timerActions = await enterPage.VerifyEmailFrontProcess();
+        SendCodeTimer = new(DirectionAction.Down, timerActions.Item1, timerActions.Item2);
+        SendCodeTimer.Start(5000, 0);
     }
 
     [RelayCommand]
-    public async Task CheckCodeEmail(string code)
+    public async Task CheckCodeEmail(object obj)
     {
-        StartLoading();
-        var response = await UserService.VerifyCodeEmail(code);
-        StopLoading();
+        if (obj is Tuple<object, object> tuple && tuple.Item1 is string code && tuple.Item2 is EnterPage enterPage)
+        {
+            //StartLoading();
+            //var response = await UserService.VerifyCodeEmail(NumberRegistratrtion, code);
+            //StopLoading();
 
-        //NumberRegistratrtion = await ResponseProcessing(response);
-        //if (NumberRegistratrtion == 0)
-        //    return;
+            //var ok = await ResponseProcessing(response);
+            //if (!ok.Item1)
+            //    return;
 
-        //SendCodeTimer = new(DirectionAction.Down, enterPage.PrintTimer, enterPage.EndTimer);
-        //SendCodeTimer.Start(5, 1000);
+            SendCodeTimer?.Stop();
+            enterPage.CheckCodeEmailFrontProcess();
+        }
     }
 }

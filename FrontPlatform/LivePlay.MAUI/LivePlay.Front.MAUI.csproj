@@ -167,13 +167,13 @@
 	  <Compile Update="Pages\AdminPages\CurrentFeedbackPage.xaml.cs">
 	    <DependentUpon>CurrentFeedbackPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\QuestPages\CreationQuestPages\CreativeQuestCreationQuestPage.xaml.cs">
+	  <Compile Update="Pages\AdminPages\CreationQuestPages\CreativeQuestCreationQuestPage.xaml.cs">
 	    <DependentUpon>CreativeQuestCreationQuestPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\QuestPages\CreationQuestPages\QRcodeCreationQuestPage.xaml.cs">
+	  <Compile Update="Pages\AdminPages\CreationQuestPages\QRcodeCreationQuestPage.xaml.cs">
 	    <DependentUpon>QRcodeCreationQuestPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\QuestPages\CreationQuestPages\QuestionCreationQuestPage.xaml.cs">
+	  <Compile Update="Pages\AdminPages\CreationQuestPages\QuestionCreationQuestPage.xaml.cs">
 	    <DependentUpon>QuestionCreationQuestPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\QuestPages\InProgressQuestPages\InProgressQRQuestPage.xaml.cs">
@@ -214,6 +214,9 @@
 	  </Compile>
 	  <Compile Update="PersonalElements\ChoicePanelControl.xaml.cs">
 	    <DependentUpon>ChoicePanelControl.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="PersonalElements\QuestionQuestItemControl.xaml.cs">
+	    <DependentUpon>QuestionQuestItemControl.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="PersonalElements\PasswordEntryControl.xaml.cs">
 	    <DependentUpon>PasswordEntryControl.xaml</DependentUpon>
@@ -257,16 +260,16 @@
 	  <MauiXaml Update="Pages\AccountPages\ProfilePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\QuestPages\CreationQuestPages\MainCreationQuestPage.xaml">
+	  <MauiXaml Update="Pages\AdminPages\CreationQuestPages\MainCreationQuestPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\QuestPages\CreationQuestPages\CreativeQuestCreationQuestPage.xaml">
+	  <MauiXaml Update="Pages\AdminPages\CreationQuestPages\CreativeQuestCreationQuestPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\QuestPages\CreationQuestPages\QRcodeCreationQuestPage.xaml">
+	  <MauiXaml Update="Pages\AdminPages\CreationQuestPages\QRcodeCreationQuestPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\QuestPages\CreationQuestPages\QuestionCreationQuestPage.xaml">
+	  <MauiXaml Update="Pages\AdminPages\CreationQuestPages\QuestionCreationQuestPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\QuestPages\InProgressQuestPages\InProgressQRQuestPage.xaml">
@@ -314,6 +317,12 @@
 	  <MauiXaml Update="PersonalElements\ChoicePanelControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="PersonalElements\QuestionQuestItemControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PersonalElements\NameEntryControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="PersonalElements\PasswordEntryControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -326,12 +335,6 @@
 	  <MauiXaml Update="PersonalElements\TapeQuestItemControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Update="Pages\QuestPages\CreationQuestPages\QuistionCreationQuestPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </None>
 	</ItemGroup>
 
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionLivePlayMAUIHideInfoBar="True" /></VisualStudio></ProjectExtensions>

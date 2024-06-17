@@ -88,8 +88,7 @@ public class HttpProvider(IOptions<HttpProviderOptions> httpProviderOptions) : I
                 Error = new ErrorResponse
                 {
                     ErrorCode = "Not parse body",
-                    Message = ex.Message,
-                    Details = ex.Message
+                    Message = ex.Message
                 }
             };
         }

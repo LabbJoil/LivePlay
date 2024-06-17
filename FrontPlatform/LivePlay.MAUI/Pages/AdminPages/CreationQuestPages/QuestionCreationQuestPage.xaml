@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages.QuestionCreationQuestPage"
+             xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
+             Title="QuestionCreationQuestPage"
+             Shell.NavBarIsVisible="False"
+             x:Name="this">
+
+    <Grid>
+        <Grid x:Name="FirstItem">
+            <pe:QuestionQuestItemControl ForwardItemCommand="{Binding BindingContext.GoForvardQuestionCommand, Source={x:Reference this}}"
+                                         PreviousItemCommand="{Binding BindingContext.GoPreviousQuestionCommand, Source={x:Reference this}}"
+                                         ParentPage="{Binding Source={x:Reference this}}"/>
+        </Grid>
+
+        <Grid x:Name="SecondItem" IsVisible="False">
+            <pe:QuestionQuestItemControl ForwardItemCommand="{Binding BindingContext.GoForvardQuestionCommand, Source={x:Reference this}}"
+                                         PreviousItemCommand="{Binding BindingContext.GoPreviousQuestionCommand, Source={x:Reference this}}"
+                                         ParentPage="{Binding Source={x:Reference this}}"/>
+        </Grid>
+    </Grid>
+    
+</ContentPage>

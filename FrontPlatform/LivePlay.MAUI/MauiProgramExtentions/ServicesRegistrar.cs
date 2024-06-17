@@ -2,6 +2,7 @@
 using LivePlay.Front.Application.DeviceSettings;
 using LivePlay.Front.Application.HttpServices;
 using LivePlay.Front.Application.Interfaces;
+using LivePlay.Front.Application.Mapping;
 using LivePlay.Front.Application.Services;
 using LivePlay.Front.Core.Models;
 using LivePlay.Front.MAUI.Models.ViewModels;
@@ -15,6 +16,7 @@ using LivePlay.Front.MAUI.Pages.ReviewPages;
 using LivePlay.Front.MAUI.Pages.Reward;
 using LivePlay.Front.MAUI.Services.HttpServices;
 using LivePlay.Front.MAUI.ViewModels.AccountViewModels;
+using LivePlay.Front.MAUI.ViewModels.AdminViewModels;
 using LivePlay.Front.MAUI.ViewModels.NewsViewModels;
 using LivePlay.Front.MAUI.ViewModels.QuestViewModels;
 using LivePlay.Front.MAUI.ViewModels.ReviewViewModels;
@@ -52,10 +54,10 @@ public static class ServicesRegistrar
         services.AddTransient<ManageQuestPage>();
         services.AddTransient<ManageRewardPage>();
         services.AddTransient<MainCreationRewardPage>();
-        services.AddTransient<AdminProfilePage>();
 
         services.AddTransient<TapeFeedbackPageViewModel>();
         services.AddTransient<QuestionQuestModel>();
+        services.AddTransient<QuestionCreationQuestPageViewModel>();
     }
 
     private static void RegisterUserServices(this IServiceCollection services)
@@ -95,5 +97,10 @@ public static class ServicesRegistrar
         services.AddSingleton<UserHttpService>();
         services.AddSingleton<QuestHttpService>();
         services.AddSingleton<IHttpProvider, HttpProvider>();
+    }
+
+    public static void RegisterMappingServices(this IServiceCollection services)
+    {
+        services.AddAutoMapper(typeof(ErrorMapping));
     }
 }

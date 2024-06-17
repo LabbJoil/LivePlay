@@ -34,34 +34,41 @@ public partial class EnterPage : ContentPage
         LoginPassword.IsPassword = false;
     }
 
-    // -- next edit --
+    // -- SwitchButtons --
 
     private async Task LogInButtonClicked(object sender, EventArgs e)
-    {
-        if (NowStackLayout != LoginStackLayout)
-            await ChangeStackLayout(LoginStackLayout, DirectionAction.Right);
-    }
+        => await ChangeStackLayout(LoginStackLayout, DirectionAction.Right);
 
     private async Task SignUpButtonClicked(object sender, EventArgs e)
-    {
-        if (NowStackLayout != EmailStackLayout)
-            await ChangeStackLayout(EmailStackLayout, DirectionAction.Left);
-    }
+        => await ChangeStackLayout(EmailStackLayout, DirectionAction.Left);
+
+    // -- ViewModel --
 
     public async Task<(Action<object?>, Action)> VerifyEmailFrontProcess()
     {
         await ChangeStackLayout(CodeStackLayout, DirectionAction.Left);
         return (PrintTimer, EndTimer);
+
+        void PrintTimer(object? obj)
+        {
+            if (obj is int fullMilliseconds)
+            {
+                var fullSeconds = fullMilliseconds / 1000;
+                var minutes = fullSeconds / 60;
+                var seconds = fullSeconds % 60;
+                TimerLabel.Text = string.Format("{0:d2}:{1:d2}", minutes, seconds);
+            }
+        }
+
+        void EndTimer()
+        {
+            SendCodeButton.IsEnabled = true;
+            TimerLabel.Text = "00:00";
+        }
     }
 
-    private void CheckCodeEmailFrontProcess(object sender, EventArgs e)
-    {
-        //Random rand = new ();
-        //if (rand.Next(0, 2) == 1)
-        //    SendCodeTimer?.Stop();
-        //else
-        //    DisplayAlert("Code", "Код неправильный", "ok");
-    }
+    public async void CheckCodeEmailFrontProcess()
+        => await ChangeStackLayout(UserInfoStackLayout, DirectionAction.Left);
 
     private void SendCodeAgainButtonClicked(object sender, EventArgs e)
     {
@@ -69,23 +76,6 @@ public partial class EnterPage : ContentPage
         //SendCodeButton.IsEnabled = false;
         //SendCodeTimer = new(DirectionAction.Down, PrintTimer, EndTimer);
         //SendCodeTimer.Start(65, 0);
-    }
-
-    private void PrintTimer(object? obj)
-    {
-        if(obj is int fullMilliseconds)
-        {
-            var fullSeconds = fullMilliseconds / 1000;
-            var minutes = fullSeconds / 60;
-            var seconds = fullSeconds % 60;
-            TimerLabel.Text = string.Format("{0:d2}:{1:d2}", minutes, seconds);
-        }
-    }
-
-    private void EndTimer()
-    {
-        SendCodeButton.IsEnabled = true;
-        TimerLabel.Text = "00:00";
     }
 
     public async Task ChangeStackLayout(StackLayout stackLayoutIn, DirectionAction swipeSlIn)

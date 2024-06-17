@@ -42,15 +42,15 @@ public partial class BaseViewModel(AppDesign designSettings) : ObservableObject
         StopLoadingTokenSourse.Cancel();
     }
 
-    protected static async Task<T?> ResponseProcessing<T>(BaseResponse<T> response)
+    protected static async Task<(bool, T?)> ResponseProcessing<T>(BaseResponse<T> response)
     {
         if (response.IsSuccess && response.Data is T goodResponse)
-            return goodResponse;
+            return (true, goodResponse);
         else if (response.Error is ErrorResponse error)
             await Shell.Current.DisplayAlert(error.ErrorCode, error.Message, "ok");
         else
             await Shell.Current.DisplayAlert("Ошибка сервера", "Что-то пошло не так", "ok");       // INFO: возможно вынести как отдельную констнту или в appsettings
-        return default;
+        return (true, default);
     }
 
     private void GoToLoadingPage()

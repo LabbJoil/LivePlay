@@ -6,7 +6,7 @@
 
     <Grid>
         <Rectangle BackgroundColor="#415A77" VerticalOptions="Fill" HorizontalOptions="Fill"/>
-        <CollectionView Style="{StaticResource ChoiceCollectionView}" ItemsSource="{Binding Source={x:Reference this},Path=PanelItems}">
+        <CollectionView Style="{StaticResource ChoiceCollectionView}" ItemsSource="{Binding Source={x:Reference this}, Path=PanelItems}" >
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Border BackgroundColor="Transparent" Stroke="White" Margin="4,5" Padding="7,0" StrokeThickness="2">

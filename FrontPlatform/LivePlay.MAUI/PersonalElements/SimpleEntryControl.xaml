@@ -14,7 +14,7 @@
 
             <Label x:Name="LabelPlaceholderMini" Grid.Row="0" ZIndex="1" FontSize="13" BackgroundColor="Transparent" Margin="10,0"
                            TextColor="{AppThemeBinding Dark={StaticResource EntryBanerTextDark}, Light={StaticResource EntryBanerTextLight}}"
-                           Text="{Binding Source={x:Reference this},Path=Placeholder}" Padding="0" IsVisible="False" HorizontalOptions="StartAndExpand" VerticalOptions="Start"/>
+                           Text="{Binding Source={x:Reference this}, Path=Placeholder}" Padding="0" IsVisible="False" HorizontalOptions="StartAndExpand" VerticalOptions="Start"/>
 
             <Frame Grid.Row="1" BorderColor="Transparent" Padding="0" CornerRadius="15" 
                    BackgroundColor="{AppThemeBinding Dark={StaticResource EntryBackgroundDark}, Light={StaticResource EntryBackgroundLight}}">
@@ -26,7 +26,7 @@
 
                     <Label x:Name="LabelPlaceholderBase" Grid.Column="0" ZIndex="1" FontSize="16" BackgroundColor="Transparent"
                            TextColor="{AppThemeBinding Dark={StaticResource EntryBanerTextDark}, Light={StaticResource EntryBanerTextLight}}"
-                           Text="{Binding Source={x:Reference this},Path=Placeholder}" Margin="15,0,0,0" IsVisible="True" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                           Text="{Binding Source={x:Reference this}, Path=Placeholder}" Margin="15,0,0,0" IsVisible="True" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
 
                     <Entry x:Name="SimpleEntry" ZIndex="0" Grid.Column="0" VerticalOptions="Center"
                            Text="{Binding Source={x:Reference this},Path=Text}" 

@@ -18,10 +18,10 @@ public partial class TapeQuestItemControl : ContentView
        defaultValue: null,
        defaultBindingMode: BindingMode.TwoWay);
 
-    public object TapeItem
+    public QuestionQuestModel TapeItem
     {
         get => (QuestionQuestModel)GetValue(TapeItemProperty);
-        set { SetValue(TapeItemProperty, value as QuestionQuestModel);}
+        set { SetValue(TapeItemProperty, value);}
     }
 
     public static readonly BindableProperty CommandTapProperty = BindableProperty.Create(

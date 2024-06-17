@@ -5,13 +5,11 @@ using LivePlay.Front.MAUI.ViewModels.QuestViewModels;
 
 namespace LivePlay.Front.MAUI.Models.ViewModels.QuestViewModels;
 
-public partial class InProgressPhotoQuestPageViewModel(AppDesign designSettings, AppStorage deviceStorage) : BaseQuestPageViewModel(designSettings)
+public partial class InProgressPhotoQuestPageViewModel(AppDesign designSettings) : BaseQuestPageViewModel(designSettings)
 {
-    private readonly AppStorage Storage = deviceStorage;
-
     [RelayCommand]
     public async Task ChooseFiles()
     {
-        await Storage.GetSelectItemsStorage();
+        await AppStorage.GetSelectItemsStorage();
     }
 }
