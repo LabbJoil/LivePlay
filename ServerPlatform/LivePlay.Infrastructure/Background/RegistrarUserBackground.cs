@@ -2,7 +2,7 @@
 using LivePlay.Server.Application.CustomExceptions;
 using LivePlay.Server.Application.Facade;
 using LivePlay.Server.Application.Interfaces;
-using LivePlay.Server.Core.Models;
+using LivePlay.Server.Core.Enums;
 using LivePlay.Server.Infrastructure.Providers;
 using Microsoft.Extensions.Hosting;
 
@@ -21,6 +21,7 @@ public class RegistrarUserBackground(EmailProvider emailProvider, RegistrarUserF
 
         BackFacade.CheckCodeRegistrationUser = CheckCodeRegistrationUser;
         BackFacade.AddNewRegistrationUser = AddNewRegistrationUser;
+        BackFacade.GetRegistrationUser = GetVerifityEmail;
 
         while (!stoppingToken.IsCancellationRequested)
         {
@@ -32,28 +33,35 @@ public class RegistrarUserBackground(EmailProvider emailProvider, RegistrarUserF
         }
     }
 
-    private bool CheckCodeRegistrationUser(uint numberRegistration, string checkCode)
+    private string GetVerifityEmail(uint numberRegistration)
+    {
+        foreach (var rum in NewRegistrationUsers)
+            if (rum.Key == numberRegistration)
+                return rum.Value.Email;
+        throw new RequestException(ErrorCode.VerifyEmailError, $"The registration email could not be received.", $"Registration number - {numberRegistration}");
+    }
+
+    private void CheckCodeRegistrationUser(uint numberRegistration, string checkCode)
     {
         if (NewRegistrationUsers.TryGetValue(numberRegistration, out RegistrationUserModel? registrationUser) && registrationUser != null)
-        {
             if (registrationUser.EmailCode == checkCode && !registrationUser.IsApproveEmailCode)
             {
                 registrationUser.IsApproveEmailCode = true;
-                return true;
+                return;
             }
-        }
-        throw new RequestException("Время верификации email истекло", $"Номер регистрации - {numberRegistration}, код проверки - {checkCode}");
+        throw new RequestException(ErrorCode.VerifyEmailError, $"Email verification time has expired", $"Registration number - {numberRegistration}, verification code - {checkCode}");
     }
 
 
-    private uint AddNewRegistrationUser(User newUser)
+    private uint AddNewRegistrationUser(string email)
     {
+        IsEmailInRegistration(email);
         var numberRegistration = GetNumberRegistration();
         string code = GenerateNewCode();
-        EmailProvider.SendCodeEmail(newUser.Email ?? throw new Exception("Email is not provided"), code);
+        EmailProvider.SendCodeEmail(email, code);
 
         var registrationUser = new RegistrationUserModel {
-            RegistrationUser = newUser,
+            Email = email,
             EmailCode = code
         };
 
@@ -64,8 +72,8 @@ public class RegistrarUserBackground(EmailProvider emailProvider, RegistrarUserF
     private void IsEmailInRegistration(string email)
     {
         foreach(RegistrationUserModel rum in NewRegistrationUsers.Values)
-            if (rum.RegistrationUser.Email == email && rum.StartValidation.AddMinutes(1) < DateTime.Now)
-                throw new Exception("The time has not expired yet to repeat the email validation");
+            if (rum.Email == email && rum.StartValidation.AddMinutes(1) < DateTime.Now)
+                throw new RequestException(ErrorCode.VerifyEmailError, "The time has not expired yet to repeat the email validation");
     }
 
     private uint GetNumberRegistration()
@@ -74,7 +82,7 @@ public class RegistrarUserBackground(EmailProvider emailProvider, RegistrarUserF
             if (!NewRegistrationUsers.TryGetValue(nr, out var _))
                 return nr;
 
-        throw new Exception("Something wrong. All numberRegistration busy, but it is uint.");
+        throw new ServerException(ErrorCode.ServerError, "Something wrong. All numberRegistration busy, but it is uint.");
     }
 
     private static string GenerateNewCode()
@@ -90,7 +98,7 @@ public class RegistrarUserBackground(EmailProvider emailProvider, RegistrarUserF
 
     private class RegistrationUserModel
     {
-        public required User RegistrationUser { get; set; }
+        public required string Email { get; set; }
         public required string EmailCode { get; set; }
         public DateTime StartValidation { get; } = DateTime.Now;
         public bool IsApproveEmailCode { get; set; } = false;

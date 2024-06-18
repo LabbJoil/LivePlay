@@ -12,8 +12,9 @@ public class PermissionProvider(Politic needPolitic) : IAuthorizationRequirement
     {
         return RequirePolitic switch
         {
-            Politic.OnlyRead => [Permission.Read],
-            Politic.Edit => [Permission.Update, Permission.Read, Permission.Create, Permission.Delete],
+            Politic.EditQuest => [Permission.ReadQuest, Permission.CreateQuest, Permission.UpdateSelf, Permission.DeleteQuest],
+            Politic.EditCoupon => [Permission.ReadCoupon, Permission.CreateCoupon, Permission.UpdateCoupon, Permission.DeleteCoupon],
+            Politic.EditPersonalInfo => [Permission.UpdateSelf, Permission.DeleteSelf],
             _ => throw new NotImplementedException(),
         };
     }

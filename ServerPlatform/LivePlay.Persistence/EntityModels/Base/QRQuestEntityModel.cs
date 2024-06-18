@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
 
 namespace LivePlay.Server.Persistence.EntityModels.Base;
 
@@ -15,7 +12,7 @@ public class QRQuestEntityModel
     [Required]
     public int QuestId { get; set; }
     [Required]
-    public byte[] QRInfo { get; set; }
+    public byte[]? QRInfo { get; set; }
 
     public required QuestEntityModel Quest { get; set; }
 }

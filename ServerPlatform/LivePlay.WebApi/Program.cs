@@ -15,6 +15,7 @@ services.RegisterAppServices();
 services.RegisterRepositories();
 services.RegisterInfrastructure();
 services.RegisterBackgrounds();
+services.RegisterMapping();
 
 services.AddApiAuthentication(configuration);
 services.AddApiPolitics();

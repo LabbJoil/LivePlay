@@ -1,4 +1,5 @@
 ﻿
+using LivePlay.Server.Core.Options;
 using LivePlay.Server.Infrastructure;
 using LivePlay.Server.Infrastructure.Providers;
 using LivePlay.Server.Persistence;
@@ -20,6 +21,7 @@ public static class ConfigurationRegistrar
     {
         builder.Services.Configure<RolePermissionOptions>(builder.Configuration.GetSection(nameof(RolePermissionOptions)));
         builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection(nameof(JwtOptions)));
-        builder.Services.Configure<EmailProvider>(builder.Configuration.GetSection(nameof(EmailProvider)));
+        builder.Services.Configure<SmtpClientOptions>(builder.Configuration.GetSection(nameof(SmtpClientOptions)));
+        builder.Services.Configure<QROptions>(builder.Configuration.GetSection(nameof(QROptions)));
     }
 }

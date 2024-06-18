@@ -15,6 +15,5 @@ public class HotelEntityModel
     public required string Address { get; set; }
     public string? PhoneNumber { get; set; }
 
-    public ICollection<UserEntityModel> Users { get; set; } = [];
     public ICollection<QuestEntityModel> Quests { get; set; } = [];
 }

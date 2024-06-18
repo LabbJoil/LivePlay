@@ -20,7 +20,9 @@ public class QuestionQuestEntityModel
     [Required]
     public required string ThirdAnswer { get; set; }
     [Required]
-    public required string FouthAnswer { get; set; }
+    public required string FourthAnswer { get; set; }
+    [Required]
+    public required string RightAnswer { get; set; }
 
     public required QuestEntityModel Quest { get; set; }
 }

@@ -5,6 +5,7 @@ namespace LivePlay.Server.Application.Facade;
 
 public class RegistrarUserFacade
 {
-    public Func<uint, string, bool>? CheckCodeRegistrationUser;
-    public Func<User, uint>? AddNewRegistrationUser;
+    public Action<uint, string>? CheckCodeRegistrationUser;
+    public Func<string, uint>? AddNewRegistrationUser;
+    public Func<uint, string>? GetRegistrationUser;
 }

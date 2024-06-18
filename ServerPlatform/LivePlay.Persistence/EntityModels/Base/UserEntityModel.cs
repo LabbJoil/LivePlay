@@ -17,7 +17,7 @@ public class UserEntityModel
     public required string FirstName { get; set; }
     public string? LastName { get; set; }
     [Required]
-    public DateTime JoinDate { get; set; } = DateTime.UtcNow;
+    public required DateTime JoinDate { get; set; } = DateTime.UtcNow;
 
     public ICollection<CouponEntityModel> Coupons { get; set; } = [];
     public ICollection<RoleEntityModel> Roles { get; set; } = [];

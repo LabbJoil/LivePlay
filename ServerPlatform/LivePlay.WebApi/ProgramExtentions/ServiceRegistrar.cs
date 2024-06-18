@@ -5,6 +5,10 @@ using LivePlay.Server.Application.Services;
 using LivePlay.Server.Infrastructure.Providers;
 using LivePlay.Server.Persistence.Repositories;
 using LivePlay.Server.Application.Facade;
+using LivePlay.Server.Application.Mapping;
+using LivePlay.Server.WebApi.Mapping;
+using LivePlay.Server.Core.Interfaces;
+using LivePlay.Server.Infrastructure;
 
 namespace LivePlay.Server.WebApi.ProgramExtentions;
 
@@ -24,7 +28,7 @@ internal static class ServiceRegistrar
 
     public static void RegisterRepositories(this IServiceCollection services)
     {
-        services.AddScoped<UserRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<PermissionRepository>();
     }
 
@@ -36,6 +40,13 @@ internal static class ServiceRegistrar
     public static void RegisterInfrastructure(this IServiceCollection services)
     {
         services.AddSingleton<IJwtProvider, JwtProvider>();
+        services.AddSingleton<IQRProvider, QRProvider>();
+        services.AddSingleton<IPasswordHasher, PasswordHasher>();
         services.AddSingleton<EmailProvider>();
+    }
+
+    public static void RegisterMapping(this IServiceCollection services)
+    {
+        services.AddAutoMapper(typeof(UserUserEntityMapping), typeof(UserUpdateUserMapping), typeof(UserRegistrationUserMapping));
     }
 }

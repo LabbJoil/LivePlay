@@ -36,9 +36,11 @@ public static class AuthExtention
     public static void AddApiPolitics(this IServiceCollection services)
     {
         services.AddAuthorizationBuilder()
-            .AddPolicy(nameof(Politic.OnlyRead), policy =>
-                 policy.AddRequirements(new PermissionProvider(Politic.OnlyRead)))
-            .AddPolicy(nameof(Politic.Edit), policy =>
-                 policy.AddRequirements(new PermissionProvider(Politic.Edit)));
+            .AddPolicy(nameof(Politic.EditQuest), policy =>
+                 policy.AddRequirements(new PermissionProvider(Politic.EditQuest)))
+            .AddPolicy(nameof(Politic.EditCoupon), policy =>
+                 policy.AddRequirements(new PermissionProvider(Politic.EditCoupon)))
+            .AddPolicy(nameof(Politic.EditPersonalInfo), policy =>
+                 policy.AddRequirements(new PermissionProvider(Politic.EditPersonalInfo)));
     }
 }

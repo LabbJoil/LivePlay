@@ -1,8 +1,8 @@
 ﻿
-using LivePlay.Server.Application.Interfaces;
+using AutoMapper;
 using LivePlay.Server.Application.Services;
 using LivePlay.Server.Core.Enums;
-using LivePlay.Server.Persistence.Repositories;
+using LivePlay.Server.Core.Models;
 using LivePlay.Server.WebApi.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,38 +11,64 @@ namespace LivePlay.Server.WebApi.Controllers
 {
     [Route("[controller]/")]
     [ApiController]
-    public class UserController(UserService userService) : ControllerBase
+    public class UserController(UserService userService, IMapper mapper) : ControllerBase
     {
-        private readonly UserService UserService = userService;
+        private readonly UserService _userService = userService;
+        private readonly IMapper _mapper = mapper;
 
         [HttpPost("/login")]
-        public async Task<IActionResult> LoginUser([FromBody] LoginUserRequest userModel)
+        public async Task<IActionResult> LoginUser([FromBody] LoginUserRequest loginUser)
         {
-            try
-            {
-                //var token = await UserDBHelper.RegisterUser(userModel.Email, userModel.Password, userModel.FirstName);
-                //HttpContext.Response.Cookies.Append("tok-cookies", token);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex);
-            }
+            await _userService.LogInUser(loginUser.Email, loginUser.Password);
+            return NoContent();
         }
 
         [HttpGet("/verifyemail/{email}")]
-        public IActionResult Get(string email)
+        public async Task<IActionResult> VerifyEmail(string email)
         {
-            var numberRegistration = UserService.VerifyEmail(email);
+            var numberRegistration = await _userService.VerifyEmail(email);
             return Ok(numberRegistration);
         }
 
-        [HttpGet("/verifyemailcode/{numberRegistration}/{code}"), Authorize(Policy = nameof(Politic.Edit))]
-        public IActionResult GetAdmin(uint numberRegistration, string code)
+        [HttpGet("/verifyemailcode/{numberRegistration}/{code}")]
+        public IActionResult VerifyEmailCode(uint numberRegistration, string code)
         {
-            if (UserService.VerifyCodeEmail(numberRegistration, code))
-                return NoContent();
-            return BadRequest();
+            _userService.VerifyCodeEmail(numberRegistration, code);
+            return NoContent();
+        }
+
+        [HttpPost("/registrationuser/{numberRegistration}")]
+        public async Task<IActionResult> RegistrationUser(uint numberRegistration, [FromBody] RegistrationUserRequest newUser)
+        {
+            User user = _mapper.Map<User>(newUser);
+            string token = await _userService.RegisterUser(numberRegistration, user);
+            HttpContext.Response.Cookies.Append("tok-cookies", token);
+            return NoContent();
+        }
+
+        [HttpPut("/editinfo")]
+        [Authorize(Policy = nameof(Politic.EditPersonalInfo))]
+        public async Task<IActionResult> EditInfo([FromBody] UpdateUserRequest updateUser)
+        {
+            var user = _mapper.Map<User>(updateUser);
+            await _userService.EditUser(HttpContext.User, user);
+            return NoContent();
+        }
+
+        [HttpDelete("/deleteuser")]
+        [Authorize(Policy=nameof(Politic.EditPersonalInfo))]
+        public async Task<IActionResult> DeleteUser()
+        {
+            await _userService.DeleteUser(HttpContext.User);
+            return NoContent();
+        }
+
+        [HttpGet("/getpersonalqr")]
+        [Authorize(Policy = nameof(Politic.EditPersonalInfo))]
+        public IActionResult GetPersonalQR()
+        {
+            string qr = _userService.GetQRCode(HttpContext.User);
+            return Ok(qr);
         }
     }
 }

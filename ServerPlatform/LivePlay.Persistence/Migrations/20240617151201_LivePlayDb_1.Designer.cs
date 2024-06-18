@@ -3,6 +3,7 @@ using System;
 using LivePlay.Server.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LivePlay.Server.Persistence.Migrations
 {
     [DbContext(typeof(LivePlayDbContext))]
-    partial class LivePlayDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240617151201_LivePlayDb_1")]
+    partial class LivePlayDb_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -185,52 +188,22 @@ namespace LivePlay.Server.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "ReadQuest"
+                            Name = "Read"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "CreateQuest"
+                            Name = "Create"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "DeleteQuest"
+                            Name = "Delete"
                         },
                         new
                         {
                             Id = 4,
-                            Name = "UpdateQuest"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "ReadCoupon"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "CreateCoupon"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "DeleteCoupon"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "UpdateCoupon"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Name = "UpdateSelf"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Name = "DeleteSelf"
+                            Name = "Update"
                         });
                 });
 
@@ -311,7 +284,7 @@ namespace LivePlay.Server.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("FourthAnswer")
+                    b.Property<string>("FouthAnswer")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -319,10 +292,6 @@ namespace LivePlay.Server.Persistence.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("Question")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("RightAnswer")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -433,17 +402,17 @@ namespace LivePlay.Server.Persistence.Migrations
                         new
                         {
                             RoleId = 1,
-                            PermissionId = 1
-                        },
-                        new
-                        {
-                            RoleId = 1,
                             PermissionId = 2
                         },
                         new
                         {
                             RoleId = 1,
-                            PermissionId = 9
+                            PermissionId = 1
+                        },
+                        new
+                        {
+                            RoleId = 1,
+                            PermissionId = 4
                         },
                         new
                         {
@@ -452,43 +421,8 @@ namespace LivePlay.Server.Persistence.Migrations
                         },
                         new
                         {
-                            RoleId = 1,
-                            PermissionId = 5
-                        },
-                        new
-                        {
-                            RoleId = 1,
-                            PermissionId = 6
-                        },
-                        new
-                        {
-                            RoleId = 1,
-                            PermissionId = 8
-                        },
-                        new
-                        {
-                            RoleId = 1,
-                            PermissionId = 7
-                        },
-                        new
-                        {
                             RoleId = 2,
                             PermissionId = 1
-                        },
-                        new
-                        {
-                            RoleId = 2,
-                            PermissionId = 5
-                        },
-                        new
-                        {
-                            RoleId = 2,
-                            PermissionId = 9
-                        },
-                        new
-                        {
-                            RoleId = 2,
-                            PermissionId = 10
                         });
                 });
 

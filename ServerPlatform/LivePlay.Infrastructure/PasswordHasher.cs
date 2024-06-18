@@ -1,13 +1,14 @@
 ﻿
+using LivePlay.Server.Application.Interfaces;
 using System.Security.Cryptography;
 
 namespace LivePlay.Server.Infrastructure;
 
-public static class PasswordHasher
+public class PasswordHasher : IPasswordHasher
 {
     private static readonly byte[] SaltPassword = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08];
 
-    public static string HashPassword(string password)
+    public string HashPassword(string password)
     {
         using var pbkdf2 = new Rfc2898DeriveBytes(password, SaltPassword, 10000, HashAlgorithmName.SHA384);
         byte[] hash = pbkdf2.GetBytes(32);
@@ -15,6 +16,6 @@ public static class PasswordHasher
         return hashPassword;
     }
 
-    public static bool Verify(string password, string dbHashPassword)
+    public bool Verify(string password, string dbHashPassword)
         => dbHashPassword == HashPassword(password);
 }

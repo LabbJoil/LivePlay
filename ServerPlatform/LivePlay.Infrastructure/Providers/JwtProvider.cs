@@ -1,10 +1,12 @@
 ﻿
+using LivePlay.Server.Application.CustomExceptions;
 using LivePlay.Server.Application.Interfaces;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using LivePlay.Server.Core.Enums;
 
 namespace LivePlay.Server.Infrastructure.Providers;
 
@@ -42,7 +44,7 @@ public class JwtProvider(IOptions<JwtOptions> options) : IJwtProvider
     {
         var userId = claimsPrincipal.FindFirst(c => c.Type == "userId");
         if (userId == null || !Guid.TryParse(userId.Value, out var id))
-            throw new Exception("ID user not transferred");
+            throw new RequestException(ErrorCode.ClaimsParse, "The user could not be found", "ID user not transferred");
         return id;
     }
 
