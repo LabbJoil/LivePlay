@@ -52,7 +52,6 @@ public class RegistrarUserBackground(EmailProvider emailProvider, RegistrarUserF
         throw new RequestException(ErrorCode.VerifyEmailError, $"Email verification time has expired", $"Registration number - {numberRegistration}, verification code - {checkCode}");
     }
 
-
     private uint AddNewRegistrationUser(string email)
     {
         IsEmailInRegistration(email);

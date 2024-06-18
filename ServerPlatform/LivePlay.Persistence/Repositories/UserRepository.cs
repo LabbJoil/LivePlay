@@ -67,5 +67,6 @@ public class UserRepository(LivePlayDbContext dbContext, IMapper mapper) : IUser
         string hash = user.PasswordHash;
         user = _mapper.Map<UserEntityModel>(newUser);
         user.PasswordHash = hash;
+        await _dbContext.SaveChangesAsync();
     }
 }

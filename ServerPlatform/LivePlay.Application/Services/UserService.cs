@@ -44,9 +44,9 @@ public class UserService(IUserRepository repository, IJwtProvider jwtProvider, I
 
     public async Task<string> RegisterUser(uint numberRegistration, User user)
     {
-        //user.Password = _passwordHasher.HashPassword(user.Password!);
-        //user.Email = RegistrarUserBackFacade.GetRegistrationUser?.Invoke(numberRegistration)
-        //    ?? throw new ServerException(ErrorCode.VerifyEmailError, $"There is no access to the back service throw facade {nameof(RegistrarUserFacade)}");
+        user.Password = _passwordHasher.HashPassword(user.Password!);
+        user.Email = RegistrarUserBackFacade.GetRegistrationUser?.Invoke(numberRegistration)
+            ?? throw new ServerException(ErrorCode.VerifyEmailError, $"There is no access to the back service throw facade {nameof(RegistrarUserFacade)}");
         var userId = await _userRepository.AddUser(user);
         var userClaims = _jwtProvider.SetUserId(userId.ToString());
         return _jwtProvider.GenerateNewToken(userClaims);
