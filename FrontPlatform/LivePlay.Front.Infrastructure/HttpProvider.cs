@@ -4,7 +4,6 @@ using LivePlay.Front.Application.Interfaces;
 using LivePlay.Front.Application.Models.ResponseModel;
 using LivePlay.Front.Core.Options;
 using Microsoft.Extensions.Options;
-using System.Data;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Text;

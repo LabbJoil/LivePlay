@@ -1,6 +1,5 @@
 ﻿
 using LivePlay.Front.Core.Enums;
-using LivePlay.Front.Core.Services;
 using LivePlay.Front.MAUI.Models.ViewModels.AccountViewModels;
 
 namespace LivePlay.Front.MAUI.Pages;
@@ -69,14 +68,6 @@ public partial class EnterPage : ContentPage
 
     public async void CheckCodeEmailFrontProcess()
         => await ChangeStackLayout(UserInfoStackLayout, DirectionAction.Left);
-
-    private void SendCodeAgainButtonClicked(object sender, EventArgs e)
-    {
-        //SendCodeTimer?.Stop();
-        //SendCodeButton.IsEnabled = false;
-        //SendCodeTimer = new(DirectionAction.Down, PrintTimer, EndTimer);
-        //SendCodeTimer.Start(65, 0);
-    }
 
     public async Task ChangeStackLayout(StackLayout stackLayoutIn, DirectionAction swipeSlIn)
     {

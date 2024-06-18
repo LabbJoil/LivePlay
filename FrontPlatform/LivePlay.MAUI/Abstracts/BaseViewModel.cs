@@ -6,6 +6,7 @@ using LivePlay.Front.Core.Enums;
 using LivePlay.Front.Application.Models.ResponseModel;
 using LivePlay.Front.Application.Contracts.ResponseModel;
 using LivePlay.Front.Application;
+using LivePlay.Front.MAUI.Pages;
 
 namespace LivePlay.Front.MAUI.Abstracts;
 
@@ -61,6 +62,6 @@ public partial class BaseViewModel(AppDesign designSettings) : ObservableObject
             { "StopingAnimationSource", StopLoadingTokenSourse },
         };
 
-        Shell.Current.GoToAsync("/LoadingPage", navigationParameter);   // INFO: Возможно стоит перенести в MAUI
+        Shell.Current.GoToAsync($"/{nameof(LoadingPage)}", navigationParameter);   // INFO: Возможно стоит перенести в MAUI
     }
 }
