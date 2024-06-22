@@ -27,10 +27,10 @@ public class QuestEntityModel
     [Required]
     public DateTime? FinalDate { get; set; }
 
-    public required QuestionQuestEntityModel QuestionQuest { get; set; }
-    public required QRQuestEntityModel QRQuest { get; set; }
-    public required CreativeQuestEntityModel CreativeQuest { get; set; }
+    public QRQuestEntityModel? QRQuest { get; set; }
+    public CreativeQuestEntityModel? CreativeQuest { get; set; }
 
+    public ICollection<QuestionQuestEntityModel> QuestionQuests { get; set; } = [];
     public ICollection<UserEntityModel> Users { get; set; } = [];
     public ICollection<HotelEntityModel> Hotels { get; set; } = [];
 }

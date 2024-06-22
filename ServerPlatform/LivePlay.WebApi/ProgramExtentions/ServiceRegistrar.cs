@@ -47,6 +47,6 @@ internal static class ServiceRegistrar
 
     public static void RegisterMapping(this IServiceCollection services)
     {
-        services.AddAutoMapper(typeof(UserUserEntityMapping), typeof(UserUpdateUserMapping), typeof(UserRegistrationUserMapping));
+        services.AddAutoMapper(typeof(UserEntityMapping), typeof(UserUpdateUserMapping), typeof(UserRegistrationUserMapping));
     }
 }

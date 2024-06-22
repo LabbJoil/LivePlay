@@ -1,4 +1,4 @@
-﻿namespace LivePlay.Server.WebApi.Contracts;
+﻿namespace LivePlay.Server.WebApi.Contracts.Requests;
 
 public class LoginUserRequest
 {

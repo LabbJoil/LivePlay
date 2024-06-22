@@ -3,7 +3,7 @@ using AutoMapper;
 using LivePlay.Server.Application.Services;
 using LivePlay.Server.Core.Enums;
 using LivePlay.Server.Core.Models;
-using LivePlay.Server.WebApi.Contracts;
+using LivePlay.Server.WebApi.Contracts.Requests;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,7 +19,8 @@ namespace LivePlay.Server.WebApi.Controllers
         [HttpPost("/login")]
         public async Task<IActionResult> LoginUser([FromBody] LoginUserRequest loginUser)
         {
-            await _userService.LogInUser(loginUser.Email, loginUser.Password);
+            var token = await _userService.LogInUser(loginUser.Email, loginUser.Password);
+            HttpContext.Response.Cookies.Append("tok-cookies", token);
             return NoContent();
         }
 

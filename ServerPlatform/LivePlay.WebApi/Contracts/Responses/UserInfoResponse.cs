@@ -1,9 +1,8 @@
 ﻿
-namespace LivePlay.Server.Core.Models;
+namespace LivePlay.Server.WebApi.Contracts.Responses;
 
-public class User
+public class UserInfoResponse
 {
-    public string? Password { get; set; }
     public string? Email { get; set; }
     public string? FirstName { get; set; }
     public string? LastName { get; set; }

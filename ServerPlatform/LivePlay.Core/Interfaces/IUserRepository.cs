@@ -12,7 +12,7 @@ public interface IUserRepository
     public Task<Guid> AddUser(User user);
     public Task<bool> CheckUserByEmail(string email);
     public Task<User> GetUserById(Guid id);
-    public Task<User> GetUserByEmail(string email);
+    public Task<(User, Guid)> GetUserByEmail(string email);
     public Task DeleteUser(Guid idUser);
     public Task EditUser(Guid idUser, User newUser);
 }

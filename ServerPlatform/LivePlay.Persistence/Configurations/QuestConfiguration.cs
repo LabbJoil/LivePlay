@@ -12,9 +12,9 @@ public class QuestConfiguration : IEntityTypeConfiguration<QuestEntityModel>
     {
         builder.HasKey(q => q.Id);
 
-        builder.HasOne(q => q.QuestionQuest)
+        builder.HasMany(q => q.QuestionQuests)
             .WithOne(qq => qq.Quest)
-            .HasForeignKey<QuestionQuestEntityModel>(qq => qq.QuestId);
+            .HasForeignKey(qq => qq.QuestId);
 
         builder.HasOne(q => q.QRQuest)
             .WithOne(qrq => qrq.Quest)
