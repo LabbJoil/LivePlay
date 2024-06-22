@@ -19,7 +19,7 @@ public partial class AppShell : Shell
         DesignSettings = designSettings;
         designSettings.ChangeCountCoins = ChangeCountCoins;
 
-        Routing.RegisterRoute(nameof(InProgressPhotoQuestPage), typeof(InProgressPhotoQuestPage));
+        Routing.RegisterRoute(nameof(InProgressDrawingQuestPage), typeof(InProgressDrawingQuestPage));
         Routing.RegisterRoute(nameof(InProgressQRQuestPage), typeof(InProgressQRQuestPage));
         Routing.RegisterRoute(nameof(InProgressQuizQuestPage), typeof(InProgressQuizQuestPage));
         Routing.RegisterRoute(nameof(NotStartedQuestPage), typeof(NotStartedQuestPage));

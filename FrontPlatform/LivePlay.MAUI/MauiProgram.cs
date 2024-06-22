@@ -25,6 +25,7 @@ public static class MauiProgram
                 fonts.AddFont("Raleway-Bold.ttf", "RalewayBold");
             })
             .UseBarcodeReader()
+            .UseMauiMaps()
             .AddAppConfigurations();
 
         builder.RegisterConfiguration();

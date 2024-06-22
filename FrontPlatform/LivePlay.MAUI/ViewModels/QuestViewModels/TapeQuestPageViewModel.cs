@@ -81,7 +81,7 @@ public partial class TapeQuestPageViewModel : MainTapeViewModel
                 break;
 
             case TypeQuest.Search:
-                await Shell.Current.GoToAsync($"{nameof(InProgressPhotoQuestPage)}", shellParameters);
+                await Shell.Current.GoToAsync($"{nameof(InProgressDrawingQuestPage)}", shellParameters);
                 break;
         }
     }

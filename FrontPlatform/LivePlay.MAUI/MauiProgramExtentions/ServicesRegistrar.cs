@@ -68,7 +68,7 @@ public static class ServicesRegistrar
         services.AddTransient<CouponInfoPage>();
         services.AddTransient<TapeQuestPage>();
         services.AddTransient<NotStartedQuestPage>();
-        services.AddTransient<InProgressPhotoQuestPage>();
+        services.AddTransient<InProgressDrawingQuestPage>();
         services.AddTransient<InProgressQRQuestPage>();
         services.AddTransient<InProgressQuizQuestPage>();
         services.AddTransient<GettingStatisticsPage>();
