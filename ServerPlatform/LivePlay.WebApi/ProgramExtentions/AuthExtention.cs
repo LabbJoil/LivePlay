@@ -40,7 +40,7 @@ public static class AuthExtention
                  policy.AddRequirements(new PermissionProvider(Politic.EditQuest)))
             .AddPolicy(nameof(Politic.EditCoupon), policy =>
                  policy.AddRequirements(new PermissionProvider(Politic.EditCoupon)))
-            .AddPolicy(nameof(Politic.EditPersonalInfo), policy =>
-                 policy.AddRequirements(new PermissionProvider(Politic.EditPersonalInfo)));
+            .AddPolicy(nameof(Politic.PersonalInfo), policy =>
+                 policy.AddRequirements(new PermissionProvider(Politic.PersonalInfo)));
     }
 }

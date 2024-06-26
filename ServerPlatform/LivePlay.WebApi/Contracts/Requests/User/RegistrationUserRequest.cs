@@ -1,4 +1,4 @@
-﻿namespace LivePlay.Server.WebApi.Contracts.Requests;
+﻿namespace LivePlay.Server.WebApi.Contracts.Requests.User;
 
 public class RegistrationUserRequest
 {

@@ -1,11 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using AutoMapper;
+using LivePlay.Server.Core.Models;
+using LivePlay.Server.Persistence.EntityModels.Base;
 
 namespace LivePlay.Server.Persistence.Mapping;
 
-public class QuestionQuestEntityMapping
+public class QuestionQuestEntityMapping : Profile
 {
+    public QuestionQuestEntityMapping()
+    {
+        CreateMap<QuestionQuestEntityModel, QuestionQuest>()
+            .ReverseMap();
+    }
 }

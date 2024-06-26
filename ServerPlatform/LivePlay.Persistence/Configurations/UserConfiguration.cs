@@ -33,5 +33,9 @@ public class UserConfiguration : IEntityTypeConfiguration<UserEntityModel>
         builder.HasMany(u => u.Feedbacks)
             .WithOne(f => f.User)
             .HasForeignKey(f => f.UserId);
+
+        builder.HasMany(u => u.CreativeQuests)
+            .WithOne(cq => cq.User)
+            .HasForeignKey(f => f.UserId);
     }
 }

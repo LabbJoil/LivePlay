@@ -25,27 +25,33 @@ public class UserRepository(LivePlayDbContext dbContext, IMapper mapper) : IUser
             return false;
     }
 
-    public async Task<User> GetUserById(Guid id)
+    public async Task<User> GetById(Guid id)
+    {
+        var userEntity = await GetEntryById(id);
+        User user = _mapper.Map<User>(userEntity);
+        return user;
+    }
+
+    internal async Task<UserEntityModel> GetEntryById(Guid id)
     {
         var userEntity = await _dbContext.Users
             .AsNoTracking()
             .FirstOrDefaultAsync(u => u.Id == id)
             ?? throw new RequestException(ErrorCode.DbGetError, $"The user could not be found", $"Not found user with id - {id}");
-        User user = _mapper.Map<User>(userEntity);
-        return user;
+        return userEntity;
     }
-    
-    public async Task<(User, Guid)> GetUserByEmail(string email)
+
+    public async Task<User> GetByEmail(string email)
     {
         var userEntity = await _dbContext.Users
             .AsNoTracking()
             .FirstOrDefaultAsync(u => u.Email == email)
             ?? throw new RequestException(ErrorCode.DbGetError, $"No user with email: {email}", $"Not found user with email - {email}");
         User user = _mapper.Map<User>(userEntity);
-        return (user, userEntity.Id);
+        return user;
     }
 
-    public async Task<Guid> AddUser(User user)
+    public async Task<Guid> Add(User user)
     {
         var role = await _dbContext.Roles
             .FirstOrDefaultAsync(r => r.Id == (int)Role.User)
@@ -59,7 +65,7 @@ public class UserRepository(LivePlayDbContext dbContext, IMapper mapper) : IUser
         return userEntity.Id;
     }
 
-    public async Task DeleteUser(Guid id)
+    public async Task Delete(Guid id)
     {
         UserEntityModel userEntity = await _dbContext.Users
             .FindAsync(id)
@@ -68,7 +74,7 @@ public class UserRepository(LivePlayDbContext dbContext, IMapper mapper) : IUser
         await _dbContext.SaveChangesAsync();
     }
 
-    public async Task EditUser(Guid id, User newUser)
+    public async Task Edit(Guid id, User newUser)
     {
         UserEntityModel userEntity = await _dbContext.Users
             .FindAsync(id)
@@ -77,5 +83,19 @@ public class UserRepository(LivePlayDbContext dbContext, IMapper mapper) : IUser
         userEntity = _mapper.Map<UserEntityModel>(newUser);
         userEntity.PasswordHash = hash;
         await _dbContext.SaveChangesAsync();
+    }
+
+    public async Task<int> IncreasePoints(Guid userId, int newCountPoints)
+    {
+        var userEntity = await _dbContext.Users
+            .FirstOrDefaultAsync(u => u.Id == userId)
+            ?? throw new RequestException(ErrorCode.DbGetError, $"No user with id: {userId}", $"Not found user with id - {userId}");
+
+        var newUserPoints = userEntity.Points + newCountPoints;
+        if (newUserPoints < 0)
+            throw new RequestException(ErrorCode.UserPoints, "Insufficient funds");
+        userEntity.Points= newUserPoints;
+        await _dbContext.SaveChangesAsync();
+        return userEntity.Points;
     }
 }

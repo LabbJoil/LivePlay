@@ -17,7 +17,7 @@ public class QuestEntityModel
     [Required]
     public string DescriptionFull { get; set; } = string.Empty;
     [Required]
-    public byte[]? Image { get; set; }
+    public byte[] Image { get; set; } = [];
     [Required]
     public TypeQuest Type { get; set; }
     [Required]

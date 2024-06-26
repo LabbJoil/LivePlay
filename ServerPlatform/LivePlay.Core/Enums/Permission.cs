@@ -13,5 +13,6 @@ public enum Permission
     UpdateCoupon = 8,
 
     UpdateSelf = 9,
-    DeleteSelf = 10
+    DeleteSelf = 10,
+    GetSelf = 11
 }

@@ -118,37 +118,11 @@ namespace LivePlay.Server.Persistence.Migrations
                     Email = table.Column<string>(type: "text", nullable: false),
                     FirstName = table.Column<string>(type: "text", nullable: false),
                     LastName = table.Column<string>(type: "text", nullable: true),
-                    JoinDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    HotelEntityModelId = table.Column<int>(type: "integer", nullable: true)
+                    JoinDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_User", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_User_Hotel_HotelEntityModelId",
-                        column: x => x.HotelEntityModelId,
-                        principalTable: "Hotel",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "CreativeQuest",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    QuestId = table.Column<int>(type: "integer", nullable: false),
-                    PictureInfo = table.Column<byte[]>(type: "bytea", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CreativeQuest", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_CreativeQuest_Quest_QuestId",
-                        column: x => x.QuestId,
-                        principalTable: "Quest",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -206,7 +180,8 @@ namespace LivePlay.Server.Persistence.Migrations
                     FirstAnswer = table.Column<string>(type: "text", nullable: false),
                     SecondAnswer = table.Column<string>(type: "text", nullable: false),
                     ThirdAnswer = table.Column<string>(type: "text", nullable: false),
-                    FouthAnswer = table.Column<string>(type: "text", nullable: false)
+                    FourthAnswer = table.Column<string>(type: "text", nullable: false),
+                    RightAnswer = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -239,6 +214,33 @@ namespace LivePlay.Server.Persistence.Migrations
                         name: "FK_RolePermission_Role_RoleId",
                         column: x => x.RoleId,
                         principalTable: "Role",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CreativeQuest",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    QuestId = table.Column<int>(type: "integer", nullable: false),
+                    UserId = table.Column<Guid>(type: "uuid", nullable: false),
+                    PictureInfo = table.Column<byte[]>(type: "bytea", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CreativeQuest", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CreativeQuest_Quest_QuestId",
+                        column: x => x.QuestId,
+                        principalTable: "Quest",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CreativeQuest_User_UserId",
+                        column: x => x.UserId,
+                        principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -345,10 +347,17 @@ namespace LivePlay.Server.Persistence.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { 1, "Read" },
-                    { 2, "Create" },
-                    { 3, "Delete" },
-                    { 4, "Update" }
+                    { 1, "ReadQuest" },
+                    { 2, "CreateQuest" },
+                    { 3, "DeleteQuest" },
+                    { 4, "UpdateQuest" },
+                    { 5, "ReadCoupon" },
+                    { 6, "CreateCoupon" },
+                    { 7, "DeleteCoupon" },
+                    { 8, "UpdateCoupon" },
+                    { 9, "UpdateSelf" },
+                    { 10, "DeleteSelf" },
+                    { 11, "GetSelf" }
                 });
 
             migrationBuilder.InsertData(
@@ -368,8 +377,17 @@ namespace LivePlay.Server.Persistence.Migrations
                     { 1, 1 },
                     { 2, 1 },
                     { 3, 1 },
-                    { 4, 1 },
-                    { 1, 2 }
+                    { 5, 1 },
+                    { 6, 1 },
+                    { 7, 1 },
+                    { 8, 1 },
+                    { 9, 1 },
+                    { 11, 1 },
+                    { 1, 2 },
+                    { 5, 2 },
+                    { 9, 2 },
+                    { 10, 2 },
+                    { 11, 2 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -377,6 +395,11 @@ namespace LivePlay.Server.Persistence.Migrations
                 table: "CreativeQuest",
                 column: "QuestId",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CreativeQuest_UserId",
+                table: "CreativeQuest",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Feedback_UserId",
@@ -397,18 +420,12 @@ namespace LivePlay.Server.Persistence.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_QuestionQuest_QuestId",
                 table: "QuestionQuest",
-                column: "QuestId",
-                unique: true);
+                column: "QuestId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RolePermission_PermissionId",
                 table: "RolePermission",
                 column: "PermissionId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_User_HotelEntityModelId",
-                table: "User",
-                column: "HotelEntityModelId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserCoupon_UserId",
@@ -460,6 +477,9 @@ namespace LivePlay.Server.Persistence.Migrations
                 name: "UserRole");
 
             migrationBuilder.DropTable(
+                name: "Hotel");
+
+            migrationBuilder.DropTable(
                 name: "Permission");
 
             migrationBuilder.DropTable(
@@ -473,9 +493,6 @@ namespace LivePlay.Server.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "User");
-
-            migrationBuilder.DropTable(
-                name: "Hotel");
         }
     }
 }

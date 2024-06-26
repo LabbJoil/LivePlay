@@ -14,10 +14,11 @@ public class LivePlayDbContext(DbContextOptions<LivePlayDbContext> options, IOpt
     public DbSet<QuestEntityModel> Quests { get; set; }
     public DbSet<QuestionQuestEntityModel> QuestionQuests { get; set; }
     public DbSet<QRQuestEntityModel> QRQuests { get; set; }
+    public DbSet<CreativeQuestEntityModel> CreativeQuests { get; set; }
     public DbSet<HotelEntityModel> Hotels { get; set; }
     public DbSet<FeedbackEntityModel> Feedback { get; set; }
     public DbSet<NewsEntityModel> News { get; set; }
-    public DbSet<CouponEntityModel> Awards { get; set; }
+    public DbSet<CouponEntityModel> Coupons { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

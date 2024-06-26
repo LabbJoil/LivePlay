@@ -7,12 +7,17 @@ public enum ErrorCode
     RequestError,
     RegistrationError,
     VerifyEmailError,
+
     DbCheckError,
     DbPostError,
     DbGetError,
+    DbAddError,
+    DbDeleteError,
+
     LoginUser,
     ClaimsParse,
     QRProviderError,
-    DbAddError,
-    DbDeleteError
+    InternalError,
+    PermitionError,
+    UserPoints
 }

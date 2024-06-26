@@ -12,7 +12,7 @@ public class QRQuestEntityModel
     [Required]
     public int QuestId { get; set; }
     [Required]
-    public byte[]? QRInfo { get; set; }
+    public byte[] QRInfo { get; set; } = [];
 
     public required QuestEntityModel Quest { get; set; }
 }

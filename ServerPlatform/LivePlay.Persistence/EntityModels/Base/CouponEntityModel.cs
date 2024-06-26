@@ -18,7 +18,7 @@ public class CouponEntityModel
     [Required]
     public int Cost { get; set; }
     [Required]
-    public required string Coupon { get; set; }
+    public required string CouponData { get; set; }
     [Required]
     public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
     [Required]

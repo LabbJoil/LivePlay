@@ -22,7 +22,7 @@ public class QuestionQuestEntityModel
     [Required]
     public required string FourthAnswer { get; set; }
     [Required]
-    public required string RightAnswer { get; set; }
+    public required int RightAnswer { get; set; }
 
     public required QuestEntityModel Quest { get; set; }
 }

@@ -21,13 +21,18 @@ public class ExceptionMiddlewareHandler(RequestDelegate next, ILogger<ExceptionM
         catch (ServerException ex)
         {
             _logger.LogError(messageLoger, ex.Error, ex.Message, ex.Details);
-            await HandleExceptionAsync(httpContext, ex.Error, ex.Message, ex.StatusCode);
+            await HandleExceptionAsync(httpContext, ErrorCode.ServerError, ex.Message, ex.StatusCode);
         }
         catch (RequestException ex)
         {
             string details = ex.Details + " || User: {UserId}";
             _logger.LogError(messageLoger, ex.Error, ex.Message, details);
             await HandleExceptionAsync(httpContext, ex.Error, ex.Message, ex.StatusCode);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(messageLoger, ErrorCode.InternalError, ex.Message, "Internal error");
+            await HandleExceptionAsync(httpContext, ErrorCode.ServerError, ex.Message, HttpStatusCode.Forbidden);
         }
     }
 

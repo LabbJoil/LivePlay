@@ -6,9 +6,10 @@ using LivePlay.Server.Infrastructure.Providers;
 using LivePlay.Server.Persistence.Repositories;
 using LivePlay.Server.Application.Facade;
 using LivePlay.Server.Application.Mapping;
-using LivePlay.Server.WebApi.Mapping;
 using LivePlay.Server.Core.Interfaces;
 using LivePlay.Server.Infrastructure;
+using LivePlay.Server.WebApi.Mapping.User;
+using LivePlay.Server.WebApi.Mapping.Quests;
 
 namespace LivePlay.Server.WebApi.ProgramExtentions;
 
@@ -29,6 +30,7 @@ internal static class ServiceRegistrar
     public static void RegisterRepositories(this IServiceCollection services)
     {
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IQuestRepository, QuestRepository>();
         services.AddScoped<PermissionRepository>();
     }
 
@@ -47,6 +49,7 @@ internal static class ServiceRegistrar
 
     public static void RegisterMapping(this IServiceCollection services)
     {
-        services.AddAutoMapper(typeof(UserEntityMapping), typeof(UserUpdateUserMapping), typeof(UserRegistrationUserMapping));
+        services.AddAutoMapper(typeof(UserEntityMapping), typeof(QuestAddingMapping), typeof(QRQuestAddingMapping),
+            typeof(UserUpdateMapping), typeof(UserRegistrationMapping));
     }
 }

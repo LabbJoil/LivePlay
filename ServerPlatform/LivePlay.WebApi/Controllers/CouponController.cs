@@ -1,83 +1,42 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿
+using AutoMapper;
+using LivePlay.Server.Application.Services;
+using LivePlay.Server.Core.Models;
+using LivePlay.Server.WebApi.Contracts.Requests.Coupons;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LivePlay.Server.WebApi.Controllers
+namespace LivePlay.Server.WebApi.Controllers;
+
+[Route("[controller]/")]
+[ApiController]
+public class CouponController(CouponService couponService, IMapper mapper) : Controller
 {
-    public class CouponController : Controller
+    private readonly CouponService _couponService = couponService;
+    private readonly IMapper _mapper = mapper;
+
+    [HttpGet("/getcoupons")]
+    //[Authorize(Policy = nameof(Politic.EditQuest))]
+    public async Task<IActionResult> GetAllCoupons()
     {
-        // GET: CouponController
-        public ActionResult Index()
-        {
-            return View();
-        }
+        var coupons = await _couponService.GetAllCoupons();
+        return Ok(coupons);
+    }
 
-        // GET: CouponController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+    [HttpPost("/addcoupon")]
+    //[Authorize(Policy = nameof(Politic.EditQuest))]
+    public IActionResult AddCoupon([FromBody] AddingCouponRequest couponRequest)
+    {
+        var coupon = _mapper.Map<Coupon>(couponRequest);
+        _couponService.AddCoupon(coupon);
+        return NoContent();
+    }
 
-        // GET: CouponController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: CouponController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: CouponController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: CouponController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: CouponController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: CouponController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+    [HttpPost("/buycoupon/{id}")]
+    //[Authorize(Policy = nameof(Politic.EditQuest))]
+    public async Task<IActionResult> BuyCoupon(int id)
+    {
+        var award = await _couponService.BuyCoupon(HttpContext.User, id);
+        return Ok(award);
     }
 }

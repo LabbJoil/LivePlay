@@ -19,10 +19,10 @@ public class UserService(IUserRepository repository, IJwtProvider jwtProvider, I
 
     public async Task<string> LogInUser(string email, string password)
     {
-        var (user, userId) = await _userRepository.GetUserByEmail(email);
-        if (!_passwordHasher.Verify(password, user.Password ?? throw new ServerException(ErrorCode.LoginUser, $"Don`t found password user with id: {userId}")))
+        var user = await _userRepository.GetByEmail(email);
+        if (!_passwordHasher.Verify(password, user.Password ?? throw new ServerException(ErrorCode.LoginUser, $"Don`t found password user with id: {user.Id}")))
             throw new RequestException(ErrorCode.LoginUser, $"Incorrect password or email");
-        return GenerateToken(userId);
+        return GenerateToken(user.Id);
     }
 
     public async Task<uint> VerifyEmail(string email)
@@ -45,23 +45,23 @@ public class UserService(IUserRepository repository, IJwtProvider jwtProvider, I
 
     public async Task<string> RegisterUser(uint numberRegistration, User user)
     {
-        //user.Password = _passwordHasher.HashPassword(user.Password!);
-        //user.Email = _registrarUserFacade.GetRegistrationUser?.Invoke(numberRegistration)
-        //    ?? throw new ServerException(ErrorCode.VerifyEmailError, $"There is no access to the back service throw facade {nameof(RegistrarUserFacade)}");
-        var userId = await _userRepository.AddUser(user);
+        user.Password = _passwordHasher.HashPassword(user.Password!);
+        user.Email = _registrarUserFacade.GetRegistrationUser?.Invoke(numberRegistration)
+            ?? throw new ServerException(ErrorCode.VerifyEmailError, $"There is no access to the back service throw facade {nameof(RegistrarUserFacade)}");
+        var userId = await _userRepository.Add(user);
         return GenerateToken(userId);
     }
 
     public async Task EditUser(ClaimsPrincipal claimsPrincipal, User editUser)
     {
         var userId = _jwtProvider.GetUserId(claimsPrincipal);
-        await _userRepository.EditUser(userId, editUser);
+        await _userRepository.Edit(userId, editUser);
     }
 
     public async Task DeleteUser(ClaimsPrincipal claimsPrincipal)
     {
         var userId = _jwtProvider.GetUserId(claimsPrincipal);
-        await _userRepository.DeleteUser(userId);
+        await _userRepository.Delete(userId);
     }
 
     public string GetQRCode(ClaimsPrincipal claimsPrincipal)
@@ -69,6 +69,13 @@ public class UserService(IUserRepository repository, IJwtProvider jwtProvider, I
         var userId = _jwtProvider.GetUserId(claimsPrincipal);
         var encryptUserQR = _qrProvider.EncryptQR(new UserQR { IdUser = userId});
         return encryptUserQR;
+    }
+
+    public async Task<User> GetUser(ClaimsPrincipal claimsPrincipal)
+    {
+        var userId = _jwtProvider.GetUserId(claimsPrincipal);
+        var user = await _userRepository.GetById(userId);
+        return user;
     }
 
     private string GenerateToken(Guid userId)

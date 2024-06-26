@@ -76,10 +76,15 @@ namespace LivePlay.Server.Persistence.Migrations
                     b.Property<int>("QuestId")
                         .HasColumnType("integer");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
 
                     b.HasIndex("QuestId")
                         .IsUnique();
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("CreativeQuest");
                 });
@@ -231,6 +236,11 @@ namespace LivePlay.Server.Persistence.Migrations
                         {
                             Id = 10,
                             Name = "DeleteSelf"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "GetSelf"
                         });
                 });
 
@@ -322,9 +332,8 @@ namespace LivePlay.Server.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("RightAnswer")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("RightAnswer")
+                        .HasColumnType("integer");
 
                     b.Property<string>("SecondAnswer")
                         .IsRequired()
@@ -336,8 +345,7 @@ namespace LivePlay.Server.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("QuestId")
-                        .IsUnique();
+                    b.HasIndex("QuestId");
 
                     b.ToTable("QuestionQuest");
                 });
@@ -433,17 +441,22 @@ namespace LivePlay.Server.Persistence.Migrations
                         new
                         {
                             RoleId = 1,
+                            PermissionId = 11
+                        },
+                        new
+                        {
+                            RoleId = 1,
+                            PermissionId = 9
+                        },
+                        new
+                        {
+                            RoleId = 1,
                             PermissionId = 1
                         },
                         new
                         {
                             RoleId = 1,
                             PermissionId = 2
-                        },
-                        new
-                        {
-                            RoleId = 1,
-                            PermissionId = 9
                         },
                         new
                         {
@@ -479,6 +492,11 @@ namespace LivePlay.Server.Persistence.Migrations
                         {
                             RoleId = 2,
                             PermissionId = 5
+                        },
+                        new
+                        {
+                            RoleId = 2,
+                            PermissionId = 11
                         },
                         new
                         {
@@ -551,7 +569,15 @@ namespace LivePlay.Server.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("LivePlay.Server.Persistence.EntityModels.Base.UserEntityModel", "User")
+                        .WithMany("CreativeQuests")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Quest");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.Base.FeedbackEntityModel", b =>
@@ -579,8 +605,8 @@ namespace LivePlay.Server.Persistence.Migrations
             modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.Base.QuestionQuestEntityModel", b =>
                 {
                     b.HasOne("LivePlay.Server.Persistence.EntityModels.Base.QuestEntityModel", "Quest")
-                        .WithOne("QuestionQuest")
-                        .HasForeignKey("LivePlay.Server.Persistence.EntityModels.Base.QuestionQuestEntityModel", "QuestId")
+                        .WithMany("QuestionQuests")
+                        .HasForeignKey("QuestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -664,18 +690,17 @@ namespace LivePlay.Server.Persistence.Migrations
 
             modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.Base.QuestEntityModel", b =>
                 {
-                    b.Navigation("CreativeQuest")
-                        .IsRequired();
+                    b.Navigation("CreativeQuest");
 
-                    b.Navigation("QRQuest")
-                        .IsRequired();
+                    b.Navigation("QRQuest");
 
-                    b.Navigation("QuestionQuest")
-                        .IsRequired();
+                    b.Navigation("QuestionQuests");
                 });
 
             modelBuilder.Entity("LivePlay.Server.Persistence.EntityModels.Base.UserEntityModel", b =>
                 {
+                    b.Navigation("CreativeQuests");
+
                     b.Navigation("Feedbacks");
                 });
 #pragma warning restore 612, 618

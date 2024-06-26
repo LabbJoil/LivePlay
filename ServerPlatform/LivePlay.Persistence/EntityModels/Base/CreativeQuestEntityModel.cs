@@ -12,7 +12,10 @@ public class CreativeQuestEntityModel
     [Required]
     public int QuestId { get; set; }
     [Required]
-    public byte[]? PictureInfo { get; set; }
+    public Guid UserId { get; set; }
+    [Required]
+    public byte[] PictureInfo { get; set; } = [];
 
     public required QuestEntityModel Quest { get; set; }
+    public required UserEntityModel User { get; set; }
 }

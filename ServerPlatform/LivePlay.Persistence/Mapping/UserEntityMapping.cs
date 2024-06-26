@@ -12,6 +12,7 @@ public class UserEntityMapping : Profile
         CreateMap<UserEntityModel, User>()
             .ForMember(u => u.Password, opt => opt.MapFrom(uem => uem.PasswordHash))
             .ReverseMap()
-            .ForMember(u => u.PasswordHash, opt => opt.MapFrom(uem => uem.Password));
+            .ForMember(u => u.PasswordHash, opt => opt.MapFrom(uem => uem.Password))
+            .ForMember(u => u.Points, opt => opt.Ignore());
     }
 }

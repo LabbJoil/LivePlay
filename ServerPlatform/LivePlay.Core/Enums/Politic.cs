@@ -3,7 +3,8 @@ namespace LivePlay.Server.Core.Enums;
 
 public enum Politic
 {
-    EditPersonalInfo,
+    PersonalInfo,
     EditQuest,
-    EditCoupon
+    EditCoupon,
+    ReadQuestCoupon
 }

@@ -1,11 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using AutoMapper;
+using LivePlay.Server.Core.Models;
+using LivePlay.Server.Persistence.EntityModels.Base;
 
 namespace LivePlay.Server.Persistence.Mapping;
 
-public class FeedbackEntityMapping
+public class FeedbackEntityMapping : Profile
 {
+    public FeedbackEntityMapping()
+    {
+        CreateMap<FeedbackEntityModel, Feedback>()
+            .ReverseMap();
+    }
 }
