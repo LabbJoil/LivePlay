@@ -66,7 +66,8 @@
 	  <None Remove="Resources\Images\coupons_light.svg" />
 	  <None Remove="Resources\Images\ImageButtons\choose_item_admin.svg" />
 	  <None Remove="Resources\Images\ImageButtons\choose_item_admin_dark.svg" />
-	  <None Remove="Resources\Images\ImageButtons\delete_item_admin.svg" />
+	  <None Remove="Resources\Images\ImageButtons\delete_item_red_admin.svg" />
+	  <None Remove="Resources\Images\ImageButtons\delete_item_white_admin.svg" />
 	  <None Remove="Resources\Images\ImageButtons\photo_add_dark.svg" />
 	  <None Remove="Resources\Images\Reward\lock.svg" />
 	  <None Remove="Resources\Images\TabBarPanel\add_award.svg" />
@@ -114,7 +115,8 @@
 	  <MauiImage Include="Resources\Images\Coin\coin_dark.svg" />
 	  <MauiImage Include="Resources\Images\Coin\coin_light.svg" />
 	  <MauiImage Include="Resources\Images\ImageButtons\choose_item_admin_dark.svg" />
-	  <MauiImage Include="Resources\Images\ImageButtons\delete_item_admin.svg" />
+	  <MauiImage Include="Resources\Images\ImageButtons\delete_item_white_admin.svg" />
+	  <MauiImage Include="Resources\Images\ImageButtons\delete_item_red_admin.svg" />
 	  <MauiImage Include="Resources\Images\ImageButtons\choose_item_admin.svg" />
 	  <MauiImage Include="Resources\Images\ImageButtons\photo_add_dark.svg" />
 	  <MauiImage Include="Resources\Images\Reward\lock.svg" />

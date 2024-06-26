@@ -8,6 +8,11 @@
              x:Name="this">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="150"/>
+        </Grid.RowDefinitions>
+
         <Grid x:Name="FirstItem">
             <pe:QuestionQuestItemControl ForwardItemCommand="{Binding BindingContext.GoForvardQuestionCommand, Source={x:Reference this}}"
                                          PreviousItemCommand="{Binding BindingContext.GoPreviousQuestionCommand, Source={x:Reference this}}"

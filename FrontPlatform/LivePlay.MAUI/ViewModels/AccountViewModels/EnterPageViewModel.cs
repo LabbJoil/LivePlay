@@ -40,7 +40,7 @@ public partial class EnterPageViewModel(AppDesign designSettings, AppPermissions
 
         
 
-        await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+        await Shell.Current.GoToAsync($"//{nameof(TapeFeedbackPage)}");
 
         //if (Email == "tre@gmail.com")
         //    await NavigateLoading.GoToRootPage($"//{nameof(TapeFeedbackPage)}");
