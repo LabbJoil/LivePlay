@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 using LivePlay.Front.Core.Models;
 using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
+using LivePlay.Front.MAUI.Pages;
 using LivePlay.Front.MAUI.Pages.Reward;
 
 namespace LivePlay.Front.MAUI.ViewModels.Reward;
@@ -25,6 +26,6 @@ public partial class CouponInfoPageViewModel(AppDesign designSettings) : BaseVie
     {
         DesignSettings.ChangeCountCoins(0);
         Shell.Current.DisplayAlert("Купон", "Успешно куплен купон", "ok");
-        Shell.Current.GoToAsync($"//{nameof(MainRewardPage)}");
+        Shell.Current.GoToAsync($"//{nameof(MyCouponsPage)}");
     }
 }

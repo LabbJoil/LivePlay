@@ -53,7 +53,7 @@
                         <Image Grid.Row="0" Source="lock.svg" VerticalOptions="Start" HorizontalOptions="Start" HeightRequest="20" WidthRequest="20" Margin="13" ZIndex="2"/>
                         <Image Grid.Row="0" BackgroundColor="DarkOliveGreen"/>
 
-                        <Label Grid.Row="1" Text="Бесплатное посещение спортзала" VerticalOptions="Center" FontAttributes="Bold" FontSize="12" HorizontalOptions="Center"/>
+                        <Label Grid.Row="1" Text="Бесплатное посещение спортзала" VerticalOptions="Center" FontAttributes="Bold" FontSize="12" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
 
                         <Grid Grid.Row="2" ColumnDefinitions="22,*" WidthRequest="130" ZIndex="2" VerticalOptions="Start">
                             <Border Grid.ColumnSpan="2" Stroke="Transparent" HeightRequest="30">

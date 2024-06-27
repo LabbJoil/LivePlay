@@ -28,7 +28,7 @@
             <pe:InProgressQuestionQuestItem x:Name="SecondItem" IsVisible="False"/>
         </Grid>
 
-        <StackLayout Orientation="Horizontal" Grid.Row="7" BackgroundColor="#26507B" Padding="30,0" HorizontalOptions="FillAndExpand">
+        <StackLayout Orientation="Horizontal" Grid.Row="7" BackgroundColor="#415A77" Padding="30,0" HorizontalOptions="FillAndExpand">
             <Border BackgroundColor="#0D1B2A"  HorizontalOptions="StartAndExpand" VerticalOptions="Center" HeightRequest="55" WidthRequest="55" Stroke="Transparent">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="50"/>

@@ -11,6 +11,11 @@ public partial class AdminProfilePage : ContentPage
         //ProfileVM = profileViewModel;
     }
 
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync($"//{nameof(EnterPage)}");
+    }
+
     //private void ContentPage_Appearing(object sender, EventArgs e)
     //{
     //    ProfileVM.ChangeColorBars(MainGrid.BackgroundColor, StatusBarColor.BarWhite, null);

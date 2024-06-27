@@ -38,16 +38,18 @@ public partial class EnterPageViewModel(AppDesign designSettings, AppPermissions
                 return;
         }
 
-        
-
-        await Shell.Current.GoToAsync($"//{nameof(TapeFeedbackPage)}");
-
-        //if (Email == "tre@gmail.com")
-        //    await NavigateLoading.GoToRootPage($"//{nameof(TapeFeedbackPage)}");
-        //else if (Email == "lio@gmail.com")
-        //    await NavigateLoading.GoToRootPage($"//{nameof(MainPage)}");
-        //else
-        //    await Shell.Current.DisplayAlert("Нет доступа", $"Неправильный логин или пароль", "ok");
+        if (_enterUser.Email == "tre@gmail.com")
+            await Shell.Current.GoToAsync($"//{nameof(TapeFeedbackPage)}");
+        else if (_enterUser.Email == "lio@gmail.com")
+            await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+        else if(_enterUser.Email == "111")
+        {
+            Preferences.Clear();
+            Preferences.Remove($"{nameof(Quest)}");
+            Preferences.Remove($"{nameof(QuestionQuest)}");
+        }
+        else
+            await Shell.Current.DisplayAlert("Нет доступа", $"Неправильный логин или пароль", "ok");
     }
 
     [RelayCommand]

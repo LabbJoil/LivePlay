@@ -20,9 +20,7 @@
                 <RowDefinition Height="115"/>
                 <RowDefinition Height="15"/>
                 <RowDefinition Height="25"/>
-                <RowDefinition Height="5"/>
-                <RowDefinition Height="25"/>
-                <RowDefinition Height="5"/>
+                <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="27"/>
@@ -42,7 +40,7 @@
 
             <Image Grid.ColumnSpan="3" Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding Path=TapeItem.Image, Source={x:Reference this}, Converter={x:StaticResource ByteArrayToImageConverter}}"/>
             <Label Grid.Column="1" Grid.Row="3" Text="{Binding Path=TapeItem.Title, Source={x:Reference this}}" FontSize="19" HorizontalOptions="Start" VerticalOptions="Center"/>
-            <Label Grid.Column="1" Grid.Row="5" Text="{Binding Path=TapeItem.DescriptionMini, Source={x:Reference this}}" FontSize="15" HorizontalOptions="Start" VerticalOptions="Center" />
+            <Label Grid.Column="1" Grid.Row="5" Text="{Binding Path=TapeItem.DescriptionMini, Source={x:Reference this}}" FontSize="13" HorizontalOptions="Start" VerticalOptions="Center"/>
         </Grid>
     </Border>
 

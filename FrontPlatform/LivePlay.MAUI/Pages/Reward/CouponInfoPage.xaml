@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:bottomsheet="https://schemas.the49.com/dotnet/2023/maui"
              x:Class="LivePlay.Front.MAUI.Pages.Reward.CouponInfoPage"
-             Background="LightGray" Padding="16,32" 
+             Background="DarkGray" Padding="16,32" 
              Shell.PresentationMode="Modal"
              x:Name="this">
 
@@ -30,7 +30,7 @@
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="10"/>
-                <RowDefinition Height="33"/>
+                <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="27"/>

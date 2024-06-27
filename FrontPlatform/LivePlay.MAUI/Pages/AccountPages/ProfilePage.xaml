@@ -77,7 +77,7 @@
                             <ColumnDefinition Width="31"/>
                         </Grid.ColumnDefinitions>
 
-                        <Entry Placeholder="Email" Text="ivanov.ivan123@gmail.com" TextColor="Black" Margin="10,0" FontAttributes="Bold"/>
+                        <Entry Placeholder="Email" Text="lio@gmail.com" TextColor="Black" Margin="10,0" FontAttributes="Bold"/>
                         <ImageButton Source="edit_email.svg" Grid.Column="1" WidthRequest="25" HeightRequest="25"/>
                     </Grid>
                 </Border>

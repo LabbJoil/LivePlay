@@ -19,9 +19,9 @@
                 <ColumnDefinition Width="40"/>
             </Grid.ColumnDefinitions>
 
-            <Entry Placeholder="Имя" Text="{Binding Path=FirstName, Source={x:Reference this}}" TextColor="Black" Margin="10,0" FontAttributes="Bold"/>
+            <Entry Placeholder="Имя" Text="Егор" TextColor="Black" Margin="10,0" FontAttributes="Bold"/>
             <Line Grid.Row="1" Stroke="#BEBEBE" X1="10" X2="227"/>
-            <Entry Placeholder="Фамилия" Text="{Binding Path=SecondName, Source={x:Reference this}}" TextColor="Black" Margin="10,0" FontAttributes="Bold" Grid.Row="2"/>
+            <Entry Placeholder="Фамилия" Text="Сидоров" TextColor="Black" Margin="10,0" FontAttributes="Bold" Grid.Row="2"/>
             <ImageButton Source="mark_name_surname.svg" Grid.Column="1" Grid.RowSpan="3" VerticalOptions="Center" BackgroundColor="Transparent" 
                      HorizontalOptions="Center" WidthRequest="26" HeightRequest="26" />
         </Grid>
