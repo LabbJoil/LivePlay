@@ -184,8 +184,8 @@
 	  <Compile Update="Pages\QuestPages\InProgressQuestPages\InProgressQRQuestPage.xaml.cs">
 	    <DependentUpon>InProgressQRQuestPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\QuestPages\InProgressQuestPages\InProgressQuizQuestPage.xaml.cs">
-	    <DependentUpon>InProgressQuizQuestPage.xaml</DependentUpon>
+	  <Compile Update="Pages\QuestPages\InProgressQuestPages\InProgressQuestionQuestPage.xaml.cs">
+	    <DependentUpon>InProgressQuestionQuestPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\QuestPages\InProgressQuestPages\InProgressDrawingQuestPage.xaml.cs">
 	    <DependentUpon>InProgressDrawingQuestPage.xaml</DependentUpon>
@@ -219,6 +219,9 @@
 	  </Compile>
 	  <Compile Update="PersonalElements\ChoicePanelControl.xaml.cs">
 	    <DependentUpon>ChoicePanelControl.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="PersonalElements\InProgressQuestionQuestItemControl.xaml.cs">
+	    <DependentUpon>InProgressQuestionQuestItemControl.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="PersonalElements\QuestionQuestItemControl.xaml.cs">
 	    <DependentUpon>QuestionQuestItemControl.xaml</DependentUpon>
@@ -280,7 +283,7 @@
 	  <MauiXaml Update="Pages\QuestPages\InProgressQuestPages\InProgressQRQuestPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\QuestPages\InProgressQuestPages\InProgressQuizQuestPage.xaml">
+	  <MauiXaml Update="Pages\QuestPages\InProgressQuestPages\InProgressQuestionQuestPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\QuestPages\InProgressQuestPages\InProgressDrawingQuestPage.xaml">
@@ -320,6 +323,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="PersonalElements\ChoicePanelControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PersonalElements\InProgressQuestionQuestItemControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="PersonalElements\QuestionQuestItemControl.xaml">

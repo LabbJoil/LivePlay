@@ -6,6 +6,7 @@
     xmlns:pages="clr-namespace:LivePlay.Front.MAUI.Pages"
     xmlns:pagess="clr-namespace:LivePlay.Front.MAUI.Pages.AccountPages"
     xmlns:pagesss="clr-namespace:LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages"
+    xmlns:pagessss="clr-namespace:LivePlay.Front.MAUI.Pages.QuestPages"
     xmlns:pagesrev="clr-namespace:LivePlay.Front.MAUI.Pages.ReviewPages"
     xmlns:pagesadmin="clr-namespace:LivePlay.Front.MAUI.Pages.AdminPages"
     xmlns:pagesreward="clr-namespace:LivePlay.Front.MAUI.Pages.Reward"
@@ -29,7 +30,7 @@
                         NumberOfTapsRequired="1"/>
                 </Border.GestureRecognizers>
                 <StackLayout Orientation="Horizontal">
-                    <Label x:Name="CoinLabel" Text="123" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" FontSize="16" FontAttributes="Bold" Margin="10,0"/>
+                    <Label x:Name="CoinLabel" Text="0" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" FontSize="16" FontAttributes="Bold" Margin="10,0"/>
                     <Image x:Name="CoinLabels" Source="coin_dark.svg" FlexLayout.Grow="1" Aspect="Fill" Margin="0,5,10,5" WidthRequest="{Binding Source={RelativeSource Self}, Path=Height}" />
                 </StackLayout>
             </Border>
@@ -119,8 +120,8 @@
                       Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
         <ShellContent Title="Квесты"
                       AutomationId="1"
-                      Route="InProgressDrawingQuestPage"
-                      ContentTemplate="{DataTemplate pages:InProgressDrawingQuestPage}"
+                      Route="TapeQuestPage"
+                      ContentTemplate="{DataTemplate pages:TapeQuestPage}"
                       Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
         <ShellContent Title="Награды"
                       AutomationId="2"

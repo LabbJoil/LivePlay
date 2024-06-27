@@ -1,7 +1,7 @@
 ﻿
 namespace LivePlay.Front.Core.Models;
 
-public class FeedbackBodyInfoModel
+public class FeedbackBodyInfo
 {
     public string Text { get; set; } = string.Empty;
     public byte[] FirstImage { get; set; } = [];

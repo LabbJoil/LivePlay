@@ -13,14 +13,14 @@ public partial class TapeQuestItemControl : ContentView
 
     public static readonly BindableProperty TapeItemProperty = BindableProperty.Create(
        propertyName: nameof(TapeItem),
-       returnType: typeof(QuestionQuestModel),
+       returnType: typeof(Quest),
        declaringType: typeof(TapeQuestItemControl),
        defaultValue: null,
        defaultBindingMode: BindingMode.TwoWay);
 
-    public QuestionQuestModel TapeItem
+    public Quest TapeItem
     {
-        get => (QuestionQuestModel)GetValue(TapeItemProperty);
+        get => (Quest)GetValue(TapeItemProperty);
         set { SetValue(TapeItemProperty, value);}
     }
 

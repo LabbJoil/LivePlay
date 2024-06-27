@@ -1,17 +1,23 @@
 
 using LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages;
+using LivePlay.Front.MAUI.ViewModels.QuestViewModels;
 
 namespace LivePlay.Front.MAUI.Pages.AdminPages;
 
 public partial class ManageQuestPage : ContentPage
 {
-	public ManageQuestPage()
+	private ManageQuestPageViewModel _manageQuestPageViewModel;
+
+    public ManageQuestPage(ManageQuestPageViewModel manageQuestPageViewModel)
 	{
 		InitializeComponent();
-	}
+		BindingContext = manageQuestPageViewModel;
+        _manageQuestPageViewModel = manageQuestPageViewModel;
 
-    private void Button_Clicked(object sender, EventArgs e)
+    }
+
+    private void PageAppearing(object sender, EventArgs e)
     {
-		Navigation.PushAsync(new MainCreationQuestPage());
+        _manageQuestPageViewModel.GetQuestItems();
     }
 }

@@ -1,10 +1,14 @@
 
+using LivePlay.Front.MAUI.ViewModels.Reward;
+using The49.Maui.BottomSheet;
+
 namespace LivePlay.Front.MAUI.Pages.Reward;
 
-public partial class CouponInfoPage
+public partial class CouponInfoPage : ContentPage
 {
-	public CouponInfoPage()
+	public CouponInfoPage(CouponInfoPageViewModel couponInfoPageViewModel)
 	{
 		InitializeComponent();
+		BindingContext = couponInfoPageViewModel;
 	}
 }

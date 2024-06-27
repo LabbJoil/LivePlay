@@ -8,7 +8,7 @@ namespace LivePlay.Front.MAUI.Pages;
 [QueryProperty(nameof(NewsItemProperty), nameof(NewsItemProperty))]
 public partial class CurrentNewsPage : ContentPage
 {
-    public NewsItem NewsItemProperty
+    public News NewsItemProperty
     {
         set => CurentNewsVM.CurrentNewsItem = value;
     }

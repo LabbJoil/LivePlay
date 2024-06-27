@@ -1,7 +1,7 @@
 ﻿
 namespace LivePlay.Front.Core.Models;
 
-public class FeedbackContactInfoModel
+public class FeedbackContactInfo
 {
     private const string FormatDate = "dd.mm.yyyy";
 

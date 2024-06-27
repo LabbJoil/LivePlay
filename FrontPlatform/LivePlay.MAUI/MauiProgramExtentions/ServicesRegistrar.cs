@@ -21,6 +21,7 @@ using LivePlay.Front.MAUI.ViewModels.NewsViewModels;
 using LivePlay.Front.MAUI.ViewModels.QuestViewModels;
 using LivePlay.Front.MAUI.ViewModels.ReviewViewModels;
 using LivePlay.Front.MAUI.ViewModels.SettingsViewModels;
+using LivePlay.Front.MAUI.ViewModels.Reward;
 
 namespace LivePlay.Front.MAUI.MauiProgramExtentions;
 
@@ -56,8 +57,10 @@ public static class ServicesRegistrar
         services.AddTransient<MainCreationRewardPage>();
 
         services.AddTransient<TapeFeedbackPageViewModel>();
-        services.AddTransient<QuestionQuestModel>();
+        services.AddTransient<QuestionQuest>();
         services.AddTransient<QuestionCreationQuestPageViewModel>();
+        services.AddTransient<ManageQuestPageViewModel>();
+        services.AddTransient<MainCreationQuestPageViewModel>();
     }
 
     private static void RegisterUserServices(this IServiceCollection services)
@@ -70,8 +73,9 @@ public static class ServicesRegistrar
         services.AddTransient<NotStartedQuestPage>();
         services.AddTransient<InProgressDrawingQuestPage>();
         services.AddTransient<InProgressQRQuestPage>();
-        services.AddTransient<InProgressQuizQuestPage>();
+        services.AddTransient<InProgressQuestionQuestPage>();
         services.AddTransient<GettingStatisticsPage>();
+        services.AddTransient<MainRewardPage>();
 
         services.AddTransient<MainPageViewModel>();
         services.AddTransient<CurrentNewsPageViewModel>();
@@ -79,6 +83,9 @@ public static class ServicesRegistrar
         services.AddTransient<TapeQuestPageViewModel>();
         services.AddTransient<BaseQuestPageViewModel>();
         services.AddTransient<InProgressPhotoQuestPageViewModel>();
+        services.AddTransient<InProgressQuestionQuestPageViewModel>();
+        services.AddTransient<CouponInfoPageViewModel>();
+        services.AddTransient<MainRewardPageViewModel>();
     }
 
     public static void RegisterDeviceSettingsServices(this IServiceCollection services)

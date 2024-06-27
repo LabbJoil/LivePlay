@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<bottomsheet:BottomSheet xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:bottomsheet="https://schemas.the49.com/dotnet/2023/maui"
              x:Class="LivePlay.Front.MAUI.Pages.Reward.CouponInfoPage"
-             Background="LightGray" Padding="16,32" CornerRadius="15">
+             Background="LightGray" Padding="16,32" 
+             Shell.PresentationMode="Modal"
+             x:Name="this">
 
-    <bottomsheet:BottomSheet.Detents>
+    <!--<bottomsheet:BottomSheet.Detents>               CornerRadius="15"
         <bottomsheet:DetentsCollection>
             <bottomsheet:RatioDetent Ratio=".99" />
             <bottomsheet:RatioDetent Ratio=".85" />
         </bottomsheet:DetentsCollection>
-    </bottomsheet:BottomSheet.Detents>
+    </bottomsheet:BottomSheet.Detents>-->
 
     <Border BackgroundColor="#415A77" Margin="18" Stroke="Transparent">
         <Border.StrokeShape>
@@ -22,13 +24,12 @@
                 <RowDefinition Height="200"/>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="25"/>
+                <RowDefinition Height="120"/>
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="30"/>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="30"/>
                 <RowDefinition Height="25"/>
-                <RowDefinition Height="33"/>
-                <RowDefinition Height="54"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="10"/>
                 <RowDefinition Height="33"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -37,26 +38,25 @@
                 <ColumnDefinition Width="27"/>
             </Grid.ColumnDefinitions>
 
-            <!--<Frame Grid.Column="1" Grid.Row="1" CornerRadius="10" Background="Transparent" BorderColor="Transparent" Padding="0">
-                <Image Source="{Binding CurrentQuestItem.ImagePath}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill" />
+            <Frame Grid.Column="1" Grid.Row="1" CornerRadius="10" Background="Transparent" BorderColor="Transparent" Padding="0">
+                <Image Source="{Binding Path=BindingContext.ThisCoupon.Image, Source={x:Reference this}, Converter={x:StaticResource ByteArrayToImageConverter}}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill" />
             </Frame>
 
-            <Label Grid.Column="1" Grid.Row="3" Text="{Binding CurrentQuestItem.NowItem.Title}" FontSize="19" HorizontalOptions="Center" />
-            <Label Grid.Column="1" Grid.Row="4" Text="{Binding CurrentQuestItem.NowItem.Description}" FontSize="15" HorizontalOptions="Center" />
+            <Label Grid.Column="1" Grid.Row="3" Text="{Binding ThisCoupon.Title}" FontSize="19" HorizontalOptions="Center" />
 
-            <Editor Grid.Column="1" Grid.Row="6" Text="{Binding CurrentQuestItem.NowItem.TotalDescription}" FontSize="13" HorizontalOptions="Center" />
-            <HorizontalStackLayout Grid.Column="1" Grid.Row="8">
+            <Editor Grid.Column="1" Grid.Row="4" Text="{Binding ThisCoupon.DescriptionFull}" FontSize="13" HorizontalOptions="Center" />
+            <HorizontalStackLayout Grid.Column="1" Grid.Row="6">
                 <Label Text="Награда: " HorizontalOptions="Center"/>
-                <Label Text="{Binding CurrentQuestItem.NowItem.Price}" FontSize="13"  />
+                <Label Text="{Binding ThisCoupon.Price}" FontSize="13"  />
             </HorizontalStackLayout>
 
-            <HorizontalStackLayout Grid.Column="1" Grid.Row="9">
+            <HorizontalStackLayout Grid.Column="1" Grid.Row="8">
                 <Label Text="Срок окончания: " HorizontalOptions="Center"/>
-                <Label Text="{Binding CurrentQuestItem.NowItem.FinalDate}" FontSize="13"  />
-            </HorizontalStackLayout>-->
+                <Label Text="{Binding ThisCoupon.FinalDateView}" FontSize="13"  />
+            </HorizontalStackLayout>
 
-            <Button Grid.Column="1" Grid.Row="10" Text="Участовать" Margin="20,0,0,0" Style="{StaticResource BasicButton}" />
+            <Button Grid.Column="1" Grid.Row="10" Text="Получить купон" Margin="20,0,0,0" Style="{StaticResource BasicButton}" Command="{Binding BuyCouponCommand}"/>
         </Grid>
     </Border>
 
-</bottomsheet:BottomSheet>
+</ContentPage>

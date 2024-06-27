@@ -6,7 +6,8 @@ namespace LivePlay.Front.MAUI.DeviceSettings;
 public class AppDesign
 {
     private Action<Color, StatusBarColor, Color?>? ChangeColorStatusBarsAction;
-    private Action<string>? ChangeCountCoinsAction;
+    private Action<int>? ChangeCountCoinsAction;
+    private Func<int>? GetCountCoinsFunc;
 
     public Action<Color, StatusBarColor, Color?>? ChangeColorStatusBars
     {
@@ -14,10 +15,16 @@ public class AppDesign
         set => ChangeColorStatusBarsAction ??= value;
     }
 
-    public Action<string>? ChangeCountCoins
+    public Action<int>? ChangeCountCoins
     {
         get => ChangeCountCoinsAction;
         set => ChangeCountCoinsAction ??= value;
+    }
+
+    public Func<int>? GetCountCoins
+    {
+        get => GetCountCoinsFunc;
+        set => GetCountCoinsFunc ??= value;
     }
 
     public AppTheme LoadSettings()

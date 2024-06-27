@@ -6,9 +6,9 @@ namespace LivePlay.Front.MAUI.Pages.AdminPages;
 
 public partial class CurrentFeedbackPage : Popup
 {
-    private FeedbackContactInfoModel FeedbackContactInfoModel {  get; set; }
+    private FeedbackContactInfo FeedbackContactInfoModel {  get; set; }
 
-    public CurrentFeedbackPage(FeedbackContactInfoModel feedbackContactInfoModel)
+    public CurrentFeedbackPage(FeedbackContactInfo feedbackContactInfoModel)
 	{
 		InitializeComponent();
 	}

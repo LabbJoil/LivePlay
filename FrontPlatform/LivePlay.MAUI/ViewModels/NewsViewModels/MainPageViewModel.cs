@@ -10,14 +10,14 @@ namespace LivePlay.Front.MAUI.Models.ViewModels.NewsViewModels;
 
 public partial class MainPageViewModel : MainTapeViewModel
 {
-    public ObservableCollection<NewsItem> TapeItems { get; set; }
+    public ObservableCollection<News> TapeItems { get; set; }
 
     [RelayCommand]
     public async override Task GoToTapeItem(object item)
     {
-        if (item is Tuple<object, ContentPage> tuple && tuple.Item1 is NewsItem newsItem && tuple.Item2 is ContentPage contentPage)
+        if (item is Tuple<object, ContentPage> tuple && tuple.Item1 is News newsItem && tuple.Item2 is ContentPage contentPage)
         {
-            await Shell.Current.GoToAsync($"{nameof(CurrentNewsPage)}", new ShellNavigationQueryParameters { { $"{nameof(NewsItem)}Property", newsItem } });
+            await Shell.Current.GoToAsync($"{nameof(CurrentNewsPage)}", new ShellNavigationQueryParameters { { $"{nameof(News)}Property", newsItem } });
         }
     }
 

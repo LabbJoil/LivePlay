@@ -9,5 +9,5 @@ namespace LivePlay.Front.MAUI.ViewModels.NewsViewModels;
 public partial class CurrentNewsPageViewModel(AppDesign designSettings) : BaseViewModel(designSettings)
 {
     [ObservableProperty]
-    public NewsItem _currentNewsItem = new();
+    public News _currentNewsItem = new();
 }

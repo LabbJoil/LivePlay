@@ -3,6 +3,7 @@ using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.MAUI.Pages;
 using LivePlay.Front.MAUI.Pages.AdminPages;
 using LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages;
+using LivePlay.Front.MAUI.Pages.Reward;
 using Microsoft.Maui.Controls.Shapes;
 
 namespace LivePlay.Front.MAUI;
@@ -18,10 +19,11 @@ public partial class AppShell : Shell
         InitializeComponent();
         DesignSettings = designSettings;
         designSettings.ChangeCountCoins = ChangeCountCoins;
+        designSettings.GetCountCoins = GetCountCoins;
 
         Routing.RegisterRoute(nameof(InProgressDrawingQuestPage), typeof(InProgressDrawingQuestPage));
         Routing.RegisterRoute(nameof(InProgressQRQuestPage), typeof(InProgressQRQuestPage));
-        Routing.RegisterRoute(nameof(InProgressQuizQuestPage), typeof(InProgressQuizQuestPage));
+        Routing.RegisterRoute(nameof(InProgressQuestionQuestPage), typeof(InProgressQuestionQuestPage));
         Routing.RegisterRoute(nameof(NotStartedQuestPage), typeof(NotStartedQuestPage));
         Routing.RegisterRoute(nameof(CurrentNewsPage), typeof(CurrentNewsPage));
         Routing.RegisterRoute(nameof(QuestionCreationQuestPage), typeof(QuestionCreationQuestPage));
@@ -29,6 +31,8 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(QRcodeCreationQuestPage), typeof(QRcodeCreationQuestPage)); //возможно открывается по другому
         Routing.RegisterRoute(nameof(CreativeQuestCreationQuestPage), typeof(CreativeQuestCreationQuestPage)); //возможно открывается по другому
         Routing.RegisterRoute(nameof(LoadingPage), typeof(LoadingPage));
+        Routing.RegisterRoute(nameof(MainCreationQuestPage), typeof(MainCreationQuestPage));
+        Routing.RegisterRoute(nameof(CouponInfoPage), typeof(CouponInfoPage));
 
     }
 
@@ -56,9 +60,14 @@ public partial class AppShell : Shell
         }
     }
 
-    private void ChangeCountCoins(string newCountCoins)
+    private void ChangeCountCoins(int newCountCoins)
     {
-        //CoinLabel.Text = newCountCoins;
+        CoinLabel.Text = newCountCoins.ToString();
+    }
+
+    private int GetCountCoins()
+    {
+        return int.Parse(CoinLabel.Text);
     }
 
     private static void SetViewElement(Grid grid, bool isVisible)

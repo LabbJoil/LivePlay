@@ -10,37 +10,47 @@ using System.Text.Json;
 
 namespace LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages;
 
-[QueryProperty(nameof(QuestItemProperty), nameof(QuestItemProperty))]
+[QueryProperty(nameof(QuestProperty), nameof(QuestProperty))]
 public partial class QuestionCreationQuestPage : ContentPage
 {
-    private Grid NowGrid;
+    private QuestionQuestItemControl _nowQQIC;
+    private readonly QuestionCreationQuestPageViewModel _questionCreationQuestPVM;
 
-    public QuestItem QuestItemProperty { get; set; } = new();
+    public Quest QuestProperty {
+        set => _questionCreationQuestPVM.CurrentQuestItem = value;
+    }
 
     public QuestionCreationQuestPage(QuestionCreationQuestPageViewModel questionCreationQuestPVM)
 	{
         InitializeComponent();
         BindingContext = questionCreationQuestPVM;
-        NowGrid = FirstItem;
+        _questionCreationQuestPVM = questionCreationQuestPVM;
+        _nowQQIC = FirstItem;
     }
 
-    public async Task<QuestionQuestItemControl> GoQuest(DirectionAction swipeSlIn)
+    public async void GoQuest(DirectionAction swipeSlIn, QuestionQuest questionQuestModel, int numberQuest, int countQuests)
     {
-        var nextGrid = NowGrid == FirstItem ? SecondItem : FirstItem;
-        await ChangeStackLayout(nextGrid, swipeSlIn);
-        return NowGrid.Children[0] as QuestionQuestItemControl;
+        CountQuestionsLabel.Text = $"{numberQuest}";
+        var nextQQIC = _nowQQIC == FirstItem ? SecondItem : FirstItem;
+        nextQQIC.NowQuestionQuest = questionQuestModel;
+        await ChangeStackLayout(nextQQIC, swipeSlIn);
+    }
+
+    public QuestionQuest GetNowQuestion()
+    {
+        return _nowQQIC.NowQuestionQuest;
     }
 
     // TODO: גûםוסעט מעהוכüםûל לועמהמל
-    private async Task ChangeStackLayout(Grid GridIn, DirectionAction swipeSlIn)
+    private async Task ChangeStackLayout(QuestionQuestItemControl GridIn, DirectionAction swipeSlIn)
     {
-        double slInXStartposition = swipeSlIn == DirectionAction.Left ? NowGrid.Width : -NowGrid.Width;
+        double slInXStartposition = swipeSlIn == DirectionAction.Left ? _nowQQIC.Width : -_nowQQIC.Width;
         GridIn.TranslationX = slInXStartposition;
         GridIn.IsVisible = true;
-        Task animation1 = NowGrid.TranslateTo(-slInXStartposition, 0, 350, Easing.Linear);
+        Task animation1 = _nowQQIC.TranslateTo(-slInXStartposition, 0, 350, Easing.Linear);
         Task animation2 = GridIn.TranslateTo(0, 0, 350, Easing.Linear);
         await Task.WhenAll(animation1, animation2);
-        NowGrid.IsVisible = false;
-        NowGrid = GridIn;
+        _nowQQIC.IsVisible = false;
+        _nowQQIC = GridIn;
     }
 }

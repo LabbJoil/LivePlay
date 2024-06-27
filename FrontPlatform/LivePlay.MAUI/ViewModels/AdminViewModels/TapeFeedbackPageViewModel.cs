@@ -14,7 +14,7 @@ public partial class TapeFeedbackPageViewModel : MainTapeViewModel
     public AppStorage _deviceStorage;
 
     [ObservableProperty]
-    public IReadOnlyList<FeedbackContactInfoModel> _tapeItems;
+    public IReadOnlyList<FeedbackContactInfo> _tapeItems;
 
     public TapeFeedbackPageViewModel(AppDesign designSettings, AppStorage deviceStorage) : base(designSettings)
     {
@@ -30,7 +30,7 @@ public partial class TapeFeedbackPageViewModel : MainTapeViewModel
     [RelayCommand]
     public async override Task GoToTapeItem(object item)
     {
-        if (item is Tuple<object, object> tuple && tuple.Item1 is FeedbackContactInfoModel feedbackContactInfoModel && tuple.Item2 is ContentPage contentPage)
+        if (item is Tuple<object, object> tuple && tuple.Item1 is FeedbackContactInfo feedbackContactInfoModel && tuple.Item2 is ContentPage contentPage)
         {
             //var shellParameters = new ShellNavigationQueryParameters { { $"{nameof(FeedbackContactInfoModel)}Property", feedbackContactInfoModel } };
             //await Shell.Current.GoToAsync($"{nameof(CurrentFeedbackPage)}", shellParameters);

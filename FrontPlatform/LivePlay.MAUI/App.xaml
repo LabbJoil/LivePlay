@@ -14,7 +14,7 @@
                 <ResourceDictionary>
                     <converters:TupleConverter x:Key="TupleConverter" />
                     <converters:HeightConverter x:Key="HeightConverter" />
-                    <!--<toolkit:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageConverter" />-->
+                    <toolkit:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageConverter" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

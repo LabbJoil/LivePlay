@@ -35,14 +35,14 @@
                     <Rectangle Fill="Black" ZIndex="0" Opacity="0.73" StrokeThickness="0" />
                     <HorizontalStackLayout ZIndex="1">
                         <Image Grid.Column="1" Source="coin_dark.svg" Margin="5,0,0,0" VerticalOptions="Center" WidthRequest="20" HeightRequest="20"/>
-                        <Label x:Name="CoinLabel" Grid.Column="0" Text="123" TextColor="White" FontSize="17" FontAttributes="Bold" Margin="5" />
+                        <Label x:Name="CoinLabel" Grid.Column="0" Text="{Binding Path=TapeItem.Reward, Source={x:Reference this}}" TextColor="White" FontSize="17" FontAttributes="Bold" Margin="5" />
                     </HorizontalStackLayout>
                 </Grid>
             </Frame>
 
-            <Image Grid.ColumnSpan="3" Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding Path=TapeItem.ImagePath, Source={x:Reference this}}"/>
-            <Label Grid.Column="1" Grid.Row="3" Text="{Binding Path=TapeItem.NowItem.Title, Source={x:Reference this}}" FontSize="19" HorizontalOptions="Start" VerticalOptions="Center"/>
-            <Label Grid.Column="1" Grid.Row="5" Text="{Binding Path=TapeItem.NowItem.Description, Source={x:Reference this}}" FontSize="15" HorizontalOptions="Start" VerticalOptions="Center" />
+            <Image Grid.ColumnSpan="3" Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding Path=TapeItem.Image, Source={x:Reference this}, Converter={x:StaticResource ByteArrayToImageConverter}}"/>
+            <Label Grid.Column="1" Grid.Row="3" Text="{Binding Path=TapeItem.Title, Source={x:Reference this}}" FontSize="19" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Label Grid.Column="1" Grid.Row="5" Text="{Binding Path=TapeItem.DescriptionMini, Source={x:Reference this}}" FontSize="15" HorizontalOptions="Start" VerticalOptions="Center" />
         </Grid>
     </Border>
 

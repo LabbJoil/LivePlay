@@ -10,55 +10,16 @@ public partial class QuestionQuestItemControl : ContentView
 {
     private List<CheckBox> CheckBoxes { get; }
 
-    public static readonly BindableProperty ForwardItemCommandProperty = BindableProperty.Create(
-       propertyName: nameof(ForwardItemCommand),
-       returnType: typeof(ICommand),
-       declaringType: typeof(QuestionQuestItemControl),
-       defaultValue: null,
-       defaultBindingMode: BindingMode.TwoWay);
-
-    public ICommand ForwardItemCommand
-    {
-        get => (ICommand)GetValue(ForwardItemCommandProperty);
-        set => SetValue(ForwardItemCommandProperty, value);
-    }
-
-    public static readonly BindableProperty PreviousItemCommandProperty = BindableProperty.Create(
-       propertyName: nameof(PreviousItemCommand),
-       returnType: typeof(ICommand),
-       declaringType: typeof(QuestionQuestItemControl),
-       defaultValue: null,
-       defaultBindingMode: BindingMode.TwoWay);
-
-    public ICommand PreviousItemCommand
-    {
-        get => (ICommand)GetValue(PreviousItemCommandProperty);
-        set => SetValue(PreviousItemCommandProperty, value);
-    }
-
     public static readonly BindableProperty NowQuestionQuestProperty = BindableProperty.Create(
        propertyName: nameof(NowQuestionQuest),
-       returnType: typeof(QuestionQuestModel),
+       returnType: typeof(QuestionQuest),
        declaringType: typeof(QuestionQuestItemControl),
        defaultValue: null,
        defaultBindingMode: BindingMode.TwoWay);
 
-    public static readonly BindableProperty ParentPageProperty = BindableProperty.Create(
-       propertyName: nameof(ParentPage),
-       returnType: typeof(QuestionCreationQuestPage),
-       declaringType: typeof(QuestionQuestItemControl),
-       defaultValue: null,
-       defaultBindingMode: BindingMode.TwoWay);
-
-    public QuestionCreationQuestPage ParentPage
+    public QuestionQuest NowQuestionQuest
     {
-        get => (QuestionCreationQuestPage)GetValue(ParentPageProperty);
-        set => SetValue(ParentPageProperty, value);
-    }
-
-    public QuestionQuestModel NowQuestionQuest
-    {
-        get => (QuestionQuestModel)GetValue(NowQuestionQuestProperty);
+        get => (QuestionQuest)GetValue(NowQuestionQuestProperty);
         set
         {
             SetValue(NowQuestionQuestProperty, value);
@@ -101,31 +62,9 @@ public partial class QuestionQuestItemControl : ContentView
 
     }
 
-    private void Button_Clicked(object sender, EventArgs e)
-    {
-        //var parentPage = GetParentPage(Parent);
-        ForwardItemCommand.Execute((ParentPage, NowQuestionQuest));
-    }
-
-    //private static QuestionCreationQuestPage GetParentPage(Element element)
-    //{
-    //    if (element is QuestionCreationQuestPage question)
-    //        return question;
-    //    return GetParentPage(element.Parent);
-    //}
-
     private async void ImageButton_Clicked(object sender, EventArgs e)
     {
-        NowQuestionQuest.ImagePath = await AppStorage.GetOneItemStorage();
-    }
-
-    private void PreviousItem(object sender, EventArgs e)
-    {
-        PreviousItemCommand.Execute((ParentPage, NowQuestionQuest));
-    }
-
-    private void ForwardItem(object sender, EventArgs e)
-    {
-        ForwardItemCommand.Execute((ParentPage, NowQuestionQuest));
+        var imagePath = await AppStorage.GetOneItemStorage();
+        NowQuestionQuest.Image = File.ReadAllBytes(imagePath);
     }
 }

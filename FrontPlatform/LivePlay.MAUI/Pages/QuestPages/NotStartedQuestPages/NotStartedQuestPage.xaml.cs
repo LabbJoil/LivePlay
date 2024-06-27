@@ -4,20 +4,21 @@ using LivePlay.Front.MAUI.ViewModels.QuestViewModels;
 
 namespace LivePlay.Front.MAUI.Pages;
 
-[QueryProperty(nameof(QuestionQuestModelProperty), nameof(QuestionQuestModelProperty))]
+[QueryProperty(nameof(QuestProperty), nameof(QuestProperty))]
 public partial class NotStartedQuestPage : ContentPage
 {
-    private readonly BaseQuestPageViewModel BaseQuestPVM;
-    public QuestionQuestModel QuestionQuestModelProperty
+    private readonly BaseQuestPageViewModel _baseQuestPVM;
+
+    public Quest QuestProperty
     {
-        set => BaseQuestPVM.CurrentQuestItem = value;
+        set => _baseQuestPVM.CurrentQuestItem = value;
     }
 
     public NotStartedQuestPage(BaseQuestPageViewModel baseQuestPVM)
 	{
         InitializeComponent();
 		BindingContext = baseQuestPVM;
-        BaseQuestPVM = baseQuestPVM;
+        _baseQuestPVM = baseQuestPVM;
         //baseQuestPVM.CurrentQuestItem = questionQuestModel;
         //Settings.ChangeColorStatusBars?.Invoke(MainScrollView.BackgroundColor, StatusBarColor.BarWhite, null);
     }
@@ -29,7 +30,7 @@ public partial class NotStartedQuestPage : ContentPage
 
     private async void Button_Clicked(object sender, EventArgs e)
     {
-        var shellParameters = new ShellNavigationQueryParameters { { $"{nameof(QuestionQuestModel)}Property", BaseQuestPVM.CurrentQuestItem } };
-        await Shell.Current.GoToAsync($"{nameof(InProgressQuizQuestPage)}", shellParameters);
+        var shellParameters = new ShellNavigationQueryParameters { { $"{nameof(Quest)}Property", _baseQuestPVM.CurrentQuestItem } };
+        await Shell.Current.GoToAsync($"{nameof(InProgressQuestionQuestPage)}", shellParameters);
     }
 }
