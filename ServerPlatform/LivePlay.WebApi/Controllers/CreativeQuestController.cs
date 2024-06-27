@@ -1,12 +1,14 @@
 ﻿
 using AutoMapper;
 using LivePlay.Server.Application.Services;
+using LivePlay.Server.Core.Enums;
 using LivePlay.Server.Core.Models;
 using LivePlay.Server.WebApi.Contracts.Base.Quest;
 using LivePlay.Server.WebApi.Contracts.Requests.Quest.Edit;
 using LivePlay.Server.WebApi.Contracts.Requests.Quests.Add;
 using LivePlay.Server.WebApi.Contracts.Requests.Quests.Complete;
 using LivePlay.Server.WebApi.Contracts.Responses.Quest;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,7 +32,7 @@ public class CreativeQuestController(CreativeQuestService questService, IMapper 
     }
 
     [HttpPost("/addcreativequest")]
-    //[Authorize(Policy = nameof(Politic.EditQuest))]
+    [Authorize(Policy = nameof(Politic.EditQuest))]
     public IActionResult AddCreativeQuest([FromBody] AddingCreativeQuestRequest creativeQuestRequest)
     {
         var quest = _mapper.Map<Quest>(creativeQuestRequest.BaseQuest);
@@ -39,7 +41,7 @@ public class CreativeQuestController(CreativeQuestService questService, IMapper 
     }
 
     [HttpPost("/editcreativequest")]
-    //[Authorize(Policy = nameof(Politic.EditQuest))]
+    [Authorize(Policy = nameof(Politic.EditQuest))]
     public IActionResult EditCreativeQuest([FromBody] EditingCreativeQuestRequest creativeQuestRequest)
     {
         var quest = _mapper.Map<Quest>(creativeQuestRequest.BaseQuest);
@@ -48,7 +50,7 @@ public class CreativeQuestController(CreativeQuestService questService, IMapper 
     }
 
     [HttpPost("/completecreativequest")]
-    //[Authorize(Policy = nameof(Politic.EditQuest))]
+    [Authorize(Policy = nameof(Politic.EditQuest))]
     public IActionResult CompleteCreativeQuest([FromBody] CompletingCreativeQuestRequest questionQuestRequest)
     {
         var creativeQuest = _mapper.Map<CreativeQuest>(questionQuestRequest.PictureInfo);

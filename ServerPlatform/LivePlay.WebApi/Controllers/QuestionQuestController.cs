@@ -1,11 +1,13 @@
 ﻿
 using AutoMapper;
 using LivePlay.Server.Application.Services;
+using LivePlay.Server.Core.Enums;
 using LivePlay.Server.Core.Models;
 using LivePlay.Server.WebApi.Contracts.Requests.Quest.Add;
 using LivePlay.Server.WebApi.Contracts.Requests.Quest.Edit;
 using LivePlay.Server.WebApi.Contracts.Requests.Quests.Complete;
 using LivePlay.Server.WebApi.Contracts.Responses.Quests;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +19,7 @@ public class QuestionQuestController(QuestionQuestService questionQuestService, 
     private readonly IMapper _mapper = mapper;
 
     [HttpPost("/addquestionquest")]
-    //[Authorize(Policy = nameof(Politic.EditQuest))]
+    [Authorize(Policy = nameof(Politic.EditQuest))]
     public IActionResult AddQuestionQuest([FromBody] AddingQuestionQuestRequest questionQuestRequest)
     {
         var quest = _mapper.Map<Quest>(questionQuestRequest.BaseQuest);
@@ -27,7 +29,7 @@ public class QuestionQuestController(QuestionQuestService questionQuestService, 
     }
 
     [HttpPost("/editquestionquest")]
-    //[Authorize(Policy = nameof(Politic.EditQuest))]
+    [Authorize(Policy = nameof(Politic.EditQuest))]
     public IActionResult EditQuestionQuest([FromBody] EditingQuestionQuestRequest questionQuestRequest)
     {
         var quest = _mapper.Map<Quest>(questionQuestRequest.BaseQuest);
@@ -37,7 +39,7 @@ public class QuestionQuestController(QuestionQuestService questionQuestService, 
     }
 
     [HttpPost("/completequestionquest")]
-    //[Authorize(Policy = nameof(Politic.EditQuest))]
+    [Authorize(Policy = nameof(Politic.EditQuest))]
     public async Task<IActionResult> CompleteQuestionQuest([FromBody] CompletingQuestionQuestRequest questionQuestRequest)
     {
         var (userPoints, reward) = await _questionQuestService.CompleteQuest(HttpContext.User, questionQuestRequest.QuestId, questionQuestRequest.AnswerQuestions);

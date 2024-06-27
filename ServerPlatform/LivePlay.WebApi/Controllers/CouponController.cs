@@ -1,9 +1,10 @@
 ﻿
 using AutoMapper;
 using LivePlay.Server.Application.Services;
+using LivePlay.Server.Core.Enums;
 using LivePlay.Server.Core.Models;
 using LivePlay.Server.WebApi.Contracts.Requests.Coupons;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LivePlay.Server.WebApi.Controllers;
@@ -16,7 +17,7 @@ public class CouponController(CouponService couponService, IMapper mapper) : Con
     private readonly IMapper _mapper = mapper;
 
     [HttpGet("/getcoupons")]
-    //[Authorize(Policy = nameof(Politic.EditQuest))]
+    [Authorize(Policy = nameof(Politic.EditQuest))]
     public async Task<IActionResult> GetAllCoupons()
     {
         var coupons = await _couponService.GetAllCoupons();
@@ -24,7 +25,7 @@ public class CouponController(CouponService couponService, IMapper mapper) : Con
     }
 
     [HttpPost("/addcoupon")]
-    //[Authorize(Policy = nameof(Politic.EditQuest))]
+    [Authorize(Policy = nameof(Politic.EditQuest))]
     public IActionResult AddCoupon([FromBody] AddingCouponRequest couponRequest)
     {
         var coupon = _mapper.Map<Coupon>(couponRequest);
@@ -33,7 +34,7 @@ public class CouponController(CouponService couponService, IMapper mapper) : Con
     }
 
     [HttpPost("/buycoupon/{id}")]
-    //[Authorize(Policy = nameof(Politic.EditQuest))]
+    [Authorize(Policy = nameof(Politic.EditQuest))]
     public async Task<IActionResult> BuyCoupon(int id)
     {
         var award = await _couponService.BuyCoupon(HttpContext.User, id);

@@ -1,6 +1,8 @@
 ﻿
 using AutoMapper;
 using LivePlay.Server.Application.Services;
+using LivePlay.Server.Core.Enums;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LivePlay.Server.WebApi.Controllers;
@@ -13,7 +15,7 @@ public class QuestController(QuestService questService, IMapper mapper) : Contro
     private readonly IMapper _mapper = mapper;
 
     [HttpGet("/allquests")]
-    //[Authorize(Policy = nameof(Politic.ReadQuestCoupon))]
+    [Authorize(Policy = nameof(Politic.ReadQuestCoupon))]
     public async Task<IActionResult> GetAllQuests()
     {
         var allQuests = await _questService.GetAllQuestsBase();
@@ -21,7 +23,7 @@ public class QuestController(QuestService questService, IMapper mapper) : Contro
     }
 
     [HttpDelete("/deletequest/{id}")]
-    //[Authorize(Policy = nameof(Politic.EditQuest))]
+    [Authorize(Policy = nameof(Politic.EditQuest))]
     public IActionResult DeleteQuest(int id)
     {
         _questService.DeleteQuest(id);
