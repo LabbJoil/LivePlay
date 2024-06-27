@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivePlay.Front.MAUI.Pages.SettingsPage"
+             Title="SettingPage"
+             xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
+             xmlns:cp="clr-namespace:LivePlay.Front.MAUI.Models.Domain">
+
+    <Grid x:Name="MainGrid" BackgroundColor="{AppThemeBinding Dark={StaticResource PageMainBackgroundDark}, Light={StaticResource PageMainBackgroundLight}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Rectangle x:Name="ShadowRectangle" Fill="Black" ZIndex="1" Opacity="0" StrokeThickness="0" Grid.RowSpan="2"/>
+        <pe:ChoicePanelControl x:Name="FilterPanel" Margin="0,10,0,5" Grid.Row="0" PanelItems="{Binding SettingsItems}"/>
+
+        <Grid Grid.Row="1" Padding="22">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="44"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="37"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="22"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="22"/>
+            </Grid.ColumnDefinitions>
+
+            <Border BackgroundColor="#415A77" Grid.RowSpan="4" Stroke="Transparent" Grid.ColumnSpan="3">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20" />
+                </Border.StrokeShape>
+            </Border>
+
+            <Label Grid.Row="0" Grid.Column="1" Text="Настройка темы:" FontAttributes="Bold" FontSize="19" VerticalOptions="End"/>
+            <pe:SwitchButtonsControl Grid.Row="1" Grid.Column="1" TextButton1="Синяя" TextButton2="Розовая" VerticalOptions="End" WidthRequest="210" HeightRequest="45" BackgroundColor="#0D1B2A"/>
+
+            <Label Grid.Row="2" Grid.Column="1" Text="Настройка языка:" FontAttributes="Bold" FontSize="19" VerticalOptions="End"/>
+            <Grid Grid.Row="3" Grid.Column="1" Padding="20" ColumnDefinitions="48,*" RowDefinitions="33,41">
+                <RadioButton Grid.Column="0" Grid.Row="0" BackgroundColor="White" CornerRadius="20" Padding="0" WidthRequest="33" IsChecked="True"/>
+                <Label Grid.Column="1" Grid.Row="0" Text="Русский" FontSize="17" VerticalOptions="Center"/>
+
+                <RadioButton Grid.Column="0" Grid.Row="1" BackgroundColor="White" CornerRadius="20" Padding="0" VerticalOptions="End" WidthRequest="33" HeightRequest="33"/>
+                <Label Grid.Column="1" Grid.Row="1" Text="English" FontSize="17" VerticalOptions="Center"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

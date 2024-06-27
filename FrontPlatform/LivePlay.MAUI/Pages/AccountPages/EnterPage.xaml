@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivePlay.Front.MAUI.Pages.EnterPage"
+             xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
+             Appearing="ContentPage_Appearing" Disappearing="ContentPage_Disappearing"
+             BackgroundColor="{AppThemeBinding Dark={StaticResource Page1BackgroundDark}, Light={StaticResource Page1BackgroundLight}}"
+             x:Name="this">
+
+    <ScrollView x:Name="MainScrollView" VerticalScrollBarVisibility="Never">
+        <Grid x:Name="MainGrid" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="62"/>
+                <RowDefinition Height="140"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <pe:SwitchButtonsControl Grid.Row="1" TextButton1="Вход" TextButton2="Регистрация" ClickButton1="SignUpButtonClicked" ClickButton2="LogInButtonClicked" Margin="40,0,40,0"/>
+
+            <Grid x:Name="EnterGrid" Grid.Row="3" Margin="50,10">
+                <StackLayout x:Name="LoginStackLayout" WidthRequest="300" Orientation="Vertical" Spacing="10">
+                    <pe:SimpleEntryControl x:Name="LoginEmail" Placeholder="Логин" Text="{Binding EnterUser.Email}" Margin="10,0"/>
+                    <pe:PasswordEntryControl x:Name="LoginPassword" Placeholder="Пароль" Text="{Binding EnterUser.Password}" Margin="10,0" />
+                    <Button Text="Войти" Margin="50,30" HeightRequest="50"
+                            Command="{Binding LoginUserCommand}"
+                            CommandParameter="{Binding Source={x:Reference this}}"/>
+                </StackLayout>
+
+                <StackLayout x:Name="EmailStackLayout" WidthRequest="300" Orientation="Vertical" IsVisible="False">
+                    <pe:SimpleEntryControl x:Name="VerifyEmail" Placeholder="E-mail" Text="{Binding EnterUser.Email}" Margin="10,10"/>
+                    <Button Text="Далее" Margin="50,30" HeightRequest="50"
+                            Command="{Binding VerifyEmailCommand}"
+                            CommandParameter="{Binding Source={x:Reference this}}"/>
+                </StackLayout>
+
+                <StackLayout x:Name="CodeStackLayout" WidthRequest="300" Orientation="Vertical" IsVisible="False">
+
+                    <Grid ColumnDefinitions="*,*">
+                        <Label Text="Введите код:" FontSize="16"/>
+                        <Label x:Name="TimerLabel" Grid.Column="1" Text="00:00" Margin="10" VerticalOptions="Start" HorizontalOptions="End"/>
+                    </Grid>
+
+                    <Border Stroke="Transparent" Padding="15">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="TapGestureRecognizer_Tapped"
+                                NumberOfTapsRequired="1"/>
+                        </Border.GestureRecognizers>
+
+                        <Grid HeightRequest="84" ColumnDefinitions="*,*,*,*" ColumnSpacing="9" WidthRequest="240">
+                            <Entry x:Name="EmailCode" Text="" Keyboard="Numeric" HeightRequest="0.1" TextChanged="EmailCode_TextChanged"/>
+
+                            <Border BackgroundColor="#415A77" Stroke="Transparent">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="20"/>
+                                </Border.StrokeShape>
+                                <Label x:Name="OneEmailCodeDigit" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+
+                            <Border Grid.Column="1" BackgroundColor="#415A77" Stroke="Transparent">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="20"/>
+                                </Border.StrokeShape>
+                                <Label x:Name="TwoEmailCodeDigit" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+
+                            <Border Grid.Column="2" BackgroundColor="#415A77" Stroke="Transparent">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="20"/>
+                                </Border.StrokeShape>
+                                <Label x:Name="ThreeEmailCodeDigit" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+
+                            <Border Grid.Column="3" BackgroundColor="#415A77" Stroke="Transparent">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="20"/>
+                                </Border.StrokeShape>
+                                <Label x:Name="FourEmailCodeDigit" FontAttributes="Bold" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+                    
+                    <Button x:Name="CodeCheckButton" Text="Далее" Margin="50,25,50,40" HeightRequest="50" WidthRequest="230"
+                             Command="{Binding CheckCodeEmailCommand}"
+                            CommandParameter="{Binding Source={x:Reference EmailCode}, Path=Text, ConverterParameter={x:Reference this}, Converter={StaticResource TupleConverter}}"/>
+                    
+                    <Button x:Name="SendCodeButton" Text="Отправить код ещё раз"  IsEnabled="False" Margin="10,0" 
+                            Style="{StaticResource SecondButton}" WidthRequest="230" Padding="0" HeightRequest="50"/>
+                </StackLayout>
+
+                <StackLayout x:Name="UserInfoStackLayout" WidthRequest="300" Orientation="Vertical" IsVisible="False">
+                    <pe:NameEntryControl Background="Black"/>
+                    <pe:PasswordEntryControl x:Name="IOIII" Placeholder="Пароль" Text="{Binding EnterUser.Password}" Margin="10,0" />
+                    <Button Text="Войти" Margin="50,30" HeightRequest="50"
+                            Command="{Binding LoginUserCommand}"
+                            CommandParameter="{Binding Source={x:Reference this}}"/>
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ScrollView>
+    
+</ContentPage>

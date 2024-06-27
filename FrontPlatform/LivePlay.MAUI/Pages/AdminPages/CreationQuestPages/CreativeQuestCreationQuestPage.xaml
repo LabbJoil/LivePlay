@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages.CreativeQuestCreationQuestPage"
+             xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
+             Title="QRcodeCreationQuestPage"
+             Shell.NavBarIsVisible="False">
+    
+    <Grid BackgroundColor="#26507B" Padding="40,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64"/>
+            <RowDefinition Height="109"/>
+            <RowDefinition Height="88"/>
+            <RowDefinition Height="62"/>
+            <RowDefinition Height="130"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" VerticalOptions="End" HorizontalOptions="Center" Stroke="#DEDEDE" StrokeThickness="2" Padding="13,7" >
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20"/>
+            </Border.StrokeShape>
+            <Label Text="Создание квеста" FontSize="19" FontAttributes="Bold"/>
+        </Border>
+
+        <Label Text="Задание" FontSize="17" Grid.Row="1" FontAttributes="Bold" VerticalOptions="End"/>
+
+        <Border Grid.Row="2" Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="80" Stroke="Transparent" BackgroundColor="White">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="9"/>
+            </Border.StrokeShape>
+            <Editor TextColor="Black" HeightRequest="80"/>
+        </Border>
+
+        <Label Text="Что добавить:" FontSize="17" Grid.Row="3" FontAttributes="Bold" VerticalOptions="End"/>
+
+        <Grid Grid.Row="4" Padding="20,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="47"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label x:Name="Drawing" Text="Рисование" FontSize="17" Grid.Row="0" VerticalOptions="End"/>
+            <CheckBox Grid.Row="0" Grid.Column="1" x:Name="CheckBox1" VerticalOptions="End" HeightRequest="23"/>
+
+            <Label Text="Написание текста" FontSize="17" Grid.Row="1" VerticalOptions="End"/>
+            <CheckBox Grid.Row="1" Grid.Column="1" x:Name="CheckBox2" VerticalOptions="End" HeightRequest="23"/>
+
+            <Label Text="Прикрепление файлов" FontSize="17" Grid.Row="2" VerticalOptions="End"/>
+            <CheckBox Grid.Row="2" Grid.Column="1" x:Name="CheckBox3" VerticalOptions="End" HeightRequest="23"/>
+        </Grid>
+        
+        <Button Grid.Row="5" Text="Готово" FontAttributes="Bold" FontSize="19" WidthRequest="200" HeightRequest="40" Padding="0" BackgroundColor="#143150"/>
+        
+    </Grid>
+</ContentPage>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="LivePlay.Front.MAUI.Pages.AdminPages.CurrentFeedbackPage" Color="Transparent" Opened="Popup_Opened">
+
+    <Grid>
+        <Button HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="Transparent" BorderColor="Transparent" CornerRadius="0" Clicked="ClosePopup"/>
+
+        <Border BackgroundColor="White" Padding="15" Stroke="Transparent" Margin="18,95" ZIndex="1">
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer
+                    NumberOfTapsRequired="1"/>
+            </Border.GestureRecognizers>
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20"/>
+            </Border.StrokeShape>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="23"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="105"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Text="Иванов Иван" FontAttributes="Bold" TextColor="#0D1B2A" FontSize="19"/>
+                <Label Grid.Row="1" Text="20.02.2024" FontAttributes="Bold" FontFamily="Roboto" TextColor="#6C6C6C" FontSize="16"/>
+
+                <ImageButton Source="close_light.svg" Grid.RowSpan="2" HorizontalOptions="End" VerticalOptions="Start" HeightRequest="28" WidthRequest="28" Clicked="ClosePopup"/>
+
+                <Label Grid.Row="2" Text="Всё понравилось, но впечатления ВАУ не осталось. Мне не хватило круглосуточного ресторана, он работает только в опред.часы.  В баре очень отзывчивые, но какие-то нерасторопные официанты. Вкусная еда и напитки, но цены не всем по карману.  При этом за клиента не борются, можно просидеть за столиком без внимания, особенно вечером. Номера в отеле удобные, всё есть.  Чисто, тихо, комфортно. Спа зона: очень людно, бассейн маленький, сауны порадуют неискушённых. Завтрак выше всяких похвал!! На любой вкус взрослого и ребёнка. Захочу ли посетить снова? Вряд ли. Только если вдруг с компанией."
+               TextColor="#0D1B2A" Margin="0,21,0,0" FontSize="13"/>
+
+                <Grid ColumnDefinitions="105" Grid.Row="3">
+                    <Label Text="+2" FontFamily="Roboto" TextColor="White" ZIndex="1" VerticalOptions="Center" HorizontalOptions="Center" FontSize="40"/>
+                    <ImageButton BackgroundColor="#818181" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" CornerRadius="15"/>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+
+</toolkit:Popup>
