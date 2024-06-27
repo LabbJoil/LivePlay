@@ -56,11 +56,11 @@ public partial class QuestionCreationQuestPageViewModel(AppDesign designSettings
         else
             AllQuestionQuest.Add(page.GetNowQuestion());
 
-        AllQuestionQuest.ForEach(q => q.RightAnswer = 0);
+        AllQuestionQuest.ForEach(q => q.RightAnswer = -1);
 
         Preferences.Set(nameof(Quest), JsonSerializer.Serialize(CurrentQuestItem));
         Preferences.Set(nameof(QuestionQuest), JsonSerializer.Serialize(AllQuestionQuest));
-        Shell.Current.DisplayAlert("qqq", "Вы создали квест", "ok");
+        Shell.Current.DisplayAlert("", "Вы создали квест", "ok");
         Shell.Current.GoToAsync("../..");
     }
 }

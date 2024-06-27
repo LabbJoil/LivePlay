@@ -30,7 +30,7 @@ public partial class EnterPage : ContentPage
     {
         LoginPassword.Text = string.Empty;
         LoginEmail.Text = string.Empty;
-        LoginPassword.IsPassword = false;
+        LoginPassword.IsPassword = true;
     }
 
     // -- SwitchButtons --

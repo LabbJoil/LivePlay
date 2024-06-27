@@ -55,14 +55,14 @@
                         <ColumnDefinition Width="31"/>
                     </Grid.ColumnDefinitions>
 
-                    <Entry Placeholder="Email" Text="ivanov.ivan123@gmail.com" TextColor="Black" Margin="10,0" FontAttributes="Bold"/>
+                    <Entry Placeholder="Email" Text="tre@gmail.com" TextColor="Black" Margin="10,0" FontAttributes="Bold"/>
                     <ImageButton Source="edit_email.svg" Grid.Column="1" WidthRequest="25" HeightRequest="25"/>
                 </Grid>
             </Border>
 
             <Button Grid.Row="3" Text="Изменить пароль" WidthRequest="210" FontAttributes="Bold" BackgroundColor="{AppThemeBinding Dark={StaticResource BasicButtonBackgroundDark}, Light={StaticResource BasicButtonBackgroundDark}}"/>
 
-            <Button Grid.Row="5" Text="Выйти из аккаунта" WidthRequest="210" FontAttributes="Bold" BackgroundColor="{AppThemeBinding Dark={StaticResource BasicButtonBackgroundDark}, Light={StaticResource BasicButtonBackgroundDark}}"/>
+            <Button Grid.Row="5" Text="Выйти из аккаунта" WidthRequest="210" FontAttributes="Bold" BackgroundColor="{AppThemeBinding Dark={StaticResource BasicButtonBackgroundDark}, Light={StaticResource BasicButtonBackgroundDark}}" Clicked="Button_Clicked"/>
             <Button Grid.Row="6" Text="Удалить аккаунт" WidthRequest="210" HeightRequest="42" VerticalOptions="Center" FontAttributes="Bold" BackgroundColor="#980000"/>
         </Grid>
     </RefreshView>
