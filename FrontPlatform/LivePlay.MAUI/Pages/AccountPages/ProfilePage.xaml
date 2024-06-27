@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivePlay.Front.MAUI.Pages.ProfilePage"
+             Title="AccountPage"
+             Appearing="ContentPage_Appearing" Disappearing="ContentPage_Disappearing"
+             xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
+             x:Name="AccountPage">
+
+    <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">
+        <Grid x:Name="MainGrid" BackgroundColor="{AppThemeBinding Dark={StaticResource PageMainBackgroundDark}, Light={StaticResource PageMainBackgroundLight}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Rectangle x:Name="ShadowRectangle" Fill="Black" ZIndex="1" Opacity="0" StrokeThickness="0" Grid.RowSpan="2"/>
+            <pe:ChoicePanelControl x:Name="FilterPanel" Margin="0,10,0,5" Grid.Row="0" PanelItems="{Binding ProfileItems}"/>
+
+            <Grid Margin="25,20" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="145"/>
+                    <RowDefinition Height="81"/>
+                    <RowDefinition Height="82"/>
+                    <RowDefinition Height="42"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="42"/>
+                    <RowDefinition Height="75"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="31"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="31"/>
+                </Grid.ColumnDefinitions>
+
+                <Border BackgroundColor="#415A77" Grid.RowSpan="8" Stroke="Transparent" Grid.ColumnSpan="3">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20" />
+                    </Border.StrokeShape>
+                </Border>
+
+                <Button Text="+" CornerRadius="100" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White" WidthRequest="97" HeightRequest="97" FontSize="40" 
+                        TextColor="Black" Grid.Column="1"/>
+
+                <pe:NameEntryControl Grid.Column="1" Grid.Row="1" BackgroundColor="White"/>
+
+                <!--<Border BackgroundColor="White" Stroke="Transparent" Padding="0" Grid.Column="1" Grid.Row="1">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="15"/>
+                    </Border.StrokeShape>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="1"/>
+                            <RowDefinition Height="40"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="40"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Entry Placeholder="Имя" Text="Иван" TextColor="Black" Margin="10,0" FontAttributes="Bold"/>
+                        <Line Grid.Row="1" Stroke="#BEBEBE" X1="10" X2="227"/>
+                        <Entry Placeholder="Фамилия" Text="Иванов" TextColor="Black" Margin="10,0" FontAttributes="Bold" Grid.Row="2"/>
+                        <ImageButton Source="mark_name_surname.svg" Grid.Column="1" Grid.RowSpan="3" VerticalOptions="Center" BackgroundColor="Transparent" 
+                                     HorizontalOptions="Center" WidthRequest="26" HeightRequest="26"/>
+                    </Grid>
+                </Border>-->
+
+                <Border Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HeightRequest="40" BackgroundColor="White" Stroke="Transparent" Padding="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="15"/>
+                    </Border.StrokeShape>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="31"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Entry Placeholder="Email" Text="ivanov.ivan123@gmail.com" TextColor="Black" Margin="10,0" FontAttributes="Bold"/>
+                        <ImageButton Source="edit_email.svg" Grid.Column="1" WidthRequest="25" HeightRequest="25"/>
+                    </Grid>
+                </Border>
+
+                <Button Grid.Row="3" Grid.Column="1" Text="Изменить пароль" WidthRequest="210" FontAttributes="Bold" BackgroundColor="{AppThemeBinding Dark={StaticResource BasicButtonBackgroundDark}, Light={StaticResource BasicButtonBackgroundDark}}"/>
+
+                <Button Grid.Row="5" Grid.Column="1" Text="Выйти из аккаунта" WidthRequest="210" FontAttributes="Bold" BackgroundColor="{AppThemeBinding Dark={StaticResource BasicButtonBackgroundDark}, Light={StaticResource BasicButtonBackgroundDark}}"/>
+                <Button Grid.Row="6" Grid.Column="1" Text="Удалить аккаунт" WidthRequest="210" HeightRequest="42" VerticalOptions="Center" FontAttributes="Bold" BackgroundColor="#980000"/>
+            </Grid>
+        </Grid>
+    </RefreshView>
+
+</ContentPage>

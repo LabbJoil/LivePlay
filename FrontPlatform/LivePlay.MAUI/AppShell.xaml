@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="LivePlay.Front.MAUI.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:LivePlay.Front.MAUI.Pages"
+    xmlns:pagess="clr-namespace:LivePlay.Front.MAUI.Pages.AccountPages"
+    xmlns:pagesss="clr-namespace:LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages"
+    xmlns:pagessss="clr-namespace:LivePlay.Front.MAUI.Pages.QuestPages"
+    xmlns:pagesrev="clr-namespace:LivePlay.Front.MAUI.Pages.ReviewPages"
+    xmlns:pagesadmin="clr-namespace:LivePlay.Front.MAUI.Pages.AdminPages"
+    xmlns:pagesreward="clr-namespace:LivePlay.Front.MAUI.Pages.Reward"
+    Shell.TabBarBackgroundColor="White"
+    Shell.TabBarForegroundColor="Black"
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    FlyoutBackground="White"
+    Shell.TabBarUnselectedColor="#527395"
+    Shell.TabBarTitleColor="#25394D">
+
+    <Shell.TitleView>
+        <StackLayout VerticalOptions="Fill" Orientation="Horizontal">
+            <Border HorizontalOptions="EndAndExpand" Margin="15,8" Stroke="#DEDEDE" StrokeThickness="2">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="30"/>
+                </Border.StrokeShape>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="TapGestureRecognizer_Tapped_1"
+                        NumberOfTapsRequired="1"/>
+                </Border.GestureRecognizers>
+                <StackLayout Orientation="Horizontal">
+                    <Label x:Name="CoinLabel" Text="0" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" FontSize="16" FontAttributes="Bold" Margin="10,0"/>
+                    <Image x:Name="CoinLabels" Source="coin_dark.svg" FlexLayout.Grow="1" Aspect="Fill" Margin="0,5,10,5" WidthRequest="{Binding Source={RelativeSource Self}, Path=Height}" />
+                </StackLayout>
+            </Border>
+        </StackLayout>
+    </Shell.TitleView>
+
+    <Shell.FlyoutHeader>
+        <Grid Margin="0,100,0,0"/>
+    </Shell.FlyoutHeader>
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <ScrollView VerticalOptions="Start">
+                <Grid x:Name="FlyoutGrid" Loaded="FlyoutGrid_Loaded" AutomationId="{Binding AutomationId}">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </Grid.GestureRecognizers>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" ZIndex="1"
+                           Text="{Binding Title}"
+                           TextColor="Black"
+                           FontSize="16"
+                           VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                           VerticalOptions="Center" HorizontalOptions="Center"/>
+
+                    <Label IsVisible="False" IsEnabled="False" Text="{Binding ContentTemplate}"/>
+                    <Rectangle x:Name="Line" Grid.Column="1" ZIndex="1"
+                               WidthRequest="7" RadiusX="30" RadiusY="30" BackgroundColor="#415A77" HorizontalOptions="Center" Margin="0,5,20,5"/>
+                    <Rectangle x:Name="BackGroud" Grid.ColumnSpan="2" ZIndex="0"
+                               BackgroundColor="Gray" HorizontalOptions="Fill" VerticalOptions="Fill" Opacity="0.2"/>
+                </Grid>
+            </ScrollView>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <ShellContent
+        Shell.NavBarIsVisible="False"
+        Shell.TabBarIsVisible="False"
+        Route="EnterPage" 
+        ContentTemplate="{DataTemplate pages:EnterPage}"/>
+
+    <TabBar>
+        <ShellContent Icon="base_page.svg"
+                      Route="TapeFeedbackPage"
+                      Shell.NavBarIsVisible="False"
+                      Shell.TabBarIsVisible="True"
+                      Title="Отзывы"
+                     ContentTemplate="{DataTemplate pagesadmin:TapeFeedbackPage}" />
+
+        <ShellContent Icon="add_quest.svg"
+                      Shell.NavBarIsVisible="False"
+                      Shell.TabBarIsVisible="True"
+                      Title="Квесты"
+                     ContentTemplate="{DataTemplate pagesadmin:ManageQuestPage}" />
+
+        <ShellContent Icon="add_award.svg"
+                      Shell.NavBarIsVisible="False"
+                      Shell.TabBarIsVisible="True"
+                      Title="Награды"
+                     ContentTemplate="{DataTemplate pagesadmin:ManageRewardPage}" />
+
+        <ShellContent Icon="profile_light.svg"
+                      Shell.NavBarIsVisible="False"
+                      Shell.TabBarIsVisible="True"
+                      Title="Профиль"
+                     ContentTemplate="{DataTemplate pagesadmin:AdminProfilePage}" />
+
+        <ShellContent Icon="statistics.svg"
+                      Shell.NavBarIsVisible="False"
+                      Shell.TabBarIsVisible="True"
+                      Title="Статистика"
+                     ContentTemplate="{DataTemplate pagesadmin:GettingStatisticsPage}" />
+    </TabBar>
+
+    <FlyoutItem x:Name="FlyoutItemsNow" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Главная страница"
+                      AutomationId="0"
+                      Route="MainPage"
+                      ContentTemplate="{DataTemplate pages:MainPage}"
+                      Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
+        <ShellContent Title="Квесты"
+                      AutomationId="1"
+                      Route="TapeQuestPage"
+                      ContentTemplate="{DataTemplate pages:TapeQuestPage}"
+                      Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
+        <ShellContent Title="Награды"
+                      AutomationId="2"
+                      Route="MainRewardPage"
+                      ContentTemplate="{DataTemplate pagesreward:MainRewardPage}"
+                      Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
+        <ShellContent Title="Настройки" 
+                      AutomationId="3" 
+                      Route="NotificationSettingsPage" 
+                      ContentTemplate="{DataTemplate pages:NotificationSettingsPage}"
+                      Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
+        <ShellContent Title="Профиль" 
+                      AutomationId="4" 
+                      Route="MyCouponsPage" 
+                      ContentTemplate="{DataTemplate pages:MyCouponsPage}"
+                      Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
+        <ShellContent Title="Оставить отзыв" 
+                      AutomationId="5" 
+                      Route="ReviewPage" 
+                      ContentTemplate="{DataTemplate pagesrev:ReviewPage}"
+                      Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
+    </FlyoutItem>
+
+</Shell>

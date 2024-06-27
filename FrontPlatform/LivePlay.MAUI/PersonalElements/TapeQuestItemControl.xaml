@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivePlay.Front.MAUI.PersonalElements.TapeQuestItemControl"
+             x:Name="this">
+
+    <Border x:Name="PageView" BackgroundColor="#415A77" Stroke="Transparent">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="20" />
+        </Border.StrokeShape>
+        <Border.GestureRecognizers>
+            <TapGestureRecognizer
+                Command="{Binding CommandTap, Source={x:Reference this}}"
+                CommandParameter="{Binding ., ConverterParameter={x:Reference this}, Converter={StaticResource TupleConverter}}"
+                NumberOfTapsRequired="1"/>
+        </Border.GestureRecognizers>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="115"/>
+                <RowDefinition Height="15"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="5"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="27"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="27"/>
+            </Grid.ColumnDefinitions>
+
+            <Frame  x:Name="CostFrame" Grid.ColumnSpan="2" ZIndex="1" CornerRadius="30" BorderColor="Transparent" Padding="0" Margin="5,5,0,0" BackgroundColor="Transparent" Opacity="1" HorizontalOptions="Start" WidthRequest="70">
+                <Grid>
+                    <Rectangle Fill="Black" ZIndex="0" Opacity="0.73" StrokeThickness="0" />
+                    <HorizontalStackLayout ZIndex="1">
+                        <Image Grid.Column="1" Source="coin_dark.svg" Margin="5,0,0,0" VerticalOptions="Center" WidthRequest="20" HeightRequest="20"/>
+                        <Label x:Name="CoinLabel" Grid.Column="0" Text="{Binding Path=TapeItem.Reward, Source={x:Reference this}}" TextColor="White" FontSize="17" FontAttributes="Bold" Margin="5" />
+                    </HorizontalStackLayout>
+                </Grid>
+            </Frame>
+
+            <Image Grid.ColumnSpan="3" Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding Path=TapeItem.Image, Source={x:Reference this}, Converter={x:StaticResource ByteArrayToImageConverter}}"/>
+            <Label Grid.Column="1" Grid.Row="3" Text="{Binding Path=TapeItem.Title, Source={x:Reference this}}" FontSize="19" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Label Grid.Column="1" Grid.Row="5" Text="{Binding Path=TapeItem.DescriptionMini, Source={x:Reference this}}" FontSize="15" HorizontalOptions="Start" VerticalOptions="Center" />
+        </Grid>
+    </Border>
+
+</ContentView>

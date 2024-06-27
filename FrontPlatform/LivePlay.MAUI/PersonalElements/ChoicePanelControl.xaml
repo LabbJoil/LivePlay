@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivePlay.Front.MAUI.PersonalElements.ChoicePanelControl"
+             x:Name="this">
+
+    <Grid>
+        <Rectangle BackgroundColor="#415A77" VerticalOptions="Fill" HorizontalOptions="Fill"/>
+        <CollectionView Style="{StaticResource ChoiceCollectionView}" ItemsSource="{Binding Source={x:Reference this}, Path=PanelItems}" >
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border BackgroundColor="Transparent" Stroke="White" Margin="4,5" Padding="7,0" StrokeThickness="2">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20" />
+                        </Border.StrokeShape>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{Binding Icon}" Margin="2"/>
+                            <Label Text="{Binding Text}" VerticalOptions="Center" Margin="2" FontSize="16" FontAttributes="Bold"/>
+                        </StackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+</ContentView>

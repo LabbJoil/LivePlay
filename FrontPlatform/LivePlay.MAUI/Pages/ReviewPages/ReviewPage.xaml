@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivePlay.Front.MAUI.Pages.ReviewPages.ReviewPage"
+             Title="ReviewPage"
+             Appearing="ContentPage_Appearing" Disappearing="ContentPage_Disappearing"
+             xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
+             xmlns:cp="clr-namespace:LivePlay.Front.MAUI.Models.Domain"
+             x:Name="this">
+
+    <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">
+        <Grid x:Name="MainGrid" BackgroundColor="{AppThemeBinding Dark={StaticResource PageMainBackgroundDark}, Light={StaticResource PageMainBackgroundLight}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <Rectangle x:Name="ShadowRectangle" Fill="Black" ZIndex="1" Opacity="0" StrokeThickness="0" Grid.RowSpan="2"/>
+
+            <Grid Grid.Row="1" Margin="28,20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="43"/>
+                    <RowDefinition Height="19"/>
+                    <RowDefinition Height="59"/>
+                    <RowDefinition Height="204"/>
+                    <RowDefinition Height="43"/>
+                    <RowDefinition Height="105"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="70"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="28"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="28"/>
+                </Grid.ColumnDefinitions>
+
+                <Border BackgroundColor="#415A77" Grid.RowSpan="8" Stroke="Transparent" Grid.ColumnSpan="3">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20" />
+                    </Border.StrokeShape>
+                </Border>
+
+                <Label Grid.Column="1" Text="Поделитесь своим мнением" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold" FontSize="19"/>
+                <Label Grid.Row="1" Grid.Column="1" Text="Оно важно для нас!" HorizontalOptions="Center" FontSize="16"/>
+
+                <Label Grid.Column="1" Grid.Row="2" Text="Напишите ваш отзыв:" VerticalOptions="End" FontSize="16" FontAttributes="Bold"/>
+                <Border Grid.Row="3" Grid.Column="1" BackgroundColor="White" Stroke="Transparent" Padding="0" HeightRequest="184" Margin="0,7" HorizontalOptions="Start" VerticalOptions="Start">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="15"/>
+                    </Border.StrokeShape>
+                    <Editor Placeholder="Свои впечатления от проживания в сети наших отелей" TextColor="Black" Margin="10,0" FontSize="13"/>
+                </Border>
+
+                <Label Grid.Column="1" Grid.Row="4" Text="Прикрепите фото:" FontAttributes="Bold" FontSize="16" Margin="0,11"/>
+                <ImageButton Grid.Column="1" Grid.Row="5" Source="photo_add.svg" HorizontalOptions="Start"/>
+
+                <Button Grid.Row="7" Grid.Column="1" Text="Отправить" FontAttributes="Bold" FontSize="19" Margin="0,0,0,23" WidthRequest="220" 
+                        BackgroundColor="{AppThemeBinding Dark={StaticResource BasicButtonBackgroundDark}, Light={StaticResource BasicButtonBackgroundDark}}"/>
+            </Grid>
+            
+        </Grid>
+    </RefreshView>
+
+</ContentPage>
