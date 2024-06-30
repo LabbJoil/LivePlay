@@ -98,4 +98,12 @@ public class UserRepository(LivePlayDbContext dbContext, IMapper mapper) : IUser
         await _dbContext.SaveChangesAsync();
         return userEntity.Points;
     }
+
+    internal async Task<UserEntityModel> GetOpenEntityById(Guid id)
+    {
+        var userEntity = await _dbContext.Users
+            .FindAsync(id)
+            ?? throw new RequestException(ErrorCode.RequestError, "Сouldn't find the user", $"User with id {id} not found");
+        return userEntity;
+    }
 }

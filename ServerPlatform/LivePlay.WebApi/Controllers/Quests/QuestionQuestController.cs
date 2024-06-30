@@ -1,6 +1,6 @@
 ﻿
 using AutoMapper;
-using LivePlay.Server.Application.Services;
+using LivePlay.Server.Application.Services.Quests;
 using LivePlay.Server.Core.Enums;
 using LivePlay.Server.Core.Models;
 using LivePlay.Server.WebApi.Contracts.Requests.Quest.Add;
@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LivePlay.Server.WebApi.Controllers;
+namespace LivePlay.Server.WebApi.Controllers.Quests;
 
 public class QuestionQuestController(QuestionQuestService questionQuestService, IMapper mapper) : Controller
 {

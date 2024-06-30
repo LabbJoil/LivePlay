@@ -19,5 +19,6 @@ public enum ErrorCode
     QRProviderError,
     InternalError,
     PermitionError,
-    UserPoints
+    UserPoints,
+    FalseAnswer
 }

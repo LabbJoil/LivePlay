@@ -2,17 +2,13 @@
 using AutoMapper;
 using LivePlay.Server.Application.CustomExceptions;
 using LivePlay.Server.Core.Enums;
-using LivePlay.Server.Core.Interfaces;
+using LivePlay.Server.Core.Interfaces.Quests;
 using LivePlay.Server.Core.Models;
 using LivePlay.Server.Persistence.EntityModels.Base;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection.Metadata.Ecma335;
 
-namespace LivePlay.Server.Persistence.Repositories;
+namespace LivePlay.Server.Persistence.Repositories.Quests;
 
 public class CreativeQuestRepository(LivePlayDbContext dbContext, IMapper mapper) : ICreativeQuestRepository
 {
@@ -45,14 +41,14 @@ public class CreativeQuestRepository(LivePlayDbContext dbContext, IMapper mapper
         return creativeQuests;
     }
 
-    public async Task<(Quest, CreativeQuest)> GetFullQuest(int questId)
-    {
-        var creativeQuestsEntity = await _dbContext.CreativeQuests.AsNoTracking().FirstOrDefaultAsync(q => q.QuestId == questId)
-            ?? throw new ServerException(ErrorCode.DbGetError, $"Couldn't find the subquest by idQuest {questId} in {nameof(CreativeQuestRepository)}");
-        var creativeQuests = _mapper.Map<CreativeQuest>(creativeQuestsEntity);
-        var quest = await _questRepository.GetById(questId);
-        return (quest, creativeQuests);
-    }
+    //public async Task<(Quest, CreativeQuest)> GetFullQuest(int questId)
+    //{
+    //    var creativeQuestsEntity = await _dbContext.CreativeQuests.AsNoTracking().FirstOrDefaultAsync(q => q.QuestId == questId)
+    //        ?? throw new ServerException(ErrorCode.DbGetError, $"Couldn't find the subquest by idQuest {questId} in {nameof(CreativeQuestRepository)}");
+    //    var creativeQuests = _mapper.Map<CreativeQuest>(creativeQuestsEntity);
+    //    var quest = await _questRepository.GetById(questId);
+    //    return (quest, creativeQuests);
+    //}
 
     public async void Create(Quest quest)
     {
@@ -66,9 +62,9 @@ public class CreativeQuestRepository(LivePlayDbContext dbContext, IMapper mapper
         _dbContext.SaveChanges();
     }
 
-    public async void AddCreativeQuest(int questId, Guid userId, CreativeQuest creativeQuest)
+    public async void AddCompleteQuest(int questId, Guid userId, CreativeQuest creativeQuest)
     {
-        var questEntity = await _questRepository.GetEntityById(questId);
+        var questEntity = await _questRepository.GetCloseEntityById(questId);
         var userEntity = await _userRepository.GetEntryById(userId);
         var creativeQuestEntity = _mapper.Map<CreativeQuestEntityModel>(creativeQuest);
         creativeQuestEntity.Quest = questEntity;

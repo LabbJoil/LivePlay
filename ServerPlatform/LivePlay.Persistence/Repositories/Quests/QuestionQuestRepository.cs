@@ -2,12 +2,12 @@
 using AutoMapper;
 using LivePlay.Server.Application.CustomExceptions;
 using LivePlay.Server.Core.Enums;
-using LivePlay.Server.Core.Interfaces;
+using LivePlay.Server.Core.Interfaces.Quests;
 using LivePlay.Server.Core.Models;
 using LivePlay.Server.Persistence.EntityModels.Base;
 using Microsoft.EntityFrameworkCore;
 
-namespace LivePlay.Server.Persistence.Repositories;
+namespace LivePlay.Server.Persistence.Repositories.Quests;
 
 public class QuestionQuestRepository(LivePlayDbContext dbContext, IMapper mapper) : IQuestionQuestRepository
 {

@@ -8,8 +8,11 @@ using LivePlay.Server.Application.Facade;
 using LivePlay.Server.Application.Mapping;
 using LivePlay.Server.Core.Interfaces;
 using LivePlay.Server.Infrastructure;
-using LivePlay.Server.WebApi.Mapping.User;
+using LivePlay.Server.WebApi.Mapping.Users;
 using LivePlay.Server.WebApi.Mapping.Quests;
+using LivePlay.Server.Application.Services.Quests;
+using LivePlay.Server.Persistence.Repositories.Quests;
+using LivePlay.Server.Core.Interfaces.Quests;
 
 namespace LivePlay.Server.WebApi.ProgramExtentions;
 
@@ -19,6 +22,8 @@ internal static class ServiceRegistrar
     {
         services.AddScoped<UserService>();
         services.AddScoped<QuestService>();
+        services.AddScoped<QRQuestService>();
+        services.AddScoped<CreativeQuestService>();
         services.AddScoped<FeedbackService>();
         services.AddScoped<NewsService>();
         services.AddScoped<HotelService>();
@@ -31,6 +36,9 @@ internal static class ServiceRegistrar
     {
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IQuestRepository, QuestRepository>();
+        services.AddScoped<IQRQuestRepository, QRQuestRepository>();
+        services.AddScoped<ICreativeQuestRepository, CreativeQuestRepository>();
+        services.AddScoped<ICouponRepository, CouponRepository>();
         services.AddScoped<PermissionRepository>();
     }
 

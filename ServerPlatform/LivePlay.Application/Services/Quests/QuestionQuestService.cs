@@ -3,10 +3,11 @@ using LivePlay.Server.Application.CustomExceptions;
 using LivePlay.Server.Application.Interfaces;
 using LivePlay.Server.Core.Enums;
 using LivePlay.Server.Core.Interfaces;
+using LivePlay.Server.Core.Interfaces.Quests;
 using LivePlay.Server.Core.Models;
 using System.Security.Claims;
 
-namespace LivePlay.Server.Application.Services;
+namespace LivePlay.Server.Application.Services.Quests;
 
 public class QuestionQuestService(IUserRepository userRepository, IQuestRepository questRepository, IQuestionQuestRepository questionQuestRepository, IJwtProvider jwtProvider)
 {
@@ -14,12 +15,6 @@ public class QuestionQuestService(IUserRepository userRepository, IQuestReposito
     private readonly IQuestRepository _questRepository = questRepository;
     private readonly IQuestionQuestRepository _questionQuestRepository = questionQuestRepository;
     private readonly IJwtProvider _jwtProvider = jwtProvider;
-
-    public async Task<(Quest, QuestionQuest[])> GetFullQuest(int questId)
-    {
-        var (quest, questionQuests) = await _questionQuestRepository.GetFullQuest(questId);
-        return (quest, questionQuests);
-    }
 
     public void AddQuest(Quest quest, QuestionQuest[] questionQuests)
     {
@@ -39,9 +34,10 @@ public class QuestionQuestService(IUserRepository userRepository, IQuestReposito
             throw new RequestException(ErrorCode.RequestError, $"Quest {questId} has already been completed by user {userId}");
 
         const string notTrueMessage = "Some questions are not answered correctly";
-        var (quest, questionQuests) = await _questionQuestRepository.GetFullQuest(questId);
+        var quest = await _questRepository.GetById(questId);
+        var questionQuests = await _questionQuestRepository.GetByQuestId(questId);
 
-        foreach ( var question in questionQuests)
+        foreach (var question in questionQuests)
         {
             var questIdAndAnswer = questIdAndAnswers.FirstOrDefault(qa => qa.Key == question.Id);
             if (questIdAndAnswer.Equals(default(KeyValuePair<int, int>)))

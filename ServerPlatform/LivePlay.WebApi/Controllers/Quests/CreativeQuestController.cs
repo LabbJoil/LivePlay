@@ -1,6 +1,6 @@
 ﻿
 using AutoMapper;
-using LivePlay.Server.Application.Services;
+using LivePlay.Server.Application.Services.Quests;
 using LivePlay.Server.Core.Enums;
 using LivePlay.Server.Core.Models;
 using LivePlay.Server.WebApi.Contracts.Base.Quest;
@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LivePlay.Server.WebApi.Controllers;
+namespace LivePlay.Server.WebApi.Controllers.Quests;
 
 public class CreativeQuestController(CreativeQuestService questService, IMapper mapper) : Controller
 {
@@ -20,15 +20,11 @@ public class CreativeQuestController(CreativeQuestService questService, IMapper 
     private readonly IMapper _mapper = mapper;
 
     [HttpPost("/getcreativequest/{id}")]
-    public async Task<IActionResult> GetFullQuest(int id)
+    public async Task<IActionResult> GetCreativeQuest(int id)
     {
-        var (quest, creativeQuest) = await _creativeQuestService.GetFullQuest(id);
-        var response = new FullQuestResponse<CreativeQuestController>
-        {
-            Quest = _mapper.Map<QuestContract>(quest),
-            Subquest = _mapper.Map<CreativeQuestController>(creativeQuest)
-        };
-        return Ok();
+        var creativeQuest = await _creativeQuestService.GetQRQuestById(id);
+        var response = _mapper.Map<CreativeQuestContract>(creativeQuest);
+        return Ok(response);
     }
 
     [HttpPost("/addcreativequest")]
@@ -36,7 +32,7 @@ public class CreativeQuestController(CreativeQuestService questService, IMapper 
     public IActionResult AddCreativeQuest([FromBody] AddingCreativeQuestRequest creativeQuestRequest)
     {
         var quest = _mapper.Map<Quest>(creativeQuestRequest.BaseQuest);
-        _creativeQuestService.AddQuest(quest);
+        _creativeQuestService.Add(quest);
         return NoContent();
     }
 
@@ -45,7 +41,7 @@ public class CreativeQuestController(CreativeQuestService questService, IMapper 
     public IActionResult EditCreativeQuest([FromBody] EditingCreativeQuestRequest creativeQuestRequest)
     {
         var quest = _mapper.Map<Quest>(creativeQuestRequest.BaseQuest);
-        _creativeQuestService.EditQuest(quest);
+        _creativeQuestService.Edit(quest);
         return NoContent();
     }
 
