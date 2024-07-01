@@ -19,9 +19,9 @@ using LivePlay.Front.MAUI.ViewModels.AccountViewModels;
 using LivePlay.Front.MAUI.ViewModels.AdminViewModels;
 using LivePlay.Front.MAUI.ViewModels.NewsViewModels;
 using LivePlay.Front.MAUI.ViewModels.QuestViewModels;
-using LivePlay.Front.MAUI.ViewModels.ReviewViewModels;
 using LivePlay.Front.MAUI.ViewModels.SettingsViewModels;
 using LivePlay.Front.MAUI.ViewModels.Reward;
+using LivePlay.Front.MAUI.ViewModels.Users.Feedbacks;
 
 namespace LivePlay.Front.MAUI.MauiProgramExtentions;
 
@@ -36,9 +36,9 @@ public static class ServicesRegistrar
         services.AddTransient<SettingsPage>();
         services.AddTransient<NotificationSettingsPage>();
 
-        services.AddTransient<EnterPageViewModel>();
-        services.AddTransient<ProfilePageViewModel>();
-        services.AddTransient<SettingsPageViewModel>();
+        services.AddTransient<EnterViewModel>();
+        services.AddTransient<ProfileViewModel>();
+        services.AddTransient<SettingsViewModel>();
 
         services.RegisterAdminServices();
         services.RegisterUserServices();
@@ -48,19 +48,19 @@ public static class ServicesRegistrar
     {
         services.AddTransient<TapeFeedbackPage>();
         services.AddTransient<CurrentFeedbackPage>();
-        services.AddTransient<MainCreationQuestPage>();
-        services.AddTransient<QuestionCreationQuestPage>();
-        services.AddTransient<QRcodeCreationQuestPage>();
-        services.AddTransient<CreativeQuestCreationQuestPage>();
+        services.AddTransient<CreationQuestPage>();
+        services.AddTransient<CreationQuestionQuestPage>();
+        services.AddTransient<CreationQRQuestPage>();
+        services.AddTransient<CreationCreativeQuestPage>();
         services.AddTransient<ManageQuestPage>();
         services.AddTransient<ManageRewardPage>();
         services.AddTransient<MainCreationRewardPage>();
 
         services.AddTransient<TapeFeedbackPageViewModel>();
         services.AddTransient<QuestionQuest>();
-        services.AddTransient<QuestionCreationQuestPageViewModel>();
-        services.AddTransient<ManageQuestPageViewModel>();
-        services.AddTransient<MainCreationQuestPageViewModel>();
+        services.AddTransient<CreationQuestionQuestPageViewModel>();
+        services.AddTransient<ManageQuestViewModel>();
+        services.AddTransient<CreationQuestPageViewModel>();
     }
 
     private static void RegisterUserServices(this IServiceCollection services)
@@ -77,9 +77,9 @@ public static class ServicesRegistrar
         services.AddTransient<GettingStatisticsPage>();
         services.AddTransient<MainRewardPage>();
 
-        services.AddTransient<MainPageViewModel>();
+        services.AddTransient<MainViewModel>();
         services.AddTransient<CurrentNewsPageViewModel>();
-        services.AddTransient<ReviewPageViewModel>();
+        services.AddTransient<FeedbackViewModel>();
         services.AddTransient<TapeQuestPageViewModel>();
         services.AddTransient<BaseQuestPageViewModel>();
         services.AddTransient<InProgressPhotoQuestPageViewModel>();

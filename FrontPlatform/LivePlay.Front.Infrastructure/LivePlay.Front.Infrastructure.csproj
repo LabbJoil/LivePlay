@@ -15,4 +15,10 @@
     <ProjectReference Include="..\LivePlay.Front.Application\LivePlay.Front.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Interfaces\IStoragePermissions.cs">
+      <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
+    </Compile>
+  </ItemGroup>
+
 </Project>

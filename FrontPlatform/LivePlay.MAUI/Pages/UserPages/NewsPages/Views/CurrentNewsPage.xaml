@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivePlay.Front.MAUI.Pages.UserPages.NewsPages.Views.CurrentNewsPage"
+             Shell.TabBarIsVisible="False"
+             Title="PopupPage" Appearing="ContentPage_Appearing">
+
+    <Border BackgroundColor="#415A77" Stroke="Transparent" >
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="20" />
+        </Border.StrokeShape>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="26"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="33"/>
+                <RowDefinition Height="54"/>
+                <RowDefinition Height="33"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="27"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="27"/>
+            </Grid.ColumnDefinitions>
+            
+            <Frame Grid.Column="1" Grid.Row="1" CornerRadius="10" Background="Transparent" BorderColor="Transparent" Padding="0">
+                <Image Source="{Binding CurrentNewsItem.Image}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill" />
+            </Frame>
+
+            <Label Grid.Column="1" Grid.Row="3" Text="{Binding CurrentNewsItem.Title}" FontSize="19" HorizontalOptions="Center" />
+            <Label Grid.Column="1" Grid.Row="4" Text="{Binding CurrentNewsItem.Description}" FontSize="15" HorizontalOptions="Center" />
+
+            <Label Grid.Column="1" Grid.Row="6" Text="{Binding CurrentNewsItem.Title}" FontSize="13" HorizontalOptions="Center" />
+            <Label Grid.Column="1" Grid.Row="8" Text="{Binding CurrentNewsItem.Description}" FontSize="13" HorizontalOptions="Center" />
+
+            <Button Grid.Column="1" Grid.Row="10" Text="Участовать" Margin="5,0" Style="{StaticResource BasicButton}"/>
+        </Grid>
+    </Border>
+
+</ContentPage>

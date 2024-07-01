@@ -1,10 +1,5 @@
-﻿using LivePlay.Front.Application.Contracts.ResponseModel;
-using LivePlay.Front.Application.Models.ResponseModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using LivePlay.Front.Application.Contracts.ResponseModel;
 
 namespace LivePlay.Front.Application.Interfaces;
 

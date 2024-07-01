@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages.CreationQuestionQuestPage"
+             xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
+             Title="QuestionCreationQuestPage"
+             Shell.NavBarIsVisible="False"
+             x:Name="this">
+
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
+
+            <pe:QuestionQuestItemControl x:Name="FirstItem" />
+            <pe:QuestionQuestItemControl x:Name="SecondItem" IsVisible="False"/>
+
+            <Grid Grid.Row="1" BackgroundColor="#26507B" Padding="30,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="55"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55"/>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="2" Grid.Row="0" BackgroundColor="#731D1D" VerticalOptions="End" HeightRequest="55" WidthRequest="55" Stroke="Transparent" HorizontalOptions="End" Margin="0,10">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="50"/>
+                    </Border.StrokeShape>
+                    <ImageButton Source="delete_item_white_admin.svg" Aspect="AspectFit" HeightRequest="35" WidthRequest="35"/>
+                </Border>
+
+                <Label x:Name="CountQuestionsLabel" Grid.ColumnSpan="2" Grid.Row="0" Text="1" FontAttributes="Bold" HorizontalOptions="Center" FontSize="18" VerticalOptions="End"/>
+
+                <Border Grid.Column="0" Grid.Row="2" BackgroundColor="#0D1B2A" VerticalOptions="End" HeightRequest="55" WidthRequest="55" Stroke="Transparent" HorizontalOptions="Start">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="50"/>
+                    </Border.StrokeShape>
+                    <ImageButton Source="arrow_forward.svg" Background="#0D1B2A" Aspect="AspectFit" HeightRequest="35" WidthRequest="35" Rotation="180" Command="{Binding GoPreviousQuestionCommand}"
+                         CommandParameter="{Binding Source={x:Reference this}}"/>
+                </Border>
+
+                <Border Grid.Column="1" Grid.Row="2" BackgroundColor="#0D1B2A" HorizontalOptions="End" VerticalOptions="End" HeightRequest="55" WidthRequest="55" Stroke="Transparent">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="50"/>
+                    </Border.StrokeShape>
+                    <ImageButton Source="arrow_forward.svg" Background="#0D1B2A" Aspect="AspectFit" HeightRequest="35" WidthRequest="35" Command="{Binding GoNextQuestionCommand}"
+                         CommandParameter="{Binding Source={x:Reference this}}"/>
+                </Border>
+
+                <Button Grid.Column="2" Grid.Row="2" Text="Готово" FontAttributes="Bold" FontSize="19" WidthRequest="160" HeightRequest="40" Padding="0" BackgroundColor="#143150" HorizontalOptions="End"
+                        Command="{Binding SaveQuestCommand}"
+                        CommandParameter="{Binding Source={x:Reference this}}"/>
+            </Grid>
+        </Grid>
+    </ScrollView>
+</ContentPage>
