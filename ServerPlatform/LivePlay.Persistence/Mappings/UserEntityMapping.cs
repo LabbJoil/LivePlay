@@ -3,7 +3,7 @@ using AutoMapper;
 using LivePlay.Server.Core.Models;
 using LivePlay.Server.Persistence.EntityModels.Base;
 
-namespace LivePlay.Server.Application.Mapping;
+namespace LivePlay.Server.Persistence.Mappings;
 
 public class UserEntityMapping : Profile
 {

@@ -1,6 +1,7 @@
-﻿using LivePlay.Server.Core.Enums;
+﻿
+using LivePlay.Server.Core.Enums;
 
-namespace LivePlay.Server.WebApi.Contracts.Base.Quest;
+namespace LivePlay.Server.WebApi.Contracts.Base.QuestContracts;
 
 public class QuestContract
 {

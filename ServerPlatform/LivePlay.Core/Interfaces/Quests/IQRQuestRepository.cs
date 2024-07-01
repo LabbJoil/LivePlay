@@ -1,6 +1,7 @@
-﻿using LivePlay.Server.Core.Models;
+﻿
+using LivePlay.Server.Core.Models;
 
-namespace LivePlay.Server.Core.Interfaces.Quests;
+namespace LivePlay.Server.Core.Interfaces.QuestInterfaces;
 
 public interface IQRQuestRepository
 {

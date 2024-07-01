@@ -2,11 +2,11 @@
 using CommunityToolkit.Mvvm.Input;
 using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
-using LivePlay.Front.MAUI.Pages.Reward;
+using LivePlay.Front.MAUI.Pages.UserPages.CouponPages.Views;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.CouponPages.ViewModels;
 
-public partial class MainRewardPageViewModel(AppDesign designSettings) : BaseViewModel(designSettings)
+public partial class MainRewardViewModel(AppDesign designSettings) : BaseViewModel(designSettings)
 {
     [RelayCommand]
     public async Task GoToCoupon()

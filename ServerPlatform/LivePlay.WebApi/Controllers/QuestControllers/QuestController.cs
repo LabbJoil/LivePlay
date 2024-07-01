@@ -1,11 +1,11 @@
 ﻿
 using AutoMapper;
-using LivePlay.Server.Application.Services.Quests;
+using LivePlay.Server.Application.Services.QuestServices;
 using LivePlay.Server.Core.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LivePlay.Server.WebApi.Controllers.Quests;
+namespace LivePlay.Server.WebApi.Controllers.QuestControllers;
 
 [Route("[controller]/")]
 [ApiController]

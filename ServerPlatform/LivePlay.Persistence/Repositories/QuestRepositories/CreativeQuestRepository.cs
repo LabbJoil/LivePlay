@@ -1,12 +1,11 @@
 ﻿
 using AutoMapper;
-using LivePlay.Server.Application.CustomExceptions;
+using LivePlay.Server.Core.CustomExceptions;
 using LivePlay.Server.Core.Enums;
-using LivePlay.Server.Core.Interfaces.Quests;
+using LivePlay.Server.Core.Interfaces.QuestInterfaces;
 using LivePlay.Server.Core.Models;
 using LivePlay.Server.Persistence.EntityModels.Base;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Metadata.Ecma335;
 
 namespace LivePlay.Server.Persistence.Repositories.Quests;
 

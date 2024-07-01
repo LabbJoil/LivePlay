@@ -5,17 +5,18 @@ using CommunityToolkit.Mvvm.Input;
 using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.Core.Models;
+using LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.Views;
 
 namespace LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.ViewModels;
 
-public partial class TapeFeedbackPageViewModel : BaseTapeViewModel
+public partial class TapeFeedbackViewModel : BaseTapeViewModel
 {
     public AppStorage _deviceStorage;
 
     [ObservableProperty]
     public IReadOnlyList<FeedbackContactInfo> _tapeItems;
 
-    public TapeFeedbackPageViewModel(AppDesign designSettings, AppStorage deviceStorage) : base(designSettings)
+    public TapeFeedbackViewModel(AppDesign designSettings, AppStorage deviceStorage) : base(designSettings)
     {
         _deviceStorage = deviceStorage; //заменить, переход строго через goto
         GetFeedbackItems();

@@ -1,13 +1,13 @@
 ﻿
-using LivePlay.Server.Application.CustomExceptions;
 using LivePlay.Server.Application.Interfaces;
+using LivePlay.Server.Core.CustomExceptions;
 using LivePlay.Server.Core.Enums;
 using LivePlay.Server.Core.Interfaces;
-using LivePlay.Server.Core.Interfaces.Quests;
+using LivePlay.Server.Core.Interfaces.QuestInterfaces;
 using LivePlay.Server.Core.Models;
 using System.Security.Claims;
 
-namespace LivePlay.Server.Application.Services.Quests;
+namespace LivePlay.Server.Application.Services.QuestServices;
 
 public class QuestionQuestService(IUserRepository userRepository, IQuestRepository questRepository, IQuestionQuestRepository questionQuestRepository, IJwtProvider jwtProvider)
 {

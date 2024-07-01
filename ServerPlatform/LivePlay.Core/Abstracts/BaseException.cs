@@ -1,7 +1,8 @@
-﻿using LivePlay.Server.Core.Enums;
+﻿
+using LivePlay.Server.Core.Enums;
 using System.Net;
 
-namespace LivePlay.Server.Core.Abstract;
+namespace LivePlay.Server.Core.Abstracts;
 
 public abstract class BaseException(ErrorCode error, string message, string details) : Exception(message)
 {

@@ -1,16 +1,15 @@
 ﻿
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using LivePlay.Front.Application.HttpServices;
 using LivePlay.Front.Core.Enums;
 using LivePlay.Front.Core.Models;
 using LivePlay.Front.Infrastructure;
 using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
-using LivePlay.Front.MAUI.Pages;
-using LivePlay.Front.MAUI.Pages.AdminPages;
-using LivePlay.Front.MAUI.Pages.UserPages.MainPages.Views;
-using LivePlay.Front.MAUI.Services;
-using LivePlay.Front.MAUI.Services.HttpServices;
+using LivePlay.Front.MAUI.Pages.AccountPages.Views;
+using LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.Views;
+using LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views;
 
 namespace LivePlay.Front.MAUI.Pages.AccountPages.ViewModels;
 

@@ -1,12 +1,13 @@
 ﻿
-using LivePlay.Server.Application.CustomExceptions;
 using LivePlay.Server.Application.Interfaces;
+using LivePlay.Server.Core.CustomExceptions;
+using LivePlay.Server.Core.Enums;
+using LivePlay.Server.Core.Options;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using LivePlay.Server.Core.Enums;
 
 namespace LivePlay.Server.Infrastructure.Providers;
 

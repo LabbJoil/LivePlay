@@ -1,5 +1,5 @@
 ﻿
-using LivePlay.Front.Application.Interfaces;
+using LivePlay.Front.Infrastructure.Interfaces;
 
 namespace LivePlay.Front.MAUI.DeviceSettings;
 

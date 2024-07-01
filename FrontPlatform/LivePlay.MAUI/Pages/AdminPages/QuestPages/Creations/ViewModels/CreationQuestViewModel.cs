@@ -4,11 +4,11 @@ using CommunityToolkit.Mvvm.Input;
 using LivePlay.Front.Core.Models;
 using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
-using LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages;
+using LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.Views;
 
 namespace LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.ViewModels;
 
-public partial class CreationQuestPageViewModel(AppDesign designSettings) : BaseQuestViewModel(designSettings)
+public partial class CreationQuestViewModel(AppDesign designSettings) : BaseQuestViewModel(designSettings)
 {
     [ObservableProperty]
     public Quest _nowQuest = new();

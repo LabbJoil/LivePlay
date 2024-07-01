@@ -4,16 +4,18 @@ using LivePlay.Front.Core.Enums;
 using LivePlay.Front.Core.Models;
 using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
+using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.Views;
+using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.Tape.Views;
 using System.Text.Json;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.ViewModels;
 
-public partial class InProgressQuestionQuestPageViewModel : BaseQuestViewModel
+public partial class InProgressQuestionQuestViewModel : BaseQuestViewModel
 {
     private readonly QuestionQuest[] AllQuestionQuests;
     private int NowQuest = -1;
 
-    public InProgressQuestionQuestPageViewModel(AppDesign designSettings) : base(designSettings)
+    public InProgressQuestionQuestViewModel(AppDesign designSettings) : base(designSettings)
     {
         AllQuestionQuests = LoadQuestionQuests();
     }
@@ -58,7 +60,7 @@ public partial class InProgressQuestionQuestPageViewModel : BaseQuestViewModel
     }
 
     [RelayCommand]
-    public async Task Cheack()
+    public async Task Check()
     {
         Shell.Current.DisplayAlert("Всё верно", $"Вы получили {_currentQuestItem.Reward}", "ok");
         DesignSettings.ChangeCountCoins(_currentQuestItem.Reward);

@@ -1,9 +1,9 @@
 ﻿
 using AutoMapper;
 using LivePlay.Server.Core.Models;
-using LivePlay.Server.WebApi.Contracts.Base.Quest;
+using LivePlay.Server.WebApi.Contracts.Base.QuestContracts;
 
-namespace LivePlay.Server.WebApi.Mapping.Quests;
+namespace LivePlay.Server.WebApi.Mappings.QuestMappings;
 
 public class QuestionQuestContractMapping : Profile
 {

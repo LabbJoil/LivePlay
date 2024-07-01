@@ -1,6 +1,6 @@
 ﻿
-using LivePlay.Server.Application.CustomExceptions;
 using LivePlay.Server.Application.Interfaces;
+using LivePlay.Server.Core.CustomExceptions;
 using LivePlay.Server.Core.Enums;
 using LivePlay.Server.Core.Models;
 using LivePlay.Server.Core.Options;

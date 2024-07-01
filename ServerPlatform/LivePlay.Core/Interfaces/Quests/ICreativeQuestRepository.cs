@@ -1,11 +1,7 @@
-﻿using LivePlay.Server.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using LivePlay.Server.Core.Models;
 
-namespace LivePlay.Server.Core.Interfaces.Quests;
+namespace LivePlay.Server.Core.Interfaces.QuestInterfaces;
 
 public interface ICreativeQuestRepository
 {

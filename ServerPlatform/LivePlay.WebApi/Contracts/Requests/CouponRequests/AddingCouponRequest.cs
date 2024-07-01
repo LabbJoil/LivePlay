@@ -1,5 +1,5 @@
 ﻿
-namespace LivePlay.Server.WebApi.Contracts.Requests.Coupons;
+namespace LivePlay.Server.WebApi.Contracts.Requests.CouponRequests;
 
 public class AddingCouponRequest
 {

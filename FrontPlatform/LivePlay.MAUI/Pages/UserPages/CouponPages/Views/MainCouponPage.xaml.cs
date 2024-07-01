@@ -3,9 +3,9 @@ using LivePlay.Front.MAUI.Pages.UserPages.CouponPages.ViewModels;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.CouponPages.Views;
 
-public partial class MainRewardPage : ContentPage
+public partial class MainCouponPage : ContentPage
 {
-    public MainRewardPage(MainRewardPageViewModel mainRewardPageViewModel)
+    public MainCouponPage(MainRewardViewModel mainRewardPageViewModel)
 	{
 		InitializeComponent();
         BindingContext = mainRewardPageViewModel;

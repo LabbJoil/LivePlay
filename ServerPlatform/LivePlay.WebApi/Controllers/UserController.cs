@@ -4,7 +4,7 @@ using LivePlay.Server.Application.Services;
 using LivePlay.Server.Core.Enums;
 using LivePlay.Server.Core.Models;
 using LivePlay.Server.WebApi.Contracts.Requests.User;
-using LivePlay.Server.WebApi.Contracts.Responses.User;
+using LivePlay.Server.WebApi.Contracts.Responses.UserResponses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,7 +1,7 @@
 ﻿
-using LivePlay.Server.WebApi.Contracts.Base.Quest;
+using LivePlay.Server.WebApi.Contracts.Base.QuestContracts;
 
-namespace LivePlay.Server.WebApi.Contracts.Responses.Quest;
+namespace LivePlay.Server.WebApi.Contracts.Responses.QuestResponses;
 
 public class FullQuestResponse<T>
 {

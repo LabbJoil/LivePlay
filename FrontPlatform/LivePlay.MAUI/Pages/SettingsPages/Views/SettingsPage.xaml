@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LivePlay.Front.MAUI.Pages.AdminPages.SettingsPages.Views.SettingsPage"
              Title="SettingPage"
-             xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
+             xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements">
 
     <Grid x:Name="MainGrid" BackgroundColor="{AppThemeBinding Dark={StaticResource PageMainBackgroundDark}, Light={StaticResource PageMainBackgroundLight}}">
         <Grid.RowDefinitions>

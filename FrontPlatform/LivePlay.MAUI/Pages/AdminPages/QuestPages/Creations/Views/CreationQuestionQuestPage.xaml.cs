@@ -14,13 +14,13 @@ namespace LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.Views;
 public partial class CreationQuestionQuestPage : ContentPage
 {
     private QuestionQuestItemControl _nowQQIC;
-    private readonly CreationQuestionQuestPageViewModel _questionCreationQuestPVM;
+    private readonly CreationQuestionQuestViewModel _questionCreationQuestPVM;
 
     public Quest QuestProperty {
         set => _questionCreationQuestPVM.CurrentQuestItem = value;
     }
 
-    public CreationQuestionQuestPage(CreationQuestionQuestPageViewModel questionCreationQuestPVM)
+    public CreationQuestionQuestPage(CreationQuestionQuestViewModel questionCreationQuestPVM)
 	{
         InitializeComponent();
         BindingContext = questionCreationQuestPVM;

@@ -1,13 +1,11 @@
 
-using LivePlay.Front.Core.Enums;
-using LivePlay.Front.Core.Models;
-using LivePlay.Front.MAUI.ViewModels.QuestViewModels;
+using LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.ViewModels;
 
 namespace LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.Views;
 
 public partial class CreationQuestPage : ContentPage
 {
-    public CreationQuestPage(CreationQuestPageViewModel mainCreationQuestPageViewModel)
+    public CreationQuestPage(CreationQuestViewModel mainCreationQuestPageViewModel)
 	{
 		InitializeComponent();
 		BindingContext = mainCreationQuestPageViewModel;

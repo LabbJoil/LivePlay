@@ -1,6 +1,6 @@
 ﻿
 using LivePlay.Server.Core.Enums;
-using LivePlay.Server.Infrastructure;
+using LivePlay.Server.Core.Options;
 using LivePlay.Server.Infrastructure.Providers;
 using LivePlay.Server.WebApi.Middlewares;
 using Microsoft.AspNetCore.Authentication.JwtBearer;

@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 using LivePlay.Front.Core.Models;
 using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
+using LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.Views;
 using System.Text.Json;
 
 namespace LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Manages.ViewModels;

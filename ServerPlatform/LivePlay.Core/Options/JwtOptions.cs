@@ -1,4 +1,5 @@
-﻿namespace LivePlay.Server.Infrastructure;
+﻿
+namespace LivePlay.Server.Core.Options;
 
 public class JwtOptions
 {

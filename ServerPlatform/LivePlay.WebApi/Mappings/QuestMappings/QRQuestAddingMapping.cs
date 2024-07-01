@@ -1,9 +1,9 @@
 ﻿
 using AutoMapper;
 using LivePlay.Server.Core.Models;
-using LivePlay.Server.WebApi.Contracts.Requests.Quest.Add;
+using LivePlay.Server.WebApi.Contracts.Requests.QuestRequests.Add;
 
-namespace LivePlay.Server.WebApi.Mapping.Quests;
+namespace LivePlay.Server.WebApi.Mappings.QuestMappings;
 
 public class QRQuestAddingMapping : Profile
 {

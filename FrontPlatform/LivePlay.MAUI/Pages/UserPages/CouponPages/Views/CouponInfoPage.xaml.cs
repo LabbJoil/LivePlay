@@ -5,7 +5,7 @@ namespace LivePlay.Front.MAUI.Pages.UserPages.CouponPages.Views;
 
 public partial class CouponInfoPage : ContentPage
 {
-	public CouponInfoPage(CouponInfoPageViewModel couponInfoPageViewModel)
+	public CouponInfoPage(CouponInfoViewModel couponInfoPageViewModel)
 	{
 		InitializeComponent();
 		BindingContext = couponInfoPageViewModel;

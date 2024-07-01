@@ -1,18 +1,16 @@
 ﻿
 using AutoMapper;
-using LivePlay.Server.Application.Services.Quests;
+using LivePlay.Server.Application.Services.QuestServices;
 using LivePlay.Server.Core.Enums;
 using LivePlay.Server.Core.Models;
-using LivePlay.Server.WebApi.Contracts.Base.Quest;
-using LivePlay.Server.WebApi.Contracts.Requests.Quest.Edit;
-using LivePlay.Server.WebApi.Contracts.Requests.Quests.Add;
-using LivePlay.Server.WebApi.Contracts.Requests.Quests.Complete;
-using LivePlay.Server.WebApi.Contracts.Responses.Quest;
+using LivePlay.Server.WebApi.Contracts.Base.QuestContracts;
+using LivePlay.Server.WebApi.Contracts.Requests.QuestRequests.Add;
+using LivePlay.Server.WebApi.Contracts.Requests.QuestRequests.Complete;
+using LivePlay.Server.WebApi.Contracts.Requests.QuestRequests.Edit;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LivePlay.Server.WebApi.Controllers.Quests;
+namespace LivePlay.Server.WebApi.Controllers.QuestControllers;
 
 public class CreativeQuestController(CreativeQuestService questService, IMapper mapper) : Controller
 {

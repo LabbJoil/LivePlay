@@ -1,4 +1,5 @@
-﻿namespace LivePlay.Server.WebApi.Contracts.Base.Quest;
+﻿
+namespace LivePlay.Server.WebApi.Contracts.Base.QuestContracts;
 
 public class QuestionQuestContract
 {

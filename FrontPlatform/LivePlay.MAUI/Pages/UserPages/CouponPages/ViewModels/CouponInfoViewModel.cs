@@ -4,10 +4,11 @@ using CommunityToolkit.Mvvm.Input;
 using LivePlay.Front.Core.Models;
 using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
+using LivePlay.Front.MAUI.Pages.UserPages.CouponPages.Views;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.CouponPages.ViewModels;
 
-public partial class CouponInfoPageViewModel(AppDesign designSettings) : BaseViewModel(designSettings)
+public partial class CouponInfoViewModel(AppDesign designSettings) : BaseViewModel(designSettings)
 {
     [ObservableProperty]
     public CouponItem _thisCoupon = new()

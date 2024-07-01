@@ -1,9 +1,12 @@
 ﻿
 using LivePlay.Front.MAUI.DeviceSettings;
-using LivePlay.Front.MAUI.Pages;
-using LivePlay.Front.MAUI.Pages.AdminPages;
-using LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages;
-using LivePlay.Front.MAUI.Pages.Reward;
+using LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.Views;
+using LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.Views;
+using LivePlay.Front.MAUI.Pages.AdminPages.SettingsPages.Views;
+using LivePlay.Front.MAUI.Pages.UserPages.CouponPages.Views;
+using LivePlay.Front.MAUI.Pages.UserPages.NewsPages.Views;
+using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.Views;
+using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.NotStarted.Views;
 using Microsoft.Maui.Controls.Shapes;
 
 namespace LivePlay.Front.MAUI;

@@ -1,15 +1,15 @@
 ﻿
 using AutoMapper;
-using LivePlay.Server.Application.Services.Quests;
+using LivePlay.Server.Application.Services.QuestServices;
 using LivePlay.Server.Core.Enums;
 using LivePlay.Server.Core.Models;
-using LivePlay.Server.WebApi.Contracts.Requests.Quest.Add;
-using LivePlay.Server.WebApi.Contracts.Requests.Quest.Edit;
-using LivePlay.Server.WebApi.Contracts.Requests.Quests.Complete;
+using LivePlay.Server.WebApi.Contracts.Requests.QuestRequests.Add;
+using LivePlay.Server.WebApi.Contracts.Requests.QuestRequests.Complete;
+using LivePlay.Server.WebApi.Contracts.Requests.QuestRequests.Edit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LivePlay.Server.WebApi.Controllers.Quests;
+namespace LivePlay.Server.WebApi.Controllers.QuestControllers;
 
 public class QRQuestController(QRQuestService questService, IMapper mapper) : Controller
 {

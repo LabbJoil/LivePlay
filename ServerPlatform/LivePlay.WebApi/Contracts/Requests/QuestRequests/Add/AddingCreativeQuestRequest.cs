@@ -1,7 +1,7 @@
 ﻿
-using LivePlay.Server.WebApi.Contracts.Requests.Quest.Add;
+using LivePlay.Server.WebApi.Contracts.Requests.QuestRequests.Add;
 
-namespace LivePlay.Server.WebApi.Contracts.Requests.Quests.Add;
+namespace LivePlay.Server.WebApi.Contracts.Requests.QuestRequests.Add;
 
 public class AddingCreativeQuestRequest
 {

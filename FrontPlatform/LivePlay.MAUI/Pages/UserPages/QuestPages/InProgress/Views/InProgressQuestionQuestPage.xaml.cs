@@ -14,12 +14,12 @@ public partial class InProgressQuestionQuestPage : ContentPage
         set => _inProgressQuestionQuestPVM.CurrentQuestItem = value;
     }
 
-    private readonly InProgressQuestionQuestPageViewModel _inProgressQuestionQuestPVM;
+    private readonly InProgressQuestionQuestViewModel _inProgressQuestionQuestPVM;
     private InProgressQuestionQuestItem _nowQQIC;
     private int _numberQuestion = 0;
     private readonly int _countQuests;
 
-    public InProgressQuestionQuestPage(InProgressQuestionQuestPageViewModel inProgressQuestionQuestPVM)
+    public InProgressQuestionQuestPage(InProgressQuestionQuestViewModel inProgressQuestionQuestPVM)
 	{
 		InitializeComponent();
         BindingContext = inProgressQuestionQuestPVM;

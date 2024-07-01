@@ -1,7 +1,7 @@
 ﻿
-using LivePlay.Server.WebApi.Contracts.Base.Quest;
+using LivePlay.Server.WebApi.Contracts.Base.QuestContracts;
 
-namespace LivePlay.Server.WebApi.Contracts.Requests.Quests.Complete;
+namespace LivePlay.Server.WebApi.Contracts.Requests.QuestRequests.Complete;
 
 public class CompletingCreativeQuestRequest
 {

@@ -1,8 +1,8 @@
 ﻿
-using LivePlay.Server.Core.Interfaces.Quests;
+using LivePlay.Server.Core.Interfaces.QuestInterfaces;
 using LivePlay.Server.Core.Models;
 
-namespace LivePlay.Server.Application.Services.Quests;
+namespace LivePlay.Server.Application.Services.QuestServices;
 
 public class QuestService(IQuestRepository repository)
 {

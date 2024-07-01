@@ -1,4 +1,5 @@
-﻿namespace LivePlay.Server.WebApi.Contracts.Responses.User;
+﻿
+namespace LivePlay.Server.WebApi.Contracts.Responses.UserResponses;
 
 public class UserInfoResponse
 {

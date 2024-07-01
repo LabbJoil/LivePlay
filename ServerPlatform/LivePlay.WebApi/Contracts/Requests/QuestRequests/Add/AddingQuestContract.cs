@@ -1,7 +1,7 @@
 ﻿
 using LivePlay.Server.Core.Enums;
 
-namespace LivePlay.Server.WebApi.Contracts.Requests.Quest.Add;
+namespace LivePlay.Server.WebApi.Contracts.Requests.QuestRequests.Add;
 
 public class AddingQuestContract
 {

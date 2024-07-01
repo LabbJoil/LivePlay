@@ -1,6 +1,6 @@
 ﻿
 using AutoMapper;
-using LivePlay.Server.Application.CustomExceptions;
+using LivePlay.Server.Core.CustomExceptions;
 using LivePlay.Server.Core.Enums;
 using LivePlay.Server.Core.Interfaces;
 using LivePlay.Server.Core.Models;

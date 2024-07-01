@@ -1,7 +1,7 @@
 ﻿
-using LivePlay.Server.WebApi.Contracts.Base.Quest;
+using LivePlay.Server.WebApi.Contracts.Base.QuestContracts;
 
-namespace LivePlay.Server.WebApi.Contracts.Requests.Quest.Edit;
+namespace LivePlay.Server.WebApi.Contracts.Requests.QuestRequests.Edit;
 
 public class EditingQRQuestRequest
 {

@@ -1,5 +1,5 @@
 ﻿
-namespace LivePlay.Server.WebApi.Contracts.Requests.Quests.Complete;
+namespace LivePlay.Server.WebApi.Contracts.Requests.QuestRequests.Complete;
 
 public class CompletingQuestionQuestRequest
 {
