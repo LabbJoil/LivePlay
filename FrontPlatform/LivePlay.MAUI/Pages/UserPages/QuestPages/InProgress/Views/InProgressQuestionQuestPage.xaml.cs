@@ -1,10 +1,10 @@
 
 using LivePlay.Front.Core.Enums;
 using LivePlay.Front.Core.Models;
+using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.ViewModels;
 using LivePlay.Front.MAUI.PersonalElements;
-using LivePlay.Front.MAUI.ViewModels.QuestViewModels;
 
-namespace LivePlay.Front.MAUI.Pages;
+namespace LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.Views;
 
 [QueryProperty(nameof(QuestProperty), nameof(QuestProperty))]
 public partial class InProgressQuestionQuestPage : ContentPage

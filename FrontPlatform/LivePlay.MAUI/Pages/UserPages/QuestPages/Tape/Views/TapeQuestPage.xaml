@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LivePlay.Front.MAUI.Pages.TapeQuestPage"
-             Title="TapePage" 
-             Appearing="ContentPage_Appearing" Disappearing="ContentPage_Disappearing"
+             x:Class="LivePlay.Front.MAUI.Pages.UserPages.QuestPages.Tape.Views.TapeQuestPage"
              xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
-             xmlns:cp="clr-namespace:LivePlay.Front.Core.Models;assembly=LivePlay.Front.Core"
-             x:Name="this">
+             Appearing="ContentPage_Appearing" Disappearing="ContentPage_Disappearing"
+             Title="TapeQuestPage">
 
     <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">
         <Grid x:Name="MainGrid" BackgroundColor="{AppThemeBinding Dark={StaticResource PageMainBackgroundDark}, Light={StaticResource PageMainBackgroundLight}}">

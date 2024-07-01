@@ -1,8 +1,7 @@
 
-using LivePlay.Front.MAUI.DeviceSettings;
-using LivePlay.Front.MAUI.ViewModels.Reward;
+using LivePlay.Front.MAUI.Pages.UserPages.CouponPages.ViewModels;
 
-namespace LivePlay.Front.MAUI.Pages.Reward;
+namespace LivePlay.Front.MAUI.Pages.UserPages.CouponPages.Views;
 
 public partial class MainRewardPage : ContentPage
 {

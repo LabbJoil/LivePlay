@@ -2,8 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
-             x:Class="LivePlay.Front.MAUI.Pages.InProgressQuestionQuestPage"
-             Title="QuizQuestPage" BackgroundColor="#778DA9"
+             x:Class="LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.Views.InProgressQuestionQuestPage"
+             Title="QuestionQuestPage" BackgroundColor="#778DA9"
              x:Name="this">
 
     <Grid BackgroundColor="#415A77" >

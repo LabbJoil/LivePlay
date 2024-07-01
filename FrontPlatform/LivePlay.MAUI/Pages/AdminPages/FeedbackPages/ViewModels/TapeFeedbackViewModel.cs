@@ -5,9 +5,8 @@ using CommunityToolkit.Mvvm.Input;
 using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.Core.Models;
-using LivePlay.Front.MAUI.Pages.AdminPages;
 
-namespace LivePlay.Front.MAUI.Models.ViewModels;
+namespace LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.ViewModels;
 
 public partial class TapeFeedbackPageViewModel : BaseTapeViewModel
 {

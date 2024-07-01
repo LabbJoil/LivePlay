@@ -1,7 +1,7 @@
 ﻿
 using LivePlay.Front.Application.Models.ResponseModel;
 
-namespace LivePlay.Front.Application.Contracts.ResponseModel;
+namespace LivePlay.Front.Application.Contracts.Responses;
 
 public class BaseResponse<T>
 {

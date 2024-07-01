@@ -1,10 +1,12 @@
 
-namespace LivePlay.Front.MAUI.Pages.AdminPages;
+using LivePlay.Front.MAUI.Pages.AccountPages.Views;
 
-public partial class AdminProfilePage : ContentPage
+namespace LivePlay.Front.MAUI.Pages.AdminPages.AccountPages.Views;
+
+public partial class ProfilePage : ContentPage
 {
 	//private readonly ProfileViewModel ProfileVM;
-    public AdminProfilePage(/*ProfileViewModel profileViewModel*/)
+    public ProfilePage(/*ProfileViewModel profileViewModel*/)
 	{
 		InitializeComponent();
         //BindingContext = profileViewModel;

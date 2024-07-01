@@ -2,13 +2,13 @@
 using CommunityToolkit.Mvvm.Input;
 using LivePlay.Front.Core.Enums;
 using LivePlay.Front.Core.Models;
+using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
-using LivePlay.Front.MAUI.Pages;
 using System.Text.Json;
 
-namespace LivePlay.Front.MAUI.ViewModels.QuestViewModels;
+namespace LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.ViewModels;
 
-public partial class InProgressQuestionQuestPageViewModel : BaseQuestPageViewModel
+public partial class InProgressQuestionQuestPageViewModel : BaseQuestViewModel
 {
     private readonly QuestionQuest[] AllQuestionQuests;
     private int NowQuest = -1;

@@ -1,8 +1,8 @@
 
-using LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages;
+using LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Manages.ViewModels;
 using LivePlay.Front.MAUI.ViewModels.QuestViewModels;
 
-namespace LivePlay.Front.MAUI.Pages.AdminPages;
+namespace LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Manages.Views;
 
 public partial class ManageQuestPage : ContentPage
 {

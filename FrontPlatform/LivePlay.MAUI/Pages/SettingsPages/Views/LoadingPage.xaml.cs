@@ -1,5 +1,5 @@
 
-namespace LivePlay.Front.MAUI.Pages;
+namespace LivePlay.Front.MAUI.Pages.AdminPages.SettingsPages.Views;
 
 [QueryProperty(nameof(StopingAnimationSource), "StopingAnimationSource")]
 public partial class LoadingPage : ContentPage

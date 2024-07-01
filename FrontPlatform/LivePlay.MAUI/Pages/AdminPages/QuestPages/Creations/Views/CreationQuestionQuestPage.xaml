@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages.CreationQuestionQuestPage"
+             x:Class="LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.Views.CreationQuestionQuestPage"
              xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
              Title="QuestionCreationQuestPage"
              Shell.NavBarIsVisible="False"

@@ -4,8 +4,9 @@ using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.Core.Models;
 using System.Collections.ObjectModel;
+using LivePlay.Front.MAUI.Pages.UserPages.NewsPages.Views;
 
-namespace LivePlay.Front.MAUI.Pages.UserPages.MainPages.ViewModels;
+namespace LivePlay.Front.MAUI.Pages.UserPages.AccountPages.ViewModels;
 
 public partial class MainViewModel : BaseTapeViewModel
 {

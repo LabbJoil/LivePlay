@@ -1,15 +1,15 @@
 
-namespace LivePlay.Front.MAUI.Pages.AdminPages;
+namespace LivePlay.Front.MAUI.Pages.AdminPages.CouponPages.Views;
 
-public partial class ManageRewardPage : ContentPage
+public partial class ManageCouponPage : ContentPage
 {
-	public ManageRewardPage()
+	public ManageCouponPage()
 	{
 		InitializeComponent();
 	}
 
     private void Button_Clicked(object sender, EventArgs e)
     {
-		Navigation.PushAsync(new MainCreationRewardPage());
+		Navigation.PushAsync(new CreationCouponPage());
     }
 }

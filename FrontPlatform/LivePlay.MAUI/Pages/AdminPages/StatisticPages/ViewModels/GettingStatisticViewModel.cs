@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LivePlay.Front.MAUI.Pages.Admins.Statistics.ViewModels;
+namespace LivePlay.Front.MAUI.Pages.AdminPages.StatisticPages.ViewModels;
 
 public class GettingStatisticViewModel
 {

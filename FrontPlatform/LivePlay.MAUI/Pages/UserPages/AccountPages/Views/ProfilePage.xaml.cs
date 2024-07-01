@@ -1,9 +1,9 @@
 
-using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.Core.Enums;
-using LivePlay.Front.MAUI.ViewModels.AccountViewModels;
+using LivePlay.Front.MAUI.DeviceSettings;
+using LivePlay.Front.MAUI.Pages.UserPages.AccountPages.ViewModels;
 
-namespace LivePlay.Front.MAUI.Pages;
+namespace LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views;
 
 public partial class ProfilePage : ContentPage
 {

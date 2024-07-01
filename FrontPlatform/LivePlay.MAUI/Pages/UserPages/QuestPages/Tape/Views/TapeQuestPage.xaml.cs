@@ -1,14 +1,14 @@
 
-using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.Core.Enums;
-using LivePlay.Front.MAUI.Models.ViewModels;
+using LivePlay.Front.MAUI.DeviceSettings;
+using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.Tape.ViewModels;
 
-namespace LivePlay.Front.MAUI.Pages;
+namespace LivePlay.Front.MAUI.Pages.UserPages.QuestPages.Tape.Views;
 
 public partial class TapeQuestPage : ContentPage
 {
-    private readonly TapeQuestPageViewModel QuestTapePVM;
-    public TapeQuestPage(TapeQuestPageViewModel questTapePageViewModel)
+    private readonly TapeQuestViewModel QuestTapePVM;
+    public TapeQuestPage(TapeQuestViewModel questTapePageViewModel)
     {
         InitializeComponent();
         BindingContext = questTapePageViewModel;

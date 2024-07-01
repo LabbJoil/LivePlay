@@ -4,11 +4,11 @@ using LivePlay.Front.Core.Enums;
 using LivePlay.Front.Core.Models;
 using LivePlay.Front.MAUI.Pages.AdminPages;
 using LivePlay.Front.MAUI.PersonalElements;
-using LivePlay.Front.MAUI.ViewModels.AdminViewModels;
 using Microsoft.Maui.Controls;
 using System.Text.Json;
+using LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.ViewModels;
 
-namespace LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages;
+namespace LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.Views;
 
 [QueryProperty(nameof(QuestProperty), nameof(QuestProperty))]
 public partial class CreationQuestionQuestPage : ContentPage

@@ -1,8 +1,7 @@
 
-using LivePlay.Front.MAUI.ViewModels.Reward;
-using The49.Maui.BottomSheet;
+using LivePlay.Front.MAUI.Pages.UserPages.CouponPages.ViewModels;
 
-namespace LivePlay.Front.MAUI.Pages.Reward;
+namespace LivePlay.Front.MAUI.Pages.UserPages.CouponPages.Views;
 
 public partial class CouponInfoPage : ContentPage
 {

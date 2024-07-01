@@ -1,5 +1,5 @@
 ﻿
-using LivePlay.Front.Application.Contracts.ResponseModel;
+using LivePlay.Front.Application.Contracts.Responses;
 
 namespace LivePlay.Front.Application.Interfaces;
 

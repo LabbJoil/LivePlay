@@ -1,11 +1,11 @@
 
-namespace LivePlay.Front.MAUI.Pages.AdminPages;
+namespace LivePlay.Front.MAUI.Pages.AdminPages.CouponPages.Views;
 
-public partial class MainCreationRewardPage : ContentPage
+public partial class CreationCouponPage : ContentPage
 {
     public DateTime MinDate { get; set; } = DateTime.UtcNow.AddDays(1);
 
-    public MainCreationRewardPage()
+    public CreationCouponPage()
 	{
 		InitializeComponent();
 		BindingContext = this;

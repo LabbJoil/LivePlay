@@ -1,8 +1,8 @@
 ﻿
 using LivePlay.Front.Core.Enums;
-using LivePlay.Front.MAUI.Models.ViewModels.AccountViewModels;
+using LivePlay.Front.MAUI.Pages.AccountPages.ViewModels;
 
-namespace LivePlay.Front.MAUI.Pages;
+namespace LivePlay.Front.MAUI.Pages.AccountPages.Views;
 
 public partial class EnterPage : ContentPage
 {

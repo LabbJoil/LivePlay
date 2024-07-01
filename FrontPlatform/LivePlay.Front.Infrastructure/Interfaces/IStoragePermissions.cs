@@ -1,5 +1,5 @@
 ﻿
-namespace LivePlay.Front.Application.Interfaces;
+namespace LivePlay.Front.Infrastructure.Interfaces;
 
 public interface IStoragePermissions
 {

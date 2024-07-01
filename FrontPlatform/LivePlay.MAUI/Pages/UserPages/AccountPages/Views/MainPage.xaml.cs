@@ -1,8 +1,8 @@
 
 using LivePlay.Front.Core.Enums;
-using LivePlay.Front.MAUI.Models.ViewModels.NewsViewModels;
+using LivePlay.Front.MAUI.Pages.UserPages.AccountPages.ViewModels;
 
-namespace LivePlay.Front.MAUI.Pages.UserPages.MainPages.Views;
+namespace LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views;
 
 public partial class MainPage : ContentPage
 {

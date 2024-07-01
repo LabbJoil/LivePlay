@@ -1,20 +1,21 @@
 
 using LivePlay.Front.Core.Models;
-using LivePlay.Front.MAUI.ViewModels.QuestViewModels;
+using LivePlay.Front.MAUI.Abstracts;
+using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.Views;
 
-namespace LivePlay.Front.MAUI.Pages;
+namespace LivePlay.Front.MAUI.Pages.UserPages.QuestPages.NotStarted.Views;
 
 [QueryProperty(nameof(QuestProperty), nameof(QuestProperty))]
 public partial class NotStartedQuestPage : ContentPage
 {
-    private readonly BaseQuestPageViewModel _baseQuestPVM;
+    private readonly BaseQuestViewModel _baseQuestPVM;
 
     public Quest QuestProperty
     {
         set => _baseQuestPVM.CurrentQuestItem = value;
     }
 
-    public NotStartedQuestPage(BaseQuestPageViewModel baseQuestPVM)
+    public NotStartedQuestPage(BaseQuestViewModel baseQuestPVM)
 	{
         InitializeComponent();
 		BindingContext = baseQuestPVM;

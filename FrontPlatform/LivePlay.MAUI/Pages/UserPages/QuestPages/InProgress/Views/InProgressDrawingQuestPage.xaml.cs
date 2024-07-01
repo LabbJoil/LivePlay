@@ -1,12 +1,9 @@
 
 using CommunityToolkit.Maui.Core;
-using CommunityToolkit.Maui.Views;
-using LivePlay.Front.MAUI.Models.ViewModels.QuestViewModels;
-using Microsoft.Maui.Graphics.Text;
-using System.Runtime.InteropServices.JavaScript;
+using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.ViewModels;
 using System.Text.Json;
 
-namespace LivePlay.Front.MAUI.Pages;
+namespace LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.Views;
 
 //[QueryProperty(nameof(QuestItemProperty), nameof(QuestItemProperty))]
 public partial class InProgressDrawingQuestPage : ContentPage
@@ -14,9 +11,9 @@ public partial class InProgressDrawingQuestPage : ContentPage
     //public QuestItem QuestItemProperty {
     //    set => InProgressPhotoVM.CurrentQuestItem = value;
     //}
-    private readonly InProgressPhotoQuestPageViewModel InProgressPhotoVM;
+    private readonly InProgressDrawingQuestViewModel InProgressPhotoVM;
 
-    public InProgressDrawingQuestPage(InProgressPhotoQuestPageViewModel inProgressPhotoVM)
+    public InProgressDrawingQuestPage(InProgressDrawingQuestViewModel inProgressPhotoVM)
     {
         InitializeComponent();
         BindingContext = inProgressPhotoVM;

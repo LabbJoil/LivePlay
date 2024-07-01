@@ -4,7 +4,7 @@ using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.MAUI.Pages.Reward;
 
-namespace LivePlay.Front.MAUI.ViewModels.Users.Coupons;
+namespace LivePlay.Front.MAUI.Pages.UserPages.CouponPages.ViewModels;
 
 public partial class MainRewardPageViewModel(AppDesign designSettings) : BaseViewModel(designSettings)
 {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LivePlay.Front.MAUI.Pages.NotStartedQuestPage"
+             x:Class="LivePlay.Front.MAUI.Pages.UserPages.QuestPages.NotStarted.Views.NotStartedQuestPage"
              Shell.PresentationMode="Modal"
              Background="Transparent"
              Title="PopupPage"

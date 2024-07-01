@@ -1,7 +1,7 @@
 
 using LivePlay.Front.MAUI.DeviceSettings;
 
-namespace LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages;
+namespace LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.Views;
 
 public partial class CreationQRQuestPage : ContentPage
 {

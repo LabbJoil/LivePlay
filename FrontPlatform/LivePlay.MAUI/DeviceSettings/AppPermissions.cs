@@ -1,7 +1,7 @@
 ﻿
 using LivePlay.Front.Application.Interfaces;
 
-namespace LivePlay.Front.MAUI.Services;
+namespace LivePlay.Front.MAUI.DeviceSettings;
 
 public class AppPermissions (IStoragePermissions storagePermissions)
 {

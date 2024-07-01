@@ -2,7 +2,7 @@
 using CommunityToolkit.Maui.Views;
 using LivePlay.Front.Core.Models;
 
-namespace LivePlay.Front.MAUI.Pages.AdminPages;
+namespace LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.Views;
 
 public partial class CurrentFeedbackPage : Popup
 {

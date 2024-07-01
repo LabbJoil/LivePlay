@@ -1,11 +1,11 @@
-using LivePlay.Front.MAUI.Models.ViewModels.QuestViewModels;
-using LivePlay.Front.MAUI.ViewModels.QuestViewModels;
 
-namespace LivePlay.Front.MAUI.Pages;
+using LivePlay.Front.MAUI.Abstracts;
+
+namespace LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.Views;
 
 public partial class InProgressQRQuestPage : ContentPage
 {
-	public InProgressQRQuestPage(BaseQuestPageViewModel inProgressPhotoVM)
+	public InProgressQRQuestPage(BaseQuestViewModel inProgressPhotoVM)
 	{
 		InitializeComponent();
         BindingContext = inProgressPhotoVM;

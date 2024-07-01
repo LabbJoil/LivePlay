@@ -1,15 +1,15 @@
 ﻿
 using CommunityToolkit.Mvvm.Input;
-using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.Core.Enums;
 using LivePlay.Front.Core.Models;
+using LivePlay.Front.MAUI.Abstracts;
+using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages;
-using LivePlay.Front.MAUI.ViewModels.QuestViewModels;
 using System.Text.Json;
 
-namespace LivePlay.Front.MAUI.ViewModels.AdminViewModels;
+namespace LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.ViewModels;
 
-public partial class CreationQuestionQuestPageViewModel(AppDesign designSettings) : BaseQuestPageViewModel(designSettings)
+public partial class CreationQuestionQuestPageViewModel(AppDesign designSettings) : BaseQuestViewModel(designSettings)
 {
     private readonly List<QuestionQuest> AllQuestionQuest = [];
     private int _nowQuest = 0;

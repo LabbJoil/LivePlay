@@ -1,12 +1,12 @@
 
-using LivePlay.Front.MAUI.ViewModels.AccountViewModels;
+using LivePlay.Front.MAUI.Pages.UserPages.CouponPages.ViewModels;
 
-namespace LivePlay.Front.MAUI.Pages;
+namespace LivePlay.Front.MAUI.Pages.UserPages.CouponPages.Views;
 
 public partial class MyCouponsPage : ContentPage
 {
-	private readonly ProfileViewModel ProfileVM;
-    public MyCouponsPage(ProfileViewModel profileViewModel)
+	private readonly MyCouponsViewModel ProfileVM;
+    public MyCouponsPage(MyCouponsViewModel profileViewModel)
 	{
 		InitializeComponent();
         BindingContext = profileViewModel;

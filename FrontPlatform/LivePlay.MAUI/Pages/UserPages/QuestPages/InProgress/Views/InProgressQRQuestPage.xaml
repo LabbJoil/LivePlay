@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:qrscan="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
-             x:Class="LivePlay.Front.MAUI.Pages.InProgressQRQuestPage"
+             x:Class="LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.Views.InProgressQRQuestPage"
              Title="QRQuestPage" BackgroundColor="{AppThemeBinding Dark={StaticResource PageMainBackgroundDark}, Light={StaticResource PageMainBackgroundLight}}">
 
     <Border BackgroundColor="#415A77" Margin="18" Stroke="Transparent">

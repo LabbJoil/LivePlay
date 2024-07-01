@@ -4,7 +4,7 @@ using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.Core.Models;
 using System.Collections.ObjectModel;
 
-namespace LivePlay.Front.MAUI.ViewModels.AccountViewModels;
+namespace LivePlay.Front.MAUI.Pages.UserPages.AccountPages.ViewModels;
 
 public partial class ProfileViewModel : BaseViewModel
 {

@@ -1,15 +1,15 @@
 
-using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.Core.Enums;
-using LivePlay.Front.MAUI.ViewModels.Users.Feedbacks;
+using LivePlay.Front.MAUI.DeviceSettings;
+using LivePlay.Front.MAUI.Pages.UserPages.FeedbackPages.ViewModels;
 
-namespace LivePlay.Front.MAUI.Pages.ReviewPages;
+namespace LivePlay.Front.MAUI.Pages.UserPages.FeedbackPages.Views;
 
-public partial class ReviewPage : ContentPage
+public partial class FeedbackPage : ContentPage
 {
 	private readonly FeedbackViewModel ReviewVM;
 
-    public ReviewPage(FeedbackViewModel reviewViewModel)
+    public FeedbackPage(FeedbackViewModel reviewViewModel)
 	{
 		InitializeComponent();
         BindingContext = reviewViewModel;

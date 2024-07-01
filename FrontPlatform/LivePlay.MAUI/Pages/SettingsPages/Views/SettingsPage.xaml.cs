@@ -1,7 +1,7 @@
 
-using LivePlay.Front.MAUI.ViewModels.SettingsViewModels;
+using LivePlay.Front.MAUI.Pages.AdminPages.SettingsPages.ViewModels;
 
-namespace LivePlay.Front.MAUI.Pages;
+namespace LivePlay.Front.MAUI.Pages.AdminPages.SettingsPages.Views;
 
 public partial class SettingsPage : ContentPage
 {

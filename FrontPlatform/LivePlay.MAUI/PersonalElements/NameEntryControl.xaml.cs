@@ -1,3 +1,4 @@
+
 namespace LivePlay.Front.MAUI.PersonalElements;
 
 public partial class NameEntryControl : ContentView
