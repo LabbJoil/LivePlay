@@ -1,5 +1,5 @@
 
-using LivePlay.Front.MAUI.Pages.AccountPages.Views;
+using LivePlay.Front.MAUI.Pages.EnterPages.Views;
 
 namespace LivePlay.Front.MAUI.Pages.AdminPages.AccountPages.Views;
 

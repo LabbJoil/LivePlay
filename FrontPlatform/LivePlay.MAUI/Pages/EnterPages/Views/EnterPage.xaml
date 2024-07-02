@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LivePlay.Front.MAUI.Pages.AccountPages.Views.EnterPage"
+             x:Class="LivePlay.Front.MAUI.Pages.EnterPages.Views.EnterPage"
              xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
              Appearing="ContentPage_Appearing" Disappearing="ContentPage_Disappearing"
              BackgroundColor="{AppThemeBinding Dark={StaticResource Page1BackgroundDark}, Light={StaticResource Page1BackgroundLight}}"

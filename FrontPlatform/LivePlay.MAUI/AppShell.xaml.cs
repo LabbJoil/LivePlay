@@ -2,7 +2,7 @@
 using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.Views;
 using LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.Views;
-using LivePlay.Front.MAUI.Pages.AdminPages.SettingsPages.Views;
+using LivePlay.Front.MAUI.Pages.SettingsPages.Views;
 using LivePlay.Front.MAUI.Pages.UserPages.CouponPages.Views;
 using LivePlay.Front.MAUI.Pages.UserPages.NewsPages.Views;
 using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.Views;

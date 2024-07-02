@@ -3,7 +3,7 @@ using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.Core.Models;
 
-namespace LivePlay.Front.MAUI.Pages.AdminPages.SettingsPages.ViewModels;
+namespace LivePlay.Front.MAUI.Pages.SettingsPages.ViewModels;
 
 public partial class SettingsViewModel : BaseViewModel
 {

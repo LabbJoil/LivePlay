@@ -1,5 +1,5 @@
 
-namespace LivePlay.Front.MAUI.Pages.AdminPages.StaticPages;
+namespace LivePlay.Front.MAUI.Pages.AdminPages.StatisticPages.Views;
 
 public partial class GettingStatisticsPage : ContentPage
 {

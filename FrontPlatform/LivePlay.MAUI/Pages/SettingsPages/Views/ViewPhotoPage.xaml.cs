@@ -1,5 +1,5 @@
 
-namespace LivePlay.Front.MAUI.Pages.AdminPages.SettingsPages.Views;
+namespace LivePlay.Front.MAUI.Pages.SettingsPages.Views;
 
 public partial class ViewPhotoPage : ContentPage
 {

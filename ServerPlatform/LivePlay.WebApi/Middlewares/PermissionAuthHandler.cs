@@ -18,7 +18,7 @@ public class PermissionAuthHandler(IServiceScopeFactory serviceScopeFactory, IJw
         var permissionService = scope.ServiceProvider.GetRequiredService<PermissionRepository>();
 
         var userPermissions = await permissionService.GetUserPermissions(userId);
-        var needPoliticPermissions = permissionRequirement.GetNeedPermitions();
+        var needPoliticPermissions = permissionRequirement.GetNeedPermissions();
         if (needPoliticPermissions.All(userPermissions.Contains))
             context.Succeed(permissionRequirement);
     }

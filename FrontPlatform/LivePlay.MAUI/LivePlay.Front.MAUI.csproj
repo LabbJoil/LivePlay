@@ -196,7 +196,7 @@
 	  <Compile Update="Pages\UserPages\NewsPages\Views\CurrentNewsPage.xaml.cs">
 	    <DependentUpon>CurrentNewsPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\AccountPages\Views\EnterPage.xaml.cs">
+	  <Compile Update="Pages\EnterPages\Views\EnterPage.xaml.cs">
 	    <DependentUpon>EnterPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Pages\UserPages\AccountPages\Views\MainPage.xaml.cs">

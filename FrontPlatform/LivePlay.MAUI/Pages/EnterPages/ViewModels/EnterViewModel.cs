@@ -7,11 +7,11 @@ using LivePlay.Front.Core.Models;
 using LivePlay.Front.Infrastructure;
 using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
-using LivePlay.Front.MAUI.Pages.AccountPages.Views;
+using LivePlay.Front.MAUI.Pages.EnterPages.Views;
 using LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.Views;
 using LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views;
 
-namespace LivePlay.Front.MAUI.Pages.AccountPages.ViewModels;
+namespace LivePlay.Front.MAUI.Pages.EnterPages.ViewModels;
 
 public partial class EnterViewModel(AppDesign designSettings, AppPermissions permissions, UserHttpService userHttpService) : BaseViewModel(designSettings)
 {

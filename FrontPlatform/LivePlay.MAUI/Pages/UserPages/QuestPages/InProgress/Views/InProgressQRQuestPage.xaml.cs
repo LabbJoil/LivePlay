@@ -1,14 +1,15 @@
 
 using LivePlay.Front.MAUI.Abstracts;
+using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.ViewModels;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.Views;
 
 public partial class InProgressQRQuestPage : ContentPage
 {
-	public InProgressQRQuestPage(BaseQuestViewModel inProgressPhotoVM)
+	public InProgressQRQuestPage(InProgressQRQuestViewModel inProgressQRQuestVM)
 	{
 		InitializeComponent();
-        BindingContext = inProgressPhotoVM;
+        BindingContext = inProgressQRQuestVM;
 
         QRScan.Options = new ZXing.Net.Maui.BarcodeReaderOptions
         {

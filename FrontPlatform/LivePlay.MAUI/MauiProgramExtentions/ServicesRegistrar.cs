@@ -3,35 +3,36 @@ using LivePlay.Front.Application.HttpServices;
 using LivePlay.Front.Application.Interfaces;
 using LivePlay.Front.Application.Mapping;
 using LivePlay.Front.Core.Models;
-using LivePlay.Front.Infrastructure.Interfaces;
-using LivePlay.Front.MAUI.DeviceSettings;
-using LivePlay.Front.MAUI.Pages.AccountPages.ViewModels;
-using LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.Views;
-using LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.Views;
-using LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Manages.Views;
-using LivePlay.Front.MAUI.Pages.AdminPages.SettingsPages.ViewModels;
-using LivePlay.Front.MAUI.Pages.UserPages.CouponPages.ViewModels;
-using LivePlay.Front.MAUI.ViewModels.NewsViewModels;
-using LivePlay.Front.MAUI.Pages.AccountPages.Views;
-using LivePlay.Front.MAUI.Abstracts;
-using LivePlay.Front.MAUI.Pages.UserPages.FeedbackPages.ViewModels;
-using LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views;
-using LivePlay.Front.MAUI.Pages.UserPages.NewsPages.Views;
-using LivePlay.Front.MAUI.Pages.UserPages.FeedbackPages.Views;
-using LivePlay.Front.MAUI.Pages.UserPages.CouponPages.Views;
-using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.Tape.Views;
-using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.NotStarted.Views;
-using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.Views;
-using LivePlay.Front.MAUI.Pages.AdminPages.StaticPages;
-using LivePlay.Front.MAUI.Pages.AdminPages.CouponPages.Views;
-using LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.ViewModels;
-using LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Manages.ViewModels;
-using LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.ViewModels;
-using LivePlay.Front.MAUI.Pages.AdminPages.SettingsPages.Views;
-using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.Tape.ViewModels;
-using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.ViewModels;
-using LivePlay.Front.MAUI.Pages.UserPages.AccountPages.ViewModels;
 using LivePlay.Front.Infrastructure;
+using LivePlay.Front.Infrastructure.Interfaces;
+using LivePlay.Front.MAUI.Abstracts;
+using LivePlay.Front.MAUI.DeviceSettings;
+using LivePlay.Front.MAUI.Pages.AdminPages.CouponPages.Views;
+using LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.ViewModels;
+using LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.Views;
+using LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.ViewModels;
+using LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.Views;
+using LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Manages.ViewModels;
+using LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Manages.Views;
+using LivePlay.Front.MAUI.Pages.AdminPages.StatisticPages.Views;
+using LivePlay.Front.MAUI.Pages.EnterPages.ViewModels;
+using LivePlay.Front.MAUI.Pages.EnterPages.Views;
+using LivePlay.Front.MAUI.Pages.SettingsPages.ViewModels;
+using LivePlay.Front.MAUI.Pages.SettingsPages.Views;
+using LivePlay.Front.MAUI.Pages.UserPages.AccountPages.ViewModels;
+using LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views;
+using LivePlay.Front.MAUI.Pages.UserPages.CouponPages.ViewModels;
+using LivePlay.Front.MAUI.Pages.UserPages.CouponPages.Views;
+using LivePlay.Front.MAUI.Pages.UserPages.FeedbackPages.ViewModels;
+using LivePlay.Front.MAUI.Pages.UserPages.FeedbackPages.Views;
+using LivePlay.Front.MAUI.Pages.UserPages.NewsPages.Views;
+using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.ViewModels;
+using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.Views;
+using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.NotStarted.ViewModels;
+using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.NotStarted.Views;
+using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.Tape.ViewModels;
+using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.Tape.Views;
+using LivePlay.Front.MAUI.ViewModels.NewsViewModels;
 
 namespace LivePlay.Front.MAUI.MauiProgramExtentions;
 
@@ -91,7 +92,8 @@ public static class ServicesRegistrar
         services.AddTransient<CurrentNewsPageViewModel>();
         services.AddTransient<FeedbackViewModel>();
         services.AddTransient<TapeQuestViewModel>();
-        services.AddTransient<BaseQuestViewModel>();
+        services.AddTransient<NotStartedQuestViewModel>();
+        services.AddTransient<InProgressQRQuestViewModel>();
         services.AddTransient<InProgressDrawingQuestViewModel>();
         services.AddTransient<InProgressQuestionQuestViewModel>();
         services.AddTransient<CouponInfoViewModel>();
@@ -100,13 +102,16 @@ public static class ServicesRegistrar
 
     public static void RegisterDeviceSettingsServices(this IServiceCollection services)
     {
+
+
+#if __ANDROID__
+        services.AddSingleton<IStoragePermissions, Platforms.PlatformPermissions.StoragePermissions>();
+#endif
+
         services.AddSingleton<AppDesign>();
         services.AddSingleton<AppPermissions>();
         services.AddSingleton<AppStorage>();
 
-#if __Android__
-        services.AddSingleton<IStoragePermissions, Platforms.PlatformPermitions.StoragePermissions>();
-#endif
 
     }
 

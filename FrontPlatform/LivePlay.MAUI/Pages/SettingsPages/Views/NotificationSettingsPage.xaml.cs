@@ -1,7 +1,7 @@
 
-using LivePlay.Front.MAUI.Pages.AdminPages.SettingsPages.ViewModels;
+using LivePlay.Front.MAUI.Pages.SettingsPages.ViewModels;
 
-namespace LivePlay.Front.MAUI.Pages.AdminPages.SettingsPages.Views;
+namespace LivePlay.Front.MAUI.Pages.SettingsPages.Views;
 
 public partial class NotificationSettingsPage : ContentPage
 {

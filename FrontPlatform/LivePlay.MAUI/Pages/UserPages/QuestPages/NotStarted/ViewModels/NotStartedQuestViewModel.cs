@@ -1,13 +1,10 @@
 ﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using LivePlay.Front.MAUI.Abstracts;
+using LivePlay.Front.MAUI.DeviceSettings;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.QuestPages.NotStarted.ViewModels;
 
-public class NotStartedQuestViewModel
+public class NotStartedQuestViewModel(AppDesign appDesign) : BaseQuestViewModel(appDesign)
 {
 
 }

@@ -3,7 +3,7 @@ using Android.OS;
 using System.Diagnostics.CodeAnalysis;
 using LivePlay.Front.Infrastructure.Interfaces;
 
-namespace LivePlay.Front.MAUI.Platforms.PlatformPermitions;
+namespace LivePlay.Front.MAUI.Platforms.PlatformPermissions;
 
 public class StoragePermissions : Permissions.BasePlatformPermission, IStoragePermissions
 {

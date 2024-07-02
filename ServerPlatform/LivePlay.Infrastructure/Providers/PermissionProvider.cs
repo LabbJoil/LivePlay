@@ -9,7 +9,7 @@ public class PermissionProvider(Politic needPolitic) : IAuthorizationRequirement
 {
     public Politic RequirePolitic { get; } = needPolitic;
 
-    public Permission[] GetNeedPermitions()
+    public Permission[] GetNeedPermissions()
     {
         return RequirePolitic switch
         {
