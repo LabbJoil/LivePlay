@@ -102,17 +102,12 @@ public static class ServicesRegistrar
 
     public static void RegisterDeviceSettingsServices(this IServiceCollection services)
     {
-
-
-#if __ANDROID__
-        services.AddSingleton<IStoragePermissions, Platforms.PlatformPermissions.StoragePermissions>();
-#endif
-
         services.AddSingleton<AppDesign>();
         services.AddSingleton<AppPermissions>();
         services.AddSingleton<AppStorage>();
-
-
+#if __ANDROID__
+        services.AddSingleton<IStoragePermissions, Platforms.PlatformPermissions.StoragePermissions>();
+#endif
     }
 
     public static void RegisterHttpServices(this IServiceCollection services)
