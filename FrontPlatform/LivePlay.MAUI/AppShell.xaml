@@ -3,20 +3,22 @@
     x:Class="LivePlay.Front.MAUI.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pages="clr-namespace:LivePlay.Front.MAUI.Pages"
-    xmlns:pagess="clr-namespace:LivePlay.Front.MAUI.Pages.AccountPages"
-    xmlns:pagesss="clr-namespace:LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages"
-    xmlns:pagessss="clr-namespace:LivePlay.Front.MAUI.Pages.QuestPages"
-    xmlns:pagesrev="clr-namespace:LivePlay.Front.MAUI.Pages.ReviewPages"
-    xmlns:pagesadmin="clr-namespace:LivePlay.Front.MAUI.Pages.AdminPages"
-    xmlns:pagesreward="clr-namespace:LivePlay.Front.MAUI.Pages.Reward"
-    Shell.TabBarBackgroundColor="White"
-    Shell.TabBarForegroundColor="Black"
-    Shell.BackgroundColor="White"
-    Shell.ForegroundColor="Black"
-    FlyoutBackground="White"
-    Shell.TabBarUnselectedColor="#527395"
-    Shell.TabBarTitleColor="#25394D">
+    Shell.TabBarBackgroundColor="White" Shell.TabBarForegroundColor="Black" Shell.BackgroundColor="White" Shell.ForegroundColor="Black" 
+    FlyoutBackground="White" Shell.TabBarUnselectedColor="#527395" Shell.TabBarTitleColor="#25394D"
+    
+    xmlns:adminAccountPages="clr-namespace:LivePlay.Front.MAUI.Pages.AdminPages.AccountPages.Views"
+    xmlns:adminFeedbackPages="clr-namespace:LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.Views"
+    xmlns:adminQuestManagePages="clr-namespace:LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Manages.Views"
+    xmlns:adminCouponPages="clr-namespace:LivePlay.Front.MAUI.Pages.AdminPages.CouponPages.Views"
+    xmlns:adminStatisticPages="clr-namespace:LivePlay.Front.MAUI.Pages.AdminPages.StatisticPages.Views"
+    
+    xmlns:userAccountPages="clr-namespace:LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views"
+    xmlns:userQuestTapePages="clr-namespace:LivePlay.Front.MAUI.Pages.UserPages.QuestPages.Tape.Views"
+    xmlns:userCouponPages="clr-namespace:LivePlay.Front.MAUI.Pages.UserPages.CouponPages.Views"
+    xmlns:settingsPages="clr-namespace:LivePlay.Front.MAUI.Pages.SettingsPages.Views"
+    xmlns:userFeedbackPages="clr-namespace:LivePlay.Front.MAUI.Pages.UserPages.FeedbackPages.Views"
+
+    xmlns:enterPages="clr-namespace:LivePlay.Front.MAUI.Pages.EnterPages.Views">
 
     <Shell.TitleView>
         <StackLayout VerticalOptions="Fill" Orientation="Horizontal">
@@ -77,7 +79,7 @@
         Shell.NavBarIsVisible="False"
         Shell.TabBarIsVisible="False"
         Route="EnterPage" 
-        ContentTemplate="{DataTemplate pages:EnterPage}"/>
+        ContentTemplate="{DataTemplate enterPages:EnterPage}"/>
 
     <TabBar>
         <ShellContent Icon="base_page.svg"
@@ -85,63 +87,63 @@
                       Shell.NavBarIsVisible="False"
                       Shell.TabBarIsVisible="True"
                       Title="Отзывы"
-                     ContentTemplate="{DataTemplate pagesadmin:TapeFeedbackPage}" />
+                     ContentTemplate="{DataTemplate adminFeedbackPages:TapeFeedbackPage}" />
 
         <ShellContent Icon="add_quest.svg"
                       Shell.NavBarIsVisible="False"
                       Shell.TabBarIsVisible="True"
                       Title="Квесты"
-                     ContentTemplate="{DataTemplate pagesadmin:ManageQuestPage}" />
+                     ContentTemplate="{DataTemplate adminQuestManagePages:ManageQuestPage}" />
 
         <ShellContent Icon="add_award.svg"
                       Shell.NavBarIsVisible="False"
                       Shell.TabBarIsVisible="True"
                       Title="Награды"
-                     ContentTemplate="{DataTemplate pagesadmin:ManageRewardPage}" />
+                     ContentTemplate="{DataTemplate adminCouponPages:ManageCouponPage}" />
 
         <ShellContent Icon="profile_light.svg"
                       Shell.NavBarIsVisible="False"
                       Shell.TabBarIsVisible="True"
                       Title="Профиль"
-                     ContentTemplate="{DataTemplate pagesadmin:AdminProfilePage}" />
+                     ContentTemplate="{DataTemplate adminAccountPages:ProfilePage}" />
 
         <ShellContent Icon="statistics.svg"
                       Shell.NavBarIsVisible="False"
                       Shell.TabBarIsVisible="True"
                       Title="Статистика"
-                     ContentTemplate="{DataTemplate pagesadmin:GettingStatisticsPage}" />
+                     ContentTemplate="{DataTemplate adminStatisticPages:GettingStatisticsPage}" />
     </TabBar>
 
     <FlyoutItem x:Name="FlyoutItemsNow" FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Главная страница"
                       AutomationId="0"
                       Route="MainPage"
-                      ContentTemplate="{DataTemplate pages:MainPage}"
+                      ContentTemplate="{DataTemplate userAccountPages:MainPage}"
                       Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
         <ShellContent Title="Квесты"
                       AutomationId="1"
                       Route="TapeQuestPage"
-                      ContentTemplate="{DataTemplate pages:TapeQuestPage}"
+                      ContentTemplate="{DataTemplate userQuestTapePages:TapeQuestPage}"
                       Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
         <ShellContent Title="Награды"
                       AutomationId="2"
                       Route="MainRewardPage"
-                      ContentTemplate="{DataTemplate pagesreward:MainRewardPage}"
+                      ContentTemplate="{DataTemplate userCouponPages:MainCouponPage}"
                       Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
         <ShellContent Title="Настройки" 
                       AutomationId="3" 
                       Route="NotificationSettingsPage" 
-                      ContentTemplate="{DataTemplate pages:NotificationSettingsPage}"
+                      ContentTemplate="{DataTemplate settingsPages:NotificationSettingsPage}"
                       Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
         <ShellContent Title="Профиль" 
                       AutomationId="4" 
                       Route="MyCouponsPage" 
-                      ContentTemplate="{DataTemplate pages:MyCouponsPage}"
+                      ContentTemplate="{DataTemplate userCouponPages:MyCouponsPage}"
                       Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
         <ShellContent Title="Оставить отзыв" 
                       AutomationId="5" 
                       Route="ReviewPage" 
-                      ContentTemplate="{DataTemplate pagesrev:ReviewPage}"
+                      ContentTemplate="{DataTemplate userFeedbackPages:FeedbackPage}"
                       Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
     </FlyoutItem>
 

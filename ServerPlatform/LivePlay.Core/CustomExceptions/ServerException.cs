@@ -1,10 +1,9 @@
 ﻿
-using LivePlay.Server.Core.Abstract;
+using LivePlay.Server.Core.Abstracts;
 using LivePlay.Server.Core.Enums;
-using LivePlay.Server.Core.Models;
 using System.Net;
 
-namespace LivePlay.Server.Application.CustomExceptions;
+namespace LivePlay.Server.Core.CustomExceptions;
 
 public class ServerException : BaseException
 {

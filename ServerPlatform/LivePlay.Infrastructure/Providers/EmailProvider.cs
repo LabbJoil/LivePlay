@@ -1,10 +1,10 @@
 ﻿
-using MimeKit;
-using MailKit.Net.Smtp;
-using MimeKit.Text;
-using MailKit.Security;
 using LivePlay.Server.Core.Options;
+using MailKit.Net.Smtp;
+using MailKit.Security;
 using Microsoft.Extensions.Options;
+using MimeKit;
+using MimeKit.Text;
 
 namespace LivePlay.Server.Infrastructure.Providers;
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:qrscan="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
+             x:Class="LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.Views.InProgressQRQuestPage"
+             Title="QRQuestPage" BackgroundColor="{AppThemeBinding Dark={StaticResource PageMainBackgroundDark}, Light={StaticResource PageMainBackgroundLight}}">
+
+    <Border BackgroundColor="#415A77" Margin="18" Stroke="Transparent">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="20" />
+        </Border.StrokeShape>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="26"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="27"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="27"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="1" Grid.Row="1" Text="{Binding CurrentQuestItem.NowItem.Title}" FontSize="19" HorizontalOptions="Center" />
+            <Editor Grid.Column="1" Grid.Row="2" Text="{Binding CurrentQuestItem.NowItem.TotalDescription}" FontSize="12" HorizontalOptions="Center" />
+            <Border Grid.Column="1" Grid.Row="3" Margin="15" HeightRequest="285">
+                <qrscan:CameraBarcodeReaderView x:Name="QRScan" BarcodesDetected="QRScan_BarcodesDetected"/>
+            </Border>
+        </Grid>
+    </Border>
+</ContentPage>
+    

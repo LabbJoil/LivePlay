@@ -1,5 +1,5 @@
 ﻿
-using LivePlay.Server.Application.CustomExceptions;
+using LivePlay.Server.Core.CustomExceptions;
 using LivePlay.Server.Core.Enums;
 using Microsoft.AspNetCore.Authorization;
 
@@ -9,7 +9,7 @@ public class PermissionProvider(Politic needPolitic) : IAuthorizationRequirement
 {
     public Politic RequirePolitic { get; } = needPolitic;
 
-    public Permission[] GetNeedPermitions()
+    public Permission[] GetNeedPermissions()
     {
         return RequirePolitic switch
         {

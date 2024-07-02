@@ -1,6 +1,4 @@
 ﻿
-using System.ComponentModel.DataAnnotations;
-
 namespace LivePlay.Server.Core.Models;
 
 public class CreativeQuest

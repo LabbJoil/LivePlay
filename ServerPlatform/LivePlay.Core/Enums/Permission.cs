@@ -1,4 +1,5 @@
-﻿namespace LivePlay.Server.Core.Enums;
+﻿
+namespace LivePlay.Server.Core.Enums;
 
 public enum Permission
 {

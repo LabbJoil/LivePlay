@@ -1,5 +1,5 @@
 ﻿
-using LivePlay.Front.Application.Contracts.ResponseModel;
+using LivePlay.Front.Application.Contracts.Responses;
 using LivePlay.Front.Application.Interfaces;
 using LivePlay.Front.Application.Models.ResponseModel;
 using LivePlay.Front.Core.Options;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Text.Json;
 using System.Web;
 
-namespace LivePlay.Front.Application.HttpServices;
+namespace LivePlay.Front.Infrastructure;
 
 public class HttpProvider(IOptions<HttpProviderOptions> httpProviderOptions) : IHttpProvider
 {

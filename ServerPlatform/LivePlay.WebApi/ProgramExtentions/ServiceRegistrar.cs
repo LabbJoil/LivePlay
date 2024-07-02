@@ -1,18 +1,18 @@
 ﻿
-using LivePlay.Server.Infrastructure.Background;
+using LivePlay.Server.Application.Facade;
 using LivePlay.Server.Application.Interfaces;
 using LivePlay.Server.Application.Services;
-using LivePlay.Server.Infrastructure.Providers;
-using LivePlay.Server.Persistence.Repositories;
-using LivePlay.Server.Application.Facade;
-using LivePlay.Server.Application.Mapping;
+using LivePlay.Server.Application.Services.QuestServices;
 using LivePlay.Server.Core.Interfaces;
+using LivePlay.Server.Core.Interfaces.QuestInterfaces;
 using LivePlay.Server.Infrastructure;
-using LivePlay.Server.WebApi.Mapping.Users;
-using LivePlay.Server.WebApi.Mapping.Quests;
-using LivePlay.Server.Application.Services.Quests;
+using LivePlay.Server.Infrastructure.Background;
+using LivePlay.Server.Infrastructure.Providers;
+using LivePlay.Server.Persistence.Mappings;
+using LivePlay.Server.Persistence.Repositories;
 using LivePlay.Server.Persistence.Repositories.Quests;
-using LivePlay.Server.Core.Interfaces.Quests;
+using LivePlay.Server.WebApi.Mappings.QuestMappings;
+using LivePlay.Server.WebApi.Mappings.UserMappings;
 
 namespace LivePlay.Server.WebApi.ProgramExtentions;
 

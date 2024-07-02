@@ -1,9 +1,8 @@
 ﻿
-using LivePlay.Front.Application.Contracts.ResponseModel;
+using LivePlay.Front.Application.Contracts.Responses;
 using LivePlay.Front.Application.Interfaces;
-using LivePlay.Front.Application.Models.ResponseModel;
 
-namespace LivePlay.Front.MAUI.Services.HttpServices;
+namespace LivePlay.Front.Application.HttpServices;
 
 public class UserHttpService(IHttpProvider httpProvider) : IHttpServise
 {

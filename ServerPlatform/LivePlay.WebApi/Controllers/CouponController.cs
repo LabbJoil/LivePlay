@@ -3,7 +3,7 @@ using AutoMapper;
 using LivePlay.Server.Application.Services;
 using LivePlay.Server.Core.Enums;
 using LivePlay.Server.Core.Models;
-using LivePlay.Server.WebApi.Contracts.Requests.Coupons;
+using LivePlay.Server.WebApi.Contracts.Requests.CouponRequests;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

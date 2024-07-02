@@ -1,7 +1,5 @@
 ﻿
 using LivePlay.Server.Core.Options;
-using LivePlay.Server.Infrastructure;
-using LivePlay.Server.Infrastructure.Providers;
 using LivePlay.Server.Persistence;
 using Microsoft.EntityFrameworkCore;
 

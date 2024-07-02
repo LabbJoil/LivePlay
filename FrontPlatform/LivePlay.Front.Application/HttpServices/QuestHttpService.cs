@@ -1,11 +1,5 @@
 ﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LivePlay.Front.MAUI.Services.HttpServices;
+namespace LivePlay.Front.Application.HttpServices;
 
 public class QuestHttpService
 {

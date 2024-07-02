@@ -1,5 +1,5 @@
 ﻿
-using LivePlay.Server.Application.CustomExceptions;
+using LivePlay.Server.Core.CustomExceptions;
 using LivePlay.Server.Core.Enums;
 using LivePlay.Server.WebApi.Contracts.Responses;
 using System.Net;

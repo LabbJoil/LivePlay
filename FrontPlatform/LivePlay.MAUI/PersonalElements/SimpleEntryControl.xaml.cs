@@ -1,6 +1,4 @@
 
-using LivePlay.Front.MAUI.Models.ViewModels;
-
 namespace LivePlay.Front.MAUI.PersonalElements;
 
 public partial class SimpleEntryControl : ContentView

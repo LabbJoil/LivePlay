@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
+             x:Class="LivePlay.Front.MAUI.Pages.AdminPages.StatisticPages.Views.GettingStatisticsPage"
+             Title="GettingStatisticsPage" 
+             Shell.NavBarIsVisible="False">
+
+    <Grid BackgroundColor="#26507B" Padding="60,0">
+        <Grid.RowDefinitions >
+            <RowDefinition Height="64"/>
+            <RowDefinition Height="137"/>
+            <RowDefinition Height="41"/>
+            <RowDefinition Height="44"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" VerticalOptions="End" HorizontalOptions="Center" Stroke="#DEDEDE" StrokeThickness="2" Padding="13,7" >
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20"/>
+            </Border.StrokeShape>
+            <Label Text="Получение статистики" FontSize="19" FontAttributes="Bold"/>
+        </Border>
+
+        <Label Text="Выберите период:" HorizontalOptions="Start" FontSize="17" Grid.Row="1" FontAttributes="Bold" VerticalOptions="End"/>
+        <Grid Grid.Row="2" ColumnDefinitions="*,48,*">
+            <Border Padding="0" VerticalOptions="End" HeightRequest="35" Stroke="Transparent" BackgroundColor="White" WidthRequest="100">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="9"/>
+                </Border.StrokeShape>
+                <DatePicker HeightRequest="35" TextColor="Black" HorizontalOptions="Center"/>
+            </Border>
+            <Rectangle Grid.Column="1" BackgroundColor="White" HeightRequest="3" Margin="13" />
+            <Border Grid.Column="2" Padding="0" VerticalOptions="End" HeightRequest="35" Stroke="Transparent" BackgroundColor="White" WidthRequest="100">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="9"/>
+                </Border.StrokeShape>
+                <DatePicker HeightRequest="35" TextColor="Black" HorizontalOptions="Center"/>
+            </Border>
+        </Grid>
+
+        <Label Text="Формат файла" HorizontalOptions="Start" FontSize="16" Grid.Row="3" FontAttributes="Bold" VerticalOptions="End"/>
+        <pe:SwitchButtonsControl Grid.Row="4" TextButton1="WORD" TextButton2="PDF" VerticalOptions="End" WidthRequest="210" HeightRequest="45"/>
+
+        <Button Grid.Row="5" Text="Создать файл" FontAttributes="Bold" FontSize="19" WidthRequest="230" HeightRequest="50" Padding="0" BackgroundColor="#0D1B2A"/>
+
+    </Grid>
+</ContentPage>

@@ -1,12 +1,12 @@
 ﻿
 using CommunityToolkit.Mvvm.ComponentModel;
-using LivePlay.Front.MAUI.DeviceSettings;
 using CommunityToolkit.Mvvm.Input;
-using LivePlay.Front.Core.Enums;
+using LivePlay.Front.Application.Contracts.Responses;
 using LivePlay.Front.Application.Models.ResponseModel;
-using LivePlay.Front.Application.Contracts.ResponseModel;
-using LivePlay.Front.Application;
-using LivePlay.Front.MAUI.Pages;
+using LivePlay.Front.Core.Enums;
+using LivePlay.Front.Infrastructure;
+using LivePlay.Front.MAUI.DeviceSettings;
+using LivePlay.Front.MAUI.Pages.SettingsPages.Views;
 
 namespace LivePlay.Front.MAUI.Abstracts;
 

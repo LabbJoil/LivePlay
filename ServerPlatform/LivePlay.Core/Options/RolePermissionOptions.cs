@@ -1,5 +1,5 @@
 ﻿
-namespace LivePlay.Server.Persistence;
+namespace LivePlay.Server.Core.Options;
 
 public class RolePermissionOptions
 {

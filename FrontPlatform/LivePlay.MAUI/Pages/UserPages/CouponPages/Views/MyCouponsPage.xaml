@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivePlay.Front.MAUI.Pages.UserPages.CouponPages.Views.MyCouponsPage"
+             Appearing="ContentPage_Appearing" Disappearing="ContentPage_Disappearing"
+             xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
+             Title="MyCouponsPage">
+
+    <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">
+        <Grid x:Name="MainGrid" BackgroundColor="{AppThemeBinding Dark={StaticResource PageMainBackgroundDark}, Light={StaticResource PageMainBackgroundLight}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Rectangle x:Name="ShadowRectangle" Fill="Black" ZIndex="1" Opacity="0" StrokeThickness="0" Grid.RowSpan="2"/>
+            <pe:ChoicePanelControl x:Name="FilterPanel" Margin="0,10,0,5" Grid.Row="0" PanelItems="{Binding ProfileItems}"/>
+
+            <Border BackgroundColor="#415A77" Stroke="Transparent" Padding="18,0,0,0" HeightRequest="85" Margin="25,20" Grid.Row="1" VerticalOptions="Start">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20"/>
+                </Border.StrokeShape>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="37"/>
+                        <RowDefinition Height="43"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="40"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Скидка на номер 10%" TextColor="White" FontSize="19" Margin="0,1" VerticalOptions="End" FontFamily="RalewayBold"/>
+                    <Label Grid.Row="1" Text="27.06.2024" TextColor="#AFAFAF" FontSize="16" VerticalOptions="Center" FontFamily="Roboto" FontAttributes="Bold"/>
+                    <ImageButton Source="choose_item_admin_dark.svg" Grid.Column="1" Grid.RowSpan="2" VerticalOptions="Center" BackgroundColor="Transparent" 
+                                                 HorizontalOptions="Center" WidthRequest="24" HeightRequest="24"/>
+                </Grid>
+            </Border>
+        </Grid>
+    </RefreshView>
+
+</ContentPage>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+             xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
+             x:Class="LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views.MainPage"
+             Disappearing="ContentPage_Disappearing" Appearing="ContentPage_Appearing"
+             Title="MainPage"
+             x:Name="this">
+
+    <RefreshView>
+        <ScrollView>
+            <Grid x:Name="MainGrid" BackgroundColor="{AppThemeBinding Dark={StaticResource PageMainBackgroundDark}, Light={StaticResource PageMainBackgroundLight}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="260"/>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackLayout Orientation="Vertical" Grid.Row="0">
+                    <CarouselView x:Name="MainCarouselView" Style="{Binding TapeCarouselView}" ItemsSource="{Binding TapeItems}" IndicatorView="indicatorView">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <Border BackgroundColor="#415A77" Margin="15,15,15,5" Stroke="Transparent">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="20" />
+                                    </Border.StrokeShape>
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding BindingContext.GoToTapeItemCommand, Source={x:Reference this}}"
+                                            CommandParameter="{Binding ., ConverterParameter={x:Reference this}, Converter={StaticResource TupleConverter}}"
+                                            NumberOfTapsRequired="1"/>
+                                    </Border.GestureRecognizers>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="130"/>
+                                            <RowDefinition Height="10"/>
+                                            <RowDefinition Height="25"/>
+                                            <RowDefinition Height="10"/>
+                                            <RowDefinition Height="25"/>
+                                            <RowDefinition Height="5"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="27"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="27"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Frame Grid.ColumnSpan="3" Grid.Row="0" CornerRadius="0" Background="Transparent" BorderColor="Transparent" Padding="0">
+                                            <Image Source="{Binding Image}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill" />
+                                        </Frame>
+                                        <Label Grid.Column="1" Grid.Row="2" Text="{Binding Title}" FontSize="19" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                        <Label Grid.Column="1" Grid.Row="4" Text="{Binding Description}" FontSize="15" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+
+                    <IndicatorView Margin="0,5,0,0" x:Name="indicatorView"
+                       IndicatorColor="LightGray"
+                       SelectedIndicatorColor="DarkSlateGray"
+                       HorizontalOptions="Center" />
+                </StackLayout>
+
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Rectangle Grid.RowSpan="2" BackgroundColor="#415A77" VerticalOptions="Fill" HorizontalOptions="Fill" />
+                    <Label Grid.Row="0" Text="QR-код для снятия бонусов" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <ImageButton Grid.Row="1" Source="show_qr.svg" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Grid>
+
+                <Border Grid.Row="2" BackgroundColor="#415A77" Stroke="Transparent" VerticalOptions="Start" Margin="18,33">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20"/>
+                    </Border.StrokeShape>
+                    <Grid RowDefinitions="33, 250" RowSpacing="10">
+                        <Label Text="Наша сеть отелей:" FontSize="18" FontAttributes="Bold" VerticalOptions="End" HorizontalOptions="Center"/>
+                        
+                        <maps:Map Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="mappy" MapType="Street">
+                            <x:Arguments>
+                                <maps:MapSpan>
+                                    <x:Arguments>
+                                        <sensors:Location>
+                                            <x:Arguments>
+                                                <x:Double>59.9386300</x:Double>
+                                                <x:Double>30.3141300</x:Double>
+                                            </x:Arguments>
+                                        </sensors:Location>
+                                        <x:Double>0.06</x:Double>
+                                        <x:Double>0.06</x:Double>
+                                    </x:Arguments>
+                                </maps:MapSpan>
+                            </x:Arguments>
+                        </maps:Map>
+                    </Grid>
+                </Border>
+            </Grid>
+        </ScrollView>
+    </RefreshView>
+
+</ContentPage>

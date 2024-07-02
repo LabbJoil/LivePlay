@@ -145,76 +145,79 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Pages\AccountPages\MyCouponsPage.xaml.cs">
+	  <Compile Update="Pages\UserPages\CouponPages\Views\MyCouponsPage.xaml.cs">
 	    <DependentUpon>MyCouponsPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\AccountPages\ProfilePage.xaml.cs">
+	  <Compile Update="Pages\UserPages\AccountPages\Views\ProfilePage.xaml.cs">
 	    <DependentUpon>ProfilePage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\AdminPages\GettingStatisticsPage.xaml.cs">
-	    <DependentUpon>GettingStatisticsPage.xaml</DependentUpon>
+	  <Compile Update="Pages\AdminPages\QuestPages\Creations\Views\CreationQuestPage.xaml.cs">
+	    <DependentUpon>CreationQuestPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\AdminPages\MainCreationRewardPage.xaml.cs">
-	    <DependentUpon>MainCreationRewardPage.xaml</DependentUpon>
+	  <Compile Update="Pages\AdminPages\StatisticPages\Views\GettingStatisticPage.xaml.cs">
+	    <DependentUpon>GettingStatisticPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\AdminPages\ManageRewardPage.xaml.cs">
-	    <DependentUpon>ManageRewardPage.xaml</DependentUpon>
+	  <Compile Update="Pages\AdminPages\CouponPages\Views\CreationCouponPage.xaml.cs">
+	    <DependentUpon>CreationCouponPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\AdminPages\ManageQuestPage.xaml.cs">
+	  <Compile Update="Pages\AdminPages\CouponPages\Views\ManageCouponPage.xaml.cs">
+	    <DependentUpon>ManageCouponPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\AdminPages\QuestPages\Manages\Views\ManageQuestPage.xaml.cs">
 	    <DependentUpon>ManageQuestPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\AdminPages\AdminProfilePage.xaml.cs">
-	    <DependentUpon>AdminProfilePage.xaml</DependentUpon>
+	  <Compile Update="Pages\AdminPages\AccountPages\Views\ProfilePage.xaml.cs">
+	    <DependentUpon>ProfilePage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\AdminPages\TapeFeedbackPage.xaml.cs">
+	  <Compile Update="Pages\AdminPages\FeedbackPages\Views\TapeFeedbackPage.xaml.cs">
 	    <DependentUpon>TapeFeedbackPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\AdminPages\CurrentFeedbackPage.xaml.cs">
+	  <Compile Update="Pages\AdminPages\FeedbackPages\Views\CurrentFeedbackPage.xaml.cs">
 	    <DependentUpon>CurrentFeedbackPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\AdminPages\CreationQuestPages\CreativeQuestCreationQuestPage.xaml.cs">
-	    <DependentUpon>CreativeQuestCreationQuestPage.xaml</DependentUpon>
+	  <Compile Update="Pages\AdminPages\QuestPages\Creations\Views\CreationCreativeQuestPage.xaml.cs">
+	    <DependentUpon>CreationCreativeQuestPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\AdminPages\CreationQuestPages\QRcodeCreationQuestPage.xaml.cs">
-	    <DependentUpon>QRcodeCreationQuestPage.xaml</DependentUpon>
+	  <Compile Update="Pages\AdminPages\QuestPages\Creations\Views\CreationQRQuestPage.xaml.cs">
+	    <DependentUpon>CreationQRQuestPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\AdminPages\CreationQuestPages\QuestionCreationQuestPage.xaml.cs">
-	    <DependentUpon>QuestionCreationQuestPage.xaml</DependentUpon>
+	  <Compile Update="Pages\AdminPages\QuestPages\Creations\Views\CreationQuestionQuestPage.xaml.cs">
+	    <DependentUpon>CreationQuestionQuestPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\QuestPages\InProgressQuestPages\InProgressQRQuestPage.xaml.cs">
+	  <Compile Update="Pages\UserPages\QuestPages\InProgress\Views\InProgressQRQuestPage.xaml.cs">
 	    <DependentUpon>InProgressQRQuestPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\QuestPages\InProgressQuestPages\InProgressQuestionQuestPage.xaml.cs">
+	  <Compile Update="Pages\UserPages\QuestPages\InProgress\Views\InProgressQuestionQuestPage.xaml.cs">
 	    <DependentUpon>InProgressQuestionQuestPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\QuestPages\InProgressQuestPages\InProgressDrawingQuestPage.xaml.cs">
+	  <Compile Update="Pages\UserPages\QuestPages\InProgress\Views\InProgressDrawingQuestPage.xaml.cs">
 	    <DependentUpon>InProgressDrawingQuestPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\NewsPages\CurrentNewsPage.xaml.cs">
+	  <Compile Update="Pages\UserPages\NewsPages\Views\CurrentNewsPage.xaml.cs">
 	    <DependentUpon>CurrentNewsPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\AccountPages\EnterPage.xaml.cs">
+	  <Compile Update="Pages\EnterPages\Views\EnterPage.xaml.cs">
 	    <DependentUpon>EnterPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\NewsPages\MainPage.xaml.cs">
+	  <Compile Update="Pages\UserPages\AccountPages\Views\MainPage.xaml.cs">
 	    <DependentUpon>MainPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\QuestPages\NotStartedQuestPages\NotStartedQuestPage.xaml.cs">
+	  <Compile Update="Pages\UserPages\QuestPages\NotStarted\Views\NotStartedQuestPage.xaml.cs">
 	    <DependentUpon>NotStartedQuestPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\ReviewPages\ReviewPage.xaml.cs">
-	    <DependentUpon>ReviewPage.xaml</DependentUpon>
+	  <Compile Update="Pages\UserPages\FeedbackPages\Views\FeedbackPage.xaml.cs">
+	    <DependentUpon>FeedbackPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\Reward\MainRewardPage.xaml.cs">
-	    <DependentUpon>MainRewardPage.xaml</DependentUpon>
+	  <Compile Update="Pages\UserPages\CouponPages\Views\MainCouponPage.xaml.cs">
+	    <DependentUpon>MainCouponPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\SettingsPages\NotificationSettingsPage.xaml.cs">
+	  <Compile Update="Pages\SettingsPages\Views\NotificationSettingsPage.xaml.cs">
 	    <DependentUpon>NotificationSettingsPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\SettingsPages\SettingsPage.xaml.cs">
+	  <Compile Update="Pages\SettingsPages\Views\SettingsPage.xaml.cs">
 	    <DependentUpon>SettingsPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\QuestPages\TapeQuestPage.xaml.cs">
+	  <Compile Update="Pages\UserPages\QuestPages\Tape\Views\TapeQuestPage.xaml.cs">
 	    <DependentUpon>TapeQuestPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="PersonalElements\ChoicePanelControl.xaml.cs">
@@ -238,88 +241,88 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Pages\AccountPages\MyCouponsPage.xaml">
+	  <MauiXaml Update="Pages\UserPages\CouponPages\Views\MyCouponsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\AdminPages\GettingStatisticsPage.xaml">
+	  <MauiXaml Update="Pages\AdminPages\StatisticPages\Views\GettingStatisticPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\AdminPages\MainCreationRewardPage.xaml">
+	  <MauiXaml Update="Pages\AdminPages\CouponPages\Views\CreationCouponPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\AdminPages\ManageRewardPage.xaml">
+	  <MauiXaml Update="Pages\AdminPages\CouponPages\Views\ManageCouponPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\AdminPages\ManageQuestPage.xaml">
+	  <MauiXaml Update="Pages\AdminPages\QuestPages\Manages\Views\ManageQuestPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\AdminPages\AdminProfilePage.xaml">
+	  <MauiXaml Update="Pages\AdminPages\AccountPages\Views\ProfilePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\AdminPages\TapeFeedbackPage.xaml">
+	  <MauiXaml Update="Pages\AdminPages\FeedbackPages\Views\TapeFeedbackPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\AdminPages\CurrentFeedbackPage.xaml">
+	  <MauiXaml Update="Pages\AdminPages\FeedbackPages\Views\CurrentFeedbackPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\AccountPages\HistoryOperationsPage.xaml">
+	  <MauiXaml Update="Pages\UserPages\AccountPages\Views\HistoryOperationsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\AccountPages\ProfilePage.xaml">
+	  <MauiXaml Update="Pages\UserPages\AccountPages\Views\ProfilePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\AdminPages\CreationQuestPages\MainCreationQuestPage.xaml">
+	  <MauiXaml Update="Pages\AdminPages\QuestPages\Creations\Views\CreationQuestPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\AdminPages\CreationQuestPages\CreativeQuestCreationQuestPage.xaml">
+	  <MauiXaml Update="Pages\AdminPages\QuestPages\Creations\Views\CreationCreativeQuestPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\AdminPages\CreationQuestPages\QRcodeCreationQuestPage.xaml">
+	  <MauiXaml Update="Pages\AdminPages\QuestPages\Creations\Views\CreationQRQuestPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\AdminPages\CreationQuestPages\QuestionCreationQuestPage.xaml">
+	  <MauiXaml Update="Pages\AdminPages\QuestPages\Creations\Views\CreationQuestionQuestPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\QuestPages\InProgressQuestPages\InProgressQRQuestPage.xaml">
+	  <MauiXaml Update="Pages\UserPages\QuestPages\InProgress\Views\InProgressQRQuestPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\QuestPages\InProgressQuestPages\InProgressQuestionQuestPage.xaml">
+	  <MauiXaml Update="Pages\UserPages\QuestPages\InProgress\Views\InProgressQuestionQuestPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\QuestPages\InProgressQuestPages\InProgressDrawingQuestPage.xaml">
+	  <MauiXaml Update="Pages\UserPages\QuestPages\InProgress\Views\InProgressDrawingQuestPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\NewsPages\CurrentNewsPage.xaml">
+	  <MauiXaml Update="Pages\UserPages\NewsPages\Views\CurrentNewsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\QuestPages\NotStartedQuestPages\NotStartedQuestPage.xaml">
+	  <MauiXaml Update="Pages\UserPages\QuestPages\NotStarted\Views\NotStartedQuestPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\ReviewPages\ReviewPage.xaml">
+	  <MauiXaml Update="Pages\UserPages\FeedbackPages\Views\FeedbackPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Reward\CouponInfoPage.xaml">
+	  <MauiXaml Update="Pages\UserPages\CouponPages\Views\CouponInfoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Reward\MainRewardPage.xaml">
+	  <MauiXaml Update="Pages\UserPages\CouponPages\Views\MainCouponPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\SettingsPages\NotificationSettingsPage.xaml">
+	  <MauiXaml Update="Pages\SettingsPages\Views\NotificationSettingsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\SettingsPages\ViewPhotoPage.xaml">
+	  <MauiXaml Update="Pages\SettingsPages\Views\ViewPhotoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\SettingsPages\LoadingPage.xaml">
+	  <MauiXaml Update="Pages\SettingsPages\Views\LoadingPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\NewsPages\MainPage.xaml">
+	  <MauiXaml Update="Pages\UserPages\AccountPages\Views\MainPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\SettingsPages\SettingsPage.xaml">
+	  <MauiXaml Update="Pages\SettingsPages\Views\SettingsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\QuestPages\TapeQuestPage.xaml">
+	  <MauiXaml Update="Pages\UserPages\QuestPages\Tape\Views\TapeQuestPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="PersonalElements\ChoicePanelControl.xaml">
@@ -346,6 +349,10 @@
 	  <MauiXaml Update="PersonalElements\TapeQuestItemControl.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Pages\AdminPages\NewsPages\" />
 	</ItemGroup>
 
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionLivePlayMAUIHideInfoBar="True" /></VisualStudio></ProjectExtensions>

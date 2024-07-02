@@ -1,9 +1,12 @@
 ﻿
 using LivePlay.Front.MAUI.DeviceSettings;
-using LivePlay.Front.MAUI.Pages;
-using LivePlay.Front.MAUI.Pages.AdminPages;
-using LivePlay.Front.MAUI.Pages.QuestPages.CreationQuestPages;
-using LivePlay.Front.MAUI.Pages.Reward;
+using LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.Views;
+using LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.Views;
+using LivePlay.Front.MAUI.Pages.SettingsPages.Views;
+using LivePlay.Front.MAUI.Pages.UserPages.CouponPages.Views;
+using LivePlay.Front.MAUI.Pages.UserPages.NewsPages.Views;
+using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.Views;
+using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.NotStarted.Views;
 using Microsoft.Maui.Controls.Shapes;
 
 namespace LivePlay.Front.MAUI;
@@ -26,12 +29,12 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(InProgressQuestionQuestPage), typeof(InProgressQuestionQuestPage));
         Routing.RegisterRoute(nameof(NotStartedQuestPage), typeof(NotStartedQuestPage));
         Routing.RegisterRoute(nameof(CurrentNewsPage), typeof(CurrentNewsPage));
-        Routing.RegisterRoute(nameof(QuestionCreationQuestPage), typeof(QuestionCreationQuestPage));
+        Routing.RegisterRoute(nameof(CreationQuestionQuestPage), typeof(CreationQuestionQuestPage));
         Routing.RegisterRoute(nameof(CurrentFeedbackPage), typeof(CurrentFeedbackPage)); //возможно открывается по другому  popup ...
-        Routing.RegisterRoute(nameof(QRcodeCreationQuestPage), typeof(QRcodeCreationQuestPage)); //возможно открывается по другому
-        Routing.RegisterRoute(nameof(CreativeQuestCreationQuestPage), typeof(CreativeQuestCreationQuestPage)); //возможно открывается по другому
+        Routing.RegisterRoute(nameof(CreationQRQuestPage), typeof(CreationQRQuestPage)); //возможно открывается по другому
+        Routing.RegisterRoute(nameof(CreationCreativeQuestPage), typeof(CreationCreativeQuestPage)); //возможно открывается по другому
         Routing.RegisterRoute(nameof(LoadingPage), typeof(LoadingPage));
-        Routing.RegisterRoute(nameof(MainCreationQuestPage), typeof(MainCreationQuestPage));
+        Routing.RegisterRoute(nameof(CreationQuestPage), typeof(CreationQuestPage));
         Routing.RegisterRoute(nameof(CouponInfoPage), typeof(CouponInfoPage));
 
     }

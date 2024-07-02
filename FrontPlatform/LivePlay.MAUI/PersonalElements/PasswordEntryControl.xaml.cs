@@ -1,6 +1,3 @@
-using CommunityToolkit.Maui.Core.Platform;
-using LivePlay.Front.MAUI.Models.ViewModels;
-using System.Formats.Tar;
 
 namespace LivePlay.Front.MAUI.PersonalElements;
 

@@ -1,7 +1,7 @@
-﻿using LivePlay.Server.Core.Models;
-using System.Security.Claims;
+﻿
+using LivePlay.Server.Core.Models;
 
-namespace LivePlay.Server.Core.Interfaces.Quests;
+namespace LivePlay.Server.Core.Interfaces.QuestInterfaces;
 
 public interface IQuestionQuestRepository
 {
