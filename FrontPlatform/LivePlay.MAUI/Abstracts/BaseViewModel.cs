@@ -1,16 +1,15 @@
 ﻿
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using LivePlay.Front.Application.Contracts.Responses;
-using LivePlay.Front.Application.Models.ResponseModel;
 using LivePlay.Front.Core.Enums;
+using LivePlay.Front.Core.Models;
 using LivePlay.Front.Infrastructure;
 using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.MAUI.Pages.SettingsPages.Views;
 
 namespace LivePlay.Front.MAUI.Abstracts;
 
-public partial class BaseViewModel(AppDesign designSettings) : ObservableObject
+public abstract partial class BaseViewModel(AppDesign designSettings) : ObservableObject
 {
     public AppDesign DesignSettings = designSettings;
 
@@ -44,15 +43,12 @@ public partial class BaseViewModel(AppDesign designSettings) : ObservableObject
         StopLoadingTokenSourse.Cancel();
     }
 
-    protected static async Task<(bool, T?)> ResponseProcessing<T>(BaseResponse<T> response)
+    protected static async void ShowError(DisplayError displayError)
     {
-        if (response.IsSuccess && response.Data is T goodResponse)
-            return (true, goodResponse);
-        else if (response.Error is ErrorResponse error)
-            await Shell.Current.DisplayAlert(error.ErrorCode, error.Message, "ok");
+        if (displayError.Title != string.Empty  && displayError.Message != string.Empty)
+            await Shell.Current.DisplayAlert(displayError.Title, displayError.Message, "ok");
         else
-            await Shell.Current.DisplayAlert("Ошибка сервера", "Что-то пошло не так", "ok");       // INFO: возможно вынести как отдельную констнту или в appsettings
-        return (true, default);
+            await Shell.Current.DisplayAlert("Ошибка сервера", "Что-то пошло не так", "ok");
     }
 
     private void GoToLoadingPage()
@@ -62,6 +58,6 @@ public partial class BaseViewModel(AppDesign designSettings) : ObservableObject
             { "StopingAnimationSource", StopLoadingTokenSourse },
         };
 
-        Shell.Current.GoToAsync($"/{nameof(LoadingPage)}", navigationParameter);   // INFO: Возможно стоит перенести в MAUI
+        Shell.Current.GoToAsync($"/{nameof(LoadingPage)}", navigationParameter);
     }
 }

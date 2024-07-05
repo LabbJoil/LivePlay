@@ -48,47 +48,30 @@ public class HttpProvider(IOptions<HttpProviderOptions> httpProviderOptions) : I
         return message;
     }
 
-    private static async Task<BaseResponse<T>> CreateRequest<T>(Func<Task<HttpResponseMessage>> requestFunc)
+    private static async Task<BaseResponse> CreateRequest(Func<Task<HttpResponseMessage>> requestFunc)
     {
         try
         {
             HttpResponseMessage? response = await requestFunc();
             string responseBody = await response.Content.ReadAsStringAsync();
 
-            switch (response.StatusCode)
+            return response.StatusCode switch
             {
-                case HttpStatusCode.OK:
-                    T okBody = JsonSerializer.Deserialize<T>(responseBody)
-                        ?? throw new Exception("Не удалось преобразовать полученный от сервера ответ");
-                    return new ()
-                    {
-                        IsSuccess = true,
-                        Data = okBody
-                    };
-
-                case HttpStatusCode.NoContent:
-                    return new();
-
-                default:
-                    ErrorResponse errorBody = JsonSerializer.Deserialize<ErrorResponse>(responseBody)
-                        ?? throw new Exception("Не удалось преобразовать полученный от сервера ответ");
-                    return new()
-                    {
-                        IsSuccess = false,
-                        Error = errorBody
-                    };
-            }
+                HttpStatusCode.OK => new(responseBody),
+                HttpStatusCode.NoContent => new(),
+                _ => new()
+                {
+                    IsSuccess = false,
+                    ResponseData = responseBody
+                },
+            };
         }
         catch (Exception ex)
         {
             return new()
             {
                 IsSuccess = false,
-                Error = new ErrorResponse
-                {
-                    ErrorCode = "Not parse body",
-                    Message = ex.Message
-                }
+                Error = ex.Message
             };
         }
     }
@@ -105,33 +88,33 @@ public class HttpProvider(IOptions<HttpProviderOptions> httpProviderOptions) : I
         return uriBuilder;
     }
 
-    public async Task<BaseResponse<T>> Get<T>(string route, params (string, string)[] requestParams)
+    public async Task<BaseResponse> Get(string route, params (string, string)[] requestParams)
     {
         var uriBuilder = CreateUri(route, requestParams);
         async Task<HttpResponseMessage> requestFunc() => await HttpClient.GetAsync(uriBuilder.Uri);
-        return await CreateRequest<T>(requestFunc);
+        return await CreateRequest(requestFunc);
     }
 
-    public async Task<BaseResponse<T>> Post<T, R>(string route, R jsonRequest, params (string, string)[] requestParams)
+    public async Task<BaseResponse> Delete(string route, params (string, string)[] requestParams)
+    {
+        var uriBuilder = CreateUri(route, requestParams);
+        async Task<HttpResponseMessage> requestFunc() => await HttpClient.GetAsync(uriBuilder.Uri);
+        return await CreateRequest(requestFunc);
+    }
+
+    public async Task<BaseResponse> Post<R>(string route, R jsonRequest, params (string, string)[] requestParams)
     {
         var uriBuilder = CreateUri(route, requestParams);
         string jsonRequestString = JsonSerializer.Serialize(jsonRequest);
         async Task<HttpResponseMessage> requestFunc() => await HttpClient.PostAsync(uriBuilder.Uri, new StringContent(jsonRequestString, Encoding.UTF8, "application/json"));
-        return await CreateRequest<T>(requestFunc);
+        return await CreateRequest(requestFunc);
     }
 
-    public async Task<BaseResponse<T>> Put<T, R>(string route, R jsonRequest, params (string, string)[] requestParams)
+    public async Task<BaseResponse> Put<R>(string route, R jsonRequest, params (string, string)[] requestParams)
     {
         var uriBuilder = CreateUri(route, requestParams);
         string jsonRequestString = JsonSerializer.Serialize(jsonRequest);
         async Task<HttpResponseMessage> requestFunc() => await HttpClient.PutAsync(uriBuilder.Uri, new StringContent(jsonRequestString, Encoding.UTF8, "application/json"));
-        return await CreateRequest<T>(requestFunc);
-    }
-
-    public async Task<BaseResponse<T>> Delete<T>(string route, params (string, string)[] requestParams)
-    {
-        var uriBuilder = CreateUri(route, requestParams);
-        async Task<HttpResponseMessage> requestFunc() => await HttpClient.GetAsync(uriBuilder.Uri);
-        return await CreateRequest<T>(requestFunc);
+        return await CreateRequest(requestFunc);
     }
 }

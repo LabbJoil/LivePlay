@@ -1,25 +1,31 @@
 ﻿
 using LivePlay.Front.Application.Contracts.Responses;
 using LivePlay.Front.Application.Interfaces;
+using LivePlay.Front.Core.Models;
 
 namespace LivePlay.Front.Application.HttpServices;
 
-public class UserHttpService(IHttpProvider httpProvider) : IHttpServise
+public class UserHttpService(IServiceScopeFactory serviceScopeFactory) : BaseHttpServise(serviceScopeFactory, "user")
 {
-    private IHttpProvider HttpProvider { get; set; } = httpProvider;
-    public string BaseRoute { get; } = "user";
-
-    public async Task<BaseResponse<uint>> VerifyEmail(string email)
+    public async Task<(uint, DisplayError?)> VerifyEmail(string email)
     {
         const string route = "/verifyemail";
-        var response = await HttpProvider.Get<uint>(BaseRoute+route, (nameof(email), email));
-        return response;
+        var response = await _httpProvider.Get(_baseRoute+route, (nameof(email), email));
+        return ParseResponse<uint>(response);
     }
 
-    public async Task<BaseResponse<object>> VerifyCodeEmail(uint numberRegistratrtion, string code)
+    public async Task<DisplayError?> VerifyCodeEmail(uint numberRegistratrtion, string code)
     {
         const string route = "/verifycodeemail";
-        var response = await HttpProvider.Get<object>(BaseRoute + route,(nameof(numberRegistratrtion), numberRegistratrtion.ToString()), (nameof(code), code));
-        return response;
+        (string, string)[] sendParams = [
+            (nameof(numberRegistratrtion), numberRegistratrtion.ToString()),
+            (nameof(code), code)
+            ];
+
+        var response = await _httpProvider.Get(_baseRoute + route, sendParams);
+        if (response.IsSuccess)
+            return null;
+        else
+            return ParseError(response.ResponseData, response.Error);
     }
 }

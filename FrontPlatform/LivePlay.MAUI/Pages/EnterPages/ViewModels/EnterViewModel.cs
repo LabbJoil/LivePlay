@@ -55,12 +55,14 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
     public async Task VerifyEmail(EnterPage enterPage)
     {
         StartLoading();
-        var response = await UserService.VerifyEmail(EnterUser.Email);
+        var (NumberRegistratrtion, error) = await UserService.VerifyEmail(EnterUser.Email);
         StopLoading();
 
-        (var ok, NumberRegistratrtion) = await ResponseProcessing(response);
-        if (!ok)
+        if(error != null)
+        {
+            ShowError(error);
             return;
+        }
 
         var timerActions = await enterPage.VerifyEmailFrontProcess();
         SendCodeTimer = new(DirectionAction.Down, timerActions.Item1, timerActions.Item2);
