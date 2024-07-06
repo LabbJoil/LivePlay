@@ -8,7 +8,7 @@ namespace LivePlay.Front.MAUI.Pages.UserPages.AccountPages.ViewModels;
 
 public partial class ProfileViewModel : BaseViewModel
 {
-    public ObservableCollection<CouponItem> CouponItems { get; set; }
+    public ObservableCollection<Coupon> CouponItems { get; set; }
 
     public IReadOnlyList<ChoicePanelItem> ProfileItems { get; set; } = [
         new ChoicePanelItem { Icon = "profile_light.svg", Text="Информация" },

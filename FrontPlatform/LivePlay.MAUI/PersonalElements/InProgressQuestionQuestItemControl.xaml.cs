@@ -1,4 +1,4 @@
-using LivePlay.Front.Core.Models;
+using LivePlay.Front.Core.Models.QuestModels;
 
 namespace LivePlay.Front.MAUI.PersonalElements;
 

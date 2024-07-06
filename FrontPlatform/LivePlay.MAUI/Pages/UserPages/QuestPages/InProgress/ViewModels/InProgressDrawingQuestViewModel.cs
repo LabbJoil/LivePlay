@@ -7,8 +7,22 @@ using System.Text.Json;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.ViewModels;
 
-public partial class InProgressDrawingQuestViewModel(AppDesign designSettings) : BaseQuestViewModel(designSettings)
+public partial class InProgressDrawingQuestViewModel(AppDesign designSettings, Drawing) : BaseQuestViewModel(designSettings)
 {
+
+    public async void LoadDrawingQuest()
+    {
+        StartLoading();
+        var (NumberRegistratrtion, error) = await UserService.VerifyEmail(EnterUser.Email);
+        StopLoading();
+
+        if (error != null)
+        {
+            ShowError(error);
+            return;
+        }
+    }
+
     [RelayCommand]
     public async Task ChooseFiles()
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace LivePlay.Front.Core.Models;
+namespace LivePlay.Front.Core.Models.FeedbackModels;
 
 public class FeedbackBodyInfo
 {

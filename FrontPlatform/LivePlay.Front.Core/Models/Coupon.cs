@@ -1,8 +1,9 @@
 ﻿
 namespace LivePlay.Front.Core.Models;
 
-public class CouponItem
+public class Coupon
 {
+    public int Id { get; set; }
     public string Title { get; set; } = string.Empty;
     public string DescriptionMini { get; set; } = string.Empty;
     public string DescriptionFull { get; set; } = string.Empty;

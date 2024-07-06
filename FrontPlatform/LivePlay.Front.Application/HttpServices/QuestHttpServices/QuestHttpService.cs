@@ -1,10 +1,7 @@
 ﻿
-using LivePlay.Front.Application.Contracts.Responses;
-using LivePlay.Front.Application.Interfaces;
 using LivePlay.Front.Core.Models;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace LivePlay.Front.Application.HttpServices;
+namespace LivePlay.Front.Application.HttpServices.QuestHttpServices;
 
 public class QuestHttpService(IServiceScopeFactory serviceScopeFactory) : BaseHttpServise(serviceScopeFactory, "user")
 {

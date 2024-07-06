@@ -4,8 +4,8 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
-using LivePlay.Front.Core.Models;
 using LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.Views;
+using LivePlay.Front.Core.Models.FeedbackModels;
 
 namespace LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.ViewModels;
 

@@ -1,5 +1,5 @@
 ﻿
-namespace LivePlay.Front.Core.Models;
+namespace LivePlay.Front.MAUI.Models;
 
 public class ChoicePanelItem
 {

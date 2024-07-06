@@ -1,12 +1,12 @@
 
 using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.Core.Enums;
-using LivePlay.Front.Core.Models;
 using LivePlay.Front.MAUI.Pages.AdminPages;
 using LivePlay.Front.MAUI.PersonalElements;
 using Microsoft.Maui.Controls;
 using System.Text.Json;
 using LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.ViewModels;
+using LivePlay.Front.Core.Models.QuestModels;
 
 namespace LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.Views;
 

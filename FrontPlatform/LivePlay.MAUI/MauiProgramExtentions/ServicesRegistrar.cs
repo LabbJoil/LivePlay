@@ -1,8 +1,9 @@
 ﻿
 using LivePlay.Front.Application.HttpServices;
+using LivePlay.Front.Application.HttpServices.QuestHttpServices;
 using LivePlay.Front.Application.Interfaces;
-using LivePlay.Front.Application.Mapping;
-using LivePlay.Front.Core.Models;
+using LivePlay.Front.Application.Mappings;
+using LivePlay.Front.Core.Models.QuestModels;
 using LivePlay.Front.Infrastructure;
 using LivePlay.Front.Infrastructure.Interfaces;
 using LivePlay.Front.MAUI.Abstracts;

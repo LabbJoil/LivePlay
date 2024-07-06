@@ -1,10 +1,11 @@
 ﻿
 using LivePlay.Front.Core.Enums;
 
-namespace LivePlay.Front.Core.Models;
+namespace LivePlay.Front.Core.Models.QuestModels;
 
 public class Quest()
 {
+    public int Id { get; set; }
     public string Title { get; set; } = string.Empty;
     public string DescriptionMini { get; set; } = string.Empty;
     public string DescriptionFull { get; set; } = string.Empty;

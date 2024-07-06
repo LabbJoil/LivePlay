@@ -1,8 +1,9 @@
 ﻿
-namespace LivePlay.Front.Core.Models;
+namespace LivePlay.Front.Core.Models.QuestModels;
 
 public class QuestionQuest
 {
+    public int Id { get; set; }
     public string Question { get; set; } = string.Empty;
     public string Answer1 { get; set; } = string.Empty;
     public string Answer2 { get; set; } = string.Empty;

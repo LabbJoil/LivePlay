@@ -1,6 +1,4 @@
 ﻿
-using LivePlay.Front.Application.Contracts.Responses;
-using LivePlay.Front.Application.Interfaces;
 using LivePlay.Front.Core.Models;
 
 namespace LivePlay.Front.Application.HttpServices;
@@ -23,6 +21,17 @@ public class UserHttpService(IServiceScopeFactory serviceScopeFactory) : BaseHtt
             ];
 
         var response = await _httpProvider.Get(_baseRoute + route, sendParams);
+        if (response.IsSuccess)
+            return null;
+        else
+            return ParseError(response.ResponseData, response.Error);
+    }
+
+    public async Task<DisplayError?> SendCodeAgain(uint numberRegistratrtion)
+    {
+        const string route = "/sendcodeagain";
+
+        var response = await _httpProvider.Get(_baseRoute + route, (nameof(numberRegistratrtion), numberRegistratrtion.ToString()));
         if (response.IsSuccess)
             return null;
         else

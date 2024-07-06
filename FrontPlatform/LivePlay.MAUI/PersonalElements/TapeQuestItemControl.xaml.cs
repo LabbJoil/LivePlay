@@ -1,5 +1,4 @@
-
-using LivePlay.Front.Core.Models;
+using LivePlay.Front.Core.Models.QuestModels;
 using System.Windows.Input;
 
 namespace LivePlay.Front.MAUI.PersonalElements;

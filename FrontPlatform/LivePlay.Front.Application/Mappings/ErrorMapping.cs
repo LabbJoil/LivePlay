@@ -3,7 +3,7 @@ using AutoMapper;
 using LivePlay.Front.Application.Models.ResponseModel;
 using LivePlay.Front.Core.Models;
 
-namespace LivePlay.Front.Application.Mapping;
+namespace LivePlay.Front.Application.Mappings;
 
 public class ErrorMapping : Profile
 {

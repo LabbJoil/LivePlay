@@ -46,6 +46,11 @@ public partial class EnterPage : ContentPage
     public async Task<(Action<object?>, Action)> VerifyEmailFrontProcess()
     {
         await ChangeStackLayout(CodeStackLayout, DirectionAction.Left);
+        return GetPrintEndTimerActions();
+    }
+
+    public (Action<object?>, Action) GetPrintEndTimerActions()
+    {
         return (PrintTimer, EndTimer);
 
         void PrintTimer(object? obj)
@@ -66,10 +71,10 @@ public partial class EnterPage : ContentPage
         }
     }
 
-    public async void CheckCodeEmailFrontProcess()
+    public async void FillUserInfoFrontProcess()
         => await ChangeStackLayout(UserInfoStackLayout, DirectionAction.Left);
 
-    public async Task ChangeStackLayout(StackLayout stackLayoutIn, DirectionAction swipeSlIn)
+    private async Task ChangeStackLayout(StackLayout stackLayoutIn, DirectionAction swipeSlIn)
     {
         double slInXStartposition = swipeSlIn == DirectionAction.Left ? 350 : -350;     // константы
         stackLayoutIn.TranslationX = slInXStartposition;

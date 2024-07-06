@@ -11,12 +11,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LivePlay.Server.WebApi.Controllers.QuestControllers;
 
+[Route("[controller]/")]
+[ApiController]
 public class QRQuestController(QRQuestService questService, IMapper mapper) : Controller
 {
     private readonly QRQuestService _qrQuestService = questService;
     private readonly IMapper _mapper = mapper;
 
-    [HttpPost("/addqrquest")]
+    [HttpPost("/add")]
     [Authorize(Policy = nameof(Politic.EditQuest))]
     public IActionResult AddQRQuest([FromBody] AddingQRQuestRequest qrQuestRequest)
     {
@@ -26,7 +28,7 @@ public class QRQuestController(QRQuestService questService, IMapper mapper) : Co
         return NoContent();
     }
 
-    [HttpPost("/editqrquest")]
+    [HttpPost("/edit")]
     [Authorize(Policy = nameof(Politic.EditQuest))]
     public IActionResult EditQRQuest([FromBody] EditingQRQuestRequest qrQuestRequest)
     {
@@ -36,7 +38,7 @@ public class QRQuestController(QRQuestService questService, IMapper mapper) : Co
         return NoContent();
     }
 
-    [HttpPost("/completeqrquest")]
+    [HttpPost("/complete")]
     [Authorize(Policy = nameof(Politic.EditQuest))]
     public IActionResult CompleteQRQuest([FromBody] CompletingQRQuestRequest questionQuestRequest)
     {
