@@ -15,7 +15,7 @@ public class DrawingQuestHttpService(IServiceScopeFactory serviceScopeFactory, I
     {
         const string route = "/complete";
         var completingQuest = _mapper.Map<CompletingDrawingQuestRequest>(drawingQuest);
-        var response = await _httpProvider.Post(_baseRoute + route, completingQuest, (nameof(questId), questId.ToString()));
+        var response = await _httpProvider.Post(BaseRoute + route, completingQuest, (nameof(questId), questId.ToString()));
         return ParseError(response.ResponseData, response.Error);
     }
 

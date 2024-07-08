@@ -3,6 +3,7 @@ using System;
 using LivePlay.Server.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LivePlay.Server.Persistence.Migrations
 {
     [DbContext(typeof(LivePlayDbContext))]
-    partial class LivePlayDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240708231419_LivePlayDb_1")]
+    partial class LivePlayDb_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

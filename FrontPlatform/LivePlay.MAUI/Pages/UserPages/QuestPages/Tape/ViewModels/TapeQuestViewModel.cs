@@ -2,10 +2,10 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LivePlay.Front.Core.Enums;
-using LivePlay.Front.Core.Models;
 using LivePlay.Front.Core.Models.QuestModels;
 using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
+using LivePlay.Front.MAUI.Models;
 using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.Views;
 using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.NotStarted.Views;
 using System.Text.Json;

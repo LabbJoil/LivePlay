@@ -44,7 +44,6 @@ public class UserService(IUserRepository repository, IJwtProvider jwtProvider, I
             _registrarUserBackground.PopRegistrationEmail(numberRegistration);
             throw exception;
         }
-        //?? throw new ServerException(ErrorCode.RegistrationError, $"There is no access to the back service throw facade {nameof(RegistrarUserFacade)}");
         return numberRegistration;
     }
 
@@ -62,7 +61,6 @@ public class UserService(IUserRepository repository, IJwtProvider jwtProvider, I
         if (_registrarUserBackground.GetVerificationEmailByNumberRegistration(numberRegistration) is VerificationEmail verificationEmail)
         {
             user.Email = verificationEmail.Email;
-            //?? throw new ServerException(ErrorCode.RegistrationError, $"There is no access to the back service throw facade {nameof(RegistrarUserFacade)}");
             var userId = await _userRepository.Add(user);
             return GenerateToken(userId);
         }

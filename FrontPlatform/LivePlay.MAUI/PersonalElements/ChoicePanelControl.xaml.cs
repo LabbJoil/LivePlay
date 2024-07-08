@@ -1,5 +1,5 @@
 
-using LivePlay.Front.Core.Models;
+using LivePlay.Front.MAUI.Models;
 
 namespace LivePlay.Front.MAUI.PersonalElements;
 
