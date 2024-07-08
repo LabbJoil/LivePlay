@@ -1,7 +1,7 @@
 ﻿
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using LivePlay.Front.Application.HttpServices;
+using LivePlay.Front.Infrastructure.HttpServices;
 using LivePlay.Front.Core.Enums;
 using LivePlay.Front.Core.Models;
 using LivePlay.Front.Infrastructure;

@@ -19,7 +19,7 @@ public class CreativeQuestController(CreativeQuestService questService, IMapper 
     private readonly CreativeQuestService _creativeQuestService = questService;
     private readonly IMapper _mapper = mapper;
 
-    [HttpPost("/get/{id}")]
+    [HttpPost("get/{id}")]
     public async Task<IActionResult> GetCreativeQuest(int id)
     {
         var creativeQuest = await _creativeQuestService.GetQRQuestById(id);
@@ -27,7 +27,7 @@ public class CreativeQuestController(CreativeQuestService questService, IMapper 
         return Ok(response);
     }
 
-    [HttpPost("/add")]
+    [HttpPost("add")]
     [Authorize(Policy = nameof(Politic.EditQuest))]
     public IActionResult AddCreativeQuest([FromBody] AddingCreativeQuestRequest creativeQuestRequest)
     {
@@ -36,7 +36,7 @@ public class CreativeQuestController(CreativeQuestService questService, IMapper 
         return NoContent();
     }
 
-    [HttpPost("/edit")]
+    [HttpPost("edit")]
     [Authorize(Policy = nameof(Politic.EditQuest))]
     public IActionResult EditCreativeQuest([FromBody] EditingCreativeQuestRequest creativeQuestRequest)
     {
@@ -45,7 +45,7 @@ public class CreativeQuestController(CreativeQuestService questService, IMapper 
         return NoContent();
     }
 
-    [HttpPost("/complete")]
+    [HttpPost("complete")]
     [Authorize(Policy = nameof(Politic.EditQuest))]
     public IActionResult CompleteCreativeQuest([FromBody] CompletingCreativeQuestRequest questionQuestRequest)
     {

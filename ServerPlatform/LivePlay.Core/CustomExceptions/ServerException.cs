@@ -11,9 +11,7 @@ public class ServerException : BaseException
 
     private const string DefaultMessage = "Server error, please try late";
 
-    public ServerException(ErrorCode error, string details) : base(error, DefaultMessage, details)
-    {
-    }
+    public ServerException(ErrorCode error, string details) : base(error, DefaultMessage, details) { }
 
     public ServerException(ErrorCode error, string message, HttpStatusCode statusCode, string details) : base(error, message, details)
     {

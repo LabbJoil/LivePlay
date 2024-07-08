@@ -18,7 +18,7 @@ public class QRQuestController(QRQuestService questService, IMapper mapper) : Co
     private readonly QRQuestService _qrQuestService = questService;
     private readonly IMapper _mapper = mapper;
 
-    [HttpPost("/add")]
+    [HttpPost("add")]
     [Authorize(Policy = nameof(Politic.EditQuest))]
     public IActionResult AddQRQuest([FromBody] AddingQRQuestRequest qrQuestRequest)
     {
@@ -28,7 +28,7 @@ public class QRQuestController(QRQuestService questService, IMapper mapper) : Co
         return NoContent();
     }
 
-    [HttpPost("/edit")]
+    [HttpPost("edit")]
     [Authorize(Policy = nameof(Politic.EditQuest))]
     public IActionResult EditQRQuest([FromBody] EditingQRQuestRequest qrQuestRequest)
     {
@@ -38,7 +38,7 @@ public class QRQuestController(QRQuestService questService, IMapper mapper) : Co
         return NoContent();
     }
 
-    [HttpPost("/complete")]
+    [HttpPost("complete")]
     [Authorize(Policy = nameof(Politic.EditQuest))]
     public IActionResult CompleteQRQuest([FromBody] CompletingQRQuestRequest questionQuestRequest)
     {

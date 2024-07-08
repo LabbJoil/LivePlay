@@ -6,7 +6,6 @@ public enum ErrorCode
     ServerError,
     RequestError,
     RegistrationError,
-    VerifyEmailError,
 
     DbCheckError,
     DbPostError,
@@ -20,5 +19,6 @@ public enum ErrorCode
     InternalError,
     PermitionError,
     UserPoints,
-    FalseAnswer
+    FalseAnswer,
+    Auth
 }

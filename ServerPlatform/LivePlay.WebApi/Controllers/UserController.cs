@@ -17,29 +17,29 @@ public class UserController(UserService userService, IMapper mapper) : Controlle
     private readonly UserService _userService = userService;
     private readonly IMapper _mapper = mapper;
 
-    [HttpPost("/login")]
+    [HttpPost("login")]
     public async Task<IActionResult> LoginUser([FromBody] LoginUserRequest loginUser)
     {
         var token = await _userService.LogInUser(loginUser.Email, loginUser.Password);
-        HttpContext.Response.Cookies.Append("tok-cookies", token);
-        return NoContent();
+        //HttpContext.Response.Cookies.Append("tok-cookies", token);
+        return Ok(token);
     }
 
-    [HttpGet("/verifyemail/{email}")]
+    [HttpGet("verifyEmail/{email}")]
     public async Task<IActionResult> VerifyEmail(string email)
     {
         var numberRegistration = await _userService.VerifyEmail(email);
         return Ok(numberRegistration);
     }
 
-    [HttpGet("/verifyemailcode/{numberRegistration}/{code}")]
-    public IActionResult VerifyEmailCode(uint numberRegistration, string code)
+    [HttpGet("checkEmailCode/{numberRegistration}/{code}")]
+    public IActionResult CheckEmailCode(uint numberRegistration, string code)
     {
         _userService.VerifyCodeEmail(numberRegistration, code);
         return NoContent();
     }
 
-    [HttpPost("/registrationuser/{numberRegistration}")]
+    [HttpPost("registration/{numberRegistration}")]
     public async Task<IActionResult> RegistrationUser(uint numberRegistration, [FromBody] RegistrationUserRequest newUser)
     {
         User user = _mapper.Map<User>(newUser);
@@ -48,7 +48,15 @@ public class UserController(UserService userService, IMapper mapper) : Controlle
         return NoContent();
     }
 
-    [HttpPut("/editinfo")]
+    [HttpGet("sendCodeAgain/{numberRegistration}")]
+    public async Task<IActionResult> SendCodeAgain(uint numberRegistration)
+    {
+        string token = _userService.SendCodeAgain(numberRegistration);
+        HttpContext.Response.Cookies.Append("tok-cookies", token);
+        return NoContent();
+    }
+
+    [HttpPut("editInfo")]
     [Authorize(Policy = nameof(Politic.PersonalInfo))]
     public async Task<IActionResult> EditInfo([FromBody] UpdateUserRequest updateUser)
     {
@@ -57,7 +65,7 @@ public class UserController(UserService userService, IMapper mapper) : Controlle
         return NoContent();
     }
 
-    [HttpDelete("/deleteuser")]
+    [HttpDelete("delete")]
     [Authorize(Policy=nameof(Politic.PersonalInfo))]
     public async Task<IActionResult> DeleteUser()
     {
@@ -65,7 +73,7 @@ public class UserController(UserService userService, IMapper mapper) : Controlle
         return NoContent();
     }
 
-    [HttpGet("/getpersonalqr")]
+    [HttpGet("getPersonalQR")]
     [Authorize(Policy = nameof(Politic.PersonalInfo))]
     public IActionResult GetPersonalQR()
     {
@@ -73,7 +81,7 @@ public class UserController(UserService userService, IMapper mapper) : Controlle
         return Ok(qr);
     }
 
-    [HttpGet("/getuser")]
+    [HttpGet("getUser")]
     [Authorize(Policy = nameof(Politic.PersonalInfo))]
     public async Task<IActionResult> GetUser()
     {

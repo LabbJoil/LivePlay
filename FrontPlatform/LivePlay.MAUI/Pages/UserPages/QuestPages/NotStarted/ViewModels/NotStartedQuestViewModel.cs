@@ -1,6 +1,6 @@
 ﻿
 using CommunityToolkit.Mvvm.Input;
-using LivePlay.Front.Application.HttpServices.QuestHttpServices;
+using LivePlay.Front.Infrastructure.HttpServices.QuestHttpServices;
 using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
 

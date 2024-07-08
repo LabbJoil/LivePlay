@@ -1,6 +1,6 @@
 ﻿
 using CommunityToolkit.Maui;
-using LivePlay.Front.Application.Interfaces;
+using LivePlay.Front.Infrastructure.Interfaces;
 using LivePlay.Front.MAUI.MauiProgramExtentions;
 using Microsoft.Extensions.Logging;
 using The49.Maui.BottomSheet;
