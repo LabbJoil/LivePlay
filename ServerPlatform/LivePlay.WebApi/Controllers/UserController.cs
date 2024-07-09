@@ -20,8 +20,12 @@ public class UserController(UserService userService, IMapper mapper) : Controlle
     [HttpPost("login")]
     public async Task<IActionResult> LoginUser([FromBody] LoginUserRequest loginUser)
     {
-        var token = await _userService.LogInUser(loginUser.Email, loginUser.Password);
-        return Ok(token);
+        var (token, roles) = await _userService.LogInUser(loginUser.Email, loginUser.Password);
+        return Ok(new LoginResponse
+        {
+            Token = token,
+            Role = roles.Select(r => r.ToString()).ToArray()
+        });
     }
 
     [HttpGet("verifyEmail/{email}")]

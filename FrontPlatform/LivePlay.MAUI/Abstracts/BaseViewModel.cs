@@ -43,12 +43,19 @@ public abstract partial class BaseViewModel(AppDesign designSettings) : Observab
         StopLoadingTokenSourse.Cancel();
     }
 
-    protected static async void ShowError(DisplayError displayError)
+    protected static async void ShowError(DisplayError? displayError)
     {
-        if (displayError.Title != string.Empty  && displayError.Message != string.Empty)
+        if (displayError != null && displayError.Title != string.Empty  && displayError.Message != string.Empty)
             await Shell.Current.DisplayAlert(displayError.Title, displayError.Message, "ok");
         else
             await Shell.Current.DisplayAlert("Ошибка сервера", "Что-то пошло не так", "ok");
+    }
+
+    protected static void DeleteStackPages()
+    {
+        var stack = Shell.Current.Navigation.NavigationStack.ToArray();
+        for (int i = stack.Length - 1; i > 0; i--)
+            Shell.Current.Navigation.RemovePage(stack[i]);
     }
 
     private void GoToLoadingPage()

@@ -1,13 +1,38 @@
 ﻿
+using LivePlay.Front.Core.Enums;
 using LivePlay.Front.Core.Models;
 using LivePlay.Front.Infrastructure.Abstracts;
 using LivePlay.Front.Infrastructure.Contracts.Requests.UserRequests;
+using LivePlay.Front.Infrastructure.Contracts.Responses;
 
 namespace LivePlay.Front.Infrastructure.HttpServices;
 
 public class UserHttpService(IServiceScopeFactory serviceScopeFactory) : BaseHttpServise(serviceScopeFactory)
 {
     protected override string BaseRoute => "user";
+
+    public async Task<(Role[], DisplayError?)> Login(string email, string password)
+    {
+        const string route = "/login";
+        (string, string)[] sendParams = [
+            (nameof(email), email),
+            (nameof(password), password)
+            ];
+        var response = await _httpProvider.Get(BaseRoute + route, sendParams);
+
+        if (response.IsSuccess)
+        {
+            var (loginResponse, error) = ParseResponse<LoginResponse>(response);
+            if (loginResponse != null)
+            {
+                _httpProvider.SetToken(loginResponse.Token);
+                return (loginResponse.Role.Select(Enum.Parse<Role>).ToArray(), null);
+            }
+            return ([], error);
+        }
+        else
+            return ([], ParseError(response.ResponseData, response.Error));
+    }
 
     public async Task<(uint, DisplayError?)> VerifyEmail(string email)
     {

@@ -36,26 +36,25 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
             else
                 return;
         }
+        var (roles, error) = await UserService.Login(EnterUser.Email, EnterUser.Password);
 
-        //if (_enterUser.Email == "tre@gmail.com")
-        //    await Shell.Current.GoToAsync($"//{nameof(TapeFeedbackPage)}");
-        //else if (_enterUser.Email == "lio@gmail.com")
-        //    await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
-        //else if(_enterUser.Email == "111")
-        //{
-        //    Preferences.Clear();
-        //    Preferences.Remove($"{nameof(Quest)}");
-        //    Preferences.Remove($"{nameof(QuestionQuest)}");
-        //}
-        //else
-        //    await Shell.Current.DisplayAlert("Нет доступа", $"Неправильный логин или пароль", "ok");
+        if (roles != null && roles.Length != 0)
+        {
+            DeleteStackPages();
+            if (roles.Length == 1 && roles[0] == Role.User)
+                await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+            else
+                await Shell.Current.GoToAsync($"//{nameof(TapeFeedbackPage)}");
+            return;
+        }
+        ShowError(error);
     }
 
     [RelayCommand]
     public async Task VerifyEmail(EnterPage enterPage)
     {
         StartLoading();
-        var (NumberRegistratrtion, error) = await UserService.VerifyEmail(EnterUser.Email);
+        (NumberRegistratrtion, var error) = await UserService.VerifyEmail(EnterUser.Email);
         StopLoading();
 
         if(error != null)
@@ -85,12 +84,12 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
             }
 
             SendCodeTimer?.Stop();
-            enterPage.FillUserInfoFrontProcess();
+            await enterPage.FillUserInfoFrontProcess();
         }
     }
 
     [RelayCommand]
-    public async Task SendCode(EnterPage enterPage)
+    public async Task SendCodeAgain(EnterPage enterPage)
     {
         StartLoading();
         var error = await UserService.SendCodeAgain(NumberRegistratrtion);
@@ -105,5 +104,21 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
         var (printTimer, endTimer) = enterPage.GetPrintEndTimerActions();
         SendCodeTimer = new(DirectionAction.Down, printTimer, endTimer);
         SendCodeTimer.Start(5000, 0);
+    }
+
+    [RelayCommand]
+    public async Task SendRegistrationInfo(EnterPage enterPage)
+    {
+        StartLoading();
+        var error = await UserService.Registration(NumberRegistratrtion, EnterUser);
+        StopLoading();
+
+        if (error != null)
+        {
+            ShowError(error);
+            return;
+        }
+
+        await enterPage.LoginFrontProcess();
     }
 }

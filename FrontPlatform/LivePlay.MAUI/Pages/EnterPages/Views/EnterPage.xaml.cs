@@ -7,7 +7,7 @@ namespace LivePlay.Front.MAUI.Pages.EnterPages.Views;
 public partial class EnterPage : ContentPage
 {
     private StackLayout NowStackLayout;
-    private readonly EnterViewModel EnterPVM;
+    private readonly EnterViewModel EnterVM;
 
     private int CountSymbolsEmailCode = 0;
     private Label[] EmailCodeLabelDigits { get; }
@@ -16,14 +16,14 @@ public partial class EnterPage : ContentPage
     {
         InitializeComponent();
         BindingContext = enterPage;
-        EnterPVM = enterPage;
+        EnterVM = enterPage;
         EmailCodeLabelDigits = [OneEmailCodeDigit, TwoEmailCodeDigit, ThreeEmailCodeDigit, FourEmailCodeDigit];
         NowStackLayout = LoginStackLayout;
     }
 
     private void ContentPage_Appearing(object sender, EventArgs e)
     {
-        EnterPVM.ChangeColorBars(BackgroundColor, StatusBarColor.BarReplay);
+        EnterVM.ChangeColorBars(BackgroundColor, StatusBarColor.BarReplay);
     }
 
     private void ContentPage_Disappearing(object sender, EventArgs e)
@@ -36,7 +36,7 @@ public partial class EnterPage : ContentPage
     // -- SwitchButtons --
 
     private async Task LogInButtonClicked(object sender, EventArgs e)
-        => await ChangeStackLayout(LoginStackLayout, DirectionAction.Right);
+        => await LoginFrontProcess();
 
     private async Task SignUpButtonClicked(object sender, EventArgs e)
         => await ChangeStackLayout(EmailStackLayout, DirectionAction.Left);
@@ -48,6 +48,12 @@ public partial class EnterPage : ContentPage
         await ChangeStackLayout(CodeStackLayout, DirectionAction.Left);
         return GetPrintEndTimerActions();
     }
+
+    public async Task FillUserInfoFrontProcess()
+        => await ChangeStackLayout(UserInfoStackLayout, DirectionAction.Left);
+
+    public async Task LoginFrontProcess()
+        => await ChangeStackLayout(LoginStackLayout, DirectionAction.Right);
 
     public (Action<object?>, Action) GetPrintEndTimerActions()
     {
@@ -70,9 +76,6 @@ public partial class EnterPage : ContentPage
             TimerLabel.Text = "00:00";
         }
     }
-
-    public async void FillUserInfoFrontProcess()
-        => await ChangeStackLayout(UserInfoStackLayout, DirectionAction.Left);
 
     private async Task ChangeStackLayout(StackLayout stackLayoutIn, DirectionAction swipeSlIn)
     {

@@ -20,12 +20,12 @@ public class UserService(IUserRepository repository, IJwtProvider jwtProvider, I
     private readonly IEmailProvider _emailProvider = emailProvider;
     private readonly IRegistrarUserBackground _backgroundFacade = backgroundFacade.RegistrarUserBackground;
 
-    public async Task<string> LogInUser(string email, string password)
+    public async Task<(string, Role[])> LogInUser(string email, string password)
     {
         var user = await _userRepository.GetByEmail(email);
         if (!_passwordHasher.Verify(password, user.Password ?? throw new ServerException(ErrorCode.LoginUser, $"Don`t found password user with id: {user.Id}.")))
             throw new RequestException(ErrorCode.LoginUser, $"Incorrect password or email.");
-        return GenerateToken(user.Id);
+        return (GenerateToken(user.Id), user.Roles);
     }
 
     public async Task<uint> VerifyEmail(string email)
