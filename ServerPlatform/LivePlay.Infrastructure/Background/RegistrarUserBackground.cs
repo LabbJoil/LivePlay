@@ -8,11 +8,16 @@ using Microsoft.Extensions.Hosting;
 
 namespace LivePlay.Server.Infrastructure.Background;
 
-public partial class RegistrarUserBackground(RegistrarUserFacade backgroundServiceFacade) : BackgroundService, IRegistrarUserBackground
+public partial class RegistrarUserBackground : BackgroundService, IRegistrarUserBackground
 {
-    //private readonly EmailProvider EmailProvider = emailProvider;
-    //private readonly RegistrarUserFacade BackFacade = backgroundServiceFacade;
     private readonly Dictionary<uint, VerificationEmail> _newRegistrationUsers = [];
+
+    public int I = 0;
+
+    public RegistrarUserBackground(BackgroundFacade backgroundFacade)
+    {
+        backgroundFacade.RegistrarUserBackground = this;
+    }
 
     protected async override Task ExecuteAsync(CancellationToken stoppingToken)
     {
@@ -30,10 +35,12 @@ public partial class RegistrarUserBackground(RegistrarUserFacade backgroundServi
             foreach (var rum in _newRegistrationUsers)
                 if (rum.Value.StartValidation.AddMinutes(maxTimeSaveEmailValidation) < DateTime.Now)
                     _newRegistrationUsers.Remove(rum.Key);
-            
+
+            I++;
+
             await Task.Delay(millisecondsDelay, stoppingToken);
         }
-    }    
+    }
 
     public RequestException? CheckEmailCode(uint numberRegistration, string checkCode)
     {
@@ -52,7 +59,6 @@ public partial class RegistrarUserBackground(RegistrarUserFacade backgroundServi
     {
         var numberRegistration = GetNewNumberRegistration();
         string code = GenerateNewCode();
-        //EmailProvider.SendCodeEmail(email, code);
 
         var registrationUser = new VerificationEmail
         {
@@ -94,10 +100,6 @@ public partial class RegistrarUserBackground(RegistrarUserFacade backgroundServi
     {
         _newRegistrationUsers.TryGetValue(numberRegistration, out VerificationEmail? registrationUser);
         return registrationUser;
-        //foreach (var rum in NewRegistrationUsers)
-        //    if (rum.Key == numberRegistration)
-        //        return rum.Value.Email;
-        //throw new RequestException(ErrorCode.RegistrationError, $"The registration email could not be received.", $"Registration number - {numberRegistration}");
     }
 
     private uint GetNewNumberRegistration()

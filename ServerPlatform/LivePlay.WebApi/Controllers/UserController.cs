@@ -21,7 +21,6 @@ public class UserController(UserService userService, IMapper mapper) : Controlle
     public async Task<IActionResult> LoginUser([FromBody] LoginUserRequest loginUser)
     {
         var token = await _userService.LogInUser(loginUser.Email, loginUser.Password);
-        //HttpContext.Response.Cookies.Append("tok-cookies", token);
         return Ok(token);
     }
 
@@ -44,15 +43,14 @@ public class UserController(UserService userService, IMapper mapper) : Controlle
     {
         User user = _mapper.Map<User>(newUser);
         string token = await _userService.RegisterUser(numberRegistration, user);
-        HttpContext.Response.Cookies.Append("tok-cookies", token);
+        //HttpContext.Response.Cookies.Append("tok-cookies", token);
         return NoContent();
     }
 
     [HttpGet("sendCodeAgain/{numberRegistration}")]
-    public async Task<IActionResult> SendCodeAgain(uint numberRegistration)
+    public IActionResult SendCodeAgain(uint numberRegistration)
     {
-        string token = _userService.SendCodeAgain(numberRegistration);
-        HttpContext.Response.Cookies.Append("tok-cookies", token);
+        _userService.SendCodeAgain(numberRegistration);
         return NoContent();
     }
 

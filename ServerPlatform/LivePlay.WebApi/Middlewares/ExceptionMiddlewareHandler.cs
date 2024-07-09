@@ -20,13 +20,13 @@ public class ExceptionMiddlewareHandler(RequestDelegate next, ILogger<ExceptionM
         }
         catch (ServerException ex)
         {
-            _logger.LogError(messageLoger, ex.Error, ex.Message, ex.Details);
+            _logger.LogWarning(messageLoger, ex.Error, ex.Message, ex.Details);
             await HandleExceptionAsync(httpContext, ErrorCode.ServerError, ex.Message, ex.StatusCode);
         }
         catch (RequestException ex)
         {
             string details = ex.Details + " || User: {UserId}";
-            _logger.LogError(messageLoger, ex.Error, ex.Message, details);
+            _logger.LogWarning(messageLoger, ex.Error, ex.Message, details);
             await HandleExceptionAsync(httpContext, ex.Error, ex.Message, ex.StatusCode);
         }
         catch (Exception ex)
@@ -43,7 +43,7 @@ public class ExceptionMiddlewareHandler(RequestDelegate next, ILogger<ExceptionM
         response.ContentType = "application/json"; response.StatusCode = (int)statusCode;
         ErrorResponse errorResponse = new()
         {
-            ErrorCode = error,
+            ErrorCode = error.ToString(),
             Message = message
         };
         var body = JsonSerializer.Serialize(errorResponse);

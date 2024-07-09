@@ -6,20 +6,19 @@ using LivePlay.Server.Core.Enums;
 using LivePlay.Server.Core.Interfaces;
 using LivePlay.Server.Core.Models;
 using LivePlay.Server.Infrastructure.Background;
-using System;
 using System.Security.Claims;
 
 namespace LivePlay.Server.Application.Services;
 
 public class UserService(IUserRepository repository, IJwtProvider jwtProvider, IPasswordHasher passwordHash, IQRProvider qRProvider, IEmailProvider emailProvider,
-    IRegistrarUserBackground registrarUserBackground)
+    BackgroundFacade backgroundFacade)
 {
     private readonly IUserRepository _userRepository = repository;
     private readonly IJwtProvider _jwtProvider = jwtProvider;
     private readonly IPasswordHasher _passwordHasher = passwordHash;
     private readonly IQRProvider _qrProvider = qRProvider;
     private readonly IEmailProvider _emailProvider = emailProvider;
-    private readonly IRegistrarUserBackground _registrarUserBackground = registrarUserBackground;
+    private readonly IRegistrarUserBackground _backgroundFacade = backgroundFacade.RegistrarUserBackground;
 
     public async Task<string> LogInUser(string email, string password)
     {
@@ -34,14 +33,14 @@ public class UserService(IUserRepository repository, IJwtProvider jwtProvider, I
         if (await _userRepository.CheckUserByEmail(email))
             throw new RequestException(ErrorCode.RegistrationError, $"User with email {email} already exsists.");
 
-        if (_registrarUserBackground.IsEmailInRegistration(email))
+        if (_backgroundFacade.IsEmailInRegistration(email))
             throw new RequestException(ErrorCode.RegistrationError, "The code has already been sent to this email.");
-        var (numberRegistration, code) = _registrarUserBackground.AddNewEmailRegistration(email);
+        var (numberRegistration, code) = _backgroundFacade.AddNewEmailRegistration(email);
         
         var exception = _emailProvider.SendCodeEmail(email, code);
         if (exception != null)
         {
-            _registrarUserBackground.PopRegistrationEmail(numberRegistration);
+            _backgroundFacade.PopRegistrationEmail(numberRegistration);
             throw exception;
         }
         return numberRegistration;
@@ -49,17 +48,20 @@ public class UserService(IUserRepository repository, IJwtProvider jwtProvider, I
 
     public void VerifyCodeEmail(uint numberRegistration, string code)
     {
-        if (_registrarUserBackground.CheckEmailCode != null)
-            _registrarUserBackground.CheckEmailCode(numberRegistration, code);
+        if (_backgroundFacade.CheckEmailCode != null)
+            _backgroundFacade.CheckEmailCode(numberRegistration, code);
         else
-            throw new ServerException(ErrorCode.RegistrationError, $"There is no access to the back service throw facade {nameof(RegistrarUserFacade)}.");
+            throw new ServerException(ErrorCode.RegistrationError, $"There is no access to the back service throw facade {nameof(BackgroundFacade)}.");
     }
 
     public async Task<string> RegisterUser(uint numberRegistration, User user)
     {
         user.Password = _passwordHasher.HashPassword(user.Password!);
-        if (_registrarUserBackground.GetVerificationEmailByNumberRegistration(numberRegistration) is VerificationEmail verificationEmail)
+        if (_backgroundFacade.GetVerificationEmailByNumberRegistration(numberRegistration) is VerificationEmail verificationEmail)
         {
+            if (!verificationEmail.IsApproveEmailCode)
+                throw new RequestException(ErrorCode.RegistrationError, "The code sent to the email has not yet been confirmed", $"NumberRegistration - {numberRegistration}");
+
             user.Email = verificationEmail.Email;
             var userId = await _userRepository.Add(user);
             return GenerateToken(userId);
@@ -99,20 +101,21 @@ public class UserService(IUserRepository repository, IJwtProvider jwtProvider, I
         return _jwtProvider.GenerateNewToken(userClaims);
     }
 
-    public string SendCodeAgain(uint numberRegistration)
+    public void SendCodeAgain(uint numberRegistration)
     {
-        if (_registrarUserBackground.GetVerificationEmailByNumberRegistration(numberRegistration) is VerificationEmail verificationEmail)
+        if (_backgroundFacade.GetVerificationEmailByNumberRegistration(numberRegistration) is VerificationEmail verificationEmail)
         {
             if (verificationEmail.StartValidation.AddMinutes(1) > DateTime.Now)
                 throw new RequestException(ErrorCode.RegistrationError, "The time has not expired yet to repeat the email validation.");
-            string code = _registrarUserBackground.RegenerationCode(numberRegistration);
+            string code = _backgroundFacade.RegenerationCode(numberRegistration);
             
             var exception = _emailProvider.SendCodeEmail(verificationEmail.Email, code);
             if (exception != null)
             {
-                _registrarUserBackground.PopRegistrationEmail(numberRegistration);
+                _backgroundFacade.PopRegistrationEmail(numberRegistration);
                 throw exception;
             }
+            return;
         }
         throw new RequestException(ErrorCode.RegistrationError, "Try again, send an Email again.");
     }

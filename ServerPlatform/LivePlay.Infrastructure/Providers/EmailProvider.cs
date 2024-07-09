@@ -1,5 +1,6 @@
 ﻿
 using LivePlay.Server.Application.Interfaces;
+using LivePlay.Server.Core.Abstracts;
 using LivePlay.Server.Core.CustomExceptions;
 using LivePlay.Server.Core.Enums;
 using LivePlay.Server.Core.Options;
@@ -24,7 +25,7 @@ public class EmailProvider : IEmailProvider
         Smtp.Authenticate(SmtpOptions.SmtpEmail, SmtpOptions.Password);
     }
 
-    public ServerException? SendCodeEmail(string email, string code)
+    public BaseException? SendCodeEmail(string email, string code)
     {
         try
         {
@@ -38,9 +39,13 @@ public class EmailProvider : IEmailProvider
             Smtp.Send(message);
             return null;
         }
+        catch (SmtpCommandException ex)
+        {
+            return new RequestException(ErrorCode.ServerError, $"Something went wrong. Maybe email {email} not valid", ex.Message);
+        }
         catch (Exception ex)
         {
-            return new (ErrorCode.ServerError, ex.Message);
+            return new  ServerException(ErrorCode.ServerError, ex.Message);
         }
     }
 

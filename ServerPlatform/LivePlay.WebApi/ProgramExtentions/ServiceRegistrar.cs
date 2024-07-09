@@ -27,7 +27,7 @@ internal static class ServiceRegistrar
         services.AddScoped<HotelService>();
         services.AddScoped<CouponService>();
 
-        services.AddSingleton<RegistrarUserFacade>();
+        services.AddSingleton<BackgroundFacade>();
     }
 
     public static void RegisterRepositories(this IServiceCollection services)
@@ -43,7 +43,6 @@ internal static class ServiceRegistrar
     public static void RegisterBackgrounds(this IServiceCollection services)
     {
         services.AddHostedService<RegistrarUserBackground>();
-        services.AddSingleton<IRegistrarUserBackground, RegistrarUserBackground>();
     }
 
     public static void RegisterInfrastructure(this IServiceCollection services)
