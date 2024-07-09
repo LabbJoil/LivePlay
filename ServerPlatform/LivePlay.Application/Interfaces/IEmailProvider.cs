@@ -1,5 +1,5 @@
 ﻿
-using LivePlay.Server.Core.Abstracts;\
+using LivePlay.Server.Core.Abstracts;
 
 namespace LivePlay.Server.Application.Interfaces;
 

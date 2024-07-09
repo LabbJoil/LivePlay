@@ -1,20 +1,22 @@
 ﻿
 using LivePlay.Server.Application.Interfaces;
-using IApplicationLifetime = Microsoft.Extensions.Hosting.IHostApplicationLifetime;
+using LivePlay.Server.Core.CustomExceptions;
+using LivePlay.Server.Core.Enums;
 
 namespace LivePlay.Server.WebApi.ProgramExtentions;
 
 public static class ServiceLifetime
 {
-    //private readonly IEmailProvider _emailProvider;
+    public static void ControlAppLifetime(this WebApplication app)
+    {
+        app.Lifetime.ApplicationStopping.Register(app.OnApplicationStopping);
+    }
 
-    //public ServiceLifetime(IEmailProvider emailProvider)
-    //{
-    //    _emailProvider = emailProvider;
-    //}
-
-    //public static void OnApplicationStopping(this WebApplication _)
-    //{
-    //    _emailProvider.Disconect();
-    //}
+    public static void OnApplicationStopping(this WebApplication app)
+    {
+        var emailProvider = app.Services.GetService<IEmailProvider>()
+            ?? throw new ServerException(ErrorCode.ServerError, $"Service {nameof(IEmailProvider)} not found");
+        emailProvider.Disconect();
+        app.Logger.LogInformation("All services stoped");
+    }
 }
