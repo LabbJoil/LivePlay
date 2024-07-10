@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using The49.Maui.BottomSheet;
 using Camera.MAUI;
 using ZXing.Net.Maui.Controls;
+using Microsoft.Maui.LifecycleEvents;
 
 namespace LivePlay.Front.MAUI;
 
@@ -35,6 +36,7 @@ public static class MauiProgram
         services.RegisterDeviceSettingsServices();
         services.RegisterAccountServices();
         services.RegisterHttpServices();
+        services.RegisterMappingServices();
 
 #if DEBUG
         builder.Logging.AddDebug();
