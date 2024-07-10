@@ -13,6 +13,7 @@ public class UserMapping : Profile
             .ForMember(u => u.Password, opt => opt.MapFrom(uem => uem.PasswordHash))
             .ReverseMap()
             .ForMember(u => u.PasswordHash, opt => opt.MapFrom(uem => uem.Password))
-            .ForMember(u => u.Points, opt => opt.Ignore());
+            .ForMember(u => u.Points, opt => opt.Ignore())
+            .ForMember(u => u.Roles, opt => opt.Ignore());
     }
 }
