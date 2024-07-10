@@ -3,7 +3,7 @@ namespace LivePlay.Front.Core.Enums;
 
 public enum TypeQuest
 {
-    Search,
-    Puzzle,
+    QR,
+    Drawing,
     Question
 }

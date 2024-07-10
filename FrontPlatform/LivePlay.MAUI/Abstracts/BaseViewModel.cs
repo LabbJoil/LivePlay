@@ -51,11 +51,15 @@ public abstract partial class BaseViewModel(AppDesign designSettings) : Observab
             await Shell.Current.DisplayAlert("Ошибка сервера", "Что-то пошло не так", "ok");
     }
 
-    protected static void DeleteStackPages()
+    protected static void DeleteStackPages(int countPages = -1)
     {
         var stack = Shell.Current.Navigation.NavigationStack.ToArray();
-        for (int i = stack.Length - 1; i > 0; i--)
-            Shell.Current.Navigation.RemovePage(stack[i]);
+        if (countPages > 0)
+            for (int i = stack.Length - 1, countDeletePages = 0; countDeletePages < countPages && i > 0; i--, countDeletePages++)
+                Shell.Current.Navigation.RemovePage(stack[i]);
+        else
+            for (int i = stack.Length - 1; i > 0; i--)
+                Shell.Current.Navigation.RemovePage(stack[i]);
     }
 
     private void GoToLoadingPage()

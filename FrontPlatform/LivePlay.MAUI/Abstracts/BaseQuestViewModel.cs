@@ -1,7 +1,6 @@
 ﻿
 using CommunityToolkit.Mvvm.ComponentModel;
 using LivePlay.Front.MAUI.DeviceSettings;
-using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.Core.Models.QuestModels;
 
 namespace LivePlay.Front.MAUI.Abstracts;
