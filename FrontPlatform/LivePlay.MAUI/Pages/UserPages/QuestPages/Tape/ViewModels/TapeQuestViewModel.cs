@@ -72,11 +72,11 @@ public partial class TapeQuestViewModel : BaseTapeViewModel
                 await Shell.Current.GoToAsync($"{nameof(InProgressQuestionQuestPage)}", shellParameters);
                 break;
 
-            case TypeQuest.Puzzle:
+            case TypeQuest.QR:
                 await Shell.Current.GoToAsync($"{nameof(InProgressQRQuestPage)}", shellParameters);
                 break;
 
-            case TypeQuest.Search:
+            case TypeQuest.Drawing:
                 await Shell.Current.GoToAsync($"{nameof(InProgressDrawingQuestPage)}", shellParameters);
                 break;
         }
