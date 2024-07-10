@@ -46,7 +46,7 @@ public class UserController(UserService userService, IMapper mapper) : Controlle
     public async Task<IActionResult> RegistrationUser(uint numberRegistration, [FromBody] RegistrationUserRequest newUser)
     {
         User user = _mapper.Map<User>(newUser);
-        string token = await _userService.RegisterUser(numberRegistration, user);
+        await _userService.RegisterUser(numberRegistration, user);
         //HttpContext.Response.Cookies.Append("tok-cookies", token);
         return NoContent();
     }

@@ -54,17 +54,17 @@ public class UserService(IUserRepository repository, IJwtProvider jwtProvider, I
             throw new ServerException(ErrorCode.RegistrationError, $"There is no access to the back service throw facade {nameof(BackgroundFacade)}.");
     }
 
-    public async Task<string> RegisterUser(uint numberRegistration, User user)
+    public async Task RegisterUser(uint numberRegistration, User user)
     {
         user.Password = _passwordHasher.HashPassword(user.Password!);
         if (_backgroundFacade.GetVerificationEmailByNumberRegistration(numberRegistration) is VerificationEmail verificationEmail)
         {
-            if (!verificationEmail.IsApproveEmailCode)
+            if (verificationEmail.IsApproveEmailCode)
                 throw new RequestException(ErrorCode.RegistrationError, "The code sent to the email has not yet been confirmed", $"NumberRegistration - {numberRegistration}");
 
             user.Email = verificationEmail.Email;
-            var userId = await _userRepository.Add(user);
-            return GenerateToken(userId);
+            await _userRepository.Add(user);
+            return;
         }
         throw new RequestException(ErrorCode.RegistrationError, "Try again, send an Email again.");
     }
