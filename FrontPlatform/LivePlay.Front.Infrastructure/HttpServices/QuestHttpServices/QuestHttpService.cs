@@ -13,7 +13,7 @@ public class QuestHttpService(IServiceScopeFactory serviceScopeFactory) : BaseHt
         const string route = "/takepart";
         (string, string)[] sendParams = [(nameof(idQuest), idQuest.ToString())];
 
-        var response = await _httpProvider.Get(BaseRoute + route, sendParams);
+        var response = await HttpProvider.Get(BaseRoute + route, sendParams);
         if (response.IsSuccess)
             return null;
         else

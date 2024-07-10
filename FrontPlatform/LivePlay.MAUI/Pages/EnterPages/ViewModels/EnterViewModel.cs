@@ -15,11 +15,10 @@ namespace LivePlay.Front.MAUI.Pages.EnterPages.ViewModels;
 
 public partial class EnterViewModel(AppDesign designSettings, AppPermissions permissions, UserHttpService userHttpService) : BaseViewModel(designSettings)
 {
-    private AppPermissions Permissions { get; } = permissions;
-    private UserHttpService UserService { get; set; } = userHttpService;
-    private ActionTimer? SendCodeTimer;
-
-    private uint NumberRegistratrtion = 0;
+    private readonly AppPermissions _permissions = permissions;
+    private readonly UserHttpService _userService = userHttpService;
+    private ActionTimer? _sendCodeTimer;
+    private uint _numberRegistratrtion = 0;
 
     [ObservableProperty]
     public User _enterUser = new();
@@ -28,7 +27,7 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
     public async Task LoginUser()
     {
         RequestPermissions:
-        bool havePermissions = await Permissions.GetPermission();
+        bool havePermissions = await _permissions.GetPermission();
         if (!havePermissions)
         {
             if (await Shell.Current.DisplayAlert("Нет доступа к хранилищу", $"Предоставьте, пожалуйста, доступ к хранилищу", "ok", "no"))
@@ -36,7 +35,7 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
             else
                 return;
         }
-        var (roles, error) = await UserService.Login(EnterUser.Email, EnterUser.Password);
+        var (roles, error) = await _userService.Login(EnterUser.Email, EnterUser.Password);
 
         if (roles != null && roles.Length != 0)
         {
@@ -54,18 +53,14 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
     public async Task VerifyEmail(EnterPage enterPage)
     {
         StartLoading();
-        (NumberRegistratrtion, var error) = await UserService.VerifyEmail(EnterUser.Email);
+        (_numberRegistratrtion, var error) = await _userService.VerifyEmail(EnterUser.Email);
         StopLoading();
 
-        if(error != null)
-        {
-            ShowError(error);
-            return;
-        }
+        if (error != null) { ShowError(error); return; }
 
         var (printTimer, endTimer) = await enterPage.VerifyEmailFrontProcess();
-        SendCodeTimer = new(DirectionAction.Down, printTimer, endTimer);
-        SendCodeTimer.Start(5000, 0);
+        _sendCodeTimer = new(DirectionAction.Down, printTimer, endTimer);
+        _sendCodeTimer.Start(5000, 0);
     }
 
     [RelayCommand]
@@ -74,16 +69,12 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
         if (obj is Tuple<object, object> tuple && tuple.Item1 is string code && tuple.Item2 is EnterPage enterPage)
         {
             StartLoading();
-            var error = await UserService.VerifyCodeEmail(NumberRegistratrtion, code);
+            var error = await _userService.VerifyCodeEmail(_numberRegistratrtion, code);
             StopLoading();
-            
-            if (error != null)
-            {
-                ShowError(error);
-                return;
-            }
 
-            SendCodeTimer?.Stop();
+            if (error != null) { ShowError(error); return; }
+
+            _sendCodeTimer?.Stop();
             await enterPage.FillUserInfoFrontProcess();
         }
     }
@@ -92,32 +83,24 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
     public async Task SendCodeAgain(EnterPage enterPage)
     {
         StartLoading();
-        var error = await UserService.SendCodeAgain(NumberRegistratrtion);
+        var error = await _userService.SendCodeAgain(_numberRegistratrtion);
         StopLoading();
 
-        if (error != null)
-        {
-            ShowError(error);
-            return;
-        }
+        if (error != null) { ShowError(error); return; }
 
         var (printTimer, endTimer) = enterPage.GetPrintEndTimerActions();
-        SendCodeTimer = new(DirectionAction.Down, printTimer, endTimer);
-        SendCodeTimer.Start(5000, 0);
+        _sendCodeTimer = new(DirectionAction.Down, printTimer, endTimer);
+        _sendCodeTimer.Start(5000, 0);
     }
 
     [RelayCommand]
     public async Task SendRegistrationInfo(EnterPage enterPage)
     {
         StartLoading();
-        var error = await UserService.Registration(NumberRegistratrtion, EnterUser);
+        var error = await _userService.Registration(_numberRegistratrtion, EnterUser);
         StopLoading();
 
-        if (error != null)
-        {
-            ShowError(error);
-            return;
-        }
+        if (error != null) { ShowError(error); return; }
 
         await enterPage.LoginFrontProcess();
     }

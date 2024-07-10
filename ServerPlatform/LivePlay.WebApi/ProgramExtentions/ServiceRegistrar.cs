@@ -37,6 +37,7 @@ internal static class ServiceRegistrar
         services.AddScoped<IQRQuestRepository, QRQuestRepository>();
         services.AddScoped<ICreativeQuestRepository, CreativeQuestRepository>();
         services.AddScoped<ICouponRepository, CouponRepository>();
+        services.AddScoped<INewsRepository, NewsRepository>();
         services.AddScoped<PermissionRepository>();
     }
 

@@ -11,10 +11,10 @@ namespace LivePlay.Front.MAUI.Abstracts;
 
 public abstract partial class BaseViewModel(AppDesign designSettings) : ObservableObject
 {
-    public AppDesign DesignSettings = designSettings;
+    private CancellationTokenSource _stopLoadingTokenSourse = new();
+    private ActionTimer? _loadingTimer;
 
-    private CancellationTokenSource StopLoadingTokenSourse = new();
-    private ActionTimer? LoadingTimer;
+    public AppDesign DesignSettings { get; } = designSettings;
 
     [ObservableProperty]
     public bool _isRefreshing;
@@ -32,15 +32,15 @@ public abstract partial class BaseViewModel(AppDesign designSettings) : Observab
 
     protected void StartLoading()
     {
-        StopLoadingTokenSourse = new();
-        LoadingTimer = new(DirectionAction.Down, null, GoToLoadingPage);
-        LoadingTimer.Start(1500, 0, 500);
+        _stopLoadingTokenSourse = new();
+        _loadingTimer = new(DirectionAction.Down, null, GoToLoadingPage);
+        _loadingTimer.Start(1500, 0, 500);
     }
 
     protected void StopLoading()
     {
-        LoadingTimer?.Stop();
-        StopLoadingTokenSourse.Cancel();
+        _loadingTimer?.Stop();
+        _stopLoadingTokenSourse.Cancel();
     }
 
     protected static async void ShowError(DisplayError? displayError)
@@ -62,7 +62,7 @@ public abstract partial class BaseViewModel(AppDesign designSettings) : Observab
     {
         var navigationParameter = new ShellNavigationQueryParameters
         {
-            { "StopingAnimationSource", StopLoadingTokenSourse },
+            { "StopingAnimationSource", _stopLoadingTokenSourse },
         };
 
         Shell.Current.GoToAsync($"/{nameof(LoadingPage)}", navigationParameter);

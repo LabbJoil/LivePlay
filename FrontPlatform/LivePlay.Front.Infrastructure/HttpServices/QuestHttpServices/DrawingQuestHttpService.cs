@@ -14,8 +14,8 @@ public class DrawingQuestHttpService(IServiceScopeFactory serviceScopeFactory, I
     public async Task<DisplayError?> CompeteQuest(DrawingQuest drawingQuest, int questId)
     {
         const string route = "/complete";
-        var completingQuest = _mapper.Map<CompletingDrawingQuestRequest>(drawingQuest);
-        var response = await _httpProvider.Post(BaseRoute + route, completingQuest, (nameof(questId), questId.ToString()));
+        var completingQuest = Mapper.Map<CompletingDrawingQuestRequest>(drawingQuest);
+        var response = await HttpProvider.Post(BaseRoute + route, completingQuest, (nameof(questId), questId.ToString()));
         return ParseError(response.ResponseData, response.Error);
     }
 

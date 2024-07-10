@@ -11,21 +11,22 @@ namespace LivePlay.Front.Infrastructure.Abstracts;
 
 public abstract class BaseHttpServise
 {
-    protected readonly HttpProvider _httpProvider;
-    protected readonly IMapper _mapper;
     private readonly DisplayError _defaultError = new()
     {
         Title = "Request error",
         Message = "Не удалось преобразовать полученный от сервера ответ"
     };
 
+
+    protected HttpProvider HttpProvider { get; }
+    protected IMapper Mapper { get; }
     protected abstract string BaseRoute { get; }
 
     public BaseHttpServise(IServiceScopeFactory serviceScopeFactory)
     {
         using var scope = serviceScopeFactory.CreateScope();
-        _mapper = scope.ServiceProvider.GetRequiredService<IMapper>();
-        _httpProvider = scope.ServiceProvider.GetRequiredService<HttpProvider>();
+        Mapper = scope.ServiceProvider.GetRequiredService<IMapper>();
+        HttpProvider = scope.ServiceProvider.GetRequiredService<HttpProvider>();
     }
 
     protected (T?, DisplayError?) ParseResponse<T>(BaseResponse response)
@@ -33,6 +34,8 @@ public abstract class BaseHttpServise
         if (response.IsSuccess)
         {
             T? body = JsonSerializer.Deserialize<T>(response.ResponseData);
+            if (body == null)
+                return (default, ParseError(response.ResponseData, response.Error));
             return (body, null);
         }
         else
@@ -52,7 +55,7 @@ public abstract class BaseHttpServise
             };
         }
         else
-            errorDisplay = _mapper.Map<DisplayError>(errorResponse);
+            errorDisplay = Mapper.Map<DisplayError>(errorResponse);
         return errorDisplay;
     }
 }

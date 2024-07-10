@@ -20,7 +20,7 @@ public class UserService(IUserRepository repository, IJwtProvider jwtProvider, I
     private readonly IEmailProvider _emailProvider = emailProvider;
     private readonly IRegistrarUserBackground _backgroundFacade = backgroundFacade.RegistrarUserBackground;
 
-    public async Task<(string, Role[])> LogInUser(string email, string password)
+    public async Task<(string, Role[])> LoginUser(string email, string password)
     {
         var user = await _userRepository.GetByEmail(email);
         if (!_passwordHasher.Verify(password, user.Password ?? throw new ServerException(ErrorCode.LoginUser, $"Don`t found password user with id: {user.Id}.")))
@@ -93,6 +93,13 @@ public class UserService(IUserRepository repository, IJwtProvider jwtProvider, I
         var userId = _jwtProvider.GetUserId(claimsPrincipal);
         var user = await _userRepository.GetById(userId);
         return user;
+    }
+
+    public async Task<int> GetPoints(ClaimsPrincipal claimsPrincipal)
+    {
+        var userId = _jwtProvider.GetUserId(claimsPrincipal);
+        var user = await _userRepository.GetById(userId);
+        return user.Points;
     }
 
     private string GenerateToken(Guid userId)

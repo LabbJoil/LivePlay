@@ -28,7 +28,7 @@
                 </Border.StrokeShape>
                 <Border.GestureRecognizers>
                     <TapGestureRecognizer
-                        Tapped="TapGestureRecognizer_Tapped_1"
+                        Tapped="GetLastTransactions"
                         NumberOfTapsRequired="1"/>
                 </Border.GestureRecognizers>
                 <StackLayout Orientation="Horizontal">
@@ -48,7 +48,7 @@
             <ScrollView VerticalOptions="Start">
                 <Grid x:Name="FlyoutGrid" Loaded="FlyoutGrid_Loaded" AutomationId="{Binding AutomationId}">
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="FlyoutItemTap"/>
                     </Grid.GestureRecognizers>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="60" />

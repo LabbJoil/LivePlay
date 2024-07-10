@@ -12,7 +12,7 @@ namespace LivePlay.Server.WebApi.Controllers;
 
 [Route("[controller]/")]
 [ApiController]
-public class UserController(UserService userService, IMapper mapper) : ControllerBase
+public class UserController(UserService userService, IMapper mapper) : Controller
 {
     private readonly UserService _userService = userService;
     private readonly IMapper _mapper = mapper;
@@ -20,7 +20,7 @@ public class UserController(UserService userService, IMapper mapper) : Controlle
     [HttpPost("login")]
     public async Task<IActionResult> LoginUser([FromBody] LoginUserRequest loginUser)
     {
-        var (token, roles) = await _userService.LogInUser(loginUser.Email, loginUser.Password);
+        var (token, roles) = await _userService.LoginUser(loginUser.Email, loginUser.Password);
         return Ok(new LoginResponse
         {
             Token = token,
@@ -90,5 +90,13 @@ public class UserController(UserService userService, IMapper mapper) : Controlle
         var user = await _userService.GetUser(HttpContext.User);
         var userInfo = _mapper.Map<UserInfoResponse>(user);
         return Ok(userInfo);
+    }
+
+    [HttpGet("getPoints")]
+    [Authorize(Policy = nameof(Politic.PersonalInfo))]
+    public async Task<IActionResult> GetPoints()
+    {
+        var points = await _userService.GetPoints(HttpContext.User);
+        return Ok(points);
     }
 }

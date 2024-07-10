@@ -14,7 +14,7 @@ public class NewsEntityModel
     [Required]
     public required string Description { get; set; }
     [Required]
-    public byte[]? Image { get; set; }
+    public required string Text { get; set; }
     [Required]
-    private DateTime? FinalDate { get; set; }
+    public byte[]? Image { get; set; }
 }
