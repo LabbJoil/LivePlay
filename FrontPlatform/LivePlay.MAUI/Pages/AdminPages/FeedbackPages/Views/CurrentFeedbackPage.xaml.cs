@@ -1,6 +1,6 @@
 
 using CommunityToolkit.Maui.Views;
-using LivePlay.Front.Core.Models;
+using LivePlay.Front.Core.Models.FeedbackModels;
 
 namespace LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.Views;
 

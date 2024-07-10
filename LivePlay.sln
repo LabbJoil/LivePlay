@@ -14,15 +14,14 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Server.Infrastructure", "ServerPlatform\LivePlay.Infrastructure\LivePlay.Server.Infrastructure.csproj", "{CE394DEA-C238-47E7-8A27-D97C3BFA39B9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Server.Persistence", "ServerPlatform\LivePlay.Persistence\LivePlay.Server.Persistence.csproj", "{B6130263-C43A-4BE0-9E85-862D969E62B1}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Front.MAUI", "FrontPlatform\LivePlay.MAUI\LivePlay.Front.MAUI.csproj", "{F48543D3-BAFC-4C9A-8A45-39FF4C1F7256}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontPlatform", "FrontPlatform", "{06694F64-2D49-47E6-BD1E-4D8CA129C779}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Front.Application", "FrontPlatform\LivePlay.Front.Application\LivePlay.Front.Application.csproj", "{271A0551-47C3-4584-9D9E-86B53C8BDFAF}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Front.Core", "FrontPlatform\LivePlay.Front.Core\LivePlay.Front.Core.csproj", "{0A65F466-A164-4D44-BAE8-4216FBE7D07F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LivePlay.Front.Infrastructure", "FrontPlatform\LivePlay.Front.Infrastructure\LivePlay.Front.Infrastructure.csproj", "{659623C4-0DFE-4686-9050-3EA03B277C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Front.Infrastructure", "FrontPlatform\LivePlay.Front.Infrastructure\LivePlay.Front.Infrastructure.csproj", "{659623C4-0DFE-4686-9050-3EA03B277C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,10 +55,6 @@ Global
 		{F48543D3-BAFC-4C9A-8A45-39FF4C1F7256}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F48543D3-BAFC-4C9A-8A45-39FF4C1F7256}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F48543D3-BAFC-4C9A-8A45-39FF4C1F7256}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{271A0551-47C3-4584-9D9E-86B53C8BDFAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{271A0551-47C3-4584-9D9E-86B53C8BDFAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{271A0551-47C3-4584-9D9E-86B53C8BDFAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{271A0551-47C3-4584-9D9E-86B53C8BDFAF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0A65F466-A164-4D44-BAE8-4216FBE7D07F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0A65F466-A164-4D44-BAE8-4216FBE7D07F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A65F466-A164-4D44-BAE8-4216FBE7D07F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -68,7 +63,6 @@ Global
 		{659623C4-0DFE-4686-9050-3EA03B277C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{659623C4-0DFE-4686-9050-3EA03B277C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{659623C4-0DFE-4686-9050-3EA03B277C2E}.Release|Any CPU.Build.0 = Release|Any CPU
-
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,7 +74,6 @@ Global
 		{CE394DEA-C238-47E7-8A27-D97C3BFA39B9} = {1FF6450C-2427-49CC-8F5B-6813548F32A6}
 		{B6130263-C43A-4BE0-9E85-862D969E62B1} = {1FF6450C-2427-49CC-8F5B-6813548F32A6}
 		{F48543D3-BAFC-4C9A-8A45-39FF4C1F7256} = {06694F64-2D49-47E6-BD1E-4D8CA129C779}
-		{271A0551-47C3-4584-9D9E-86B53C8BDFAF} = {06694F64-2D49-47E6-BD1E-4D8CA129C779}
 		{0A65F466-A164-4D44-BAE8-4216FBE7D07F} = {06694F64-2D49-47E6-BD1E-4D8CA129C779}
 		{659623C4-0DFE-4686-9050-3EA03B277C2E} = {06694F64-2D49-47E6-BD1E-4D8CA129C779}
 	EndGlobalSection

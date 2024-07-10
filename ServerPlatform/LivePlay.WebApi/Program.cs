@@ -44,4 +44,5 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.UseHttpsRedirection();
 app.MapControllers();
+app.ControlAppLifetime();
 app.Run();

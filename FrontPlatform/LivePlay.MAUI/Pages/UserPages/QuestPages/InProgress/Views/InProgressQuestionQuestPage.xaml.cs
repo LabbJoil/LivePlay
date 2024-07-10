@@ -1,6 +1,6 @@
 
 using LivePlay.Front.Core.Enums;
-using LivePlay.Front.Core.Models;
+using LivePlay.Front.Core.Models.QuestModels;
 using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.ViewModels;
 using LivePlay.Front.MAUI.PersonalElements;
 

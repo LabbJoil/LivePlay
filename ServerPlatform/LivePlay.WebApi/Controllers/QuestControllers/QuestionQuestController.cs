@@ -12,12 +12,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LivePlay.Server.WebApi.Controllers.QuestControllers;
 
+[Route("[controller]/")]
+[ApiController]
 public class QuestionQuestController(QuestionQuestService questionQuestService, IMapper mapper) : Controller
 {
     private readonly QuestionQuestService _questionQuestService = questionQuestService;
     private readonly IMapper _mapper = mapper;
 
-    [HttpPost("/addquestionquest")]
+    [HttpPost("add")]
     [Authorize(Policy = nameof(Politic.EditQuest))]
     public IActionResult AddQuestionQuest([FromBody] AddingQuestionQuestRequest questionQuestRequest)
     {
@@ -27,7 +29,7 @@ public class QuestionQuestController(QuestionQuestService questionQuestService, 
         return NoContent();
     }
 
-    [HttpPost("/editquestionquest")]
+    [HttpPost("edit")]
     [Authorize(Policy = nameof(Politic.EditQuest))]
     public IActionResult EditQuestionQuest([FromBody] EditingQuestionQuestRequest questionQuestRequest)
     {
@@ -37,7 +39,7 @@ public class QuestionQuestController(QuestionQuestService questionQuestService, 
         return NoContent();
     }
 
-    [HttpPost("/completequestionquest")]
+    [HttpPost("complete")]
     [Authorize(Policy = nameof(Politic.EditQuest))]
     public async Task<IActionResult> CompleteQuestionQuest([FromBody] CompletingQuestionQuestRequest questionQuestRequest)
     {

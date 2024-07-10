@@ -1,4 +1,5 @@
 ﻿
+using LivePlay.Server.Core.CustomExceptions;
 using LivePlay.Server.Core.Enums;
 using LivePlay.Server.Core.Options;
 using LivePlay.Server.Infrastructure.Providers;
@@ -13,21 +14,21 @@ public static class AuthExtention
     public static void AddApiAuthentication(this IServiceCollection services, IConfiguration configuration)
     {
         JwtOptions jwtOptions = configuration.GetSection(nameof(JwtOptions)).Get<JwtOptions>() ??
-            throw new Exception();
+            throw new ServerException(ErrorCode.Auth, $"Failed to get {nameof(JwtOptions)} from the appsettings");
 
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
             {
                 options.TokenValidationParameters = JwtProvider.GetJwtOptions(jwtOptions);
 
-                options.Events = new JwtBearerEvents
-                {
-                    OnMessageReceived = context =>
-                    {
-                        context.Token = context.Request.Cookies["tok-cookies"];
-                        return Task.CompletedTask;
-                    }
-                };
+                //options.Events = new JwtBearerEvents
+                //{
+                //    OnMessageReceived = context =>
+                //    {
+                //        context.Token = context.deHeaders..Request.Headers.["tok-cookies"];
+                //        return Task.CompletedTask;
+                //    }
+                //};
             });
 
         services.AddSingleton<IAuthorizationHandler, PermissionAuthHandler>();

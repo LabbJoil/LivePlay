@@ -15,7 +15,7 @@ public class PermissionAuthHandler(IServiceScopeFactory serviceScopeFactory, IJw
         var userId = _jwtProvider.GetUserId(context.User);
 
         using var scope = _serviceScopeFactory.CreateScope();
-        var permissionService = scope.ServiceProvider.GetRequiredService<PermissionRepository>();
+        var permissionService = scope.ServiceProvider.GetRequiredService<PermissionRepository>();   // TODO: заслать в конструктор?
 
         var userPermissions = await permissionService.GetUserPermissions(userId);
         var needPoliticPermissions = permissionRequirement.GetNeedPermissions();

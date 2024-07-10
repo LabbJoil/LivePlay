@@ -1,10 +1,10 @@
 ﻿
-using LivePlay.Front.Application.HttpServices;
-using LivePlay.Front.Application.Interfaces;
-using LivePlay.Front.Application.Mapping;
-using LivePlay.Front.Core.Models;
-using LivePlay.Front.Infrastructure;
+using LivePlay.Front.Infrastructure.HttpServices;
+using LivePlay.Front.Infrastructure.HttpServices.QuestHttpServices;
 using LivePlay.Front.Infrastructure.Interfaces;
+using LivePlay.Front.Infrastructure.Mappings;
+using LivePlay.Front.Core.Models.QuestModels;
+using LivePlay.Front.Infrastructure;
 using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.MAUI.Pages.AdminPages.CouponPages.Views;
@@ -114,7 +114,7 @@ public static class ServicesRegistrar
     {
         services.AddSingleton<UserHttpService>();
         services.AddSingleton<QuestHttpService>();
-        services.AddSingleton<IHttpProvider, HttpProvider>();
+        services.AddSingleton<HttpProvider>();
     }
 
     public static void RegisterMappingServices(this IServiceCollection services)

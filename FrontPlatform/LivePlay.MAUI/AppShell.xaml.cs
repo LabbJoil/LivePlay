@@ -36,7 +36,6 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(LoadingPage), typeof(LoadingPage));
         Routing.RegisterRoute(nameof(CreationQuestPage), typeof(CreationQuestPage));
         Routing.RegisterRoute(nameof(CouponInfoPage), typeof(CouponInfoPage));
-
     }
 
     private void FlyoutGrid_Loaded(object sender, EventArgs e)
@@ -50,7 +49,7 @@ public partial class AppShell : Shell
         }
     }
 
-    private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    private async void FlyoutItemTap(object sender, TappedEventArgs e)
     {
         if (sender is Grid grid)
         {
@@ -58,6 +57,7 @@ public partial class AppShell : Shell
             SetViewElement(grid, true);
             LastGrid = grid;
             var item = FlyoutItemsNow.Items.ToArray().First(i => i.Items[0].AutomationId == grid.AutomationId);
+            //необходимо добавить удаление последних страниц
             await GoToAsync($"//{item.Route}");
             Current.FlyoutIsPresented = false;
         }
@@ -82,14 +82,17 @@ public partial class AppShell : Shell
         }
     }
 
-    //private async void LogOut_Clicked(object sender, EventArgs e)
-    //{
-    //    if(await DisplayAlert("Выход", $"Вы точно хотите выйти", "ok", "no"))
-    //        await NavigateThrow.GoToRootPage($"//{nameof(EnterPage)}");
-    //}
-
-    private void TapGestureRecognizer_Tapped_1(object sender, TappedEventArgs e)
+    private async void GetLastTransactions(object sender, TappedEventArgs e)
     {
-       
+        if (sender is Grid grid)
+        {
+            if (LastGrid != null) SetViewElement(LastGrid, false);
+            SetViewElement(grid, true);
+            LastGrid = grid;
+            var item = FlyoutItemsNow.Items.ToArray().First(i => i.Items[0].AutomationId == grid.AutomationId);
+            //необходимо добавить удаление последних страниц
+            await GoToAsync($"//{item.Route}");
+            Current.FlyoutIsPresented = false;
+        }
     }
 }

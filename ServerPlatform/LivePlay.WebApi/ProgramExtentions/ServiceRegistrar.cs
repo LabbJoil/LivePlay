@@ -8,11 +8,9 @@ using LivePlay.Server.Core.Interfaces.QuestInterfaces;
 using LivePlay.Server.Infrastructure;
 using LivePlay.Server.Infrastructure.Background;
 using LivePlay.Server.Infrastructure.Providers;
-using LivePlay.Server.Persistence.Mappings;
 using LivePlay.Server.Persistence.Repositories;
 using LivePlay.Server.Persistence.Repositories.Quests;
-using LivePlay.Server.WebApi.Mappings.QuestMappings;
-using LivePlay.Server.WebApi.Mappings.UserMappings;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace LivePlay.Server.WebApi.ProgramExtentions;
 
@@ -29,7 +27,7 @@ internal static class ServiceRegistrar
         services.AddScoped<HotelService>();
         services.AddScoped<CouponService>();
 
-        services.AddSingleton<RegistrarUserFacade>();
+        services.AddSingleton<BackgroundFacade>();
     }
 
     public static void RegisterRepositories(this IServiceCollection services)
@@ -39,6 +37,7 @@ internal static class ServiceRegistrar
         services.AddScoped<IQRQuestRepository, QRQuestRepository>();
         services.AddScoped<ICreativeQuestRepository, CreativeQuestRepository>();
         services.AddScoped<ICouponRepository, CouponRepository>();
+        services.AddScoped<INewsRepository, NewsRepository>();
         services.AddScoped<PermissionRepository>();
     }
 
@@ -52,12 +51,13 @@ internal static class ServiceRegistrar
         services.AddSingleton<IJwtProvider, JwtProvider>();
         services.AddSingleton<IQRProvider, QRProvider>();
         services.AddSingleton<IPasswordHasher, PasswordHasher>();
-        services.AddSingleton<EmailProvider>();
+        services.AddSingleton<IEmailProvider, EmailProvider>();
     }
 
     public static void RegisterMapping(this IServiceCollection services)
     {
-        services.AddAutoMapper(typeof(UserEntityMapping), typeof(QuestAddingMapping), typeof(QRQuestAddingMapping),
-            typeof(UserUpdateMapping), typeof(UserRegistrationMapping));
+        services.AddAutoMapper(typeof(Mappings.QuestMappings.QuestMapping), typeof(Mappings.QuestMappings.QRQuestMapping), typeof(Mappings.QuestMappings.QuestionQuestMapping),
+            typeof(Mappings.UserMapping));
+        services.AddAutoMapper(typeof(Persistence.Mappings.UserMapping));
     }
 }

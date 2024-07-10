@@ -1,5 +1,4 @@
-
-using LivePlay.Front.Core.Models;
+using LivePlay.Front.Core.Models.QuestModels;
 using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.Views;
 using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.NotStarted.ViewModels;

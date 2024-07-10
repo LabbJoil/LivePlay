@@ -1,8 +1,8 @@
 
 using LivePlay.Front.MAUI.DeviceSettings;
-using LivePlay.Front.Core.Models;
 using Microsoft.Maui.Controls;
 using System.Windows.Input;
+using LivePlay.Front.Core.Models.QuestModels;
 
 namespace LivePlay.Front.MAUI.PersonalElements;
 

@@ -1,21 +1,20 @@
 ﻿
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using LivePlay.Front.Application.Contracts.Responses;
-using LivePlay.Front.Application.Models.ResponseModel;
 using LivePlay.Front.Core.Enums;
+using LivePlay.Front.Core.Models;
 using LivePlay.Front.Infrastructure;
 using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.MAUI.Pages.SettingsPages.Views;
 
 namespace LivePlay.Front.MAUI.Abstracts;
 
-public partial class BaseViewModel(AppDesign designSettings) : ObservableObject
+public abstract partial class BaseViewModel(AppDesign designSettings) : ObservableObject
 {
-    public AppDesign DesignSettings = designSettings;
+    private CancellationTokenSource _stopLoadingTokenSourse = new();
+    private ActionTimer? _loadingTimer;
 
-    private CancellationTokenSource StopLoadingTokenSourse = new();
-    private ActionTimer? LoadingTimer;
+    public AppDesign DesignSettings { get; } = designSettings;
 
     [ObservableProperty]
     public bool _isRefreshing;
@@ -33,35 +32,43 @@ public partial class BaseViewModel(AppDesign designSettings) : ObservableObject
 
     protected void StartLoading()
     {
-        StopLoadingTokenSourse = new();
-        LoadingTimer = new(DirectionAction.Down, null, GoToLoadingPage);
-        LoadingTimer.Start(1500, 0, 500);
+        _stopLoadingTokenSourse = new();
+        _loadingTimer = new(DirectionAction.Down, null, GoToLoadingPage);
+        _loadingTimer.Start(1500, 0, 500);
     }
 
     protected void StopLoading()
     {
-        LoadingTimer?.Stop();
-        StopLoadingTokenSourse.Cancel();
+        _loadingTimer?.Stop();
+        _stopLoadingTokenSourse.Cancel();
     }
 
-    protected static async Task<(bool, T?)> ResponseProcessing<T>(BaseResponse<T> response)
+    protected static async void ShowError(DisplayError? displayError)
     {
-        if (response.IsSuccess && response.Data is T goodResponse)
-            return (true, goodResponse);
-        else if (response.Error is ErrorResponse error)
-            await Shell.Current.DisplayAlert(error.ErrorCode, error.Message, "ok");
+        if (displayError != null && displayError.Title != string.Empty  && displayError.Message != string.Empty)
+            await Shell.Current.DisplayAlert(displayError.Title, displayError.Message, "ok");
         else
-            await Shell.Current.DisplayAlert("Ошибка сервера", "Что-то пошло не так", "ok");       // INFO: возможно вынести как отдельную констнту или в appsettings
-        return (true, default);
+            await Shell.Current.DisplayAlert("Ошибка сервера", "Что-то пошло не так", "ok");
+    }
+
+    protected static void DeleteStackPages(int countPages = -1)
+    {
+        var stack = Shell.Current.Navigation.NavigationStack.ToArray();
+        if (countPages > 0)
+            for (int i = stack.Length - 1, countDeletePages = 0; countDeletePages < countPages && i > 0; i--, countDeletePages++)
+                Shell.Current.Navigation.RemovePage(stack[i]);
+        else
+            for (int i = stack.Length - 1; i > 0; i--)
+                Shell.Current.Navigation.RemovePage(stack[i]);
     }
 
     private void GoToLoadingPage()
     {
         var navigationParameter = new ShellNavigationQueryParameters
         {
-            { "StopingAnimationSource", StopLoadingTokenSourse },
+            { "StopingAnimationSource", _stopLoadingTokenSourse },
         };
 
-        Shell.Current.GoToAsync($"/{nameof(LoadingPage)}", navigationParameter);   // INFO: Возможно стоит перенести в MAUI
+        Shell.Current.GoToAsync($"/{nameof(LoadingPage)}", navigationParameter);
     }
 }

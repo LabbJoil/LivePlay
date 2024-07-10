@@ -8,79 +8,105 @@ using Microsoft.Extensions.Hosting;
 
 namespace LivePlay.Server.Infrastructure.Background;
 
-public class RegistrarUserBackground(EmailProvider emailProvider, RegistrarUserFacade backgroundServiceFacade) : BackgroundService, IRegistryUserBackground
+public partial class RegistrarUserBackground : BackgroundService, IRegistrarUserBackground
 {
-    private readonly EmailProvider EmailProvider = emailProvider;
-    private readonly RegistrarUserFacade BackFacade = backgroundServiceFacade;
-    private readonly Dictionary<uint, RegistrationUserModel> NewRegistrationUsers = [];
+    private readonly Dictionary<uint, VerificationEmail> _newRegistrationUsers = [];
+
+    public int I = 0;
+
+    public RegistrarUserBackground(BackgroundFacade backgroundFacade)
+    {
+        backgroundFacade.RegistrarUserBackground = this;
+    }
 
     protected async override Task ExecuteAsync(CancellationToken stoppingToken)
     {
         const int maxTimeSaveEmailValidation = 20;
         const int millisecondsDelay = 1500;
 
-        BackFacade.CheckCodeRegistrationUser = CheckCodeRegistrationUser;
-        BackFacade.AddNewRegistrationUser = AddNewRegistrationUser;
-        BackFacade.GetRegistrationUser = GetVerifityEmail;
+        //BackFacade.CheckEmailCode = CheckEmailCode;
+        //BackFacade.AddNewEmailRegistration = AddNewEmailRegistration;
+        //BackFacade.GetRegistrationEmail = GetRegistrationEmail;
+        //BackFacade.SendCodeAgain = SendCodeAgain;
+        //BackFacade.PopRegistrationEmail = PopRegistrationEmail;
 
         while (!stoppingToken.IsCancellationRequested)
         {
-            foreach (var rum in NewRegistrationUsers)
+            foreach (var rum in _newRegistrationUsers)
                 if (rum.Value.StartValidation.AddMinutes(maxTimeSaveEmailValidation) < DateTime.Now)
-                    NewRegistrationUsers.Remove(rum.Key);
-            
+                    _newRegistrationUsers.Remove(rum.Key);
+
+            I++;
+
             await Task.Delay(millisecondsDelay, stoppingToken);
         }
     }
 
-    private string GetVerifityEmail(uint numberRegistration)
+    public RequestException? CheckEmailCode(uint numberRegistration, string checkCode)
     {
-        foreach (var rum in NewRegistrationUsers)
-            if (rum.Key == numberRegistration)
-                return rum.Value.Email;
-        throw new RequestException(ErrorCode.VerifyEmailError, $"The registration email could not be received.", $"Registration number - {numberRegistration}");
+        if (GetVerificationEmailByNumberRegistration(numberRegistration) is VerificationEmail verificationEmail)
+        {
+            if (verificationEmail.Code != checkCode)
+                return new(ErrorCode.RegistrationError, $"The code was entered incorrectly", $"Registration number - {numberRegistration}, verification code - {checkCode}");
+            if (verificationEmail.IsApproveEmailCode)
+                return new(ErrorCode.RegistrationError, $"The code has already been applied", $"Registration number - {numberRegistration}, verification code - {checkCode}");
+            return null;
+        }
+        return new RequestException(ErrorCode.RegistrationError, $"Email verification time has expired", $"Registration number - {numberRegistration}, verification code - {checkCode} not found");
     }
 
-    private void CheckCodeRegistrationUser(uint numberRegistration, string checkCode)
+    public (uint, string) AddNewEmailRegistration(string email)
     {
-        if (NewRegistrationUsers.TryGetValue(numberRegistration, out RegistrationUserModel? registrationUser) && registrationUser != null)
-            if (registrationUser.EmailCode == checkCode && !registrationUser.IsApproveEmailCode)
-            {
-                registrationUser.IsApproveEmailCode = true;
-                return;
-            }
-        throw new RequestException(ErrorCode.VerifyEmailError, $"Email verification time has expired", $"Registration number - {numberRegistration}, verification code - {checkCode}");
-    }
-
-    private uint AddNewRegistrationUser(string email)
-    {
-        IsEmailInRegistration(email);
-        var numberRegistration = GetNumberRegistration();
+        var numberRegistration = GetNewNumberRegistration();
         string code = GenerateNewCode();
-        EmailProvider.SendCodeEmail(email, code);
 
-        var registrationUser = new RegistrationUserModel {
+        var registrationUser = new VerificationEmail
+        {
             Email = email,
-            EmailCode = code
+            Code = code
         };
 
-        NewRegistrationUsers[numberRegistration] = registrationUser;
-        return numberRegistration;
+        _newRegistrationUsers[numberRegistration] = registrationUser;
+        return (numberRegistration, code);
     }
 
-    private void IsEmailInRegistration(string email)
+    public void PopRegistrationEmail(uint numberRegistration)
     {
-        foreach(RegistrationUserModel rum in NewRegistrationUsers.Values)
-            if (rum.Email == email && rum.StartValidation.AddMinutes(1) < DateTime.Now)
-                throw new RequestException(ErrorCode.VerifyEmailError, "The time has not expired yet to repeat the email validation");
+        var isDeleted = _newRegistrationUsers.Remove(numberRegistration);
+        if (!isDeleted)
+            throw new RequestException(ErrorCode.RegistrationError, $"The registration number could not be found.", $"Registration number - {numberRegistration}");
     }
 
-    private uint GetNumberRegistration()
+    public string RegenerationCode(uint numberRegistration)
+    {
+        if (GetVerificationEmailByNumberRegistration(numberRegistration) is VerificationEmail verificationEmail)
+        {
+            var newCode = GenerateNewCode();
+            verificationEmail.Code = newCode;
+            return newCode;
+        }
+        throw new RequestException(ErrorCode.RegistrationError, $"Email verification time has expired", $"Registration number - {numberRegistration} not found");
+    }
+
+    public bool IsEmailInRegistration(string email)
+    {
+        foreach (var rum in _newRegistrationUsers.Values)
+            if (rum.Email == email)
+                return true;
+        return false;
+    }
+
+    public VerificationEmail? GetVerificationEmailByNumberRegistration(uint numberRegistration)
+    {
+        _newRegistrationUsers.TryGetValue(numberRegistration, out VerificationEmail? registrationUser);
+        return registrationUser;
+    }
+
+    private uint GetNewNumberRegistration()
     {
         for (uint nr = 1; nr < uint.MaxValue; nr++)
-            if (!NewRegistrationUsers.TryGetValue(nr, out var _))
+            if (!_newRegistrationUsers.TryGetValue(nr, out var _))
                 return nr;
-
         throw new ServerException(ErrorCode.ServerError, "Something wrong. All numberRegistration busy, but it is uint.");
     }
 
@@ -88,18 +114,10 @@ public class RegistrarUserBackground(EmailProvider emailProvider, RegistrarUserF
     {
         const int codeMasLength = 4;
         var rand = new Random();
-        var newCode = "";
+        var newCode = string.Empty;
 
         for (int i = 0; i < codeMasLength; i++)
             newCode += rand.Next(0, 10);
         return newCode;
-    }
-
-    private class RegistrationUserModel
-    {
-        public required string Email { get; set; }
-        public required string EmailCode { get; set; }
-        public DateTime StartValidation { get; } = DateTime.Now;
-        public bool IsApproveEmailCode { get; set; } = false;
     }
 }

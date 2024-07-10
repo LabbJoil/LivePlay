@@ -1,7 +1,7 @@
 ﻿
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using LivePlay.Front.Application.HttpServices;
+using LivePlay.Front.Infrastructure.HttpServices;
 using LivePlay.Front.Core.Enums;
 using LivePlay.Front.Core.Models;
 using LivePlay.Front.Infrastructure;
@@ -15,11 +15,10 @@ namespace LivePlay.Front.MAUI.Pages.EnterPages.ViewModels;
 
 public partial class EnterViewModel(AppDesign designSettings, AppPermissions permissions, UserHttpService userHttpService) : BaseViewModel(designSettings)
 {
-    private AppPermissions Permissions { get; } = permissions;
-    private UserHttpService UserService { get; set; } = userHttpService;
-    private ActionTimer? SendCodeTimer;
-
-    private uint NumberRegistratrtion = 0;
+    private readonly AppPermissions _permissions = permissions;
+    private readonly UserHttpService _userService = userHttpService;
+    private ActionTimer? _sendCodeTimer;
+    private uint _numberRegistratrtion = 0;
 
     [ObservableProperty]
     public User _enterUser = new();
@@ -28,7 +27,7 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
     public async Task LoginUser()
     {
         RequestPermissions:
-        bool havePermissions = await Permissions.GetPermission();
+        bool havePermissions = await _permissions.GetPermission();
         if (!havePermissions)
         {
             if (await Shell.Current.DisplayAlert("Нет доступа к хранилищу", $"Предоставьте, пожалуйста, доступ к хранилищу", "ok", "no"))
@@ -36,35 +35,32 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
             else
                 return;
         }
+        var (roles, error) = await _userService.Login(EnterUser.Email, EnterUser.Password);
 
-        if (_enterUser.Email == "tre@gmail.com")
-            await Shell.Current.GoToAsync($"//{nameof(TapeFeedbackPage)}");
-        else if (_enterUser.Email == "lio@gmail.com")
-            await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
-        else if(_enterUser.Email == "111")
+        if (roles != null && roles.Length != 0)
         {
-            Preferences.Clear();
-            Preferences.Remove($"{nameof(Quest)}");
-            Preferences.Remove($"{nameof(QuestionQuest)}");
+            DeleteStackPages();
+            if (roles.Length == 1 && roles[0] == Role.User)
+                await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+            else
+                await Shell.Current.GoToAsync($"//{nameof(TapeFeedbackPage)}");
+            return;
         }
-        else
-            await Shell.Current.DisplayAlert("Нет доступа", $"Неправильный логин или пароль", "ok");
+        ShowError(error);
     }
 
     [RelayCommand]
     public async Task VerifyEmail(EnterPage enterPage)
     {
         StartLoading();
-        var response = await UserService.VerifyEmail(EnterUser.Email);
+        (_numberRegistratrtion, var error) = await _userService.VerifyEmail(EnterUser.Email);
         StopLoading();
 
-        (var ok, NumberRegistratrtion) = await ResponseProcessing(response);
-        if (!ok)
-            return;
+        if (error != null) { ShowError(error); return; }
 
-        var timerActions = await enterPage.VerifyEmailFrontProcess();
-        SendCodeTimer = new(DirectionAction.Down, timerActions.Item1, timerActions.Item2);
-        SendCodeTimer.Start(5000, 0);
+        var (printTimer, endTimer) = await enterPage.VerifyEmailFrontProcess();
+        _sendCodeTimer = new(DirectionAction.Down, printTimer, endTimer);
+        _sendCodeTimer.Start(5000, 0);
     }
 
     [RelayCommand]
@@ -72,16 +68,40 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
     {
         if (obj is Tuple<object, object> tuple && tuple.Item1 is string code && tuple.Item2 is EnterPage enterPage)
         {
-            //StartLoading();
-            //var response = await UserService.VerifyCodeEmail(NumberRegistratrtion, code);
-            //StopLoading();
+            StartLoading();
+            var error = await _userService.VerifyCodeEmail(_numberRegistratrtion, code);
+            StopLoading();
 
-            //var ok = await ResponseProcessing(response);
-            //if (!ok.Item1)
-            //    return;
+            if (error != null) { ShowError(error); return; }
 
-            SendCodeTimer?.Stop();
-            enterPage.CheckCodeEmailFrontProcess();
+            _sendCodeTimer?.Stop();
+            await enterPage.FillUserInfoFrontProcess();
         }
+    }
+
+    [RelayCommand]
+    public async Task SendCodeAgain(EnterPage enterPage)
+    {
+        StartLoading();
+        var error = await _userService.SendCodeAgain(_numberRegistratrtion);
+        StopLoading();
+
+        if (error != null) { ShowError(error); return; }
+
+        var (printTimer, endTimer) = enterPage.GetPrintEndTimerActions();
+        _sendCodeTimer = new(DirectionAction.Down, printTimer, endTimer);
+        _sendCodeTimer.Start(5000, 0);
+    }
+
+    [RelayCommand]
+    public async Task SendRegistrationInfo(EnterPage enterPage)
+    {
+        StartLoading();
+        var error = await _userService.Registration(_numberRegistratrtion, EnterUser);
+        StopLoading();
+
+        if (error != null) { ShowError(error); return; }
+
+        await enterPage.LoginFrontProcess();
     }
 }

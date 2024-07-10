@@ -1,4 +1,6 @@
 ﻿
+using LivePlay.Server.Core.Enums;
+
 namespace LivePlay.Server.Core.Models;
 
 public class User
@@ -9,4 +11,5 @@ public class User
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
     public int Points { get; set; }
+    public Role[] Roles { get; set; } = [];
 }

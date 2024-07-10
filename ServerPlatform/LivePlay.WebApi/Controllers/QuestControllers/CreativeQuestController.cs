@@ -12,12 +12,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LivePlay.Server.WebApi.Controllers.QuestControllers;
 
+[Route("[controller]/")]
+[ApiController]
 public class CreativeQuestController(CreativeQuestService questService, IMapper mapper) : Controller
 {
     private readonly CreativeQuestService _creativeQuestService = questService;
     private readonly IMapper _mapper = mapper;
 
-    [HttpPost("/getcreativequest/{id}")]
+    [HttpPost("get/{id}")]
     public async Task<IActionResult> GetCreativeQuest(int id)
     {
         var creativeQuest = await _creativeQuestService.GetQRQuestById(id);
@@ -25,7 +27,7 @@ public class CreativeQuestController(CreativeQuestService questService, IMapper 
         return Ok(response);
     }
 
-    [HttpPost("/addcreativequest")]
+    [HttpPost("add")]
     [Authorize(Policy = nameof(Politic.EditQuest))]
     public IActionResult AddCreativeQuest([FromBody] AddingCreativeQuestRequest creativeQuestRequest)
     {
@@ -34,7 +36,7 @@ public class CreativeQuestController(CreativeQuestService questService, IMapper 
         return NoContent();
     }
 
-    [HttpPost("/editcreativequest")]
+    [HttpPost("edit")]
     [Authorize(Policy = nameof(Politic.EditQuest))]
     public IActionResult EditCreativeQuest([FromBody] EditingCreativeQuestRequest creativeQuestRequest)
     {
@@ -43,7 +45,7 @@ public class CreativeQuestController(CreativeQuestService questService, IMapper 
         return NoContent();
     }
 
-    [HttpPost("/completecreativequest")]
+    [HttpPost("complete")]
     [Authorize(Policy = nameof(Politic.EditQuest))]
     public IActionResult CompleteCreativeQuest([FromBody] CompletingCreativeQuestRequest questionQuestRequest)
     {

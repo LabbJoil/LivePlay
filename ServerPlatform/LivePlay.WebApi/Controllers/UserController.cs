@@ -12,43 +12,53 @@ namespace LivePlay.Server.WebApi.Controllers;
 
 [Route("[controller]/")]
 [ApiController]
-public class UserController(UserService userService, IMapper mapper) : ControllerBase
+public class UserController(UserService userService, IMapper mapper) : Controller
 {
     private readonly UserService _userService = userService;
     private readonly IMapper _mapper = mapper;
 
-    [HttpPost("/login")]
+    [HttpPost("login")]
     public async Task<IActionResult> LoginUser([FromBody] LoginUserRequest loginUser)
     {
-        var token = await _userService.LogInUser(loginUser.Email, loginUser.Password);
-        HttpContext.Response.Cookies.Append("tok-cookies", token);
-        return NoContent();
+        var (token, roles) = await _userService.LoginUser(loginUser.Email, loginUser.Password);
+        return Ok(new LoginResponse
+        {
+            Token = token,
+            Role = roles.Select(r => r.ToString()).ToArray()
+        });
     }
 
-    [HttpGet("/verifyemail/{email}")]
+    [HttpGet("verifyEmail/{email}")]
     public async Task<IActionResult> VerifyEmail(string email)
     {
         var numberRegistration = await _userService.VerifyEmail(email);
         return Ok(numberRegistration);
     }
 
-    [HttpGet("/verifyemailcode/{numberRegistration}/{code}")]
-    public IActionResult VerifyEmailCode(uint numberRegistration, string code)
+    [HttpGet("checkEmailCode/{numberRegistration}/{code}")]
+    public IActionResult CheckEmailCode(uint numberRegistration, string code)
     {
         _userService.VerifyCodeEmail(numberRegistration, code);
         return NoContent();
     }
 
-    [HttpPost("/registrationuser/{numberRegistration}")]
+    [HttpPost("registration/{numberRegistration}")]
     public async Task<IActionResult> RegistrationUser(uint numberRegistration, [FromBody] RegistrationUserRequest newUser)
     {
         User user = _mapper.Map<User>(newUser);
         string token = await _userService.RegisterUser(numberRegistration, user);
-        HttpContext.Response.Cookies.Append("tok-cookies", token);
+        //HttpContext.Response.Cookies.Append("tok-cookies", token);
         return NoContent();
     }
 
-    [HttpPut("/editinfo")]
+    [HttpGet("sendCodeAgain/{numberRegistration}")]
+    public IActionResult SendCodeAgain(uint numberRegistration)
+    {
+        _userService.SendCodeAgain(numberRegistration);
+        return NoContent();
+    }
+
+    [HttpPut("editInfo")]
     [Authorize(Policy = nameof(Politic.PersonalInfo))]
     public async Task<IActionResult> EditInfo([FromBody] UpdateUserRequest updateUser)
     {
@@ -57,7 +67,7 @@ public class UserController(UserService userService, IMapper mapper) : Controlle
         return NoContent();
     }
 
-    [HttpDelete("/deleteuser")]
+    [HttpDelete("delete")]
     [Authorize(Policy=nameof(Politic.PersonalInfo))]
     public async Task<IActionResult> DeleteUser()
     {
@@ -65,7 +75,7 @@ public class UserController(UserService userService, IMapper mapper) : Controlle
         return NoContent();
     }
 
-    [HttpGet("/getpersonalqr")]
+    [HttpGet("getPersonalQR")]
     [Authorize(Policy = nameof(Politic.PersonalInfo))]
     public IActionResult GetPersonalQR()
     {
@@ -73,12 +83,20 @@ public class UserController(UserService userService, IMapper mapper) : Controlle
         return Ok(qr);
     }
 
-    [HttpGet("/getuser")]
+    [HttpGet("getUser")]
     [Authorize(Policy = nameof(Politic.PersonalInfo))]
     public async Task<IActionResult> GetUser()
     {
         var user = await _userService.GetUser(HttpContext.User);
         var userInfo = _mapper.Map<UserInfoResponse>(user);
         return Ok(userInfo);
+    }
+
+    [HttpGet("getPoints")]
+    [Authorize(Policy = nameof(Politic.PersonalInfo))]
+    public async Task<IActionResult> GetPoints()
+    {
+        var points = await _userService.GetPoints(HttpContext.User);
+        return Ok(points);
     }
 }

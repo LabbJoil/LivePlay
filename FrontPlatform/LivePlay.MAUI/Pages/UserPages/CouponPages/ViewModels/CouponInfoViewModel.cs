@@ -11,7 +11,7 @@ namespace LivePlay.Front.MAUI.Pages.UserPages.CouponPages.ViewModels;
 public partial class CouponInfoViewModel(AppDesign designSettings) : BaseViewModel(designSettings)
 {
     [ObservableProperty]
-    public CouponItem _thisCoupon = new()
+    public Coupon _thisCoupon = new()
     {
         Title = "Скидка на номер 10%",
         DescriptionFull = "В сети отелей Wone Hotels\r\nPalace Bridge\r\nCosmos SPb Olympia Garden Hotel\r\nVasilievsky Hotel\r\nпредоставляется скидка 10% на бронирование номеров эконом-класса",

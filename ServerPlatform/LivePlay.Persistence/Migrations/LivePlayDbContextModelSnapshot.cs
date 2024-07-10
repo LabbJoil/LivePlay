@@ -33,7 +33,7 @@ namespace LivePlay.Server.Persistence.Migrations
                     b.Property<int>("Cost")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Coupon")
+                    b.Property<string>("CouponData")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -162,6 +162,10 @@ namespace LivePlay.Server.Persistence.Migrations
                         .HasColumnType("bytea");
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Text")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -402,6 +406,9 @@ namespace LivePlay.Server.Persistence.Migrations
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<int>("Points")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 

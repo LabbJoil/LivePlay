@@ -88,7 +88,9 @@
                             CommandParameter="{Binding Source={x:Reference EmailCode}, Path=Text, ConverterParameter={x:Reference this}, Converter={StaticResource TupleConverter}}"/>
                     
                     <Button x:Name="SendCodeButton" Text="Отправить код ещё раз"  IsEnabled="False" Margin="10,0" 
-                            Style="{StaticResource SecondButton}" WidthRequest="230" Padding="0" HeightRequest="50"/>
+                            Style="{StaticResource SecondButton}" WidthRequest="230" Padding="0" HeightRequest="50"
+                            Command="{Binding SendCodeAgainCommand}"
+                            CommandParameter="{Binding Source={x:Reference this}}"/>
                 </StackLayout>
 
                 <StackLayout x:Name="UserInfoStackLayout" WidthRequest="300" Orientation="Vertical" IsVisible="False">

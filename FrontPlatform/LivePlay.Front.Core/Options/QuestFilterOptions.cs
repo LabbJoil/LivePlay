@@ -5,5 +5,5 @@ namespace LivePlay.Front.Core.Options;
 
 public class QuestFilterOptions
 {
-    public ChoicePanelItem[] QuestFilterItems { get; set; } = [];
+    //public ChoicePanelItem[] QuestFilterItems { get; set; } = [];
 }
