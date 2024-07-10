@@ -56,8 +56,11 @@ internal static class ServiceRegistrar
 
     public static void RegisterMapping(this IServiceCollection services)
     {
-        services.AddAutoMapper(typeof(Mappings.QuestMappings.QuestMapping), typeof(Mappings.QuestMappings.QRQuestMapping), typeof(Mappings.QuestMappings.QuestionQuestMapping),
-            typeof(Mappings.UserMapping));
-        services.AddAutoMapper(typeof(Persistence.Mappings.UserMapping));
+        services.AddAutoMapper(typeof(Mappings.UserMapping), typeof(Mappings.QuestMappings.QuestMapping),
+            typeof(Mappings.QuestMappings.QRQuestMapping), typeof(Mappings.QuestMappings.QuestionQuestMapping), typeof(Mappings.QuestMappings.CreativeQuestMapping));
+        
+        services.AddAutoMapper(typeof(Persistence.Mappings.UserMapping), typeof(Persistence.Mappings.CouponMapping), typeof(Persistence.Mappings.NewsMapping),
+            typeof(Persistence.Mappings.QuestMapping), typeof(Persistence.Mappings.QuestionQuestMapping), typeof(Persistence.Mappings.QRQuestMapping), typeof(Persistence.Mappings.CreativeQuestMapping),
+            typeof(Persistence.Mappings.HotelMapping), typeof(Persistence.Mappings.FeedbackMapping));
     }
 }

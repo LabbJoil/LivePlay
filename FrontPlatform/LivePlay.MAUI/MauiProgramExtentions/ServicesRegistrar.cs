@@ -88,7 +88,7 @@ public static class ServicesRegistrar
         services.AddTransient<GettingStatisticsPage>();
         services.AddTransient<MainCouponPage>();
 
-        services.AddTransient<BaseViewModel>();
+        //services.AddTransient<BaseViewModel>();
         services.AddTransient<CurrentNewsPageViewModel>();
         services.AddTransient<FeedbackViewModel>();
         services.AddTransient<TapeQuestViewModel>();
@@ -119,6 +119,6 @@ public static class ServicesRegistrar
 
     public static void RegisterMappingServices(this IServiceCollection services)
     {
-        services.AddAutoMapper(typeof(ErrorMapping));
+        services.AddAutoMapper(typeof(ErrorMapping), typeof(DrawingQuestMapping), typeof(UserMapping));
     }
 }

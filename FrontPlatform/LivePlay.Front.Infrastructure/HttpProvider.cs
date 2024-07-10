@@ -8,6 +8,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Web;
+using Microsoft.Maui.Controls.PlatformConfiguration;
 
 namespace LivePlay.Front.Infrastructure;
 
@@ -25,7 +26,16 @@ public class HttpProvider(IOptions<HttpProviderOptions> httpProviderOptions)
 
     private readonly HttpProviderOptions _providerOptions = httpProviderOptions.Value;
 
-    private string? Token { get; set; }
+    private static string? _token;
+    public static string? Token
+    { 
+        get => _token;
+        set
+        {
+            _token = value;
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", value);
+        }
+    }
 
     public void SetToken(string token)
     {
@@ -33,19 +43,19 @@ public class HttpProvider(IOptions<HttpProviderOptions> httpProviderOptions)
         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
     }
 
-    private static string GetRequestMessage(HttpResponseMessage? response, string? exceptionMessage)
-    {
-        string message = exceptionMessage ?? "Сообщения нет";
-        if (response == null)
-            return message;
-        else
-        {
-            byte[] buffer = new byte[2048];
-            int bytesRead = response.Content.ReadAsStream().Read(buffer);
-            message = bytesRead == 0 ? "Сообщения нет" : Encoding.UTF8.GetString(buffer, 0, bytesRead);
-        }
-        return message;
-    }
+    //private static string GetRequestMessage(HttpResponseMessage? response, string? exceptionMessage)
+    //{
+    //    string message = exceptionMessage ?? "Сообщения нет";
+    //    if (response == null)
+    //        return message;
+    //    else
+    //    {
+    //        byte[] buffer = new byte[2048];
+    //        int bytesRead = response.Content.ReadAsStream().Read(buffer);
+    //        message = bytesRead == 0 ? "Сообщения нет" : Encoding.UTF8.GetString(buffer, 0, bytesRead);
+    //    }
+    //    return message;
+    //}
 
     private static async Task<BaseResponse> CreateRequest(Func<Task<HttpResponseMessage>> requestFunc)
     {

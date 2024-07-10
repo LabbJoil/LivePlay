@@ -50,18 +50,18 @@ public class  AppStorage
         }
     }
 
-    public void GetHttpParams()
-    {
-        const string key = "HttpParams";
-        //var HttpParams = GetPreference<>(key);
-    }
+    //public void GetHttpParams()
+    //{
+    //    const string key = "HttpParams";
+    //    var HttpParams = GetPreference<>(key);
+    //}
 
-    private static void SavePreference(string keyPreference, object model)
+    public static void SavePreference(string keyPreference, object model)
     {
         Preferences.Set(keyPreference, JsonSerializer.Serialize(model));
     }
 
-    private static T? GetPreference<T>(string keyPreference)
+    public static T? GetPreference<T>(string keyPreference)
     {
         if (Preferences.Get(keyPreference, null) is string json)
             return JsonSerializer.Deserialize<T>(json);
