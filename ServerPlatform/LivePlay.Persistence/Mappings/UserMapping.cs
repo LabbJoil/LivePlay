@@ -1,5 +1,6 @@
 ﻿
 using AutoMapper;
+using LivePlay.Server.Core.Enums;
 using LivePlay.Server.Core.Models;
 using LivePlay.Server.Persistence.EntityModels.Base;
 
@@ -11,6 +12,7 @@ public class UserMapping : Profile
     {
         CreateMap<UserEntityModel, User>()
             .ForMember(u => u.Password, opt => opt.MapFrom(uem => uem.PasswordHash))
+            .ForMember(u => u.Roles, opt => opt.MapFrom(uem => uem.Roles.Select(rem => Enum.Parse<Role>(rem.Name)).ToArray()))
             .ReverseMap()
             .ForMember(u => u.PasswordHash, opt => opt.MapFrom(uem => uem.Password))
             .ForMember(u => u.Points, opt => opt.Ignore())

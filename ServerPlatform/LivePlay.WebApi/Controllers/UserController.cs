@@ -17,45 +17,53 @@ public class UserController(UserService userService, IMapper mapper) : Controlle
     private readonly UserService _userService = userService;
     private readonly IMapper _mapper = mapper;
 
-    [HttpPost("login")]
-    public async Task<IActionResult> LoginUser([FromBody] LoginUserRequest loginUser)
+    [HttpGet("login")]
+    public async Task<IActionResult> LoginUser([FromQuery] string email, string password)
     {
-        var (token, roles) = await _userService.LoginUser(loginUser.Email, loginUser.Password);
+        var (token, roles) = await _userService.LoginUser(email, password);
         return Ok(new LoginResponse
         {
             Token = token,
-            Role = roles.Select(r => r.ToString()).ToArray()
+            Roles = roles.Select(r => r.ToString()).ToArray()
         });
     }
 
-    [HttpGet("verifyEmail/{email}")]
-    public async Task<IActionResult> VerifyEmail(string email)
+    [HttpGet("verifyEmail")]
+    public async Task<IActionResult> VerifyEmail([FromQuery] string email)
     {
         var numberRegistration = await _userService.VerifyEmail(email);
         return Ok(numberRegistration);
     }
 
-    [HttpGet("checkEmailCode/{numberRegistration}/{code}")]
-    public IActionResult CheckEmailCode(uint numberRegistration, string code)
+    [HttpGet("checkEmailCode")]
+    public IActionResult CheckEmailCode([FromQuery] uint numberRegistration, string code)
     {
         _userService.VerifyCodeEmail(numberRegistration, code);
         return NoContent();
     }
 
-    [HttpPost("registration/{numberRegistration}")]
-    public async Task<IActionResult> RegistrationUser(uint numberRegistration, [FromBody] RegistrationUserRequest newUser)
+    [HttpPost("registration")]
+    public async Task<IActionResult> RegistrationUser([FromQuery] uint numberRegistration, [FromBody] RegistrationUserRequest newUser)
     {
         User user = _mapper.Map<User>(newUser);
         await _userService.RegisterUser(numberRegistration, user);
-        //HttpContext.Response.Cookies.Append("tok-cookies", token);
         return NoContent();
     }
 
-    [HttpGet("sendCodeAgain/{numberRegistration}")]
-    public IActionResult SendCodeAgain(uint numberRegistration)
+    [HttpGet("sendCodeAgain")]
+    public IActionResult SendCodeAgain([FromQuery] uint numberRegistration)
     {
         _userService.SendCodeAgain(numberRegistration);
         return NoContent();
+    }
+
+    [HttpGet("checkToken")]
+    [Authorize(Policy = nameof(Politic.GetActions))]
+    public async Task<IActionResult> CheckToken()
+    {
+        var rolesEnums = await _userService.GetUserRoles(HttpContext.User);
+        string[] roles = rolesEnums.Select(r => r.ToString()).ToArray();
+        return Ok(roles);
     }
 
     [HttpPut("editInfo")]

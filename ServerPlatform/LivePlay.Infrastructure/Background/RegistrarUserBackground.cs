@@ -3,7 +3,6 @@ using LivePlay.Server.Application.Facade;
 using LivePlay.Server.Application.Interfaces;
 using LivePlay.Server.Core.CustomExceptions;
 using LivePlay.Server.Core.Enums;
-using LivePlay.Server.Infrastructure.Providers;
 using Microsoft.Extensions.Hosting;
 
 namespace LivePlay.Server.Infrastructure.Background;
@@ -11,8 +10,6 @@ namespace LivePlay.Server.Infrastructure.Background;
 public partial class RegistrarUserBackground : BackgroundService, IRegistrarUserBackground
 {
     private readonly Dictionary<uint, VerificationEmail> _newRegistrationUsers = [];
-
-    public int I = 0;
 
     public RegistrarUserBackground(BackgroundFacade backgroundFacade)
     {
@@ -24,20 +21,11 @@ public partial class RegistrarUserBackground : BackgroundService, IRegistrarUser
         const int maxTimeSaveEmailValidation = 20;
         const int millisecondsDelay = 1500;
 
-        //BackFacade.CheckEmailCode = CheckEmailCode;
-        //BackFacade.AddNewEmailRegistration = AddNewEmailRegistration;
-        //BackFacade.GetRegistrationEmail = GetRegistrationEmail;
-        //BackFacade.SendCodeAgain = SendCodeAgain;
-        //BackFacade.PopRegistrationEmail = PopRegistrationEmail;
-
         while (!stoppingToken.IsCancellationRequested)
         {
             foreach (var rum in _newRegistrationUsers)
                 if (rum.Value.StartValidation.AddMinutes(maxTimeSaveEmailValidation) < DateTime.Now)
                     _newRegistrationUsers.Remove(rum.Key);
-
-            I++;
-
             await Task.Delay(millisecondsDelay, stoppingToken);
         }
     }

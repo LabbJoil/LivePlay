@@ -12,4 +12,5 @@ public class QuestContract
     public byte[] Image { get; set; } = [];
     public TypeQuest Type { get; set; }
     public int Reward { get; set; }
+    public required DateTime FinalDate { get; set; }
 }

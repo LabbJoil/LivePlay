@@ -25,7 +25,8 @@ public class UserService(IUserRepository repository, IJwtProvider jwtProvider, I
         var user = await _userRepository.GetByEmail(email);
         if (!_passwordHasher.Verify(password, user.Password ?? throw new ServerException(ErrorCode.LoginUser, $"Don`t found password user with id: {user.Id}.")))
             throw new RequestException(ErrorCode.LoginUser, $"Incorrect password or email.");
-        return (GenerateToken(user.Id), user.Roles);
+        var token = GenerateToken(user.Id);
+        return (token, user.Roles);
     }
 
     public async Task<uint> VerifyEmail(string email)
@@ -102,12 +103,6 @@ public class UserService(IUserRepository repository, IJwtProvider jwtProvider, I
         return user.Points;
     }
 
-    private string GenerateToken(Guid userId)
-    {
-        var userClaims = _jwtProvider.SetUserId(userId.ToString());
-        return _jwtProvider.GenerateNewToken(userClaims);
-    }
-
     public void SendCodeAgain(uint numberRegistration)
     {
         if (_backgroundFacade.GetVerificationEmailByNumberRegistration(numberRegistration) is VerificationEmail verificationEmail)
@@ -115,7 +110,7 @@ public class UserService(IUserRepository repository, IJwtProvider jwtProvider, I
             if (verificationEmail.StartValidation.AddMinutes(1) > DateTime.Now)
                 throw new RequestException(ErrorCode.RegistrationError, "The time has not expired yet to repeat the email validation.");
             string code = _backgroundFacade.RegenerationCode(numberRegistration);
-            
+
             var exception = _emailProvider.SendCodeEmail(verificationEmail.Email, code);
             if (exception != null)
             {
@@ -125,5 +120,18 @@ public class UserService(IUserRepository repository, IJwtProvider jwtProvider, I
             return;
         }
         throw new RequestException(ErrorCode.RegistrationError, "Try again, send an Email again.");
+    }
+
+    public async Task<Role[]> GetUserRoles(ClaimsPrincipal claimsPrincipal)
+    {
+        var userId = _jwtProvider.GetUserId(claimsPrincipal);
+        var user = await _userRepository.GetById(userId);
+        return user.Roles;
+    }
+
+    private string GenerateToken(Guid userId)
+    {
+        var userClaims = _jwtProvider.SetUserId(userId.ToString());
+        return _jwtProvider.GenerateNewToken(userClaims);
     }
 }

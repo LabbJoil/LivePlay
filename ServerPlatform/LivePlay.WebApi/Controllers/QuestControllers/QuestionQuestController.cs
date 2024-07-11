@@ -19,6 +19,14 @@ public class QuestionQuestController(QuestionQuestService questionQuestService, 
     private readonly QuestionQuestService _questionQuestService = questionQuestService;
     private readonly IMapper _mapper = mapper;
 
+    [HttpGet("getQuestQuestions")]
+    //[Authorize(Policy = nameof(Politic.GetActions))]
+    public async Task<IActionResult> GetQuestions([FromQuery] int questId)
+    {
+        var questQuestions = await _questionQuestService.GetQuestQuestions(questId);
+        return Ok(questQuestions);
+    }
+
     [HttpPost("add")]
     [Authorize(Policy = nameof(Politic.EditQuest))]
     public IActionResult AddQuestionQuest([FromBody] AddingQuestionQuestRequest questionQuestRequest)
@@ -44,11 +52,11 @@ public class QuestionQuestController(QuestionQuestService questionQuestService, 
     public async Task<IActionResult> CompleteQuestionQuest([FromBody] CompletingQuestionQuestRequest questionQuestRequest)
     {
         var (userPoints, reward) = await _questionQuestService.CompleteQuest(HttpContext.User, questionQuestRequest.QuestId, questionQuestRequest.AnswerQuestions);
-        var response = new CompletingQuestionQuestResponse
-        {
-            UserPoints = userPoints,
-            Reward = reward
-        };
-        return Ok(response);
+        //var response = new CompletingQuestionQuestResponse
+        //{
+        //    UserPoints = userPoints,
+        //    Reward = reward
+        //};
+        return Ok(reward);
     }
 }

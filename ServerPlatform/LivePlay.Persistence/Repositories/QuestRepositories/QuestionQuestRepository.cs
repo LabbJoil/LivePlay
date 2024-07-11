@@ -12,7 +12,6 @@ namespace LivePlay.Server.Persistence.Repositories.Quests;
 public class QuestionQuestRepository(LivePlayDbContext dbContext, IMapper mapper) : IQuestionQuestRepository
 {
     private readonly LivePlayDbContext _dbContext = dbContext;
-    private readonly QuestRepository _questRepository = new(dbContext, mapper);
     private readonly IMapper _mapper = mapper;
 
     public async Task<QuestionQuest> GetById(int id)
@@ -34,14 +33,15 @@ public class QuestionQuestRepository(LivePlayDbContext dbContext, IMapper mapper
 
     public async void Create(Quest quest, QuestionQuest[] questionQuests)
     {
-        QuestEntityModel questEntity = await _questRepository.Create(quest);
+        var questEntity = _mapper.Map<QuestEntityModel>(quest);     // TODO: сделать добавление в QuestQuestion
+        await _dbContext.AddAsync(questEntity);
         foreach (var questionQuest in questionQuests)
         {
             var questionQuestEntity = _mapper.Map<QuestionQuestEntityModel>(questionQuest);
             questionQuestEntity.Quest = questEntity;
             await _dbContext.AddAsync(questionQuestEntity);
         }
-        await _dbContext.SaveChangesAsync();
+        _dbContext.SaveChanges();
     }
 
     public async void Edit(Quest quest, QuestionQuest[] questionQuests)

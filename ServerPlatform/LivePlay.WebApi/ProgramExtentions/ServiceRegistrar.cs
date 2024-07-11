@@ -22,6 +22,7 @@ internal static class ServiceRegistrar
         services.AddScoped<QuestService>();
         services.AddScoped<QRQuestService>();
         services.AddScoped<CreativeQuestService>();
+        services.AddScoped<QuestionQuestService>();
         services.AddScoped<FeedbackService>();
         services.AddScoped<NewsService>();
         services.AddScoped<HotelService>();
@@ -36,6 +37,7 @@ internal static class ServiceRegistrar
         services.AddScoped<IQuestRepository, QuestRepository>();
         services.AddScoped<IQRQuestRepository, QRQuestRepository>();
         services.AddScoped<ICreativeQuestRepository, CreativeQuestRepository>();
+        services.AddScoped<IQuestionQuestRepository, QuestionQuestRepository>();
         services.AddScoped<ICouponRepository, CouponRepository>();
         services.AddScoped<INewsRepository, NewsRepository>();
         services.AddScoped<PermissionRepository>();
@@ -56,7 +58,7 @@ internal static class ServiceRegistrar
 
     public static void RegisterMapping(this IServiceCollection services)
     {
-        services.AddAutoMapper(typeof(Mappings.UserMapping), typeof(Mappings.QuestMappings.QuestMapping),
+        services.AddAutoMapper(typeof(Mappings.UserMapping), typeof(Mappings.NewsMapping), typeof(Mappings.QuestMappings.QuestMapping),
             typeof(Mappings.QuestMappings.QRQuestMapping), typeof(Mappings.QuestMappings.QuestionQuestMapping), typeof(Mappings.QuestMappings.CreativeQuestMapping));
         
         services.AddAutoMapper(typeof(Persistence.Mappings.UserMapping), typeof(Persistence.Mappings.CouponMapping), typeof(Persistence.Mappings.NewsMapping),

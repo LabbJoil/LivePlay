@@ -36,4 +36,10 @@ public class CouponService(ICouponRepository couponRepository, IUserRepository u
         _couponRepository.LinkedUser(couponId, userId);
         return userPoints;
     }
+
+    public async Task<Coupon> GetCoupon(int id)
+    {
+        var coupon = await _couponRepository.GetById(id);
+        return coupon;
+    }
 }

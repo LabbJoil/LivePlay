@@ -36,6 +36,7 @@ public class UserRepository(LivePlayDbContext dbContext, IMapper mapper) : IUser
     {
         var userEntity = await _dbContext.Users
             .AsNoTracking()
+            .Include(u => u.Roles)
             .FirstOrDefaultAsync(u => u.Id == id)
             ?? throw new RequestException(ErrorCode.DbGetError, $"The user could not be found", $"Not found user with id - {id}");
         return userEntity;
@@ -45,9 +46,11 @@ public class UserRepository(LivePlayDbContext dbContext, IMapper mapper) : IUser
     {
         var userEntity = await _dbContext.Users
             .AsNoTracking()
+            .Include(u => u.Roles)
             .FirstOrDefaultAsync(u => u.Email == email)
             ?? throw new RequestException(ErrorCode.DbGetError, $"No user with email: {email}", $"Not found user with email - {email}");
-        User user = _mapper.Map<User>(userEntity);
+        var roles = userEntity.Roles.ToArray();
+        var user = _mapper.Map<User>(userEntity);
         return user;
     }
 
