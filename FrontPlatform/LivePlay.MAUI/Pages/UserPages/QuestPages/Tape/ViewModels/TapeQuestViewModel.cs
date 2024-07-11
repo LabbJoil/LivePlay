@@ -3,40 +3,44 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LivePlay.Front.Core.Enums;
 using LivePlay.Front.Core.Models.QuestModels;
+using LivePlay.Front.Infrastructure.HttpServices.QuestHttpServices;
 using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.MAUI.Models;
 using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.Views;
 using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.NotStarted.Views;
-using System.Text.Json;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.QuestPages.Tape.ViewModels;
 
 public partial class TapeQuestViewModel : BaseTapeViewModel
 {
-    public AppStorage _deviceStorage;
+    private readonly AppStorage _deviceStorage;
+    private readonly QuestHttpService _questHttpService;
 
     [ObservableProperty]
-    public IReadOnlyList<Quest> _tapeItems;
+    public IReadOnlyList<Quest> _tapeItems = [];
 
-    public IReadOnlyList<ChoicePanelItem> QuestFilterItems { get; set; } = [
+    public IReadOnlyList<ChoicePanelItem> QuestFilterItems { get; } = [
         new ChoicePanelItem { Icon = "star_light.svg", Text="Все" },
         new ChoicePanelItem { Icon = "in_process_light.svg", Text="В процессе" },
         new ChoicePanelItem { Icon = "done_quests_light.svg", Text="Выполнены" }
         ];
 
-    public TapeQuestViewModel(AppDesign designSettings, AppStorage deviceStorage) : base(designSettings)
+    public TapeQuestViewModel(QuestHttpService questHttpService, AppDesign designSettings, AppStorage deviceStorage) : base(designSettings)
     {
+        _questHttpService = questHttpService;
         _deviceStorage = deviceStorage; //заменить, переход строго через goto
-        TapeItems = GetQuestItems();
+        //TapeItems = GetQuestItems();
+        GetQuestItems();
     }
 
-    public Quest[] GetQuestItems()
+    public async void GetQuestItems()
     {
-        string? json = Preferences.Get(nameof(Quest), null);
-        if (json != null)
-            return [JsonSerializer.Deserialize<Quest>(json)];
-        return [];
+        StartLoading();
+        (TapeItems, var error) = await _questHttpService.GetAllQuests();
+        StopLoading();
+
+        if (error != null) { ShowError(error); return; }
     }
 
     [RelayCommand]

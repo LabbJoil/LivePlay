@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using LivePlay.Front.Core.Enums;
 using LivePlay.Front.Core.Models.QuestModels;
+using LivePlay.Front.Infrastructure.HttpServices.QuestHttpServices;
 using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.Views;
@@ -12,19 +13,21 @@ namespace LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.ViewModels;
 
 public partial class InProgressQuestionQuestViewModel : BaseQuestViewModel
 {
-    private readonly QuestionQuest[] AllQuestionQuests;
+    private readonly QuestionQuestHttpService _questionQuestHttpService;
+    private QuestionQuest[] AllQuestionQuests = [];
     private int NowQuest = -1;
 
-    public InProgressQuestionQuestViewModel(AppDesign designSettings) : base(designSettings)
+    public InProgressQuestionQuestViewModel(AppDesign designSettings, QuestionQuestHttpService questionQuestHttpService) : base(designSettings)
     {
-        AllQuestionQuests = LoadQuestionQuests();
+        _questionQuestHttpService = questionQuestHttpService;
+        LoadQuestionQuests();
     }
 
-    private QuestionQuest[] LoadQuestionQuests()
+    private async void LoadQuestionQuests()
     {
-        if (Preferences.Get(nameof(QuestionQuest), null) is string json)
-            return JsonSerializer.Deserialize<QuestionQuest[]>(json);
-        return [];
+        (AllQuestionQuests, var error) = await _questionQuestHttpService.GetQuestions(CurrentQuestItem.Id);
+        if (error != null)
+            ShowError(error);
     }
 
     public async void GetItemsData(InProgressQuestionQuestPage page)
@@ -50,7 +53,7 @@ public partial class InProgressQuestionQuestViewModel : BaseQuestViewModel
     [RelayCommand]
     public async Task GoPreviousQuestion(InProgressQuestionQuestPage page)
     {
-        if (NowQuest == 0)
+        if (NowQuest > 1)
             return;
         if (NowQuest < AllQuestionQuests.Length)
         {

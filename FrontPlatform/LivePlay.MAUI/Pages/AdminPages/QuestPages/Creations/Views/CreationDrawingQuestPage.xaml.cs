@@ -3,11 +3,11 @@ using LivePlay.Front.MAUI.DeviceSettings;
 
 namespace LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.Views;
 
-public partial class CreationCreativeQuestPage : ContentPage
+public partial class CreationDrawingQuestPage : ContentPage
 {
     private AppStorage DeviceStorage { get; }
 
-    public CreationCreativeQuestPage()
+    public CreationDrawingQuestPage()
 	{
         InitializeComponent();
     }

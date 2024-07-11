@@ -37,7 +37,7 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
         }
         var (roles, error) = await _userService.Login(EnterUser.Email, EnterUser.Password);
 
-        if (roles != null && roles.Length != 0)
+        if (roles.Length > 0)
         {
             DeleteStackPages();
             if (roles.Length == 1 && roles[0] == Role.User)

@@ -17,6 +17,6 @@ public partial class ManageQuestPage : ContentPage
 
     private void PageAppearing(object sender, EventArgs e)
     {
-        _manageQuestPageViewModel.GetQuestItems();
+        
     }
 }

@@ -12,8 +12,9 @@ using Microsoft.Maui.Controls.PlatformConfiguration;
 
 namespace LivePlay.Front.Infrastructure;
 
-public class HttpProvider(IOptions<HttpProviderOptions> httpProviderOptions)
+public class HttpProvider(IOptions<HttpProviderOptions> httpProviderOptions, IAppStorage appStorage)
 {
+    private readonly IAppStorage _appStorage = appStorage;
     private readonly static HttpClient _httpClient = 
         new(
             new HttpClientHandler()
@@ -26,36 +27,31 @@ public class HttpProvider(IOptions<HttpProviderOptions> httpProviderOptions)
 
     private readonly HttpProviderOptions _providerOptions = httpProviderOptions.Value;
 
-    private static string? _token;
-    public static string? Token
+    private string? _token;
+    public string Token
     { 
-        get => _token;
+        get
+        {
+            if (_token == null)
+            {
+                var saveToken= _appStorage.GetPreference<string>(nameof(Token));
+                if (saveToken != null)
+                {
+                    _token = saveToken;
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", saveToken);
+                    return _token;
+                }
+                return string.Empty;
+            }
+            return _token;
+        } 
         set
         {
             _token = value;
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", value);
+            _appStorage.SavePreference(nameof(Token), value);
         }
     }
-
-    public void SetToken(string token)
-    {
-        Token = token;
-        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-    }
-
-    //private static string GetRequestMessage(HttpResponseMessage? response, string? exceptionMessage)
-    //{
-    //    string message = exceptionMessage ?? "Сообщения нет";
-    //    if (response == null)
-    //        return message;
-    //    else
-    //    {
-    //        byte[] buffer = new byte[2048];
-    //        int bytesRead = response.Content.ReadAsStream().Read(buffer);
-    //        message = bytesRead == 0 ? "Сообщения нет" : Encoding.UTF8.GetString(buffer, 0, bytesRead);
-    //    }
-    //    return message;
-    //}
 
     private static async Task<BaseResponse> CreateRequest(Func<Task<HttpResponseMessage>> requestFunc)
     {

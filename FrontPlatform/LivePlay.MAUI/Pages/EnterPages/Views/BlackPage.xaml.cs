@@ -13,8 +13,8 @@ public partial class BlackPage : ContentPage
 		InitializeComponent();
 	}
 
-    private void ContentPage_Loaded(object sender, EventArgs e)
+    private async void ContentPage_Loaded(object sender, EventArgs e)
     {
-
+		await _blackViewModel.MakeDecision();
     }
 }

@@ -1,6 +1,6 @@
 ﻿
 using AutoMapper;
-using LivePlay.Front.Infrastructure.Contracts.Requests;
+using LivePlay.Front.Infrastructure.Contracts.Requests.QuestRequests.Complete;
 using LivePlay.Server.Core.Models;
 
 namespace LivePlay.Front.Infrastructure.Mappings;

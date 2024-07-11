@@ -83,7 +83,8 @@
 
                 <Button Grid.Row="3" Grid.Column="1" Text="Изменить пароль" WidthRequest="210" FontAttributes="Bold" BackgroundColor="{AppThemeBinding Dark={StaticResource BasicButtonBackgroundDark}, Light={StaticResource BasicButtonBackgroundDark}}"/>
 
-                <Button Grid.Row="5" Grid.Column="1" Text="Выйти из аккаунта" WidthRequest="210" FontAttributes="Bold" BackgroundColor="{AppThemeBinding Dark={StaticResource BasicButtonBackgroundDark}, Light={StaticResource BasicButtonBackgroundDark}}"/>
+                <Button Grid.Row="5" Grid.Column="1" Text="Выйти из аккаунта" WidthRequest="210" FontAttributes="Bold" BackgroundColor="{AppThemeBinding Dark={StaticResource BasicButtonBackgroundDark}, Light={StaticResource BasicButtonBackgroundDark}}"
+                        Command="{Binding LogoutCommand}"/>
                 <Button Grid.Row="6" Grid.Column="1" Text="Удалить аккаунт" WidthRequest="210" HeightRequest="42" VerticalOptions="Center" FontAttributes="Bold" BackgroundColor="#980000"/>
             </Grid>
         </Grid>

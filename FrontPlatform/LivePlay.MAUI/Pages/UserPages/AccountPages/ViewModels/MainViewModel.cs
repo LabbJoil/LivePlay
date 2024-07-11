@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using LivePlay.Front.MAUI.Pages.UserPages.NewsPages.Views;
 using LivePlay.Front.Infrastructure.HttpServices;
 using CommunityToolkit.Maui.Core.Extensions;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.AccountPages.ViewModels;
 
@@ -16,7 +17,15 @@ public partial class MainViewModel : BaseTapeViewModel
     private readonly NewsHttpService _newsService;
     private string? _qrData;
 
-    public ObservableCollection<News> TapeItems { get; set; } = [];
+    [ObservableProperty]
+    public ObservableCollection<News> _tapeItems = [];
+
+    [RelayCommand]
+    public void RefreshPage()
+    {
+        GetMainPageInfo();
+        Refresh();
+    }
 
     [RelayCommand]
     public async override Task GoToTapeItem(object item)
@@ -32,48 +41,22 @@ public partial class MainViewModel : BaseTapeViewModel
         _userService = userHttpService;
         _newsService = newsHttpService;
         GetMainPageInfo();
-    //    string cookiesPath = Environment.GetFolderPath(Environment.SpecialFolder.Cookies);
-    //    string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-
-        //    string filePath = Path.Combine(appDataPath, "Рисунок1.txt");
-
-
-        //    //File.WriteAllBytes(filePath, File.ReadAllBytes($@"/storage/emulated/0/Рисунок1.png"));
-
-        //    TapeItems = [
-        //        new()
-        //        {
-        //            Image = $@"/storage/emulated/0/Рисунок1.png",
-        //            Title = "Новые события",
-        //            Description = "В наших отелях новые конкурсы!"
-        //        },
-        //        new()
-        //        {
-        //            Image = $@"/storage/emulated/0/Рисунок1.png",
-        //            Title = "Новые события",
-        //            Description = "В наших отелях новые конкурсы!"
-        //        },
-        //        new()
-        //        {
-        //            Image = $@"/storage/emulated/0/Рисунок1.png",
-        //            Title = "Новые события",
-        //            Description = "В наших отелях новые конкурсы!"
-        //        }
-        //    ];
     }
 
     public async void GetMainPageInfo()
     {
         StartLoading();
         var (points, error) = await _userService.GetPoints();
-        if (error != null) { ShowError(error); return; }
+        if (error != null) { ShowError(error); goto EndProcess; }
         (_qrData, error) = await _userService.GetPersonalQR();
-        if (error != null) { ShowError(error); return; }
+        if (error != null) { ShowError(error); goto EndProcess; }
         (var news, error) = await _newsService.GetLastNews();
-        if (error != null) { ShowError(error); return; }
-        StopLoading();
+        if (error != null) { ShowError(error); goto EndProcess; }
 
         TapeItems = news?.ToObservableCollection() ?? [];
         DesignSettings.ChangeCountCoins?.Invoke(points);
+
+    EndProcess:
+        StopLoading();
     }
 }

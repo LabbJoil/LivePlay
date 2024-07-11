@@ -16,35 +16,29 @@ public abstract class BaseHttpServise
         Title = "Request error",
         Message = "Не удалось преобразовать полученный от сервера ответ"
     };
+    protected readonly HttpProvider _httpProvider;
+    protected readonly IMapper _mapper;
 
-
-    protected HttpProvider HttpProvider { get; }
-    protected IMapper Mapper { get; }
     protected abstract string BaseRoute { get; }
 
     public BaseHttpServise(IServiceScopeFactory serviceScopeFactory)
     {
         using var scope = serviceScopeFactory.CreateScope();
-        Mapper = scope.ServiceProvider.GetRequiredService<IMapper>();
-        HttpProvider = scope.ServiceProvider.GetRequiredService<HttpProvider>();
+        _mapper = scope.ServiceProvider.GetRequiredService<IMapper>();
+        _httpProvider = scope.ServiceProvider.GetRequiredService<HttpProvider>();
     }
 
     protected (T?, DisplayError?) ParseResponse<T>(BaseResponse response)
     {
-        if (response.IsSuccess)
-        {
-            T? body = JsonSerializer.Deserialize<T>(response.ResponseData);
-            if (body == null)
-                return (default, ParseError(response.ResponseData, response.Error));
-            return (body, null);
-        }
-        else
+        var body = Deserialize<T>(response.ResponseData);
+        if (body == null)
             return (default, ParseError(response.ResponseData, response.Error));
+        return (body, null);
     }
 
     protected DisplayError ParseError(string errorBody, string? errorRequest)
     {
-        ErrorResponse? errorResponse = JsonSerializer.Deserialize<ErrorResponse>(errorBody);
+        var errorResponse = Deserialize<ErrorResponse>(errorBody);
         DisplayError errorDisplay;
         if (errorResponse == null)
         {
@@ -55,7 +49,21 @@ public abstract class BaseHttpServise
             };
         }
         else
-            errorDisplay = Mapper.Map<DisplayError>(errorResponse);
+            errorDisplay = _mapper.Map<DisplayError>(errorResponse);
         return errorDisplay;
+    }
+
+    private static T? Deserialize<T>(string body)
+    {
+        T? deserializeBody;
+        try
+        {
+            deserializeBody = JsonSerializer.Deserialize<T>(body);
+        }
+        catch
+        {
+            deserializeBody = default;
+        }
+        return deserializeBody;
     }
 }

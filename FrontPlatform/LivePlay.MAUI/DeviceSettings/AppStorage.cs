@@ -1,11 +1,12 @@
 ﻿
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Storage;
+using LivePlay.Front.Infrastructure.Interfaces;
 using System.Text.Json;
 
 namespace LivePlay.Front.MAUI.DeviceSettings;
 
-public class  AppStorage
+public class  AppStorage : IAppStorage
 {
     public static async Task GetSelectItemsStorage()
     {
@@ -56,13 +57,14 @@ public class  AppStorage
     //    var HttpParams = GetPreference<>(key);
     //}
 
-    public static void SavePreference(string keyPreference, object model)
+    public void SavePreference(string keyPreference, object model)
     {
         Preferences.Set(keyPreference, JsonSerializer.Serialize(model));
     }
 
-    public static T? GetPreference<T>(string keyPreference)
+    public T? GetPreference<T>(string keyPreference)
     {
+
         if (Preferences.Get(keyPreference, null) is string json)
             return JsonSerializer.Deserialize<T>(json);
         return default;

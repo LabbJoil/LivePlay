@@ -9,7 +9,7 @@ namespace LivePlay.Front.Infrastructure.HttpServices;
 
 public class UserHttpService(IServiceScopeFactory serviceScopeFactory) : BaseHttpServise(serviceScopeFactory)
 {
-    protected override string BaseRoute => "user";
+    protected override string BaseRoute => "User";
 
     public async Task<(Role[], DisplayError?)> Login(string email, string password)
     {
@@ -18,15 +18,15 @@ public class UserHttpService(IServiceScopeFactory serviceScopeFactory) : BaseHtt
             (nameof(email), email),
             (nameof(password), password)
             ];
-        var response = await HttpProvider.Get(BaseRoute + route, sendParams);
+        var response = await _httpProvider.Get(BaseRoute + route, sendParams);
 
         if (response.IsSuccess)
         {
             var (loginResponse, error) = ParseResponse<LoginResponse>(response);
-            if (loginResponse != null)
+            if (loginResponse != default)
             {
-                HttpProvider.SetToken(loginResponse.Token);
-                return (loginResponse.Role.Select(Enum.Parse<Role>).ToArray(), null);
+                _httpProvider.Token = loginResponse.Token;
+                return (loginResponse.Roles.Select(Enum.Parse<Role>).ToArray(), null);
             }
             return ([], error);
         }
@@ -34,10 +34,26 @@ public class UserHttpService(IServiceScopeFactory serviceScopeFactory) : BaseHtt
             return ([], ParseError(response.ResponseData, response.Error));
     }
 
+    public async Task<Role[]> CheckToken()
+    {
+        if (_httpProvider.Token == string.Empty)
+            return [];
+
+        const string route = "/checkToken";
+        var response = await _httpProvider.Get(BaseRoute + route);
+        if (response.IsSuccess)
+        {
+            var (loginResponse, _) = ParseResponse<string[]>(response);
+            if (loginResponse != default)
+                return loginResponse.Select(Enum.Parse<Role>).ToArray();
+        }
+        return [];
+    }
+
     public async Task<(int, DisplayError?)> GetPoints()
     {
         const string route = "/getPoints";
-        var response = await HttpProvider.Get(BaseRoute + route);
+        var response = await _httpProvider.Get(BaseRoute + route);
         if (response.IsSuccess)
             return ParseResponse<int>(response);
         else
@@ -47,9 +63,9 @@ public class UserHttpService(IServiceScopeFactory serviceScopeFactory) : BaseHtt
     public async Task<(string?, DisplayError?)> GetPersonalQR()
     {
         const string route = "/getPersonalQR";
-        var response = await HttpProvider.Get(BaseRoute + route);
-        if (response.IsSuccess)
-            return ParseResponse<string>(response);
+        var response = await _httpProvider.Get(BaseRoute + route);
+        if (response.IsSuccess && response.ResponseData.Length != 0)
+            return (response.ResponseData, null);
         else
             return (default, ParseError(response.ResponseData, response.Error));
     }
@@ -57,7 +73,7 @@ public class UserHttpService(IServiceScopeFactory serviceScopeFactory) : BaseHtt
     public async Task<(uint, DisplayError?)> VerifyEmail(string email)
     {
         const string route = "/verifyEmail";
-        var response = await HttpProvider.Get(BaseRoute + route, (nameof(email), email));
+        var response = await _httpProvider.Get(BaseRoute + route, (nameof(email), email));
         if (response.IsSuccess)
             return ParseResponse<uint>(response);
         else
@@ -72,7 +88,7 @@ public class UserHttpService(IServiceScopeFactory serviceScopeFactory) : BaseHtt
             (nameof(code), code)
             ];
 
-        var response = await HttpProvider.Get(BaseRoute + route, sendParams);
+        var response = await _httpProvider.Get(BaseRoute + route, sendParams);
         if (response.IsSuccess)
             return null;
         else
@@ -82,13 +98,13 @@ public class UserHttpService(IServiceScopeFactory serviceScopeFactory) : BaseHtt
     public async Task<DisplayError?> Registration(uint numberRegistration, User user)
     {
         const string route = "/registration";
-        var registrationUser = Mapper.Map<RegistrationUserRequest>(user);
-        var response = await HttpProvider.Post(BaseRoute + route, registrationUser, (nameof(numberRegistration), numberRegistration.ToString()));
+        var registrationUser = _mapper.Map<RegistrationUserRequest>(user);
+        var response = await _httpProvider.Post(BaseRoute + route, registrationUser, (nameof(numberRegistration), numberRegistration.ToString()));
         if (response.IsSuccess)
         {
             var (token, error) = ParseResponse<string>(response);
             if (error == null && token != null)
-                HttpProvider.SetToken(token);
+                _httpProvider.Token = token;
             else
                 return error;
             return null;
@@ -100,11 +116,15 @@ public class UserHttpService(IServiceScopeFactory serviceScopeFactory) : BaseHtt
     public async Task<DisplayError?> SendCodeAgain(uint numberRegistratrtion)
     {
         const string route = "/sendCodeAgain";
-
-        var response = await HttpProvider.Get(BaseRoute + route, (nameof(numberRegistratrtion), numberRegistratrtion.ToString()));
+        var response = await _httpProvider.Get(BaseRoute + route, (nameof(numberRegistratrtion), numberRegistratrtion.ToString()));
         if (response.IsSuccess)
             return null;
         else
             return ParseError(response.ResponseData, response.Error);
+    }
+
+    public void Logout()
+    {
+        _httpProvider.Token = "";
     }
 }
