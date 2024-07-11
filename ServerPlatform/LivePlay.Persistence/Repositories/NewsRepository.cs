@@ -14,7 +14,9 @@ public class NewsRepository(LivePlayDbContext dbContext, IMapper mapper) : INews
     public News[] GetLastNews()
     {
         var newsEntities = _dbContext.News.AsNoTracking()
-            .TakeLast(4).ToArray();
+            .OrderByDescending(n => n.Name)         //TODO: работа с датой
+            .Take(4)
+            .ToArray();
         var news = _mapper.Map<News[]>(newsEntities);
         return news;
     }

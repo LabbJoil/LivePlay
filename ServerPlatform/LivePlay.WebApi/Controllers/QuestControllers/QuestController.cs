@@ -14,17 +14,25 @@ public class QuestController(QuestService questService, IMapper mapper) : Contro
     private readonly QuestService _questService = questService;
     private readonly IMapper _mapper = mapper;
 
-    [HttpGet("allquests")]
-    [Authorize(Policy = nameof(Politic.ReadQuestCoupon))]
+    [HttpGet("getAll")]
+    [Authorize(Policy = nameof(Politic.GetActions))]
     public async Task<IActionResult> GetAllQuests()
     {
         var allQuests = await _questService.GetAllQuestsBase();
         return Ok(allQuests);
     }
 
-    [HttpDelete("deletequest/{id}")]
+    [HttpGet("takePart")]
+    [Authorize(Policy = nameof(Politic.GetActions))]
+    public IActionResult TakePartQuest([FromQuery] int id)
+    {
+        _questService.DeleteQuest(id);
+        return NoContent();
+    }
+
+    [HttpDelete("delete")]
     [Authorize(Policy = nameof(Politic.EditQuest))]
-    public IActionResult DeleteQuest(int id)
+    public IActionResult DeleteQuest([FromQuery] int id)
     {
         _questService.DeleteQuest(id);
         return NoContent();

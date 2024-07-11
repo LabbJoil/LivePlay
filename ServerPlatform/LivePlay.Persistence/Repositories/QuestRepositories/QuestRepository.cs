@@ -15,7 +15,7 @@ public class QuestRepository(LivePlayDbContext dbContext, IMapper mapper) : IQue
     private readonly UserRepository _userRepository = new(dbContext, mapper);
     private readonly IMapper _mapper = mapper;
 
-    public async Task<Quest> GetById(int id)
+    public async Task<Quest?> GetById(int id)
     {
         var questEntity = await GetCloseEntityById(id);
         var quest = _mapper.Map<Quest>(questEntity);
@@ -68,7 +68,7 @@ public class QuestRepository(LivePlayDbContext dbContext, IMapper mapper) : IQue
         questEntity = _mapper.Map<QuestEntityModel>(quest);
     }
 
-    public async Task<Quest> GetByIdAndUserId(int id, Guid userId)
+    public async Task<Quest?> GetByIdAndUserId(int id, Guid userId)
     {
         var questEntity = await _dbContext.Quests.FirstOrDefaultAsync(q => q.Id == id && q.Users.FirstOrDefault(u => u.Id == userId) != null);
         var quest = _mapper.Map<Quest>(questEntity);

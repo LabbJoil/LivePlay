@@ -19,8 +19,8 @@ public class CreativeQuestController(CreativeQuestService questService, IMapper 
     private readonly CreativeQuestService _creativeQuestService = questService;
     private readonly IMapper _mapper = mapper;
 
-    [HttpPost("get/{id}")]
-    public async Task<IActionResult> GetCreativeQuest(int id)
+    [HttpPost("get")]
+    public async Task<IActionResult> GetCreativeQuest([FromQuery] int id)
     {
         var creativeQuest = await _creativeQuestService.GetQRQuestById(id);
         var response = _mapper.Map<CreativeQuestContract>(creativeQuest);

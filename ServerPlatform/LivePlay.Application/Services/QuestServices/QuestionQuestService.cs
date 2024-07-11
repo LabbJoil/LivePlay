@@ -26,6 +26,11 @@ public class QuestionQuestService(IUserRepository userRepository, IQuestReposito
         _questionQuestRepository.Edit(quest, questionQuests);
     }
 
+    public async Task<QuestionQuest[]> GetQuestQuestions(int questId)
+    {
+       return await _questionQuestRepository.GetByQuestId(questId);
+    }
+
     public async Task<(int, int)> CompleteQuest(ClaimsPrincipal claimsPrincipal, int questId, Dictionary<int, int> questIdAndAnswers)
     {
         var userId = _jwtProvider.GetUserId(claimsPrincipal);

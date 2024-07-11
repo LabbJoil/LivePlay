@@ -6,5 +6,5 @@ public enum Politic
     PersonalInfo,
     EditQuest,
     EditCoupon,
-    ReadQuestCoupon
+    GetActions
 }

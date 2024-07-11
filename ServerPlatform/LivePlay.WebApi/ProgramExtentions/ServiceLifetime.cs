@@ -4,8 +4,6 @@ using LivePlay.Server.Core.CustomExceptions;
 using LivePlay.Server.Core.Enums;
 using LivePlay.Server.Persistence;
 using LivePlay.Server.Persistence.EntityModels.Base;
-using LivePlay.Server.Persistence.Repositories;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace LivePlay.Server.WebApi.ProgramExtentions;
 
@@ -25,11 +23,16 @@ public static class ServiceLifetime
         app.Logger.LogInformation("All services stoped");
     }
 
+    // INFO: Time
     public static void OnApplicationStarted(this WebApplication app)
     {
+        return;
         using var scope = app.Services.CreateScope();
         var livePlayDbContext = scope.ServiceProvider.GetService<LivePlayDbContext>()
             ?? throw new ServerException(ErrorCode.ServerError, $"Service {nameof(LivePlayDbContext)} not found");
+
+        if (livePlayDbContext.News.Count() > 1)
+            return;
 
         var path = @"C:\Users\levt1\Desktop\";
         var newNews1 = new NewsEntityModel

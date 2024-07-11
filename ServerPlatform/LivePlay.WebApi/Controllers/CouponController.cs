@@ -16,7 +16,7 @@ public class CouponController(CouponService couponService, IMapper mapper) : Con
     private readonly CouponService _couponService = couponService;
     private readonly IMapper _mapper = mapper;
 
-    [HttpGet("/getcoupons")]
+    [HttpGet("/getAll")]
     [Authorize(Policy = nameof(Politic.EditQuest))]
     public async Task<IActionResult> GetAllCoupons()
     {
@@ -24,7 +24,15 @@ public class CouponController(CouponService couponService, IMapper mapper) : Con
         return Ok(coupons);
     }
 
-    [HttpPost("/addcoupon")]
+    [HttpGet("/get")]
+    [Authorize(Policy = nameof(Politic.EditQuest))]
+    public async Task<IActionResult> GetCoupon([FromQuery] int id)
+    {
+        var coupon = await _couponService.GetCoupon(id);
+        return Ok(coupon);
+    }
+
+    [HttpPost("/add")]
     [Authorize(Policy = nameof(Politic.EditQuest))]
     public IActionResult AddCoupon([FromBody] AddingCouponRequest couponRequest)
     {
@@ -33,9 +41,9 @@ public class CouponController(CouponService couponService, IMapper mapper) : Con
         return NoContent();
     }
 
-    [HttpPost("/buycoupon/{id}")]
+    [HttpPost("/buy")]
     [Authorize(Policy = nameof(Politic.EditQuest))]
-    public async Task<IActionResult> BuyCoupon(int id)
+    public async Task<IActionResult> BuyCoupon([FromQuery] int id)
     {
         var award = await _couponService.BuyCoupon(HttpContext.User, id);
         return Ok(award);

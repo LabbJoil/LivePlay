@@ -13,10 +13,10 @@ public class PermissionProvider(Politic needPolitic) : IAuthorizationRequirement
     {
         return RequirePolitic switch
         {
-            Politic.EditQuest => [Permission.CreateQuest, Permission.UpdateSelf, Permission.DeleteQuest],
+            Politic.EditQuest => [Permission.ReadQuest, Permission.CreateQuest, Permission.UpdateQuest, Permission.DeleteQuest],
             Politic.EditCoupon => [Permission.ReadCoupon, Permission.CreateCoupon, Permission.UpdateCoupon, Permission.DeleteCoupon],
             Politic.PersonalInfo => [Permission.GetSelf, Permission.UpdateSelf, Permission.DeleteSelf],
-            Politic.ReadQuestCoupon => [Permission.ReadQuest, Permission.ReadCoupon],
+            Politic.GetActions => [Permission.ReadQuest, Permission.ReadCoupon],
             _ => throw new ServerException(ErrorCode.PermitionError, $"Couldn't find permissions for the policy {RequirePolitic}"),
         };
     }
