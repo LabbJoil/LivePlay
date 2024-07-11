@@ -24,10 +24,11 @@ public class QuestionQuestHttpService(IServiceScopeFactory serviceScopeFactory) 
         return ParseError(response.ResponseData, response.Error);
     }
 
-    public async Task<(QuestionQuest[], DisplayError?)> GetQuestions(int id)
+    public async Task<(QuestionQuest[], DisplayError?)> GetQuestions(int questId)
     {
+        questId = 6; //TODO incorect
         const string route = "/getQuestQuestions";
-        var response = await _httpProvider.Get(BaseRoute + route, (nameof(id), id.ToString()));
+        var response = await _httpProvider.Get(BaseRoute + route, (nameof(questId), questId.ToString()));
         if (response.IsSuccess)
         {
             var (questionQuestResponse, error) = ParseResponse<QuestionQuestResponse[]>(response);

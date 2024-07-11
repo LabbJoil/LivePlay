@@ -128,6 +128,6 @@ public static class ServicesRegistrar
 
     public static void RegisterMappingServices(this IServiceCollection services)
     {
-        services.AddAutoMapper(typeof(ErrorMapping), typeof(DrawingQuestMapping), typeof(UserMapping), typeof(NewsMapping), typeof(QuestMapping));
+        services.AddAutoMapper(typeof(ErrorMapping), typeof(DrawingQuestMapping), typeof(UserMapping), typeof(NewsMapping), typeof(QuestMapping), typeof(QuestionQuestMapping));
     }
 }
