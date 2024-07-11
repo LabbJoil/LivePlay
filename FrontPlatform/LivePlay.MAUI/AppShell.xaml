@@ -78,8 +78,14 @@
     <ShellContent
         Shell.NavBarIsVisible="False"
         Shell.TabBarIsVisible="False"
-        Route="EnterPage" 
-        ContentTemplate="{DataTemplate enterPages:EnterPage}"/>
+        Route="BlackPage" 
+        ContentTemplate="{DataTemplate enterPages:BlackPage}"/>
+
+    <ShellContent
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="False"
+    Route="EnterPage" 
+    ContentTemplate="{DataTemplate enterPages:EnterPage}"/>
 
     <TabBar>
         <ShellContent Icon="base_page.svg"
@@ -137,8 +143,8 @@
                       Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
         <ShellContent Title="Профиль" 
                       AutomationId="4" 
-                      Route="MyCouponsPage" 
-                      ContentTemplate="{DataTemplate userCouponPages:MyCouponsPage}"
+                      Route="ProfilePage" 
+                      ContentTemplate="{DataTemplate userAccountPages:ProfilePage}"
                       Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
         <ShellContent Title="Оставить отзыв" 
                       AutomationId="5" 

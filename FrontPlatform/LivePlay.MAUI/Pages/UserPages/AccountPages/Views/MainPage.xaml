@@ -8,7 +8,7 @@
              Title="MainPage"
              x:Name="this">
 
-    <RefreshView>
+    <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">
         <ScrollView>
             <Grid x:Name="MainGrid" BackgroundColor="{AppThemeBinding Dark={StaticResource PageMainBackgroundDark}, Light={StaticResource PageMainBackgroundLight}}">
                 <Grid.RowDefinitions>
@@ -46,10 +46,10 @@
                                             <ColumnDefinition Width="27"/>
                                         </Grid.ColumnDefinitions>
                                         <Frame Grid.ColumnSpan="3" Grid.Row="0" CornerRadius="0" Background="Transparent" BorderColor="Transparent" Padding="0">
-                                            <Image Source="{Binding Path=Image, Source={x:Reference this}, Converter={x:StaticResource ByteArrayToImageConverter}}"
+                                            <Image Source="{Binding Image, Mode=OneWay, Converter={x:StaticResource ByteArrayToImageConverter}}"
                                                    VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill" />
                                         </Frame>
-                                        <Label Grid.Column="1" Grid.Row="2" Text="{Binding Title}" FontSize="19" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                        <Label Grid.Column="1" Grid.Row="2" Text="{Binding Name}" FontSize="19" HorizontalOptions="Start" VerticalOptions="Center"/>
                                         <Label Grid.Column="1" Grid.Row="4" Text="{Binding Description}" FontSize="15" HorizontalOptions="Start" VerticalOptions="Center"/>
                                     </Grid>
                                 </Border>

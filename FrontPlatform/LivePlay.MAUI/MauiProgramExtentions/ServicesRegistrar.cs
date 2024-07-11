@@ -40,12 +40,14 @@ public static class ServicesRegistrar
 {
     public static void RegisterAccountServices(this IServiceCollection services)
     {
+        services.AddTransient<BlackPage>();
         services.AddTransient<EnterPage>();
         services.AddTransient<LoadingPage>();
         services.AddTransient<SettingsPage>();
 
         services.AddTransient<EnterViewModel>();
         services.AddTransient<SettingsViewModel>();
+        services.AddTransient<BlackViewModel>();
 
         services.RegisterAdminServices();
         services.RegisterUserServices();
@@ -58,7 +60,7 @@ public static class ServicesRegistrar
         services.AddTransient<CreationQuestPage>();
         services.AddTransient<CreationQuestionQuestPage>();
         services.AddTransient<CreationQRQuestPage>();
-        services.AddTransient<CreationCreativeQuestPage>();
+        services.AddTransient<CreationDrawingQuestPage>();
         services.AddTransient<ManageQuestPage>();
         services.AddTransient<ManageCouponPage>();
         services.AddTransient<CreationCouponPage>();
@@ -87,8 +89,9 @@ public static class ServicesRegistrar
         services.AddTransient<InProgressQuestionQuestPage>();
         services.AddTransient<GettingStatisticsPage>();
         services.AddTransient<MainCouponPage>();
+        services.AddTransient<MyCouponsPage>();
 
-        //services.AddTransient<BaseViewModel>();
+        services.AddTransient<MainViewModel>();
         services.AddTransient<CurrentNewsPageViewModel>();
         services.AddTransient<FeedbackViewModel>();
         services.AddTransient<TapeQuestViewModel>();
@@ -98,6 +101,7 @@ public static class ServicesRegistrar
         services.AddTransient<InProgressQuestionQuestViewModel>();
         services.AddTransient<CouponInfoViewModel>();
         services.AddTransient<MainRewardViewModel>();
+        services.AddTransient<MyCouponsViewModel>();
     }
 
     public static void RegisterDeviceSettingsServices(this IServiceCollection services)
@@ -105,6 +109,7 @@ public static class ServicesRegistrar
         services.AddSingleton<AppDesign>();
         services.AddSingleton<AppPermissions>();
         services.AddSingleton<AppStorage>();
+        services.AddSingleton<IAppStorage, AppStorage>();
 #if __ANDROID__
         services.AddSingleton<IStoragePermissions, Platforms.PlatformPermissions.StoragePermissions>();
 #endif
@@ -113,12 +118,16 @@ public static class ServicesRegistrar
     public static void RegisterHttpServices(this IServiceCollection services)
     {
         services.AddSingleton<UserHttpService>();
+        services.AddSingleton<NewsHttpService>();
         services.AddSingleton<QuestHttpService>();
+        services.AddSingleton<QuestionQuestHttpService>();
+        services.AddSingleton<QRQuestHttpService>();
+        services.AddSingleton<DrawingQuestHttpService>();
         services.AddSingleton<HttpProvider>();
     }
 
     public static void RegisterMappingServices(this IServiceCollection services)
     {
-        services.AddAutoMapper(typeof(ErrorMapping), typeof(DrawingQuestMapping), typeof(UserMapping));
+        services.AddAutoMapper(typeof(ErrorMapping), typeof(DrawingQuestMapping), typeof(UserMapping), typeof(NewsMapping), typeof(QuestMapping), typeof(QuestionQuestMapping));
     }
 }

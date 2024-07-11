@@ -2,6 +2,7 @@
 using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.Views;
 using LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.Views;
+using LivePlay.Front.MAUI.Pages.EnterPages.Views;
 using LivePlay.Front.MAUI.Pages.SettingsPages.Views;
 using LivePlay.Front.MAUI.Pages.UserPages.CouponPages.Views;
 using LivePlay.Front.MAUI.Pages.UserPages.NewsPages.Views;
@@ -24,6 +25,7 @@ public partial class AppShell : Shell
         designSettings.ChangeCountCoins = ChangeCountCoins;
         designSettings.GetCountCoins = GetCountCoins;
 
+        Routing.RegisterRoute(nameof(EnterPage), typeof(EnterPage));
         Routing.RegisterRoute(nameof(InProgressDrawingQuestPage), typeof(InProgressDrawingQuestPage));
         Routing.RegisterRoute(nameof(InProgressQRQuestPage), typeof(InProgressQRQuestPage));
         Routing.RegisterRoute(nameof(InProgressQuestionQuestPage), typeof(InProgressQuestionQuestPage));
@@ -32,7 +34,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(CreationQuestionQuestPage), typeof(CreationQuestionQuestPage));
         Routing.RegisterRoute(nameof(CurrentFeedbackPage), typeof(CurrentFeedbackPage)); //возможно открывается по другому  popup ...
         Routing.RegisterRoute(nameof(CreationQRQuestPage), typeof(CreationQRQuestPage)); //возможно открывается по другому
-        Routing.RegisterRoute(nameof(CreationCreativeQuestPage), typeof(CreationCreativeQuestPage)); //возможно открывается по другому
+        Routing.RegisterRoute(nameof(CreationDrawingQuestPage), typeof(CreationDrawingQuestPage)); //возможно открывается по другому
         Routing.RegisterRoute(nameof(LoadingPage), typeof(LoadingPage));
         Routing.RegisterRoute(nameof(CreationQuestPage), typeof(CreationQuestPage));
         Routing.RegisterRoute(nameof(CouponInfoPage), typeof(CouponInfoPage));

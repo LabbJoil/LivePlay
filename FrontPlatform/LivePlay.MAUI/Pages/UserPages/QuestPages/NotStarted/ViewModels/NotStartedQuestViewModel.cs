@@ -6,6 +6,7 @@ using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.Core.Enums;
 using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.Views;
 using LivePlay.Front.Core.Models.QuestModels;
+using LivePlay.Front.Core.Models;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.QuestPages.NotStarted.ViewModels;
 
@@ -16,9 +17,9 @@ public partial class NotStartedQuestViewModel(AppDesign appDesign, QuestHttpServ
     [RelayCommand]
     public async Task TakePartQuest(int idQuest)
     {
-        var error = await _questHttpService.TakePart(idQuest);
+        DisplayError? error = null; // await _questHttpService.TakePart(idQuest);
         if (error != null) { ShowError(error); return; }
-        DeleteStackPages(1);
+        //DeleteStackPages(1);
 
         var navigationParameter = new ShellNavigationQueryParameters
         {

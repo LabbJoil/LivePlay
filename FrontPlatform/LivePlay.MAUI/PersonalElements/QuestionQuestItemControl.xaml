@@ -52,7 +52,7 @@
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="9"/>
                 </Border.StrokeShape>
-                <Entry x:Name="Answer1" Text="{Binding Path=NowQuestionQuest.Answer1, Source={x:Reference this}}" TextColor="Black" HeightRequest="35"/>
+                <Entry x:Name="Answer1" Text="{Binding Path=NowQuestionQuest.FirstAnswer, Source={x:Reference this}}" TextColor="Black" HeightRequest="35"/>
             </Border>
             <CheckBox Grid.Row="0" Grid.Column="1" x:Name="CheckBox1" CheckedChanged="CheckBox1_CheckedChanged" VerticalOptions="End" HeightRequest="35"/>
 
@@ -60,7 +60,7 @@
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="9"/>
                 </Border.StrokeShape>
-                <Entry x:Name="Answer2" Text="{Binding Path=NowQuestionQuest.Answer2, Source={x:Reference this}}" TextColor="Black" HeightRequest="35"/>
+                <Entry x:Name="Answer2" Text="{Binding Path=NowQuestionQuest.SecondAnswer, Source={x:Reference this}}" TextColor="Black" HeightRequest="35"/>
             </Border>
             <CheckBox Grid.Row="1" Grid.Column="1" x:Name="CheckBox2" CheckedChanged="CheckBox1_CheckedChanged" VerticalOptions="End" HeightRequest="35"/>
 
@@ -68,7 +68,7 @@
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="9"/>
                 </Border.StrokeShape>
-                <Entry x:Name="Answer3" Text="{Binding Path=NowQuestionQuest.Answer3, Source={x:Reference this}}" TextColor="Black" HeightRequest="35"/>
+                <Entry x:Name="Answer3" Text="{Binding Path=NowQuestionQuest.ThirdAnswer, Source={x:Reference this}}" TextColor="Black" HeightRequest="35"/>
             </Border>
             <CheckBox Grid.Row="2" Grid.Column="1" x:Name="CheckBox3" CheckedChanged="CheckBox1_CheckedChanged" VerticalOptions="End" HeightRequest="35"/>
 
@@ -76,7 +76,7 @@
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="9"/>
                 </Border.StrokeShape>
-                <Entry x:Name="Answer4" Text="{Binding Path=NowQuestionQuest.Answer4, Source={x:Reference this}}" TextColor="Black" HeightRequest="35"/>
+                <Entry x:Name="Answer4" Text="{Binding Path=NowQuestionQuest.FourthAnswer, Source={x:Reference this}}" TextColor="Black" HeightRequest="35"/>
             </Border>
             <CheckBox Grid.Row="3" Grid.Column="1" x:Name="CheckBox4" CheckedChanged="CheckBox1_CheckedChanged" VerticalOptions="End" HeightRequest="35"/>
         </Grid>

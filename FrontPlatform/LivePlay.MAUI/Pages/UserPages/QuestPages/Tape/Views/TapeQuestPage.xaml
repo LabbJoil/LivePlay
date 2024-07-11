@@ -4,6 +4,7 @@
              x:Class="LivePlay.Front.MAUI.Pages.UserPages.QuestPages.Tape.Views.TapeQuestPage"
              xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
              Appearing="ContentPage_Appearing" Disappearing="ContentPage_Disappearing"
+             x:Name="this"
              Title="TapeQuestPage">
 
     <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">

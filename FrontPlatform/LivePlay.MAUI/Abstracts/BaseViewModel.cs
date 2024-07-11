@@ -21,9 +21,7 @@ public abstract partial class BaseViewModel(AppDesign designSettings) : Observab
 
     [RelayCommand]
     public void Refresh()
-    {
-        IsRefreshing = false;
-    }
+        => IsRefreshing = false;
 
     public virtual void ChangeColorBars(Color color, StatusBarColor statusBarColor, Color? secondColor = null)
     {
@@ -51,7 +49,7 @@ public abstract partial class BaseViewModel(AppDesign designSettings) : Observab
             await Shell.Current.DisplayAlert("Ошибка сервера", "Что-то пошло не так", "ok");
     }
 
-    protected static void DeleteStackPages(int countPages = -1)
+    public static void DeleteStackPages(int countPages = -1)
     {
         var stack = Shell.Current.Navigation.NavigationStack.ToArray();
         if (countPages > 0)
