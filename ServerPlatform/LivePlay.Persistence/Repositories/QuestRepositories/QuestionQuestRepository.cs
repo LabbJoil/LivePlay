@@ -13,6 +13,7 @@ public class QuestionQuestRepository(LivePlayDbContext dbContext, IMapper mapper
 {
     private readonly LivePlayDbContext _dbContext = dbContext;
     private readonly IMapper _mapper = mapper;
+    private readonly QuestRepository _questRepository = new(dbContext, mapper);
 
     public async Task<QuestionQuest> GetById(int id)
     {
@@ -31,20 +32,19 @@ public class QuestionQuestRepository(LivePlayDbContext dbContext, IMapper mapper
         return questionQuests;
     }
 
-    public async void Create(Quest quest, QuestionQuest[] questionQuests)
+    public async Task Create(Quest quest, QuestionQuest[] questionQuests)
     {
-        var questEntity = _mapper.Map<QuestEntityModel>(quest);     // TODO: сделать добавление в QuestQuestion
-        await _dbContext.AddAsync(questEntity);
+        var questEntity = await _questRepository.Create(quest);
         foreach (var questionQuest in questionQuests)
         {
             var questionQuestEntity = _mapper.Map<QuestionQuestEntityModel>(questionQuest);
             questionQuestEntity.Quest = questEntity;
             await _dbContext.AddAsync(questionQuestEntity);
         }
-        _dbContext.SaveChanges();
+        await _dbContext.SaveChangesAsync();
     }
 
-    public async void Edit(Quest quest, QuestionQuest[] questionQuests)
+    public async Task Edit(Quest quest, QuestionQuest[] questionQuests)
     {
         foreach (var questionQuest in questionQuests)
         {
