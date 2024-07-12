@@ -5,7 +5,9 @@
              Title="MainCreationQuestPage" 
              Shell.NavBarIsVisible="False">
 
-    <Grid BackgroundColor="#26507B" Padding="40,0">
+    <Grid
+        Padding="40,0"
+        BackgroundColor="#26507B">
         <Grid.RowDefinitions >
             <RowDefinition Height="64"/>
             <RowDefinition Height="40"/>
@@ -25,38 +27,70 @@
             <RowDefinition Height="71"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" VerticalOptions="End" HorizontalOptions="Center" Stroke="#DEDEDE" StrokeThickness="2" Padding="13,7" >
+        <Border
+            Grid.Row="0"
+            VerticalOptions="End" HorizontalOptions="Center" Padding="13,7"
+            Stroke="#DEDEDE" StrokeThickness="2" >
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="20"/>
             </Border.StrokeShape>
-            <Label Text="Создание квеста" FontSize="19" FontAttributes="Bold"/>
+            <Label
+                Text="Создание квеста" FontSize="19" FontAttributes="Bold"/>
         </Border>
 
-        <Label Text="Название" HorizontalOptions="Start" FontSize="16" Grid.Row="1" FontAttributes="Bold" VerticalOptions="End"/>
-        <Border Padding="0" HorizontalOptions="FillAndExpand" Grid.Row="2" Stroke="Transparent" BackgroundColor="White" HeightRequest="35" VerticalOptions="End">
+        <Label
+            Text="Название" FontSize="16"
+            Grid.Row="1"
+            HorizontalOptions="Start" FontAttributes="Bold" VerticalOptions="End"/>
+        <Border
+            Grid.Row="2"
+            HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="35" Padding="0"
+            BackgroundColor="White" Stroke="Transparent" >
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="9"/>
             </Border.StrokeShape>
-            <Entry x:Name="Title" TextColor="Black" HeightRequest="35" Text="{Binding NowQuest.Title}"/>
+            <Entry
+                x:Name="Title"
+                Text="{Binding NowQuest.Title}" TextColor="Black" 
+                HeightRequest="35" />
         </Border>
 
-        <Label Text="Подзаголовок" HorizontalOptions="Start" FontSize="16" Grid.Row="3" FontAttributes="Bold" VerticalOptions="End"/>
-        <Border Grid.Row="4" HorizontalOptions="FillAndExpand" Padding="0" VerticalOptions="End" HeightRequest="35" Stroke="Transparent" BackgroundColor="White">
+        <Label
+            Text="Подзаголовок" FontSize="16" FontAttributes="Bold"
+            Grid.Row="3"
+            HorizontalOptions="Start" VerticalOptions="End"/>
+        <Border
+            Grid.Row="4"
+            HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="35" Padding="0"
+            BackgroundColor="White" Stroke="Transparent" >
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="9"/>
             </Border.StrokeShape>
-            <Entry x:Name="DescriptionMini" TextColor="Black" HeightRequest="35" Text="{Binding NowQuest.DescriptionMini}"/>
+            <Entry
+                x:Name="DescriptionMini"
+                Text="{Binding NowQuest.DescriptionMini}" TextColor="Black"
+                HeightRequest="35" />
         </Border>
 
-        <Label Text="Описание" HorizontalOptions="Start" FontSize="16" Grid.Row="5" FontAttributes="Bold" VerticalOptions="End"/>
-        <Border Grid.Row="6" Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="95" Stroke="Transparent" BackgroundColor="White">
+        <Label
+            Text="Описание" FontSize="16" FontAttributes="Bold"
+            Grid.Row="5" 
+            HorizontalOptions="Start" VerticalOptions="End"/>
+        <Border
+            Grid.Row="6"
+            HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="95" Padding="0"
+            Stroke="Transparent" BackgroundColor="White">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="9"/>
             </Border.StrokeShape>
-            <Editor x:Name="Description" TextColor="Black" HeightRequest="95"  Text="{Binding NowQuest.DescriptionFull}"/>
+            <Editor
+                x:Name="Description"
+                Text="{Binding NowQuest.DescriptionFull}" TextColor="Black"
+                HeightRequest="95" />
         </Border>
 
-        <Label Text="Срок выполнения" HorizontalOptions="Start" FontSize="16" Grid.Row="7" FontAttributes="Bold" VerticalOptions="End"/>
+        <Label
+            Text="Срок выполнения" HorizontalOptions="Start" FontSize="16" Grid.Row="7" FontAttributes="Bold" VerticalOptions="End"/>
         <Border Grid.Row="8" Padding="0" HorizontalOptions="Start" VerticalOptions="End" HeightRequest="35" Stroke="Transparent" BackgroundColor="White" WidthRequest="100">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="9"/>

@@ -5,8 +5,6 @@ namespace LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.Views;
 
 public partial class CreationQRQuestPage : ContentPage
 {
-    private AppStorage DeviceStorage { get; }
-
     public CreationQRQuestPage()
 	{
         InitializeComponent();
@@ -19,6 +17,6 @@ public partial class CreationQRQuestPage : ContentPage
 
     private void Button_Clicked(object sender, EventArgs e)
     {
-        barcodeImage.Barcode = "lizochka lubimka";
+        QRQuestBI.Barcode = "lizochka lubimka";
     }
 }

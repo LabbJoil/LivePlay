@@ -243,6 +243,9 @@
 	  <MauiXaml Update="Pages\EnterPages\Views\BlackPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\UserPages\AccountPages\Views\PersonalQRPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\UserPages\CouponPages\Views\MyCouponsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

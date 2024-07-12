@@ -2,12 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.Views.CreationQRQuestPage"
-             xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
-             xmlns:qrcode="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
+             xmlns:CameraMAUI="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
              Title="QRcodeCreationQuestPage"
              Shell.NavBarIsVisible="False">
-    
-    <Grid BackgroundColor="#26507B" Padding="40,0">
+
+    <Grid
+        Padding="40,0"
+        BackgroundColor="#26507B" >
         <Grid.RowDefinitions>
             <RowDefinition Height="64"/>
             <RowDefinition Height="102"/>
@@ -17,26 +18,42 @@
             <RowDefinition Height="190"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" VerticalOptions="End" HorizontalOptions="Center" Stroke="#DEDEDE" StrokeThickness="2" Padding="13,7" >
+        <Border 
+            Grid.Row="0" VerticalOptions="End" HorizontalOptions="Center" Padding="13,7"
+            Stroke="#DEDEDE" StrokeThickness="2" >
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="20"/>
             </Border.StrokeShape>
-            <Label Text="Создание квеста" FontSize="19" FontAttributes="Bold"/>
+            <Label
+                Text="Создание квеста" FontSize="19" FontAttributes="Bold"/>
         </Border>
 
-        <Label Text="Сгенерируйте новый QR-код:" FontSize="20" Grid.Row="1" FontAttributes="Bold" VerticalOptions="End" HorizontalOptions="Center"/>
+        <Label
+            Text="Сгенерируйте новый QR-код:" FontSize="20"
+            Grid.Row="1" VerticalOptions="End" HorizontalOptions="Center"
+            FontAttributes="Bold"/>
 
-        <qrcode:BarcodeImage Grid.Row="2" x:Name="barcodeImage"
-                 WidthRequest="200" HeightRequest="200" 
-                 BarcodeWidth="200" BarcodeHeight="200" BarcodeMargin="1"
-                 BarcodeBackground="White"
-                 BarcodeFormat="QR_CODE" Barcode="eweweqweweq"/>
+        <CameraMAUI:BarcodeImage
+            x:Name="QRQuestBI"
+            Grid.Row="2" WidthRequest="200" HeightRequest="200" BarcodeWidth="200" BarcodeHeight="200" BarcodeMargin="1"
+            BarcodeBackground="White"
+            BarcodeFormat="QR_CODE" Barcode="No content"/>
 
-        <Button Grid.Row="3" Text="Сгенерировать" FontAttributes="Bold" FontSize="19" WidthRequest="240" HeightRequest="40" Padding="0" BackgroundColor="#0D1B2A" VerticalOptions="End" Clicked="Button_Clicked"/>
+        <Button
+            Text="Сгенерировать" FontAttributes="Bold" FontSize="19"
+            Grid.Row="3" WidthRequest="240" HeightRequest="40" Padding="0" VerticalOptions="End"
+            BackgroundColor="#0D1B2A"
+            Clicked="Button_Clicked"/>
+        
+        <Button
+            Text="Сохранить QR-код" FontSize="19" 
+            Grid.Row="4" FontAttributes="Bold" WidthRequest="240" HeightRequest="40" Padding="0" VerticalOptions="End"
+            BackgroundColor="#0D1B2A"/>
 
-        <Button Grid.Row="4" Text="Сохранить QR-код" FontAttributes="Bold" FontSize="19" WidthRequest="240" HeightRequest="40" Padding="0" BackgroundColor="#0D1B2A" VerticalOptions="End"/>
-
-        <Button Grid.Row="5" Text="Готово" FontAttributes="Bold" FontSize="19" WidthRequest="200" HeightRequest="40" Padding="0" BackgroundColor="#143150"/>
+        <Button
+            Text="Готово" FontAttributes="Bold" FontSize="19"
+            Grid.Row="5"  WidthRequest="200" HeightRequest="40" Padding="0"
+            BackgroundColor="#143150"/>
         
     </Grid>
 </ContentPage>
