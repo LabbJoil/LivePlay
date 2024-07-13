@@ -2,11 +2,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views.PersonalQRPage"
-             xmlns:CameraMAUI="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
+             xmlns:cameraMAUI="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
              Title="PersonalQRPage">
 
     <VerticalStackLayout Margin="15">
-        <CameraMAUI:BarcodeImage
+        <cameraMAUI:BarcodeImage
             x:Name="barcodeImage"
             WidthRequest="200" HeightRequest="200" 
             BarcodeWidth="200" BarcodeHeight="200" BarcodeMargin="1"

@@ -90,21 +90,37 @@
         </Border>
 
         <Label
-            Text="Срок выполнения" HorizontalOptions="Start" FontSize="16" Grid.Row="7" FontAttributes="Bold" VerticalOptions="End"/>
+            Text="Срок выполнения" FontSize="16" FontAttributes="Bold"
+            Grid.Row="7"
+            HorizontalOptions="Start" VerticalOptions="End"/>
         <Border Grid.Row="8" Padding="0" HorizontalOptions="Start" VerticalOptions="End" HeightRequest="35" Stroke="Transparent" BackgroundColor="White" WidthRequest="100">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="9"/>
             </Border.StrokeShape>
-            <DatePicker x:Name="DateQuest" MinimumDate="{Binding MinDate}" Date="{Binding NowQuest.FinalDate}" HeightRequest="35" TextColor="Black" HorizontalOptions="Center"/>
+            <DatePicker
+                x:Name="DateQuest" TextColor="Black"
+                HeightRequest="35" HorizontalOptions="Center"
+                MinimumDate="{Binding MinDate}" Date="{Binding NowQuest.FinalDate}" />
         </Border>
 
-        <Label Text="Награда" HorizontalOptions="Start" FontSize="16" Grid.Row="9" FontAttributes="Bold" VerticalOptions="End"/>
-        <Border Grid.Row="10" Padding="0" HorizontalOptions="Start" VerticalOptions="End" HeightRequest="35" Stroke="Transparent" BackgroundColor="White" WidthRequest="100">
+        <Label
+            Text="Награда" FontSize="16" FontAttributes="Bold"
+            Grid.Row="9"
+            HorizontalOptions="Start" VerticalOptions="End"/>
+        <Border
+            Grid.Row="10"
+            HorizontalOptions="Start" VerticalOptions="End" WidthRequest="100" HeightRequest="35" Padding="0" 
+            Stroke="Transparent" BackgroundColor="White" >
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="9"/>
             </Border.StrokeShape>
             <StackLayout>
-                <Picker x:Name="Price" Title="Выберите" Background="White" TextColor="Black" TitleColor="#6C6C6C" HeightRequest="35" HorizontalOptions="Center" SelectedItem="{Binding NowQuest.Reward}">
+                <Picker
+                    x:Name="Price"
+                    Title="Выберите" TextColor="Black" TitleColor="#6C6C6C"
+                    HeightRequest="35" HorizontalOptions="Center"
+                    Background="White"
+                    SelectedItem="{Binding NowQuest.Reward}">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:Int32}">
                             <x:Int32>150</x:Int32>
@@ -116,13 +132,24 @@
             </StackLayout>
         </Border>
 
-        <Label Text="Тип квеста" HorizontalOptions="Start" FontSize="16" Grid.Row="11" FontAttributes="Bold" VerticalOptions="End"/>
-        <Border Grid.Row="12" Padding="0" HorizontalOptions="Start" VerticalOptions="End" HeightRequest="35" Stroke="Transparent" BackgroundColor="White" WidthRequest="100">
+        <Label
+            Text="Тип квеста" FontSize="16" FontAttributes="Bold"
+            Grid.Row="11"
+            HorizontalOptions="Start" VerticalOptions="End"/>
+        <Border
+            Grid.Row="12"
+            HorizontalOptions="Start" VerticalOptions="End" WidthRequest="100" HeightRequest="35" Padding="0"
+            Stroke="Transparent" BackgroundColor="White" >
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="9"/>
             </Border.StrokeShape>
             <StackLayout>
-                <Picker x:Name="PickerQuest" Title="Выберите" Background="White" TextColor="Black" TitleColor="#6C6C6C" HeightRequest="35" HorizontalOptions="Center" SelectedIndex="{Binding NowQuest.Type}">
+                <Picker
+                    x:Name="PickerQuest"
+                    Title="Выберите" TextColor="Black" TitleColor="#6C6C6C"
+                    HeightRequest="35" HorizontalOptions="Center"
+                    Background="White"
+                    SelectedIndex="{Binding NowQuest.Type}">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>QR-Code</x:String>
@@ -134,14 +161,28 @@
             </StackLayout>
         </Border>
 
-        <Label Text="Прикрепите фото:" HorizontalOptions="Start" FontSize="16" Grid.Row="13" FontAttributes="Bold" VerticalOptions="End"/>
-        <ImageButton Grid.Row="14" Source="photo_add_dark.svg" WidthRequest="95" HeightRequest="95" HorizontalOptions="Start" Command="{Binding GetImageCommand}"/>
+        <Label
+            Text="Прикрепите фото:" FontSize="16" FontAttributes="Bold"
+            Grid.Row="13"
+            HorizontalOptions="Start" VerticalOptions="End"/>
+        <ImageButton
+            Grid.Row="14"
+            WidthRequest="95" HeightRequest="95" HorizontalOptions="Start"
+            Source="photo_add_dark.svg"
+            Command="{Binding GetImageCommand}"/>
 
-        <Border Grid.Row="14" Grid.RowSpan="2" BackgroundColor="#0D1B2A" HorizontalOptions="End" VerticalOptions="End" HeightRequest="55" WidthRequest="55" Stroke="Transparent" Margin="0,30">
+        <Border
+            Grid.Row="14" Grid.RowSpan="2"
+            HorizontalOptions="End" VerticalOptions="End" HeightRequest="55" WidthRequest="55" Margin="0,30"
+            BackgroundColor="#0D1B2A" Stroke="Transparent">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="50"/>
             </Border.StrokeShape>
-            <ImageButton Source="arrow_forward.svg" Background="#0D1B2A" Aspect="AspectFit" HeightRequest="35" WidthRequest="35" Command="{Binding GoToNextCreationQuestCommand}"/>
+            <ImageButton
+                HeightRequest="35" WidthRequest="35"
+                Background="#0D1B2A" Aspect="AspectFit"
+                Source="arrow_forward.svg"
+                Command="{Binding GoToNextCreationQuestCommand}"/>
         </Border>
 
     </Grid>

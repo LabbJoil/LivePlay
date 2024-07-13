@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.Views.CreationQRQuestPage"
-             xmlns:CameraMAUI="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
+             xmlns:cameraMAUI="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
              Title="QRcodeCreationQuestPage"
              Shell.NavBarIsVisible="False">
 
@@ -33,7 +33,7 @@
             Grid.Row="1" VerticalOptions="End" HorizontalOptions="Center"
             FontAttributes="Bold"/>
 
-        <CameraMAUI:BarcodeImage
+        <cameraMAUI:BarcodeImage
             x:Name="QRQuestBI"
             Grid.Row="2" WidthRequest="200" HeightRequest="200" BarcodeWidth="200" BarcodeHeight="200" BarcodeMargin="1"
             BarcodeBackground="White"
