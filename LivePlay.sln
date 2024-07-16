@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Server.Infrastruct
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Server.Persistence", "ServerPlatform\LivePlay.Persistence\LivePlay.Server.Persistence.csproj", "{B6130263-C43A-4BE0-9E85-862D969E62B1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Front.MAUI", "FrontPlatform\LivePlay.MAUI\LivePlay.Front.MAUI.csproj", "{F48543D3-BAFC-4C9A-8A45-39FF4C1F7256}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Front.MAUI", "FrontPlatform\LivePlay.Front.MAUI\LivePlay.Front.MAUI.csproj", "{F48543D3-BAFC-4C9A-8A45-39FF4C1F7256}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontPlatform", "FrontPlatform", "{06694F64-2D49-47E6-BD1E-4D8CA129C779}"
 EndProject
