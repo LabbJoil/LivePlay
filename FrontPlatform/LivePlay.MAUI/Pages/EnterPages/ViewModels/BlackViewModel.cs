@@ -15,6 +15,8 @@ public class BlackViewModel(AppDesign appDesign, UserHttpService userHttpService
 
     public async Task MakeDecision()
     {
+        await Shell.Current.GoToAsync($"/{nameof(PersonalQRPage)}");
+        return;
         StartLoading();
         var roles = await _userHttpService.CheckToken();
         StopLoading();

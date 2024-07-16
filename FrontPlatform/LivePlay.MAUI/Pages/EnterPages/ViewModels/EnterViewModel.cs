@@ -37,16 +37,18 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
         }
         var (roles, error) = await _userService.Login(EnterUser.Email, EnterUser.Password);
 
-        if (roles.Length > 0)
-        {
-            DeleteStackPages();
-            if (roles.Length == 1 && roles[0] == Role.User)
-                await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
-            else
-                await Shell.Current.GoToAsync($"//{nameof(TapeFeedbackPage)}");
-            return;
-        }
-        ShowError(error);
+        await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+
+        //if (roles.Length > 0)
+        //{
+        //    DeleteStackPages();
+        //    if (roles.Length == 1 && roles[0] == Role.User)
+        //        await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+        //    else
+        //        await Shell.Current.GoToAsync($"//{nameof(TapeFeedbackPage)}");
+        //    return;
+        //}
+        //ShowError(error);
     }
 
     [RelayCommand]

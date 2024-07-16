@@ -4,6 +4,7 @@ using LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.Views;
 using LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.Views;
 using LivePlay.Front.MAUI.Pages.EnterPages.Views;
 using LivePlay.Front.MAUI.Pages.SettingsPages.Views;
+using LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views;
 using LivePlay.Front.MAUI.Pages.UserPages.CouponPages.Views;
 using LivePlay.Front.MAUI.Pages.UserPages.NewsPages.Views;
 using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.Views;
@@ -38,6 +39,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(LoadingPage), typeof(LoadingPage));
         Routing.RegisterRoute(nameof(CreationQuestPage), typeof(CreationQuestPage));
         Routing.RegisterRoute(nameof(CouponInfoPage), typeof(CouponInfoPage));
+        Routing.RegisterRoute(nameof(PersonalQRPage), typeof(PersonalQRPage));
     }
 
     private void FlyoutGrid_Loaded(object sender, EventArgs e)

@@ -8,6 +8,7 @@ using LivePlay.Front.MAUI.Pages.UserPages.NewsPages.Views;
 using LivePlay.Front.Infrastructure.HttpServices;
 using CommunityToolkit.Maui.Core.Extensions;
 using CommunityToolkit.Mvvm.ComponentModel;
+using LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.AccountPages.ViewModels;
 
@@ -15,16 +16,14 @@ public partial class MainViewModel : BaseTapeViewModel
 {
     private readonly UserHttpService _userService;
     private readonly NewsHttpService _newsService;
-    private string? _qrData;
 
     [ObservableProperty]
     public ObservableCollection<News> _tapeItems = [];
 
-    [RelayCommand]
-    public void RefreshPage()
+    public override async Task Refresh()
     {
         GetMainPageInfo();
-        Refresh();
+        await base.Refresh();
     }
 
     [RelayCommand]
@@ -36,6 +35,12 @@ public partial class MainViewModel : BaseTapeViewModel
         }
     }
 
+    [RelayCommand]
+    public async Task GoToQRPage()
+    {
+        await Shell.Current.GoToAsync($"{nameof(PersonalQRPage)}");
+    }
+
     public MainViewModel(AppDesign designSettings, UserHttpService userHttpService, NewsHttpService newsHttpService) : base(designSettings)
     {
         _userService = userHttpService;
@@ -43,12 +48,10 @@ public partial class MainViewModel : BaseTapeViewModel
         GetMainPageInfo();
     }
 
-    public async void GetMainPageInfo()
+    private async void GetMainPageInfo()
     {
         StartLoading();
         var (points, error) = await _userService.GetPoints();
-        if (error != null) { ShowError(error); goto EndProcess; }
-        (_qrData, error) = await _userService.GetPersonalQR();
         if (error != null) { ShowError(error); goto EndProcess; }
         (var news, error) = await _newsService.GetLastNews();
         if (error != null) { ShowError(error); goto EndProcess; }

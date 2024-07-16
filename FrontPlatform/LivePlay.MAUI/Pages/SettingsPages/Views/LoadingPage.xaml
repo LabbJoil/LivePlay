@@ -2,68 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LivePlay.Front.MAUI.Pages.SettingsPages.Views.LoadingPage"
-             Title="LoadingPage" Loaded="ContentPage_Loaded" BackgroundColor="Transparent"
+             Title="LoadingPage" Loaded="ContentPage_Loaded" BackgroundColor="Gray"
              Shell.PresentationMode="Modal">
-
-    <Grid x:Name="MainGrid" BackgroundColor="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-
-        <Rectangle Grid.ColumnSpan="4" Grid.RowSpan="4" Opacity="0.5" BackgroundColor="White"/>
-
-        <Border x:Name="rect1"
-               StrokeShape="RoundRectangle 10"
-               BackgroundColor="Transparent"
-               Stroke="DarkRed"
-               StrokeThickness="6"
-               Grid.Row="0" 
-               Grid.Column="0" 
-               VerticalOptions="Center" 
-               HorizontalOptions="Center"
-                WidthRequest="50" HeightRequest="50"/>
-
-        <Border x:Name="rect2"
-               StrokeShape="RoundRectangle 10"
-               BackgroundColor="Transparent"
-               Stroke="DarkGreen"
-               StrokeThickness="6"
-               Grid.Row="1" 
-               Grid.Column="1" 
-               VerticalOptions="Center" 
-               HorizontalOptions="Center"
-                WidthRequest="50" HeightRequest="50"/>
-
-        <Border x:Name="rect3"
-               StrokeShape="RoundRectangle 10"
-               BackgroundColor="Transparent"
-               Stroke="DarkBlue"
-               StrokeThickness="6"
-               Grid.Row="2" 
-               Grid.Column="2" 
-               VerticalOptions="Center" 
-               HorizontalOptions="Center"
-                WidthRequest="50" HeightRequest="50"/>
-
-        <Border x:Name="rect4" 
-               StrokeShape="RoundRectangle 10"
-               BackgroundColor="Transparent"
-               Stroke="Black"
-               StrokeThickness="6"
-               Grid.Row="3" 
-               Grid.Column="3" 
-               VerticalOptions="Center" 
-               HorizontalOptions="Center" 
-                WidthRequest="50" HeightRequest="50"/>
-    </Grid>
 
 </ContentPage>

@@ -45,9 +45,9 @@ public static class ServicesRegistrar
         services.AddTransient<LoadingPage>();
         services.AddTransient<SettingsPage>();
 
+        services.AddTransient<BlackViewModel>();
         services.AddTransient<EnterViewModel>();
         services.AddTransient<SettingsViewModel>();
-        services.AddTransient<BlackViewModel>();
 
         services.RegisterAdminServices();
         services.RegisterUserServices();
@@ -90,6 +90,7 @@ public static class ServicesRegistrar
         services.AddTransient<GettingStatisticsPage>();
         services.AddTransient<MainCouponPage>();
         services.AddTransient<MyCouponsPage>();
+        services.AddTransient<PersonalQRPage>();
 
         services.AddTransient<MainViewModel>();
         services.AddTransient<CurrentNewsPageViewModel>();
@@ -102,6 +103,7 @@ public static class ServicesRegistrar
         services.AddTransient<CouponInfoViewModel>();
         services.AddTransient<MainRewardViewModel>();
         services.AddTransient<MyCouponsViewModel>();
+        services.AddTransient<PersonalQRViewModel>();
     }
 
     public static void RegisterDeviceSettingsServices(this IServiceCollection services)

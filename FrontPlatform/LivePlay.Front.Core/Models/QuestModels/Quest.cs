@@ -16,5 +16,5 @@ public class Quest()
     public QuestStatus Status { get; set; }
 
     public DateTime FinalDate { get; set; } = DateTime.Now;
-    public string FinalDateView { get => FinalDate.ToString("dd.MM.yyyy"); }
+    //public string FinalDateView { get => FinalDate.ToString("dd.MM.yyyy"); }   TODO: переместить в класс использующий
 }

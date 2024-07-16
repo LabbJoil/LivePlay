@@ -82,10 +82,10 @@
         ContentTemplate="{DataTemplate enterPages:BlackPage}"/>
 
     <ShellContent
-    Shell.NavBarIsVisible="False"
-    Shell.TabBarIsVisible="False"
-    Route="EnterPage" 
-    ContentTemplate="{DataTemplate enterPages:EnterPage}"/>
+        Shell.NavBarIsVisible="False"
+        Shell.TabBarIsVisible="False"
+        Route="EnterPage" 
+        ContentTemplate="{DataTemplate enterPages:EnterPage}"/>
 
     <TabBar>
         <ShellContent Icon="base_page.svg"

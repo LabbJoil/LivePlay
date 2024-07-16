@@ -6,13 +6,14 @@ using LivePlay.Front.Core.Models;
 using LivePlay.Front.Infrastructure;
 using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.MAUI.Pages.SettingsPages.Views;
+using System.Text.Json;
 
 namespace LivePlay.Front.MAUI.Abstracts;
 
 public abstract partial class BaseViewModel(AppDesign designSettings) : ObservableObject
 {
-    private CancellationTokenSource _stopLoadingTokenSourse = new();
-    private ActionTimer? _loadingTimer;
+    private CancellationTokenSource? _stopLoadingTokenSourse;
+    //private ActionTimer? _loadingTimer;
 
     public AppDesign DesignSettings { get; } = designSettings;
 
@@ -20,25 +21,39 @@ public abstract partial class BaseViewModel(AppDesign designSettings) : Observab
     public bool _isRefreshing;
 
     [RelayCommand]
-    public void Refresh()
-        => IsRefreshing = false;
+    public virtual async Task Refresh()
+    {
+        IsRefreshing = false;
+        await Task.Delay(0);
+    }
 
     public virtual void ChangeColorBars(Color color, StatusBarColor statusBarColor, Color? secondColor = null)
     {
         DesignSettings.ChangeColorStatusBars?.Invoke(color, statusBarColor, secondColor);
     }
 
-    protected void StartLoading()
+    protected void StartLoading() // TODO: DEPRECATED
     {
+    }
+
+    protected async void StartLoading(ContentPage contentPage)
+    {
+        //_loadingTimer = new(DirectionAction.Down, null, () => { GoToLoadingPage(contentPage); });
+        //_loadingTimer.Start(1500, 0, 500);
         _stopLoadingTokenSourse = new();
-        _loadingTimer = new(DirectionAction.Down, null, GoToLoadingPage);
-        _loadingTimer.Start(1500, 0, 500);
+        var navigationParameter = new ShellNavigationQueryParameters
+        {
+            { $"{nameof(CancellationTokenSource)}Property", _stopLoadingTokenSourse },
+            { $"{nameof(ContentPage)}Property", contentPage }
+        };
+
+        await Shell.Current.GoToAsync($"{nameof(LoadingPage)}", navigationParameter);
     }
 
     protected void StopLoading()
     {
-        _loadingTimer?.Stop();
-        _stopLoadingTokenSourse.Cancel();
+        //_loadingTimer?.Stop();
+        _stopLoadingTokenSourse?.Cancel();
     }
 
     protected static async void ShowError(DisplayError? displayError)
@@ -49,7 +64,7 @@ public abstract partial class BaseViewModel(AppDesign designSettings) : Observab
             await Shell.Current.DisplayAlert("Ошибка сервера", "Что-то пошло не так", "ok");
     }
 
-    public static void DeleteStackPages(int countPages = -1)
+    protected static void DeleteStackPages(int countPages = -1)
     {
         var stack = Shell.Current.Navigation.NavigationStack.ToArray();
         if (countPages > 0)
@@ -60,11 +75,13 @@ public abstract partial class BaseViewModel(AppDesign designSettings) : Observab
                 Shell.Current.Navigation.RemovePage(stack[i]);
     }
 
-    private void GoToLoadingPage()
+    private void GoToLoadingPage(ContentPage contentPage)
     {
+        _stopLoadingTokenSourse = new();
         var navigationParameter = new ShellNavigationQueryParameters
         {
             { "StopingAnimationSource", _stopLoadingTokenSourse },
+            { $"{nameof(ContentPage)}Property", contentPage }
         };
 
         Shell.Current.GoToAsync($"/{nameof(LoadingPage)}", navigationParameter);
