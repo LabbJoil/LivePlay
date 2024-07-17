@@ -15,6 +15,6 @@ public partial class PersonalQRPage : ContentPage
 
 	private void ContentPage_Loaded(object sender, EventArgs e)
 	{
-		PersonalQRVM.FirstLoadQRData(this);
+		PersonalQRVM.FirstLoadQRData([QRcode, DateUpdateLabel]);
 	}
 }

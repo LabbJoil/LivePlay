@@ -36,25 +36,20 @@ public abstract partial class BaseViewModel(AppDesign designSettings) : Observab
     {
     }
 
-    protected async void StartLoading(ContentPage contentPage)
+    protected async void StartLoading(VisualElement[] visualElements)
     {
-        //_loadingTimer = new(DirectionAction.Down, null, () => { GoToLoadingPage(contentPage); });
-        //_loadingTimer.Start(1500, 0, 500);
         _stopLoadingTokenSourse = new();
         var navigationParameter = new ShellNavigationQueryParameters
         {
             { $"{nameof(CancellationTokenSource)}Property", _stopLoadingTokenSourse },
-            { $"{nameof(ContentPage)}Property", contentPage }
+            { $"{nameof(VisualElement)}sProperty", visualElements }
         };
 
         await Shell.Current.GoToAsync($"{nameof(LoadingPage)}", navigationParameter);
     }
 
     protected void StopLoading()
-    {
-        //_loadingTimer?.Stop();
-        _stopLoadingTokenSourse?.Cancel();
-    }
+        => _stopLoadingTokenSourse?.Cancel();
 
     protected static async void ShowError(DisplayError? displayError)
     {

@@ -1,16 +1,13 @@
 
 using Camera.MAUI;
 using Microsoft.Maui.Controls.Shapes;
-using Microsoft.Maui.Layouts;
-using System.Text.Json;
-using System.Web;
 
 namespace LivePlay.Front.MAUI.Pages.SettingsPages.Views;
 
 public partial class LoadingPage : ContentPage, IQueryAttributable
 {
-    private ContentPage? _contentPageProperty;
-    private readonly List<Task> AnimationTasks = [];
+    private VisualElement[] _visualElements = [];
+    private readonly List<Task> _animationTasks = [];
 
     private CancellationToken _stopingAnimationToken;
 
@@ -21,12 +18,11 @@ public partial class LoadingPage : ContentPage, IQueryAttributable
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
-        if (query.TryGetValue($"{nameof(ContentPage)}Property", out object? cp) &&
+        if (query.TryGetValue($"{nameof(VisualElement)}sProperty", out object? ves) &&
             query.TryGetValue($"{nameof(CancellationTokenSource)}Property", out object? cts) &&
-            cp is ContentPage contentPage && cts is CancellationTokenSource cancellationTokenSource)
+            ves is VisualElement[] visualElements && cts is CancellationTokenSource cancellationTokenSource)
         {
-            _contentPageProperty = contentPage;
-            //_cancellationTokenSourceProperty = cancellationTokenSource;
+            _visualElements = visualElements;
             _stopingAnimationToken = cancellationTokenSource.Token;
         }
         else
@@ -35,26 +31,29 @@ public partial class LoadingPage : ContentPage, IQueryAttributable
 
     private async void ContentPage_Loaded(object sender, EventArgs e)
     {
-        if (_contentPageProperty != null)
-            await StartAnimation(_contentPageProperty);
+        await StartAnimation();
         await WaitingDownload();
     }
 
    private async Task WaitingDownload()
     {
-        await Task.WhenAll(AnimationTasks);
+        await Task.WhenAll(_animationTasks);
         await Shell.Current.GoToAsync($"..");
     }
 
-    private async Task StartAnimation(ContentPage personalQRPage)
+    private async Task StartAnimation()
     {
-        var (staticBorders, animationBorders) = CreateAnimation(personalQRPage.GetVisualTreeDescendants());
-        while (staticBorders[0].Width < 1)      // TODO: проверка на наличие элементов
+        var (xEnd, animationBorders) = CreateAnimation();
+        if (animationBorders.Count == 0)
+            return;
+        while (animationBorders[0].Width < 1)
             await Task.Delay(100);
+
         for (int i = 0; i < animationBorders.Count; i++)
         {
-            var animation = TranslationXAnimation(this, animationBorders[i], staticBorders[i].Width + 60, staticBorders[i].TranslationX - 60);
-            AnimationTasks.Add(animation);
+            var taskCompletionSource = new TaskCompletionSource<bool>();
+            TranslationXAnimation(taskCompletionSource, this, animationBorders[i], xEnd[i] + 30, -30);
+            _animationTasks.Add(taskCompletionSource.Task);
         }
     }
 
@@ -64,27 +63,27 @@ public partial class LoadingPage : ContentPage, IQueryAttributable
         EndPoint = new Point(1, 0.5),
         GradientStops =
         [
-            new GradientStop { Color = Colors.Gray, Offset = 0 },
+            new GradientStop { Color = Colors.LightGray, Offset = 0 },
             new GradientStop { Color = Colors.White, Offset = 0.5f },
-            new GradientStop { Color = Colors.Gray, Offset = 1 }
+            new GradientStop { Color = Colors.LightGray, Offset = 1 }
         ]
     };
 
-    private (List<Border>, List<Border>) CreateAnimation(IReadOnlyList<IVisualTreeElement> elements)
+    private (List<double>, List<Border>) CreateAnimation()
     {
-        List<Border> staticLoadingBorders = [];
+        List<double> xEnd = [];
         List<Border> animationLoadingBorders = [];
 
-        Type[] FoundElements = [typeof(BarcodeImage), typeof(Label)];//, typeof(Image), typeof(Entry)];
+        IReadOnlyList<Type> FoundElements = [typeof(BarcodeImage), typeof(Label), typeof(Image), typeof(Entry)];
 
         var absoluteLayout = new AbsoluteLayout();
 
-        foreach (var element in elements)
+        foreach (var element in _visualElements)
         {
             if (element is VisualElement visualElement  && FoundElements.Contains(visualElement.GetType()))
             {
 
-                var border = new Border()
+                var staticBorder = new Border()
                 {
                     WidthRequest = visualElement.Width,
                     HeightRequest = visualElement.Height,
@@ -93,19 +92,19 @@ public partial class LoadingPage : ContentPage, IQueryAttributable
                     StrokeShape = new RoundRectangle() { CornerRadius = 5 },
                 };
 
-                var grid = new Grid()
+                AbsoluteLayout.SetLayoutBounds(staticBorder, new Rect(visualElement.X, visualElement.Y,
+                    staticBorder.Width, staticBorder.Height));
+
+                var animationGrid = new Grid()
                 {
                     WidthRequest = visualElement.Width,
                     HeightRequest = visualElement.Height
                 };
 
-                AbsoluteLayout.SetLayoutBounds(border, new Rect(visualElement.X, visualElement.Y,
-                    border.Width, border.Height));
-
                 var animationBorder = new Border()
                 {
                     WidthRequest = 15,
-                    HeightRequest = visualElement.Height,
+                    HeightRequest = visualElement.Height + 10,
                     HorizontalOptions = LayoutOptions.Start,
                     Background = gradientBrush,
                     Stroke = Colors.Transparent,
@@ -113,40 +112,37 @@ public partial class LoadingPage : ContentPage, IQueryAttributable
                     Rotation = 15
                 };
 
-                grid.Children.Add(animationBorder);
-                border.Content = grid;
-                absoluteLayout.Children.Add(border);
+                animationGrid.Children.Add(animationBorder);
+                staticBorder.Content = animationGrid;
+                absoluteLayout.Children.Add(staticBorder);
 
-                staticLoadingBorders.Add(border);
+                xEnd.Add(visualElement.Width);
                 animationLoadingBorders.Add(animationBorder);
             }
         }
         Content = absoluteLayout;
-        return (staticLoadingBorders, animationLoadingBorders);
+        return (xEnd, animationLoadingBorders);
     }
 
-    private Task<bool> TranslationXAnimation(IAnimatable owner, VisualElement visualElement, double xEnd, double? xStartOptional = null)
+    private void TranslationXAnimation(TaskCompletionSource<bool> taskCompletionSource, IAnimatable owner, VisualElement visualElement,
+        double xEnd, double? xStartOptional = null)
     {
         var nameAnimation = $"{visualElement.Id}TranslationX";
         var xStart = xStartOptional ?? visualElement.TranslationX;
-        var taskCompletionSource = new TaskCompletionSource<bool>();
 
         var animation = new Animation(v => visualElement.TranslationX = v, xStart, xEnd);
-        animation.Commit(owner, nameAnimation, 10, 1500, Easing.Linear, (v, c) => visualElement.TranslationX = xStart, repeat);
+        animation.Commit(owner, nameAnimation, 10, 1500, Easing.Linear, endAnimation);
 
-        bool repeat()
+        async void endAnimation(double _, bool __)
         {
+            this.AbortAnimation(nameAnimation);
             if (_stopingAnimationToken.IsCancellationRequested)
-            {
-                this.AbortAnimation(nameAnimation);
                 taskCompletionSource.SetResult(true);
-                return false;
+            else
+            {
+                await Task.Delay(1500);
+                TranslationXAnimation(taskCompletionSource, owner, visualElement, xEnd, xStart);
             }
-            //await Task.Delay(1500);
-            //var t =Task.Run(async () => await Task.Delay(1500)).Wait();
-            return true;
-        };
-
-        return taskCompletionSource.Task;
+        }
     }
 }

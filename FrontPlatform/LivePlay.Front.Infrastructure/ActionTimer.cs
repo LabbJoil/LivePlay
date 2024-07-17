@@ -53,7 +53,7 @@ public class ActionTimer
     private void StopThread()
     {
         BaseTimer?.Dispose();
-        Microsoft.Maui.Controls.Application.Current!.Dispatcher.Dispatch(() =>
+        Application.Current!.Dispatcher.Dispatch(() =>
         {
             EndAction?.Invoke();
         });
@@ -62,7 +62,7 @@ public class ActionTimer
     private void HandleTimer(object? obj)
     {
         if (obj is Action<object?> act)
-            Microsoft.Maui.Controls.Application.Current!.Dispatcher.Dispatch(() =>
+            Application.Current!.Dispatcher.Dispatch(() =>
             {
                 act(StartMilliseconds);
             });
