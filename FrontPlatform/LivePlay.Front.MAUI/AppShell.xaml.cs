@@ -36,7 +36,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(CurrentFeedbackPage), typeof(CurrentFeedbackPage)); //возможно открывается по другому  popup ...
         Routing.RegisterRoute(nameof(CreationQRQuestPage), typeof(CreationQRQuestPage)); //возможно открывается по другому
         Routing.RegisterRoute(nameof(CreationDrawingQuestPage), typeof(CreationDrawingQuestPage)); //возможно открывается по другому
-        Routing.RegisterRoute(nameof(LoadingPage), typeof(LoadingPage));
+        Routing.RegisterRoute(nameof(FirstLoadingPage), typeof(FirstLoadingPage));
         Routing.RegisterRoute(nameof(CreationQuestPage), typeof(CreationQuestPage));
         Routing.RegisterRoute(nameof(CouponInfoPage), typeof(CouponInfoPage));
         Routing.RegisterRoute(nameof(PersonalQRPage), typeof(PersonalQRPage));

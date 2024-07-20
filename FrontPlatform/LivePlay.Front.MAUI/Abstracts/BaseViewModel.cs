@@ -13,7 +13,7 @@ namespace LivePlay.Front.MAUI.Abstracts;
 public abstract partial class BaseViewModel(AppDesign designSettings) : ObservableObject
 {
     private CancellationTokenSource? _stopLoadingTokenSourse;
-    //private ActionTimer? _loadingTimer;
+    private ActionTimer? _loadingTimer;
 
     public AppDesign DesignSettings { get; } = designSettings;
 
@@ -24,7 +24,7 @@ public abstract partial class BaseViewModel(AppDesign designSettings) : Observab
     public virtual async Task Refresh()
     {
         IsRefreshing = false;
-        await Task.Delay(0);
+        await Task.Delay(0);    //
     }
 
     public virtual void ChangeColorBars(Color color, StatusBarColor statusBarColor, Color? secondColor = null)
@@ -32,24 +32,40 @@ public abstract partial class BaseViewModel(AppDesign designSettings) : Observab
         DesignSettings.ChangeColorStatusBars?.Invoke(color, statusBarColor, secondColor);
     }
 
-    protected void StartLoading() // TODO: DEPRECATED
+    protected void StartMiddleLoading()
     {
+        if (_stopLoadingTokenSourse != null && _stopLoadingTokenSourse.IsCancellationRequested)
+            return;
+        _loadingTimer = new(DirectionAction.Down, null, () => StartLoading($"{nameof(MiddleLoadingPage)}", []));
+        _loadingTimer.Start(1500, 0, 500);
     }
 
-    protected async void StartLoading(VisualElement[] visualElements)
+    protected async void StartFirstLoading(VisualElement[] visualElements)
     {
-        _stopLoadingTokenSourse = new();
-        var navigationParameter = new ShellNavigationQueryParameters
+        if (_stopLoadingTokenSourse != null && _stopLoadingTokenSourse.IsCancellationRequested)
+            return;
+        var navigationParameters = new ShellNavigationQueryParameters
         {
-            { $"{nameof(CancellationTokenSource)}Property", _stopLoadingTokenSourse },
             { $"{nameof(VisualElement)}sProperty", visualElements }
         };
-
-        await Shell.Current.GoToAsync($"{nameof(LoadingPage)}", navigationParameter);
+        await StartLoading($"{nameof(FirstLoadingPage)}", navigationParameters);
     }
 
-    protected void StopLoading()
-        => _stopLoadingTokenSourse?.Cancel();
+    private async Task StartLoading(string nameNavigationPage, ShellNavigationQueryParameters parameters)
+    {
+        _stopLoadingTokenSourse = new();
+        parameters.Add($"{nameof(CancellationTokenSource)}Property", _stopLoadingTokenSourse);
+        await Shell.Current.GoToAsync(nameNavigationPage, parameters);
+    }
+
+    protected async Task StopLoading()
+    {
+        if (_stopLoadingTokenSourse != null && !_stopLoadingTokenSourse.IsCancellationRequested)
+        {
+            _stopLoadingTokenSourse.Cancel();
+            await Shell.Current.GoToAsync($"..");
+        }
+    }
 
     protected static async void ShowError(DisplayError? displayError)
     {
@@ -79,6 +95,6 @@ public abstract partial class BaseViewModel(AppDesign designSettings) : Observab
             { $"{nameof(ContentPage)}Property", contentPage }
         };
 
-        Shell.Current.GoToAsync($"/{nameof(LoadingPage)}", navigationParameter);
+        Shell.Current.GoToAsync($"/{nameof(FirstLoadingPage)}", navigationParameter);
     }
 }

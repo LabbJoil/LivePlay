@@ -1,6 +1,7 @@
 ﻿
 using LivePlay.Front.Core.Enums;
 using LivePlay.Front.Infrastructure.HttpServices;
+using LivePlay.Front.Infrastructure.Interfaces;
 using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.Views;
@@ -9,19 +10,20 @@ using LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views;
 
 namespace LivePlay.Front.MAUI.Pages.EnterPages.ViewModels;
 
-public class BlackViewModel(AppDesign appDesign, UserHttpService userHttpService) : BaseViewModel(appDesign)
+public class BlackViewModel(AppDesign appDesign, AppStorage appStorage, UserHttpService userHttpService) : BaseViewModel(appDesign)
 {
     private readonly UserHttpService _userHttpService = userHttpService;
+    private readonly AppStorage _appStorage = appStorage;
 
-    public async Task MakeDecision()
+    public async void MakeDecision(VisualElement[] visualElements)
     {
-        await Shell.Current.GoToAsync($"/{nameof(PersonalQRPage)}");
-        return;
-        StartLoading();
+        //_appStorage.GetPreference<string> = 
+        StartFirstLoading(visualElements);
+        await Task.Delay(10500);
         var roles = await _userHttpService.CheckToken();
-        StopLoading();
+        await StopLoading();
 
-        if(roles.Length > 0)
+        if (roles.Length > 0)
         {
             if (roles.Length == 1 && roles[0] == Role.User)
                 await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
@@ -30,7 +32,6 @@ public class BlackViewModel(AppDesign appDesign, UserHttpService userHttpService
         }
         else
             await Shell.Current.GoToAsync($"//{nameof(EnterPage)}");
-
 
     }
 }

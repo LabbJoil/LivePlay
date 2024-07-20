@@ -42,7 +42,7 @@ public static class ServicesRegistrar
     {
         services.AddTransient<BlackPage>();
         services.AddTransient<EnterPage>();
-        services.AddTransient<LoadingPage>();
+        services.AddTransient<FirstLoadingPage>();
         services.AddTransient<SettingsPage>();
 
         services.AddTransient<BlackViewModel>();

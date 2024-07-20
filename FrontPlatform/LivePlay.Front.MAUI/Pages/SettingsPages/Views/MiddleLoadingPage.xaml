@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LivePlay.Front.MAUI.Pages.SettingsPages.Views.MiddleLoadingPage"
+             Title="MiddleLoadingPage"
+             Background="Black" Opacity="0.5"
+             Shell.NavBarIsVisible="False" Shell.TabBarIsVisible="False" Shell.PresentationMode="Modal">
+    
+    <ActivityIndicator x:Name="LoadingAI" IsRunning="false" />
+</ContentPage>

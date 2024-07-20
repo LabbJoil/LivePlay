@@ -50,16 +50,12 @@ public partial class MainViewModel : BaseTapeViewModel
 
     private async void GetMainPageInfo()
     {
-        StartLoading();
         var (points, error) = await _userService.GetPoints();
-        if (error != null) { ShowError(error); goto EndProcess; }
+        if (error != null) { ShowError(error); return; }
         (var news, error) = await _newsService.GetLastNews();
-        if (error != null) { ShowError(error); goto EndProcess; }
+        if (error != null) { ShowError(error); return; }
 
         TapeItems = news?.ToObservableCollection() ?? [];
         DesignSettings.ChangeCountCoins?.Invoke(points);
-
-    EndProcess:
-        StopLoading();
     }
 }

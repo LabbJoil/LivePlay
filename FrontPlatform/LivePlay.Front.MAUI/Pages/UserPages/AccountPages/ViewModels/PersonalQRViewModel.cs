@@ -1,14 +1,9 @@
 ﻿
-using Camera.MAUI;
 using CommunityToolkit.Mvvm.ComponentModel;
 using LivePlay.Front.Infrastructure.HttpServices;
 using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.MAUI.Models;
-using LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.Controls.Shapes;
-using Microsoft.Maui.Layouts;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.AccountPages.ViewModels;
 
@@ -22,20 +17,21 @@ public partial class PersonalQRViewModel(AppDesign appDesign, UserHttpService us
 
     public override async Task Refresh()
     {
+        StartMiddleLoading();
         await UpdateQRData();
+        StopLoading();
         await base.Refresh();
     }
 
     public async void FirstLoadQRData(VisualElement[] visualElements)
     {
-        StartLoading(visualElements);
-
+        StartFirstLoading(visualElements);
         QRData = _appStorage.GetPreference<UserQRData>(nameof(UserQRData));
         if (QRData != null)
             return;
 
         await UpdateQRData();
-        //StopLoading();
+        StopLoading();
     }
 
     public async Task UpdateQRData()
@@ -49,23 +45,9 @@ public partial class PersonalQRViewModel(AppDesign appDesign, UserHttpService us
 
     private async Task<string?> GetNewQRCode()
     {
-        //StartLoading();
         var (newQRCode, error) = await _userHttpService.GetPersonalQR();
-        //StopLoading();
         if (error != null)
             ShowError(error);
         return newQRCode;
     }
-
-
-
-
-
-
-
-    public CancellationTokenSource StopingAnimationSource { get; set; } = new();
-
-
-    
-
 }

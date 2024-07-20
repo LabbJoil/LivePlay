@@ -6,33 +6,33 @@ using LivePlay.Front.Infrastructure.HttpServices.QuestHttpServices;
 using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.Views;
-using System.Text.Json;
 
 namespace LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Manages.ViewModels;
 
-public partial class ManageQuestViewModel : BaseQuestViewModel
+public partial class ManageQuestViewModel(AppDesign designSettings, QuestHttpService questHttpService) : BaseQuestViewModel(designSettings)
 {
-    private readonly QuestHttpService _questHttpService;
+    private readonly QuestHttpService _questHttpService = questHttpService;
 
     [ObservableProperty]
     public Quest[] _questItems = [];
 
-    public ManageQuestViewModel(AppDesign designSettings, QuestHttpService questHttpService) : base(designSettings)
+    public async void FirstLoadManageQuest(VisualElement[] visualElements)
     {
-        _questHttpService = questHttpService;
-        GetQuestItems();
+        StartFirstLoading(visualElements);
+        await GetQuestItems();
+        StopLoading();
     }
 
-    public async void GetQuestItems()
+    public override async Task Refresh()
     {
-        //string? json = Preferences.Get(nameof(Quest), null);
-        //if (json != null)
-        //    QuestItems = [JsonSerializer.Deserialize<Quest>(json)];
+        await GetQuestItems();
+        await base.Refresh();
+    }
 
-        StartLoading();
+    public async Task GetQuestItems()
+    {
         (QuestItems, var error) = await _questHttpService.GetAllQuests();
         if (error != null) { ShowError(error); }
-        StopLoading();
     }
 
     [RelayCommand]

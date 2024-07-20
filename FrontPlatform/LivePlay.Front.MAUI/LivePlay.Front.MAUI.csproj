@@ -144,6 +144,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\SettingsPages\Views\FirstLoadingPage.xaml.cs">
+	    <DependentUpon>FirstLoadingPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\UserPages\CouponPages\Views\MyCouponsPage.xaml.cs">
 	    <DependentUpon>MyCouponsPage.xaml</DependentUpon>
 	  </Compile>
@@ -243,6 +246,9 @@
 	  <MauiXaml Update="Pages\EnterPages\Views\BlackPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\SettingsPages\Views\MiddleLoadingPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\UserPages\AccountPages\Views\PersonalQRPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -318,7 +324,7 @@
 	  <MauiXaml Update="Pages\SettingsPages\Views\ViewPhotoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\SettingsPages\Views\LoadingPage.xaml">
+	  <MauiXaml Update="Pages\SettingsPages\Views\FirstLoadingPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\UserPages\AccountPages\Views\MainPage.xaml">

@@ -25,7 +25,7 @@ public partial class InProgressDrawingQuestViewModel(AppDesign designSettings, D
         var serializeLines = JsonSerializer.Serialize(drawingView.Lines);
         var bytesLines = Encoding.UTF8.GetBytes(serializeLines);
 
-        StartLoading();
+        StartMiddleLoading();
         var error = await _drawingQuestHttpService.CompeteQuest(new() { PictureInfo = bytesLines}, CurrentQuestItem.Id);
         StopLoading();
 

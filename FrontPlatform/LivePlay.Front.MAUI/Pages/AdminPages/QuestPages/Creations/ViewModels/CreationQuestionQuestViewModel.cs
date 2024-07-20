@@ -57,16 +57,12 @@ public partial class CreationQuestionQuestViewModel(AppDesign designSettings, Qu
         else
             _allQuestionQuest.Add(page.GetNowQuestion());
 
-        //_allQuestionQuest.ForEach(q => q.RightAnswer = -1);
-
-        StartLoading();
+        StartMiddleLoading();
         var error = await _questionQuestHttpService.AddQuest(CurrentQuestItem, _allQuestionQuest);
         StopLoading();
 
         if(error != null) { ShowError(error); return; }
 
-        //Preferences.Set(nameof(Quest), JsonSerializer.Serialize(CurrentQuestItem));
-        //Preferences.Set(nameof(QuestionQuest), JsonSerializer.Serialize(_allQuestionQuest));
         await Shell.Current.DisplayAlert("", "Вы создали квест", "ok");
         await Shell.Current.GoToAsync("../..");
     }

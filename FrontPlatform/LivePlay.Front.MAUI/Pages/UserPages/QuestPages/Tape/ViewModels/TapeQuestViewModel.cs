@@ -12,10 +12,10 @@ using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.NotStarted.Views;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.QuestPages.Tape.ViewModels;
 
-public partial class TapeQuestViewModel : BaseTapeViewModel
+public partial class TapeQuestViewModel(QuestHttpService questHttpService, AppDesign designSettings, AppStorage deviceStorage) : BaseTapeViewModel(designSettings)
 {
-    private readonly AppStorage _deviceStorage;
-    private readonly QuestHttpService _questHttpService;
+    private readonly AppStorage _appStorage = deviceStorage;
+    private readonly QuestHttpService _questHttpService = questHttpService;
 
     [ObservableProperty]
     public IReadOnlyList<Quest> _tapeItems = [];
@@ -26,21 +26,17 @@ public partial class TapeQuestViewModel : BaseTapeViewModel
         new ChoicePanelItem { Icon = "done_quests_light.svg", Text="Выполнены" }
         ];
 
-    public TapeQuestViewModel(QuestHttpService questHttpService, AppDesign designSettings, AppStorage deviceStorage) : base(designSettings)
+    public async void FirstLoadTapeQuest(VisualElement[] visualElements)
     {
-        _questHttpService = questHttpService;
-        _deviceStorage = deviceStorage; //заменить, переход строго через goto
-        //TapeItems = GetQuestItems();
-        GetQuestItems();
+        StartFirstLoading(visualElements);
+        await GetQuestItems();
+        StopLoading();
     }
 
-    public async void GetQuestItems()
+    public async Task GetQuestItems()
     {
-        StartLoading();
         (TapeItems, var error) = await _questHttpService.GetAllQuests();
-        StopLoading();
-
-        if (error != null) { ShowError(error); return; }
+        if (error != null) ShowError(error);
     }
 
     [RelayCommand]

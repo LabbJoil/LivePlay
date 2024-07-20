@@ -26,35 +26,37 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
     [RelayCommand]
     public async Task LoginUser()
     {
-        RequestPermissions:
-        bool havePermissions = await _permissions.GetPermission();
-        if (!havePermissions)
-        {
-            if (await Shell.Current.DisplayAlert("Нет доступа к хранилищу", $"Предоставьте, пожалуйста, доступ к хранилищу", "ok", "no"))
-                goto RequestPermissions;
-            else
-                return;
-        }
+        //RequestPermissions:
+        //bool havePermissions = await _permissions.GetPermission();
+        //if (!havePermissions)
+        //{
+        //    if (await Shell.Current.DisplayAlert("Нет доступа к хранилищу", $"Предоставьте, пожалуйста, доступ к хранилищу", "ok", "no"))
+        //        goto RequestPermissions;
+        //    else
+        //        return;
+        //}
+
+
+        StartMiddleLoading();
         var (roles, error) = await _userService.Login(EnterUser.Email, EnterUser.Password);
 
-        await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
-
-        //if (roles.Length > 0)
-        //{
-        //    DeleteStackPages();
-        //    if (roles.Length == 1 && roles[0] == Role.User)
-        //        await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
-        //    else
-        //        await Shell.Current.GoToAsync($"//{nameof(TapeFeedbackPage)}");
-        //    return;
-        //}
-        //ShowError(error);
+        if (roles.Length > 0)
+        {
+            DeleteStackPages();
+            if (roles.Length == 1 && roles[0] == Role.User)
+                await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+            else
+                await Shell.Current.GoToAsync($"//{nameof(TapeFeedbackPage)}");
+            return;
+        }
+        StopLoading();
+        ShowError(error);
     }
 
     [RelayCommand]
     public async Task VerifyEmail(EnterPage enterPage)
     {
-        StartLoading();
+        StartMiddleLoading();
         (_numberRegistratrtion, var error) = await _userService.VerifyEmail(EnterUser.Email);
         StopLoading();
 
@@ -70,7 +72,7 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
     {
         if (obj is Tuple<object, object> tuple && tuple.Item1 is string code && tuple.Item2 is EnterPage enterPage)
         {
-            StartLoading();
+            StartMiddleLoading();
             var error = await _userService.VerifyCodeEmail(_numberRegistratrtion, code);
             StopLoading();
 
@@ -84,7 +86,7 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
     [RelayCommand]
     public async Task SendCodeAgain(EnterPage enterPage)
     {
-        StartLoading();
+        StartMiddleLoading();
         var error = await _userService.SendCodeAgain(_numberRegistratrtion);
         StopLoading();
 
@@ -98,7 +100,7 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
     [RelayCommand]
     public async Task SendRegistrationInfo(EnterPage enterPage)
     {
-        StartLoading();
+        StartMiddleLoading();
         var error = await _userService.Registration(_numberRegistratrtion, EnterUser);
         StopLoading();
 
