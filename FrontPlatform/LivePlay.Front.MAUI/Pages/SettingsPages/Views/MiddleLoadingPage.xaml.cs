@@ -1,14 +1,21 @@
 
+using LivePlay.Front.MAUI.DeviceSettings;
+using LivePlay.Front.MAUI.Pages.SettingsPages.ViewModels;
+using LivePlay.Front.Core.Enums;
+
 namespace LivePlay.Front.MAUI.Pages.SettingsPages.Views;
 
-public partial class MiddleLoadingPage : ContentPage
+public partial class MiddleLoadingPage : ContentPage, IQueryAttributable
 {
     private CancellationTokenSource? _stopingAnimationSource;
+    private MiddleLoadingViewModel _middleLoadingVM;
 
-    public MiddleLoadingPage()
+    public MiddleLoadingPage(MiddleLoadingViewModel middleLoadingVM)
 	{
 		InitializeComponent();
-	}
+        _middleLoadingVM = middleLoadingVM;
+
+    }
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
@@ -26,8 +33,13 @@ public partial class MiddleLoadingPage : ContentPage
 
     private async Task WaitingDownload()
     {
-        while (_stopingAnimationSource != null)
-            await Task.Delay(300);
-        LoadingAI.IsRunning = false;
+        while (_stopingAnimationSource != null && !_stopingAnimationSource.IsCancellationRequested)
+            await Task.Delay(30);
+        Content = null;
+    }
+
+    private void ContentPage_Appearing(object sender, EventArgs e)
+    {
+        _middleLoadingVM.ChangeColorBars(ShadowRectangle.BackgroundColor, StatusBarColor.BarReplay);
     }
 }

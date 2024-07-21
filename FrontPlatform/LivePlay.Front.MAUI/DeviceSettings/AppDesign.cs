@@ -32,10 +32,4 @@ public class AppDesign
         AppTheme them = AppTheme.Dark; // TODO: загрузка из JSON
         return them;
     }
-
-    //public static void OpacityAnimation(IAnimatable owner, VisualElement visualElement, uint rate, uint lengthAnimation, double endOpacity, double? startOpacity = null)
-    //{
-    //    var animationBackground = new Animation(v => visualElement.Opacity = v, startOpacity ?? visualElement.Opacity, endOpacity);
-    //    animationBackground.Commit(owner, nameof(owner) + "AnimationOpacity", rate, lengthAnimation);
-    //}
 }

@@ -24,7 +24,7 @@ public abstract partial class BaseViewModel(AppDesign designSettings) : Observab
     public virtual async Task Refresh()
     {
         IsRefreshing = false;
-        await Task.Delay(0);    //
+        await Task.Delay(0);    // убрать
     }
 
     public virtual void ChangeColorBars(Color color, StatusBarColor statusBarColor, Color? secondColor = null)
@@ -34,15 +34,15 @@ public abstract partial class BaseViewModel(AppDesign designSettings) : Observab
 
     protected void StartMiddleLoading()
     {
-        if (_stopLoadingTokenSourse != null && _stopLoadingTokenSourse.IsCancellationRequested)
+        if (_stopLoadingTokenSourse != null && !_stopLoadingTokenSourse.IsCancellationRequested)
             return;
-        _loadingTimer = new(DirectionAction.Down, null, () => StartLoading($"{nameof(MiddleLoadingPage)}", []));
+        _loadingTimer = new(DirectionAction.Down, null, async () => await StartLoading($"{nameof(MiddleLoadingPage)}", []));
         _loadingTimer.Start(1500, 0, 500);
     }
 
-    protected async void StartFirstLoading(VisualElement[] visualElements)
+    protected async Task StartFirstLoading(VisualElement[] visualElements)
     {
-        if (_stopLoadingTokenSourse != null && _stopLoadingTokenSourse.IsCancellationRequested)
+        if (_stopLoadingTokenSourse != null && !_stopLoadingTokenSourse.IsCancellationRequested)
             return;
         var navigationParameters = new ShellNavigationQueryParameters
         {

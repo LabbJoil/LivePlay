@@ -19,19 +19,19 @@ public partial class PersonalQRViewModel(AppDesign appDesign, UserHttpService us
     {
         StartMiddleLoading();
         await UpdateQRData();
-        StopLoading();
+        await StopLoading();
         await base.Refresh();
     }
 
     public async void FirstLoadQRData(VisualElement[] visualElements)
     {
-        StartFirstLoading(visualElements);
+        await StartFirstLoading(visualElements);
         QRData = _appStorage.GetPreference<UserQRData>(nameof(UserQRData));
         if (QRData != null)
             return;
 
         await UpdateQRData();
-        StopLoading();
+        await StopLoading();
     }
 
     public async Task UpdateQRData()

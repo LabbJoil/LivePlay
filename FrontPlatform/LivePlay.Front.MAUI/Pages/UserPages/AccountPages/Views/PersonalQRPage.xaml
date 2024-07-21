@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:bottomsheet="https://schemas.the49.com/dotnet/2023/maui"
              x:Class="LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views.PersonalQRPage"
              xmlns:cameraMAUI="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
-             Shell.TabBarIsVisible="False"
-             Title="PersonalQRPage" Loaded="ContentPage_Loaded">
+             Title="PersonalQRPage" 
+             Loaded="ContentPage_Loaded"
+             Background="DarkGray"
+             Shell.TabBarIsVisible="False">
 
+    <bottomsheet:BottomSheet.Detents>
+        <bottomsheet:DetentsCollection>
+            <bottomsheet:RatioDetent Ratio=".99" />
+            <bottomsheet:RatioDetent Ratio=".85" />
+        </bottomsheet:DetentsCollection>
+    </bottomsheet:BottomSheet.Detents>
+    
     <RefreshView
         IsRefreshing="{Binding IsRefreshing}"
         Command="{Binding RefreshCommand}">

@@ -101,8 +101,8 @@ public partial class FirstLoadingPage : ContentPage, IQueryAttributable
 
             var animationBorder = new Border()
             {
-                WidthRequest = 15,
-                HeightRequest = visualElement.Height + visualElement.Height * 10 / 100,
+                WidthRequest = 25,
+                HeightRequest = visualElement.Height + visualElement.Height / 10,
                 HorizontalOptions = LayoutOptions.Start,
                 Background = gradientBrush,
                 Stroke = Colors.Transparent,

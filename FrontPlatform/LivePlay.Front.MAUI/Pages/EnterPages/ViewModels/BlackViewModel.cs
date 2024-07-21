@@ -17,8 +17,7 @@ public class BlackViewModel(AppDesign appDesign, AppStorage appStorage, UserHttp
 
     public async void MakeDecision(VisualElement[] visualElements)
     {
-        //_appStorage.GetPreference<string> = 
-        StartFirstLoading(visualElements);
+        await StartFirstLoading(visualElements);
         await Task.Delay(10500);
         var roles = await _userHttpService.CheckToken();
         await StopLoading();

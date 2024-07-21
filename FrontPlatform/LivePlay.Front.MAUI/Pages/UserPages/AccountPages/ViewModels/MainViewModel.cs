@@ -12,10 +12,10 @@ using LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.AccountPages.ViewModels;
 
-public partial class MainViewModel : BaseTapeViewModel
+public partial class MainViewModel(AppDesign designSettings, UserHttpService userHttpService, NewsHttpService newsHttpService) : BaseTapeViewModel(designSettings)
 {
-    private readonly UserHttpService _userService;
-    private readonly NewsHttpService _newsService;
+    private readonly UserHttpService _userService = userHttpService;
+    private readonly NewsHttpService _newsService = newsHttpService;
 
     [ObservableProperty]
     public ObservableCollection<News> _tapeItems = [];
@@ -38,14 +38,8 @@ public partial class MainViewModel : BaseTapeViewModel
     [RelayCommand]
     public async Task GoToQRPage()
     {
+        //var personalQR = new PersonalQRPage();
         await Shell.Current.GoToAsync($"{nameof(PersonalQRPage)}");
-    }
-
-    public MainViewModel(AppDesign designSettings, UserHttpService userHttpService, NewsHttpService newsHttpService) : base(designSettings)
-    {
-        _userService = userHttpService;
-        _newsService = newsHttpService;
-        GetMainPageInfo();
     }
 
     private async void GetMainPageInfo()

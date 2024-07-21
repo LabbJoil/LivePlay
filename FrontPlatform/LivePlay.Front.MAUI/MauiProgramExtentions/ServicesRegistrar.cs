@@ -42,12 +42,14 @@ public static class ServicesRegistrar
     {
         services.AddTransient<BlackPage>();
         services.AddTransient<EnterPage>();
-        services.AddTransient<FirstLoadingPage>();
         services.AddTransient<SettingsPage>();
+        services.AddTransient<FirstLoadingPage>();
+        services.AddTransient<MiddleLoadingPage>();
 
         services.AddTransient<BlackViewModel>();
         services.AddTransient<EnterViewModel>();
         services.AddTransient<SettingsViewModel>();
+        services.AddTransient<MiddleLoadingViewModel>();
 
         services.RegisterAdminServices();
         services.RegisterUserServices();
@@ -80,7 +82,7 @@ public static class ServicesRegistrar
     {
         services.AddTransient<MainPage>();
         services.AddTransient<CurrentNewsPage>();
-        services.AddTransient<FeedbackPage>(); 
+        services.AddTransient<FeedbackPage>();
         services.AddTransient<CouponInfoPage>();
         services.AddTransient<TapeQuestPage>();
         services.AddTransient<NotStartedQuestPage>();

@@ -37,7 +37,7 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
         //}
 
 
-        StartMiddleLoading();
+        await StartFirstLoading([]);
         var (roles, error) = await _userService.Login(EnterUser.Email, EnterUser.Password);
 
         if (roles.Length > 0)
@@ -47,10 +47,10 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
                 await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
             else
                 await Shell.Current.GoToAsync($"//{nameof(TapeFeedbackPage)}");
-            return;
         }
-        StopLoading();
-        ShowError(error);
+        else
+            ShowError(error);
+        await StopLoading();
     }
 
     [RelayCommand]
@@ -58,7 +58,7 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
     {
         StartMiddleLoading();
         (_numberRegistratrtion, var error) = await _userService.VerifyEmail(EnterUser.Email);
-        StopLoading();
+        await StopLoading();
 
         if (error != null) { ShowError(error); return; }
 
@@ -74,7 +74,7 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
         {
             StartMiddleLoading();
             var error = await _userService.VerifyCodeEmail(_numberRegistratrtion, code);
-            StopLoading();
+            await StopLoading();
 
             if (error != null) { ShowError(error); return; }
 
