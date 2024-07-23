@@ -1,0 +1,16 @@
+version: '3.4'
+
+networks:
+    liveplayserver-net:
+        driver: bridge
+
+services:
+    liveplay.server.webapi:
+        image: ${DOCKER_REGISTRY-}liveplayserverwebapi
+        build:
+            context: .
+            dockerfile: ServerPlatform/LivePlay.Server.WebApi/Dockerfile
+        ports:
+            - "80:80"
+        networks:
+            - liveplayserver-net

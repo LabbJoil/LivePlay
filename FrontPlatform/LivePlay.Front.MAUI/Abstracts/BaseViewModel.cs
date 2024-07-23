@@ -36,7 +36,7 @@ public abstract partial class BaseViewModel(AppDesign designSettings) : Observab
     {
         if (_stopLoadingTokenSourse != null && !_stopLoadingTokenSourse.IsCancellationRequested)
             return;
-        _loadingTimer = new(DirectionAction.Down, null, async () => await StartLoading($"{nameof(MiddleLoadingPage)}", []));
+        _loadingTimer = new(DirectionAction.Down, null, async () => await StartLoading($"/{nameof(MiddleLoadingPage)}", []));
         _loadingTimer.Start(1500, 0, 500);
     }
 
@@ -48,14 +48,14 @@ public abstract partial class BaseViewModel(AppDesign designSettings) : Observab
         {
             { $"{nameof(VisualElement)}sProperty", visualElements }
         };
-        await StartLoading($"{nameof(FirstLoadingPage)}", navigationParameters);
+        await StartLoading($"/{nameof(FirstLoadingPage)}", navigationParameters);
     }
 
     private async Task StartLoading(string nameNavigationPage, ShellNavigationQueryParameters parameters)
     {
         _stopLoadingTokenSourse = new();
         parameters.Add($"{nameof(CancellationTokenSource)}Property", _stopLoadingTokenSourse);
-        await Shell.Current.GoToAsync(nameNavigationPage, parameters);
+        await Shell.Current.GoToAsync(nameNavigationPage, false, parameters);
     }
 
     protected async Task StopLoading()

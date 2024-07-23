@@ -5,6 +5,6 @@
              Title="LoadingPage"
              Loaded="ContentPage_Loaded"
              BackgroundColor="LightGray"
-             Shell.NavBarIsVisible="False" Shell.TabBarIsVisible="False" Shell.PresentationMode="Modal">
+             Shell.PresentationMode="Modal">
 
 </ContentPage>

@@ -25,7 +25,7 @@ public partial class PersonalQRViewModel(AppDesign appDesign, UserHttpService us
 
     public async void FirstLoadQRData(VisualElement[] visualElements)
     {
-        await StartFirstLoading(visualElements);
+        StartFirstLoading(visualElements);
         QRData = _appStorage.GetPreference<UserQRData>(nameof(UserQRData));
         if (QRData != null)
             return;

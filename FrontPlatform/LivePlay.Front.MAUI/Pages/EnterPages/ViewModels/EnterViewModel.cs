@@ -37,7 +37,7 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
         //}
 
 
-        await StartFirstLoading([]);
+        StartMiddleLoading();
         var (roles, error) = await _userService.Login(EnterUser.Email, EnterUser.Password);
 
         if (roles.Length > 0)

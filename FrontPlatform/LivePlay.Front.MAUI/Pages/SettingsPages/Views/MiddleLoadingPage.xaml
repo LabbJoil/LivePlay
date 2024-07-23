@@ -5,7 +5,7 @@
              Title="MiddleLoadingPage"
              Loaded="ContentPage_Loaded"
              BackgroundColor="Transparent" Appearing="ContentPage_Appearing"
-             Shell.NavBarIsVisible="False" Shell.TabBarIsVisible="False" Shell.PresentationMode="Modal">
+             Shell.PresentationMode="Modal">
 
     <Grid BackgroundColor="Transparent">
         <Rectangle x:Name="ShadowRectangle" Opacity="0.5" BackgroundColor="Black"/>
