@@ -7,7 +7,7 @@
     <UserSecretsId>ff8c5e58-3571-4cd1-ac26-632146c828a4</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
-    <DockerComposeProjectPath>..\..\LivePlay.Docker\docker-compose.dcproj</DockerComposeProjectPath>
+    <DockerComposeProjectPath>..\..\LivePlay.Docker\LivePlay.Docker.Compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>

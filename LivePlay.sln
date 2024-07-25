@@ -3,27 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34408.163
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Server.WebApi", "ServerPlatform\LivePlay.Server.WebApi\LivePlay.Server.WebApi.csproj", "{14B6DE52-92E1-45FA-A6CE-FB0906F7D355}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Server.WebApi", "LivePlay.Server\LivePlay.Server.WebApi\LivePlay.Server.WebApi.csproj", "{14B6DE52-92E1-45FA-A6CE-FB0906F7D355}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LivePlay.Server", "LivePlay.Server", "{1FF6450C-2427-49CC-8F5B-6813548F32A6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Server.Application", "ServerPlatform\LivePlay.Server.Application\LivePlay.Server.Application.csproj", "{50C90B7C-359A-42DC-9ED0-7815DE743B55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Server.Application", "LivePlay.Server\LivePlay.Server.Application\LivePlay.Server.Application.csproj", "{50C90B7C-359A-42DC-9ED0-7815DE743B55}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Server.Core", "ServerPlatform\LivePlay.Server.Core\LivePlay.Server.Core.csproj", "{62FF4C3D-BECC-481D-85A4-5677CECBFE07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Server.Core", "LivePlay.Server\LivePlay.Server.Core\LivePlay.Server.Core.csproj", "{62FF4C3D-BECC-481D-85A4-5677CECBFE07}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Server.Infrastructure", "ServerPlatform\LivePlay.Server.Infrastructure\LivePlay.Server.Infrastructure.csproj", "{CE394DEA-C238-47E7-8A27-D97C3BFA39B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Server.Infrastructure", "LivePlay.Server\LivePlay.Server.Infrastructure\LivePlay.Server.Infrastructure.csproj", "{CE394DEA-C238-47E7-8A27-D97C3BFA39B9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Server.Persistence", "ServerPlatform\LivePlay.Server.Persistence\LivePlay.Server.Persistence.csproj", "{B6130263-C43A-4BE0-9E85-862D969E62B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Server.Persistence", "LivePlay.Server\LivePlay.Server.Persistence\LivePlay.Server.Persistence.csproj", "{B6130263-C43A-4BE0-9E85-862D969E62B1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Front.MAUI", "FrontPlatform\LivePlay.Front.MAUI\LivePlay.Front.MAUI.csproj", "{F48543D3-BAFC-4C9A-8A45-39FF4C1F7256}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Front.MAUI", "LivePlay.Front\LivePlay.Front.MAUI\LivePlay.Front.MAUI.csproj", "{F48543D3-BAFC-4C9A-8A45-39FF4C1F7256}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LivePlay.Front", "LivePlay.Front", "{06694F64-2D49-47E6-BD1E-4D8CA129C779}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Front.Core", "FrontPlatform\LivePlay.Front.Core\LivePlay.Front.Core.csproj", "{0A65F466-A164-4D44-BAE8-4216FBE7D07F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Front.Core", "LivePlay.Front\LivePlay.Front.Core\LivePlay.Front.Core.csproj", "{0A65F466-A164-4D44-BAE8-4216FBE7D07F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Front.Infrastructure", "FrontPlatform\LivePlay.Front.Infrastructure\LivePlay.Front.Infrastructure.csproj", "{659623C4-0DFE-4686-9050-3EA03B277C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Front.Infrastructure", "LivePlay.Front\LivePlay.Front.Infrastructure\LivePlay.Front.Infrastructure.csproj", "{659623C4-0DFE-4686-9050-3EA03B277C2E}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "LivePlay.Docker\docker-compose.dcproj", "{1C6FB22A-7D1B-4D11-843F-0D0DC652C9B7}"
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "LIvePlay.Docker.Compose", "LivePlay.Docker\LIvePlay.Docker.Compose.dcproj", "{1C6FB22A-7D1B-4D11-843F-0D0DC652C9B7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LivePlay.Docker", "LivePlay.Docker", "{B670D4E0-026A-4937-A46E-B973D6A49C2A}"
 EndProject

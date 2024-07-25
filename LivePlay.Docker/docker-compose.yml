@@ -1,16 +1,32 @@
 version: '3.4'
-
 networks:
-    liveplayserver-net:
+    liveplay-net:
         driver: bridge
-
 services:
     liveplay.server.webapi:
+        container_name: liveplay.server.webapi
         image: ${DOCKER_REGISTRY-}liveplayserverwebapi
         build:
             context: .
-            dockerfile: ServerPlatform/LivePlay.Server.WebApi/Dockerfile
+            dockerfile: ../LivePlay.Server/LivePlay.Server.WebApi/Dockerfile
         ports:
             - "80:80"
         networks:
-            - liveplayserver-net
+            - liveplay-net
+        depends_on:
+            - postgres_db
+    postgres_db:
+        container_name: postgres
+        image: postgres:latest
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: Qwertyuiop123
+            POSTGRES_DB: LivePlay
+        ports:
+            - 5432:5432
+        networks:
+            - liveplay-net
+        volumes:
+            - postgres-data:/var/lib/postgresql/data
+volumes:
+    postgres-data:
