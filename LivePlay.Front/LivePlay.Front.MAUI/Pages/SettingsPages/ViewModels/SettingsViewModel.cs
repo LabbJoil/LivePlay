@@ -12,7 +12,7 @@ public partial class SettingsViewModel : BaseViewModel
         new ChoicePanelItem { Icon = "notifications.svg", Text="Уведомления" }
         ];
 
-    public SettingsViewModel(AppDesign designSettings) : base(designSettings)
+    public SettingsViewModel(IServiceScopeFactory serviceScopeFactory) : base(serviceScopeFactory)
     {
         // запрос к серверу
     }

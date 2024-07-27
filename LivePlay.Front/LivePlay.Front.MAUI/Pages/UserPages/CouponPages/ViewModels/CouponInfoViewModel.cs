@@ -8,7 +8,7 @@ using LivePlay.Front.MAUI.Pages.UserPages.CouponPages.Views;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.CouponPages.ViewModels;
 
-public partial class CouponInfoViewModel(AppDesign designSettings) : BaseViewModel(designSettings)
+public partial class CouponInfoViewModel(IServiceScopeFactory serviceScopeFactory) : BaseViewModel(serviceScopeFactory)
 {
     [ObservableProperty]
     public Coupon _thisCoupon = new()

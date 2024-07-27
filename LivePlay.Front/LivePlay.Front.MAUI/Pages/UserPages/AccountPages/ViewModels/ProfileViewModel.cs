@@ -21,10 +21,10 @@ public partial class ProfileViewModel : BaseViewModel
         new ChoicePanelItem { Icon = "coupons_light.svg", Text="Мои купоны" }
         ];
 
-    public ProfileViewModel(AppDesign designSettings, UserHttpService userHttpService) : base(designSettings)
+    public ProfileViewModel(IServiceScopeFactory serviceScopeFactory) : base(serviceScopeFactory)
     {
-        _userHttpService = userHttpService;
-        // запрос к серверу
+        using var scope = serviceScopeFactory.CreateScope();
+        _userHttpService = scope.ServiceProvider.GetRequiredService<UserHttpService>();
     }
 
     [RelayCommand]

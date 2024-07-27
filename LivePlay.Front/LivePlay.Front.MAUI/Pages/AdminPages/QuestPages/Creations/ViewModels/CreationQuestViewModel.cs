@@ -2,13 +2,15 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LivePlay.Front.Core.Models.QuestModels;
+using LivePlay.Front.Infrastructure.HttpServices;
+using LivePlay.Front.Infrastructure.Interfaces;
 using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.Views;
 
 namespace LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.ViewModels;
 
-public partial class CreationQuestViewModel(AppDesign designSettings) : BaseQuestViewModel(designSettings)
+public partial class CreationQuestViewModel(IServiceScopeFactory serviceScopeFactory) : BaseQuestViewModel(serviceScopeFactory)
 {
     [ObservableProperty]
     public Quest _nowQuest = new();

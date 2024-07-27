@@ -1,20 +1,31 @@
 version: '3.4'
+
 networks:
     liveplay-net:
         driver: bridge
+
 services:
     liveplay.server.webapi:
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - ASPNETCORE_HTTP_PORTS=5094
+            - ASPNETCORE_HTTPS_PORTS=7001
         container_name: liveplay.server.webapi
         image: ${DOCKER_REGISTRY-}liveplayserverwebapi
         build:
             context: .
-            dockerfile: ../LivePlay.Server/LivePlay.Server.WebApi/Dockerfile
+            dockerfile: Dockerfile
         ports:
-            - "80:80"
+            - "5094:5094"
+            - "7001:7001"
         networks:
             - liveplay-net
+        volumes:
+            - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+            - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
         depends_on:
             - postgres_db
+
     postgres_db:
         container_name: postgres
         image: postgres:latest
@@ -28,5 +39,6 @@ services:
             - liveplay-net
         volumes:
             - postgres-data:/var/lib/postgresql/data
+
 volumes:
     postgres-data:

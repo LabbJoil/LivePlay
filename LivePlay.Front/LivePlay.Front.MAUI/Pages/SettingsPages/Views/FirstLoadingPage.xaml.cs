@@ -37,11 +37,18 @@ public partial class FirstLoadingPage : ContentPage, IQueryAttributable
     {
         while (_stopingAnimationSource != null && !_stopingAnimationSource.IsCancellationRequested)
             await Task.Delay(50);
-        Content = null;
+        await Shell.Current.GoToAsync($"..");
     }
 
     private async Task StartAnimation()
     {
+        List<VisualElement> notLoadedElements = [.. _visualElements];
+        while (notLoadedElements.Count > 0)
+        {
+            notLoadedElements.RemoveAll(ve => ve.IsLoaded);
+            await Task.Delay(50);
+        }
+
         var borderAnimations = CreateContent();
         if (borderAnimations.Count == 0)
             return;

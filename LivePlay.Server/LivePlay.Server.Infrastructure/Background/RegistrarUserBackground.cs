@@ -18,13 +18,13 @@ public partial class RegistrarUserBackground : BackgroundService, IRegistrarUser
 
     protected async override Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        const int maxTimeSaveEmailValidation = 20;
+        const int maxMinutesSaveEmailValidation = 10;
         const int millisecondsDelay = 1500;
 
         while (!stoppingToken.IsCancellationRequested)
         {
             foreach (var rum in _newRegistrationUsers)
-                if (rum.Value.StartValidation.AddMinutes(maxTimeSaveEmailValidation) < DateTime.Now)
+                if (rum.Value.StartValidation.AddMinutes(maxMinutesSaveEmailValidation) < DateTime.Now)
                     _newRegistrationUsers.Remove(rum.Key);
             await Task.Delay(millisecondsDelay, stoppingToken);
         }

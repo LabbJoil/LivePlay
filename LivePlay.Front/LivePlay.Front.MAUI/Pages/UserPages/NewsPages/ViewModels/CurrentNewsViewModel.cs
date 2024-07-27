@@ -6,7 +6,7 @@ using LivePlay.Front.MAUI.DeviceSettings;
 
 namespace LivePlay.Front.MAUI.ViewModels.NewsViewModels;
 
-public partial class CurrentNewsPageViewModel(AppDesign designSettings) : BaseViewModel(designSettings)
+public partial class CurrentNewsPageViewModel(IServiceScopeFactory serviceScopeFactory) : BaseViewModel(serviceScopeFactory)
 {
     [ObservableProperty]
     public News _currentNewsItem = new();

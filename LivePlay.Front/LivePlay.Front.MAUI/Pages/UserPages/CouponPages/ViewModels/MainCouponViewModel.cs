@@ -6,7 +6,7 @@ using LivePlay.Front.MAUI.Pages.UserPages.CouponPages.Views;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.CouponPages.ViewModels;
 
-public partial class MainRewardViewModel(AppDesign designSettings) : BaseViewModel(designSettings)
+public partial class MainRewardViewModel(IServiceScopeFactory serviceScopeFactory) : BaseViewModel(serviceScopeFactory)
 {
     [RelayCommand]
     public async Task GoToCoupon()

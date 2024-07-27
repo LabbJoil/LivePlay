@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LivePlay.Front.Core.Enums;
 using LivePlay.Front.Core.Models.QuestModels;
+using LivePlay.Front.Infrastructure.HttpServices;
 using LivePlay.Front.Infrastructure.HttpServices.QuestHttpServices;
 using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
@@ -12,10 +13,10 @@ using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.NotStarted.Views;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.QuestPages.Tape.ViewModels;
 
-public partial class TapeQuestViewModel(QuestHttpService questHttpService, AppDesign designSettings, AppStorage deviceStorage) : BaseTapeViewModel(designSettings)
+public partial class TapeQuestViewModel : BaseTapeViewModel
 {
-    private readonly AppStorage _appStorage = deviceStorage;
-    private readonly QuestHttpService _questHttpService = questHttpService;
+    private readonly AppStorage _appStorage;
+    private readonly QuestHttpService _questHttpService;
 
     [ObservableProperty]
     public IReadOnlyList<Quest> _tapeItems = [];
@@ -26,9 +27,16 @@ public partial class TapeQuestViewModel(QuestHttpService questHttpService, AppDe
         new ChoicePanelItem { Icon = "done_quests_light.svg", Text="Выполнены" }
         ];
 
+    public TapeQuestViewModel(IServiceScopeFactory serviceScopeFactory) : base(serviceScopeFactory)
+    {
+        using var scope = serviceScopeFactory.CreateScope();
+        _appStorage = scope.ServiceProvider.GetRequiredService<AppStorage>();
+        _questHttpService = scope.ServiceProvider.GetRequiredService<QuestHttpService>();
+    }
+
     public async void FirstLoadTapeQuest(VisualElement[] visualElements)
     {
-        StartFirstLoading(visualElements);
+        StartMiddleLoading();
         await GetQuestItems();
         StopLoading();
     }

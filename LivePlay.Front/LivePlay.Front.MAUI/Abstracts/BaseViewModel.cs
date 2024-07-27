@@ -4,21 +4,27 @@ using CommunityToolkit.Mvvm.Input;
 using LivePlay.Front.Core.Enums;
 using LivePlay.Front.Core.Models;
 using LivePlay.Front.Infrastructure;
+using LivePlay.Front.Infrastructure.HttpServices;
 using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.MAUI.Pages.SettingsPages.Views;
-using System.Text.Json;
 
 namespace LivePlay.Front.MAUI.Abstracts;
 
-public abstract partial class BaseViewModel(AppDesign designSettings) : ObservableObject
+public abstract partial class BaseViewModel : ObservableObject
 {
     private CancellationTokenSource? _stopLoadingTokenSourse;
     private ActionTimer? _loadingTimer;
 
-    public AppDesign DesignSettings { get; } = designSettings;
+    public AppDesign DesignSettings { get; }
 
     [ObservableProperty]
     public bool _isRefreshing;
+
+    public BaseViewModel(IServiceScopeFactory serviceScopeFactory)
+    {
+        using var scope = serviceScopeFactory.CreateScope();
+        DesignSettings = scope.ServiceProvider.GetRequiredService<AppDesign>();
+    }
 
     [RelayCommand]
     public virtual async Task Refresh()
@@ -34,7 +40,7 @@ public abstract partial class BaseViewModel(AppDesign designSettings) : Observab
 
     protected void StartMiddleLoading()
     {
-        if (_stopLoadingTokenSourse != null && !_stopLoadingTokenSourse.IsCancellationRequested)
+        if (!CheckStopLoadingSource())
             return;
         _loadingTimer = new(DirectionAction.Down, null, async () => await StartLoading($"/{nameof(MiddleLoadingPage)}", []));
         _loadingTimer.Start(1500, 0, 500);
@@ -42,7 +48,7 @@ public abstract partial class BaseViewModel(AppDesign designSettings) : Observab
 
     protected async Task StartFirstLoading(VisualElement[] visualElements)
     {
-        if (_stopLoadingTokenSourse != null && !_stopLoadingTokenSourse.IsCancellationRequested)
+        if (!CheckStopLoadingSource())
             return;
         var navigationParameters = new ShellNavigationQueryParameters
         {
@@ -51,20 +57,27 @@ public abstract partial class BaseViewModel(AppDesign designSettings) : Observab
         await StartLoading($"/{nameof(FirstLoadingPage)}", navigationParameters);
     }
 
-    private async Task StartLoading(string nameNavigationPage, ShellNavigationQueryParameters parameters)
-    {
-        _stopLoadingTokenSourse = new();
-        parameters.Add($"{nameof(CancellationTokenSource)}Property", _stopLoadingTokenSourse);
-        await Shell.Current.GoToAsync(nameNavigationPage, false, parameters);
-    }
-
-    protected async Task StopLoading()
+    protected void StopLoading()
     {
         if (_stopLoadingTokenSourse != null && !_stopLoadingTokenSourse.IsCancellationRequested)
         {
+            _loadingTimer?.Stop();
             _stopLoadingTokenSourse.Cancel();
-            await Shell.Current.GoToAsync($"..");
         }
+    }
+
+    private bool CheckStopLoadingSource()
+    {
+        if (_stopLoadingTokenSourse != null && !_stopLoadingTokenSourse.IsCancellationRequested)
+            return false;
+        _stopLoadingTokenSourse = new();
+        return true;
+    }
+
+    private async Task StartLoading(string nameNavigationPage, ShellNavigationQueryParameters parameters)
+    {
+        parameters.Add($"{nameof(CancellationTokenSource)}Property", _stopLoadingTokenSourse);
+        await Shell.Current.GoToAsync(nameNavigationPage, false, parameters);
     }
 
     protected static async void ShowError(DisplayError? displayError)

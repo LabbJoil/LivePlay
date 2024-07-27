@@ -46,7 +46,6 @@ public class ExceptionMiddlewareHandler(RequestDelegate next, ILogger<ExceptionM
             ErrorCode = error.ToString(),
             Message = message
         };
-        var body = JsonSerializer.Serialize(errorResponse);
-        await response.WriteAsJsonAsync(body);
+        await response.WriteAsJsonAsync(errorResponse);
     }
 }

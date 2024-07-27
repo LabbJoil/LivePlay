@@ -10,16 +10,23 @@ using LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views;
 
 namespace LivePlay.Front.MAUI.Pages.EnterPages.ViewModels;
 
-public class BlackViewModel(AppDesign appDesign, AppStorage appStorage, UserHttpService userHttpService) : BaseViewModel(appDesign)
+public class BlackViewModel : BaseViewModel
 {
-    private readonly UserHttpService _userHttpService = userHttpService;
-    private readonly AppStorage _appStorage = appStorage;
+    private readonly UserHttpService _userHttpService;
+    private readonly AppStorage _appStorage;
+
+    public BlackViewModel(IServiceScopeFactory serviceScopeFactory) : base(serviceScopeFactory)
+    {
+        using var scope = serviceScopeFactory.CreateScope();
+        _userHttpService = scope.ServiceProvider.GetRequiredService<UserHttpService>();
+        _appStorage = scope.ServiceProvider.GetRequiredService<AppStorage>();
+    }
 
     public async void MakeDecision(VisualElement[] visualElements)
     {
-        await StartFirstLoading(visualElements);
+        StartMiddleLoading();
         var roles = await _userHttpService.CheckToken();
-        await StopLoading();
+        StopLoading();
 
         if (roles.Length > 0)
         {

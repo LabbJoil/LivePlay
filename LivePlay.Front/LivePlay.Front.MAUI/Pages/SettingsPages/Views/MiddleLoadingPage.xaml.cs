@@ -8,7 +8,7 @@ namespace LivePlay.Front.MAUI.Pages.SettingsPages.Views;
 public partial class MiddleLoadingPage : ContentPage, IQueryAttributable
 {
     private CancellationTokenSource? _stopingAnimationSource;
-    private MiddleLoadingViewModel _middleLoadingVM;
+    private readonly MiddleLoadingViewModel _middleLoadingVM;
 
     public MiddleLoadingPage(MiddleLoadingViewModel middleLoadingVM)
 	{
@@ -35,7 +35,7 @@ public partial class MiddleLoadingPage : ContentPage, IQueryAttributable
     {
         while (_stopingAnimationSource != null && !_stopingAnimationSource.IsCancellationRequested)
             await Task.Delay(30);
-        Content = null;
+        await Shell.Current.GoToAsync($"..");
     }
 
     private void ContentPage_Appearing(object sender, EventArgs e)

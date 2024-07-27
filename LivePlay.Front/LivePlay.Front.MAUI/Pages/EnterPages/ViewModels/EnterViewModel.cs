@@ -13,15 +13,22 @@ using LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views;
 
 namespace LivePlay.Front.MAUI.Pages.EnterPages.ViewModels;
 
-public partial class EnterViewModel(AppDesign designSettings, AppPermissions permissions, UserHttpService userHttpService) : BaseViewModel(designSettings)
+public partial class EnterViewModel : BaseViewModel
 {
-    private readonly AppPermissions _permissions = permissions;
-    private readonly UserHttpService _userService = userHttpService;
+    private readonly AppPermissions _permissions;
+    private readonly UserHttpService _userService;
     private ActionTimer? _sendCodeTimer;
     private uint _numberRegistratrtion = 0;
 
     [ObservableProperty]
     public User _enterUser = new();
+
+    public EnterViewModel(IServiceScopeFactory serviceScopeFactory) : base(serviceScopeFactory)
+    {
+        using var scope = serviceScopeFactory.CreateScope();
+        _permissions = scope.ServiceProvider.GetRequiredService<AppPermissions>();
+        _userService = scope.ServiceProvider.GetRequiredService<UserHttpService>();
+    }
 
     [RelayCommand]
     public async Task LoginUser()
@@ -50,7 +57,7 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
         }
         else
             ShowError(error);
-        await StopLoading();
+        StopLoading();
     }
 
     [RelayCommand]
@@ -58,7 +65,7 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
     {
         StartMiddleLoading();
         (_numberRegistratrtion, var error) = await _userService.VerifyEmail(EnterUser.Email);
-        await StopLoading();
+        StopLoading();
 
         if (error != null) { ShowError(error); return; }
 
@@ -74,7 +81,7 @@ public partial class EnterViewModel(AppDesign designSettings, AppPermissions per
         {
             StartMiddleLoading();
             var error = await _userService.VerifyCodeEmail(_numberRegistratrtion, code);
-            await StopLoading();
+            StopLoading();
 
             if (error != null) { ShowError(error); return; }
 

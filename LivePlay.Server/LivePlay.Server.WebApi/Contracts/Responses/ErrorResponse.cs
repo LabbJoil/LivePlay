@@ -1,6 +1,4 @@
 ﻿
-using LivePlay.Server.Core.Enums;
-
 namespace LivePlay.Server.WebApi.Contracts.Responses;
 
 public class ErrorResponse

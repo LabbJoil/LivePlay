@@ -9,16 +9,26 @@ using LivePlay.Front.Infrastructure.HttpServices;
 using CommunityToolkit.Maui.Core.Extensions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.AccountPages.ViewModels;
 
-public partial class MainViewModel(AppDesign designSettings, UserHttpService userHttpService, NewsHttpService newsHttpService) : BaseTapeViewModel(designSettings)
+public partial class MainViewModel : BaseTapeViewModel
 {
-    private readonly UserHttpService _userService = userHttpService;
-    private readonly NewsHttpService _newsService = newsHttpService;
+    private readonly IServiceScopeFactory _serviceScopeFactory;
+    private readonly UserHttpService _userService;
+    private readonly NewsHttpService _newsService;
 
     [ObservableProperty]
     public ObservableCollection<News> _tapeItems = [];
+
+    public MainViewModel(IServiceScopeFactory serviceScopeFactory) : base(serviceScopeFactory)
+    {
+        _serviceScopeFactory = serviceScopeFactory;
+        using var scope = serviceScopeFactory.CreateScope();
+        _userService = scope.ServiceProvider.GetRequiredService<UserHttpService>();
+        _newsService = scope.ServiceProvider.GetRequiredService<NewsHttpService>();
+    }
 
     public override async Task Refresh()
     {
@@ -36,10 +46,11 @@ public partial class MainViewModel(AppDesign designSettings, UserHttpService use
     }
 
     [RelayCommand]
-    public async Task GoToQRPage()
+    public void GoToQRPage()
     {
-        //var personalQR = new PersonalQRPage();
-        await Shell.Current.GoToAsync($"{nameof(PersonalQRPage)}");
+        using var scope = _serviceScopeFactory.CreateScope();
+        var personalQRVM = scope.ServiceProvider.GetRequiredService<PersonalQRViewModel>();
+        var personalQR = new PersonalQRPage(personalQRVM);
     }
 
     private async void GetMainPageInfo()

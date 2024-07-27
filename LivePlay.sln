@@ -23,10 +23,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Front.Core", "Live
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LivePlay.Front.Infrastructure", "LivePlay.Front\LivePlay.Front.Infrastructure\LivePlay.Front.Infrastructure.csproj", "{659623C4-0DFE-4686-9050-3EA03B277C2E}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "LIvePlay.Docker.Compose", "LivePlay.Docker\LIvePlay.Docker.Compose.dcproj", "{1C6FB22A-7D1B-4D11-843F-0D0DC652C9B7}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LivePlay.Docker", "LivePlay.Docker", "{B670D4E0-026A-4937-A46E-B973D6A49C2A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,10 +63,6 @@ Global
 		{659623C4-0DFE-4686-9050-3EA03B277C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{659623C4-0DFE-4686-9050-3EA03B277C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{659623C4-0DFE-4686-9050-3EA03B277C2E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1C6FB22A-7D1B-4D11-843F-0D0DC652C9B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1C6FB22A-7D1B-4D11-843F-0D0DC652C9B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1C6FB22A-7D1B-4D11-843F-0D0DC652C9B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1C6FB22A-7D1B-4D11-843F-0D0DC652C9B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,7 +76,6 @@ Global
 		{F48543D3-BAFC-4C9A-8A45-39FF4C1F7256} = {06694F64-2D49-47E6-BD1E-4D8CA129C779}
 		{0A65F466-A164-4D44-BAE8-4216FBE7D07F} = {06694F64-2D49-47E6-BD1E-4D8CA129C779}
 		{659623C4-0DFE-4686-9050-3EA03B277C2E} = {06694F64-2D49-47E6-BD1E-4D8CA129C779}
-		{1C6FB22A-7D1B-4D11-843F-0D0DC652C9B7} = {B670D4E0-026A-4937-A46E-B973D6A49C2A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {02877613-9098-4C1C-BD36-E4F8642157BD}

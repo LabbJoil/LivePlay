@@ -7,7 +7,7 @@
              Title="PersonalQRPage" 
              Loaded="ContentPage_Loaded"
              Background="DarkGray"
-             Shell.TabBarIsVisible="False">
+             Shell.TabBarIsVisible="False" Shell.NavBarIsVisible="False">
 
     <bottomsheet:BottomSheet.Detents>
         <bottomsheet:DetentsCollection>
@@ -26,11 +26,11 @@
                 WidthRequest="200" HeightRequest="200" 
                 BarcodeWidth="200" BarcodeHeight="200" BarcodeMargin="0"
                 BarcodeBackground="White"
-                BarcodeFormat="QR_CODE" Barcode="111"/>
+                BarcodeFormat="QR_CODE" Barcode="{Binding QRData.QRCode}"/>
 
             <Label
                 x:Name="DateUpdateLabel"
-                Text="111"
+                Text="{Binding GeneratedDate}"
                 HorizontalOptions="CenterAndExpand"
                 Margin="0,10"/>
         </StackLayout>

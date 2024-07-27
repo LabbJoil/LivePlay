@@ -7,12 +7,20 @@ using LivePlay.Front.Core.Enums;
 using LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.Views;
 using LivePlay.Front.Core.Models.QuestModels;
 using LivePlay.Front.Core.Models;
+using LivePlay.Front.Infrastructure.HttpServices;
+using LivePlay.Front.Infrastructure.Interfaces;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.QuestPages.NotStarted.ViewModels;
 
-public partial class NotStartedQuestViewModel(AppDesign appDesign, QuestHttpService questHttpService) : BaseQuestViewModel(appDesign)
+public partial class NotStartedQuestViewModel : BaseQuestViewModel
 {
-    private readonly QuestHttpService _questHttpService = questHttpService;
+    private readonly QuestHttpService _questHttpService;
+
+    public NotStartedQuestViewModel(IServiceScopeFactory serviceScopeFactory) : base(serviceScopeFactory)
+    {
+        using var scope = serviceScopeFactory.CreateScope();
+        _questHttpService = scope.ServiceProvider.GetRequiredService<QuestHttpService>();
+    }
 
     [RelayCommand]
     public async Task TakePartQuest(int idQuest)

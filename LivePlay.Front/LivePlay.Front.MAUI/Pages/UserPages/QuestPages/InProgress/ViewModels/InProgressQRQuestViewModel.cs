@@ -4,7 +4,7 @@ using LivePlay.Front.MAUI.DeviceSettings;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.QuestPages.InProgress.ViewModels;
 
-public class InProgressQRQuestViewModel(AppDesign designSettings) : BaseQuestViewModel(designSettings)
+public class InProgressQRQuestViewModel(IServiceScopeFactory serviceScopeFactory) : BaseQuestViewModel(serviceScopeFactory)
 {
 
 }

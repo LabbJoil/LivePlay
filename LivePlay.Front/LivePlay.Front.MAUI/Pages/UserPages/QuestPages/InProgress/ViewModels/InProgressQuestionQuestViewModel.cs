@@ -17,10 +17,10 @@ public partial class InProgressQuestionQuestViewModel : BaseQuestViewModel
     private QuestionQuest[] AllQuestionQuests = [];
     private int NowQuest = -1;
 
-    public InProgressQuestionQuestViewModel(AppDesign designSettings, QuestionQuestHttpService questionQuestHttpService) : base(designSettings)
+    public InProgressQuestionQuestViewModel(IServiceScopeFactory serviceScopeFactory) : base(serviceScopeFactory)
     {
-        _questionQuestHttpService = questionQuestHttpService;
-        LoadQuestionQuests();
+        using var scope = serviceScopeFactory.CreateScope();
+        _questionQuestHttpService = scope.ServiceProvider.GetRequiredService<QuestionQuestHttpService>();
     }
 
     private async void LoadQuestionQuests()

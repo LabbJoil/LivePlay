@@ -7,7 +7,7 @@ using LivePlay.Server.Persistence.EntityModels.Base;
 
 namespace LivePlay.Server.WebApi.ProgramExtentions;
 
-public static class ServiceLifetime
+internal static class ServiceLifetime
 {
     public static void ControlAppLifetime(this WebApplication app)
     {

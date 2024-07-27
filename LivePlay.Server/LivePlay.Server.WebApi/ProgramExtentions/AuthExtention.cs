@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace LivePlay.Server.WebApi.Extentions;
 
-public static class AuthExtention
+internal static class AuthExtention
 {
     public static void AddApiAuthentication(this IServiceCollection services, IConfiguration configuration)
     {

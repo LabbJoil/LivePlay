@@ -6,6 +6,8 @@ using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.Views;
 using LivePlay.Front.Core.Models.FeedbackModels;
+using LivePlay.Front.Infrastructure.HttpServices;
+using LivePlay.Front.Infrastructure.Interfaces;
 
 namespace LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.ViewModels;
 
@@ -16,10 +18,10 @@ public partial class TapeFeedbackViewModel : BaseTapeViewModel
     [ObservableProperty]
     public IReadOnlyList<FeedbackContactInfo> _tapeItems;
 
-    public TapeFeedbackViewModel(AppDesign designSettings, AppStorage deviceStorage) : base(designSettings)
+    public TapeFeedbackViewModel(IServiceScopeFactory serviceScopeFactory) : base(serviceScopeFactory)
     {
-        _deviceStorage = deviceStorage; //заменить, переход строго через goto
-        GetFeedbackItems();
+        using var scope = serviceScopeFactory.CreateScope();
+        _deviceStorage = scope.ServiceProvider.GetRequiredService<AppStorage>();
     }
 
     public async Task GetFeedbackItems()
