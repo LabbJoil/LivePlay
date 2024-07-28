@@ -80,9 +80,9 @@ public class UserHttpService(IServiceScopeFactory serviceScopeFactory) : BaseHtt
             return (default, ParseError(response.ResponseData, response.Error));
     }
 
-    public async Task<DisplayError?> VerifyCodeEmail(uint numberRegistration, string code)
+    public async Task<DisplayError?> CheckEmailCode(uint numberRegistration, string code)
     {
-        const string route = "/verifyCodeEmail";
+        const string route = "/checkEmailCode";
         (string, string)[] sendParams = [
             (nameof(numberRegistration), numberRegistration.ToString()),
             (nameof(code), code)

@@ -34,25 +34,28 @@ public class UserService(IUserRepository repository, IJwtProvider jwtProvider, I
         if (await _userRepository.CheckUserByEmail(email))
             throw new RequestException(ErrorCode.RegistrationError, $"User with email {email} already exsists.");
 
-        if (_backgroundFacade.IsEmailInRegistration(email))
-            throw new RequestException(ErrorCode.RegistrationError, "The code has already been sent to this email.");
-        var (numberRegistration, code) = _backgroundFacade.AddNewEmailRegistration(email);
-        
-        var exception = _emailProvider.SendCodeEmail(email, code);
-        if (exception != null)
+        var (code_NumberRegistration, error) = _backgroundFacade.AddNewEmailRegistration(email);
+        if (error != null)
+            throw error;
+
+        if (code_NumberRegistration is (uint numberRegistration, string code))
         {
-            _backgroundFacade.PopRegistrationEmail(numberRegistration);
-            throw exception;
+            var exception = _emailProvider.SendCodeEmail(email, code);
+            if (exception != null)
+            {
+                _backgroundFacade.PopRegistrationEmail(numberRegistration);
+                throw exception;
+            }
+            return numberRegistration;
         }
-        return numberRegistration;
+        throw new ServerException(ErrorCode.RegistrationError, $"code_NumberRegistration in {nameof(UserService)} - {nameof(VerifyEmail)} don't parse, but error no");
     }
 
     public void VerifyCodeEmail(uint numberRegistration, string code)
     {
-        if (_backgroundFacade.CheckEmailCode != null)
-            _backgroundFacade.CheckEmailCode(numberRegistration, code);
-        else
-            throw new ServerException(ErrorCode.RegistrationError, $"There is no access to the back service throw facade {nameof(BackgroundFacade)}.");
+        var error = _backgroundFacade.CheckEmailCode(numberRegistration, code);
+        if (error != null)
+            throw error;
     }
 
     public async Task RegisterUser(uint numberRegistration, User user)

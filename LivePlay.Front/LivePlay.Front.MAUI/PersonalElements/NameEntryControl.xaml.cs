@@ -20,7 +20,7 @@ public partial class NameEntryControl : ContentView
         returnType: typeof(string),
         declaringType: typeof(NameEntryControl),
         defaultValue: "",
-        defaultBindingMode: BindingMode.OneWay);
+        defaultBindingMode: BindingMode.TwoWay);
 
     public static new readonly BindableProperty BackgroundProperty = BindableProperty.Create(
         propertyName: nameof(Background),
@@ -44,6 +44,6 @@ public partial class NameEntryControl : ContentView
     public new Color Background
     {
         get => (Color)GetValue(BackgroundProperty);
-        set { SetValue(SecondNameProperty, value); }
+        set { SetValue(BackgroundProperty, value); }
     }
 }

@@ -80,7 +80,7 @@ public partial class EnterViewModel : BaseViewModel
         if (obj is Tuple<object, object> tuple && tuple.Item1 is string code && tuple.Item2 is EnterPage enterPage)
         {
             StartMiddleLoading();
-            var error = await _userService.VerifyCodeEmail(_numberRegistratrtion, code);
+            var error = await _userService.CheckEmailCode(_numberRegistratrtion, code);
             StopLoading();
 
             if (error != null) { ShowError(error); return; }

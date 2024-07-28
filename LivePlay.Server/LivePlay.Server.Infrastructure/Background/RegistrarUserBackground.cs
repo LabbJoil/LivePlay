@@ -4,6 +4,7 @@ using LivePlay.Server.Application.Interfaces;
 using LivePlay.Server.Core.CustomExceptions;
 using LivePlay.Server.Core.Enums;
 using Microsoft.Extensions.Hosting;
+using System.Collections.Generic;
 
 namespace LivePlay.Server.Infrastructure.Background;
 
@@ -43,8 +44,17 @@ public partial class RegistrarUserBackground : BackgroundService, IRegistrarUser
         return new RequestException(ErrorCode.RegistrationError, $"Email verification time has expired", $"Registration number - {numberRegistration}, verification code - {checkCode} not found");
     }
 
-    public (uint, string) AddNewEmailRegistration(string email)
+    public ((uint, string)?, RequestException?) AddNewEmailRegistration(string email)
     {
+        const int minRepeatRequestMinutes = 2;
+        var key_verificationEmail = GetEmailInRegistration(email);
+        if (key_verificationEmail is var (key, ve))
+        {
+            if (ve.StartValidation.AddMinutes(minRepeatRequestMinutes) > DateTime.Now)
+                return (null, new RequestException(ErrorCode.RegistrationError, "Try again later."));
+            _newRegistrationUsers.Remove(key);
+        }
+
         var numberRegistration = GetNewNumberRegistration();
         string code = GenerateNewCode();
 
@@ -55,7 +65,7 @@ public partial class RegistrarUserBackground : BackgroundService, IRegistrarUser
         };
 
         _newRegistrationUsers[numberRegistration] = registrationUser;
-        return (numberRegistration, code);
+        return ((numberRegistration, code), null);
     }
 
     public void PopRegistrationEmail(uint numberRegistration)
@@ -76,18 +86,18 @@ public partial class RegistrarUserBackground : BackgroundService, IRegistrarUser
         throw new RequestException(ErrorCode.RegistrationError, $"Email verification time has expired", $"Registration number - {numberRegistration} not found");
     }
 
-    public bool IsEmailInRegistration(string email)
-    {
-        foreach (var rum in _newRegistrationUsers.Values)
-            if (rum.Email == email)
-                return true;
-        return false;
-    }
-
     public VerificationEmail? GetVerificationEmailByNumberRegistration(uint numberRegistration)
     {
         _newRegistrationUsers.TryGetValue(numberRegistration, out VerificationEmail? registrationUser);
         return registrationUser;
+    }
+
+    private (uint, VerificationEmail)? GetEmailInRegistration(string email)
+    {
+        foreach (var ve in _newRegistrationUsers)
+            if (ve.Value.Email == email)
+                return (ve.Key, ve.Value);
+        return null;
     }
 
     private uint GetNewNumberRegistration()

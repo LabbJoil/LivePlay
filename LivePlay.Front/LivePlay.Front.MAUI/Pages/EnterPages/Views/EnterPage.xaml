@@ -94,10 +94,10 @@
                 </StackLayout>
 
                 <StackLayout x:Name="UserInfoStackLayout" WidthRequest="300" Orientation="Vertical" IsVisible="False">
-                    <pe:NameEntryControl Background="Black"/>
-                    <pe:PasswordEntryControl x:Name="IOIII" Placeholder="Пароль" Text="{Binding EnterUser.Password}" Margin="10,0" />
+                    <pe:NameEntryControl Background="White" FirstName="{Binding EnterUser.FirstName}" SecondName="{Binding EnterUser.SecondName}"/>
+                    <pe:PasswordEntryControl Placeholder="Пароль" Text="{Binding EnterUser.Password}" Margin="10,0" />
                     <Button Text="Войти" Margin="50,30" HeightRequest="50"
-                            Command="{Binding LoginUserCommand}"
+                            Command="{Binding SendRegistrationInfoCommand}"
                             CommandParameter="{Binding Source={x:Reference this}}"/>
                 </StackLayout>
             </Grid>
