@@ -20,6 +20,7 @@ public class MainActivity : MauiAppCompatActivity
             appSettings.ChangeColorStatusBars = ChangeBarsColor;
         base.OnCreate(savedInstanceState);
         Window?.SetSoftInputMode(SoftInput.AdjustResize);
+        ChangeBarsColor(Colors.Black, StatusBarColor.BarReplay);
     }
 
     [SuppressMessage("Interoperability", "CA1416:Availability")]

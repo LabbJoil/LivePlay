@@ -78,79 +78,93 @@
     <ShellContent
         Shell.NavBarIsVisible="False"
         Shell.TabBarIsVisible="False"
+        Shell.FlyoutItemIsVisible="False"
         Route="BlackPage" 
         ContentTemplate="{DataTemplate enterPages:BlackPage}"/>
 
     <ShellContent
         Shell.NavBarIsVisible="False"
         Shell.TabBarIsVisible="False"
+        Shell.FlyoutItemIsVisible="False"
         Route="EnterPage" 
         ContentTemplate="{DataTemplate enterPages:EnterPage}"/>
 
     <TabBar>
-        <ShellContent Icon="base_page.svg"
-                      Route="TapeFeedbackPage"
-                      Shell.NavBarIsVisible="False"
-                      Shell.TabBarIsVisible="True"
-                      Title="Отзывы"
-                     ContentTemplate="{DataTemplate adminFeedbackPages:TapeFeedbackPage}" />
+        <ShellContent
+            Title="Отзывы" Icon="base_page.svg"
+            Route="TapeFeedbackPage"
+            Shell.NavBarIsVisible="False"
+            Shell.TabBarIsVisible="True"
+            ContentTemplate="{DataTemplate adminFeedbackPages:TapeFeedbackPage}" />
 
-        <ShellContent Icon="add_quest.svg"
-                      Shell.NavBarIsVisible="False"
-                      Shell.TabBarIsVisible="True"
-                      Title="Квесты"
-                     ContentTemplate="{DataTemplate adminQuestManagePages:ManageQuestPage}" />
+        <ShellContent
+            Title="Квесты" Icon="add_quest.svg"
+            Shell.NavBarIsVisible="False"
+            Shell.TabBarIsVisible="True"
+            ContentTemplate="{DataTemplate adminQuestManagePages:ManageQuestPage}" />
 
-        <ShellContent Icon="add_award.svg"
-                      Shell.NavBarIsVisible="False"
-                      Shell.TabBarIsVisible="True"
-                      Title="Награды"
-                     ContentTemplate="{DataTemplate adminCouponPages:ManageCouponPage}" />
+        <ShellContent
+            Title="Награды" Icon="add_award.svg"
+            Shell.NavBarIsVisible="False"
+            Shell.TabBarIsVisible="True"
+            ContentTemplate="{DataTemplate adminCouponPages:ManageCouponPage}" />
 
-        <ShellContent Icon="profile_light.svg"
-                      Shell.NavBarIsVisible="False"
-                      Shell.TabBarIsVisible="True"
-                      Title="Профиль"
-                     ContentTemplate="{DataTemplate adminAccountPages:ProfilePage}" />
+        <ShellContent
+            Title="Профиль" Icon="profile_light.svg"
+            Route="ProfilePage"
+            Shell.NavBarIsVisible="False"
+            Shell.TabBarIsVisible="True"
+            ContentTemplate="{DataTemplate adminAccountPages:ProfilePage}" />
 
-        <ShellContent Icon="statistics.svg"
-                      Shell.NavBarIsVisible="False"
-                      Shell.TabBarIsVisible="True"
-                      Title="Статистика"
-                     ContentTemplate="{DataTemplate adminStatisticPages:GettingStatisticsPage}" />
+        <ShellContent
+            Title="Статистика" Icon="statistics.svg"
+            Shell.NavBarIsVisible="False"
+            Shell.TabBarIsVisible="True"
+            ContentTemplate="{DataTemplate adminStatisticPages:GettingStatisticsPage}" />
     </TabBar>
 
     <FlyoutItem x:Name="FlyoutItemsNow" FlyoutDisplayOptions="AsMultipleItems">
-        <ShellContent Title="Главная страница"
-                      AutomationId="0"
-                      Route="MainPage"
-                      ContentTemplate="{DataTemplate userAccountPages:MainPage}"
-                      Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
-        <ShellContent Title="Квесты"
-                      AutomationId="1"
-                      Route="TapeQuestPage"
-                      ContentTemplate="{DataTemplate userQuestTapePages:TapeQuestPage}"
-                      Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
-        <ShellContent Title="Награды"
-                      AutomationId="2"
-                      Route="MainRewardPage"
-                      ContentTemplate="{DataTemplate userCouponPages:MainCouponPage}"
-                      Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
-        <ShellContent Title="Настройки" 
-                      AutomationId="3" 
-                      Route="NotificationSettingsPage" 
-                      ContentTemplate="{DataTemplate settingsPages:NotificationSettingsPage}"
-                      Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
-        <ShellContent Title="Профиль" 
-                      AutomationId="4" 
-                      Route="ProfilePage" 
-                      ContentTemplate="{DataTemplate userAccountPages:ProfilePage}"
-                      Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
-        <ShellContent Title="Оставить отзыв" 
-                      AutomationId="5" 
-                      Route="ReviewPage" 
-                      ContentTemplate="{DataTemplate userFeedbackPages:FeedbackPage}"
-                      Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
+        <ShellContent
+            Title="Главная страница"
+            AutomationId="0"
+            Route="MainPage"
+            ContentTemplate="{DataTemplate userAccountPages:MainPage}"
+            Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
+        
+        <ShellContent
+            Title="Квесты"
+            AutomationId="1"
+            Route="TapeQuestPage"
+            ContentTemplate="{DataTemplate userQuestTapePages:TapeQuestPage}"
+            Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
+        
+        <ShellContent
+            Title="Награды"
+            AutomationId="2"
+            Route="MainRewardPage"
+            ContentTemplate="{DataTemplate userCouponPages:MainCouponPage}"
+            Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
+        
+        <ShellContent
+            Title="Настройки" 
+            AutomationId="3" 
+            Route="NotificationSettingsPage" 
+            ContentTemplate="{DataTemplate settingsPages:NotificationSettingsPage}"
+            Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
+        
+        <ShellContent
+            Title="Профиль" 
+            AutomationId="4" 
+            Route="ProfilePage" 
+            ContentTemplate="{DataTemplate userAccountPages:ProfilePage}"
+            Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
+        
+        <ShellContent
+            Title="Оставить отзыв" 
+            AutomationId="5" 
+            Route="ReviewPage" 
+            ContentTemplate="{DataTemplate userFeedbackPages:FeedbackPage}"
+            Shell.NavBarIsVisible="True" Shell.TabBarIsVisible="False"/>
     </FlyoutItem>
 
 </Shell>

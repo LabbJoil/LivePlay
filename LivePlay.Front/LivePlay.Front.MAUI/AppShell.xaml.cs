@@ -18,7 +18,6 @@ public partial class AppShell : Shell
     private Grid? LastGrid;
     private readonly AppDesign DesignSettings;
 
-
     public AppShell(AppDesign designSettings)
     {
         InitializeComponent();

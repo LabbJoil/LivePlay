@@ -113,6 +113,6 @@ public partial class EnterViewModel : BaseViewModel
 
         if (error != null) { ShowError(error); return; }
 
-        await enterPage.LoginFrontProcess();
+        await enterPage.SwitchButtonTappedButton1();
     }
 }

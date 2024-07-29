@@ -16,9 +16,9 @@ public class QuestionQuestService(IUserRepository userRepository, IQuestReposito
     private readonly IQuestionQuestRepository _questionQuestRepository = questionQuestRepository;
     private readonly IJwtProvider _jwtProvider = jwtProvider;
 
-    public void AddQuest(Quest quest, QuestionQuest[] questionQuests)
+    public async Task AddQuest(Quest quest, QuestionQuest[] questionQuests)
     {
-        _questionQuestRepository.Create(quest, questionQuests);
+        await _questionQuestRepository.Create(quest, questionQuests);
     }
 
     public void EditQuest(Quest quest, QuestionQuest[] questionQuests)

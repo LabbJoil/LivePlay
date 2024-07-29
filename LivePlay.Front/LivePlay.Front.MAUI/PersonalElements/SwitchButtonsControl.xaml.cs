@@ -3,9 +3,12 @@ namespace LivePlay.Front.MAUI.PersonalElements;
 
 public partial class SwitchButtonsControl : ContentView
 {
-    public delegate Task ClickBT(object sender, EventArgs e);
+    public delegate Task ClickBT();
     public event ClickBT? ClickButton1;
     public event ClickBT? ClickButton2;
+
+    public event Action EventClickButton1;
+    public event Action EventClickButton2;
 
     public static readonly BindableProperty TextButton1Property = BindableProperty.Create(
        propertyName: nameof(TextButton1),
@@ -19,7 +22,7 @@ public partial class SwitchButtonsControl : ContentView
         returnType: typeof(string),
         declaringType: typeof(SimpleEntryControl),
         defaultValue: "Button 2",
-        defaultBindingMode: BindingMode.OneWay);
+        defaultBindingMode: BindingMode.TwoWay);
 
     public string TextButton1
     {
@@ -45,17 +48,27 @@ public partial class SwitchButtonsControl : ContentView
 
     private async void Button1_Clicked(object sender, EventArgs e)
     {
-        ButtonFrame1.IsEnabled = false;
-        await Task.WhenAll(AnimateFrame(0),
-            ClickButton2?.Invoke(this, e) ?? Task.CompletedTask);
-        ButtonFrame2.IsEnabled = true;
+        await DoProcessButton1();
     }
 
     private async void Button2_Clicked(object sender, EventArgs e)
     {
+        await DoProcessButton2();
+    }
+
+    public async Task DoProcessButton1()
+    {
+        ButtonFrame1.IsEnabled = false;
+        await Task.WhenAll(AnimateFrame(0),
+            ClickButton2?.Invoke() ?? Task.CompletedTask);
+        ButtonFrame2.IsEnabled = true;
+    }
+
+    public async Task DoProcessButton2()
+    {
         ButtonFrame2.IsEnabled = false;
         await Task.WhenAll(AnimateFrame(MainGrid.Width / 2),
-            ClickButton1?.Invoke(this, e) ?? Task.CompletedTask);
+            ClickButton1?.Invoke() ?? Task.CompletedTask);
         ButtonFrame1.IsEnabled = true;
     }
 

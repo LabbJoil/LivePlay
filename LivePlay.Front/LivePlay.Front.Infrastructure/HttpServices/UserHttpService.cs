@@ -30,8 +30,7 @@ public class UserHttpService(IServiceScopeFactory serviceScopeFactory) : BaseHtt
             }
             return ([], error);
         }
-        else
-            return ([], ParseError(response.ResponseData, response.Error));
+        return ([], ParseError(response.ResponseData, response.Error));
     }
 
     public async Task<Role[]> CheckToken()
@@ -56,8 +55,7 @@ public class UserHttpService(IServiceScopeFactory serviceScopeFactory) : BaseHtt
         var response = await _httpProvider.Get(BaseRoute + route);
         if (response.IsSuccess)
             return ParseResponse<int>(response);
-        else
-            return (default, ParseError(response.ResponseData, response.Error));
+        return (default, ParseError(response.ResponseData, response.Error));
     }
 
     public async Task<(string?, DisplayError?)> GetPersonalQR()
@@ -66,8 +64,7 @@ public class UserHttpService(IServiceScopeFactory serviceScopeFactory) : BaseHtt
         var response = await _httpProvider.Get(BaseRoute + route);
         if (response.IsSuccess && response.ResponseData.Length != 0)
             return (response.ResponseData, null);
-        else
-            return (default, ParseError(response.ResponseData, response.Error));
+        return (default, ParseError(response.ResponseData, response.Error));
     }
 
     public async Task<(uint, DisplayError?)> VerifyEmail(string email)
@@ -91,8 +88,7 @@ public class UserHttpService(IServiceScopeFactory serviceScopeFactory) : BaseHtt
         var response = await _httpProvider.Get(BaseRoute + route, sendParams);
         if (response.IsSuccess)
             return null;
-        else
-            return ParseError(response.ResponseData, response.Error);
+        return ParseError(response.ResponseData, response.Error);
     }
 
     public async Task<DisplayError?> Registration(uint numberRegistration, User user)
@@ -101,16 +97,8 @@ public class UserHttpService(IServiceScopeFactory serviceScopeFactory) : BaseHtt
         var registrationUser = _mapper.Map<RegistrationUserRequest>(user);
         var response = await _httpProvider.Post(BaseRoute + route, registrationUser, (nameof(numberRegistration), numberRegistration.ToString()));
         if (response.IsSuccess)
-        {
-            var (token, error) = ParseResponse<string>(response);
-            if (error == null && token != null)
-                _httpProvider.Token = token;
-            else
-                return error;
             return null;
-        }
-        else
-            return ParseError(response.ResponseData, response.Error);
+        return ParseError(response.ResponseData, response.Error);
     }
 
     public async Task<DisplayError?> SendCodeAgain(uint numberRegistratrtion)
@@ -119,8 +107,7 @@ public class UserHttpService(IServiceScopeFactory serviceScopeFactory) : BaseHtt
         var response = await _httpProvider.Get(BaseRoute + route, (nameof(numberRegistratrtion), numberRegistratrtion.ToString()));
         if (response.IsSuccess)
             return null;
-        else
-            return ParseError(response.ResponseData, response.Error);
+        return ParseError(response.ResponseData, response.Error);
     }
 
     public void Logout()

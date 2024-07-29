@@ -1,21 +1,18 @@
 
 using LivePlay.Front.MAUI.Pages.EnterPages.Views;
+using LivePlay.Front.MAUI.Pages.AdminPages.AccountPages.ViewModels;
 
 namespace LivePlay.Front.MAUI.Pages.AdminPages.AccountPages.Views;
 
 public partial class ProfilePage : ContentPage
 {
-	//private readonly ProfileViewModel ProfileVM;
-    public ProfilePage(/*ProfileViewModel profileViewModel*/)
+    private readonly ProfileViewModel ProfileVM;
+
+    public ProfilePage(ProfileViewModel profileVM)
 	{
 		InitializeComponent();
-        //BindingContext = profileViewModel;
-        //ProfileVM = profileViewModel;
-    }
-
-    private void Button_Clicked(object sender, EventArgs e)
-    {
-        Shell.Current.GoToAsync($"//{nameof(EnterPage)}");
+        BindingContext = profileVM;
+        ProfileVM = profileVM;
     }
 
     //private void ContentPage_Appearing(object sender, EventArgs e)

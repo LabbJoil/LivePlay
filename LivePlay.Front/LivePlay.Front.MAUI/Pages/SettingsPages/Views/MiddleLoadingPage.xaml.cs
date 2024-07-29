@@ -14,7 +14,6 @@ public partial class MiddleLoadingPage : ContentPage, IQueryAttributable
 	{
 		InitializeComponent();
         _middleLoadingVM = middleLoadingVM;
-
     }
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
@@ -35,7 +34,7 @@ public partial class MiddleLoadingPage : ContentPage, IQueryAttributable
     {
         while (_stopingAnimationSource != null && !_stopingAnimationSource.IsCancellationRequested)
             await Task.Delay(30);
-        await Shell.Current.GoToAsync($"..");
+        await Shell.Current.GoToAsync($"..", false);
     }
 
     private void ContentPage_Appearing(object sender, EventArgs e)

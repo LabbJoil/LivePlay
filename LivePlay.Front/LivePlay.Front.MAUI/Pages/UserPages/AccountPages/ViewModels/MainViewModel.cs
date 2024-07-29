@@ -46,11 +46,12 @@ public partial class MainViewModel : BaseTapeViewModel
     }
 
     [RelayCommand]
-    public void GoToQRPage()
+    public async Task GoToQRPage()
     {
         using var scope = _serviceScopeFactory.CreateScope();
         var personalQRVM = scope.ServiceProvider.GetRequiredService<PersonalQRViewModel>();
         var personalQR = new PersonalQRPage(personalQRVM);
+        await personalQR.ShowAsync();
     }
 
     private async void GetMainPageInfo()

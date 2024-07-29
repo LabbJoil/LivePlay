@@ -29,11 +29,11 @@ public class QuestionQuestController(QuestionQuestService questionQuestService, 
 
     [HttpPost("add")]
     [Authorize(Policy = nameof(Politic.EditQuest))]
-    public IActionResult AddQuestionQuest([FromBody] AddingQuestionQuestRequest questionQuestRequest)
+    public async Task<IActionResult> AddQuestionQuest([FromBody] AddingQuestionQuestRequest questionQuestRequest)
     {
         var quest = _mapper.Map<Quest>(questionQuestRequest.BaseQuest);
         var questionQuest = _mapper.Map<QuestionQuest[]>(questionQuestRequest.Questions);
-        _questionQuestService.AddQuest(quest, questionQuest);
+        await _questionQuestService.AddQuest(quest, questionQuest);
         return NoContent();
     }
 

@@ -32,9 +32,16 @@ public partial class TapeQuestViewModel : BaseTapeViewModel
         using var scope = serviceScopeFactory.CreateScope();
         _appStorage = scope.ServiceProvider.GetRequiredService<AppStorage>();
         _questHttpService = scope.ServiceProvider.GetRequiredService<QuestHttpService>();
+        FirstLoadTapeQuest();
     }
 
-    public async void FirstLoadTapeQuest(VisualElement[] visualElements)
+    public override async Task Refresh()
+    {
+        await GetQuestItems();
+        await base.Refresh();
+    }
+
+    public async void FirstLoadTapeQuest()
     {
         StartMiddleLoading();
         await GetQuestItems();

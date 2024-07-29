@@ -21,6 +21,7 @@ public partial class InProgressQuestionQuestViewModel : BaseQuestViewModel
     {
         using var scope = serviceScopeFactory.CreateScope();
         _questionQuestHttpService = scope.ServiceProvider.GetRequiredService<QuestionQuestHttpService>();
+        LoadQuestionQuests();
     }
 
     private async void LoadQuestionQuests()
@@ -53,7 +54,7 @@ public partial class InProgressQuestionQuestViewModel : BaseQuestViewModel
     [RelayCommand]
     public async Task GoPreviousQuestion(InProgressQuestionQuestPage page)
     {
-        if (NowQuest > 1)
+        if (NowQuest < 1)
             return;
         if (NowQuest < AllQuestionQuests.Length)
         {

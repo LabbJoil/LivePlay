@@ -21,12 +21,13 @@ public class QuestionQuestHttpService(IServiceScopeFactory serviceScopeFactory) 
             Questions = _mapper.Map<AddingQuestionQuestContract[]>(questionQuest)
         };
         var response = await _httpProvider.Post(BaseRoute + route, addingQuestionQuest);
+        if (response.IsSuccess)
+            return null;
         return ParseError(response.ResponseData, response.Error);
     }
 
     public async Task<(QuestionQuest[], DisplayError?)> GetQuestions(int questId)
     {
-        questId = 6; //TODO incorect
         const string route = "/getQuestQuestions";
         var response = await _httpProvider.Get(BaseRoute + route, (nameof(questId), questId.ToString()));
         if (response.IsSuccess)
@@ -39,8 +40,7 @@ public class QuestionQuestHttpService(IServiceScopeFactory serviceScopeFactory) 
             }
             return ([], error);
         }
-        else
-            return ([], ParseError(response.ResponseData, response.Error));
+        return ([], ParseError(response.ResponseData, response.Error));
     }
 
     public async Task<(int, DisplayError?)> Complete(int id, Dictionary<int, int> answers)
@@ -60,7 +60,6 @@ public class QuestionQuestHttpService(IServiceScopeFactory serviceScopeFactory) 
                 return (reward, null);
             return (default, error);
         }
-        else
-            return (default, ParseError(response.ResponseData, response.Error));
+        return (default, ParseError(response.ResponseData, response.Error));
     }
 }

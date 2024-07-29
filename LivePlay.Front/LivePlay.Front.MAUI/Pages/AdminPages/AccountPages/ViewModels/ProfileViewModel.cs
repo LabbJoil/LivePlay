@@ -1,12 +1,16 @@
 ﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.Input;
+using LivePlay.Front.MAUI.Abstracts;
+using LivePlay.Front.MAUI.Pages.EnterPages.Views;
 
 namespace LivePlay.Front.MAUI.Pages.AdminPages.AccountPages.ViewModels;
 
-public class ProfileViewModel
+public partial class ProfileViewModel(IServiceScopeFactory serviceScopeFactory) : BaseViewModel(serviceScopeFactory)
 {
+    [RelayCommand]
+    public async Task BackEnterPage()
+    {
+        DeleteStackPages();
+        await Shell.Current.GoToAsync($"//{nameof(EnterPage)}");
+    }
 }

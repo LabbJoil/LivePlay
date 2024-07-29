@@ -35,13 +35,13 @@ public partial class EnterPage : ContentPage
 
     // -- SwitchButtons --
 
-    private async Task LogInButtonClicked(object sender, EventArgs e)
-        => await LoginFrontProcess();
+    private async Task LoginFrontProcess()
+        => await ChangeStackLayout(LoginStackLayout, DirectionAction.Right);
 
-    private async Task SignUpButtonClicked(object sender, EventArgs e)
+    private async Task SignUpFrontProcess()
         => await ChangeStackLayout(EmailStackLayout, DirectionAction.Left);
 
-    // -- ViewModel --
+    // -- FrontProcess --
 
     public async Task<(Action<object?>, Action)> VerifyEmailFrontProcess()
     {
@@ -52,8 +52,13 @@ public partial class EnterPage : ContentPage
     public async Task FillUserInfoFrontProcess()
         => await ChangeStackLayout(UserInfoStackLayout, DirectionAction.Left);
 
-    public async Task LoginFrontProcess()
-        => await ChangeStackLayout(LoginStackLayout, DirectionAction.Right);
+    public async Task SwitchButtonTappedButton1()
+        => await SwitchButtons.DoProcessButton1();
+
+    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+        => EmailCode.Focus();
+
+    // -- Background processes --
 
     public (Action<object?>, Action) GetPrintEndTimerActions()
     {
@@ -88,9 +93,6 @@ public partial class EnterPage : ContentPage
         NowStackLayout.IsVisible = false;
         NowStackLayout = stackLayoutIn;
     }
-
-    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
-        => EmailCode.Focus();
 
     private void EmailCode_TextChanged(object sender, TextChangedEventArgs e)
     {

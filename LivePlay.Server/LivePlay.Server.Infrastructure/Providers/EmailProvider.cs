@@ -12,31 +12,24 @@ using MimeKit.Text;
 
 namespace LivePlay.Server.Infrastructure.Providers;
 
-public class EmailProvider : IEmailProvider
+public class EmailProvider(IOptions<SmtpClientOptions> options) : IEmailProvider
 {
-    private readonly SmtpClient Smtp;
-    private SmtpClientOptions SmtpOptions { get; }
-
-    public EmailProvider(IOptions<SmtpClientOptions> options)
-    {
-        SmtpOptions = options.Value;
-        Smtp = new SmtpClient();
-        Smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
-        Smtp.Authenticate(SmtpOptions.SmtpEmail, SmtpOptions.Password);
-    }
+    private readonly SmtpClientOptions _smtpOptions = options.Value;
 
     public BaseException? SendCodeEmail(string email, string code)
     {
         try
         {
+            var smtp = Connect();
             MimeMessage message = new()
             {
                 Subject = "Код подтверждения",
                 Body = new TextPart(TextFormat.Html) { Text = $"<h2>Код доступа {code}</h2>" }
             };
-            message.From.Add(MailboxAddress.Parse(SmtpOptions.SmtpEmail));
+            message.From.Add(MailboxAddress.Parse(_smtpOptions.SmtpEmail));
             message.To.Add(MailboxAddress.Parse(email));
-            Smtp.Send(message);
+            smtp.Send(message);
+            smtp.Disconnect(true);
             return null;
         }
         catch (SmtpCommandException ex)
@@ -49,8 +42,11 @@ public class EmailProvider : IEmailProvider
         }
     }
 
-    public void Disconect()
+    private SmtpClient Connect()
     {
-        Smtp.Disconnect(true);
+        var smtp = new SmtpClient();
+        smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
+        smtp.Authenticate(_smtpOptions.SmtpEmail, _smtpOptions.Password);
+        return smtp;
     }
 }

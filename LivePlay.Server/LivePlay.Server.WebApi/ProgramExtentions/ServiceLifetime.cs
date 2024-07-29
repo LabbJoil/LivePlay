@@ -17,9 +17,6 @@ internal static class ServiceLifetime
 
     public static void OnApplicationStopping(this WebApplication app)
     {
-        var emailProvider = app.Services.GetService<IEmailProvider>()
-            ?? throw new ServerException(ErrorCode.ServerError, $"Service {nameof(IEmailProvider)} not found");
-        emailProvider.Disconect();
         app.Logger.LogInformation("All services stoped");
     }
 

@@ -15,6 +15,8 @@ using LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Creations.Views;
 using LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Manages.ViewModels;
 using LivePlay.Front.MAUI.Pages.AdminPages.QuestPages.Manages.Views;
 using LivePlay.Front.MAUI.Pages.AdminPages.StatisticPages.Views;
+using LivePlay.Front.MAUI.Pages.AdminPages.AccountPages.ViewModels;
+using LivePlay.Front.MAUI.Pages.AdminPages.AccountPages.Views;
 using LivePlay.Front.MAUI.Pages.EnterPages.ViewModels;
 using LivePlay.Front.MAUI.Pages.EnterPages.Views;
 using LivePlay.Front.MAUI.Pages.SettingsPages.ViewModels;
@@ -66,7 +68,7 @@ public static class ServicesRegistrar
         services.AddTransient<ManageQuestPage>();
         services.AddTransient<ManageCouponPage>();
         services.AddTransient<CreationCouponPage>();
-        services.AddTransient<ProfilePage>();
+        services.AddTransient<Pages.AdminPages.AccountPages.Views.ProfilePage>();
         services.AddTransient<MyCouponsPage>();
         services.AddTransient<NotificationSettingsPage>();
 
@@ -75,7 +77,7 @@ public static class ServicesRegistrar
         services.AddTransient<CreationQuestionQuestViewModel>();
         services.AddTransient<ManageQuestViewModel>();
         services.AddTransient<CreationQuestViewModel>();
-        services.AddTransient<ProfileViewModel>();
+        services.AddTransient<Pages.AdminPages.AccountPages.ViewModels.ProfileViewModel>();
     }
 
     private static void RegisterUserServices(this IServiceCollection services)
@@ -106,6 +108,7 @@ public static class ServicesRegistrar
         services.AddTransient<MainRewardViewModel>();
         services.AddTransient<MyCouponsViewModel>();
         services.AddTransient<PersonalQRViewModel>();
+        //services.AddTransient<Pages.UserPages.AccountPages.ViewModels.ProfileViewModel>();
     }
 
     public static void RegisterDeviceSettingsServices(this IServiceCollection services)

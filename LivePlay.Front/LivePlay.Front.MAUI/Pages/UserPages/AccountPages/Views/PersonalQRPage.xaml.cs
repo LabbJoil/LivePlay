@@ -1,8 +1,9 @@
 using LivePlay.Front.MAUI.Pages.UserPages.AccountPages.ViewModels;
+using The49.Maui.BottomSheet;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views;
 
-public partial class PersonalQRPage : ContentPage
+public partial class PersonalQRPage : BottomSheet
 {
 	private PersonalQRViewModel PersonalQRVM;
 

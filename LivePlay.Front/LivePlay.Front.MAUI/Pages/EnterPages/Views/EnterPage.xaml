@@ -18,7 +18,12 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <pe:SwitchButtonsControl Grid.Row="1" TextButton1="Вход" TextButton2="Регистрация" ClickButton1="SignUpButtonClicked" ClickButton2="LogInButtonClicked" Margin="40,0,40,0"/>
+            <pe:SwitchButtonsControl
+                x:Name="SwitchButtons"
+                Grid.Row="1"
+                TextButton1="Вход" TextButton2="Регистрация"
+                ClickButton1="SignUpFrontProcess" ClickButton2="LoginFrontProcess"
+                Margin="40,0,40,0"/>
 
             <Grid x:Name="EnterGrid" Grid.Row="3" Margin="50,10">
                 <StackLayout x:Name="LoginStackLayout" WidthRequest="300" Orientation="Vertical" Spacing="10">

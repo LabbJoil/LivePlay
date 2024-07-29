@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
              xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
              x:Class="LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views.MainPage"
@@ -27,9 +28,9 @@
                                     </Border.StrokeShape>
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer
-                                            Command="{Binding BindingContext.GoToTapeItemCommand, Source={x:Reference this}}"
-                                            CommandParameter="{Binding ., ConverterParameter={x:Reference this}, Converter={StaticResource TupleConverter}}"
-                                            NumberOfTapsRequired="1"/>
+                                                Command="{Binding BindingContext.GoToTapeItemCommand, Source={x:Reference this}}"
+                                                CommandParameter="{Binding ., ConverterParameter={x:Reference this}, Converter={StaticResource TupleConverter}}"
+                                                NumberOfTapsRequired="1"/>
                                     </Border.GestureRecognizers>
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -47,7 +48,7 @@
                                         </Grid.ColumnDefinitions>
                                         <Frame Grid.ColumnSpan="3" Grid.Row="0" CornerRadius="0" Background="Transparent" BorderColor="Transparent" Padding="0">
                                             <Image Source="{Binding Image, Mode=OneWay, Converter={x:StaticResource ByteArrayToImageConverter}}"
-                                                   VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill" />
+                                                       VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill" />
                                         </Frame>
                                         <Label Grid.Column="1" Grid.Row="2" Text="{Binding Name}" FontSize="19" HorizontalOptions="Start" VerticalOptions="Center"/>
                                         <Label Grid.Column="1" Grid.Row="4" Text="{Binding Description}" FontSize="15" HorizontalOptions="Start" VerticalOptions="Center"/>
@@ -58,9 +59,9 @@
                     </CarouselView>
 
                     <IndicatorView Margin="0,5,0,0" x:Name="indicatorView"
-                       IndicatorColor="LightGray"
-                       SelectedIndicatorColor="DarkSlateGray"
-                       HorizontalOptions="Center" />
+                           IndicatorColor="LightGray"
+                           SelectedIndicatorColor="DarkSlateGray"
+                           HorizontalOptions="Center" />
                 </StackLayout>
 
                 <Grid Grid.Row="1">
@@ -71,20 +72,23 @@
                     <Rectangle Grid.RowSpan="2" BackgroundColor="#415A77" VerticalOptions="Fill" HorizontalOptions="Fill" />
                     <Label Grid.Row="0" Text="QR-код для снятия бонусов" HorizontalOptions="Center" VerticalOptions="Center"/>
                     <ImageButton
-                        Grid.Row="1"
-                        HorizontalOptions="Center" VerticalOptions="Center"
-                        Source="show_qr.svg"
-                        Command="{Binding GoToQRPageCommand}"/>
+                            Grid.Row="1"
+                            HorizontalOptions="Center" VerticalOptions="Center"
+                            Source="show_qr.svg"
+                            Command="{Binding GoToQRPageCommand}"/>
                 </Grid>
 
-                <Border Grid.Row="2" BackgroundColor="#415A77" Stroke="Transparent" VerticalOptions="Start" Margin="18,33">
+                <Border x:Name="MapBorder"
+                            Grid.Row="2"
+                            VerticalOptions="Start" Margin="18,33"
+                            BackgroundColor="#415A77" Stroke="Transparent">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20"/>
                     </Border.StrokeShape>
+
                     <Grid RowDefinitions="33, 250" RowSpacing="10">
                         <Label Text="Наша сеть отелей:" FontSize="18" FontAttributes="Bold" VerticalOptions="End" HorizontalOptions="Center"/>
-                        
-                        <maps:Map Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="mappy" MapType="Street">
+                        <maps:Map x:Name="mappy" Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" MapType="Street">
                             <x:Arguments>
                                 <maps:MapSpan>
                                     <x:Arguments>
