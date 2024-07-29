@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<bottomsheet:BottomSheet xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:bottomsheet="https://schemas.the49.com/dotnet/2023/maui"
+             x:Class="LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views.PersonalQRPage"
+             xmlns:cameraMAUI="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
+             Loaded="ContentPage_Loaded"
+             Background="Transparent"
+             Shell.TabBarIsVisible="False" Shell.NavBarIsVisible="False">
+
+    <bottomsheet:BottomSheet.Detents>
+        <bottomsheet:DetentsCollection>
+            <bottomsheet:RatioDetent Ratio=".50" />
+        </bottomsheet:DetentsCollection>
+    </bottomsheet:BottomSheet.Detents>
+
+    <Border BackgroundColor="White">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="30,30,0,0"/>
+        </Border.StrokeShape>
+        <StackLayout
+            Orientation="Vertical">
+            <cameraMAUI:BarcodeImage
+                x:Name="QRcode"
+                WidthRequest="200" HeightRequest="200" 
+                BarcodeWidth="200" BarcodeHeight="200" BarcodeMargin="0" Margin="0,15"
+                BarcodeBackground="White"
+                BarcodeFormat="QR_CODE" Barcode="{Binding QRData.QRCode}"/>
+
+            <Label
+                x:Name="DateUpdateLabel"
+                Text="{Binding GeneratedDate}"
+                HorizontalOptions="CenterAndExpand"
+                TextColor="Black"
+                Margin="0,10"/>
+        </StackLayout>
+    </Border>
+
+</bottomsheet:BottomSheet>
