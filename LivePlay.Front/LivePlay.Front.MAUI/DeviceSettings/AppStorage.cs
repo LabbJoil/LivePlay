@@ -64,9 +64,12 @@ public class  AppStorage : IAppStorage
 
     public T? GetPreference<T>(string keyPreference)
     {
-
-        if (Preferences.Get(keyPreference, null) is string json)
-            return JsonSerializer.Deserialize<T>(json);
+        try
+        {
+            if (Preferences.Get(keyPreference, null) is string json)
+                return JsonSerializer.Deserialize<T>(json);
+        }
+        catch { }
         return default;
     }
 }

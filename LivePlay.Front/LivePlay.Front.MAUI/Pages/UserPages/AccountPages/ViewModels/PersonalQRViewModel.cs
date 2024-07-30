@@ -5,6 +5,7 @@ using LivePlay.Front.Infrastructure.HttpServices.QuestHttpServices;
 using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.MAUI.Models;
+using ZXing.QrCode.Internal;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.AccountPages.ViewModels;
 
@@ -37,13 +38,13 @@ public partial class PersonalQRViewModel : BaseViewModel
     public async void FirstLoadQRData(VisualElement[] visualElements)
     {
         var qrData = _appStorage.GetPreference<UserQRData>(nameof(UserQRData));
-        if (qrData != null && qrData.GeneratedDate < DateTime.Today)
+        //var t = DateTime.Today.;
+        if (qrData != null && qrData.GeneratedDate < DateTime.Today.AddHours(-12))
         {
             SetQRData(qrData);
             return;
         }
-
-        await StartFirstLoading(visualElements);
+        StartMiddleLoading();
         await UpdateQRData();
         StopLoading();
     }
@@ -54,8 +55,6 @@ public partial class PersonalQRViewModel : BaseViewModel
         if (qrCode == null)
             return;     // TODO: грусный смайлик вместо qrCode :(
         SetQRData(new (qrCode, DateTime.Now));
-
-        _appStorage.SavePreference(nameof(UserQRData), qrCode);
     }
 
     private async Task<string?> GetNewQRCode()
@@ -70,5 +69,6 @@ public partial class PersonalQRViewModel : BaseViewModel
     {
         QRData = newQRData;
         GeneratedDate = newQRData.GeneratedDate.ToString("dd.MM.yyyy");
+        _appStorage.SavePreference(nameof(UserQRData), QRData);
     }
 }

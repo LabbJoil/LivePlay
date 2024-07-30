@@ -5,7 +5,7 @@
              x:Class="LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views.PersonalQRPage"
              xmlns:cameraMAUI="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
              Loaded="ContentPage_Loaded"
-             Background="Transparent"
+             Background="Transparent" HasBackdrop="True"
              Shell.TabBarIsVisible="False" Shell.NavBarIsVisible="False">
 
     <bottomsheet:BottomSheet.Detents>
@@ -14,7 +14,7 @@
         </bottomsheet:DetentsCollection>
     </bottomsheet:BottomSheet.Detents>
 
-    <Border BackgroundColor="White">
+    <Border BackgroundColor="White" Stroke="White">
         <Border.StrokeShape>
             <RoundRectangle CornerRadius="30,30,0,0"/>
         </Border.StrokeShape>
