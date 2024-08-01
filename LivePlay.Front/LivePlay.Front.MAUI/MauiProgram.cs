@@ -7,6 +7,7 @@ using The49.Maui.BottomSheet;
 using Camera.MAUI;
 using ZXing.Net.Maui.Controls;
 using Microsoft.Maui.LifecycleEvents;
+using UraniumUI;
 
 namespace LivePlay.Front.MAUI;
 
@@ -17,7 +18,9 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
-            .UseBottomSheet()
+            .UseBottomSheet()       //Maybe no
+            .UseUraniumUI()
+            .UseUraniumUIMaterial()
             .UseMauiCameraView()
             .UseMauiCommunityToolkit()
             .ConfigureFonts(fonts =>

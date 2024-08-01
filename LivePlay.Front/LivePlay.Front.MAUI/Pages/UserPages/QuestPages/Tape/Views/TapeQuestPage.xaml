@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LivePlay.Front.MAUI.Pages.UserPages.QuestPages.Tape.Views.TapeQuestPage"
              xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
-             Appearing="ContentPage_Appearing" Disappearing="ContentPage_Disappearing"
+             Appearing="ContentPage_Appearing"
              Title="TapeQuestPage"
              Loaded="Loaded"
              x:Name="this">

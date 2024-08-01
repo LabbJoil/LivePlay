@@ -12,11 +12,6 @@ public partial class MainCouponPage : ContentPage
         CoinsLabel.Text = mainRewardPageViewModel.DesignSettings.GetCountCoins().ToString();
     }
 
-    //private void ContentPage_Disappearing(object sender, EventArgs e)
-    //{
-    //    MainVM.ChangeColorBars(MainGrid.BackgroundColor, StatusBarColor.BarWhite);
-    //}
-
     //private void ContentPage_Appearing(object sender, EventArgs e)
     //{
     //    MainVM.ChangeColorBars(MainGrid.BackgroundColor, StatusBarColor.BarWhite);

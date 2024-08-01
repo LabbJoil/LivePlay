@@ -20,28 +20,28 @@ public class MainActivity : MauiAppCompatActivity
             appSettings.ChangeColorStatusBars = ChangeBarsColor;
         base.OnCreate(savedInstanceState);
         Window?.SetSoftInputMode(SoftInput.AdjustResize);
-        ChangeBarsColor(Colors.Black, StatusBarColor.BarReplay);
+        ChangeBarsColor(Colors.Black);
     }
 
     [SuppressMessage("Interoperability", "CA1416:Availability")]
-    private void ChangeBarsColor(Color colorNavigationBar, StatusBarColor barsColorStatus = StatusBarColor.BarWhite, Color? colorStatusBar = null)
+    private void ChangeBarsColor(Color? colorNavigationBar = null, Color? colorStatusBar = null, bool barReplay = true)
     {
-        Android.Graphics.Color androidColorNavigationBar = ((SolidColorBrush)colorNavigationBar).Color.ToAndroid();
-        var androidColorStatusBar = barsColorStatus switch
+        if (barReplay && colorStatusBar == null)
+            colorStatusBar = colorNavigationBar;
+        if (colorNavigationBar != null)
         {
-            StatusBarColor.BarWhite => Android.Graphics.Color.White,
-            StatusBarColor.DifferentColor when colorStatusBar != null => ((SolidColorBrush)colorStatusBar).Color.ToAndroid(),
-            StatusBarColor.BarReplay or _ => androidColorNavigationBar,
-        };
-        Window!.SetNavigationBarColor(androidColorNavigationBar);
-        Window!.SetStatusBarColor(androidColorStatusBar);
-
-        if (DeviceInfo.Version.Major >= 8)
-            CommunityToolkit.Maui.Core.Platform.StatusBar.SetStyle(GetBright(androidColorStatusBar) < 0.5 ? StatusBarStyle.LightContent : StatusBarStyle.DarkContent);
+            Android.Graphics.Color androidColorNavigationBar = ((SolidColorBrush)colorNavigationBar).Color.ToAndroid();
+            Window!.SetNavigationBarColor(androidColorNavigationBar);
+        }
+        if (colorStatusBar != null)
+        {
+            Android.Graphics.Color androidColorStatusBar = ((SolidColorBrush)colorStatusBar).Color.ToAndroid();
+            Window!.SetStatusBarColor(androidColorStatusBar);
+            if (DeviceInfo.Version.Major >= 8)
+                CommunityToolkit.Maui.Core.Platform.StatusBar.SetStyle(GetBright(androidColorStatusBar) < 0.5 ? StatusBarStyle.LightContent : StatusBarStyle.DarkContent);
+        }
     }
 
     private static double GetBright(Android.Graphics.Color color)
-    {
-        return (0.2126 * color.R + 0.7152 * color.G + 0.0722 * color.B) / 255;
-    }
+        => (0.2126 * color.R + 0.7152 * color.G + 0.0722 * color.B) / 255;
 }

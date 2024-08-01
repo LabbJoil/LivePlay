@@ -23,6 +23,6 @@ public partial class CurrentNewsPage : ContentPage
 
     private void ContentPage_Appearing(object sender, EventArgs e)
     {
-        CurentNewsVM.ChangeColorBars(BackgroundColor, StatusBarColor.BarReplay, null);
+        CurentNewsVM.ChangeColorBars(BackgroundColor, barReplay: true);
     }
 }

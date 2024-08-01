@@ -5,11 +5,11 @@ namespace LivePlay.Front.MAUI.DeviceSettings;
 
 public class AppDesign
 {
-    private Action<Color, StatusBarColor, Color?>? ChangeColorStatusBarsAction;
+    private Action<Color?, Color?, bool>? ChangeColorStatusBarsAction;
     private Action<int>? ChangeCountCoinsAction;
     private Func<int>? GetCountCoinsFunc;
 
-    public Action<Color, StatusBarColor, Color?>? ChangeColorStatusBars
+    public Action<Color?, Color?, bool>? ChangeColorStatusBars
     {
         get => ChangeColorStatusBarsAction;
         set => ChangeColorStatusBarsAction ??= value;

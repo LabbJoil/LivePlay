@@ -17,13 +17,7 @@ public partial class TapeQuestPage : ContentPage
 
     private void ContentPage_Appearing(object sender, EventArgs e)
     {
-        QuestTapeVM.ChangeColorBars(MainGrid.BackgroundColor, StatusBarColor.BarWhite, null);
-    }
-
-    private void ContentPage_Disappearing(object sender, EventArgs e)
-    {
-        var mgc = MainGrid.BackgroundColor;
-        QuestTapeVM.ChangeColorBars(new Color(mgc.Red, mgc.Green, mgc.Blue, (float)0.5), StatusBarColor.BarWhite, null);
+        QuestTapeVM.ChangeColorBars(MainGrid.BackgroundColor, Colors.White);
     }
 
     private void Loaded(object sender, EventArgs e)

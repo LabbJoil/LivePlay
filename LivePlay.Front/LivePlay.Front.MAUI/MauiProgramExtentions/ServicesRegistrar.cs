@@ -95,6 +95,7 @@ public static class ServicesRegistrar
         services.AddTransient<MainCouponPage>();
         services.AddTransient<MyCouponsPage>();
         services.AddTransient<PersonalQRPage>();
+        services.AddTransient<Pages.UserPages.AccountPages.Views.ProfilePage>();
 
         services.AddTransient<MainViewModel>();
         services.AddTransient<CurrentNewsPageViewModel>();
@@ -108,7 +109,7 @@ public static class ServicesRegistrar
         services.AddTransient<MainRewardViewModel>();
         services.AddTransient<MyCouponsViewModel>();
         services.AddTransient<PersonalQRViewModel>();
-        //services.AddTransient<Pages.UserPages.AccountPages.ViewModels.ProfileViewModel>();
+        services.AddTransient<Pages.UserPages.AccountPages.ViewModels.ProfileViewModel>();
     }
 
     public static void RegisterDeviceSettingsServices(this IServiceCollection services)

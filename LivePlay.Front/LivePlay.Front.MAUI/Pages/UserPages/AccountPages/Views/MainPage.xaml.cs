@@ -34,13 +34,8 @@ public partial class MainPage : ContentPage
         });
     }
 
-    private void ContentPage_Disappearing(object sender, EventArgs e)
-    {
-        MainVM.ChangeColorBars(MainGrid.BackgroundColor, StatusBarColor.BarWhite);
-    }
-
     private void ContentPage_Appearing(object sender, EventArgs e)
     {
-        MainVM.ChangeColorBars(MainGrid.BackgroundColor, StatusBarColor.BarWhite);
+        MainVM.ChangeColorBars(MainGrid.BackgroundColor, Colors.White);
     }
 }

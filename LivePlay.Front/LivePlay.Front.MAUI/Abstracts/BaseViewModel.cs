@@ -33,9 +33,9 @@ public abstract partial class BaseViewModel : ObservableObject
         await Task.Delay(0);    // убрать
     }
 
-    public virtual void ChangeColorBars(Color color, StatusBarColor statusBarColor, Color? secondColor = null)
+    public virtual void ChangeColorBars(Color? colorNavigationBar = null, Color? colorStatusBar = null, bool barReplay = true)
     {
-        DesignSettings.ChangeColorStatusBars?.Invoke(color, statusBarColor, secondColor);
+        DesignSettings.ChangeColorStatusBars?.Invoke(colorNavigationBar, colorStatusBar, barReplay);
     }
 
     protected void StartMiddleLoading()

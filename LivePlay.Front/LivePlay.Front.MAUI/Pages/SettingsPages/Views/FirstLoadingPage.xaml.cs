@@ -63,7 +63,7 @@ public partial class FirstLoadingPage : ContentPage, IQueryAttributable
         }
     }
 
-    private readonly LinearGradientBrush gradientBrush = new()
+    private readonly LinearGradientBrush _gradientBrush = new()
     {
         StartPoint = new Point(0, 0.5),
         EndPoint = new Point(1, 0.5),
@@ -111,7 +111,7 @@ public partial class FirstLoadingPage : ContentPage, IQueryAttributable
                 WidthRequest = 25,
                 HeightRequest = visualElement.Height + visualElement.Height / 10,
                 HorizontalOptions = LayoutOptions.Start,
-                Background = gradientBrush,
+                Background = _gradientBrush,
                 Stroke = Colors.Transparent,
                 StrokeShape = new RoundRectangle() { CornerRadius = 5 },
                 Rotation = 15

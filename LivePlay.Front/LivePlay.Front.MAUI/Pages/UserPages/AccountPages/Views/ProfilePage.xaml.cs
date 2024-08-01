@@ -17,12 +17,6 @@ public partial class ProfilePage : ContentPage
 
     private void ContentPage_Appearing(object sender, EventArgs e)
     {
-        ProfileVM.ChangeColorBars(MainGrid.BackgroundColor, StatusBarColor.BarWhite, null);
-    }
-
-    private void ContentPage_Disappearing(object sender, EventArgs e)
-    {
-        var mgc = MainGrid.BackgroundColor;
-        ProfileVM.ChangeColorBars(new Color(mgc.Red, mgc.Green, mgc.Blue, (float)0.5), StatusBarColor.BarWhite, null);
+        ProfileVM.ChangeColorBars(MainGrid.BackgroundColor, Colors.White);
     }
 }

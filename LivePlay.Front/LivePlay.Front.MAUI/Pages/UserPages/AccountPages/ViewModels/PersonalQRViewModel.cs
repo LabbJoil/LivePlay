@@ -20,6 +20,19 @@ public partial class PersonalQRViewModel : BaseViewModel
     [ObservableProperty]
     private string _generatedDate = "null";
 
+    [ObservableProperty]
+    public LinearGradientBrush _gradientBrush = new()
+    {
+        StartPoint = new Point(0, 1),
+        EndPoint = new Point(1, 0),
+        GradientStops =
+        [
+            new GradientStop { Color = Colors.Green, Offset = 0 },
+            new GradientStop { Color = Colors.Blue, Offset = 0.3f },
+            new GradientStop { Color = Colors.Red, Offset = 1 },
+        ]
+    };
+
     public PersonalQRViewModel(IServiceScopeFactory serviceScopeFactory) : base(serviceScopeFactory)
     {
         using var scope = serviceScopeFactory.CreateScope();

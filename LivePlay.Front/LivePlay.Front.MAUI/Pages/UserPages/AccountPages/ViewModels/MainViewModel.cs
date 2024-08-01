@@ -10,6 +10,7 @@ using CommunityToolkit.Maui.Core.Extensions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.AccountPages.ViewModels;
 
@@ -28,6 +29,7 @@ public partial class MainViewModel : BaseTapeViewModel
         using var scope = serviceScopeFactory.CreateScope();
         _userService = scope.ServiceProvider.GetRequiredService<UserHttpService>();
         _newsService = scope.ServiceProvider.GetRequiredService<NewsHttpService>();
+        GetMainPageInfo();      // возможно загрузочный экран у элементов или в loaded
     }
 
     public override async Task Refresh()
@@ -46,11 +48,13 @@ public partial class MainViewModel : BaseTapeViewModel
     }
 
     [RelayCommand]
-    public async Task GoToQRPage()
+    public async Task GoToQRPage(Color mainGridColor)
     {
         using var scope = _serviceScopeFactory.CreateScope();
         var personalQRVM = scope.ServiceProvider.GetRequiredService<PersonalQRViewModel>();
         var personalQR = new PersonalQRPage(personalQRVM);
+        personalQR.Unloaded += (object? sender, EventArgs e)
+            => ChangeColorBars(mainGridColor, barReplay: false);
         await personalQR.ShowAsync();
     }
 

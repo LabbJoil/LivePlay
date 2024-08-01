@@ -23,7 +23,7 @@ public partial class EnterPage : ContentPage
 
     private void ContentPage_Appearing(object sender, EventArgs e)
     {
-        EnterVM.ChangeColorBars(BackgroundColor, StatusBarColor.BarReplay);
+        EnterVM.ChangeColorBars(BackgroundColor);
     }
 
     private void ContentPage_Disappearing(object sender, EventArgs e)

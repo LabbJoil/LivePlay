@@ -39,6 +39,6 @@ public partial class MiddleLoadingPage : ContentPage, IQueryAttributable
 
     private void ContentPage_Appearing(object sender, EventArgs e)
     {
-        _middleLoadingVM.ChangeColorBars(ShadowRectangle.BackgroundColor, StatusBarColor.BarReplay);
+        _middleLoadingVM.ChangeColorBars(ShadowRectangle.BackgroundColor);
     }
 }

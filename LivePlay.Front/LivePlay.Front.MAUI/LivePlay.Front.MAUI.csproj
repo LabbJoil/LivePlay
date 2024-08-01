@@ -101,6 +101,8 @@
 		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="8.0.70" />
 		<PackageReference Include="System.ObjectModel" Version="4.3.0" />
 		<PackageReference Include="The49.Maui.BottomSheet" Version="8.0.3" />
+		<PackageReference Include="UraniumUI" Version="2.9.1" />
+		<PackageReference Include="UraniumUI.Material" Version="2.9.1" />
 		<PackageReference Include="ZXing.Net.Maui.Controls" Version="0.4.0" />
 	</ItemGroup>
 

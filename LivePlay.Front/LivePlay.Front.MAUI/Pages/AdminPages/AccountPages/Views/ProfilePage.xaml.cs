@@ -21,11 +21,4 @@ public partial class ProfilePage : ContentPage
     //    DeviceDesignSettings.OpacityAnimation(this, ShadowRectangle, 20, 500, 0);
     //    //await QuestTapePageVM.GetQuestItems();    //получение новых данных
     //}
-
-    //private void ContentPage_Disappearing(object sender, EventArgs e)
-    //{
-    //    var mgc = MainGrid.BackgroundColor;
-    //    ProfileVM.ChangeColorBars(new Color(mgc.Red, mgc.Green, mgc.Blue, (float)0.5), StatusBarColor.BarWhite, null);
-    //    DeviceDesignSettings.OpacityAnimation(this, ShadowRectangle, 20, 500, 0.5);
-    //}
 }
