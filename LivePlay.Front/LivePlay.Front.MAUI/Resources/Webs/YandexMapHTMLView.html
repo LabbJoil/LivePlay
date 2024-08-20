@@ -1,0 +1,87 @@
+﻿
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Яндекс карты</title>
+    </head>
+
+    <body>
+        <script src='https://api-maps.yandex.ru/2.1/?lang=ru_RU' type='text/javascript'></script>
+        <script>
+
+            var yandexMap,
+                locationPoint;
+            ymaps.ready(init);
+
+            function init() {
+                yandexMap = new ymaps.Map('map', {
+                    center: [55.758468, 37.601088],
+                    zoom: 10,
+                    controls: ['zoomControl', 'geolocationControl', 'fullscreenControl']
+                });
+                settingUpElements();
+
+                myGeoObject = new ymaps.GeoObject({
+                    geometry: {
+                        type: "Point",
+                        coordinates: [55.8, 37.8]
+                    },
+                    properties: {
+                        balloonContentBody: 'Чёрная точка'
+                    }
+                }, {
+                    preset: 'islands#blackCircleIcon'
+                });
+
+                yandexMap.geoObjects.add(myGeoObject);
+            }
+
+            function settingUpElements(){
+                var geolocationControl = yandexMap.controls.get('geolocationControl');
+                geolocationControl.options.set({ position: { bottom: '30px', right: '10px' } });
+                geolocationControl.events.add('click', getGeolocation);
+
+                var zoomControl = yandexMap.controls.get('zoomControl');
+                zoomControl.options.set({ position: { bottom: '30px', left: '10px' } });
+                zoomControl.options.set({ size: 'small' });
+
+                var fullscreenControl = yandexMap.controls.get('fullscreenControl');
+                fullscreenControl.enterFullscreen();
+                fullscreenControl.options.set({ visible: false });
+
+                deleteByClass(".ymaps-2-1-79-map-copyrights-promo");
+                deleteByClass('.ymaps-2-1-79-copyright__content');
+            }
+
+            function deleteByClass(className) {
+                var agreementElement = document.querySelectorAll(className);
+                agreementElement.forEach(e => e.remove());
+            }
+
+            function getGeolocation(event) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+
+                    var myPlacemark = new ymaps.GeoObject({
+                        geometry: {
+                            type: 'Point',
+                            coordinates: [latitude, longitude]
+                        }
+                    }, {
+                        preset: 'islands#redCircleIcon'
+                    });
+
+                    yandexMap.geoObjects.remove(locationPoint);
+                    yandexMap.geoObjects.add(myPlacemark);
+                    locationPoint = myPlacemark;
+                    yandexMap.setCenter([latitude, longitude]);
+                });
+
+                window.location.href = "888";
+            }
+
+        </script>
+        <div id='map' style='height: 100%; width: 100%;'></div>
+    </body>
+</html>

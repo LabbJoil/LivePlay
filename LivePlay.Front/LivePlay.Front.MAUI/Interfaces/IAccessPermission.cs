@@ -1,7 +1,7 @@
 ﻿
-namespace LivePlay.Front.Infrastructure.Interfaces;
+namespace LivePlay.Front.MAUI.Interfaces;
 
-public interface IStoragePermissions
+public interface IAccessPermission
 {
     Task<PermissionStatus> CheckStatusAsync();
     Task<PermissionStatus> RequestAsync();

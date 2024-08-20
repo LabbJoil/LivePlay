@@ -1,6 +1,9 @@
 
 using LivePlay.Front.Core.Enums;
 using LivePlay.Front.MAUI.Pages.UserPages.AccountPages.ViewModels;
+using System;
+using System.Reflection;
+using System.Text;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views;
 
@@ -14,28 +17,39 @@ public partial class MainPage : ContentPage
         BindingContext = mainViewModel;
         MainVM = mainViewModel;
 
-        mappy.Pins.Add(new Microsoft.Maui.Controls.Maps.Pin
-        {
-            Label = "Palace Bridge Hotel",
-            Address = "Биржевой пер., 2-4, Санкт-Петербург",
-            Location = new Location(59.9444783, 30.29377298232645),
-        });
-        mappy.Pins.Add(new Microsoft.Maui.Controls.Maps.Pin
-        {
-            Label = "Cosmos Olympia Garden Hotel",
-            Address = "Батайский пер., 3А, Санкт-Петербург",
-            Location = new Location(59.91351201634585, 30.320205688476566),
-        }); 
-        mappy.Pins.Add(new Microsoft.Maui.Controls.Maps.Pin
-        {
-            Label = "Vasilievsky Hotel",
-            Address = "8-я линия В.О., 11-13, Санкт-Петербург",
-            Location = new Location(59.9374408, 30.2822576),
-        });
+        const string pathYandexMapHTML = "Resources.Webs.YandexMapHTMLView.html";
+        var info = Assembly.GetExecutingAssembly().GetName();
+        var name = info.Name;
+        using var stream = Assembly
+            .GetExecutingAssembly()
+            .GetManifestResourceStream($"{name}.{pathYandexMapHTML}")!;
+
+        using var streamReader = new StreamReader(stream, Encoding.UTF8);
+        YandexMapWebView.Source = new HtmlWebViewSource { Html = streamReader.ReadToEnd() };
+    }
+
+    public void MyCsharpMethod(string message)
+    {
+        Shell.Current.DisplayAlert("11", "Получено сообщение из JavaScript: " + message, "ok");
     }
 
     private void ContentPage_Appearing(object sender, EventArgs e)
     {
         MainVM.ChangeColorBars(MainGrid.BackgroundColor, Colors.White);
+    }
+
+    private void YandexMapWebView_Navigating(object sender, WebNavigatingEventArgs e)
+    {
+        //var urlParts = e.Url.Split(".");
+        return;
+        //if (urlParts[0].ToLower().Contains("runcsharp"))
+        //{
+        //    Console.WriteLine(urlParts);
+        //    var funcToCall = urlParts[1].Split("?");
+        //    var methodName = funcToCall[0];
+        //    var funcParams = funcToCall[1];
+        //    Console.WriteLine("Calling: " + methodName);
+        //    e.Cancel = true;
+        //}
     }
 }

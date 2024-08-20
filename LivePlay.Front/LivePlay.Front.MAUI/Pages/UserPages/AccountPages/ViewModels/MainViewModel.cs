@@ -1,7 +1,6 @@
 ﻿
 using CommunityToolkit.Mvvm.Input;
 using LivePlay.Front.MAUI.Abstracts;
-using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.Core.Models;
 using System.Collections.ObjectModel;
 using LivePlay.Front.MAUI.Pages.UserPages.NewsPages.Views;
@@ -9,8 +8,6 @@ using LivePlay.Front.Infrastructure.HttpServices;
 using CommunityToolkit.Maui.Core.Extensions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views;
-using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace LivePlay.Front.MAUI.Pages.UserPages.AccountPages.ViewModels;
 
@@ -29,7 +26,7 @@ public partial class MainViewModel : BaseTapeViewModel
         using var scope = serviceScopeFactory.CreateScope();
         _userService = scope.ServiceProvider.GetRequiredService<UserHttpService>();
         _newsService = scope.ServiceProvider.GetRequiredService<NewsHttpService>();
-        GetMainPageInfo();      // возможно загрузочный экран у элементов или в loaded
+        GetMainPageInfo();
     }
 
     public override async Task Refresh()

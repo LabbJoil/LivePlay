@@ -1,15 +1,24 @@
 ﻿
-using LivePlay.Front.Infrastructure.Interfaces;
+using LivePlay.Front.MAUI.Interfaces;
 
 namespace LivePlay.Front.MAUI.DeviceSettings;
 
-public class AppPermissions (IStoragePermissions storagePermissions)
+public class AppPermissions (IStoragePermission storagePermissions, IGeolocationPermission geolocationPermission)
 {
-    private readonly IStoragePermissions StoragePermissions = storagePermissions;
+    private readonly IStoragePermission _storagePermission = storagePermissions;
+    private readonly IGeolocationPermission _geolocationPermission = geolocationPermission;
 
     public async Task<bool> GetPermission()
     {
-        PermissionStatus nowStatus = await StoragePermissions.CheckStatusAsync();
+        List<bool> isAccess = [ await CheckPermissions(_storagePermission), await CheckPermissions(_geolocationPermission)];
+        if (isAccess.All(a => a == true))
+            return true;
+        return false;
+    }
+
+    private static async Task<bool> CheckPermissions(IAccessPermission accessPermission)
+    {
+        PermissionStatus nowStatus = await accessPermission.CheckStatusAsync();
         PermissionStatus changeStatus;
         switch (nowStatus)
         {
@@ -23,7 +32,7 @@ public class AppPermissions (IStoragePermissions storagePermissions)
             case PermissionStatus.Limited:
             case PermissionStatus.Restricted:
 #if __ANDROID__
-                changeStatus = await StoragePermissions.RequestAsync();
+                changeStatus = await accessPermission.RequestAsync();
 #else
                 changeStatus = nowStatus;
 #endif
@@ -33,10 +42,8 @@ public class AppPermissions (IStoragePermissions storagePermissions)
                 break;
         }
 
-        return changeStatus switch
-        {
-            PermissionStatus.Granted => true,
-            _ => false,
-        };
+        if (changeStatus == PermissionStatus.Granted)
+            return true;
+        return false;
     }
 }

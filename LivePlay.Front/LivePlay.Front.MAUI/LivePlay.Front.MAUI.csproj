@@ -80,6 +80,7 @@
 	  <None Remove="Resources\Images\ImageButtons\mark_name_surname.svg" />
 	  <None Remove="Resources\Images\ImageButtons\show_qr.svg" />
 	  <None Remove="Resources\Images\profile_light.svg" />
+	  <None Remove="Resources\Webs\YandexMapHTMLView.html" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -90,19 +91,20 @@
 
 	<ItemGroup>
 		<PackageReference Include="Camera.MAUI" Version="1.4.4" />
-		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.2" />
-		<PackageReference Include="CommunityToolkit.Maui.Core" Version="9.0.2" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.3" />
+		<PackageReference Include="CommunityToolkit.Maui.Core" Version="9.0.3" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.70" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.70" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.80" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.80" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="8.0.70" />
+		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="8.0.80" />
 		<PackageReference Include="System.ObjectModel" Version="4.3.0" />
 		<PackageReference Include="The49.Maui.BottomSheet" Version="8.0.3" />
 		<PackageReference Include="UraniumUI" Version="2.9.1" />
 		<PackageReference Include="UraniumUI.Material" Version="2.9.1" />
+		<PackageReference Include="UraniumUI.Validations.DataAnnotations" Version="2.9.1" />
 		<PackageReference Include="ZXing.Net.Maui.Controls" Version="0.4.0" />
 	</ItemGroup>
 
@@ -146,6 +148,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Interfaces\IStoragePermission.cs">
+	    <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
+	  </Compile>
 	  <Compile Update="Pages\SettingsPages\Views\FirstLoadingPage.xaml.cs">
 	    <DependentUpon>FirstLoadingPage.xaml</DependentUpon>
 	  </Compile>
@@ -366,6 +371,12 @@
 
 	<ItemGroup>
 	  <Folder Include="Pages\AdminPages\NewsPages\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Resources\Webs\YandexMapHTMLView.html">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionLivePlayFrontMAUIHideInfoBar="True" XamarinHotReloadDebuggerTimeoutExceptionLivePlayMAUIHideInfoBar="True" /></VisualStudio></ProjectExtensions>

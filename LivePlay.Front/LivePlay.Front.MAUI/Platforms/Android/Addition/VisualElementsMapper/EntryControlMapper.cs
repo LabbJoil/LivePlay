@@ -1,5 +1,6 @@
 ﻿
 using Android.Graphics.Drawables;
+using Android.Webkit;
 using Microsoft.Maui.Controls.Platform;
 using Microsoft.Maui.Handlers;
 

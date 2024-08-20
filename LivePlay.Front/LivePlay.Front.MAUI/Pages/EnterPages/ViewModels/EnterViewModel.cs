@@ -10,12 +10,13 @@ using LivePlay.Front.MAUI.DeviceSettings;
 using LivePlay.Front.MAUI.Pages.EnterPages.Views;
 using LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.Views;
 using LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 namespace LivePlay.Front.MAUI.Pages.EnterPages.ViewModels;
 
 public partial class EnterViewModel : BaseViewModel
 {
-    private readonly AppPermissions _permissions;
     private readonly UserHttpService _userService;
     private ActionTimer? _sendCodeTimer;
     private uint _numberRegistratrtion = 0;
@@ -26,24 +27,12 @@ public partial class EnterViewModel : BaseViewModel
     public EnterViewModel(IServiceScopeFactory serviceScopeFactory) : base(serviceScopeFactory)
     {
         using var scope = serviceScopeFactory.CreateScope();
-        _permissions = scope.ServiceProvider.GetRequiredService<AppPermissions>();
         _userService = scope.ServiceProvider.GetRequiredService<UserHttpService>();
     }
 
     [RelayCommand]
     public async Task LoginUser()
     {
-        //RequestPermissions:
-        //bool havePermissions = await _permissions.GetPermission();
-        //if (!havePermissions)
-        //{
-        //    if (await Shell.Current.DisplayAlert("Нет доступа к хранилищу", $"Предоставьте, пожалуйста, доступ к хранилищу", "ok", "no"))
-        //        goto RequestPermissions;
-        //    else
-        //        return;
-        //}
-
-
         StartMiddleLoading();
         var (roles, error) = await _userService.Login(EnterUser.Email, EnterUser.Password);
 

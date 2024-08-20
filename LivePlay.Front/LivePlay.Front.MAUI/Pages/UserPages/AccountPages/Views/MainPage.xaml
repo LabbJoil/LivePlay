@@ -4,6 +4,7 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
              xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
+             xmlns:Local="clr-namespace:LivePlay.Front.MAUI.Abstracts"
              x:Class="LivePlay.Front.MAUI.Pages.UserPages.AccountPages.Views.MainPage"
              Appearing="ContentPage_Appearing"
              Title="MainPage"
@@ -102,22 +103,8 @@
 
             <Grid RowDefinitions="33, 250" RowSpacing="10">
                 <Label Text="Наша сеть отелей:" FontSize="18" FontAttributes="Bold" VerticalOptions="End" HorizontalOptions="Center"/>
-                <maps:Map x:Name="mappy" Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" MapType="Street">
-                    <x:Arguments>
-                        <maps:MapSpan>
-                            <x:Arguments>
-                                <sensors:Location>
-                                    <x:Arguments>
-                                        <x:Double>59.9386300</x:Double>
-                                        <x:Double>30.3141300</x:Double>
-                                    </x:Arguments>
-                                </sensors:Location>
-                                <x:Double>0.06</x:Double>
-                                <x:Double>0.06</x:Double>
-                            </x:Arguments>
-                        </maps:MapSpan>
-                    </x:Arguments>
-                </maps:Map>
+                <WebView x:Name="YandexMapWebView" Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Navigating="YandexMapWebView_Navigating"/>
+
             </Grid>
         </Border>
     </Grid>

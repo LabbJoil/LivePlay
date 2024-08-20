@@ -4,6 +4,8 @@
              x:Class="LivePlay.Front.MAUI.Pages.EnterPages.Views.EnterPage"
              xmlns:pe="clr-namespace:LivePlay.Front.MAUI.PersonalElements"
              Appearing="ContentPage_Appearing" Disappearing="ContentPage_Disappearing"
+             xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+             xmlns:materials="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
              BackgroundColor="{AppThemeBinding Dark={StaticResource Page1BackgroundDark}, Light={StaticResource Page1BackgroundLight}}"
              x:Name="this">
 

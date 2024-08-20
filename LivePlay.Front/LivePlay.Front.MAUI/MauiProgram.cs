@@ -1,13 +1,11 @@
 ﻿
+using Camera.MAUI;
 using CommunityToolkit.Maui;
-using LivePlay.Front.Infrastructure.Interfaces;
 using LivePlay.Front.MAUI.MauiProgramExtentions;
 using Microsoft.Extensions.Logging;
 using The49.Maui.BottomSheet;
-using Camera.MAUI;
-using ZXing.Net.Maui.Controls;
-using Microsoft.Maui.LifecycleEvents;
 using UraniumUI;
+using ZXing.Net.Maui.Controls;
 
 namespace LivePlay.Front.MAUI;
 
@@ -47,9 +45,16 @@ public static class MauiProgram
 
         Microsoft.Maui.Handlers.ElementHandler.ElementMapper.AppendToMapping("Classic", (handler, view) =>
         {
-            if (view is Entry) {
+            if (view is Entry)
+            {
 #if __ANDROID__ || __IOS__
                 Platforms.VisualElementsMapper.EntryControlMapper.Map(handler, view);
+#endif
+            }
+            else if (view is WebView)
+            {
+#if __ANDROID__
+                Platforms.VisualElementsMapper.WebViewControlMapper.Map(handler, view);
 #endif
             }
         });

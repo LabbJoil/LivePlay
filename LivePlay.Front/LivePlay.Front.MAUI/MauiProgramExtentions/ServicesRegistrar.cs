@@ -7,6 +7,7 @@ using LivePlay.Front.Core.Models.QuestModels;
 using LivePlay.Front.Infrastructure;
 using LivePlay.Front.MAUI.Abstracts;
 using LivePlay.Front.MAUI.DeviceSettings;
+using LivePlay.Front.MAUI.Interfaces;
 using LivePlay.Front.MAUI.Pages.AdminPages.CouponPages.Views;
 using LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.ViewModels;
 using LivePlay.Front.MAUI.Pages.AdminPages.FeedbackPages.Views;
@@ -119,7 +120,8 @@ public static class ServicesRegistrar
         services.AddSingleton<AppStorage>();
         services.AddSingleton<IAppStorage, AppStorage>();
 #if __ANDROID__
-        services.AddSingleton<IStoragePermissions, Platforms.PlatformPermissions.StoragePermissions>();
+        services.AddSingleton<IStoragePermission, Platforms.PlatformPermissions.StoragePermission>();
+        services.AddSingleton<IGeolocationPermission, Platforms.PlatformPermissions.GeolocationPermission>();
 #endif
     }
 
